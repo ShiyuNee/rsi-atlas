@@ -20,7 +20,36 @@ assert(query({quick:'isolated'}).every(p=>!['2606.09498','2604.25850','2603.2805
 assert(query({facets:{modifier:['SameModel']}}).some(p=>p.id==='2606.09498'));
 assert(query({facets:{modifier:['SameModel'],target:['HarnessCode']},quick:'core'}).some(p=>p.id==='2606.09498'));
 assert(query({facets:{target:['Skill','HarnessCode']}}).length>=query({facets:{target:['Skill']}}).length);
-assert(query({category:'H-Full',year:'2026'}).every(p=>p.categories.includes('H-Full')&&p.year==='2026'));
+assert(query({category:'methods',year:'2026'}).every(p=>p.category==='methods'&&p.year==='2026'));
 assert(query({tags:['ExecutableVerifier','RegressionGate']}).every(p=>p.tags.includes('ExecutableVerifier')&&p.tags.includes('RegressionGate')));
 for(const p of papers){assert(p.title&&p.date&&p.categories.length&&p.depth.length&&p.review);assert(p.url.startsWith('https://'));assert(p.fields['本质定位'],p.title);}
 console.log(`Passed: ${papers.length} unique records; ${additions.length} additions; keyword, compound facets, date, evidence boundaries and source metadata.`);
+const get=id=>papers.find(p=>p.id===id);
+assert.deepEqual(Object.keys(data.taxonomy),['methods','evaluation','dataset','theory']);
+assert.deepEqual(Object.keys(data.methodTypes),['harness','artifact','weights','joint']);
+for(const p of papers){
+ assert(Object.hasOwn(data.taxonomy,p.category),p.id);
+ assert.equal(p.categories.length,1);
+ assert.equal(p.category==='methods',Object.hasOwn(data.methodTypes,p.methodType),p.id);
+ assert(p.brief.summary&&p.brief.experiments.length,p.id);
+ assert(!JSON.stringify(p.brief).includes('\ufffd'),p.id);
+}
+assert.equal(get('2607.25886').category,'evaluation');
+assert.equal(get('2608.09096').category,'evaluation');
+assert.equal(get('2303.17651').methodType,'artifact');
+assert.equal(get('2506.10943').methodType,'weights');
+assert.equal(get('2603.21877').methodType,'joint');
+assert.equal(get('2608.02276').methodType,'harness');
+assert(get('2608.02276').tags.includes('EditorWeights'));
+assert(!get('2607.15524').tags.includes('HarnessCode'));
+assert(get('2410.10762').tags.includes('Workflow'));
+assert(get('2604.25850').brief.seed.includes('bash-only'));
+assert(get('2604.25850').brief.executor.includes('high'));
+for(const type of Object.keys(data.methodTypes)){
+ const selected=query({category:'methods',quick:type});assert(selected.length>0);
+ assert(selected.every(p=>p.methodType===type));
+}
+assert(query({category:'evaluation',facets:{priority:['C']}}).length>0);
+assert.equal(query({category:'dataset'}).length,0);
+assert.equal(query({facets:{verified:['原文关键段落已复核']}}).length,25);
+console.log('Passed: two-level taxonomy, independent priority, all four method types, primary-source corrections, 25 reviewed papers.');

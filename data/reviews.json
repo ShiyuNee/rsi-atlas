@@ -1,0 +1,755 @@
+{
+  "2603.28052": {
+    "summary": "让 coding proposer 在文件系统里检索历代 harness 源码、分数和完整执行日志，再直接改写目标模型的运行代码。历史不是一段固定摘要，而是 proposer 能主动查阅的搜索经验。",
+    "novelty": "相对 prompt optimizer，核心变化是完整 executable harness 的搜索空间，以及对原始历史证据的主动访问；不是只把最终分数写进下一轮 prompt。",
+    "executor": "分类：GPT-OSS-120B；数学：GPT-OSS-20B 等；TB2：Opus 4.6 / Haiku 4.5。各实验目标模型固定。",
+    "modifier": "Claude Code coding proposer；与被优化的任务执行角色分离。",
+    "seed": "按任务分别设置：分类/context 管理与数学 retrieval harness；TB2 对照包括 Terminus / Terminus-KIRA，不能给全篇统一写成一种 seed。",
+    "fixed": "目标模型权重、外层 propose→evaluate→log 程序与评分接口固定。",
+    "verdict": "search-set 标签、任务分数或可执行 verifier；不同任务使用不同评分器。",
+    "diagnosis": "主动检索历史 candidate code 与 raw traces，分析具体失败步骤及旧修改为何退化。",
+    "update": "直接编辑检索、状态管理、提示构造与执行控制代码；每轮留下完整候选和日志。",
+    "acceptance": "继续用 search-set 评分指导候选搜索；隔离边界必须按实验分别看。",
+    "experiments": [
+      {
+        "name": "分类",
+        "evolve": "在线分类 search tasks",
+        "selection": "search-set 结果",
+        "test": "额外 OOD 分类数据集",
+        "isolation": "迁移评估",
+        "note": "分类执行时也有在线状态积累。"
+      },
+      {
+        "name": "数学检索",
+        "evolve": "250 道 OlympiadBench + Omni-MATH hard 搜索题",
+        "selection": "40 轮产生的候选按 search score 选择",
+        "test": "200 道未见 IMO-level 题；另换目标模型",
+        "isolation": "独立测试",
+        "note": "检索语料另作去重/去污染。"
+      },
+      {
+        "name": "Terminal-Bench 2",
+        "evolve": "同一 TB2 benchmark 上搜索",
+        "selection": "benchmark score 参与迭代",
+        "test": "同一 full benchmark 报告结果",
+        "isolation": "同集适应",
+        "note": "不能把数学/分类的 held-out 结论移到 TB2。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2603.28052v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2604.25850": {
+    "summary": "把 coding harness 拆成可编辑文件，把轨迹组织成可诊断的证据，再要求每次改动写下可检验的“修复谁、可能伤害谁”的预测。下一轮对照真实结果继续修改或回退。",
+    "novelty": "不只是 full-harness search，而是把组件、经验与编辑决策的可观测性连接起来，并用 component transplant 检查改动间的干扰。",
+    "executor": "GPT-5.4 high Code Agent。",
+    "modifier": "GPT-5.4 high Agent Debugger 与 Evolve Agent；当前原文三种角色共用同一模型及 high 设置。",
+    "seed": "NexAU₀：bash-only seed，而非一开始就有完整工具、middleware 和长期记忆的成熟 harness。",
+    "fixed": "模型权重与评估器固定；外层 Debugger / Evolve 的角色与流程固定。",
+    "verdict": "TB2 官方任务 verifier、重复 rollout 的 pass/fail 与跨轮任务差分。",
+    "diagnosis": "Debugger 从原始轨迹生成逐任务根因/成功分析，再汇总成 benchmark 层证据。",
+    "update": "增删改 system prompt、tools、middleware、memory 等文件；manifest 绑定改动与预期影响。",
+    "acceptance": "下一轮验证 manifest 的修复/退化预测，保留或撤回修改；还做单组件移植分析。",
+    "experiments": [
+      {
+        "name": "主实验",
+        "evolve": "TB2 同一 89 tasks，10 轮",
+        "selection": "按 TB2 分数选择版本",
+        "test": "同一 TB2 上报告 69.7→77.0",
+        "isolation": "同集适应",
+        "note": ""
+      },
+      {
+        "name": "迁移",
+        "evolve": "沿用 TB2 已进化的 workspace",
+        "selection": "不做目标域重新进化",
+        "test": "SWE-bench Verified 与替换 base model",
+        "isolation": "冻结后迁移",
+        "note": "不能等同于 TB2 内部独立测试。"
+      }
+    ],
+    "takeaway": "原记录的 seed 强度及 xhigh modifier 描述已按当前原文更正。69.7→77.0 是同集迭代结果；转移收益与组件干扰应分开阅读。",
+    "sources": [
+      "https://arxiv.org/html/2604.25850v4"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2606.09498": {
+    "summary": "同一个固定模型一边执行任务，一边根据自身失败模式提出小范围 harness 修改。循环由 weakness mining、proposal 和 regression validation 三步组成。",
+    "novelty": "把 proposer 内化到目标模型自身，并聚类共性失败而不是逐题硬编码修补；“同模型”不意味着没有固定外层 gate。",
+    "executor": "MiniMax M2.5、Qwen3.5-35B-A3B 或 GLM-5。",
+    "modifier": "同一 fixed base model 的 proposer role；从 evaluator 提供的失败证据生成 edits。",
+    "seed": "DeepAgent SDK 上的 minimal harness：简短 benchmark-facing prompt 与默认 filesystem / shell tools；只能编辑 harness 定义文件的配置面。",
+    "fixed": "权重、解码、预算、任务环境、evaluator 和 promotion rule 固定。",
+    "verdict": "benchmark-native verifier 给出任务 pass/fail。",
+    "diagnosis": "只向 proposer 暴露 held-in traces、失败簇、passing behavior 和既往改动摘要。",
+    "update": "提出少量 diverse / minimal 配置改动，分别对应可解释的失败机制。",
+    "acceptance": "自动 promotion gate 同时检查 held-in 与 held-out 分数；held-out trace 不暴露，但分数参与接受。",
+    "experiments": [
+      {
+        "name": "TB2",
+        "evolve": "固定 64-case 子集的 held-in 部分",
+        "selection": "held-in + held-out regression gate",
+        "test": "同一 held-out 部分报告结果",
+        "isolation": "验证集参与接受",
+        "note": ""
+      },
+      {
+        "name": "SWE-bench Verified",
+        "evolve": "100-case 子集中的 67 held-in",
+        "selection": "33 held-out 分数参与 gate",
+        "test": "该 33-case held-out",
+        "isolation": "验证集参与接受",
+        "note": ""
+      },
+      {
+        "name": "AppWorld",
+        "evolve": "90 official training tasks",
+        "selection": "90 normal/challenge test 抽样任务参与 gate",
+        "test": "同一 held-out 集",
+        "isolation": "验证集参与接受",
+        "note": ""
+      }
+    ],
+    "takeaway": "不是 evolve→freeze→untouched final test。隔离了 proposer 对 held-out 轨迹的访问，没有隔离 search 对 held-out 分数的适应。",
+    "sources": [
+      "https://arxiv.org/html/2606.09498v3"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2607.15524": {
+    "summary": "把 roles、instructions、communication contracts 和 workflow hops 写成 prompt-level agent-loop specification。每轮比较当前与上一版产物，用累计偏好历史指导下一次改写。",
+    "novelty": "用相邻 revision 的低成本 pairwise preference 优化信息流；不搜索 executable harness code，不等于修改 improver 自身。",
+    "executor": "sonnet-4.6、opus-4.7、opus-4.8 的 research/coding agent，在当前 loop specification 下生成仓库。",
+    "modifier": "LLM harness optimizer；评价角色是可与执行模型不同的 LLM judge。",
+    "seed": "用户构造的 prompt-level 多 agent loop。",
+    "fixed": "模型权重、optimizer/judge 流程固定。",
+    "verdict": "针对功能、任务对齐、复现性等标准的 pairwise LLM preference；不是统一的执行测试通过率。",
+    "diagnosis": "从相邻输出/代码仓库的比较及累积 revision history 判断信息流瓶颈。",
+    "update": "改 roles、instructions、contracts 与 hops；目标是减少上下文冗余、改善任务相关信息传递。",
+    "acceptance": "用后续 pairwise 比较衡量 revision；不能读成 verifier-gated 全代码自修改。",
+    "experiments": [
+      {
+        "name": "ML research tasks",
+        "evolve": "30 个 synthetic tasks：量化金融、机器人、制药",
+        "selection": "同任务上相邻 revision 比较",
+        "test": "相同任务上的 pairwise 评估；多个模型/seed",
+        "isolation": "同任务迭代",
+        "note": "不是跨任务冻结后泛化的主要证据。"
+      }
+    ],
+    "overrides": {
+      "tags": [
+        "Prompt",
+        "Workflow",
+        "SeparateEvolver",
+        "PairwiseFeedback",
+        "Sequential",
+        "M1"
+      ]
+    },
+    "sources": [
+      "https://arxiv.org/html/2607.15524v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2410.10762": {
+    "summary": "把 workflow 表示成程序：节点执行 LLM 调用，连接和控制逻辑由代码描述。AFlow 用 MCTS 选择待扩展的工作流，再由 LLM 修改节点 prompts、operators 和连线。",
+    "novelty": "可搜索的是可执行 workflow 结构，不只是单个 prompt；旧分类把 Program/Workflow 整段压成 Prompt 会丢掉这一点。",
+    "executor": "GPT-4o-mini、DeepSeek-V2.5、GPT-4o、Claude-3.5-Sonnet 等。",
+    "modifier": "Claude-3.5-Sonnet optimizer；MCTS 外层选择规则固定。",
+    "seed": "带节点与 operator 接口的 template workflow W₀，补全 call functions。",
+    "fixed": "目标模型权重、operator 接口与搜索规则不随 workflow 一起更新。",
+    "verdict": "QA 的 F1、数学 solve rate、代码 pass@1。",
+    "diagnosis": "利用选中 workflow 的既往 edits、成功/失败记录、预测及期望输出日志。",
+    "update": "修改 workflow code、节点 prompts 或连接。",
+    "acceptance": "执行候选获取验证分数，再回传到搜索树引导后续扩展。",
+    "experiments": [
+      {
+        "name": "六个 benchmark",
+        "evolve": "20% validation 中进一步选取高方差任务进行搜索",
+        "selection": "validation 评分选择 workflow",
+        "test": "80% test；并做跨执行模型迁移",
+        "isolation": "独立测试",
+        "note": "GSM8K、HumanEval、MBPP、HotpotQA、DROP、MATH。"
+      }
+    ],
+    "overrides": {
+      "tags": [
+        "Workflow",
+        "Prompt",
+        "SeparateEvolver",
+        "BenchmarkScore",
+        "OfflineSearch",
+        "HeldOut",
+        "M1"
+      ]
+    },
+    "sources": [
+      "https://arxiv.org/html/2410.10762v4"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2408.08435": {
+    "summary": "Meta Agent Search 在代码空间发明 task agent，并把历史 agent archive 作为搜索经验。代码可以组合多个 LLM 调用、prompt 和控制逻辑。",
+    "novelty": "从 prompt 搜索扩到 code-represented agent architecture；与后来的通用 coding runtime evolution 有谱系联系，但两者的 seed 和执行环境不同。",
+    "executor": "candidate agent 内的目标 LLM；具体模型按实验变化。",
+    "modifier": "独立 meta-agent 根据 archive 与验证反馈生成 agent code。",
+    "seed": "受接口约束的 agent skeleton，加已有设计 archive。",
+    "diagnosis": "阅读 prior agent designs、验证结果与错误反馈，提出新架构。",
+    "update": "编写候选 agent 程序，包含 reasoning/control-flow 结构。",
+    "acceptance": "验证后把结果记入 archive，按验证表现筛选。",
+    "experiments": [
+      {
+        "name": "ARC / reasoning",
+        "evolve": "各任务 validation 搜索",
+        "selection": "validation 选择优秀 designs",
+        "test": "held-out test；MGSM designs 转到其他任务/模型",
+        "isolation": "独立测试",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2408.08435v2"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2605.23904": {
+    "summary": "把一份 skill.md 当成冻结 agent 的外部可训练状态。成功/失败轨迹先按 minibatch 反思，再做有预算的 add/delete/replace；最终只导出最佳被接受 skill。",
+    "novelty": "重点是单一技能文档的优化纪律：textual learning rate、验证 gate、被拒编辑缓存和跨 epoch 慢更新；不是完整 runtime code evolution。",
+    "executor": "七种 target models；direct、Codex、Claude Code 三种执行模式。",
+    "modifier": "独立 optimizer LLM，也包含同模型配置；目标模型保持冻结。",
+    "seed": "目标 agent + 一份初始 domain skill 文档。",
+    "fixed": "target weights 与执行 harness 不变；改变 skill 内容，optimizer 外层规则固定。",
+    "verdict": "每个任务的 scorer/verifier 与完整 scored trajectories。",
+    "diagnosis": "分开汇总成功与失败 minibatches，找缺失程序规则和应保留的行为。",
+    "update": "在 edit budget 内合并、排序并执行 add/delete/replace。",
+    "acceptance": "selection set 严格改善才接受；保留 rejected-edit buffer；导出 best_skill.md。",
+    "experiments": [
+      {
+        "name": "六个 domain",
+        "evolve": "D_train 生成经验与候选 skills",
+        "selection": "D_selection gate 接受与选模",
+        "test": "D_test 仅最终报告",
+        "isolation": "独立测试",
+        "note": "还有 cross-model / cross-harness / cross-benchmark transfer。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2605.23904v2"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.15071": {
+    "summary": "每个任务只尝试一次，执行结束后把轨迹和外部反馈编译成 General / Topic 自然语言技能，供后续任务检索使用。",
+    "novelty": "重点是 feedback grounding、技能粒度和 solver/evolver 配对；单看名字会误以为它改完整 harness code，实际主要改外部技能。",
+    "executor": "frozen solver；正文比较 Opus / Sonnet 等 solver–evolver 配置。",
+    "modifier": "独立 evolver role，可与 solver 使用相同或不同模型；检索器选择相关技能。",
+    "seed": "冻结 solver + 空或已有的 external skill harness。",
+    "fixed": "模型权重、技能编译/检索流程固定。",
+    "verdict": "环境、unit test 或 rubric；对照 self-generated、minimal、standard feedback。",
+    "diagnosis": "结合本次完整轨迹与 grounded outcome 提炼可复用经验。",
+    "update": "修改 General / Topic skills，只影响未来任务。",
+    "acceptance": "按顺序继承技能；self-feedback 是否可靠由消融检验，不等于每次更新都有 held-out gate。",
+    "experiments": [
+      {
+        "name": "在线五个 benchmark",
+        "evolve": "顺序单次任务形成经验",
+        "selection": "后续任务使用当前 skills",
+        "test": "任务流中的后续表现",
+        "isolation": "Prequential",
+        "note": ""
+      },
+      {
+        "name": "SWE transfer",
+        "evolve": "training split 上由 Sonnet 4.5 进化 skills",
+        "selection": "冻结已学技能",
+        "test": "Opus 4.7 在 test split 使用；另有 online-updated 对照",
+        "isolation": "独立测试",
+        "note": ""
+      }
+    ],
+    "takeaway": "self-generated feedback 在两组消融中低于 No-Evolve；外部判断和“怎么把判断写进技能”都需要单独研究。",
+    "sources": [
+      "https://arxiv.org/html/2608.15071v2"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2607.05297": {
+    "summary": "每个 branch 同时携带 task skill 和五个 meta-skill 文件。快循环改任务技能；慢循环用同一套流水线改 Analyzer、Retriever、Allocator、Proposer、Evolver 的行为说明。",
+    "novelty": "把“怎么改进”的持久表示也纳入可编辑对象；但五角色 wiring 与外层 selection 仍固定。",
+    "executor": "Gemma-4 31B frozen backbone；task solver 使用当前 task skill。",
+    "modifier": "五角色共用同一 Gemma-4 31B；慢循环编辑该 pipeline 的 meta-skill 文件。",
+    "seed": "固定五角色 pipeline + task skill / meta-skill Markdown programs。",
+    "fixed": "无权重训练；角色数量、连接方式、任务目标、selection/eval protocol 固定。",
+    "verdict": "task outcome、labels/verifier 与 execution traces。",
+    "diagnosis": "Analyzer 找失败，Retriever 取分支经验，Allocator 分配 credit。",
+    "update": "快循环改 task skill；每隔 H 次触发慢循环修改 meta-skills。",
+    "acceptance": "training failure mining；validation 为 child 打分与选择 best skill。",
+    "experiments": [
+      {
+        "name": "OfficeQA / SealQA / ALFWorld",
+        "evolve": "按 category 分层的 train：failure mining",
+        "selection": "disjoint validation：child scoring / best selection",
+        "test": "独立 test，由 separate benchmark-mode pass 运行",
+        "isolation": "独立测试",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2607.05297v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.02276": {
+    "summary": "训练一个专门的 Harness Engineer，把目标 agent 的失败批次变成可执行 runtime hooks。冻结 target 重新跑相同任务，真实 reward delta 用于更新 engineer 权重。",
+    "novelty": "改进器的 editing policy 可以通过 SFT + GRPO 学出来；被训练的是独立 editor，不是同一个 target 的权重与 harness 同时自演化。",
+    "executor": "frozen Qwen3.5-9B target；另测试更强 target 与跨 target-model transfer。",
+    "modifier": "独立 Qwen3.5-9B Harness Engineer；cold-start teacher 为 GPT-5.5，再 online GRPO。",
+    "seed": "固定 lifecycle-hook API：episode-init / pre-decision / pre-action / post-feedback。",
+    "fixed": "每阶段 target weights 固定；engineer 权重受训练，hook API / 外层优化规则固定。",
+    "verdict": "patched target fresh rerun 后的真实任务 reward change。",
+    "diagnosis": "engineer 读取 target 的 failure batch，决定应在哪个 lifecycle 阶段干预。",
+    "update": "生成并验证 executable runtime patch；reward 反传给 engineer。",
+    "acceptance": "先验证 patch 可执行，再用 same-batch outcome 构造训练 reward；这不等于 held-out regression gate。",
+    "experiments": [
+      {
+        "name": "WebShop / ALFWorld / DBBench",
+        "evolve": "target failure batches 与 same-batch reruns 训练 engineer",
+        "selection": "SFT + GRPO 的训练选择",
+        "test": "另报告 1,270 held-out tasks 与未见目标模型",
+        "isolation": "独立测试",
+        "note": "“目标已 fine-tune 后再训练 engineer”是分阶段设置，不是已证实多代闭环。"
+      }
+    ],
+    "overrides": {
+      "tags": [
+        "HarnessCode",
+        "EditorWeights",
+        "LearnedUpdater",
+        "SeparateEvolver",
+        "ExecutableVerifier",
+        "M1"
+      ]
+    },
+    "sources": [
+      "https://arxiv.org/html/2608.02276v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.09096": {
+    "summary": "固定 policy model 与 CodeAct seed，让不同 evolver 在同预算下改 harness，再冻结提交到 sealed evaluation。任务构造先检查对 harness 改动是否敏感。",
+    "novelty": "比较的是 harness-evolving capability；benchmark 本身不是 evolution method。它还把 evolver、executor 和 judge 明确分开。",
+    "executor": "主实验固定 DeepSeek-V4-Flash policy model；部分任务由 Qwen3.7-Plus judge 评分。",
+    "modifier": "9 个 evolver models；20 iterations / 1,000 evolver steps / 48h 共同预算。",
+    "seed": "统一 minimal CodeAct harness。",
+    "fixed": "policy model、seed 接口、预算与测试服务固定。",
+    "verdict": "validation tasks 的 native scorer；需 judge 的任务统一评分模型。",
+    "diagnosis": "evolver 读取验证轨迹、工具错误与分数，自行决定如何诊断。",
+    "update": "提交修改后的 executable harness；研究的对象是不同 evolver 能构建出什么。",
+    "acceptance": "validation 选择 candidate；最终冻结后才访问 sealed evaluation。",
+    "experiments": [
+      {
+        "name": "Search / Office / General",
+        "evolve": "160 validation tasks 可供 evolve",
+        "selection": "验证分数与轨迹供 candidate 选择",
+        "test": "448 sealed evaluation tasks",
+        "isolation": "独立测试",
+        "note": "608 tasks；构造敏感性 harness 的 auxiliary data 与五个来源集隔离。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.09096v2"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2609.01437": {
+    "summary": "把 agent infrastructure 的能力拆成 Creation 与 Evolution：先从不带 task-solving policy 的弱 seed 构建 runnable harness，再从所建 harness 继续迭代。",
+    "novelty": "评的是“能否建出运行系统”，并分开 creator 与 runtime model；Creation 的隐藏评分与 Evolution 的反馈任务不能合并成一个 held-out 标签。",
+    "executor": "Self-Eval 使用 creator 对应 runtime；Unified-Eval 固定 Gemini 3.1 Pro。",
+    "modifier": "被测 creator LLM 在开发 workspace 修改 harness。",
+    "seed": "policy-free、可运行但不主动求解的 seed；提供基本接口，不提供 execution loop、managed context、recovery、verifier/stop rule。",
+    "fixed": "输入输出合同、下游评估服务与预算受控制。",
+    "verdict": "public development 的日志/分数；Evolution 中 SWE-Pro 与 TB2 的执行反馈。",
+    "diagnosis": "creator 从具体任务 artifacts、日志与 per-task feedback 定位缺失机制。",
+    "update": "创建或改写执行循环、tool policy、context/state、recovery 与验证机制。",
+    "acceptance": "按冻结 commit 提交成对评估；最终由 creator 声明版本。",
+    "experiments": [
+      {
+        "name": "Creation",
+        "evolve": "公开 dev cases",
+        "selection": "creator 自主修订，冻结提交",
+        "test": "隐藏的下游评估；Self / Unified runtime 分开",
+        "isolation": "独立测试",
+        "note": ""
+      },
+      {
+        "name": "Evolution",
+        "evolve": "SWE-Pro-100 + Terminal-Bench-89 反馈",
+        "selection": "成对 full evaluation 与受限 probe；声明最终 commit",
+        "test": "SWE-Pro-630 在之后评估",
+        "isolation": "混合协议",
+        "note": "TB2 feedback 集不是 held-out；held-out 最优与最终声明版本也有差异。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2609.01437v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2606.17546": {
+    "summary": "把静态 benchmark 转成可连续更新的环境，同时保存 agent snapshots，分别测 update-validation、ID/OOD transfer、replay 和成本。",
+    "novelty": "它提供测量和诊断 protocol，不发明一个统一的 harness updater；需要问“哪个方法在更新、哪一版 snapshot 被评”。",
+    "executor": "被测 method 对应的 task agent / model backend。",
+    "modifier": "ACE、TF-GRPO、AHE 等各自的更新机制。",
+    "seed": "统一评估环境里方法对应的初始 harness/state。",
+    "verdict": "task verifier + 多视角 snapshot metrics。",
+    "diagnosis": "对照更新前后、不同源任务/批量/backend，以及遗忘、恢复和迁移曲线。",
+    "update": "由各 baseline 自己完成；SEAGym 负责采样、记录与评估。",
+    "acceptance": "update-validation 与 final held-out / replay views 分开记录，不能只看最终一个分数。",
+    "experiments": [
+      {
+        "name": "TB2 / HLE",
+        "evolve": "train episodes 或 batches；可配 single-task / online / epoch schedule",
+        "selection": "frozen update-validation snapshots",
+        "test": "ID/OOD held-out、replay 与 cost views",
+        "isolation": "多视角评测",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2606.17546v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2607.25886": {
+    "summary": "固定训练、serving 与评估栈，只让 researcher 根据模型失败反馈提出或修订训练数据策略，再生成候选 LoRA checkpoint。",
+    "novelty": "隔离 data-centric research 决策能力，发现“能找到更好候选”和“能可靠地持续改进”之间的差距。名字有 Data，主要贡献仍是 benchmark。",
+    "executor": "Qwen3.5-35B-A3B-Base 派生的目标 checkpoints；通过固定 agent harness 执行。",
+    "modifier": "Claude Code / Codex 等 frontier researcher systems；Tinker 执行固定训练流程。",
+    "seed": "固定 Tinker/post-training/serving stack；SWE 使用 mini-swe-agent，其他任务使用 Terminus-2。",
+    "verdict": "checkpoint benchmark score、诊断与执行反馈。",
+    "diagnosis": "researcher 从错误提出能力缺口假设，再判断该合成什么训练经验。",
+    "update": "修改 data strategy / 数据集，训练 candidate LoRA；不是重写 deployment harness。",
+    "acceptance": "按 selection score 选择 checkpoint；另运行 official evaluation。",
+    "experiments": [
+      {
+        "name": "六个 benchmark",
+        "evolve": "允许的公共 seed 与合成数据用于训练",
+        "selection": "同一指定 task subset 上的 selection feedback",
+        "test": "fresh environment 下的 official eval，但 task subset 相同",
+        "isolation": "同集适应",
+        "note": "环境重置不等于统计上未见测试题。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2607.25886v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.01918": {
+    "summary": "限制 task-specific shortcuts，加入 agent 对自己使用 harness 的第一人称反馈，再逐组件进化并合并，直接处理过拟合与组件间干扰。",
+    "novelty": "相对 AHE，将 task-agnostic constraints、proactive feedback 与 component-wise optimization 作为方法的一部分。",
+    "executor": "GPT-5.4；当前实验设置中同一 base model 承担各角色。",
+    "modifier": "evolution meta-agent；分组件优化后进行 consolidation。",
+    "seed": "bash-only H₀；无初始 middleware、skills 或 subagents，和 AHE 对照共用 seed。",
+    "verdict": "SWE-bench executable test outcome + rollout evidence。",
+    "diagnosis": "结合 trajectory-derived evidence 与 first-person harness-use feedback。",
+    "update": "在通用性约束下分别改 components，再统一整合。",
+    "acceptance": "约束/gating 限制 task-specific knowledge 与不通用改动；观察合并后的互扰。",
+    "experiments": [
+      {
+        "name": "SWE-bench Verified",
+        "evolve": "50 evolution tasks",
+        "selection": "在 evolution set 上 5 turns 搜索",
+        "test": "450 disjoint held-out tasks",
+        "isolation": "独立测试",
+        "note": "full-500 Total 包含 evolution 题；应同时报告 Sample / Held-Out / Total。"
+      },
+      {
+        "name": "模型迁移",
+        "evolve": "GPT-5.4 已进化 harness",
+        "selection": "冻结",
+        "test": "Claude-Sonnet-4.6 不重新进化",
+        "isolation": "冻结后迁移",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.01918v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2602.07755": {
+    "summary": "Meta Agent 搜索的不是“记忆里放什么”，而是 memory schema、update 与 retrieve 的 Python 实现；目标 agent 再用这个设计积累与检索经验。",
+    "novelty": "Memory mechanism evolution，应与 A-MEM/Reflexion 的 memory-content accumulation 分开打对象标签。",
+    "executor": "GPT-5-nano；最终也换 GPT-5-mini 测试。",
+    "modifier": "GPT-5 Meta Agent；memory 模块所用模型与 target actor 需分别看。",
+    "seed": "固定 agent interaction scaffold + 满足接口的 candidate memory design。",
+    "fixed": "agentic system 与设计评估协议固定；memory algorithm 是可搜索代码。",
+    "verdict": "部署阶段任务成功率；学习时用 static memory mode 减少方差。",
+    "diagnosis": "根据 candidate memory design 的 collection/deployment 表现与经验继续搜索。",
+    "update": "修改记忆结构、更新和检索程序。",
+    "acceptance": "在 learning tasks 上评价 designs；最好设计进入独立测试。",
+    "experiments": [
+      {
+        "name": "ALFWorld / TextWorld / Baba Is AI / MiniHack",
+        "evolve": "learning tasks；内部再分 collection/deployment",
+        "selection": "static deployment success 选择 memory design",
+        "test": "testing tasks，也各分 collection/deployment；static 与 dynamic 两种模式",
+        "isolation": "独立测试",
+        "note": "设计的训练/测试分割与运行时 memory 更新是不同层次。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2602.07755v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2512.18746": {
+    "summary": "把 Encode、Store/Update、Retrieve、Manage 的 memory architecture 与运行时 experience 一起组织进搜索；agent 不是只增加记忆条目。",
+    "novelty": "改 memory 机制/代码的模块化设计，外层 meta-evolution 及选择程序并不因此自己进化。",
+    "executor": "SmolAgent / Flash-Searcher 等 target agents；还有 held-out agent-system transfer。",
+    "modifier": "固定 meta-evolution operator 生成并选择 memory designs。",
+    "seed": "EvolveLab 中的 memory architecture；案例从 AgentKB 初始设计出发。",
+    "diagnosis": "从任务执行、记忆利用及成本表现判断具体设计问题。",
+    "update": "改 memory 组件实现与经验表示。",
+    "acceptance": "按 performance / efficiency 选择 designs；保持 outer evolution protocol。",
+    "experiments": [
+      {
+        "name": "多任务与系统迁移",
+        "evolve": "用于 memory design evolution 的任务经验",
+        "selection": "task performance / efficiency",
+        "test": "跨 benchmark / model / agent system 测试",
+        "isolation": "迁移评估",
+        "note": "具体每项 split 数量尚未逐项核对。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2512.18746v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2505.22954": {
+    "summary": "archive 中的 coding agent 修改自己的代码形成后代，后代经过 coding benchmark 评估后留在 archive，后续可再次作为修改者。",
+    "novelty": "保留不立即最优的 stepping stones 与多样分支；不是普通固定外部 proposer 的单链 greedy search。",
+    "executor": "archive descendants，使用冻结的 pretrained foundation model。",
+    "modifier": "从 archive 选出的 coding agent 本身生成后代。",
+    "seed": "self-modifying coding-agent seed；可编辑自己的 Python codebase。",
+    "fixed": "本实验不训练 foundation model；outer parent selection / evaluator 仍固定。",
+    "verdict": "SWE-bench / Polyglot 的 executable coding outcomes。",
+    "diagnosis": "从自己的 benchmark failures 和 codebase 找可改进能力。",
+    "update": "修改 agent 实现，再让后代继续执行并参与后续 self-modification。",
+    "acceptance": "评估后加入 archive，以分数和探索策略影响 parent selection。",
+    "experiments": [
+      {
+        "name": "SWE / Polyglot",
+        "evolve": "benchmark 子集上演化",
+        "selection": "archive benchmark scores",
+        "test": "包含更大/full-set 与跨语言设置",
+        "isolation": "混合协议",
+        "note": "full-set 包含原训练题时不能称完全 disjoint test。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2505.22954v3"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2603.19461": {
+    "summary": "把 task agent 与可编辑 meta-agent 放入一个 program。meta-agent 不只改任务求解器，还能改产生后续 modifications 的程序。",
+    "novelty": "显式把“改进能力”拆出来，并用新 domain 上生成更好 task agent 的能力测试 meta-level transfer。",
+    "executor": "task agent 执行 domain tasks；meta-agent 执行改进程序。",
+    "modifier": "可继承、可修改的 meta-agent。",
+    "seed": "DGM-H task + meta program。",
+    "fixed": "外层 parent selection / evaluation protocols 仍固定。",
+    "verdict": "不同 domain 的 execution / evaluator reward。",
+    "diagnosis": "根据 task performance 与 meta-level improvement 证据改 task/meta 程序。",
+    "update": "同时开放 task-agent 与 modification procedure 的代码。",
+    "acceptance": "以 train/validation 选择 best agent，再在相应测试协议评估。",
+    "experiments": [
+      {
+        "name": "Polyglot",
+        "evolve": "50-task subset",
+        "selection": "training score",
+        "test": "full Polyglot，包含大量未见题但非完全 disjoint",
+        "isolation": "混合协议",
+        "note": ""
+      },
+      {
+        "name": "Review / Robotics / IMO grading",
+        "evolve": "domain train tasks",
+        "selection": "validation；没有 validation 时用 train",
+        "test": "domain test；另做 meta-agent transfer / improvement@k",
+        "isolation": "独立测试",
+        "note": "固定 meta-agent 的 transfer 实验与继续 self-improve 是不同对照。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2603.19461v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.09819": {
+    "summary": "把部署单元定义为可版本化的 model–harness pair：LoRA specialists、路由，以及 HCP 携带的 prompts/skills/tools/hooks。MindForge 组织发现、扩张和更新。",
+    "novelty": "协同学习的系统架构很完整；但架构允许共同更新，不等于所有 RSI 实验都同时更新模型和 harness。",
+    "executor": "GLM-5.2 base / specialist adapters 等系统；coverage study 使用 frozen base。",
+    "modifier": "MindForge / Expansion search；adapter training 由相应训练栈完成。",
+    "seed": "HCP versioned configuration + MoL serving substrate。",
+    "fixed": "HCP 是配置协议，不接收梯度；不同实验实际可变对象不同。",
+    "verdict": "任务执行结果、轨迹/config outcome；部分系统评估使用 LLM judge。",
+    "diagnosis": "从失败分布识别缺失或未被引出的能力，再搜索配置或学习 specialist。",
+    "update": "系统设计允许 harness config 与 adapters 更新；需区分实际执行的阶段。",
+    "acceptance": "候选配置经重新执行验证；不能用累计 coverage 代替冻结 successor 性能。",
+    "experiments": [
+      {
+        "name": "RSI coverage study",
+        "evolve": "选定 frozen-base failure tasks 上的 adaptive search",
+        "selection": "搜索内选择可解决配置",
+        "test": "same-set 累计 coverage",
+        "isolation": "同集适应",
+        "note": "此实验不是 untouched held-out 的 joint model–harness successor。"
+      }
+    ],
+    "takeaway": "归为联合系统，同时明确“架构层联合”与“当前实验的实际更新”两列，避免把设计宣言当成多代实证。",
+    "sources": [
+      "https://arxiv.org/html/2608.09819v2"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.13951": {
+    "summary": "把 runtime 拆成 typed ports/atoms/recipes，并搜索同一 frozen model 的 sibling harnesses。保留成功、失败与 near-miss 轨迹，作为下一轮模型学习的数据接口。",
+    "novelty": "强调 harness 的双重作用：即时执行质量和训练数据覆盖。当前证据不能直接支撑完整多代 M→H→M′→H′ 闭环。",
+    "executor": "固定模型 + candidate sibling harnesses。",
+    "modifier": "HELIX controller / candidate builders；后续模型更新是单独训练阶段。",
+    "seed": "Pi-like code-repair harness 与 typed runtime contracts。",
+    "fixed": "展示的 harness search round 中 executor model 固定。",
+    "verdict": "SWE-bench executable verifier、重复执行及 trace provenance。",
+    "diagnosis": "比较 sibling trajectories 的成功、退化、near-miss 与替代解法。",
+    "update": "修改 typed harness recipes；整理可用于 SFT/critic/preference 的 records。",
+    "acceptance": "先搜索候选，再对选定成员重复评估；portfolio coverage 与单一 fixed harness 分开。",
+    "experiments": [
+      {
+        "name": "一轮 code repair",
+        "evolve": "65 candidate evolution round",
+        "selection": "更深的 selected-member validation",
+        "test": "selected fixed harness / post-hoc portfolio 覆盖与 200-slot sibling data slice",
+        "isolation": "单轮 / 待闭环",
+        "note": "产出训练数据不等于已完成下一代模型训练及再进化。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.13951v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.12307": {
+    "summary": "更强 builder 从少量验证题中发现可复用结构，为冻结弱模型编写路由、prompt、确定性子程序与验证 scaffold。",
+    "novelty": "研究 strong-to-weak 能力如何外化到推理时环境；并不是弱模型本身学到了新权重。",
+    "executor": "主设置 GPT-5.4-mini；另有 Gemini target 对照。",
+    "modifier": "strong builder models，和目标 executor 分离。",
+    "seed": "开放 workspace 与任务输入输出约定；builder 构造可调用入口。",
+    "verdict": "ToM benchmark 的 validation correctness。",
+    "diagnosis": "从 validation slice 找出可编译的 task structure 与弱模型错误。",
+    "update": "编写 task routing、prompt、symbolic procedures、format/verification 逻辑。",
+    "acceptance": "根据 validation 迭代后导出最终 entry point，隐藏评估时无 builder 介入。",
+    "experiments": [
+      {
+        "name": "四类 Theory-of-Mind benchmark",
+        "evolve": "195-item validation（5%）",
+        "selection": "validation-only 改进",
+        "test": "其余样本 hidden evaluation",
+        "isolation": "独立测试",
+        "note": "旧记录“195→3900 hidden test”过于武断；正文同时使用 full-set 指标，应区分总量与实际 hidden remainder。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.12307v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.24735": {
+    "summary": "把 successive edits 保留成执行时同时存在的分层 context / helper-code stack，后层可以组合或抑制前层。",
+    "novelty": "history 是 active composition，而非只供 proposer 参考的日志；层数增长并不表示固定 modifier Ω 自己发生进化。",
+    "executor": "Gemma 4 31B-IT 或 GPT-5.2；single-shot 与最多 8-turn agentic solver。",
+    "modifier": "同 backbone 使用固定 Ω template 产生新层。",
+    "seed": "依 benchmark 为 Python solver、Docker bash 或 prompt-rewrite substrate。",
+    "fixed": "模型权重与 Ω / outer orchestration 固定。",
+    "verdict": "benchmark score / executable outcome。",
+    "diagnosis": "前层执行证据、failure summaries、representative traces 与 code stack。",
+    "update": "添加、组合或修订 helper-code/context layers。",
+    "acceptance": "按 benchmark 选择 candidate，另有 archive/consolidation 设置。",
+    "experiments": [
+      {
+        "name": "CO / S2D / LawBench / ARC",
+        "evolve": "各自 dev/evolution split",
+        "selection": "按任务选择",
+        "test": "held-out tasks",
+        "isolation": "独立测试",
+        "note": ""
+      },
+      {
+        "name": "TB2 / AlphaEvolve Math / SR / AlgoTune",
+        "evolve": "benchmark 内适应",
+        "selection": "benchmark score",
+        "test": "相同 benchmark 指标",
+        "isolation": "同集适应",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.24735v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2609.00829": {
+    "summary": "在训练答案条件下生成参考轨迹，与失败轨迹对齐以定位根因，再聚类为跨任务模式，推动 harness 更新。",
+    "novelty": "提供“哪里错”的参照信息，而不仅有终局 reward；必须明确 gold-conditioned reference 是额外监督。",
+    "diagnosis": "核验参考路径后，与失败路径比较首次分歧并聚类错误。",
+    "update": "修改 prompts、skills、tools 与执行逻辑。",
+    "acceptance": "quality gate 检查数据泄漏/prompt bloat；performance gate 检查当前和近期 batch；epoch-end validation 选 snapshot。",
+    "experiments": [
+      {
+        "name": "五个开放/企业 QA 与表格任务",
+        "evolve": "train tasks + answer-conditioned reference generation",
+        "selection": "validation 在 epoch-end 选择 snapshot",
+        "test": "独立 test",
+        "isolation": "独立测试",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2609.00829v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2608.27311": {
+    "summary": "不对每个 patch 固定重跑全部题，而是按 patch 影响的行为选择相关验证任务，再以可归因的恢复/退化证据决定接受。",
+    "novelty": "把 verification 的任务选择与预算纳入方法；不能把不同 configured budget 下的结果当作严格 compute-matched 对比。",
+    "diagnosis": "从 execution traces 定位受影响行为，找能测试该行为的任务。",
+    "update": "修改已有 harness 的用户可配置组件。",
+    "acceptance": "attributable-evidence gate；测试服务不向任何进化角色开放。",
+    "experiments": [
+      {
+        "name": "τ² / τ³ / TB2 / BIRD",
+        "evolve": "每个 benchmark 30 TRAIN tasks",
+        "selection": "TRAIN 定位、提案、验证与接受",
+        "test": "TEST 分别 40 / 67 / 59 / 72 tasks",
+        "isolation": "独立测试",
+        "note": "TEST 独立入口；预算表明确不是 matched total compute。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.27311v1"
+    ],
+    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+  },
+  "2509.19349": {
+    "classificationReason": "主要搜索 scientific / solution programs。被优化程序是产物；没有证据说所有实验都重写执行它的 harness 或 LLM 权重。"
+  },
+  "2609.01481": {
+    "classificationReason": "HoH 组织既有 coding agents 改进软件项目。软件产物变化，不等于执行 harness 自修改。"
+  }
+}

@@ -58,3 +58,11 @@ HarnessBank was already in the original notes under arXiv:2607.13683. The corres
 ## Attribution
 
 Source research notes: Shiyu Ni. Catalog inspiration and cross-index source: [Prism-Shadow/awesome-rsi](https://prism-shadow.github.io/awesome-rsi/). This project does not copy that site's implementation or visual assets. Papers and linked source material remain the property of their respective authors. Bundled third-party code retains its own license (`assets/marked-LICENSE.md`).
+
+## Research revision (2026-09-08)
+
+Primary categories: Methods, Evaluation, Dataset, Theory. Methods have four subtypes: harness, artifact (no harness or weight update), model weights, and joint harness + weights. Core/Key, feedback, and evaluation isolation are independent facets. A joint-system design label is not evidence that multiple joint improvement generations have been demonstrated. Dataset currently has zero standalone entries.
+
+`data/reviews.json` contains 27 revised research briefs, including 25 checks of primary-paper methods and experimental sections, with versioned sources. It is not a full-paper audit of all 134 entries. `scripts/enrich.py` owns the explicit taxonomy and merges these briefs; original notes remain unchanged for provenance. Historical notes are disclosed separately because some original descriptions have been corrected.
+
+Cards expose the mechanism, novelty, actors and seed; expandable feedback chains separate correctness, diagnosis, editing and acceptance. Experiments have separate evolution, selection, test and isolation columns. Protocol conclusions are experiment-specific.
