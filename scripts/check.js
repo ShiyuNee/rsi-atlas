@@ -1,0 +1,25 @@
+'use strict';
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const root = path.resolve(__dirname,'..');
+const {matches,text}=require('../assets/app.js');
+const data=JSON.parse(fs.readFileSync(path.join(root,'data/papers.json'),'utf8'));
+const papers=data.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));
+const state=()=>({q:'',category:'',quick:'all',year:'',tags:[],facets:{}});
+const query=s=>papers.filter(p=>matches(p,{...state(),...s}));
+assert.equal(query({}).length,134);
+assert.equal(query({quick:'new'}).length,6);
+assert.equal(new Set(papers.map(p=>p.url)).size,papers.length);
+assert.equal(new Set(papers.map(p=>p.id)).size,papers.length);
+assert.equal(query({q:'does-not-exist-74591'}).length,0);
+assert(query({q:'Terminus'}).some(p=>p.id==='2603.28052'));
+assert(query({q:'GPT-5.4 NexAU'}).some(p=>p.id==='2604.25850'));
+assert(query({quick:'isolated'}).every(p=>!['2606.09498','2604.25850','2603.28052'].includes(p.id)));
+assert(query({facets:{modifier:['SameModel']}}).some(p=>p.id==='2606.09498'));
+assert(query({facets:{modifier:['SameModel'],target:['HarnessCode']},quick:'core'}).some(p=>p.id==='2606.09498'));
+assert(query({facets:{target:['Skill','HarnessCode']}}).length>=query({facets:{target:['Skill']}}).length);
+assert(query({category:'H-Full',year:'2026'}).every(p=>p.categories.includes('H-Full')&&p.year==='2026'));
+assert(query({tags:['ExecutableVerifier','RegressionGate']}).every(p=>p.tags.includes('ExecutableVerifier')&&p.tags.includes('RegressionGate')));
+for(const p of papers){assert(p.title&&p.date&&p.categories.length&&p.depth.length&&p.review);assert(p.url.startsWith('https://'));assert(p.fields['本质定位'],p.title);}
+console.log('Passed: 134 unique records; 6 additions; keyword, compound facets, date, evidence boundaries and source metadata.');

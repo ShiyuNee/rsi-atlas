@@ -1,0 +1,244 @@
+[
+  {
+    "id": "2507.19457",
+    "title": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+    "date": "2025-07-25",
+    "url": "https://arxiv.org/abs/2507.19457",
+    "priority": "K",
+    "categories": [
+      "H-Prompt"
+    ],
+    "tags": [
+      "Prompt",
+      "SeparateEvolver",
+      "Population",
+      "OfflineSearch"
+    ],
+    "depth": [
+      "M1"
+    ],
+    "fields": {
+      "本质定位": "补足 prompt evolution 的重要基线：轨迹反思、候选测试与 Pareto 前沿经验组合。",
+      "什么在变": "AI 系统中的一个或多个 prompt。",
+      "谁来改 / 谁执行": "反思型 prompt optimizer → 使用候选 prompt 的目标系统。",
+      "基础 harness": "含 LLM prompt 的 AI system；具体任务配置待全文核对。",
+      "Feedback": "reasoning、tool calls 和 tool outputs 用于诊断与更新。",
+      "Evolution → Eval": "摘要覆盖六项任务；具体 train/validation/test 数量待补。",
+      "证据边界": "2026-02 v2 已被 ICLR 2026 Oral 接收；此处日期记录首次提交。"
+    },
+    "protocol": "未明确",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 摘要核对",
+    "sources": [
+      "https://arxiv.org/abs/2507.19457"
+    ],
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/gepa-ai/gepa"
+      }
+    ],
+    "source": "addition"
+  },
+  {
+    "id": "2609.00829",
+    "title": "HarnessEvolve: Learning from Reference Trajectories for Reliable Agent Self-Evolution",
+    "date": "2026-09-01",
+    "url": "https://arxiv.org/abs/2609.00829",
+    "priority": "K",
+    "categories": [
+      "H-Full"
+    ],
+    "tags": [
+      "HarnessCode",
+      "Skill",
+      "Tool",
+      "Prompt",
+      "SeparateEvolver",
+      "GoldLabel",
+      "RegressionGate",
+      "HeldOut"
+    ],
+    "depth": [
+      "M1"
+    ],
+    "fields": {
+      "本质定位": "用答案条件下生成的参考轨迹定位失败，再聚类为系统性错误。",
+      "什么在变": "代码、prompts、skills、tools；模型冻结。",
+      "谁来改 / 谁执行": "execution / evaluation / optimization / gating 分角色；执行模型为 Qwen3.6-27B 或 DeepSeek-V4-Flash。",
+      "基础 harness": "企业任务 LAMAgent；开放任务 OpenClaw。",
+      "Feedback": "终局判定 → 与可靠参考路径对齐 → 错误聚类 → candidate edits → 质量/性能 gate。",
+      "进化数据": "SearchQA、OfficeQA、SpreadsheetBench 及两个内部 QA 数据集的 train。",
+      "选模数据": "validation 在 epoch 结束时选择 snapshot。",
+      "测试数据": "独立 test；§3.1、§4.1 明确三路划分，数量待补。",
+      "证据边界": "参考轨迹使用训练答案；应与无答案反馈方法区分。"
+    },
+    "protocol": "Train → selection → test",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 方法与实验设置核对",
+    "sources": [
+      "https://arxiv.org/html/2609.00829v1#S3",
+      "https://arxiv.org/html/2609.00829v1#S4"
+    ],
+    "links": [],
+    "source": "addition"
+  },
+  {
+    "id": "2608.27311",
+    "title": "HarnessLens: Verify Smarter, Evolve Further",
+    "date": "2026-08-27",
+    "url": "https://arxiv.org/abs/2608.27311",
+    "priority": "K",
+    "categories": [
+      "H-Full"
+    ],
+    "tags": [
+      "HarnessCode",
+      "SeparateEvolver",
+      "ExecutableVerifier",
+      "RegressionGate",
+      "HeldOut"
+    ],
+    "depth": [
+      "M1"
+    ],
+    "fields": {
+      "本质定位": "针对 patch 所影响的行为选择验证任务，以可归因证据决定接受。",
+      "什么在变": "harness 用户可配置组件。",
+      "谁来改 / 谁执行": "所有模型角色使用 deepseek-v4-flash-preview；确定性 evaluator 固定权限与预算。",
+      "基础 harness": "OpenCode、Codex CLI、Pi。",
+      "Feedback": "执行轨迹 → 行为相关任务 → attributable-evidence gate。",
+      "进化数据": "每个 benchmark 30 TRAIN tasks。",
+      "测试数据": "τ² Retail 40；τ³ Banking 67；TB2 59；BIRD 72。",
+      "选模数据": "TRAIN 决定更新；TEST 在进化后独立入口运行，所有进化角色不可访问。",
+      "证据边界": "预算比较不是 matched total compute；不能把效率差异全部归因于方法。"
+    },
+    "protocol": "Train → selection → test",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 方法与实验设置核对",
+    "sources": [
+      "https://arxiv.org/html/2608.27311v1#A2"
+    ],
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/jhxu5214/HarnessLens"
+      }
+    ],
+    "source": "addition"
+  },
+  {
+    "id": "2608.10178",
+    "title": "One Recipe, Many Harnesses: What Self-Evolution Encodes Across Languages and Models",
+    "date": "2026-08-10",
+    "url": "https://arxiv.org/abs/2608.10178",
+    "priority": "K",
+    "categories": [
+      "H-Full"
+    ],
+    "tags": [
+      "HarnessCode",
+      "CrossModel",
+      "HeldOut"
+    ],
+    "depth": [
+      "M1"
+    ],
+    "fields": {
+      "本质定位": "直接分析 evolved harness 补偿什么行为缺陷，以及跨语言/模型能迁移什么。",
+      "什么在变": "prompts、tools、memory；固定 evolution recipe。",
+      "谁来改 / 谁执行": "固定 recipe → 三种 base model；具体型号待正文核对。",
+      "基础 harness": "minimal seed 与 mini-SWE-agent 对照。",
+      "Feedback": "typed failure signal + falsifiable edit contract。",
+      "Evolution → Eval": "Multi-SWE-Bench 八种语言；报告 held-out 与跨模型分析，数量待核对。",
+      "证据边界": "摘要称存在无收益区域；通用策略可迁移，ecosystem-specific 部分需重新进化。"
+    },
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 摘要核对",
+    "sources": [
+      "https://arxiv.org/abs/2608.10178"
+    ],
+    "links": [],
+    "source": "addition"
+  },
+  {
+    "id": "2608.31100",
+    "title": "S³Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+    "date": "2026-08-31",
+    "url": "https://arxiv.org/abs/2608.31100",
+    "priority": "K",
+    "categories": [
+      "B-Lifelong",
+      "B-Reliability"
+    ],
+    "tags": [
+      "Context",
+      "MemoryContent",
+      "Weights",
+      "SelfFeedback",
+      "ExecutableVerifier",
+      "HeldOut"
+    ],
+    "depth": [
+      "未明确"
+    ],
+    "fields": {
+      "本质定位": "分别测 self-testing、self-judging、self-improvement；适合定位反馈转化瓶颈。",
+      "什么在变": "对照 History ICL、Summary Memory、parameter training 三条路径。",
+      "谁来改 / 谁执行": "被测 LLM 使用各路径；具体型号待全文核对。",
+      "基础 harness": "七种文本游戏的交互环境。",
+      "Feedback": "模型自评与可执行环境 verifier。",
+      "Evolution → Eval": "permissive exploration 与 strict held-out evaluation 分开。",
+      "证据边界": "摘要报告收益依赖任务；摘要未给出逐项 split 数量与完整选模协议。"
+    },
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 摘要核对",
+    "sources": [
+      "https://arxiv.org/abs/2608.31100"
+    ],
+    "links": [],
+    "source": "addition"
+  },
+  {
+    "id": "2609.01481",
+    "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
+    "date": "2026-09-01",
+    "url": "https://arxiv.org/abs/2609.01481",
+    "priority": "R",
+    "categories": [
+      "Artifact"
+    ],
+    "tags": [
+      "Workflow",
+      "Tool",
+      "Skill"
+    ],
+    "depth": [
+      "未明确"
+    ],
+    "fields": {
+      "本质定位": "边界对照：主要持续改进软件产物，不能因名称含 harness 就当作 harness 自修改。",
+      "什么在变": "开发中的软件项目与版本历史。",
+      "谁来改 / 谁执行": "HoH 外层 planning–coding–testing；Codex/GPT-5.5、OpenCode/DeepSeek-V4-Pro、Pi/MiniMax-M3。",
+      "基础 harness": "现成 coding-agent harness。",
+      "Feedback": "实现时测试与独立评价分离。",
+      "Evolution → Eval": "GameCraft-Bench、FrontierSWE、ProgramBench；不是标准跨任务 harness evolution 证据。",
+      "证据边界": "本条是基于摘要的对象分类判断；需区分 artifact improvement 与 reusable harness improvement。"
+    },
+    "protocol": "Artifact / 非 harness",
+    "protocolBasis": "2026-09-08 核对以下来源；仅按已读范围标注。",
+    "review": "新增 · 摘要核对",
+    "sources": [
+      "https://arxiv.org/abs/2609.01481"
+    ],
+    "links": [
+      {
+        "label": "Code",
+        "url": "https://github.com/Flesymeb/HarnessOfHarness"
+      }
+    ],
+    "source": "addition"
+  }
+]

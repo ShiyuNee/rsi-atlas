@@ -1,0 +1,472 @@
+{
+  "2408.08435": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。",
+    "tags": [
+      "Archive",
+      "BenchmarkScore",
+      "HarnessCode",
+      "HeldOut",
+      "M1",
+      "StrongerBuilder",
+      "Workflow"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "H-Full"
+    ]
+  },
+  "2602.07755": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。",
+    "tags": [
+      "EnvironmentReward",
+      "HeldOut",
+      "M1",
+      "MemoryContent",
+      "MemoryMechanism",
+      "StrongerBuilder"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2605.23904": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。",
+    "tags": [
+      "CrossBenchmark",
+      "CrossModel",
+      "ExecutableVerifier",
+      "HeldOut",
+      "M1",
+      "RegressionGate",
+      "SeparateEvolver",
+      "Skill"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2607.05297": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。",
+    "tags": [
+      "ExecutableVerifier",
+      "GoldLabel",
+      "HeldOut",
+      "Improver",
+      "M2",
+      "SameModel",
+      "Skill"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "H-Skill",
+      "Meta"
+    ]
+  },
+  "2608.12307": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。",
+    "tags": [
+      "HarnessCode",
+      "HeldOut",
+      "M1",
+      "StrongerBuilder"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2608.09096": {
+    "protocol": "Train → selection → test",
+    "protocolBasis": "依据原记录的 Evolution → Eval：进化/选模后在独立测试任务评估；具体任务和访问边界见原文。"
+  },
+  "2603.28052": {
+    "protocol": "混合协议",
+    "protocolBasis": "不同实验的划分不同，不能用一个 held-out 标签概括；见逐任务协议。"
+  },
+  "2604.25850": {
+    "protocol": "混合协议",
+    "protocolBasis": "不同实验的划分不同，不能用一个 held-out 标签概括；见逐任务协议。"
+  },
+  "2608.24735": {
+    "protocol": "混合协议",
+    "protocolBasis": "不同实验的划分不同，不能用一个 held-out 标签概括；见逐任务协议。",
+    "tags": [
+      "HarnessCode",
+      "M1",
+      "SameModel"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2608.05144": {
+    "protocol": "混合协议",
+    "protocolBasis": "不同实验的划分不同，不能用一个 held-out 标签概括；见逐任务协议。",
+    "tags": [
+      "Evaluator",
+      "M1",
+      "MemoryContent",
+      "RegressionGate",
+      "Skill",
+      "Workflow"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2505.22954": {
+    "protocol": "混合协议",
+    "protocolBasis": "不同实验的划分不同，不能用一个 held-out 标签概括；见逐任务协议。"
+  },
+  "2606.09498": {
+    "protocol": "验证集参与接受",
+    "protocolBasis": "held-out score 每轮参与 regression acceptance；不是 untouched final test。"
+  },
+  "2607.25886": {
+    "protocol": "Same-set adaptive",
+    "protocolBasis": "依据原记录：主实验在同一任务/子集上反复优化或评估；不能直接当作冻结后的泛化。"
+  },
+  "2608.09819": {
+    "protocol": "Same-set adaptive",
+    "protocolBasis": "依据原记录：主实验在同一任务/子集上反复优化或评估；不能直接当作冻结后的泛化。",
+    "tags": [
+      "HarnessCode",
+      "M1",
+      "SameSet",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2504.15228": {
+    "protocol": "Same-set adaptive",
+    "protocolBasis": "依据原记录：主实验在同一任务/子集上反复优化或评估；不能直接当作冻结后的泛化。",
+    "tags": [
+      "Archive",
+      "HarnessCode",
+      "Improver",
+      "M2",
+      "SameSet"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2607.15524": {
+    "protocol": "Same-set adaptive",
+    "protocolBasis": "依据原记录：主实验在同一任务/子集上反复优化或评估；不能直接当作冻结后的泛化。"
+  },
+  "2303.11366": {
+    "protocol": "同任务多次重试",
+    "protocolBasis": "Reflexion 原记录指出，多为同一 task 的多次 trial，不等同于跨任务迁移。",
+    "tags": [
+      "EnvironmentReward",
+      "ExecutableVerifier",
+      "M0",
+      "MemoryContent"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2305.16291": {
+    "protocol": "Online / continual",
+    "protocolBasis": "开放式或不重置的连续运行；不同于标准 freeze-held-out。",
+    "tags": [
+      "EnvironmentReward",
+      "M0",
+      "Online",
+      "SelfFeedback",
+      "Skill",
+      "Tool"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2605.09998": {
+    "protocol": "Online / continual",
+    "protocolBasis": "开放式或不重置的连续运行；不同于标准 freeze-held-out。"
+  },
+  "2608.15071": {
+    "protocol": "Prequential + held-out",
+    "protocolBasis": "五个 benchmark 采用 sequential prequential；另有 SWE train → freeze → unseen test。"
+  },
+  "2606.17546": {
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "原记录报告独立任务评估；查看详细记录中的数据与选模限制。",
+    "tags": [
+      "CrossBenchmark",
+      "HeldOut",
+      "RegressionGate"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "B-Harness",
+      "B-Reliability"
+    ]
+  },
+  "2608.31111": {
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "原记录报告独立任务评估；查看详细记录中的数据与选模限制。",
+    "tags": [
+      "HarnessCode",
+      "HeldOut",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2607.14777": {
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "原记录报告独立任务评估；查看详细记录中的数据与选模限制。",
+    "tags": [
+      "EnvironmentReward",
+      "HeldOut",
+      "M1",
+      "SameModel",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "M-Weight"
+    ]
+  },
+  "2608.01918": {
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "原记录报告独立任务评估；查看详细记录中的数据与选模限制。",
+    "tags": [
+      "CrossModel",
+      "ExecutableVerifier",
+      "HarnessCode",
+      "HeldOut",
+      "M1",
+      "MemoryContent",
+      "Prompt",
+      "SelfFeedback",
+      "Skill",
+      "Tool"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2608.02276": {
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "原记录报告独立任务评估；查看详细记录中的数据与选模限制。",
+    "tags": [
+      "EnvironmentReward",
+      "HarnessCode",
+      "LearnedUpdater",
+      "M1",
+      "SeparateEvolver",
+      "StrongerBuilder",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2203.11171": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+  },
+  "2303.17651": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "tags": [
+      "SelfFeedback"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2305.11738": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "tags": [
+      "ExecutableVerifier",
+      "Tool"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2305.20050": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+  },
+  "2309.11495": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+  },
+  "2310.01798": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "tags": [
+      "SelfFeedback"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2310.04406": {
+    "protocol": "Within-instance",
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+  },
+  "cs-0309048": {
+    "protocol": "理论 / 不适用",
+    "protocolBasis": "理论或形式化前驱，不能套用现代 agent 数据隔离标签。"
+  },
+  "doi.org-10.1016-S0065-2458-08-60418-0": {
+    "protocol": "理论 / 不适用",
+    "protocolBasis": "理论或形式化前驱，不能套用现代 agent 数据隔离标签。"
+  },
+  "people.idsia.ch-juergen": {
+    "protocol": "理论 / 不适用",
+    "protocolBasis": "理论或形式化前驱，不能套用现代 agent 数据隔离标签。"
+  },
+  "1805.06610": {
+    "protocol": "理论 / 不适用",
+    "protocolBasis": "理论或形式化前驱，不能套用现代 agent 数据隔离标签。"
+  },
+  "2511.10395": {
+    "tags": [
+      "Data",
+      "EnvironmentReward",
+      "LLMJudge",
+      "M1",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "M-Weight",
+      "M-Data"
+    ]
+  },
+  "2603.19461": {
+    "tags": [
+      "HarnessCode",
+      "Improver",
+      "M2"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "H-Full",
+      "Meta"
+    ]
+  },
+  "2607.28568": {
+    "tags": [
+      "BenchmarkScore",
+      "CrossBenchmark",
+      "Improver",
+      "LearnedUpdater",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "M-Weight",
+      "Meta"
+    ]
+  },
+  "2309.16797": {
+    "tags": [
+      "Improver",
+      "M2",
+      "Population",
+      "Prompt"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "H-Prompt",
+      "Meta"
+    ]
+  },
+  "2310.02304": {
+    "tags": [
+      "HarnessCode",
+      "Improver",
+      "M2"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "categories": [
+      "F",
+      "Meta"
+    ]
+  },
+  "2406.07496": {
+    "tags": [
+      "LLMJudge",
+      "M1",
+      "Prompt"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2310.03714": {
+    "tags": [
+      "GoldLabel",
+      "M1",
+      "Prompt"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2410.10762": {
+    "tags": [
+      "BenchmarkScore",
+      "HarnessCode",
+      "M1",
+      "Workflow"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2308.10144": {
+    "tags": [
+      "EnvironmentReward",
+      "M0",
+      "MemoryContent"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2510.04618": {
+    "tags": [
+      "Context",
+      "M0",
+      "MemoryContent"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2512.18746": {
+    "tags": [
+      "CrossBenchmark",
+      "CrossModel",
+      "M1",
+      "MemoryContent",
+      "MemoryMechanism"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2603.03329": {
+    "tags": [
+      "EnvironmentReward",
+      "HarnessCode",
+      "M1",
+      "SameModel"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2605.27276": {
+    "tags": [
+      "HarnessCode",
+      "M1",
+      "SameSet",
+      "SeparateEvolver",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2608.05446": {
+    "tags": [
+      "EnvironmentReward",
+      "M0",
+      "MemoryContent",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2608.13951": {
+    "tags": [
+      "ExecutableVerifier",
+      "HarnessCode",
+      "M1",
+      "Population",
+      "Weights"
+    ],
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+  },
+  "2607.13683": {
+    "title": "HarnessBank / Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity",
+    "protocol": "有 held-out 报告",
+    "protocolBasis": "本轮核对 arXiv 摘要：train 选模，sealed test 在进化后评分；完整协议待重审。",
+    "updateNote": "原记录简称 HarnessBank；本轮按相同 arXiv ID 去重并补充正式标题。",
+    "sources": [
+      "https://arxiv.org/abs/2607.13683"
+    ]
+  }
+}

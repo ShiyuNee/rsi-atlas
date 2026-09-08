@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="RSI 与 Harness Evolution 论文调研：按可变对象、执行者、修改者、基础 harness、反馈和评估隔离检索论文。">
+<meta name="theme-color" content="#122a34"><title>RSI Atlas · Harness Evolution Research</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23122a34'/%3E%3Ctext x='12' y='44' font-size='37' fill='%237be0bd' font-family='monospace'%3ER%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css"><script src="assets/marked.umd.js" defer></script><script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#results">跳到论文列表</a>
+<header class="topbar"><a class="brand" href="./"><span class="brand-symbol">R<span>↗</span></span><span>RSI <b>ATLAS</b><small>HARNESS EVOLUTION RESEARCH</small></span></a><nav aria-label="主导航"><button class="nav-active" data-view="library">论文库</button><button data-view="framework">分析框架</button><button data-view="notes">阅读路线</button></nav><a class="github" href="https://github.com/ShiyuNee/rsi-atlas" target="_blank" rel="noopener noreferrer">GitHub ↗</a></header>
+<div class="workspace"><aside class="sidebar"><details id="filter-panel" open><summary>分类与筛选 <span>⌄</span></summary><div class="sidebar-content"><div class="side-heading">RESEARCH MAP <span>01—</span></div><div id="categories"></div><div class="side-divider"></div><div class="side-heading">研究维度</div><div id="facets"></div><p class="filter-help">维度间取交集；同一维度可多选。标签未覆盖的论文仍可全文搜索。</p><button id="clear-side" class="text-button">清除全部筛选 ↺</button><footer><span class="status-dot"></span> 更新于 <span id="updated">2026-09-08</span><br><a href="https://shiyunee.github.io/blogs/">← Shiyu 的研究博客</a></footer></div></details></aside>
+<main id="main"><section class="page-heading"><div><div class="eyebrow">A LIVING RESEARCH INDEX</div><h1>什么在进化？</h1><p>从模型之外的可变对象，读懂自我改进的闭环。</p></div><div class="library-count"><strong id="total">—</strong><span>篇研究 · 持续整理</span></div></section>
+<section id="library-view"><div class="search-row"><label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索论文、执行模型、harness、数据集或研究判断…" aria-label="搜索论文全文"><kbd>/</kbd></label><button id="mobile-filter" class="secondary">筛选</button></div>
+<div class="quick-filters" aria-label="快捷筛选"><button data-quick="all" class="selected">全部研究</button><button data-quick="harness">Harness 进化</button><button data-quick="core">Core 代表作</button><button data-quick="isolated">Train → test</button><button data-quick="new">本轮补充 <span id="new-count"></span></button></div>
+<div class="research-legend"><span><i class="mini-dot core-dot"></i> Core 表示代表性</span><span>评估隔离单独判断</span><button data-view="framework">查看分类口径 ↗</button></div>
+<div class="result-toolbar"><div id="result-count" role="status" aria-live="polite">正在载入论文…</div><div class="sort-controls"><label>时间 <select id="year" aria-label="按年份筛选"><option value="">全部年份</option></select></label><label>排序 <select id="sort" aria-label="论文排序"><option value="priority">代表性优先</option><option value="newest">时间 · 新 → 旧</option><option value="oldest">时间 · 旧 → 新</option><option value="title">名称 · A → Z</option></select></label></div></div>
+<div id="active-filters"></div><div id="results" tabindex="-1"></div><nav id="pagination" aria-label="论文分页"></nav>
+</section><section id="document-view" hidden><article id="document-content" class="prose"></article></section><div class="bottom-note">按机制分类，而非按论文的 self-evolving 叙事分类。<a href="data/research-notes.md" download>原始调研记录 ↓</a><a href="data/papers.json" download>结构化数据 ↓</a></div></main></div>
+<dialog id="paper-dialog" aria-labelledby="paper-title"><div class="dialog-top"><span>RESEARCH RECORD</span><button id="close-dialog" aria-label="关闭论文详情">✕</button></div><div id="paper-content"></div></dialog>
+<noscript><p>请启用 JavaScript 浏览和筛选论文，或<a href="data/research-notes.md">阅读完整 Markdown 记录</a>。</p></noscript>
+</body></html>
