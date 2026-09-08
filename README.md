@@ -66,3 +66,9 @@ Primary categories: Methods, Evaluation, Dataset, Theory. Methods have four subt
 `data/reviews.json` contains 27 revised research briefs, including 25 checks of primary-paper methods and experimental sections, with versioned sources. It is not a full-paper audit of all 134 entries. `scripts/enrich.py` owns the explicit taxonomy and merges these briefs; original notes remain unchanged for provenance. Historical notes are disclosed separately because some original descriptions have been corrected.
 
 Cards expose the mechanism, novelty, actors and seed; expandable feedback chains separate correctness, diagnosis, editing and acceptance. Experiments have separate evolution, selection, test and isolation columns. Protocol conclusions are experiment-specific.
+
+## Complete reading notes
+
+`data/updated-research-notes.md` preserves the updated user-supplied file verbatim. `scripts/reading_notes.py` attaches its nine complete paper discussions, keeping the website taxonomy independent from document headings. Each includes research gap, method, experimental protocol, results, limitations and overall assessment. Cards introduce the paper and evidence; a full reading page has section navigation and a shareable paper URL. Other papers retain their structured records and existing detailed notes.
+
+The AHE body/appendix reasoning-tier discrepancy and AI4AI validation/full-set count discrepancy are explicit annotations rather than silently resolved facts. Importing user notes is not represented as a new primary-source audit.

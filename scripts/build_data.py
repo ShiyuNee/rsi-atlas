@@ -114,7 +114,9 @@ def build():
             papers[p['url']] = p
     from enrich import enrich, METHOD_TYPES
     taxonomy = enrich(list(papers.values()))
-    output = dict(taxonomy=taxonomy, methodTypes=METHOD_TYPES, updated='2026-09-08',originalCount=sum(p['source']=='original' for p in papers.values()),
+    from reading_notes import attach_readings
+    reading_count = attach_readings(list(papers.values()))
+    output = dict(readingCount=reading_count, taxonomy=taxonomy, methodTypes=METHOD_TYPES, updated='2026-09-08',originalCount=sum(p['source']=='original' for p in papers.values()),
         papers=list(papers.values()), framework=source.split('## 0.5 ')[0],
         conclusions='## 4. '+source.split('## 4. ')[1])
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')

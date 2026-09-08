@@ -53,3 +53,21 @@ assert(query({category:'evaluation',facets:{priority:['C']}}).length>0);
 assert.equal(query({category:'dataset'}).length,0);
 assert.equal(query({facets:{verified:['原文关键段落已复核']}}).length,25);
 console.log('Passed: two-level taxonomy, independent priority, all four method types, primary-source corrections, 25 reviewed papers.');
+
+const {readingSections}=require('../assets/app.js');
+assert.equal(data.readingCount,9);
+assert.equal(query({facets:{content:['完整专题解读']}}).length,9);
+for(const p of papers.filter(p=>p.readingNote)){
+ const sections=readingSections(p);assert.equal(sections.length,6,p.id);
+ assert(sections.every(s=>s.body.length>100),p.id);
+ assert(sections.reduce((n,s)=>n+s.body.length,0)>4000,p.id);
+ assert(p.readingNote.index.executor&&p.readingNote.index.evolve&&p.readingNote.index.eval,p.id);
+ assert(!sections.some(s=>s.body.includes('## B. Non-Harness')),p.id);
+}
+assert(readingSections(get('2608.15071')).some(s=>s.body.includes('论文没有实验')));
+assert(readingSections(get('2607.14777')).some(s=>s.body.includes('1,440')));
+assert(readingSections(get('2607.25886')).some(s=>s.body.includes('18/23')));
+assert(get('2604.25850').readingNote.caveats.length>0);
+assert(get('2608.12307').readingNote.caveats.length>0);
+assert(query({q:'General Topic 跨 benchmark'}).some(p=>p.id==='2608.15071'));
+console.log('Passed: 9 complete six-section readings; full mechanisms, results, caveats and search coverage.');
