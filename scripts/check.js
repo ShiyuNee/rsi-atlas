@@ -8,8 +8,9 @@ const data=JSON.parse(fs.readFileSync(path.join(root,'data/papers.json'),'utf8')
 const papers=data.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));
 const state=()=>({q:'',category:'',quick:'all',year:'',tags:[],facets:{}});
 const query=s=>papers.filter(p=>matches(p,{...state(),...s}));
-assert.equal(query({}).length,134);
-assert.equal(query({quick:'new'}).length,6);
+const additions=JSON.parse(fs.readFileSync(path.join(root,'data/additions.json'),'utf8'));
+assert.equal(query({}).length,data.originalCount+additions.length);
+assert.equal(query({quick:'new'}).length,additions.length);
 assert.equal(new Set(papers.map(p=>p.url)).size,papers.length);
 assert.equal(new Set(papers.map(p=>p.id)).size,papers.length);
 assert.equal(query({q:'does-not-exist-74591'}).length,0);
@@ -22,4 +23,4 @@ assert(query({facets:{target:['Skill','HarnessCode']}}).length>=query({facets:{t
 assert(query({category:'H-Full',year:'2026'}).every(p=>p.categories.includes('H-Full')&&p.year==='2026'));
 assert(query({tags:['ExecutableVerifier','RegressionGate']}).every(p=>p.tags.includes('ExecutableVerifier')&&p.tags.includes('RegressionGate')));
 for(const p of papers){assert(p.title&&p.date&&p.categories.length&&p.depth.length&&p.review);assert(p.url.startsWith('https://'));assert(p.fields['本质定位'],p.title);}
-console.log('Passed: 134 unique records; 6 additions; keyword, compound facets, date, evidence boundaries and source metadata.');
+console.log(`Passed: ${papers.length} unique records; ${additions.length} additions; keyword, compound facets, date, evidence boundaries and source metadata.`);

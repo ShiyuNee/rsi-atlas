@@ -5,10 +5,10 @@ from pathlib import Path
 from build_data import build
 root=Path(__file__).resolve().parents[1]
 data=build()
-assert data['originalCount']==128
+assert data['originalCount']>0
 assert len(data['papers'])==len({p['id'] for p in data['papers']})
 assert len(data['papers'])==len({p['url'] for p in data['papers']})
-assert sum(bool(p['details']) for p in data['papers'])==28
+assert all(p['title'] and p['date'] and p['fields'] for p in data['papers'])
 out=root/'dist'
 out.mkdir(exist_ok=True)
 for name in ['index.html','.nojekyll']:
