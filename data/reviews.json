@@ -319,7 +319,7 @@
         "name": "WebShop / ALFWorld / DBBench",
         "evolve": "target failure batches 与 same-batch reruns 训练 engineer",
         "selection": "SFT + GRPO 的训练选择",
-        "test": "另报告 1,270 held-out tasks 与未见目标模型",
+        "test": "Table D.1 列出 1,300 test tasks（WebShop 500、ALFWorld 500、DBBench 300）；另测未见目标模型",
         "isolation": "独立测试",
         "note": "“目标已 fine-tune 后再训练 engineer”是分阶段设置，不是已证实多代闭环。"
       }
@@ -572,7 +572,7 @@
     "experiments": [
       {
         "name": "Polyglot",
-        "evolve": "50-task subset",
+        "evolve": "60 tasks：先 10 题门控，再测剩余 50",
         "selection": "training score",
         "test": "full Polyglot，包含大量未见题但非完全 disjoint",
         "isolation": "混合协议",

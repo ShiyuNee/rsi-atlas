@@ -88,3 +88,17 @@ assert(get('2310.03714').brief.experiments[0].test.includes('validation'));
 assert(query({facets:{gaps:['哪些部分保持固定']}}).length>0);
 assert(!readingSections(get('2608.03764')).some(s=>s.title.includes('执行者、修改者')));
 console.log('Passed: 134 question-led profiles; explicit source scopes, gaps, distinct mechanisms and protocol corrections.');
+
+const audits=require('../data/system-data-audit.json');
+assert.equal(Object.keys(audits).length,134);
+for(const p of papers){
+ const a=audits[p.id];assert(a&&a.seed&&a.protocol&&a.sections,p.id);
+ assert.equal(p.brief.seed,a.seed,p.id);
+ assert.equal(p.brief.protocolDetail,a.protocol,p.id);
+ assert.equal(p.profile.fields.find(f=>f.key==='seed').value,a.seed,p.id);
+ assert.equal(p.profile.fields.find(f=>f.key==='protocol').value,a.protocol,p.id);
+ assert(a.source.startsWith('https://')&&a.sourceSha256.length===64,p.id);
+}
+assert(get('2507.19457').brief.protocolDetail.includes('PUPA'));
+assert(get('2511.10395').brief.protocolDetail.includes('BFCL v3'));
+console.log('Passed: all 134 source-linked dataset/harness audits reach generated profiles without stale overrides.');

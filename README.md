@@ -86,3 +86,7 @@ Continual Harness is now classified under joint harness/weight evolution because
 每篇默认按顺序展示：谁执行、谁来改、什么在进化、反馈是什么、基础 harness 是什么。完整专题解读也使用同一组卡片字段，全文保留。
 
 `data/readability.json` 保存易读性修订，不覆盖原始笔记。角色要写清决策模型与实际运行程序；反馈要说明提供者、判断依据和可见内容，区分自测与正式评测。基础系统要说明来源、工具和运行流程；只有来源支持时才能写“没有某功能”，不能从记录缺失推断系统没有。自建数据在实验字段中交代任务内容、构造方式和隔离，不能只报数据集名字。未核实的五个默认字段仍显示具体缺项。
+
+## Dataset and initial-harness audit (2026-09-09)
+
+`data/system-data-audit.json` contains paper-specific revisions for all 134 entries: initial system components and editable boundaries, named evolution/selection/test datasets, and experiment-specific isolation caveats. Each entry links its primary source and section, records the source-text hash, and explicitly marks details still unverified. This targeted pass does not turn all entries into full-paper reviews. `scripts/profiles.py` gives this layer priority for the seed and protocol fields; the cards and full reading pages expose its source. Original notes remain unchanged. Rebuild with `python3 scripts/build.py`, then run `node scripts/check.js`.

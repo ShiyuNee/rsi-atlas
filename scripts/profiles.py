@@ -14,6 +14,7 @@ def attach_profiles(papers):
  distinctions=json.loads((ROOT/'data/distinctions.json').read_text())
  checks=json.loads((ROOT/'data/source-checks.json').read_text())
  readable=json.loads((ROOT/'data/readability.json').read_text())
+ system_audits=json.loads((ROOT/'data/system-data-audit.json').read_text())
  audit=[]
  for p in papers:
   b=p['brief'];f=p['fields'];pid=p['id'];n=p.get('readingNote')
@@ -49,6 +50,10 @@ def attach_profiles(papers):
   actual=[e for e in b['experiments'] if e['name']!='实验协议（保留原记录口径）']
   if actual:protocol='\n\n'.join(f"**{e['name']}**：进化 {e['evolve']}；选模 {e['selection']}；测试 {e['test']}。{e['isolation']}。{e.get('note','')}" for e in actual)
   if n:protocol='**进化**：'+n['index']['evolve']+'\n\n**评估**：'+n['index']['eval']+'\n\n详见下方实验章节及原文口径补注。'
+  system_audit=system_audits[pid]
+  b['seed']=system_audit['seed']
+  b['protocolDetail']=protocol=system_audit['protocol']
+  p['systemDataAudit']=system_audit
   fields=[]
   for key,label in LABELS.items():
    value=protocol if key=='protocol' else b.get(key,'')
@@ -61,10 +66,12 @@ def attach_profiles(papers):
     label={'object':'被测的变化 / 能力','modifier':'被测系统如何更新','seed':'被测系统 / 参照基线','verdict':'评测如何判分','diagnosis':'如何分析失败与归因','update':'评测开放哪些更新方式','acceptance':'候选选模 / 评估控制','protocol':'任务组织与评估隔离'}.get(key,label)
     if key in ('modifier','update') and not value:
      value='由被测方法决定；此条贡献是评估协议，不假设 benchmark 自身修改。';status='not-applicable'
-   fields.append(dict(key=key,label=label,value=value,status=status,source=('原文 §3–4 与附录 C 核查' if pid=='2608.31111' else '依据现有记录展开说明') if pid in readable and (key in readable[pid] or (key=='protocol' and 'protocolDetail' in readable[pid])) else '原文定向补查' if pid in changes and (key in changes[pid] or (key=='protocol' and 'experiments' in changes[pid])) else '更新笔记' if n else '现有记录 / 定位对照'))
+   if key in ('seed','protocol'):
+    status=system_audit['seedStatus' if key=='seed' else 'protocolStatus']
+   fields.append(dict(key=key,label=label,value=value,status=status,source='原文数据/基础系统定向核查：'+system_audit['sections'] if key in ('seed','protocol') else ('原文 §3–4 与附录 C 核查' if pid=='2608.31111' else '依据现有记录展开说明') if pid in readable and (key in readable[pid] or (key=='protocol' and 'protocolDetail' in readable[pid])) else '原文定向补查' if pid in changes and (key in changes[pid] or (key=='protocol' and 'experiments' in changes[pid])) else '更新笔记' if n else '现有记录 / 定位对照'))
   missing=[x['label'] for x in fields if x['status']=='missing']
   partial=[x['label'] for x in fields if x['status']=='partial']
   p['profile']={'fields':fields,'missing':missing,'partial':partial,'sourceCheck':checks[pid], 'focus':b.get('novelty') or b['summary']}
-  audit.append({'id':pid,'title':p['title'],'url':p['url'],'missing':missing,'partial':partial,'scope':checks[pid]['scope']})
+  audit.append({'id':pid,'title':p['title'],'url':p['url'],'missing':missing,'partial':partial,'scope':checks[pid]['scope'],'systemDataScope':system_audit['scope']})
  (ROOT/'data/coverage.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n')
- return {'total':len(papers),'focusedSupplements':len(changes),'withMissingFields':sum(bool(a['missing']) for a in audit)}
+ return {'systemDataAudited':len(system_audits),'total':len(papers),'focusedSupplements':len(changes),'withMissingFields':sum(bool(a['missing']) for a in audit)}
