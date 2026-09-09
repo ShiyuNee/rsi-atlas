@@ -4,7 +4,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 Gödel Machine。",
+        "value": "理论上的 Gödel Machine：运行任务程序，并在内部搜索证明；不是某款已训练的语言模型。",
         "sources": [
           {
             "label": "§3 Formal Description",
@@ -16,7 +16,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "机器内部 proof searcher；rewrite 后 modifier 本身可改变。",
+        "value": "机器内部的证明搜索器寻找“改写程序会提高效用”的证明，满足条件后执行改写；改写也可以涉及证明搜索器自身。",
         "sources": [
           {
             "label": "§3 Formal Description",
@@ -134,14 +134,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2303.11366": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "LLM actor。",
+        "value": "ALFWorld 使用 GPT-3 执行动作；编程实验以 GPT-4 生成代码，并运行自建单元测试。模型配置随任务变化，不能统一写成一款 LLM actor。",
         "sources": [
           {
             "label": "§3",
@@ -158,6 +159,10 @@
           {
             "label": "§4.3",
             "url": "https://arxiv.org/html/2303.11366#S4.SS3"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2303.11366#S4.SS3.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -165,7 +170,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 reflector prompt；actor/evaluator/reflector 可由同/不同 LLM 角色承担。",
+        "value": "固定反思提示让语言模型把失败反馈写成文字经验，下一次执行时读取。算法将 actor、evaluator、reflector 分为角色；§4 没有逐项列出所有角色对应的 API 快照，不能据此断言都用同一个版本。",
         "sources": [
           {
             "label": "§3",
@@ -182,6 +187,10 @@
           {
             "label": "§4.3",
             "url": "https://arxiv.org/html/2303.11366#S4.SS3"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2303.11366#S4.SS3.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -359,14 +368,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2305.16291": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-4-based Minecraft agent + Mineflayer。",
+        "value": "主实验由 gpt-4-0314 制定 Minecraft 行动代码，Mineflayer 执行底层动作；gpt-3.5-turbo-0301 提供辅助问答，text-embedding-ada-002 用于技能检索。",
         "sources": [
           {
             "label": "§2",
@@ -375,6 +385,26 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2305.16291#A1.SS1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2305.16291#S3.SS1"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS3.SSS2"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS4.SSS1"
+          },
+          {
+            "label": "附录A.5",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS5.SSS1"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2305.16291#A2.SS4.SSS5"
           }
         ],
         "status": "recorded"
@@ -382,7 +412,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "GPT-4 skill synthesizer/debugger；curriculum/retrieval procedure fixed。",
+        "value": "gpt-4-0314 生成并调试技能代码，也负责课程提议和任务成功检查；补充实验将主模型换为 gpt-4-0613。模型参数不更新。",
         "sources": [
           {
             "label": "§2",
@@ -391,6 +421,26 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2305.16291#A1.SS1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2305.16291#S3.SS1"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS3.SSS2"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS4.SSS1"
+          },
+          {
+            "label": "附录A.5",
+            "url": "https://arxiv.org/html/2305.16291#A1.SS5.SSS1"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2305.16291#A2.SS4.SSS5"
           }
         ],
         "status": "recorded"
@@ -520,14 +570,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2505.22954": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "archive descendants，使用冻结的 pretrained foundation model。",
+        "value": "SWE-bench用Claude 3.5 Sonnet（New）；Polyglot用o3-mini。两者均由档案中的候选agent代码组织执行，模型权重冻结。",
         "sources": [
           {
             "label": "§3",
@@ -540,6 +591,10 @@
           {
             "label": "附录C.3",
             "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+          },
+          {
+            "label": "附录D.1",
+            "url": "https://arxiv.org/html/2505.22954#A4.SS1"
           }
         ],
         "status": "recorded"
@@ -753,14 +808,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2511.10395": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen2.5-7B/14B policy。",
+        "value": "Qwen2.5-7B-Instruct和Qwen2.5-14B-Instruct，经过本文训练后执行AppWorld/BFCL任务。",
         "sources": [
           {
             "label": "§3",
@@ -777,6 +833,14 @@
           {
             "label": "§5",
             "url": "https://arxiv.org/html/2511.10395#S5"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS2"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS3.Px1"
           }
         ],
         "status": "recorded"
@@ -784,7 +848,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 RL/training pipeline + 多个 LLM 辅助模块。",
+        "value": "固定GRPO训练程序更新Qwen2.5-7B/14B；Self-Questioning的探索和任务合成用Qwen-Plus，任务judge用Qwen3-235B-A22B。步骤归因另见Self-Attributing配置。",
         "sources": [
           {
             "label": "§3",
@@ -801,6 +865,14 @@
           {
             "label": "§5",
             "url": "https://arxiv.org/html/2511.10395#S5"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS2"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS3.Px1"
           }
         ],
         "status": "recorded"
@@ -832,7 +904,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "environment outcome + LLM judge / attribution。",
+        "value": "environment outcome + LLM judge / attribution。 分步归因明确由 Qwen-Max 对完整轨迹一次性判评，再将各步 GOOD／BAD 标签与最终任务结果结合；它不同于用于合成任务评判的 Qwen3-235B-A22B。",
         "sources": [
           {
             "label": "§3",
@@ -849,6 +921,14 @@
           {
             "label": "§5",
             "url": "https://arxiv.org/html/2511.10395#S5"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS3.Px1"
+          },
+          {
+            "label": "§7.1",
+            "url": "https://arxiv.org/html/2511.10395#S7.SS1.SSS3.Px3"
           }
         ],
         "status": "recorded"
@@ -978,14 +1058,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.19461": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "task agent 执行 domain tasks；meta-agent 执行改进程序。",
+        "value": "按任务分开：Polyglot 编程由 o3-mini 执行；论文评审由 GPT-4o 执行；机器人奖励函数由 Claude 4.5 Sonnet 编写并交给模拟器运行；奥数解答评分由 o4-mini 执行。",
         "sources": [
           {
             "label": "§5.1",
@@ -994,6 +1075,10 @@
           {
             "label": "§5.3",
             "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+          },
+          {
+            "label": "附录D.1",
+            "url": "https://arxiv.org/html/2603.19461#A4.SS1"
           }
         ],
         "status": "recorded"
@@ -1001,7 +1086,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "可继承、可修改的 meta-agent。",
+        "value": "Polyglot 的自修改模型是 Claude 3.5 Sonnet (New)；其余三个领域均用 Claude 4.5 Sonnet 修改任务代理和元代理代码。",
         "sources": [
           {
             "label": "§5.1",
@@ -1010,6 +1095,10 @@
           {
             "label": "§5.3",
             "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+          },
+          {
+            "label": "附录D.1",
+            "url": "https://arxiv.org/html/2603.19461#A4.SS1"
           }
         ],
         "status": "recorded"
@@ -1187,7 +1276,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.28052": {
     "fields": [
@@ -1206,7 +1296,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Code coding proposer；与被优化的任务执行角色分离。",
+        "value": "Claude Code 中的 Claude Opus 4.6 作为 proposer，读取历史 harness、分数和执行轨迹，改写单文件 Python harness；执行任务的基础模型按领域另设并保持冻结。",
         "sources": [
           {
             "label": "§3",
@@ -1324,14 +1414,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.25850": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.4 high Code Agent。",
+        "value": "GPT-5.4（high）在 NexAU 的 Code Agent 中运行任务；跨模型测试再替换这个执行端，复用已进化的 harness。",
         "sources": [
           {
             "label": "§3",
@@ -1348,6 +1439,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.25850#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.25850#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2604.25850#A1.SS0.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -1355,7 +1454,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "GPT-5.4 Evolve Agent：附录 A 表 4 为 xhigh，正文 §4.1 称 high，原文口径不一致；Agent Debugger 提供结构化诊断。",
+        "value": "GPT-5.4 驱动 Evolve Agent 改代码，另一个 GPT-5.4 Agent Debugger 提供诊断。推理强度存在原文差异：正文 §4.1 称三个角色均为 high，附录 A 表 4 的 Evolve Agent 配置是 xhigh。",
         "sources": [
           {
             "label": "§3",
@@ -1372,6 +1471,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.25850#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.25850#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2604.25850#A1.SS0.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -1565,7 +1672,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.09498": {
     "fields": [
@@ -1592,7 +1700,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 fixed base model 的 proposer role；从 evaluator 提供的失败证据生成 edits。",
+        "value": "每个配置使用对应的 MiniMax M2.5、Qwen3.5-35B-A3B 或 GLM-5 担任提案者，读取评测器返回的失败证据并提出编辑；基础模型参数冻结。",
         "sources": [
           {
             "label": "§3.1",
@@ -1782,18 +1890,31 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.17546": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "被测 method 对应的 task agent / model backend。",
+        "value": "主对照用DeepSeek-V4-Flash执行ACE、TF-GRPO、AHE；跨模型实验另用GLM-5.1、GPT-5.4，并交换harness快照与执行backend。",
         "sources": [
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2606.17546#A1.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.17546#S4.SS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2606.17546#A2.SS3"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2606.17546#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -1801,11 +1922,23 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "ACE、TF-GRPO、AHE 等各自的更新机制。",
+        "value": "ACE、TF-GRPO、AHE各自实现更新；主实验backend为DeepSeek-V4-Flash，跨模型AHE分别在GLM-5.1和GPT-5.4下进化。SEAGym负责调用和记录。",
         "sources": [
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2606.17546#A1.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.17546#S4.SS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2606.17546#A2.SS3"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2606.17546#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -1919,18 +2052,27 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.14777": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "当前 policy checkpoint。",
+        "value": "Qwen2.5-3B-Instruct、Qwen2.5-7B-Instruct、Qwen3-1.7B-Instruct的当前checkpoint；多模态扩展用Qwen2.5-VL-3B-Instruct。",
         "sources": [
           {
             "label": "附录B.3",
             "url": "https://arxiv.org/html/2607.14777#A2.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px4"
+          },
+          {
+            "label": "附录C.3",
+            "url": "https://arxiv.org/html/2607.14777#A3.SS3"
           }
         ],
         "status": "recorded"
@@ -1938,11 +2080,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 GRPO+OPD；Stage1 外部 GLM-5.2 bootstrap，Stage2 current policy analyzer。",
+        "value": "Stage1由GLM-5.2从轨迹抽取事后技能以构造SFT；Stage2由当前策略checkpoint兼任分析器，固定GRPO与on-policy distillation程序更新参数。",
         "sources": [
           {
             "label": "附录B.3",
             "url": "https://arxiv.org/html/2607.14777#A2.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px4"
+          },
+          {
+            "label": "附录C.3",
+            "url": "https://arxiv.org/html/2607.14777#A3.SS3"
           }
         ],
         "status": "recorded"
@@ -2072,7 +2222,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.15524": {
     "fields": [
@@ -2099,7 +2250,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "LLM harness optimizer；评价角色是可与执行模型不同的 LLM judge。",
+        "value": "LLM harness optimizer 读取历次仓库比较反馈并改写工作流提示。§5.1 列明了执行模型，附录 C 给出优化提示，但这两处没有明确指定优化器的模型型号；不能把评价用 GPT-5.5 当成优化器型号。",
         "sources": [
           {
             "label": "§3.2",
@@ -2112,6 +2263,14 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2607.15524#S4.SS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2607.15524#S5.SS1"
+          },
+          {
+            "label": "附录C",
+            "url": "https://arxiv.org/html/2607.15524#A3"
           }
         ],
         "status": "recorded"
@@ -2289,7 +2448,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.25886": {
     "fields": [
@@ -2324,7 +2484,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Code / Codex 等 frontier researcher systems；Tinker 执行固定训练流程。",
+        "value": "主矩阵：Claude Code + Opus-4.8/Sonnet-5（high），Codex + GPT-5.6-Sol/Terra（max）。生成训练轨迹的外部模型固定Claude Opus4.8，Tinker执行训练。另有Claude Code + Kimi-K2.6指导Kimi-K2.6的案例。",
         "sources": [
           {
             "label": "§3.1",
@@ -2345,6 +2505,14 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2607.25886#S4.SS2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2607.25886#S4.SS1"
+          },
+          {
+            "label": "§5.5",
+            "url": "https://arxiv.org/html/2607.25886#S5.SS5.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -2538,14 +2706,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.28568": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Frontis-MA1-35B 在 MLE research tasks 上搜索/改程序。",
+        "value": "Frontis-MA1-35B在OpenMLE-Evo中执行ML研究操作；35B训练基座为Qwen3.6-35B-A3B，另有从Qwen3-30B-A3B-Thinking-2507开始的配置。",
         "sources": [
           {
             "label": "§3.5",
@@ -2574,6 +2743,14 @@
           {
             "label": "§5.4",
             "url": "https://arxiv.org/html/2607.28568#S5.SS4"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2607.28568#A2.SS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2607.28568#A2.SS3"
           }
         ],
         "status": "recorded"
@@ -2581,7 +2758,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Frontis-MA1 learned operators + OpenMLE-Evo。",
+        "value": "部署时由训练后的Frontis-MA1执行Draft/Debug/Improve/Crossover。SFT教师包括GLM-4.7与Qwen3-30B-A3B-Thinking-2507，随后固定RL流程训练这些操作。",
         "sources": [
           {
             "label": "§3.5",
@@ -2610,6 +2787,14 @@
           {
             "label": "§5.4",
             "url": "https://arxiv.org/html/2607.28568#S5.SS4"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2607.28568#A2.SS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2607.28568#A2.SS3"
           }
         ],
         "status": "recorded"
@@ -2867,14 +3052,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.02276": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frozen Qwen3.5-9B target；另测试更强 target 与跨 target-model transfer。",
+        "value": "冻结的 Qwen3.5-9B 运行生成的 harness 完成任务；跨模型实验再把 harness 迁移给其他目标模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -2894,7 +3080,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "独立 Qwen3.5-9B Harness Engineer；cold-start teacher 为 GPT-5.5，再 online GRPO。",
+        "value": "独立的 Qwen3.5-9B Harness Engineer 生成和修改 harness；先用 GPT-5.5 提供冷启动示例，再用在线 GRPO 训练工程师模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -3068,14 +3254,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.05144": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.5 + Argus/Codex/Copilot backend。",
+        "value": "七个主基准均用 GPT-5.5：SWE-Bench Pro 经 Copilot 运行，推理强度 xhigh；其余六项经 Codex 运行。GLM-5.2 经 Claude Code 的结果属于尚在进行、没有匹配 Direct 基线的补充实验。",
         "sources": [
           {
             "label": "§4.1",
@@ -3088,6 +3275,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.05144#S4.SS4"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.05144#S5.SS2"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2608.05144#S6.SS1"
           }
         ],
         "status": "recorded"
@@ -3095,7 +3290,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Argus 内部多角色共同更新。",
+        "value": "GPT-5.5 驱动 Argus 的 Manager、Planner、Engineer、Reviewer 分工，写入或审核记忆、技能、流程和验证器；运行时规定持久化及审核规则，涉及目标歧义时由人作决定。",
         "sources": [
           {
             "label": "§4.1",
@@ -3108,6 +3303,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.05144#S4.SS4"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.05144#S5.SS2"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2608.05144#S6.SS1"
           }
         ],
         "status": "recorded"
@@ -3253,14 +3456,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.09819": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GLM-5.2 base / specialist adapters 等系统；coverage study 使用 frozen base。",
+        "value": "Venti：冻结GLM-5.2（744B）配四个LoRA specialist；Tall：Qwen3.6-35B-A3B配四个LoRA。覆盖率搜索实验需与最终adapter配置分开读。",
         "sources": [
           {
             "label": "§3.1",
@@ -3285,6 +3489,10 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2608.09819#S4"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2608.09819#S6.SS1.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -3558,14 +3766,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "endlessfrontier.tech-assets-paper.pdf": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3.6 base→BigBang-V1 等。",
+        "value": "最终由 BigBang-V1 答题，它从 Qwen3.6-35B-A3B 进行后训练得到。生成训练题的代理和最终受训模型是两种角色。",
         "sources": [
           {
             "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
@@ -3577,7 +3786,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Generator/Critic/Meta-Critic loop。",
+        "value": "Generator 生成题目及解答，Critic 检查可验证性与质量，Meta-Critic 校准评价。技术报告没有给出这三个数据生产角色各自的模型型号；已明确的 Qwen3.6-35B-A3B 是受训基础模型，不能据此填成三个角色的型号。",
         "sources": [
           {
             "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
@@ -3695,14 +3904,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.05297": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Gemma-4 31B frozen backbone；task solver 使用当前 task skill。",
+        "value": "冻结的 Gemma-4 31B 读取当前任务技能并解题。",
         "sources": [
           {
             "label": "§3.4",
@@ -3718,7 +3928,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "五角色共用同一 Gemma-4 31B；慢循环编辑该 pipeline 的 meta-skill 文件。",
+        "value": "五个角色共用 Gemma-4 31B；快速循环改任务技能，慢速循环改指导这些角色的 meta-skill 文件，模型权重保持不变。",
         "sources": [
           {
             "label": "§3.4",
@@ -3888,14 +4098,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.15071": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frozen solver；正文比较 Opus / Sonnet 等 solver–evolver 配置。",
+        "value": "默认Claude Opus4.6作为solver；另评Claude Opus4.7、Opus4.5、Kimi-K2.5和GPT-OSS配置。",
         "sources": [
           {
             "label": "§4.5",
@@ -3908,6 +4119,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.15071#A2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.15071#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -3915,7 +4130,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "独立 evolver role，可与 solver 使用相同或不同模型；检索器选择相关技能。",
+        "value": "默认Claude Opus4.6作为evolver；solver和evolver是分开的角色，实验还替换这些角色的模型组合，不能把所有结果算作同一配置。",
         "sources": [
           {
             "label": "§4.5",
@@ -3928,6 +4143,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.15071#A2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.15071#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -4089,7 +4308,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.09096": {
     "fields": [
@@ -4112,7 +4332,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "9 个 evolver models；20 iterations / 1,000 evolver steps / 48h 共同预算。",
+        "value": "九种修改模型分别独立进化 harness：GPT-5.6 Sol、Claude Opus 4.8、GLM-5.2、Qwen3.7-Max、MiniMax-M3、DeepSeek-V4-Pro、Kimi K2.7 Code、Qwen3.6-27B、Gemma-4-31B。每次均改同一个 DeepSeek-V4-Flash 执行端，预算为 20 次迭代／1,000 步／48 小时。",
         "sources": [
           {
             "label": "§3",
@@ -4121,6 +4341,18 @@
           {
             "label": "附录E.1",
             "url": "https://arxiv.org/html/2608.09096#A5.SS1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2608.09096#S5.SS1.SSS1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2608.09096#S5.SS1.SSS2"
+          },
+          {
+            "label": "附录C.1",
+            "url": "https://arxiv.org/html/2608.09096#A3.SS1"
           }
         ],
         "status": "recorded"
@@ -4266,14 +4498,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.31111": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "RQ2：初始决策模型制定计划，平台控制器执行数据处理与训练，再由训练后的模型答题。RQ3：创建者生成harness，固定Qwen3.5-4B使用该harness答写作题。",
+        "value": "参数进化（RQ2）答题者是由Qwen3.5-4B或Qwen3.5-9B训练得到的候选模型检查点。Self设置由对应的初始 Qwen3.5-4B／9B 模型制定计划；外部指导设置由GPT-5.6 Luna、Terra、Sol指导4B。harness 进化（RQ3）固定Qwen3.5-4B配合候选harness答题。",
         "sources": [
           {
             "label": "§3.1",
@@ -4290,6 +4523,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.31111#S4.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px3"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -4297,7 +4538,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "创建者agent提出数据、训练计划或harness修改；平台执行这些操作。实验中创建者保持初始模型，不随每次训练结果自动替换。",
+        "value": "参数进化（RQ2） Self：初始Qwen3.5-4B或9B决定数据和训练方案，平台代执行；外部指导：GPT-5.6 Luna、Terra、Sol指导同一个Qwen3.5-4B。harness 进化（RQ3）创建者为Qwen3.5-4B或上述三个GPT-5.6配置。所有报告运行都固定初始决策模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -4314,6 +4555,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.31111#S4.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px3"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -4523,14 +4772,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2408.08435": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "candidate agent 内的目标 LLM；具体模型按实验变化。",
+        "value": "主实验候选agent及baseline用gpt-3.5-turbo-0125执行；迁移另用GPT-4o、Claude3 Haiku和Claude3.5 Sonnet。",
         "sources": [
           {
             "label": "§3",
@@ -4539,6 +4789,14 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2408.08435#A2"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2408.08435#A1"
+          },
+          {
+            "label": "附录E",
+            "url": "https://arxiv.org/html/2408.08435#A5"
           }
         ],
         "status": "recorded"
@@ -4546,7 +4804,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "独立 meta-agent 根据 archive 与验证反馈生成 agent code。",
+        "value": "独立meta-agent用gpt-4o-2024-05-13读取档案、验证结果并生成候选agent代码。",
         "sources": [
           {
             "label": "§3",
@@ -4555,6 +4813,14 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2408.08435#A2"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2408.08435#A1"
+          },
+          {
+            "label": "附录E",
+            "url": "https://arxiv.org/html/2408.08435#A5"
           }
         ],
         "status": "recorded"
@@ -4700,14 +4966,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2609.01437": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Self-Eval 使用 creator 对应 runtime；Unified-Eval 固定 Gemini 3.1 Pro。",
+        "value": "Self-Eval由创建者对应模型执行；Unified-Eval统一换Gemini3.1 Pro。创建者共六个：Opus4.8、GPT-5.5、Gemini3.1 Pro、DeepSeekV4Pro、Qwen3.7Max、Seed2.0Pro。",
         "sources": [
           {
             "label": "§3.2",
@@ -4716,6 +4983,10 @@
           {
             "label": "附录E.2",
             "url": "https://arxiv.org/html/2609.01437#A5.SS2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2609.01437#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -4723,7 +4994,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "被测 creator LLM 在开发 workspace 修改 harness。",
+        "value": "上述六种creator各自修改harness；GPT-5.5用Codex0.144.3开发，其余用Claude Code2.1.177。",
         "sources": [
           {
             "label": "§3.2",
@@ -4732,6 +5003,10 @@
           {
             "label": "附录E.2",
             "url": "https://arxiv.org/html/2609.01437#A5.SS2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2609.01437#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -4877,14 +5152,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.03764": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "新启动的任务 agent 加载前一阶段生成的 skill，执行同组测试题。",
+        "value": "Codex或Claude Code加载所学skill，候选模型为GPT-5.5、Opus4.8、GLM5.2、DeepSeek-V4-Pro-Preview。",
         "sources": [
           {
             "label": "§3",
@@ -4893,6 +5169,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -4900,7 +5180,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "训练阶段的 agent 从 5 道任务中总结 skill；评估框架固定。",
+        "value": "对应模型–harness配置从5道训练任务构建skill；评估另启动新agent加载该skill，避免沿用训练会话。",
         "sources": [
           {
             "label": "§3",
@@ -4909,6 +5189,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -5054,14 +5338,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2602.22480": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定目标模型经当前被改版本执行任务。",
+        "value": "主优化目标为GPT-4.1-mini的任务agent；冻结优化后的程序，再换GPT-4.1测跨模型效果。",
         "sources": [
           {
             "label": "§3",
@@ -5070,6 +5355,14 @@
           {
             "label": "附录A.2",
             "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2602.22480#S4.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2602.22480#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -5077,7 +5370,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "VeRO-Agent 或 Claude Code 编程 agent，在隔离工作区内修改目标实现。",
+        "value": "VeRO-Agent或Claude Code负责改代码；默认Claude Sonnet4.5，Orchestrator另用Claude Opus4.5、GPT-5.2-Codex。",
         "sources": [
           {
             "label": "§3",
@@ -5086,6 +5379,14 @@
           {
             "label": "附录A.2",
             "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2602.22480#S4.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2602.22480#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -5231,18 +5532,31 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2410.04444": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "修改后的同一 agent。",
+        "value": "受限主实验用 gpt-3.5-turbo-0125 执行优化后的策略，与基线保持相同模型；开放实验允许代理求助 GPT-4o，需与受限结果区分。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2410.04444#S3"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2410.04444#S5.SS2"
+          },
+          {
+            "label": "§5.3",
+            "url": "https://arxiv.org/html/2410.04444#S5.SS3"
+          },
+          {
+            "label": "附录B",
+            "url": "https://arxiv.org/html/2410.04444#A2"
           }
         ],
         "status": "recorded"
@@ -5250,11 +5564,23 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "当前 agent 自己。",
+        "value": "gpt-4o-2024-05-13 驱动 Gödel Agent 读取反馈并改写策略。修改代码的模型与受限测试时答题的 GPT-3.5 不同。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2410.04444#S3"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2410.04444#S5.SS2"
+          },
+          {
+            "label": "§5.3",
+            "url": "https://arxiv.org/html/2410.04444#S5.SS3"
+          },
+          {
+            "label": "附录B",
+            "url": "https://arxiv.org/html/2410.04444#A2"
           }
         ],
         "status": "recorded"
@@ -5384,7 +5710,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2506.10943": {
     "fields": [
@@ -5407,7 +5734,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一模型生成 self-edit；固定内层梯度更新与外层 RL/ReSTEM 训练程序实施参数更新。",
+        "value": "知识学习配置由 Qwen2.5-7B 生成 self-edit；ARC 配置由 Llama-3.2-1B-Instruct 生成。固定内层梯度更新和外层 RL／ReSTEM 程序据此训练对应模型。",
         "sources": [
           {
             "label": "§3",
@@ -5561,14 +5888,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.23472": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "task programs + optimizer descendants；task agents 执行。",
+        "value": "候选任务/优化程序在Escher-Loop内执行；程序生成使用Gemini3 Flash ensemble。",
         "sources": [
           {
             "label": "§2.1",
@@ -5577,6 +5905,10 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.23472#S3.SS3"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2604.23472#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -5584,7 +5916,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "optimizer population",
+        "value": "Gemini3 Flash生成程序变体；80%请求用gemini-3-flash-preview的low thinking，20%用默认动态thinking。外层种群选择程序固定。",
         "sources": [
           {
             "label": "§2.1",
@@ -5593,6 +5925,10 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.23472#S3.SS3"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2604.23472#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -5738,14 +6074,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.04465": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "再改 task-agent prompt；基础是固定 prompt-optimization workflow。",
+        "value": "默认DeepSeek-V3.2作task agent；跨模型设置换Gemini3.1 Flash-Lite Preview。",
         "sources": [
           {
             "label": "§3.1",
@@ -5762,6 +6099,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2606.04465#S3.SS3.SSS0.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.04465#S4.SS1.SSS0.Px4"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2606.04465#S4.SS2.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -5769,7 +6114,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "prompt agent self-evolves",
+        "value": "默认Gemini3.1 Pro Preview作prompt agent；另一配置用Claude Opus4.6。prompt agent优化任务提示，也进化自己的优化提示。",
         "sources": [
           {
             "label": "§3.1",
@@ -5786,6 +6131,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2606.04465#S3.SS3.SSS0.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.04465#S4.SS1.SSS0.Px4"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2606.04465#S4.SS2.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -5963,18 +6316,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.26294": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "各领域的任务agent：论文写作、证明生成及编码；并有对应的评审agent。",
+        "value": "主实验用 GPT-5.5（low）执行编码、论文写作、证明及评审。成本消融仅将搜索期论文任务调用换为 Nemotron 3 Ultra，最终仍用 GPT-5.5（low）评审。",
         "sources": [
           {
             "label": "Appendix C.5",
             "url": "https://arxiv.org/abs/2606.26294"
+          },
+          {
+            "label": "§5.5、附录 C.2",
+            "url": "https://arxiv.org/pdf/2606.26294#page=20"
           }
         ],
         "status": "recorded"
@@ -5982,11 +6340,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "元agent根据节点及祖先的训练反馈修改角色agent；搜索器选择新节点，按epoch边界替换合格评审器。",
+        "value": "元代理使用 GPT-5.5（low）读取节点及祖先反馈、修改角色代理；混合模型消融保持元代理不变。搜索程序选择节点，并在 epoch 边界替换通过检验的评审器。",
         "sources": [
           {
             "label": "Appendix C.5",
             "url": "https://arxiv.org/abs/2606.26294"
+          },
+          {
+            "label": "§5.5、附录 C.2",
+            "url": "https://arxiv.org/pdf/2606.26294#page=20"
           }
         ],
         "status": "recorded"
@@ -6100,14 +6462,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.07645": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "archive descendants；coding agent 执行。",
+        "value": "主进化用Qwen3.6-35B-A3B执行候选编码agent；另评Qwen3-Coder-Next-80B-A3B。跨模型迁移冻结harness后换DeepSeek-V4-Flash/Pro。",
         "sources": [
           {
             "label": "附录A.1",
@@ -6116,6 +6479,18 @@
           {
             "label": "附录H.1",
             "url": "https://arxiv.org/html/2608.07645#A8.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.07645#S5.SS2.SSS0.Px2"
+          },
+          {
+            "label": "附录C.1",
+            "url": "https://arxiv.org/html/2608.07645#A3.SS1"
+          },
+          {
+            "label": "附录F.2",
+            "url": "https://arxiv.org/html/2608.07645#A6.SS2"
           }
         ],
         "status": "recorded"
@@ -6123,7 +6498,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "coding-agent evolver",
+        "value": "编码agent依据档案与执行反馈改进后代；主实验使用Qwen3.6-35B-A3B，模型权重固定，变的是agent代码。",
         "sources": [
           {
             "label": "附录A.1",
@@ -6132,6 +6507,18 @@
           {
             "label": "附录H.1",
             "url": "https://arxiv.org/html/2608.07645#A8.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.07645#S5.SS2.SSS0.Px2"
+          },
+          {
+            "label": "附录C.1",
+            "url": "https://arxiv.org/html/2608.07645#A3.SS1"
+          },
+          {
+            "label": "附录F.2",
+            "url": "https://arxiv.org/html/2608.07645#A6.SS2"
           }
         ],
         "status": "recorded"
@@ -6277,14 +6664,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2403.03186": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同 agent 后续执行。",
+        "value": "默认 gpt-4o-2024-05-13 看屏幕、规划操作并生成控制动作；电脑实际执行键鼠操作。text-embedding-ada-002 只用于技能向量检索。",
         "sources": [
           {
             "label": "§3.2",
@@ -6301,6 +6689,18 @@
           {
             "label": "附录D.3",
             "url": "https://arxiv.org/html/2403.03186#A4.SS3"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2403.03186#S3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2403.03186#S4.SS1"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2403.03186#A1"
           }
         ],
         "status": "recorded"
@@ -6308,7 +6708,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 computer-control agent 的 memory/skill manager",
+        "value": "同一 GPT-4o 驱动 Cradle 的反思、任务推断和技能整理模块，更新外部记忆与技能；固定框架组织这些调用。",
         "sources": [
           {
             "label": "§3.2",
@@ -6325,6 +6725,18 @@
           {
             "label": "附录D.3",
             "url": "https://arxiv.org/html/2403.03186#A4.SS3"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2403.03186#S3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2403.03186#S4.SS1"
+          },
+          {
+            "label": "附录A",
+            "url": "https://arxiv.org/html/2403.03186#A1"
           }
         ],
         "status": "recorded"
@@ -6486,14 +6898,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2409.07429": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "WebArena：GPT-4 + BrowserGym；Mind2Web：GPT-3.5-turbo 或 GPT-4。",
+        "value": "WebArena：gpt-4-0613 + BrowserGym；Mind2Web：gpt-3.5-turbo或gpt-4，temperature=0。",
         "sources": [
           {
             "label": "§2.3",
@@ -6510,6 +6923,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2409.07429#S3.SS1"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS1"
           }
         ],
         "status": "recorded"
@@ -6517,7 +6938,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "workflow induction 与 action generation 使用同一模型；固定归纳程序负责把轨迹转为流程。",
+        "value": "工作流归纳与动作生成使用对应实验的同一模型：WebArena为gpt-4-0613；Mind2Web为gpt-3.5-turbo或gpt-4。固定归纳提示把轨迹转成工作流。",
         "sources": [
           {
             "label": "§2.3",
@@ -6534,6 +6955,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2409.07429#S3.SS1"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS1"
           }
         ],
         "status": "recorded"
@@ -6727,14 +7156,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2502.12110": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "多种 foundation-model agents。",
+        "value": "主实验包括GPT-4o-mini/4o、Qwen2.5-1.5B/3B、Llama3.2-1B/3B；附录还测DeepSeek-R1-32B、Claude3 Haiku、Claude3.5 Haiku。",
         "sources": [
           {
             "label": "§3",
@@ -6743,6 +7173,18 @@
           {
             "label": "附录B.3",
             "url": "https://arxiv.org/html/2502.12110#A2.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2502.12110#S4.SS1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2502.12110#S4.SS2"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2502.12110#A1.SS3"
           }
         ],
         "status": "recorded"
@@ -6750,7 +7192,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 A-MEM agentic update procedure。",
+        "value": "对应实验的基础 LLM 按固定提示生成记忆笔记、判断连接并修订旧记忆的上下文、关键词和标签；向量模型 all-MiniLM-L6-v2 只负责召回。这里的“进化”是记忆内容变化，不是另训练一个更新模型。",
         "sources": [
           {
             "label": "§3",
@@ -6759,6 +7201,22 @@
           {
             "label": "附录B.3",
             "url": "https://arxiv.org/html/2502.12110#A2.SS3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2502.12110#S3.SS1"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2502.12110#S3.SS2"
+          },
+          {
+            "label": "§3.3",
+            "url": "https://arxiv.org/html/2502.12110#S3.SS3"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2502.12110#S4.SS2"
           }
         ],
         "status": "recorded"
@@ -6904,14 +7362,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2508.06433": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "fixed task agent。",
+        "value": "主实验用GPT-4o、Claude及Qwen2.5-72B-Instruct；迁移实验将GPT-4o积累的程序记忆交给Qwen2.5-14B-Instruct使用。",
         "sources": [
           {
             "label": "§3",
@@ -6920,6 +7379,18 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2508.06433#S3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2508.06433#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2508.06433#S5.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2508.06433#S5.SS0.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -6927,7 +7398,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "procedural-memory updater",
+        "value": "程序记忆更新流程调用基础 LLM 总结和修订操作经验；主配置为 GPT-4o、Claude、Qwen2.5-72B-Instruct。跨模型实验明确由 GPT-4o 生成记忆，再供 Qwen2.5-14B 使用；论文 Backbones 段没有给出 Claude 的具体版本。",
         "sources": [
           {
             "label": "§3",
@@ -6936,6 +7407,14 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2508.06433#S3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2508.06433#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2508.06433#S5.SS0.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -7097,14 +7576,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2509.25140": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Gemini-2.5 / Claude-3.7 系列；网页用 BrowserGym，SWE 用 bash-only ReAct agent。",
+        "value": "Gemini2.5 Flash、Gemini2.5 Pro、Claude3.7 Sonnet；网页任务配BrowserGym，SWE配bash-only ReAct。",
         "sources": [
           {
             "label": "§3",
@@ -7113,6 +7593,18 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2509.25140#A5"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2509.25140#S4.SS1"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2509.25140#A1.SS3.SSS0.Px2"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2509.25140#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -7120,7 +7612,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "抽取器和 success/failure classifier 使用与执行者相同的 backbone，角色提示分别固定。",
+        "value": "经验抽取与成败分类使用对应执行者的同一backbone，如Gemini2.5 Flash；角色提示及外层追加/检索算法固定。",
         "sources": [
           {
             "label": "§3",
@@ -7129,6 +7621,18 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2509.25140#A5"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2509.25140#S4.SS1"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2509.25140#A1.SS3.SSS0.Px2"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2509.25140#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -7290,14 +7794,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.10923": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "agent + new tools/expert agents。",
+        "value": "GPT-5-chat驱动任务agent及本文比较的baseline；可调用进化出的工具与专家agent。",
         "sources": [
           {
             "label": "§3",
@@ -7318,6 +7823,10 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.10923#S3.SS3.SSS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.10923#S4.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -7325,7 +7834,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "fixed co-evolution controller",
+        "value": "Mem2Evolve 用 GPT-5-chat 作为基础模型，通过固定流程总结经验、生成工具或专家代理；新工具的代码交给 SandboxFusion 执行。工具内部也可能再调用别的模型，例如图像工具调用 GPT-4o，这不代表外层基础模型换成了 GPT-4o。",
         "sources": [
           {
             "label": "§3",
@@ -7346,6 +7855,18 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.10923#S3.SS3.SSS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.10923#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2604.10923#S4.SS2.SSS0.Px1"
+          },
+          {
+            "label": "附录D.3",
+            "url": "https://arxiv.org/html/2604.10923#A4.SS3"
           }
         ],
         "status": "recorded"
@@ -7523,14 +8044,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.16839": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "fixed agent。",
+        "value": "GPT-4o-mini、GPT-4o、Qwen2.5-14B、Qwen2.5-3B分别配HeLa-Mem回答问题。",
         "sources": [
           {
             "label": "§3",
@@ -7547,6 +8069,10 @@
           {
             "label": "§3.4",
             "url": "https://arxiv.org/html/2604.16839#S3.SS4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.16839#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -7554,7 +8080,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "fixed Hebbian/reflection memory module",
+        "value": "反思步骤调用对应配置的 GPT-4o-mini、GPT-4o、Qwen2.5-14B 或 Qwen2.5-3B；记忆边的强化和衰减由固定 Hebbian 更新公式执行，不是模型参数训练。",
         "sources": [
           {
             "label": "§3",
@@ -7571,6 +8097,10 @@
           {
             "label": "§3.4",
             "url": "https://arxiv.org/html/2604.16839#S3.SS4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.16839#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -7748,14 +8278,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.16114": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "task agent。",
+        "value": "GPT-4o或Qwen3-30B-A3B，分别加载HyperSkill超图经验；两者检索预算不同。",
         "sources": [
           {
             "label": "§3",
@@ -7776,6 +8307,14 @@
           {
             "label": "附录H",
             "url": "https://arxiv.org/html/2608.16114#A8"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.16114#S4.SS1"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2608.16114#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -7783,7 +8322,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "fixed hypergraph updater",
+        "value": "GPT-4o 或 Qwen3-30B-A3B 配置下，系统从执行轨迹提取技能；固定维护程序根据效用与检索次数合并、裁剪超图。all-MiniLM-L6-v2 是编码器，不负责决定修改文本。",
         "sources": [
           {
             "label": "§3",
@@ -7804,6 +8343,14 @@
           {
             "label": "附录H",
             "url": "https://arxiv.org/html/2608.16114#A8"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.16114#S4.SS1"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2608.16114#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -7997,14 +8544,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.24876": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "solver with coupled Working + Experiential Memory。",
+        "value": "进化阶段由冻结的 doubao-seed-2-0-pro 执行任务并产生失败轨迹；τ²-Bench 中它也模拟用户。最终迁移评测另换表 1 的目标模型，复用同一份技能记忆。",
         "sources": [
           {
             "label": "§2.1",
@@ -8017,6 +8565,10 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2608.24876#A5"
+          },
+          {
+            "label": "§3.4",
+            "url": "https://arxiv.org/html/2608.24876#S3.SS4.SSS3"
           }
         ],
         "status": "recorded"
@@ -8024,7 +8576,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "separate fixed Meta-Agent",
+        "value": "固定 Meta-Agent 读取失败轨迹并修改对应记忆组件。主实现使用 Claude Code，替换实验使用 DeepSeek Harness；§3.1 和 §3.4.3 没有为这两个修改端分别给出底层模型型号，不能把工具名当成模型名。",
         "sources": [
           {
             "label": "§2.1",
@@ -8037,6 +8589,10 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2608.24876#A5"
+          },
+          {
+            "label": "§3.4",
+            "url": "https://arxiv.org/html/2608.24876#S3.SS4.SSS3"
           }
         ],
         "status": "recorded"
@@ -8198,14 +8754,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.01314": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3.5 五种规模的目标 agent；OfficeQA、SealQA、WildClawBench 三种任务设置。",
+        "value": "OfficeQA 比较 Qwen3.5 的 9B、27B、35B、122B、397B 五档；SealQA 表 1 列出 9B、35B、122B、397B。执行模型配合技能库和工具库完成任务，122B 还用于长期恢复实验。",
         "sources": [
           {
             "label": "附录A.1",
@@ -8214,6 +8771,18 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2606.01314#S1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.01314#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录D.6",
+            "url": "https://arxiv.org/html/2606.01314#A4.SS6"
           }
         ],
         "status": "recorded"
@@ -8221,7 +8790,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "reflector/evolver 提出联合 bundle，Tool-Smith 实施工具修改；具体角色配置随规模实验。",
+        "value": "反思模块提出联合技能／工具修改；Tool-Smith 将工具修改限制为包装、编辑、组合、拆分、退役五类。实验使用 Qwen3.5 系列；论文没有在角色说明中为 Tool-Smith 另列一款独立模型。",
         "sources": [
           {
             "label": "附录A.1",
@@ -8230,6 +8799,14 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2606.01314#S3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2606.01314#S4.SS1.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -8253,7 +8830,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "OfficeQA 用答案匹配；SealQA 用冻结 Qwen3.5-122B judge 对照 gold，3 次多数票；WildClaw 按其任务评价。",
+        "value": "OfficeQA 和 WildClawBench 使用各自任务评测规则。SealQA 由独立、冻结的 Qwen3.5-122B 读取问题、标准答案和回答，判对或错；同一回答判三次，取多数票。",
         "sources": [
           {
             "label": "附录A.1",
@@ -8262,6 +8839,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录D.4",
+            "url": "https://arxiv.org/html/2606.01314#A4.SS4.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -8375,14 +8956,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.17220": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "legal retrieval agent。",
+        "value": "所有实验都由Qwen3-4B-Thinking改写检索查询，再交BM25检索；不是由规则进化模型直接替代检索器。",
         "sources": [
           {
             "label": "§4",
@@ -8395,6 +8977,10 @@
           {
             "label": "附录A.3",
             "url": "https://arxiv.org/html/2606.17220#A1.SS3.SSS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2606.17220#S5.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -8402,7 +8988,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "rule-search agent",
+        "value": "规则进化分别用Qwen3-4B-Thinking、Qwen3-30B-A3B-Thinking、gpt-oss-20b、gpt-oss-120b。四者只改变规则，查询改写模型固定。",
         "sources": [
           {
             "label": "§4",
@@ -8415,6 +9001,10 @@
           {
             "label": "附录A.3",
             "url": "https://arxiv.org/html/2606.17220#A1.SS3.SSS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2606.17220#S5.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -8560,18 +9150,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.22793": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "task agent。",
+        "value": "GPT-5.5（medium）与GLM-5.2（high）分别加载相同的TRACE Skill Bank执行。",
         "sources": [
           {
             "label": "§2.2",
             "url": "https://arxiv.org/html/2608.22793#S2.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.22793#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -8579,11 +9174,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "fixed skill-bank evolver",
+        "value": "Skill Bank由GPT-5.5收集的轨迹驱动进化；测试时原样交给GPT-5.5和GLM-5.2，不针对GLM重新进化。",
         "sources": [
           {
             "label": "§2.2",
             "url": "https://arxiv.org/html/2608.22793#S2.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.22793#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -8729,14 +9328,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.23397": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "clinical interaction agent。",
+        "value": "Qwen3.6-Flash与DeepSeek-V4-Flash作为Doctor回答临床问题；多模态设置只用Qwen3.6-Flash，每病例最多8次Doctor推理。",
         "sources": [
           {
             "label": "§3.3",
@@ -8745,6 +9345,10 @@
           {
             "label": "§2.6",
             "url": "https://arxiv.org/html/2608.23397#S2.SS6"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.23397#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -8752,7 +9356,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "fixed constrained updater",
+        "value": "回合结束后，reflector 从已完成的病例轨迹提出新增、合并、修补或淘汰记忆的建议，固定审核规则决定是否进入下一快照。实验基础模型为 Qwen3.6-Flash 或 DeepSeek-V4-Flash；§3.1 明确 Doctor 与 moderator 共用模型，但没有为 reflector 单列型号。",
         "sources": [
           {
             "label": "§3.3",
@@ -8761,6 +9365,14 @@
           {
             "label": "§2.6",
             "url": "https://arxiv.org/html/2608.23397#S2.SS6"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2608.23397#S2.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.23397#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -8922,18 +9534,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.23552": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "later trajectories。",
+        "value": "多日nanoGPT研究比较Kimi K3、DeepSeek V4 Pro、GLM5.3；MazeBench比较Opus5、GPT-5.6 Sol，并报告GLM5.2对照。",
         "sources": [
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2608.23552#S3.SS3"
+          },
+          {
+            "label": "§3.5",
+            "url": "https://arxiv.org/html/2608.23552#S3.SS5.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -8941,11 +9558,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "same persistent agent/runtime",
+        "value": "对应实验的同一模型在Prime Agent持久运行环境中更新代码和经验；模型是Kimi K3/DeepSeek V4 Pro/GLM5.3等具体配置，不是另一个未命名优化器。",
         "sources": [
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2608.23552#S3.SS3"
+          },
+          {
+            "label": "§3.5",
+            "url": "https://arxiv.org/html/2608.23552#S3.SS5.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -9075,14 +9696,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.09998": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Pokemon embodied agent。",
+        "value": "主游戏实验用Gemini3 Pro、Flash、Flash-Lite；开源迁移/共同学习用Gemma4 E2B、E4B、26B MoE、31B dense。",
         "sources": [
           {
             "label": "§4.5",
@@ -9095,6 +9717,18 @@
           {
             "label": "附录D.4",
             "url": "https://arxiv.org/html/2605.09998#A4.SS4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2605.09998#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§6",
+            "url": "https://arxiv.org/html/2605.09998#S6"
+          },
+          {
+            "label": "附录D",
+            "url": "https://arxiv.org/html/2605.09998#A4"
           }
         ],
         "status": "recorded"
@@ -9102,7 +9736,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "LLM Refiner；通常同一 frontier model family。",
+        "value": "主实验Refiner由Gemini模型承担；共同学习阶段由frontier teacher指导Gemma4，并通过SFT/GRPO更新其权重。论文明确被测Gemma4不能同时胜任teacher与trainee。",
         "sources": [
           {
             "label": "§4.5",
@@ -9115,6 +9749,18 @@
           {
             "label": "附录D.4",
             "url": "https://arxiv.org/html/2605.09998#A4.SS4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2605.09998#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§6",
+            "url": "https://arxiv.org/html/2605.09998#S6"
+          },
+          {
+            "label": "附录D",
+            "url": "https://arxiv.org/html/2605.09998#A4"
           }
         ],
         "status": "recorded"
@@ -9292,14 +9938,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.24539": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定 base LM + 当前 harness。",
+        "value": "主要对局配置为GPT-5.4-low自博弈、Qwen3.5-4B对GPT-5.4-low、Qwen3.5-4B自博弈；Balatro执行者固定GPT-5.4-low。",
         "sources": [
           {
             "label": "§4.1",
@@ -9312,6 +9959,10 @@
           {
             "label": "附录C.2",
             "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px3"
+          },
+          {
+            "label": "附录C.2",
+            "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -9319,7 +9970,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "coding proposer 根据 self-rollout 或 demonstration evidence 提 harness edits。",
+        "value": "编程proposer根据轨迹/示范编辑harness；Balatro全部进化条件用Claude Opus4.7 Max，执行者GPT-5.4-low保持冻结。",
         "sources": [
           {
             "label": "§4.1",
@@ -9332,6 +9983,10 @@
           {
             "label": "附录C.2",
             "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px3"
+          },
+          {
+            "label": "附录C.2",
+            "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px5"
           }
         ],
         "status": "recorded"
@@ -9509,14 +10164,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.06324": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "默认 GPT-5 mini；按任务使用不同 H0。",
+        "value": "主任务执行者是GPT-5-mini；GAIA迁移再换Qwen3.5 Plus、DeepSeekV3.2、Gemini3 Pro、Claude Sonnet4.5。",
         "sources": [
           {
             "label": "§3",
@@ -9525,6 +10181,10 @@
           {
             "label": "§6",
             "url": "https://arxiv.org/html/2606.06324#S6"
+          },
+          {
+            "label": "§4.4",
+            "url": "https://arxiv.org/html/2606.06324#S4.SS4"
           }
         ],
         "status": "recorded"
@@ -9532,7 +10192,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "默认 GPT-5 mini 驱动 HarnessFix 的诊断/修补流程。",
+        "value": "默认GPT-5-mini运行HarnessFix诊断及修补流程；迁移时直接复用已选harness，不用新执行模型重新搜索。",
         "sources": [
           {
             "label": "§3",
@@ -9541,6 +10201,10 @@
           {
             "label": "§6",
             "url": "https://arxiv.org/html/2606.06324#S6"
+          },
+          {
+            "label": "§4.4",
+            "url": "https://arxiv.org/html/2606.06324#S4.SS4"
           }
         ],
         "status": "recorded"
@@ -9686,14 +10350,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.14249": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "current agent runtime。",
+        "value": "Claude Sonnet4.6、GPT-5.4、Qwen3.5-9B分别作为task agent，运行候选harness。",
         "sources": [
           {
             "label": "§5.4",
@@ -9702,6 +10367,10 @@
           {
             "label": "§12.5",
             "url": "https://arxiv.org/html/2606.14249#S12.SS5.SSS0.Px1"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2606.14249#S6.SS1.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -9709,7 +10378,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "HarnessX foundry / AEGIS evolver",
+        "value": "默认Claude Opus4.6作为meta-agent驱动AEGIS进化；与上述任务执行者分开。共同训练阶段的参数更新仍由GRPO程序执行。",
         "sources": [
           {
             "label": "§5.4",
@@ -9718,6 +10387,10 @@
           {
             "label": "§12.5",
             "url": "https://arxiv.org/html/2606.14249#S12.SS5.SSS0.Px1"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2606.14249#S6.SS1.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -9863,14 +10536,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.13683": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "target agent candidates。",
+        "value": "默认冻结Qwen3.6-27B执行各候选harness；跨模型对照还分析较大Qwen模型和Gemini3 Flash。",
         "sources": [
           {
             "label": "§4.1",
@@ -9879,6 +10553,10 @@
           {
             "label": "§4.5",
             "url": "https://arxiv.org/html/2607.13683#S4.SS5"
+          },
+          {
+            "label": "§4.6",
+            "url": "https://arxiv.org/html/2607.13683#S4.SS6"
           }
         ],
         "status": "recorded"
@@ -9886,7 +10564,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "evolutionary harness proposer/controller",
+        "value": "Claude Opus4.8作为evolver，根据轨迹和评分提出harness改动；Qwen3.6-27B的权重不更新。",
         "sources": [
           {
             "label": "§4.1",
@@ -9895,6 +10573,10 @@
           {
             "label": "§4.5",
             "url": "https://arxiv.org/html/2607.13683#S4.SS5"
+          },
+          {
+            "label": "§4.6",
+            "url": "https://arxiv.org/html/2607.13683#S4.SS6"
           }
         ],
         "status": "recorded"
@@ -10040,14 +10722,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.21877": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "current policy under current prompt。",
+        "value": "Qwen3-4B的当前训练checkpoint，在当前候选提示下解题。",
         "sources": [
           {
             "label": "§3.1",
@@ -10060,6 +10743,10 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2603.21877#A1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.21877#S4.SS1.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -10067,7 +10754,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "alternating prompt optimizer + policy trainer",
+        "value": "P²O-Self-Ref用Qwen3-4B参考模型作提示修改者；Teacher-Ref用Kimi-K2。外层交替运行提示优化和策略参数训练。",
         "sources": [
           {
             "label": "§3.1",
@@ -10080,6 +10767,10 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2603.21877#A1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.21877#S4.SS1.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -10257,14 +10948,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.04455": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "冻结后的提交程序调用受控模型 API，完成数学、科学或编程题。",
+        "value": "提交的 agent.py 在数学、科学、竞赛编程任务中调用 Qwen3-8B（独占 A100 上的 vLLM）；在 SWE-Bench 和 Terminal-Bench 中调用 Claude Haiku 4.5。",
         "sources": [
           {
             "label": "§3.2",
@@ -10273,6 +10965,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2606.04455#S3.SS2.SSS0.Px2"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2606.04455#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2606.04455#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -10280,7 +10980,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "开发阶段的通用 coding agent；预算到期后停止修改。",
+        "value": "外层编程代理包括 Claude Code + Opus 4.7／Opus 4.6／Sonnet 4.6、Gemini CLI + Gemini 3.1 Pro、Codex + GPT-5.3-Codex／GPT-5.4；另有接入 Claude Code 的开源模型配置。它们写 agent.py，不是最终答题的 Qwen3-8B 或 Haiku 4.5。",
         "sources": [
           {
             "label": "§3.2",
@@ -10289,6 +10989,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2606.04455#S3.SS2.SSS0.Px2"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2606.04455#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2606.04455#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -10434,14 +11142,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.06301": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定 target agent 执行 optimizer 提交的 candidate harness。",
+        "value": "按任务固定目标模型：OfficeQA、BrowseComp-Plus 用 DeepSeek-V4-Flash；Terminal-Bench 用 grok-build；GAIA 用 GPT-5.4-mini。这些模型运行候选 harness，不负责外层优化。",
         "sources": [
           {
             "label": "附录B",
@@ -10457,7 +11166,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "不同 frontier LLM optimizer，在 shared coding harness与native harness两种条件下。",
+        "value": "五种optimizer：Claude Opus5、Sonnet5、GPT-5.6 Sol、GPT-5.6 Terra、Kimi K3。各自比较统一OpenCode与原生Claude Code/Codex/Kimi CLI。",
         "sources": [
           {
             "label": "附录B",
@@ -10466,6 +11175,10 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2608.06301#A5"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.06301#S4.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -10611,14 +11324,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2505.11942": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "接入数据库 SQL、操作系统 Bash 或知识图谱接口的任务 agent。",
+        "value": "主对照：Llama3.1-8B-Instruct、Qwen2.5-7B-Instruct、DeepSeek-R1-Distill-Llama-8B、DeepSeek-R1-Distill-Qwen-7B；执行SQL/Bash/知识图谱任务。",
         "sources": [
           {
             "label": "§3",
@@ -10635,6 +11349,14 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2505.11942#A1.SS1.SSS1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2505.11942#S4.SS2"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2505.11942#S6.SS1"
           }
         ],
         "status": "recorded"
@@ -10642,7 +11364,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各被测方法的经验保存/回放模块；benchmark 负责组织技能相关任务。",
+        "value": "四种被测模型通过各方法的经验保存与回放流程适应任务；benchmark本身不充当修改模型。构造OS命令序列另用DeepSeek-R1，不能与被测模型混淆。",
         "sources": [
           {
             "label": "§3",
@@ -10659,6 +11381,14 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2505.11942#A1.SS1.SSS1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2505.11942#S4.SS2"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2505.11942#S6.SS1"
           }
         ],
         "status": "recorded"
@@ -10852,14 +11582,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2507.05257": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "长上下文、RAG、Mem0/Cognee/Zep/MIRIX 等记忆系统配套的回答模型。",
+        "value": "未另指定时，RAG及商业记忆agent的回答backbone统一GPT-4o-mini；长上下文对照与附录算力匹配实验另列模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -10876,6 +11607,14 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2507.05257#S4.SS1"
+          },
+          {
+            "label": "附录F.2",
+            "url": "https://arxiv.org/html/2507.05257#A6.SS2"
+          },
+          {
+            "label": "附录J.1",
+            "url": "https://arxiv.org/html/2507.05257#A10.SS1"
           }
         ],
         "status": "recorded"
@@ -10883,7 +11622,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各系统自己的记忆写入、检索和维护程序。",
+        "value": "各记忆系统自己的写入/检索实现；默认配GPT-4o-mini，并非所有系统共享一个被训练的“记忆修改模型”。",
         "sources": [
           {
             "label": "§3.1",
@@ -10900,6 +11639,14 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2507.05257#S4.SS1"
+          },
+          {
+            "label": "附录F.2",
+            "url": "https://arxiv.org/html/2507.05257#A6.SS2"
+          },
+          {
+            "label": "附录J.1",
+            "url": "https://arxiv.org/html/2507.05257#A10.SS1"
           }
         ],
         "status": "recorded"
@@ -11125,14 +11872,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2508.19005": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "StuLife 中调用日历、地图及校园工具的 Qwen3 等 agent。",
+        "value": "进化实验：Qwen3-8B用于训练型RFT，Qwen3-235B-A22B用于Reflexion/AWM推理时进化；不能把这两组视为同模型比较。",
         "sources": [
           {
             "label": "§3",
@@ -11156,7 +11904,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "对比分支包括 Reflexion、AWM 和 RFT，分别改反思/流程记忆或模型参数。",
+        "value": "RFT从Qwen3-8B自身采样的成功轨迹训练它；Reflexion/AWM分支由Qwen3-235B-A22B生成反思或工作流记忆。",
         "sources": [
           {
             "label": "§3",
@@ -11350,14 +12098,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2510.17281": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "被测 LLM 系统在读取记忆后回答新任务。",
+        "value": "主系统backbone为Qwen3-8B；附录Legal消融另换Mistral-Small3.2-24B。",
         "sources": [
           {
             "label": "§2.1",
@@ -11366,6 +12115,14 @@
           {
             "label": "§2.3",
             "url": "https://arxiv.org/html/2510.17281#S2.SS3"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2510.17281#S3.SS2"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2510.17281#A1.SS3.SSS10"
           }
         ],
         "status": "recorded"
@@ -11373,7 +12130,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各记忆方法从训练题上的模拟用户交互更新记忆。",
+        "value": "记忆方法使用模拟用户反馈更新；用户模拟器主要Qwen3-32B，另有Mistral3.2-24B对照。用户模拟器不是被测Qwen3-8B回答模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -11382,6 +12139,14 @@
           {
             "label": "§2.3",
             "url": "https://arxiv.org/html/2510.17281#S2.SS3"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2510.17281#S3.SS2"
+          },
+          {
+            "label": "附录A.3",
+            "url": "https://arxiv.org/html/2510.17281#A1.SS3.SSS10"
           }
         ],
         "status": "recorded"
@@ -11405,7 +12170,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "模拟用户提供行为反馈；最终任务评分由各来源数据集指标完成。",
+        "value": "模拟用户模型提供任务相关反馈；评测按数据集评分。WritingBench使用WritingBench-Critic-Model-Qwen-7B，其他需要模型评审的数据集使用DeepSeek-V3。",
         "sources": [
           {
             "label": "§2.1",
@@ -11414,6 +12179,14 @@
           {
             "label": "§2.3",
             "url": "https://arxiv.org/html/2510.17281#S2.SS3"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2510.17281#S3.SS2"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.17281#A1.SS1"
           }
         ],
         "status": "recorded"
@@ -11511,14 +12284,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2511.20857": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Gemini-2.5、Claude 系列配合 ReAct、AWM、ReMem 等系统。",
+        "value": "Gemini2.5 Flash、Flash-Lite、Pro，以及Claude3.5 Haiku、Claude3.7 Sonnet，各自配相应记忆方法。",
         "sources": [
           {
             "label": "§3",
@@ -11543,6 +12317,14 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2511.20857#S4.SS1.SSS2"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2511.20857#A1.SS2"
+          },
+          {
+            "label": "附录G.1",
+            "url": "https://arxiv.org/html/2511.20857#A7.SS1"
           }
         ],
         "status": "recorded"
@@ -11550,7 +12332,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各方法自己的记忆更新流程；ReMem 在 Think/Act 之外显式 Refine Memory。",
+        "value": "各配置的任务模型按方法规定更新记忆；ReMem在Think/Act之外显式执行Refine Memory，主体backbone仍为上述五种模型之一。",
         "sources": [
           {
             "label": "§3",
@@ -11575,6 +12357,14 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2511.20857#S4.SS1.SSS2"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2511.20857#A1.SS2"
+          },
+          {
+            "label": "附录G.1",
+            "url": "https://arxiv.org/html/2511.20857#A7.SS1"
           }
         ],
         "status": "recorded"
@@ -11800,14 +12590,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.17308": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Harbor 上与各模型匹配的任务 wrapper。",
+        "value": "11种模型：Claude Sonnet4.5/4.6、Opus4.5/4.6、MiniMaxM2.5/M2.7、GPT-5.4、GPT-5.3-Codex、Qwen-Coder-Next、Qwen3-Coder-480B、Kimi K2.5；配Claude Code、Codex CLI、Qwen-Coder或Kimi-CLI。",
         "sources": [
           {
             "label": "§3.1",
@@ -11823,7 +12614,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "执行模型在任务结束后按统一补丁格式修订技能库。",
+        "value": "同一任务执行模型在完成任务后根据反馈，用统一补丁格式更新技能库；不是另请一个更强模型写技能。",
         "sources": [
           {
             "label": "§3.1",
@@ -11977,14 +12768,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.20087": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "加载技能的任务 agent；对照无技能和人写技能。",
+        "value": "固定 Claude Sonnet 4.6（temperature=0）读取各模型生成的技能并完成任务；每题最多 100 轮，使用容器内任务工具。",
         "sources": [
           {
             "label": "§3",
@@ -12024,7 +12816,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "One-Shot、Self Feedback、Teacher Feedback 或 Skill Creator；教师分支可读人写技能和失败上下文。",
+        "value": "生成技能的六种模型为Claude Haiku4.5、Sonnet4.6、Opus4.6、Gemini3.1 Flash Lite、Gemini3 Flash、Gemini3.1 Pro。比较One-Shot、自反馈、教师反馈与Skill Creator。",
         "sources": [
           {
             "label": "§3",
@@ -12104,7 +12896,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "文本质量、轨迹中的使用情况及 test.sh 全部用例通过三个层次。",
+        "value": "Level1/2中需要LLM judge的指标统一由GPT-5-mini判分；并检查任务执行结果和技能泛化，不把技能作者的自评当最终成绩。",
         "sources": [
           {
             "label": "§3",
@@ -12137,6 +12929,10 @@
           {
             "label": "附录N.2",
             "url": "https://arxiv.org/html/2604.20087#A14.SS2"
+          },
+          {
+            "label": "附录L",
+            "url": "https://arxiv.org/html/2604.20087#A12"
           }
         ],
         "status": "recorded"
@@ -12330,14 +13126,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.18421": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "沿用来源 benchmark 的任务 agent，加接被测记忆模块。",
+        "value": "记忆增强方法统一DeepSeek-V3.2；无记忆对照另含Gemini3 Flash与GPT-5-mini。",
         "sources": [
           {
             "label": "§5.1",
@@ -12346,6 +13143,14 @@
           {
             "label": "附录B.2",
             "url": "https://arxiv.org/html/2605.18421#A2.SS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2605.18421#S5.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录C.3",
+            "url": "https://arxiv.org/html/2605.18421#A3.SS3"
           }
         ],
         "status": "recorded"
@@ -12353,7 +13158,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "统一 utilize/update 接口下的各记忆方法。",
+        "value": "各记忆方法在统一utilize/update接口下工作，记忆增强agent的backbone均为DeepSeek-V3.2；检索编码器如Qwen3-Emb-4B是另一个组件。",
         "sources": [
           {
             "label": "§5.1",
@@ -12362,6 +13167,14 @@
           {
             "label": "附录B.2",
             "url": "https://arxiv.org/html/2605.18421#A2.SS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2605.18421#S5.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录C.3",
+            "url": "https://arxiv.org/html/2605.18421#A3.SS3"
           }
         ],
         "status": "recorded"
@@ -12539,14 +13352,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.05661": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "六种环境中的 agent，与无状态执行对照比较。",
+        "value": "Claude Opus4.7、Sonnet4.6、Gemini3.1 Pro、Gemini3 Flash、GPT-5.4，分别配ICL或记忆方法；归一化基准为GPT-5.4 stateless ICL。",
         "sources": [
           {
             "label": "附录A.2",
@@ -12559,6 +13373,14 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2606.05661#S4.SS3"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2606.05661#S5.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -12566,7 +13388,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "被测系统通过历史状态/记忆适应；环境规律由作者设定。",
+        "value": "被测模型按各自系统的历史/记忆更新方式适应任务；环境潜在规律和评测程序固定，不存在benchmark替所有方法训练一个统一updater。",
         "sources": [
           {
             "label": "附录A.2",
@@ -12579,6 +13401,14 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2606.05661#S4.SS3"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2606.05661#S5.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -12740,14 +13570,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.05202": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 scaffold–backbone 组合加载各方法的进化状态后执行测试。",
+        "value": "OpenClaw或Nanobot × Qwen3.5-27B、Qwen3.5-397B、Gemma4-31B，共6个执行配置。",
         "sources": [
           {
             "label": "§3.1",
@@ -12768,6 +13599,14 @@
           {
             "label": "附录E.1",
             "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2607.05202#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2607.05202#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -12775,7 +13614,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Memento、ReasoningBank、GEPA 等仅从训练任务构建状态。",
+        "value": "Memento、ReasoningBank、GEPA从训练任务建立进化状态，再交相同scaffold–backbone测试；任务构造轨迹另来自Kimi-K2.5、GLM5.1、DeepSeekV3.2，不能当成最终执行模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -12796,6 +13635,14 @@
           {
             "label": "附录E.1",
             "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2607.05202#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2607.05202#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -13005,14 +13852,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.00155": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Exgentic 统一接口上的 GPT-5.4、Gemini、Claude 等任务模型。",
+        "value": "GPT-5.4-medium、Gemini3.1 Pro-medium、Claude Opus4.7-high，通过Exgentic任务接口执行。",
         "sources": [
           {
             "label": "§4",
@@ -13021,6 +13869,14 @@
           {
             "label": "§5.3",
             "url": "https://arxiv.org/html/2608.00155#S5.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.00155#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2608.00155#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -13028,7 +13884,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "A-Mem、ACE、ReasoningBank 等各自的测试时更新机制。",
+        "value": "对应执行backbone运行A-Mem、ACE、ReasoningBank、AutoSkill或Harness的更新过程；它们分别积累不同形式的状态，主模型不跨任务替换。",
         "sources": [
           {
             "label": "§4",
@@ -13037,6 +13893,14 @@
           {
             "label": "§5.3",
             "url": "https://arxiv.org/html/2608.00155#S5.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.00155#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2608.00155#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -13166,14 +14030,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.01149": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "带经验机制的被测 agent，如 AWM、Clin、RAG、HippoRAG。",
+        "value": "所有被评测代理统一使用 DeepSeek-V4-Flash 推理。构造任务间迁移关系时另用 DeepSeek-V4-Flash、GPT-5.4-mini、GLM-5.0 分别测量，再多数投票；这三者不是主实验中三套执行配置。",
         "sources": [
           {
             "label": "§3.2",
@@ -13186,6 +14051,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.01149#A2.SS0.SSS0.Px2"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.01149#S4"
           }
         ],
         "status": "recorded"
@@ -13383,14 +14252,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.03874": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "多种 LLM agent + skill/context condition。",
+        "value": "GPT-4o、GPT-5.3-Codex、Claude Opus4.7，在技能库/上下文条件下执行任务序列。",
         "sources": [
           {
             "label": "§3.5",
@@ -13399,6 +14269,14 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2608.03874#A4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.03874#S4.SS1.SSS1"
+          },
+          {
+            "label": "§4.4",
+            "url": "https://arxiv.org/html/2608.03874#S4.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -13406,7 +14284,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各 skill-learning mechanism自身 updater。",
+        "value": "对应任务模型按技能学习机制创建、更新和调用技能，比较其跨任务持续积累；不是独立的未命名优化LLM。",
         "sources": [
           {
             "label": "§3.5",
@@ -13415,6 +14293,14 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2608.03874#A4"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.03874#S4.SS1.SSS1"
+          },
+          {
+            "label": "§4.4",
+            "url": "https://arxiv.org/html/2608.03874#S4.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -13560,14 +14446,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.04003": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Hermes、ZeroClaw、nanobot、Agent-Zero 等持久化框架中的 agent。",
+        "value": "固定 Hermes 框架比较 GPT-5.4、GLM-5.1、Kimi K2.6、DeepSeek-V4-Pro、MiniMax-M2.7、Claude Sonnet 4.6、Claude Opus 4.6；比较不同框架时统一使用 MiniMax-M2.7，包括补充的 Codex CLI 和 Claude Code 实验。",
         "sources": [
           {
             "label": "§3.1",
@@ -13576,6 +14463,18 @@
           {
             "label": "附录A.3",
             "url": "https://arxiv.org/html/2608.04003#A1.SS3"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2608.04003#S4.SS2"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2608.04003#S4.SS2.SSS0.Px1"
+          },
+          {
+            "label": "附录C.2",
+            "url": "https://arxiv.org/html/2608.04003#A3.SS2"
           }
         ],
         "status": "recorded"
@@ -13615,7 +14514,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "任务结果加 trace-backed 机制证据，不只看最终答案是否碰巧正确。",
+        "value": "按任务 grader 计算完成分，并检查保存的文件、记忆及执行日志是否支持所声称的进化机制。开放答案统一由 MiniMax-M2.7（temperature=0）评分；另用 48 份盲评样本核对人工评分。",
         "sources": [
           {
             "label": "§3.1",
@@ -13624,6 +14523,10 @@
           {
             "label": "附录A.3",
             "url": "https://arxiv.org/html/2608.04003#A1.SS3"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2608.04003#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -13721,14 +14624,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.06144": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Claude Code、Codex、Letta 或 GenericAgent 完成金融产物。",
+        "value": "Claude Code、Codex、Letta、GenericAgent四种执行框架全部使用Qwen3.7-Max；1M上下文、64K最大输出、temperature=0。",
         "sources": [
           {
             "label": "附录B.4",
@@ -13737,6 +14641,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.06144#S4.SS4.SSS0.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.06144#S4.SS1.SSS0.Px5"
+          },
+          {
+            "label": "附录B",
+            "url": "https://arxiv.org/html/2608.06144#A2"
           }
         ],
         "status": "recorded"
@@ -13744,7 +14656,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一个执行 agent 在原对话中读取 judge.md 后反思并更新状态。",
+        "value": "仍由各框架中的Qwen3.7-Max在原会话内读取judge.md后反思和更新。独立评分agent使用Claude Code + Claude Opus4.6。",
         "sources": [
           {
             "label": "附录B.4",
@@ -13753,6 +14665,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.06144#S4.SS4.SSS0.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.06144#S4.SS1.SSS0.Px5"
+          },
+          {
+            "label": "附录B",
+            "url": "https://arxiv.org/html/2608.06144#A2"
           }
         ],
         "status": "recorded"
@@ -13776,7 +14696,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "专业 rubric 质量分和合规问题；另对比参考答案反馈。",
+        "value": "独立Claude Code + Claude Opus4.6按固定评估流程检查金融产物并写judge.md；该文件反馈给Qwen3.7-Max执行agent用于下一阶段改进。",
         "sources": [
           {
             "label": "附录B.4",
@@ -13785,6 +14705,14 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.06144#S4.SS4.SSS0.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.06144#S4.SS1.SSS0.Px5"
+          },
+          {
+            "label": "附录B",
+            "url": "https://arxiv.org/html/2608.06144#A2"
           }
         ],
         "status": "recorded"
@@ -13882,14 +14810,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.08640": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "CLI 编程 agent 调用训练程序；最终 checkpoint 由固定 evaluator 运行。",
+        "value": "研究代理操作终端完成后训练；最终答题的是提交的 Qwen3-1.7B、Qwen3-4B、SmolLM3-3B 或 Gemma-3-4B 检查点，交给固定评测程序运行。",
         "sources": [
           {
             "label": "§1",
@@ -13906,6 +14835,22 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2603.08640#A5"
+          },
+          {
+            "label": "§2.1",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS1"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS2"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS2.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.08640#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -13913,7 +14858,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Codex CLI、Claude Code、Gemini CLI 等研究 agent。",
+        "value": "表 1 比较多种研究模型与 CLI 的组合，包括 Claude Code + Opus 4.6／4.5、Codex CLI + GPT-5.1／5.2，以及 OpenCode + GPT-5.1 Codex Max 等；研究模型选择数据和训练代码，不等于被训练的四个基础模型。",
         "sources": [
           {
             "label": "§1",
@@ -13930,6 +14875,22 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2603.08640#A5"
+          },
+          {
+            "label": "§2.1",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS1"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS2"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2603.08640#S2.SS2.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.08640#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -14123,14 +15084,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.10547": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "研究 agent 编写训练流程，grader 运行所交模型。",
+        "value": "第一组交付并测试Qwen2.5-7B-Instruct的训练后模型；受控CLI组交付Qwen3-8B-Base的训练后模型。负责写训练代码的driver不是这两个目标模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -14139,6 +15101,14 @@
           {
             "label": "附录E.3",
             "url": "https://arxiv.org/html/2604.10547#A5.SS3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2604.10547#S3.SS1"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2604.10547#A1.SS4"
           }
         ],
         "status": "recorded"
@@ -14146,7 +15116,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "被测 agent 自选 SFT、RFT、RL、模型合并等路线，并非强制成功采用 RL。",
+        "value": "第一组：GPT-5.4驱动OpenHands/OpenCode，Claude Opus4.6驱动Claude Code。受控组driver包括Opus4.6、Sonnet4.5、GPT-5.4、GPT-5.2、GPT-4o、Gemini2.5 Flash。",
         "sources": [
           {
             "label": "§2.1",
@@ -14155,6 +15125,14 @@
           {
             "label": "附录E.3",
             "url": "https://arxiv.org/html/2604.10547#A5.SS3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2604.10547#S3.SS1"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2604.10547#A1.SS4"
           }
         ],
         "status": "recorded"
@@ -14300,14 +15278,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.04261": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "coding agent 筛数据；固定后端训练视觉语言模型或 CLIP。",
+        "value": "编码agent筛选数据，固定后端训练并测试目标模型；主视觉语言实验目标为LLaVA1.5-7B，扩展另用Qwen2-VL-2B、Qwen2.5-VL-3B。",
         "sources": [
           {
             "label": "§2",
@@ -14320,6 +15299,14 @@
           {
             "label": "附录D.3",
             "url": "https://arxiv.org/html/2606.04261#A4.SS3.SSS0.Px3"
+          },
+          {
+            "label": "附录D.1",
+            "url": "https://arxiv.org/html/2606.04261#A4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "附录D.5",
+            "url": "https://arxiv.org/html/2606.04261#A4.SS5"
           }
         ],
         "status": "recorded"
@@ -14327,7 +15314,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Code、Codex、OpenHands 等研究 agent。",
+        "value": "Claude Code + Opus4.7/Sonnet4.6、Codex + GPT-5.4/GPT-5.3负责数据策划；开源对照通过OpenHands运行Kimi K2.5和Qwen3.5-397B。",
         "sources": [
           {
             "label": "§2",
@@ -14340,6 +15327,14 @@
           {
             "label": "附录D.3",
             "url": "https://arxiv.org/html/2606.04261#A4.SS3.SSS0.Px3"
+          },
+          {
+            "label": "附录D.1",
+            "url": "https://arxiv.org/html/2606.04261#A4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "附录D.5",
+            "url": "https://arxiv.org/html/2606.04261#A4.SS5"
           }
         ],
         "status": "recorded"
@@ -14501,14 +15496,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.05080": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定 Terminus-2 harness 上的被测模型。",
+        "value": "固定Terminus-2框架下比较Opus4.6、Gemini3.1 Pro、GPT-5.4、Grok4-20、Qwen3.6 Plus、DeepSeekV4Pro、GLM5、Kimi K2.6、Hunyuan3 Preview、MiMoV2.5Pro、MiniMaxM2.7。",
         "sources": [
           {
             "label": "§2.3",
@@ -14529,6 +15525,10 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2606.05080#A1.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2606.05080#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -14536,7 +15536,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "任务 agent 修改该题允许的产物，不能随意换外层评测框架。",
+        "value": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2和评估器固定。附录另有更旧/更小模型消融。",
         "sources": [
           {
             "label": "§2.3",
@@ -14557,6 +15557,10 @@
           {
             "label": "附录A.1",
             "url": "https://arxiv.org/html/2606.05080#A1.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2606.05080#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -14782,14 +15786,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.05155": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT 系列配 Codex；Claude/GLM/DeepSeek 等配 Claude Code。",
+        "value": "GPT-5.5/GPT-5.4配Codex；Claude Opus4.8、GLM5.1、DeepSeek-V4-Pro-preview配Claude Code。",
         "sources": [
           {
             "label": "§2.1",
@@ -14809,7 +15814,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一运行中的研究 agent 根据本地与 judge 反馈修订产物。",
+        "value": "各模型在同一次研究运行中据执行与评测反馈修订产物；框架和模型配对固定。Opus4.8另比较200K与1M上下文。",
         "sources": [
           {
             "label": "§2.1",
@@ -14999,14 +16004,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "doi.org-10.1016-S0065-2458-08-60418-0": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "假想 ultraintelligent machine。",
+        "value": "概念上的“超智能机器”，没有具体模型、可执行代理或实验配置。",
         "sources": [
           {
             "label": "关于 ultraintelligent machine 与 intelligence explosion 的论述",
@@ -15018,7 +16024,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "未定义自动 modifier。",
+        "value": "文章讨论机器设计更好机器的可能性，没有提出可复现的自动修改算法。",
         "sources": [
           {
             "label": "关于 ultraintelligent machine 与 intelligence explosion 的论述",
@@ -15136,14 +16142,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "people.idsia.ch-juergen": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一学习系统。",
+        "value": "文中的自指学习程序执行任务；这是早期程序学习设定，不是 LLM harness 实验。",
         "sources": [
           {
             "label": "PSALM 实现与初步实验",
@@ -15155,7 +16162,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "系统内部 evolutionary/self-referential mechanism。",
+        "value": "学习程序内部的自指学习机制修改自身学习策略；不存在 GPT、Claude 等基础模型型号。",
         "sources": [
           {
             "label": "PSALM 实现与初步实验",
@@ -15273,14 +16280,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "cs-0207097": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 program-search solver。",
+        "value": "OOPS 搜索并执行候选程序来解题；没有语言模型参与。",
         "sources": [
           {
             "label": "§6 Experiments",
@@ -15292,7 +16300,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 OOPS universal search 机制。",
+        "value": "固定的 OOPS 程序搜索算法复用已找到的程序，分配后续搜索时间；候选程序可以调整搜索偏置。",
         "sources": [
           {
             "label": "§6 Experiments",
@@ -15410,14 +16418,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "1805.06610": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "形式化 RSI system。",
+        "value": "形式化定义中的自改进系统；文章讨论计算模型及其性质，不报告某个 LLM 的运行结果。",
         "sources": [
           {
             "label": "§2",
@@ -15433,7 +16442,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "形式化算法。",
+        "value": "文中定义的自改进算法作用于形式化系统；没有独立的语言模型修改者配置。",
         "sources": [
           {
             "label": "§2",
@@ -15571,14 +16580,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2203.11171": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 base LLM 多次采样。",
+        "value": "UL2-20B、LaMDA-137B、PaLM-540B，以及GPT-3/Codex的code-davinci-001、code-davinci-002，对同一问题采样多条推理链。",
         "sources": [
           {
             "label": "§3.1",
@@ -15587,6 +16597,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2203.11171#S4.SS0.SSS0.Px3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2203.11171#S3.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2203.11171#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -15594,7 +16612,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 sampling + aggregation rule。",
+        "value": "没有修改模型的LLM：固定程序采样同一backbone的多条推理链，提取最终答案并投票；不训练参数或改harness。",
         "sources": [
           {
             "label": "§3.1",
@@ -15603,6 +16621,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2203.11171#S4.SS0.SSS0.Px3"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2203.11171#S3.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录A.2",
+            "url": "https://arxiv.org/html/2203.11171#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -15732,14 +16758,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2303.17651": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-3.5 / ChatGPT / GPT-4 等。",
+        "value": "GPT-3.5（text-davinci-003）、ChatGPT（gpt-3.5-turbo）、GPT-4；代码任务另测Codex code-davinci-002。",
         "sources": [
           {
             "label": "§3",
@@ -15748,6 +16775,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2303.17651#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录L.2",
+            "url": "https://arxiv.org/html/2303.17651#A12.SS2.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -15755,7 +16790,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 LLM 的 feedback/refine prompt。",
+        "value": "同一backbone分别执行生成、反馈与重写提示；如评论重写实验的critique和editor均为text-davinci-003，没有额外训练独立critic。",
         "sources": [
           {
             "label": "§3",
@@ -15764,6 +16799,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2303.17651#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录L.2",
+            "url": "https://arxiv.org/html/2303.17651#A12.SS2.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -15925,14 +16968,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2305.11738": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "InstructGPT / ChatGPT / LLaMA-2 等。",
+        "value": "分别使用 text-davinci-003、ChatGPT（gpt-3.5-turbo）及 LLaMA-2 7B／13B／70B 生成初始回答，再调用外部工具验证。",
         "sources": [
           {
             "label": "§3.1",
@@ -15945,6 +16989,14 @@
           {
             "label": "附录D.1",
             "url": "https://arxiv.org/html/2305.11738#A4.SS1"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2305.11738#S1"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2305.11738#S4"
           }
         ],
         "status": "recorded"
@@ -15952,7 +17004,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 LLM + tool-interactive critic loop。",
+        "value": "对应执行模型读取工具返回的证据，生成批评并修订自己的回答；这里没有另设一个经过训练的 critic 模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -15965,6 +17017,14 @@
           {
             "label": "附录D.1",
             "url": "https://arxiv.org/html/2305.11738#A4.SS1"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2305.11738#S1"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2305.11738#S4"
           }
         ],
         "status": "recorded"
@@ -16142,14 +17202,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2305.20050": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "数学 solver + PRM verifier。",
+        "value": "大规模生成器与奖励模型均从基础GPT-4微调；小规模模型结构类似GPT-4，但预训练算力约少200倍，论文没有公布其参数量或可下载型号。",
         "sources": [
           {
             "label": "§2",
@@ -16162,6 +17223,10 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2305.20050#S4.SS2"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2305.20050#S2.SS2"
           }
         ],
         "status": "recorded"
@@ -16169,7 +17234,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 supervised PRM training；人类逐步标注提供 target。",
+        "value": "人类逐步标注推理正误，固定监督训练程序微调PRM；不是GPT-4自行重写评分规则。",
         "sources": [
           {
             "label": "§2",
@@ -16182,6 +17247,10 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2305.20050#S4.SS2"
+          },
+          {
+            "label": "§2.2",
+            "url": "https://arxiv.org/html/2305.20050#S2.SS2"
           }
         ],
         "status": "recorded"
@@ -16343,14 +17412,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2309.11495": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 LLM。",
+        "value": "主CoVe实验使用基础Llama65B、greedy decoding和few-shot提示；指令微调模型是另外的对照。",
         "sources": [
           {
             "label": "§4.1",
@@ -16367,6 +17437,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS4"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2309.11495#S4.SS2"
           }
         ],
         "status": "recorded"
@@ -16374,7 +17448,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 CoVe workflow；同一 LLM 执行各阶段。",
+        "value": "同一Llama65B按固定CoVe流程生成核验问题、独立回答并修订初答，不用另一个更强核验模型。",
         "sources": [
           {
             "label": "§4.1",
@@ -16391,6 +17465,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS4"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2309.11495#S4.SS2"
           }
         ],
         "status": "recorded"
@@ -16600,14 +17678,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2310.01798": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-4 / GPT-4-Turbo / Llama-2-70B 等。",
+        "value": "gpt-3.5-turbo-0613、GPT-4（2023-08-29访问）、gpt-4-1106-preview、Llama-2-70b-chat。",
         "sources": [
           {
             "label": "§3.1",
@@ -16627,7 +17706,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 LLM self-correction prompt。",
+        "value": "由对应同一模型根据自我检查提示重答；另设oracle标签反馈对照，不能把外部正确性信号算作模型自身判断。",
         "sources": [
           {
             "label": "§3.1",
@@ -16785,18 +17864,27 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2310.04406": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT 系列 LLM agent。",
+        "value": "LATS 使用 GPT-3.5 或 GPT-4 生成行动与答案；正文报告 GPT-3.5 的 HotPotQA／WebShop 结果，以及 GPT-4 的 HumanEval 结果。",
         "sources": [
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2310.04406#S4.SS2"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2310.04406#S1"
+          },
+          {
+            "label": "附录D.2",
+            "url": "https://arxiv.org/html/2310.04406#A4.SS2"
           }
         ],
         "status": "recorded"
@@ -16804,11 +17892,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 MCTS + LLM policy/value/reflection。",
+        "value": "固定 MCTS 程序控制搜索，语言模型提供候选行动、价值判断和失败反思；按 GPT-3.5／GPT-4 配置运行，不训练一个新的搜索模型。",
         "sources": [
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2310.04406#S4.SS2"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2310.04406#S1"
+          },
+          {
+            "label": "附录D.2",
+            "url": "https://arxiv.org/html/2310.04406#A4.SS2"
           }
         ],
         "status": "recorded"
@@ -16938,14 +18034,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2309.03409": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "被优化 prompt 下的 target LLM。",
+        "value": "提示优化中的scorer/任务回答模型为预训练PaLM2-L或text-bison；这里“scorer”指用候选提示答题的模型，准确率再对标准答案计算。",
         "sources": [
           {
             "label": "§3.2",
@@ -16954,6 +18051,18 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2309.03409#S4.SS1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS2.SSS1"
+          },
+          {
+            "label": "§5.5",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS5"
           }
         ],
         "status": "recorded"
@@ -16961,7 +18070,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 optimizer LLM + optimizer prompt。",
+        "value": "optimizer分别用预训练PaLM2-L、PaLM2-L-IT、text-bison、gpt-3.5-turbo、gpt-4，根据候选提示及分数历史产生新提示。",
         "sources": [
           {
             "label": "§3.2",
@@ -16970,6 +18079,18 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2309.03409#S4.SS1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS2.SSS1"
+          },
+          {
+            "label": "§5.5",
+            "url": "https://arxiv.org/html/2309.03409#S5.SS5"
           }
         ],
         "status": "recorded"
@@ -17115,14 +18236,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2309.16797": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "target LM + prompt population。",
+        "value": "PaLM 2-L 读取候选任务提示并解题；表 1 的 Promptbreeder 结果使用这一基础模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -17131,6 +18253,14 @@
           {
             "label": "附录F",
             "url": "https://arxiv.org/html/2309.16797#A6"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2309.16797#S1"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2309.16797#S5"
           }
         ],
         "status": "recorded"
@@ -17138,7 +18268,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 evolutionary algorithm；mutation prompts 参与生成后续 mutation。",
+        "value": "Promptbreeder 用语言模型生成任务提示及变异提示，再按任务正确率选择；实验底层模型为 PaLM 2-L，进化的是提示文本。",
         "sources": [
           {
             "label": "§3.1",
@@ -17147,6 +18277,14 @@
           {
             "label": "附录F",
             "url": "https://arxiv.org/html/2309.16797#A6"
+          },
+          {
+            "label": "§1",
+            "url": "https://arxiv.org/html/2309.16797#S1"
+          },
+          {
+            "label": "§5",
+            "url": "https://arxiv.org/html/2309.16797#S5"
           }
         ],
         "status": "recorded"
@@ -17292,14 +18430,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2310.03714": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "LM program 中的 target LMs。",
+        "value": "提示编译实验由 GPT-3.5 或 Llama2-13B-Chat 执行编译后的程序；参数微调实验另由 T5-Large（770M）执行。",
         "sources": [
           {
             "label": "§3.3",
@@ -17308,6 +18447,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2310.03714#S4.SS0.SSS0.Px2"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2310.03714#S3"
+          },
+          {
+            "label": "§7",
+            "url": "https://arxiv.org/html/2310.03714#S7.SS0.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -17315,7 +18462,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 DSPy optimizer/compiler（如 BootstrapFewShot 等）。",
+        "value": "DSPy 的 teleprompter 运行教师程序、筛选示例并编译提示；教师可以是同一模型的程序。T5-Large 的多跳检索微调明确使用两个 Llama2-13B-Chat 多跳程序组成的教师集成。",
         "sources": [
           {
             "label": "§3.3",
@@ -17324,6 +18471,14 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2310.03714#S4.SS0.SSS0.Px2"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2310.03714#S3"
+          },
+          {
+            "label": "§7",
+            "url": "https://arxiv.org/html/2310.03714#S7.SS0.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -17485,14 +18640,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2310.02304": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定基础 LLM。",
+        "value": "固定 GPT-4 供候选改进程序调用；程序运行和任务效用计算由 Python 环境完成。",
         "sources": [
           {
             "label": "§5.1 Fixed Downstream Task",
@@ -17504,7 +18660,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "LLM 在 seed improver 约束下生成 rewrite；improved improver 可参与下一轮。",
+        "value": "GPT-4 在 improver 的提示和调用规则下生成代码改写；改进后的 improver 可以参与下一轮，GPT-4 参数保持不变。",
         "sources": [
           {
             "label": "§5.1 Fixed Downstream Task",
@@ -17622,14 +18778,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2406.07496": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "任意 compound AI system。",
+        "value": "提示优化实验：gpt-3.5-turbo-0125执行推理；逐题解答改进实验以GPT-4o为基础。其他科学实验还包含非LLM计算组件。",
         "sources": [
           {
             "label": "§3.1",
@@ -17646,6 +18803,10 @@
           {
             "label": "附录G.3",
             "url": "https://arxiv.org/html/2406.07496#A7.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2406.07496#S3.SS2"
           }
         ],
         "status": "recorded"
@@ -17653,7 +18814,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 TextGrad backward/optimizer protocol + critic LLM。",
+        "value": "提示优化时由GPT-4o提供反向文本反馈并修改提示，执行者仍为gpt-3.5-turbo-0125；TextGrad负责传递和应用这些反馈。",
         "sources": [
           {
             "label": "§3.1",
@@ -17670,6 +18831,10 @@
           {
             "label": "附录G.3",
             "url": "https://arxiv.org/html/2406.07496#A7.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§3.2",
+            "url": "https://arxiv.org/html/2406.07496#S3.SS2"
           }
         ],
         "status": "recorded"
@@ -17847,14 +19012,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2410.10762": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-4o-mini、DeepSeek-V2.5、GPT-4o、Claude-3.5-Sonnet 等。",
+        "value": "主执行配置包括GPT-4o-mini-0718、DeepSeek-V2.5、GPT-4o-0513、Claude3.5-Sonnet-0620。",
         "sources": [
           {
             "label": "§4",
@@ -17867,6 +19033,10 @@
           {
             "label": "附录A.6",
             "url": "https://arxiv.org/html/2410.10762#A1.SS6"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2410.10762#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -17874,7 +19044,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude-3.5-Sonnet optimizer；MCTS 外层选择规则固定。",
+        "value": "Claude3.5 Sonnet作为优化LLM修改工作流；MCTS固定负责选择要扩展的节点，执行模型与优化模型分开。",
         "sources": [
           {
             "label": "§4",
@@ -17887,6 +19057,10 @@
           {
             "label": "附录A.6",
             "url": "https://arxiv.org/html/2410.10762#A1.SS6"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2410.10762#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -18064,14 +19238,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2507.03616": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "candidate multi-agent workflow。",
+        "value": "EvoAgentX为可配置框架，没有唯一固定执行模型。附录A.3的HumanEval/AFlow示例明确使用GPT-4o-mini。",
         "sources": [
           {
             "label": "§3.5",
@@ -18091,7 +19266,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 TextGrad/AFlow/MIPRO 等优化器；EvoAgentX 本身主要负责统一 orchestration。",
+        "value": "框架统一调度TextGrad/AFlow/MIPRO；附录A.3示例由Claude3.5-Sonnet-20240620优化、GPT-4o-mini执行。这是示例配置，不能推广为所有实验。",
         "sources": [
           {
             "label": "§3.5",
@@ -18281,14 +19456,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2509.19349": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "候选程序或候选 agent harness。",
+        "value": "程序优化任务运行候选程序；AIME harness 实验由 GPT-4.1-nano 在候选结构下答题，迁移测试另用 GPT-4.1-mini、GPT-4.1 和 o4-mini。",
         "sources": [
           {
             "label": "§3.1",
@@ -18297,6 +19473,18 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px2"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -18304,7 +19492,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 evolutionary controller + LLM ensemble mutation operators。",
+        "value": "固定进化控制器选择父代与模型，再让语言模型改写程序。模型池随实验设置变化：MoE 负载均衡实验明确使用 GPT-4.1、Gemini-2.5-Pro、Claude-Sonnet-4；不能将它们直接当作 AIME 的答题模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -18313,6 +19501,18 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px2"
+          },
+          {
+            "label": "附录B.4",
+            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -18474,14 +19674,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2305.10250": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "chat LLM。",
+        "value": "SiliconFriend分别接ChatGPT、ChatGLM（6.2B）和BELLE（由LLaMA7B微调）；ChatGPT在论文中未给具体API快照名。",
         "sources": [
           {
             "label": "§2",
@@ -18494,6 +19695,10 @@
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2305.10250#S3.SS0.SSS0.Px2"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2305.10250#S3.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -18501,7 +19706,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 summarization + forgetting mechanism。",
+        "value": "对话摘要/用户画像由所接LLM生成，遗忘强度由固定规则更新；ChatGLM/BELLE另做心理对话LoRA适配，ChatGPT不做该参数训练。",
         "sources": [
           {
             "label": "§2",
@@ -18514,6 +19719,10 @@
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2305.10250#S3.SS0.SSS0.Px2"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2305.10250#S3.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -18691,14 +19900,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2308.10144": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "target ReAct-like agent。",
+        "value": "评估阶段统一gpt-3.5-turbo-0613，按ReAct流程执行任务。",
         "sources": [
           {
             "label": "§4.4",
@@ -18707,6 +19917,10 @@
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2308.10144#S5.SS1"
+          },
+          {
+            "label": "附录D.5",
+            "url": "https://arxiv.org/html/2308.10144#A4.SS5"
           }
         ],
         "status": "recorded"
@@ -18714,7 +19928,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "经验抽取默认 GPT-4-0613；执行常用 GPT-3.5。",
+        "value": "insight抽取用gpt-4-0613；训练经验收集中的Reflexion用gpt-3.5-turbo-0613，超窗口时换16k-0613。因此规则提炼者比最终执行模型更强。",
         "sources": [
           {
             "label": "§4.4",
@@ -18723,6 +19937,10 @@
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2308.10144#S5.SS1"
+          },
+          {
+            "label": "附录D.5",
+            "url": "https://arxiv.org/html/2308.10144#A4.SS5"
           }
         ],
         "status": "recorded"
@@ -18868,18 +20086,27 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2409.00872": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-4/GPT-3.5/open models。",
+        "value": "AgentBench比较GPT-3.5、GPT-4、Llama2-7B、CodeLlama-7B、Qwen-1.8B及ChatGLM2；具体商用API快照没有在§4.1中展开。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2409.00872#S3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2409.00872#S4.SS1"
+          },
+          {
+            "label": "§4.7",
+            "url": "https://arxiv.org/html/2409.00872#S4.SS7"
           }
         ],
         "status": "recorded"
@@ -18887,11 +20114,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 Checker/reflection/memory rules。",
+        "value": "Checker、反思和记忆维护按SAGE固定流程运行；§4.1列出被测backbone，未给出独立Checker模型的逐配置对应表，不把它默认成GPT-4教师。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2409.00872#S3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2409.00872#S4.SS1"
+          },
+          {
+            "label": "§4.7",
+            "url": "https://arxiv.org/html/2409.00872#S4.SS7"
           }
         ],
         "status": "recorded"
@@ -19053,14 +20288,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2510.04618": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "ReAct/agent target model（论文用 DeepSeek-V3.1 等）。",
+        "value": "主实验DeepSeek-V3.1；跨模型另测GPT-OSS-120B、GPT-5.1、Llama3.3-70B-Instruct。",
         "sources": [
           {
             "label": "§2.1",
@@ -19073,6 +20309,18 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§4.5",
+            "url": "https://arxiv.org/html/2510.04618#S4.SS5"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.04618#A1.SS1"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2510.04618#A1.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -19080,7 +20328,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 Generator/Reflector/Curator update loop。",
+        "value": "Generator/Reflector/Curator维护playbook；默认backbone为DeepSeek-V3.1。独立Reflector消融比较GPT-OSS-120B、DeepSeek-V3.1-671B、GPT-5.1，不能认为三个角色永远同模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -19093,6 +20341,18 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§4.5",
+            "url": "https://arxiv.org/html/2510.04618#S4.SS5"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.04618#A1.SS1"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2510.04618#A1.SS4.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -19254,18 +20514,35 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2510.16079": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "当前 policy agent。",
+        "value": "主要以 Qwen2.5-3B 执行检索与问答，规模实验另比较 Qwen2.5-0.5B、1.5B；训练后仍由相应的更新模型答题。BGE-M3 只负责经验检索的向量表示。",
         "sources": [
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2510.16079#S3.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2510.16079#S4.SS1.SSS4"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2510.16079#S5.SS1"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.16079#A1.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.16079#A1.SS1.SSS0.Px8"
           }
         ],
         "status": "recorded"
@@ -19273,11 +20550,27 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 distillation/retrieval/RL lifecycle。",
+        "value": "EvolveR 从执行轨迹中总结经验，并用 GRPO 更新 Qwen2.5 参数；GPT-4o-mini 是教师模型消融配置，不应写成所有实验都依赖的外部教师。",
         "sources": [
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2510.16079#S3.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2510.16079#S4.SS1.SSS4"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2510.16079#S5.SS1"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.16079#A1.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2510.16079#A1.SS1.SSS0.Px8"
           }
         ],
         "status": "recorded"
@@ -19391,14 +20684,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2512.18746": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "SmolAgent / Flash-Searcher 等 target agents；还有 held-out agent-system transfer。",
+        "value": "主执行模型GPT-5-mini，配SmolAgent或Flash-Searcher；冻结进化后的记忆架构，再换Kimi K2或DeepSeekV3.2测迁移。",
         "sources": [
           {
             "label": "§3.3",
@@ -19407,6 +20701,10 @@
           {
             "label": "§5.2",
             "url": "https://arxiv.org/html/2512.18746#S5.SS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2512.18746#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -19414,7 +20712,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 meta-evolution operator 生成并选择 memory designs。",
+        "value": "主实验meta-evolution operator也使用GPT-5-mini，生成和选择记忆设计；模型与执行角色相同，但调用职责分开。",
         "sources": [
           {
             "label": "§3.3",
@@ -19423,6 +20721,10 @@
           {
             "label": "§5.2",
             "url": "https://arxiv.org/html/2512.18746#S5.SS2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2512.18746#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -19552,14 +20854,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2602.07755": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5-nano；最终也换 GPT-5-mini 测试。",
+        "value": "设计学习时GPT-5-nano执行；最终另换GPT-5-mini测迁移。测试时记忆内部LLM统一GPT-4o-mini，embedding为text-embedding-3-small。",
         "sources": [
           {
             "label": "§3.2",
@@ -19568,6 +20871,10 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2602.07755#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2602.07755#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -19575,7 +20882,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "GPT-5 Meta Agent；memory 模块所用模型与 target actor 需分别看。",
+        "value": "GPT-5 Meta Agent编写记忆设计；可调用GPT-4o-mini、GPT-4.1和text-embedding-3-small构建内部流程。它不同于执行者GPT-5-nano。",
         "sources": [
           {
             "label": "§3.2",
@@ -19584,6 +20891,10 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2602.07755#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2602.07755#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -19761,14 +21072,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.18620": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "4B target/self-evolution model；可 transfer 去指导其他模型。",
+        "value": "主执行者Qwen3-4B-Instruct，权重固定；外部instruction由单独训练的编辑策略更新。",
         "sources": [
           {
             "label": "§3.2",
@@ -19777,6 +21089,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2603.18620#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.18620#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2603.18620#S4.SS3.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -19784,7 +21104,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "训练后由同一 policy 提出 context edits；训练阶段用 RL objective 学 updater。",
+        "value": "编辑策略同样从Qwen3-4B-Instruct开始，但经过LSE强化训练；主执行模型不随编辑策略一起训练。迁移时固定这份LSE编辑策略指导其他执行模型。",
         "sources": [
           {
             "label": "§3.2",
@@ -19793,6 +21113,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2603.18620#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.18620#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2603.18620#S4.SS3.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -19970,18 +21298,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2402.17574": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-3.5/GPT-4/Llama2-70B game agents。",
+        "value": "GPT-3.5-Turbo-0613、GPT4-0613、Llama2-Chat-70B和Qwen-72B构成游戏agent。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2402.17574#S3"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2402.17574#A1.SS1"
           }
         ],
         "status": "recorded"
@@ -19989,11 +21322,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 reflection + DFS policy optimization。",
+        "value": "对应游戏agent的LLM执行策略级反思并改提示；固定DFS程序按牌局收益搜索，不另训练一个策略修改模型。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2402.17574#S3"
+          },
+          {
+            "label": "附录A.1",
+            "url": "https://arxiv.org/html/2402.17574#A1.SS1"
           }
         ],
         "status": "recorded"
@@ -20107,14 +21444,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2510.23601": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "generalist web/agent executor。",
+        "value": "Manager为Claude Sonnet4，负责协调；Web Agent为GPT-4.1，负责检索和网页交互；MCP检索embedding用text-embedding-3-large。",
         "sources": [
           {
             "label": "§3.4",
@@ -20130,7 +21468,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "manager/generator LLM（论文用 Claude Sonnet 4 等组合）生成、抽象、curate tools。",
+        "value": "Manager/generator沿Alita流程把成功执行抽象成MCP工具，并按相似度选择复用；§4.1的角色配对是Claude Sonnet4与GPT-4.1，不能笼统写“同一agent”。",
         "sources": [
           {
             "label": "§3.4",
@@ -20284,14 +21622,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.13131": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frozen LLM Minecraft planner。",
+        "value": "Minecraft 由高层语言模型规划、STEVE-1 执行底层动作。§4.3 的受控实验明确使用 Qwen3.5-Plus 规划器，并固定同一个 STEVE-1。",
         "sources": [
           {
             "label": "§3.2",
@@ -20300,6 +21639,18 @@
           {
             "label": "附录C.2",
             "url": "https://arxiv.org/html/2603.13131#A3.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.13131#S3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.13131#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2603.13131#S4.SS3"
           }
         ],
         "status": "recorded"
@@ -20307,7 +21658,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 Monitor/Inducer/Curator/Adaptor pipeline + LLM。",
+        "value": "Monitor 提取执行状态；Inducer 将成功与失败整理成技能和补救办法；Curator 筛选、合并知识；Adaptor 修补未完成的计划。§3 的角色说明没有分别给出这些模块的模型型号，不能仅凭规划器型号将它们全部写成 Qwen3.5-Plus。",
         "sources": [
           {
             "label": "§3.2",
@@ -20316,6 +21667,18 @@
           {
             "label": "附录C.2",
             "url": "https://arxiv.org/html/2603.13131#A3.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.13131#S3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2603.13131#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "§4.3",
+            "url": "https://arxiv.org/html/2603.13131#S4.SS3"
           }
         ],
         "status": "recorded"
@@ -20477,14 +21840,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.18000": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一模型 family 的 Meta-Agent/subagents（论文展示 Opus/Sonnet 4.6 等）。",
+        "value": "Claude Opus4.6或Claude Sonnet4.6驱动Meta-Agent与可执行子agent；外部框架可直接调用保存后的脚本。",
         "sources": [
           {
             "label": "§3",
@@ -20493,6 +21857,10 @@
           {
             "label": "§3.4",
             "url": "https://arxiv.org/html/2603.18000#S3.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2603.18000#S5.SS1.SSS0.Px4"
           }
         ],
         "status": "recorded"
@@ -20500,7 +21868,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Meta-Agent 通过 create/run/modify primitives 编辑 subagents。",
+        "value": "Meta-Agent在相应Opus4.6/Sonnet4.6配置中调用create/run/modify，编辑并保存子agent；固定工具接口不参与自改。",
         "sources": [
           {
             "label": "§3",
@@ -20509,6 +21877,10 @@
           {
             "label": "§3.4",
             "url": "https://arxiv.org/html/2603.18000#S3.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2603.18000#S5.SS1.SSS0.Px4"
           }
         ],
         "status": "recorded"
@@ -20638,14 +22010,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.18743": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frozen generalist LLM agent + retrieved/generated skills。",
+        "value": "Gemini-3.1-Flash 执行技能和完成任务；Qwen3-Embedding-0.6B 负责技能检索，是另一个可训练的路由模型，不是答题模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -20658,6 +22031,14 @@
           {
             "label": "§2.3",
             "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§2.4",
+            "url": "https://arxiv.org/html/2603.18743#S2.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.18743#S3.SS1.SSS0.Px4"
           }
         ],
         "status": "recorded"
@@ -20665,7 +22046,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 generalist agent 的 reflective write-back loop。",
+        "value": "Gemini-3.1-Flash 通过反思调用改写、发现技能；另用离线强化学习更新 Qwen3-Embedding-0.6B 路由器。论文说明全部实验的底层 LLM 为 Gemini-3.1-Flash。",
         "sources": [
           {
             "label": "§2.1",
@@ -20678,6 +22059,14 @@
           {
             "label": "§2.3",
             "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2"
+          },
+          {
+            "label": "§2.4",
+            "url": "https://arxiv.org/html/2603.18743#S2.SS4.SSS0.Px2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2603.18743#S3.SS1.SSS0.Px4"
           }
         ],
         "status": "recorded"
@@ -20887,14 +22276,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.15097": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "scientific coding agents。",
+        "value": "受控表示实验使用Gemini3.1 Pro Preview和Gemini3.1 Flash Lite Preview；CritPt演化案例另比较Gemini3 Pro Preview与Gemini3.1 Pro Preview两个时期。",
         "sources": [
           {
             "label": "§4.4",
@@ -20903,6 +22293,14 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2604.15097#A1"
+          },
+          {
+            "label": "§3.3",
+            "url": "https://arxiv.org/html/2604.15097#S3.SS3.SSS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2604.15097#A2.SS3"
           }
         ],
         "status": "recorded"
@@ -20910,7 +22308,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 experience update/evolution procedure。",
+        "value": "固定Evolver流程驱动Gene更新；对应案例的任务模型为Gemini3 Pro Preview或Gemini3.1 Pro Preview，不能将其与受控实验的Flash Lite混为一组。",
         "sources": [
           {
             "label": "§4.4",
@@ -20919,6 +22317,14 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2604.15097#A1"
+          },
+          {
+            "label": "§3.3",
+            "url": "https://arxiv.org/html/2604.15097#S3.SS3.SSS1"
+          },
+          {
+            "label": "附录B.3",
+            "url": "https://arxiv.org/html/2604.15097#A2.SS3"
           }
         ],
         "status": "recorded"
@@ -21080,14 +22486,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2604.20133": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.2 等 target agents。",
+        "value": "主实验由 GPT-5.2 配合 EvoAgent 执行外贸任务；模型替换实验改用 GPT-4.1 或 Qwen3.5-35B-A3B。",
         "sources": [
           {
             "label": "§3.1",
@@ -21096,6 +22503,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.20133#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.20133#S4.SS1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2604.20133#S4.SS2.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -21103,7 +22518,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "user-feedback-driven closed loop / framework agents。",
+        "value": "EvoAgent 根据用户反馈调用模型生成、修订技能并组织子代理。主配置的基础模型是 GPT-5.2；§4 未为技能修订角色另列一款独立模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -21112,6 +22527,14 @@
           {
             "label": "§3.3",
             "url": "https://arxiv.org/html/2604.20133#S3.SS3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2604.20133#S4.SS1"
+          },
+          {
+            "label": "§4.2",
+            "url": "https://arxiv.org/html/2604.20133#S4.SS2.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -21273,14 +22696,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.23904": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "七种 target models；direct、Codex、Claude Code 三种执行模式。",
+        "value": "GPT-5.5、GPT-5.4、GPT-5.4-mini、GPT-5.4-nano、GPT-5.2、Qwen3.5-4B、Qwen3.6-35B-A3B；分别按direct chat/Codex/Claude Code模式运行。",
         "sources": [
           {
             "label": "§4",
@@ -21293,6 +22717,10 @@
           {
             "label": "附录C.1",
             "url": "https://arxiv.org/html/2605.23904#A3.SS1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2605.23904#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -21490,14 +22918,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.00272": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "robot execution engine。",
+        "value": "仿真中由Claude Code + Claude Opus4.6（1M上下文）写程序，机器人执行引擎实际执行控制；真实双臂YAM迁移实验用Codex + GPT-5.5 xhigh。",
         "sources": [
           {
             "label": "§2",
@@ -21506,6 +22935,10 @@
           {
             "label": "附录E.4",
             "url": "https://arxiv.org/html/2607.00272#A5.SS4"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.00272#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -21513,7 +22946,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "coding agent + fixed evolutionary search/validation infrastructure。",
+        "value": "仿真编码与修复agent为Claude Opus4.6；真实迁移为GPT-5.5 xhigh。Coordinator管理技能，Actor运行、诊断、修改机器人程序。",
         "sources": [
           {
             "label": "§2",
@@ -21522,6 +22955,10 @@
           {
             "label": "附录E.4",
             "url": "https://arxiv.org/html/2607.00272#A5.SS4"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.00272#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -21683,14 +23120,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.26784": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3 系列 agent。",
+        "value": "Qwen3-1.7B和Qwen3-4B；主表展示4B在ALFWorld、WebShop、ScienceWorld的结果。",
         "sources": [
           {
             "label": "§3",
@@ -21706,7 +23144,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 policy，经 RL 学习 curation action。",
+        "value": "同一Qwen3策略交替解题与整理skill，通过跨任务RL训练；不是另一个外部LLM负责写技能。",
         "sources": [
           {
             "label": "§3",
@@ -21892,14 +23330,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.11350": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frozen upper-level VLM planner；下层 VLA/API 也固定。",
+        "value": "上层固定Qwen3.6-27B规划。VLABench下层为官方π0 checkpoint，通过OpenPI执行5-action chunks；ESI-Bench用固定交互API。",
         "sources": [
           {
             "label": "§3",
@@ -21908,6 +23347,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2608.11350#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.11350#S4.SS1.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -21915,7 +23358,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 frozen model optimizer role。",
+        "value": "冻结的 Qwen3.6-27B 承担优化所需的语言模型调用，结合轨迹总结修改技能与 harness；成本统计包含规划、判分、总结和产物优化。π0 负责机器人底层动作，不修改 harness。",
         "sources": [
           {
             "label": "§3",
@@ -21924,6 +23367,14 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2608.11350#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2608.11350#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "附录A.4",
+            "url": "https://arxiv.org/html/2608.11350#A1.SS4"
           }
         ],
         "status": "recorded"
@@ -22069,18 +23520,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2504.15228": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "其修改后 successor。",
+        "value": "SICA 的大部分代理使用 Claude Sonnet 3.5 v2，专门的 reasoning agent 使用 o3-mini；代理协作调用工具完成基准任务。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2504.15228#S3"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2504.15228#S4"
           }
         ],
         "status": "recorded"
@@ -22088,11 +23544,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "当前 archive/best coding agent。",
+        "value": "自改进也在这套代理系统中完成：主要由 Claude Sonnet 3.5 v2 工作，o3-mini 提供专门推理。修改目标是代理系统的代码，而非这两个模型的参数。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2504.15228#S3"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2504.15228#S4"
           }
         ],
         "status": "recorded"
@@ -22222,14 +23682,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2603.03329": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Gemini-2.5-Flash decision agent 或最终纯 code policy。",
+        "value": "Gemini-2.5-Flash 配合 harness 做决策；纯代码策略设置则直接运行最终生成的代码，不在执行时调用语言模型。",
         "sources": [
           {
             "label": "§3",
@@ -22241,7 +23702,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Gemini-2.5-Flash synthesizer/refiner。",
+        "value": "Gemini-2.5-Flash 生成并根据执行反馈修订 harness 或代码策略。",
         "sources": [
           {
             "label": "§3",
@@ -22375,14 +23836,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2606.19980": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "robot policy + real/sim robots。",
+        "value": "真实YAM机器人执行学到的控制策略或脚本；研究代码由Codex + GPT-5.5 xhigh、Claude Code + Opus4.7 High、Kimi Code + Kimi K2.6 thinking生成。",
         "sources": [
           {
             "label": "§2",
@@ -22395,6 +23857,14 @@
           {
             "label": "附录B.5",
             "url": "https://arxiv.org/html/2606.19980#A2.SS5"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2606.19980#S3"
+          },
+          {
+            "label": "附录C.4",
+            "url": "https://arxiv.org/html/2606.19980#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -22402,7 +23872,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "coding agent / evolution agent。",
+        "value": "上述三种coding agent在真实反馈下改控制代码或训练算法；改变的是机器人策略，不是让GPT-5.5或Opus4.7自身做参数训练。",
         "sources": [
           {
             "label": "§2",
@@ -22415,6 +23885,14 @@
           {
             "label": "附录B.5",
             "url": "https://arxiv.org/html/2606.19980#A2.SS5"
+          },
+          {
+            "label": "§3",
+            "url": "https://arxiv.org/html/2606.19980#S3"
+          },
+          {
+            "label": "附录C.4",
+            "url": "https://arxiv.org/html/2606.19980#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -22624,14 +24102,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.14159": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "base LLM + selected config。",
+        "value": "搜索时任务backbone为GPT-5.3-Codex；冻结harness后迁移Sonnet4.6、Gemini3.1 Pro、Qwen3.5-397B-A17B、GLM5、GPT-4.1、DeepSeekV3.2。",
         "sources": [
           {
             "label": "附录C",
@@ -22640,6 +24119,10 @@
           {
             "label": "附录C",
             "url": "https://arxiv.org/html/2607.14159#A3.SS0.SSS0.Px3"
+          },
+          {
+            "label": "附录D",
+            "url": "https://arxiv.org/html/2607.14159#A4"
           }
         ],
         "status": "recorded"
@@ -22647,7 +24130,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "search phase modifier/diagnosis LLM；test-time retriever/adaptor。",
+        "value": "论文把GPT-5.3-Codex列作搜索来源模型；附录C/D没有另给诊断与修改角色各自独立的模型型号，不补写一个Claude修改器。",
         "sources": [
           {
             "label": "附录C",
@@ -22656,6 +24139,10 @@
           {
             "label": "附录C",
             "url": "https://arxiv.org/html/2607.14159#A3.SS0.SSS0.Px3"
+          },
+          {
+            "label": "附录D",
+            "url": "https://arxiv.org/html/2607.14159#A4"
           }
         ],
         "status": "recorded"
@@ -22817,14 +24304,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.01918": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.4；当前实验设置中同一 base model 承担各角色。",
+        "value": "主执行模型GPT-5.4；冻结harness后换Claude Sonnet4.6（non-thinking）测试迁移。",
         "sources": [
           {
             "label": "HarnessCompass",
@@ -22841,6 +24329,14 @@
           {
             "label": "Running the tracks independently.",
             "url": "https://arxiv.org/html/2608.01918#Sx3.SSx4.SSS0.Px1"
+          },
+          {
+            "label": "Models.",
+            "url": "https://arxiv.org/html/2608.01918#Sx4.SSx1.SSS0.Px3"
+          },
+          {
+            "label": "The advantage is more evident on held-out tasks.",
+            "url": "https://arxiv.org/html/2608.01918#Sx4.SSx2.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -22848,7 +24344,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "evolution meta-agent；分组件优化后进行 consolidation。",
+        "value": "代码agent、轨迹分析器、反馈agent、meta-agent均用GPT-5.4；职责分离但共享同一backbone。",
         "sources": [
           {
             "label": "HarnessCompass",
@@ -22865,6 +24361,14 @@
           {
             "label": "Running the tracks independently.",
             "url": "https://arxiv.org/html/2608.01918#Sx3.SSx4.SSS0.Px1"
+          },
+          {
+            "label": "Models.",
+            "url": "https://arxiv.org/html/2608.01918#Sx4.SSx1.SSS0.Px3"
+          },
+          {
+            "label": "The advantage is more evident on held-out tasks.",
+            "url": "https://arxiv.org/html/2608.01918#Sx4.SSx2.SSS0.Px2"
           }
         ],
         "status": "recorded"
@@ -23026,14 +24530,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.08466": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "同一 frozen DeepSeek-V4-Flash-Preview 执行 current harness。",
+        "value": "冻结的 DeepSeek-V4-Flash-Preview 配合当前 harness 执行任务。",
         "sources": [
           {
             "label": "附录B.1",
@@ -23045,7 +24550,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一 DeepSeek-V4-Flash-Preview 分别在 evolver/meta-evolver scope 自改。",
+        "value": "DeepSeek-V4-Flash-Preview 分别承担进化者和元进化者，在各自允许编辑的文件范围内修改代码。",
         "sources": [
           {
             "label": "附录B.1",
@@ -23179,14 +24684,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.09380": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "long-horizon agent + 当前 Loop Policy。",
+        "value": "DeepSeek-V4-Flash，YC-Bench官方medium配置，20轮上下文，加载当前Loop Policy。",
         "sources": [
           {
             "label": "§4.1",
@@ -23199,6 +24705,10 @@
           {
             "label": "§4.3",
             "url": "https://arxiv.org/html/2608.09380#S4.SS3"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2608.09380#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -23206,7 +24716,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "LLM proposer 生成候选 policy；固定 Champion–Challenger evaluation/release机制。",
+        "value": "同一实验配置的DeepSeek-V4-Flash生成候选Loop Policy；固定Champion–Challenger程序负责配对比较、发布和回滚。",
         "sources": [
           {
             "label": "§4.1",
@@ -23219,6 +24729,10 @@
           {
             "label": "§4.3",
             "url": "https://arxiv.org/html/2608.09380#S4.SS3"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2608.09380#S5.SS1"
           }
         ],
         "status": "recorded"
@@ -23380,18 +24894,27 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.12307": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "主设置 GPT-5.4-mini；另有 Gemini target 对照。",
+        "value": "主任务执行者GPT-5.4-mini；目标模型对照换Gemini3.5 Flash。强builder仅构造harness，不代替目标模型答最终测试。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2608.12307#S3"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.12307#S4"
+          },
+          {
+            "label": "§5.6",
+            "url": "https://arxiv.org/html/2608.12307#S5.SS6"
           }
         ],
         "status": "recorded"
@@ -23399,11 +24922,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "strong builder models，和目标 executor 分离。",
+        "value": "跨目标对照的五种builder为Opus4.7、GPT-5.5、Gemini3.1 Pro、Gemini3.5 Flash、Grok0.1，统一在Cursor构造harness；构造者与目标GPT-5.4-mini/Gemini3.5 Flash分开。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2608.12307#S3"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2608.12307#S4"
+          },
+          {
+            "label": "§5.6",
+            "url": "https://arxiv.org/html/2608.12307#S5.SS6"
           }
         ],
         "status": "recorded"
@@ -23533,7 +25064,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.24735": {
     "fields": [
@@ -23560,7 +25092,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同 backbone 使用固定 Ω template 产生新层。",
+        "value": "与执行端对应的 Gemma 4 31B-IT 或 GPT-5.2 读取固定 Ω 模板，生成下一层优化提示；不更换或训练基础模型。",
         "sources": [
           {
             "label": "§3",
@@ -23750,14 +25282,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.27276": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "task agent 如 gpt-oss-120B。",
+        "value": "任务代理统一用 gpt-oss-120B；完成训练步骤后，改用它经 LoRA 更新的检查点执行任务。",
         "sources": [
           {
             "label": "§4.3",
@@ -23770,6 +25303,10 @@
           {
             "label": "§6.2",
             "url": "https://arxiv.org/html/2605.27276#S6.SS2"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2605.27276#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -23777,7 +25314,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Sonnet 4.6 Meta/Feedback agents（论文设置）；训练算法固定/可选择。",
+        "value": "Claude Sonnet 4.6 分别承担 Meta-Agent 和 Feedback-Agent，设计任务代理、分析反馈并选择改写 scaffold 或训练参数；Modal 上的训练程序实际执行 gpt-oss-120B 的梯度更新。",
         "sources": [
           {
             "label": "§4.3",
@@ -23790,6 +25327,10 @@
           {
             "label": "§6.2",
             "url": "https://arxiv.org/html/2605.27276#S6.SS2"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2605.27276#S5.SS2"
           }
         ],
         "status": "recorded"
@@ -23951,14 +25492,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2607.21971": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "trained LLM evolution agent。",
+        "value": "经MetaEvolve强化训练的Qwen3-14B执行多轮程序进化；公平对照也使用Qwen3-14B。",
         "sources": [
           {
             "label": "§2.1",
@@ -23967,6 +25509,14 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS3.Px1"
           }
         ],
         "status": "recorded"
@@ -23974,7 +25524,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "RL training algorithm 学 modifier policy；inference 使用训练后的同一 model做 evolutionary proposal。",
+        "value": "固定RL算法训练Qwen3-14B的诊断/修改能力；测试时由训练后的Qwen3-14B提出下一版程序。",
         "sources": [
           {
             "label": "§2.1",
@@ -23983,6 +25533,14 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS3.Px1"
           }
         ],
         "status": "recorded"
@@ -24160,14 +25718,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.05446": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3-8B ALFWorld agent。",
+        "value": "主可训练策略Qwen3-8B；提示时对照另用Claude Opus4.5、GPT-4.1、GPT-5。",
         "sources": [
           {
             "label": "附录C",
@@ -24176,6 +25735,14 @@
           {
             "label": "附录D.2",
             "url": "https://arxiv.org/html/2608.05446#A4.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.05446#S3.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录C",
+            "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24183,7 +25750,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "SFT+GRPO training algorithm。",
+        "value": "SFT/GRPO训练Qwen3-8B；外部Claude Opus收集SFT轨迹并合并经验库，epoch边界才合并。附录C仅写“Claude Opus”，未标明该教师的具体版本，不能从baseline的Opus4.5推定。",
         "sources": [
           {
             "label": "附录C",
@@ -24192,6 +25759,14 @@
           {
             "label": "附录D.2",
             "url": "https://arxiv.org/html/2608.05446#A4.SS2"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.05446#S3.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录C",
+            "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24377,18 +25952,27 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.13951": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定模型 + candidate sibling harnesses。",
+        "value": "所有SWE-bench与LCB任务rollout统一MiniMax-M2.7-highspeed（deterministic=false），配不同sibling harness。",
         "sources": [
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2608.13951#S5.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.13951#S5.SS2"
+          },
+          {
+            "label": "§5.4",
+            "url": "https://arxiv.org/html/2608.13951#S5.SS4"
           }
         ],
         "status": "recorded"
@@ -24396,11 +25980,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "HELIX controller / candidate builders；后续模型更新是单独训练阶段。",
+        "value": "HELIX控制器按来源组合harness组件并组织候选验证；MiniMax-M2.7-highspeed执行任务。本文到达可供模型更新的轨迹数据产出，不等于已训练下一代模型。",
         "sources": [
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2608.13951#S5.SS1"
+          },
+          {
+            "label": "§5.2",
+            "url": "https://arxiv.org/html/2608.13951#S5.SS2"
+          },
+          {
+            "label": "§5.4",
+            "url": "https://arxiv.org/html/2608.13951#S5.SS4"
           }
         ],
         "status": "recorded"
@@ -24562,18 +26154,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2505.19955": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "frontier LLM / coding agent 通过 MLR-Agent 执行 research task。",
+        "value": "MLR-Agent研究系统比较o4-mini、Gemini2.5-Pro-Preview-05-06、Claude3.7 Sonnet；Codex配置用o4-mini-medium，AI Scientist V2用o4-mini-high。",
         "sources": [
           {
             "label": "§6",
             "url": "https://arxiv.org/html/2505.19955#S6.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.5",
+            "url": "https://arxiv.org/html/2505.19955#S3.SS5.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24581,11 +26178,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "无 persistent modifier；benchmark流程固定。",
+        "value": "各研究agent在其模型与编码框架中迭代科研产物；MLR-Bench及MLR-Judge固定，不存在一个统一的跨论文自改模型。",
         "sources": [
           {
             "label": "§6",
             "url": "https://arxiv.org/html/2505.19955#S6.SS0.SSS0.Px1"
+          },
+          {
+            "label": "§3.5",
+            "url": "https://arxiv.org/html/2505.19955#S3.SS5.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24715,14 +26316,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2605.08678": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "被测 frontier AI research/coding agents 自主执行 research。",
+        "value": "完整集：Claude Opus4.6、GPT-5.4、Gemini3.1 Pro、DeepSeekV3.2、Qwen3.6 Plus。Lite另有Opus4.7、Sonnet4.6、GPT-5.5 Pro/5.5、Gemini3.1 Flash Lite、DeepSeekV4Pro/Flash、Qwen3.6Max、KimiK2.6、GLM5.1。",
         "sources": [
           {
             "label": "§3.2",
@@ -24731,6 +26333,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2605.08678#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2605.08678#S5.SS1.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24738,7 +26348,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "无 persistent modifier；benchmark evaluator固定。",
+        "value": "一般实验由上述任务模型改算法；测试时进化用Gemini3.1 Pro，测试时参数训练用Qwen3.5-35B-A3B。两条路线不能当同模型对照。",
         "sources": [
           {
             "label": "§3.2",
@@ -24747,6 +26357,14 @@
           {
             "label": "§3.2",
             "url": "https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2605.08678#S4.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§5.1",
+            "url": "https://arxiv.org/html/2605.08678#S5.SS1.SSS0.Px1"
           }
         ],
         "status": "recorded"
@@ -24892,14 +26510,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.17271": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "18个 agent-model configurations 执行 project-level research。",
+        "value": "表 2 比较 18 种模型／工具组合：包括 Codex + GPT-5.6 Sol（xhigh／ultra），Claude Code + Opus 5／Opus 4.8／GLM-5.3／GLM-5.2／Kimi K3／K2.7／MiniMax M3／DeepSeek V4 Flash／Pro／MiMo V2.5 Pro，以及 Kimi Code、MiMo Code、OpenHands 下的对应配置。代理执行完整科研项目。",
         "sources": [
           {
             "label": "§2.1",
@@ -24908,6 +26527,18 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2608.17271#A4"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -24915,7 +26546,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "无 persistent modifier；benchmark仅改变 methodological guidance。",
+        "value": "没有跨任务持续修改自身的代理；评测程序改变提供给代理的方法与步骤说明，以测试科研自主性。",
         "sources": [
           {
             "label": "§2.1",
@@ -24924,6 +26555,18 @@
           {
             "label": "附录D",
             "url": "https://arxiv.org/html/2608.17271#A4"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1.SSS0.Px1"
+          },
+          {
+            "label": "§3.1",
+            "url": "https://arxiv.org/html/2608.17271#S3.SS1.SSS0.Px3"
           }
         ],
         "status": "recorded"
@@ -25069,18 +26712,23 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2507.19457": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "使用候选 prompt 的目标系统。",
+        "value": "主复合AI系统使用Qwen3-8B或GPT-4.1-mini-2025-04-14；它们执行候选提示，GEPA不更新这些执行模型的权重。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2507.19457#S3"
+          },
+          {
+            "label": "附录E.2",
+            "url": "https://arxiv.org/html/2507.19457#A5.SS2"
           }
         ],
         "status": "recorded"
@@ -25088,11 +26736,19 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "反思型 prompt optimizer",
+        "value": "Qwen3-8B 或 GPT-4.1-mini 在对应配置中读取执行轨迹和文字反馈，提出提示修改；固定 GEPA 算法选择候选并评测。跨模型实验将完全用 Qwen3-8B 优化的提示交给 GPT-4.1-mini 执行。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2507.19457#S3"
+          },
+          {
+            "label": "§4",
+            "url": "https://arxiv.org/html/2507.19457#S4"
+          },
+          {
+            "label": "附录E.2",
+            "url": "https://arxiv.org/html/2507.19457#A5.SS2"
           }
         ],
         "status": "recorded"
@@ -25222,7 +26878,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2609.00829": {
     "fields": [
@@ -25241,7 +26898,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "专门的评估agent定位与审核错误，优化agent据反馈编辑执行agent的harness。",
+        "value": "评估代理负责失败定位及候选审核，优化代理据反馈编辑 harness。§4.1 明确了执行端 Qwen3.6-27B／DeepSeek-V4-Flash，但未分别列出这两个修改相关角色的模型配置。",
         "sources": [
           {
             "label": "§4.1",
@@ -25359,7 +27016,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.27311": {
     "fields": [
@@ -25386,7 +27044,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一基础模型充当进化agent，控制器安排配对验证和确认。",
+        "value": "DeepSeek-V4-Flash-preview承担进化、诊断与任务执行等模型角色；控制器安排配对验证、确认和预算计数。",
         "sources": [
           {
             "label": "附录A.1",
@@ -25399,6 +27057,10 @@
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录B.2",
+            "url": "https://arxiv.org/html/2608.27311#A2.SS2"
           }
         ],
         "status": "recorded"
@@ -25560,7 +27222,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.10178": {
     "fields": [
@@ -25583,7 +27246,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "各配置用与执行者相同的基础模型作外层修改者。",
+        "value": "每次实验均由对应的 Claude Haiku 4.5、GPT-5-mini 或 DeepSeek-V4-Flash 同时承担任务执行和外层修改两个角色；因此跨模型结果反映两种角色的共同影响。",
         "sources": [
           {
             "label": "§2.2",
@@ -25741,14 +27404,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2608.31100": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "主上下文实验：GPT-4o、GPT-4.1、o3-mini、Gemini2.5 Flash/Pro、GPT-5.5、Gemini3.5 Flash，使用统一游戏接口。",
+        "value": "主上下文实验：GPT-4o、GPT-4.1、o3-mini、Gemini2.5 Flash/Pro、GPT-5.5、Gemini3.5 Flash，使用统一游戏接口。 参数训练实验另用 Qwen3-8B：epoch 0 是原始模型，epoch 1–19 是用探索轨迹更新后的模型；每个检查点都在七个游戏上测试。",
         "sources": [
           {
             "label": "§4.4",
@@ -25761,6 +27425,10 @@
           {
             "label": "§5.2",
             "url": "https://arxiv.org/html/2608.31100#S5.SS2.SSS0.Px1"
+          },
+          {
+            "label": "§6.1",
+            "url": "https://arxiv.org/html/2608.31100#S6.SS1"
           }
         ],
         "status": "recorded"
@@ -25958,14 +27626,15 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   },
   "2609.01481": {
     "fields": [
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Developer使用Codex + GPT-5.5、OpenCode + DeepSeek-V4-Pro、Pi + MiniMax-M3三套配置。",
+        "value": "Codex CLI0.142.5 + GPT-5.5 high；OpenCode1.14.30 + DeepSeek-V4-Pro；Pi0.80.10 + MiniMax-M3。",
         "sources": [
           {
             "label": "附录A.2",
@@ -25978,6 +27647,14 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2609.01481#S4.SS2.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2609.01481#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2609.01481#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -25985,7 +27662,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Project Planner依据上一轮QA证据更新开发文档，Developer改项目代码；QA Tester检查产物。",
+        "value": "对应同一模型–harness配置承担Planner/Developer/QA角色：Planner改文档、Developer改项目代码、QA产出证据。不是另有一个被训练的HoH模型。",
         "sources": [
           {
             "label": "附录A.2",
@@ -25998,6 +27675,14 @@
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2609.01481#S4.SS2.SSS0.Px2"
+          },
+          {
+            "label": "§4.1",
+            "url": "https://arxiv.org/html/2609.01481#S4.SS1.SSS0.Px2"
+          },
+          {
+            "label": "附录B.1",
+            "url": "https://arxiv.org/html/2609.01481#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -26175,6 +27860,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09"
+    "sourceDate": "2026-09-09",
+    "roleAuditDate": "2026-09-09"
   }
 }

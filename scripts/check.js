@@ -80,3 +80,21 @@ assert(field('2608.13951','isolation').includes('公开用例'));
 assert(field('2608.31100','isolation').includes('不写入'));
 assert.equal(get('2605.09998').methodType,'joint');
 console.log('Passed: 134 maintained tables, all dimensions, per-row sources, no research placeholders, and experiment-specific regression checks.');
+
+// Keep execution, modification and judging models distinct when rebuilding notes.
+for(const p of papers){
+ assert.equal(tables[p.id].roleAuditDate,'2026-09-09',p.id);
+ for(const k of ['executor','modifier','verdict']) assert.equal(p.brief[k],field(p.id,k),p.id+':'+k);
+ assert(!/^LLM actor。|^修改后的同一 agent。|^同 agent 后续执行。/.test(field(p.id,'executor')),p.id);
+}
+assert(field('2608.31111','modifier').includes('Qwen3.5-4B'));
+assert(field('2608.31111','modifier').includes('GPT-5.6'));
+assert(field('2410.04444','executor').includes('gpt-3.5-turbo-0125'));
+assert(field('2410.04444','modifier').includes('gpt-4o-2024-05-13'));
+assert(field('2604.20087','executor').includes('Claude Sonnet 4.6'));
+assert(field('2603.18743','executor').includes('Gemini-3.1-Flash'));
+assert(field('2603.18743','executor').includes('不是答题模型'));
+assert(field('2606.04455','executor').includes('Qwen3-8B'));
+assert(field('2606.04455','executor').includes('Claude Haiku 4.5'));
+assert(field('2608.06301','executor').includes('grok-build'));
+console.log('Passed: all 134 role audits; matching card/table text; explicit executor, modifier and router identities.');
