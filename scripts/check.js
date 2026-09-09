@@ -121,3 +121,30 @@ assert(!overviews['2608.31111'].fields.executor.includes('RQ2'));
 assert(overviews['2608.31111'].fields.executor.includes('Qwen3.5-9B'));
 assert(overviews['2608.31111'].fields.modifier.includes('GPT-5.6'));
 console.log('Passed: 134 sourced three-point TL;DRs; plain overview fields; technical detail retained in research tables.');
+
+// Feedback must remain benchmark-specific in both catalog views.
+const feedback=require('../data/feedback-protocols.json');
+assert.deepEqual(Object.keys(feedback).sort(),papers.map(p=>p.id).sort());
+for(const p of papers){
+ const cases=p.profile.feedbackCases;
+ assert.deepEqual(cases,feedback[p.id],p.id);
+ assert(cases.length>0,p.id);
+ assert.equal(new Set(cases.map(c=>c.label)).size,cases.length,p.id);
+ for(const c of cases){
+  for(const k of ['label','data','scoring','visible','use']) assert(typeof c[k]==='string'&&c[k].trim().length>(k==='label'?0:3),p.id+':'+k);
+  assert(c.sources.length>0&&c.sources.every(s=>s.label&&s.url.startsWith('https://')),p.id);
+  assert(!/待核|待补|本轮尚|\ufffd/.test(JSON.stringify(c)),p.id);
+ }
+}
+const feedbackText=id=>JSON.stringify(feedback[id]);
+assert(feedbackText('2608.09819').includes('tests/test.sh'));
+assert(feedbackText('2608.09819').includes('Claude Opus 4.6'));
+assert(feedbackText('2608.09819').includes('GLM-5.2'));
+assert(feedbackText('2608.31111').includes('八项检查表'));
+assert(feedbackText('2608.31111').includes('不返回试题'));
+assert(feedbackText('2608.31100').includes('不返回代理'));
+assert(feedbackText('2608.11350').includes('只用于诊断'));
+assert(feedbackText('2603.18743').includes('参考答案'));
+assert(feedbackText('2608.13951').includes('不是')||feedbackText('2608.13951').includes('不能'));
+assert(query({q:'五级进展评分'}).some(p=>p.id==='2608.11350'));
+console.log(`Passed: ${papers.length} sourced feedback protocols, ${Object.values(feedback).flat().length} experiment rows; feedback access and judging distinctions preserved.`);

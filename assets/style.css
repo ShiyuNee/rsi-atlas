@@ -28,3 +28,7 @@
 .paper-tldr .field-source{margin-top:3px}
 .research-fields>div:first-child{grid-column:1/-1}
 @media(max-width:760px){.paper-tldr{padding:15px 14px}.paper-tldr li{grid-template-columns:1fr;gap:4px}.paper-tldr ol{gap:17px}.paper-tldr p{font-size:14px}}
+
+/* Benchmark-specific feedback stays in the same research table. */
+.profile-table .feedback-case th small{font-size:13px;color:var(--ink);font-weight:600;line-height:1.7;margin-top:8px}.profile-table .feedback-case th{background:#f2f7f5}.profile-table .feedback-case p:last-child{margin-bottom:0}
+@media(max-width:760px){.profile-table{min-width:0;table-layout:auto;display:block}.profile-table thead{display:none}.profile-table tbody,.profile-table tr,.profile-table th,.profile-table td{display:block;width:auto!important}.profile-table tr{border:1px solid var(--line);margin-bottom:16px}.profile-table th,.profile-table td{border:0;padding:12px 14px}.profile-table th{background:#f2f7f5;border-bottom:1px solid var(--line)}.profile-table th small{margin-top:4px}.profile-table td:last-child{border-top:1px solid var(--line);font-size:12px}.profile-table td:last-child:before{content:"原文位置";display:block;font-weight:600;color:var(--ink);margin-bottom:6px}.profile-table td:last-child a{display:inline-block}.profile-table .feedback-case th br{display:none}.profile-table .feedback-case th small{display:block}}

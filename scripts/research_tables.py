@@ -5,11 +5,13 @@ ROOT=Path(__file__).resolve().parents[1]
 def attach_tables(papers):
     tables=json.loads((ROOT/'data/research-tables.json').read_text())
     overviews=json.loads((ROOT/'data/overviews.json').read_text())
-    assert set(tables)==set(overviews)=={p['id'] for p in papers}
+    feedback=json.loads((ROOT/'data/feedback-protocols.json').read_text())
+    assert set(tables)==set(overviews)==set(feedback)=={p['id'] for p in papers}
     for p in papers:
         table=tables[p['id']]
         p['overview']=overviews[p['id']]
         p['profile']['fields']=table['fields']
+        p['profile']['feedbackCases']=feedback[p['id']]
         p['profile']['missing']=[]
         p['profile']['partial']=[]
         p['profile']['sourceDate']=table['sourceDate']

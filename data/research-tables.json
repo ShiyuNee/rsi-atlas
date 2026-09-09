@@ -14672,7 +14672,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "仍由各框架中的Qwen3.7-Max在原会话内读取评分者.md后反思和更新。独立评分任务代理使用Claude Code + Claude Opus4.6。",
+        "value": "仍由各框架中的Qwen3.7-Max在原会话内读取judge.md后反思和更新。独立评分任务代理使用Claude Code + Claude Opus4.6。",
         "sources": [
           {
             "label": "附录B.4",
@@ -14712,7 +14712,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "独立Claude Code + Claude Opus4.6按固定评估流程检查金融产物并写评分者.md；该文件反馈给Qwen3.7-Max执行任务代理用于下一阶段改进。",
+        "value": "独立Claude Code + Claude Opus4.6按固定评估流程检查金融产物并写judge.md；该文件反馈给Qwen3.7-Max执行任务代理用于下一阶段改进。",
         "sources": [
           {
             "label": "附录B.4",
@@ -14776,7 +14776,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "已完成任务的评分者.md 分数与反馈。",
+        "value": "已完成任务的judge.md 分数与反馈。",
         "sources": [
           {
             "label": "附录B.4",
