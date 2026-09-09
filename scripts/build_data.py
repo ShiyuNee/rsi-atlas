@@ -118,6 +118,8 @@ def build():
     reading_count = attach_readings(list(papers.values()))
     from profiles import attach_profiles
     coverage = attach_profiles(list(papers.values()))
+    from research_tables import attach_tables
+    coverage = attach_tables(list(papers.values()))
     output = dict(coverage=coverage, readingCount=reading_count, taxonomy=taxonomy, methodTypes=METHOD_TYPES, updated='2026-09-09',originalCount=sum(p['source']=='original' for p in papers.values()),
         papers=list(papers.values()), framework=source.split('## 0.5 ')[0],
         conclusions='## 4. '+source.split('## 4. ')[1])

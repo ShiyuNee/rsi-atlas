@@ -15,13 +15,21 @@ A research catalog for recursive self-improvement, especially **harness evolutio
 
 This is a research index, not a claim that every paper or experimental detail has been independently re-verified. Original notes are preserved verbatim. Additions identify the primary sources and review depth; unknown details remain explicit. Dates preserve the precision of the source, and new records use arXiv's first-submission date.
 
+## Readable research tables (2026-09-09)
+
+All 134 records use one maintained table in `data/research-tables.json`, shared by cards and detail pages. The five visible dimensions are executor, modifier, evolving object, feedback, and initial harness. The disclosure contains the full table, including update/acceptance, training/evolution data, debugging/selection data, final evaluation, isolation, and distinctive contribution. Each row links to its primary-source location.
+
+Paper omissions and conflicting protocols are stated as concrete evidence boundaries. A reported validation or adaptive score is not relabeled as a sealed test result. Historical notes remain downloadable and are not the current table's source of truth. This release focuses on the listed research dimensions; it is not an independent replication of the papers' experiments.
+
+Edit `data/research-tables.json` to update displayed content and citations. `scripts/research_tables.py` attaches it after historical imports, so older prose cannot overwrite current entries. Regenerate `data/papers.json` and run the checks before publishing.
+
 ## Maintain the catalog
 
 - `data/research-notes.md`: original source document; preserved as supplied.
 - `data/annotations.json`: curated category/tag corrections and protocol annotations for existing papers. Keys are stable paper IDs. Do not erase uncertainty in the original notes.
 - `data/additions.json`: new papers with `sources` and `review` fields. Deduplicate by canonical paper URL before adding.
 - `data/papers.json`: generated merged catalog; **do not edit directly**.
-- `scripts/build_data.py`: imports all linked table records and attaches detailed note tables. Raw occurrences remain available in every paper dialog.
+- `scripts/build_data.py`: imports all linked table records and attaches detailed note tables. Historical raw occurrences remain in the generated data for provenance.
 
 Rebuild after changing annotations or additions:
 

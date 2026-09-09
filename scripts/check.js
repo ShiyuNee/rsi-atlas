@@ -55,50 +55,28 @@ assert.equal(query({facets:{verified:['原文关键段落已复核']}}).length,2
 console.log('Passed: two-level taxonomy, independent priority, all four method types, primary-source corrections, 25 reviewed papers.');
 
 const {readingSections}=require('../assets/app.js');
-assert.equal(data.readingCount,9);
-assert.equal(query({facets:{content:['完整专题解读']}}).length,9);
-for(const p of papers.filter(p=>p.readingNote)){
- const sections=readingSections(p);assert.equal(sections.length,6,p.id);
- assert(sections.every(s=>s.body.length>100),p.id);
- assert(sections.reduce((n,s)=>n+s.body.length,0)>4000,p.id);
- assert(p.readingNote.index.executor&&p.readingNote.index.evolve&&p.readingNote.index.eval,p.id);
- assert(!sections.some(s=>s.body.includes('## B. Non-Harness')),p.id);
-}
-assert(readingSections(get('2608.15071')).some(s=>s.body.includes('论文没有实验')));
-assert(readingSections(get('2607.14777')).some(s=>s.body.includes('1,440')));
-assert(readingSections(get('2607.25886')).some(s=>s.body.includes('18/23')));
-assert(get('2604.25850').readingNote.caveats.length>0);
-assert(get('2608.12307').readingNote.caveats.length>0);
-assert(query({q:'General Topic 跨 benchmark'}).some(p=>p.id==='2608.15071'));
-console.log('Passed: 9 complete six-section readings; full mechanisms, results, caveats and search coverage.');
-assert.equal(data.coverage.total,134);
+const tables=require('../data/research-tables.json');
+assert.equal(Object.keys(tables).length,134);
+const expected=['executor','modifier','object','verdict','seed','cycle','train','debug','test','isolation','novelty'];
 for(const p of papers){
- assert.equal(p.profile.fields.length,12,p.id);
- assert(p.brief.novelty.length>15,p.id);
- assert.equal(p.profile.sourceCheck.date,'2026-09-09');
- assert(p.profile.sourceCheck.url.startsWith('https://'));
- assert(p.profile.fields.every(f=>['recorded','partial','missing','not-applicable'].includes(f.status)),p.id);
- assert(p.profile.fields.filter(f=>f.status==='missing').every(f=>f.value===''),p.id);
+ assert.deepEqual(p.profile.fields.map(f=>f.key),expected,p.id);
+ for(const f of p.profile.fields){
+  assert(f.value.trim().length>4,p.id+':'+f.key);
+  assert(!/待核|待补|未核实|原记录未|本轮尚/.test(f.value),p.id+':'+f.key);
+  assert(f.sources.length>0,p.id+':'+f.key);
+  for(const r of f.sources){assert(r.label&&r.url.startsWith('https://'),p.id);assert(!/Report GitHub|reporting errors|^References$/.test(r.label),p.id);}
+ }
+ assert.deepEqual(p.profile.fields,tables[p.id].fields,p.id);
+ assert.equal(readingSections(p).length,1);
 }
+const field=(id,k)=>get(id).profile.fields.find(f=>f.key===k).value;
+assert(field('2603.18743','train').includes('788'));
+assert(field('2603.18743','test').includes('342'));
+assert(field('2607.00272','train').includes('51–65'));
+assert(field('2607.00272','test').includes('1–50'));
+assert(field('2608.02276','test').includes('1300')||field('2608.02276','test').includes('1,300'));
+assert(field('2608.02276','test').includes('1270')||field('2608.02276','test').includes('1,270'));
+assert(field('2608.13951','isolation').includes('公开用例'));
+assert(field('2608.31100','isolation').includes('不写入'));
 assert.equal(get('2605.09998').methodType,'joint');
-assert(get('2606.01314').brief.experiments.some(e=>e.test==='205 test'));
-assert(get('2608.24876').brief.experiments.some(e=>e.name==='SkillFlow'&&e.note.includes('没有 held-out')));
-assert(get('2409.07429').brief.experiments.some(e=>e.name.includes('online')));
-assert(get('2310.03714').brief.experiments[0].test.includes('validation'));
-assert(query({facets:{gaps:['哪些部分保持固定']}}).length>0);
-assert(!readingSections(get('2608.03764')).some(s=>s.title.includes('执行者、修改者')));
-console.log('Passed: 134 question-led profiles; explicit source scopes, gaps, distinct mechanisms and protocol corrections.');
-
-const audits=require('../data/system-data-audit.json');
-assert.equal(Object.keys(audits).length,134);
-for(const p of papers){
- const a=audits[p.id];assert(a&&a.seed&&a.protocol&&a.sections,p.id);
- assert.equal(p.brief.seed,a.seed,p.id);
- assert.equal(p.brief.protocolDetail,a.protocol,p.id);
- assert.equal(p.profile.fields.find(f=>f.key==='seed').value,a.seed,p.id);
- assert.equal(p.profile.fields.find(f=>f.key==='protocol').value,a.protocol,p.id);
- assert(a.source.startsWith('https://')&&a.sourceSha256.length===64,p.id);
-}
-assert(get('2507.19457').brief.protocolDetail.includes('PUPA'));
-assert(get('2511.10395').brief.protocolDetail.includes('BFCL v3'));
-console.log('Passed: all 134 source-linked dataset/harness audits reach generated profiles without stale overrides.');
+console.log('Passed: 134 maintained tables, all dimensions, per-row sources, no research placeholders, and experiment-specific regression checks.');
