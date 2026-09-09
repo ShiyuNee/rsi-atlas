@@ -98,3 +98,5 @@ Continual Harness is now classified under joint harness/weight evolution because
 ## Dataset and initial-harness audit (2026-09-09)
 
 `data/system-data-audit.json` contains paper-specific revisions for all 134 entries: initial system components and editable boundaries, named evolution/selection/test datasets, and experiment-specific isolation caveats. Each entry links its primary source and section, records the source-text hash, and explicitly marks details still unverified. This targeted pass does not turn all entries into full-paper reviews. `scripts/profiles.py` gives this layer priority for the seed and protocol fields; the cards and full reading pages expose its source. Original notes remain unchanged. Rebuild with `python3 scripts/build.py`, then run `node scripts/check.js`.
+
+概览和研究表的用语优先说明具体对象与操作。英文术语应改成可直接理解的中文，必要时附简短解释；文字技能说明与可执行程序必须明确区分，保留模型名、数据集名和原文来源。

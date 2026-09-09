@@ -43,7 +43,7 @@ assert.equal(get('2608.02276').methodType,'harness');
 assert(get('2608.02276').tags.includes('EditorWeights'));
 assert(!get('2607.15524').tags.includes('HarnessCode'));
 assert(get('2410.10762').tags.includes('Workflow'));
-assert(get('2604.25850').brief.seed.includes('bash'));
+assert(get('2604.25850').brief.seed.toLowerCase().includes('bash'));
 assert(get('2604.25850').brief.executor.includes('high'));
 for(const type of Object.keys(data.methodTypes)){
  const selected=query({category:'methods',quick:type});assert(selected.length>0);
