@@ -372,7 +372,7 @@
         "executor": "LLM actor。",
         "modifier": "固定 reflector prompt；actor/evaluator/reflector 可由同/不同 LLM 角色承担。",
         "roleContext": "**改**：固定 reflector prompt；actor/evaluator/reflector 可由同/不同 LLM 角色承担。<br>**执行**：LLM actor。",
-        "seed": "actor + evaluator + reflector + memory buffer。",
+        "seed": "由任务执行者、结果评估器、反思模块和记忆缓冲区组成。失败后生成文字反思，供下一次尝试阅读；更新的是保存的经验，不是模型权重。",
         "fixed": "M0：memory content 变，memory update mechanism fixed",
         "verdict": "binary/scalar task feedback；可来自环境、unit tests、answer metric。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -421,9 +421,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "actor + evaluator + reflector + memory buffer。",
+            "value": "由任务执行者、结果评估器、反思模块和记忆缓冲区组成。失败后生成文字反思，供下一次尝试阅读；更新的是保存的经验，不是模型权重。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -611,7 +611,7 @@
         "executor": "GPT-4-based Minecraft agent + Mineflayer。",
         "modifier": "GPT-4 skill synthesizer/debugger；curriculum/retrieval procedure fixed。",
         "roleContext": "**改**：GPT-4 skill synthesizer/debugger；curriculum/retrieval procedure fixed。<br>**执行**：GPT-4-based Minecraft agent + Mineflayer。",
-        "seed": "automatic curriculum + skill library + iterative prompting。",
+        "seed": "Minecraft agent 包含自动课程（决定下一步探索什么）、技能库（保存可复用代码）和迭代提示流程（根据执行反馈修改代码）。基础系统已经具备任务选择和技能复用，不能写成只有一个提示词的空白 agent。",
         "fixed": "M0/M1：skill content evolves，skill system fixed",
         "verdict": "environment state、execution errors、self-verification。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -660,9 +660,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "automatic curriculum + skill library + iterative prompting。",
+            "value": "Minecraft agent 包含自动课程（决定下一步探索什么）、技能库（保存可复用代码）和迭代提示流程（根据执行反馈修改代码）。基础系统已经具备任务选择和技能复用，不能写成只有一个提示词的空白 agent。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -1898,7 +1898,7 @@
         "executor": "GPT-5.4 high Code Agent。",
         "modifier": "GPT-5.4 Evolve Agent：附录 A 表 4 为 xhigh，正文 §4.1 称 high，原文口径不一致；Agent Debugger 提供结构化诊断。",
         "roleContext": "**改**：GPT-5.4 xhigh Evolve Agent；GPT-5.4 Debugger。<br>**执行**：GPT-5.4 high + current NexAU/AHE harness。",
-        "seed": "NexAU₀：bash-only seed，而非一开始就有完整工具、middleware 和长期记忆的成熟 harness。",
+        "seed": "从 NexAU₀ 开始，初始 agent 主要通过 bash 执行命令。起点没有完整的专用工具、中间处理模块和长期记忆；这些额外运行能力需要在进化过程中建立。",
         "fixed": "模型权重与评估器固定；外层 Debugger / Evolve 的角色与流程固定。",
         "verdict": "TB2 官方任务 verifier、重复 rollout 的 pass/fail 与跨轮任务差分。",
         "diagnosis": "Debugger 从原始轨迹生成逐任务根因/成功分析，再汇总成 benchmark 层证据。",
@@ -2004,9 +2004,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "NexAU₀：bash-only seed，而非一开始就有完整工具、middleware 和长期记忆的成熟 harness。",
+            "value": "从 NexAU₀ 开始，初始 agent 主要通过 bash 执行命令。起点没有完整的专用工具、中间处理模块和长期记忆；这些额外运行能力需要在进化过程中建立。",
             "status": "recorded",
-            "source": "更新笔记"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -2201,7 +2201,7 @@
         "executor": "MiniMax M2.5、Qwen3.5-35B-A3B 或 GLM-5。",
         "modifier": "同一 fixed base model 的 proposer role；从 evaluator 提供的失败证据生成 edits。",
         "roleContext": "**改/执行**：同一 fixed base model，在 task-agent 与 proposer role 间切换；MiniMax M2.5、Qwen3.5-35B-A3B、GLM-5。",
-        "seed": "DeepAgent SDK 上的 minimal harness：简短 benchmark-facing prompt 与默认 filesystem / shell tools；只能编辑 harness 定义文件的配置面。",
+        "seed": "基于 DeepAgent SDK 的简化配置：简短的任务提示词，加默认文件系统和 shell 工具。可修改范围是 harness 定义文件中的配置，并非任意重写整个 SDK。",
         "fixed": "权重、解码、预算、任务环境、evaluator 和 promotion rule 固定。",
         "verdict": "benchmark-native verifier 给出任务 pass/fail。",
         "diagnosis": "只向 proposer 暴露 held-in traces、失败簇、passing behavior 和既往改动摘要。",
@@ -2268,9 +2268,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "DeepAgent SDK 上的 minimal harness：简短 benchmark-facing prompt 与默认 filesystem / shell tools；只能编辑 harness 定义文件的配置面。",
+            "value": "基于 DeepAgent SDK 的简化配置：简短的任务提示词，加默认文件系统和 shell 工具。可修改范围是 harness 定义文件中的配置，并非任意重写整个 SDK。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -5516,17 +5516,17 @@
       "category": "evaluation",
       "methodType": "",
       "brief": {
-        "summary": "只给自然语言 capability goal，不给 downstream eval；agent需自己解释目标、选数据/update method、构造train/validation signal、决定何时评估；最终在hidden expert-authored 520 items上测。",
-        "novelty": "这是对现有 self-evolution benchmark 一个非常关键的反转：**不再把任务和metric都给清楚**，直接测试 agent能否建立正确的 improvement objective与self-evaluation。",
-        "object": "允许 model weights 与 agent harness evolution；具体由agent自行选择。",
-        "executor": "同一被测 system 既作为 learner/modifier，也执行自己的验证与训练/harness-edit workflow。",
-        "modifier": "被测 self-evolution agent/researcher 负责决定并实施 update。",
+        "summary": "给 agent 一个宽泛目标，例如提高科学推理能力，让它自己选学习材料、决定怎样训练或修改运行流程，并设计练习来检查效果。作者再用保密题目检验：它在自己练习上的进步，是否真的变成了目标能力的提升。",
+        "novelty": "它考察 agent 能否把宽泛目标变成合理的学习任务和自测标准：即使能成功运行训练、也能让自测分数上涨，仍可能因为练错内容而无法通过作者的保密考试。",
+        "object": "分两组研究：参数实验改变模型权重；harness 实验冻结权重，修改提示词、工具使用规则、工作流程、记忆或自测方法。支持两类修改不代表实验让两者同时进化。",
+        "executor": "训练和数据处理由平台控制器执行；被测模型配合当前 harness 完成任务。负责制定改进计划的决策模型在一轮内固定，不会每训练一次就自动换成新模型。",
+        "modifier": "决策 agent 选择数据、训练方法和参数，或提出 harness 修改，再通过工具请求平台执行。论文报告的实验保持初始决策模型固定。",
         "roleContext": "**改**：被测 self-evolution agent/researcher 负责决定并实施 update。<br>**执行**：同一被测 system 既作为 learner/modifier，也执行自己的验证与训练/harness-edit workflow。",
-        "seed": "统一 interactive environment，可执行训练与harness edit。",
+        "seed": "作者自建的受控交互环境，通过一个统一工具提供数据搜索/导入/生成、启动训练、查询进度、自测、分支和停止等操作。agent 不直接使用 shell，也不需要安装训练仓库或实现分布式运行；这些底层工作由控制器代办。这个“简化”指工程接口简单，学习策略仍要 agent 自己决定；它不是一套预先写好改进策略的成熟 harness。",
         "fixed": "Evaluation of end-to-end self-evolution。",
-        "verdict": "agent自建 training/validation signals；真正 downstream hidden eval完全不可见。",
+        "verdict": "**改进时的反馈：**agent 自己找或生成练习数据、设计检查方法，再看这些练习的结果；作者没有预先给它一个可直接优化的公开题库。**正式评测：**作者用保密题目评分。只做最终评测的实验不提供中途分数；允许反馈的实验只返回有限次数的汇总分数。两种设置都不让 agent 看到正式题目、标准答案或逐题错误，因此不能根据正式考试中某一道错题直接修改。 正式题按预先固定的标准答案或评分规则判分；开放式回答由固定的评审模型按评分细则打分。harness 实验先冻结候选再评测，分数不返回给创建它的 agent。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
-        "update": "",
+        "update": "只给自然语言 capability goal，不给 downstream eval；agent需自己解释目标、选数据/update method、构造train/validation signal、决定何时评估；最终在hidden expert-authored 520 items上测。",
         "acceptance": "当前记录未单列 candidate acceptance / rollback 规则。",
         "experiments": [
           {
@@ -5542,7 +5542,8 @@
         "result": "当前 agents能完成training/harness-edit loops，但weight gain稀少不稳定；strongest evolved harness仍低于 engineered Qwen-Agent；常出现local self-eval gain不迁移hidden eval，继续search还擦除已有提升。",
         "reading": "本轮按原记录重新整理；未标为原文复核。",
         "sources": [],
-        "classificationReason": "评测框架、诊断与实证分析。"
+        "classificationReason": "评测框架、诊断与实证分析。",
+        "protocolDetail": "RQ2/RQ3 使用作者自建的 520 道专家编写题，覆盖科学、人文社科、医学、数学、逻辑与指令遵循、学术写作六类目标。训练材料和自测练习由 agent 自行选择，正式题目不向它开放。要区分“只在结束时考试”和“中途允许有限汇总分数”两种协议；后者的分数参与搜索，不能描述成全过程与评测零接触。RQ1 则沿用 PostTrainBench 的原评测，与这 520 题分开统计。 这套题由专家从零编写，已有题库只作为格式和难度参考；经过独立审查、难度校准及去重。训练数据入库前也会检查是否与保密题重叠。"
       },
       "reviewed": false,
       "profile": {
@@ -5550,30 +5551,30 @@
           {
             "key": "object",
             "label": "被测的变化 / 能力",
-            "value": "允许 model weights 与 agent harness evolution；具体由agent自行选择。",
+            "value": "分两组研究：参数实验改变模型权重；harness 实验冻结权重，修改提示词、工具使用规则、工作流程、记忆或自测方法。支持两类修改不代表实验让两者同时进化。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "executor",
             "label": "谁执行任务",
-            "value": "同一被测 system 既作为 learner/modifier，也执行自己的验证与训练/harness-edit workflow。",
+            "value": "训练和数据处理由平台控制器执行；被测模型配合当前 harness 完成任务。负责制定改进计划的决策模型在一轮内固定，不会每训练一次就自动换成新模型。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "modifier",
             "label": "被测系统如何更新",
-            "value": "被测 self-evolution agent/researcher 负责决定并实施 update。",
+            "value": "决策 agent 选择数据、训练方法和参数，或提出 harness 修改，再通过工具请求平台执行。论文报告的实验保持初始决策模型固定。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "seed",
             "label": "被测系统 / 参照基线",
-            "value": "统一 interactive environment，可执行训练与harness edit。",
+            "value": "作者自建的受控交互环境，通过一个统一工具提供数据搜索/导入/生成、启动训练、查询进度、自测、分支和停止等操作。agent 不直接使用 shell，也不需要安装训练仓库或实现分布式运行；这些底层工作由控制器代办。这个“简化”指工程接口简单，学习策略仍要 agent 自己决定；它不是一套预先写好改进策略的成熟 harness。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "fixed",
@@ -5585,9 +5586,9 @@
           {
             "key": "verdict",
             "label": "评测如何判分",
-            "value": "agent自建 training/validation signals；真正 downstream hidden eval完全不可见。",
+            "value": "**改进时的反馈：**agent 自己找或生成练习数据、设计检查方法，再看这些练习的结果；作者没有预先给它一个可直接优化的公开题库。**正式评测：**作者用保密题目评分。只做最终评测的实验不提供中途分数；允许反馈的实验只返回有限次数的汇总分数。两种设置都不让 agent 看到正式题目、标准答案或逐题错误，因此不能根据正式考试中某一道错题直接修改。 正式题按预先固定的标准答案或评分规则判分；开放式回答由固定的评审模型按评分细则打分。harness 实验先冻结候选再评测，分数不返回给创建它的 agent。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "diagnosis",
@@ -5599,8 +5600,8 @@
           {
             "key": "update",
             "label": "评测开放哪些更新方式",
-            "value": "由被测方法决定；此条贡献是评估协议，不假设 benchmark 自身修改。",
-            "status": "not-applicable",
+            "value": "只给自然语言 capability goal，不给 downstream eval；agent需自己解释目标、选数据/update method、构造train/validation signal、决定何时评估；最终在hidden expert-authored 520 items上测。",
+            "status": "recorded",
             "source": "现有记录 / 定位对照"
           },
           {
@@ -5613,16 +5614,16 @@
           {
             "key": "protocol",
             "label": "任务组织与评估隔离",
-            "value": "6 vague capability goals→hidden 520 expert items。",
+            "value": "RQ2/RQ3 使用作者自建的 520 道专家编写题，覆盖科学、人文社科、医学、数学、逻辑与指令遵循、学术写作六类目标。训练材料和自测练习由 agent 自行选择，正式题目不向它开放。要区分“只在结束时考试”和“中途允许有限汇总分数”两种协议；后者的分数参与搜索，不能描述成全过程与评测零接触。RQ1 则沿用 PostTrainBench 的原评测，与这 520 题分开统计。 这套题由专家从零编写，已有题库只作为格式和难度参考；经过独立审查、难度校准及去重。训练数据入库前也会检查是否与保密题重叠。",
             "status": "partial",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "novelty",
             "label": "与相近工作的区别",
-            "value": "这是对现有 self-evolution benchmark 一个非常关键的反转：**不再把任务和metric都给清楚**，直接测试 agent能否建立正确的 improvement objective与self-evaluation。",
+            "value": "它考察 agent 能否把宽泛目标变成合理的学习任务和自测标准：即使能成功运行训练、也能让自测分数上涨，仍可能因为练错内容而无法通过作者的保密考试。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "原文 §3–4 与附录 C 核查"
           },
           {
             "key": "takeaway",
@@ -5643,9 +5644,9 @@
           "date": "2026-09-09",
           "url": "https://arxiv.org/html/2608.31111v1",
           "version": "2608.31111v1",
-          "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+          "scope": "原文 §3.1–3.3、§4 与附录 C 定向核查：区分执行与决策角色、初始环境、题库构造，以及最终评测和有限汇总反馈两种协议；非全文逐项审读。"
         },
-        "focus": "这是对现有 self-evolution benchmark 一个非常关键的反转：**不再把任务和metric都给清楚**，直接测试 agent能否建立正确的 improvement objective与self-evaluation。"
+        "focus": "它考察 agent 能否把宽泛目标变成合理的学习任务和自测标准：即使能成功运行训练、也能让自测分数上涨，仍可能因为练错内容而无法通过作者的保密考试。"
       }
     },
     {
@@ -5946,7 +5947,7 @@
         "executor": "Self-Eval 使用 creator 对应 runtime；Unified-Eval 固定 Gemini 3.1 Pro。",
         "modifier": "被测 creator LLM 在开发 workspace 修改 harness。",
         "roleContext": "6 creator LLMs、4 domains、5 downstream benchmarks；hidden eval；Evolution 用 downstream execution feedback。",
-        "seed": "policy-free、可运行但不主动求解的 seed；提供基本接口，不提供 execution loop、managed context、recovery、verifier/stop rule。",
+        "seed": "作者提供一个可以启动、满足基本接口的空白底座，但没有主动求解循环、受管理的上下文、失败恢复、结果验证或停止规则。这些运行能力本身就是待构建对象。",
         "fixed": "输入输出合同、下游评估服务与预算受控制。",
         "verdict": "public development 的日志/分数；Evolution 中 SWE-Pro 与 TB2 的执行反馈。",
         "diagnosis": "creator 从具体任务 artifacts、日志与 per-task feedback 定位缺失机制。",
@@ -6005,9 +6006,9 @@
           {
             "key": "seed",
             "label": "被测系统 / 参照基线",
-            "value": "policy-free、可运行但不主动求解的 seed；提供基本接口，不提供 execution loop、managed context、recovery、verifier/stop rule。",
+            "value": "作者提供一个可以启动、满足基本接口的空白底座，但没有主动求解循环、受管理的上下文、失败恢复、结果验证或停止规则。这些运行能力本身就是待构建对象。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -8481,7 +8482,7 @@
         "executor": "Gemini-2.5 / Claude-3.7 系列；网页用 BrowserGym，SWE 用 bash-only ReAct agent。",
         "modifier": "抽取器和 success/failure classifier 使用与执行者相同的 backbone，角色提示分别固定。",
         "roleContext": "fixed distiller/retriever → same solver/agent 后续使用 reasoning memory。",
-        "seed": "ReAct agent + 外部记忆检索/抽取模块。",
+        "seed": "任务执行使用 ReAct 流程，即交替推理、调用工具、读取结果；另配外部记忆检索和经验提取模块。经验以文本存储并在后续任务中取用，不写入模型参数。",
         "fixed": "模型权重与抽取/检索流程固定。",
         "verdict": "轨迹和用户问题交给同一 backbone 的二分类 judge，自判 Success/Failure。",
         "diagnosis": "按自判成败选择不同反思提示，归纳成功策略或错误原因；每条轨迹最多抽取 3 条 memory items。",
@@ -8533,9 +8534,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "ReAct agent + 外部记忆检索/抽取模块。",
+            "value": "任务执行使用 ReAct 流程，即交替推理、调用工具、读取结果；另配外部记忆检索和经验提取模块。经验以文本存储并在后续任务中取用，不写入模型参数。",
             "status": "recorded",
-            "source": "原文定向补查"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -9231,7 +9232,7 @@
         "executor": "solver with coupled Working + Experiential Memory。",
         "modifier": "separate fixed Meta-Agent",
         "roleContext": "separate fixed Meta-Agent → solver with coupled Working + Experiential Memory。",
-        "seed": "中性初始记忆包 M0 + memory-control layer；另与 benchmark 原 agent 对照。",
+        "seed": "在原任务 agent 外加入记忆控制层，并从中性记忆包 M0 开始。论文也比较原 agent 和加了 M0 的系统，用来区分“新增记忆层的作用”和“后来记忆更新的作用”。",
         "fixed": "当前记录未逐一列出固定部分。",
         "verdict": "任务成败及 repeated-run dev evidence。",
         "diagnosis": "结构化 trace 指向具体 memory workflow，例如换货时误用原商品 ID，定位后只修对应步骤。",
@@ -9299,9 +9300,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "中性初始记忆包 M0 + memory-control layer；另与 benchmark 原 agent 对照。",
+            "value": "在原任务 agent 外加入记忆控制层，并从中性记忆包 M0 开始。论文也比较原 agent 和加了 M0 的系统，用来区分“新增记忆层的作用”和“后来记忆更新的作用”。",
             "status": "recorded",
-            "source": "原文定向补查"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -9433,7 +9434,7 @@
         "executor": "Qwen3.5 五种规模的目标 agent；OfficeQA、SealQA、WildClawBench 三种任务设置。",
         "modifier": "reflector/evolver 提出联合 bundle，Tool-Smith 实施工具修改；具体角色配置随规模实验。",
         "roleContext": "separate reflector/evolver → current agent with skill/tool library。",
-        "seed": "带 skill/tool library 的 agent scaffold；不是任意重写所有 runtime 部件。",
+        "seed": "起点是带技能库和工具库的 agent。技能描述怎样做任务，工具提供可执行操作；方法重点是让两者配合演化，并不开放任意重写所有运行组件。",
         "fixed": "当前记录未逐一列出固定部分。",
         "verdict": "OfficeQA 用答案匹配；SealQA 用冻结 Qwen3.5-122B judge 对照 gold，3 次多数票；WildClaw 按其任务评价。",
         "diagnosis": "失败轨迹定位涉及的 skill/tool、错误类型与症状；同时根据共同出现的结果估计 skill 间冲突。",
@@ -9501,9 +9502,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "带 skill/tool library 的 agent scaffold；不是任意重写所有 runtime 部件。",
+            "value": "起点是带技能库和工具库的 agent。技能描述怎样做任务，工具提供可执行操作；方法重点是让两者配合演化，并不开放任意重写所有运行组件。",
             "status": "recorded",
-            "source": "原文定向补查"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -10417,7 +10418,7 @@
         "executor": "Pokemon embodied agent。",
         "modifier": "LLM Refiner；通常同一 frontier model family。",
         "roleContext": "**改**：LLM Refiner；通常同一 frontier model family。<br>**执行**：Pokemon embodied agent。",
-        "seed": "只有 frames/ASCII map/buttons 的 minimal interface。",
+        "seed": "游戏最初只提供画面、ASCII 地图和按键操作等简单接口。更复杂的提示词、技能、记忆和子 agent 在持续游戏过程中调整；这些接口本身不等于已经具备完整的游戏规划能力。",
         "fixed": "",
         "verdict": "trajectory/history + game progress/failure。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -10467,9 +10468,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "只有 frames/ASCII map/buttons 的 minimal interface。",
+            "value": "游戏最初只提供画面、ASCII 地图和按键操作等简单接口。更复杂的提示词、技能、记忆和子 agent 在持续游戏过程中调整；这些接口本身不等于已经具备完整的游戏规划能力。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -16561,7 +16562,7 @@
         "executor": "同一 base LLM 多次采样。",
         "modifier": "固定 sampling + aggregation rule。",
         "roleContext": "**改**：固定 sampling + aggregation rule。<br>**执行**：同一 base LLM 多次采样。",
-        "seed": "CoT prompting + sampling/majority aggregation。",
+        "seed": "基础流程是对同一道题采样多条逐步推理，再按答案多数投票。它没有建立跨任务积累经验的持久 harness；变化发生在本题的候选答案及其选择。",
         "fixed": "",
         "verdict": "模型多次生成之间的答案一致性；没有 environment/gold feedback。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -16610,9 +16611,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "CoT prompting + sampling/majority aggregation。",
+            "value": "基础流程是对同一道题采样多条逐步推理，再按答案多数投票。它没有建立跨任务积累经验的持久 harness；变化发生在本题的候选答案及其选择。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -16753,7 +16754,7 @@
         "executor": "GPT-3.5 / ChatGPT / GPT-4 等。",
         "modifier": "同一 LLM 的 feedback/refine prompt。",
         "roleContext": "**改**：同一 LLM 的 feedback/refine prompt。<br>**执行**：GPT-3.5 / ChatGPT / GPT-4 等。",
-        "seed": "one-shot task prompting。",
+        "seed": "从模型对当前任务的初始回答开始，再让模型提出反馈并改写回答。被改的是当前产物，这个过程本身不训练权重，也不等同于改造后续任务的运行系统。",
         "fixed": "",
         "verdict": "模型自己的自然语言 critique，无外部 verifier。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -16802,9 +16803,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "one-shot task prompting。",
+            "value": "从模型对当前任务的初始回答开始，再让模型提出反馈并改写回答。被改的是当前产物，这个过程本身不训练权重，也不等同于改造后续任务的运行系统。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -18283,7 +18284,7 @@
         "executor": "LM program 中的 target LMs。",
         "modifier": "固定 DSPy optimizer/compiler（如 BootstrapFewShot 等）。",
         "roleContext": "**改**：固定 DSPy optimizer/compiler（如 BootstrapFewShot 等）。<br>**执行**：LM program 中的 target LMs。",
-        "seed": "declarative LM modules。",
+        "seed": "程序由开发者声明的语言模型模块组成，例如检索和回答模块，再由编译过程选择或优化模块内提示与示例。起点是结构化任务程序，不是完全自由改写的通用 agent。",
         "fixed": "",
         "verdict": "用户定义 metric / labeled examples。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -18335,9 +18336,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "declarative LM modules。",
+            "value": "程序由开发者声明的语言模型模块组成，例如检索和回答模块，再由编译过程选择或优化模块内提示与示例。起点是结构化任务程序，不是完全自由改写的通用 agent。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -19639,7 +19640,7 @@
         "executor": "target ReAct-like agent。",
         "modifier": "经验抽取默认 GPT-4-0613；执行常用 GPT-3.5。",
         "roleContext": "**改**：经验抽取默认 GPT-4-0613；执行常用 GPT-3.5。<br>**执行**：target ReAct-like agent。",
-        "seed": "ReAct planner + Reflexion 式训练任务重试 + experience pool。",
+        "seed": "起点是 ReAct 任务规划器；训练阶段允许像 Reflexion 那样失败后反思并重试，并把经历保存在经验池。后续提炼出的规则和成功案例供测试时使用。",
         "fixed": "M0：经验库变，抽取/检索机制固定",
         "verdict": "环境/答案正确性 + 成败 trajectories。",
         "diagnosis": "收集多任务成功与失败经历，比较并提炼自然语言 insights；与只在原题重试的 reflection 分开。",
@@ -19691,9 +19692,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "ReAct planner + Reflexion 式训练任务重试 + experience pool。",
+            "value": "起点是 ReAct 任务规划器；训练阶段允许像 Reflexion 那样失败后反思并重试，并把经历保存在经验池。后续提炼出的规则和成功案例供测试时使用。",
             "status": "recorded",
-            "source": "原文定向补查"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -23186,7 +23187,7 @@
         "executor": "其修改后 successor。",
         "modifier": "当前 archive/best coding agent。",
         "roleContext": "**改**：当前 archive/best coding agent。<br>**执行**：其修改后 successor。",
-        "seed": "已有较强 coding harness：file/shell/calculator/subagents/overseer 等。",
+        "seed": "起点已经是功能较完整的编程 agent：有文件操作、shell、计算器、子 agent 和监督模块。改进发生在这一现有系统之上，不能理解为从一个空白循环开始。",
         "fixed": "M2-ish：successor 可成为下一代 modifier，但 outer archive/utility fixed",
         "verdict": "固定 benchmark utility，综合 performance/cost/time；execution feedback。",
         "diagnosis": "原记录未把“错误定位”与结果打分分开描述；见机制介绍。",
@@ -23235,9 +23236,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "已有较强 coding harness：file/shell/calculator/subagents/overseer 等。",
+            "value": "起点已经是功能较完整的编程 agent：有文件操作、shell、计算器、子 agent 和监督模块。改进发生在这一现有系统之上，不能理解为从一个空白循环开始。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",
@@ -23992,7 +23993,7 @@
         "executor": "GPT-5.4；当前实验设置中同一 base model 承担各角色。",
         "modifier": "evolution meta-agent；分组件优化后进行 consolidation。",
         "roleContext": "**改**：evolution meta-agent；各 component 分开优化后再 R³ merge。<br>**执行**：GPT-5.4 + 当前 harness（主 SWE-bench setting；role agents共享同 base model）。",
-        "seed": "bash-only H₀；无初始 middleware、skills 或 subagents，和 AHE 对照共用 seed。",
+        "seed": "起点 H₀ 只配 bash，没有预置中间处理模块、技能库或子 agent。与 AHE 对照时使用相同起点，避免把初始工具更丰富造成的优势当成进化方法的优势。",
         "fixed": "modifier algorithm固定",
         "verdict": "SWE-bench executable test outcome + rollout evidence。",
         "diagnosis": "结合 trajectory-derived evidence 与 first-person harness-use feedback。",
@@ -24051,9 +24052,9 @@
           {
             "key": "seed",
             "label": "基础 harness / 初始系统",
-            "value": "bash-only H₀；无初始 middleware、skills 或 subagents，和 AHE 对照共用 seed。",
+            "value": "起点 H₀ 只配 bash，没有预置中间处理模块、技能库或子 agent。与 AHE 对照时使用相同起点，避免把初始工具更丰富造成的优势当成进化方法的优势。",
             "status": "recorded",
-            "source": "现有记录 / 定位对照"
+            "source": "依据现有记录展开说明"
           },
           {
             "key": "fixed",

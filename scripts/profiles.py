@@ -13,6 +13,7 @@ def attach_profiles(papers):
  changes=json.loads((ROOT/'data/dimension-updates.json').read_text())
  distinctions=json.loads((ROOT/'data/distinctions.json').read_text())
  checks=json.loads((ROOT/'data/source-checks.json').read_text())
+ readable=json.loads((ROOT/'data/readability.json').read_text())
  audit=[]
  for p in papers:
   b=p['brief'];f=p['fields'];pid=p['id'];n=p.get('readingNote')
@@ -27,6 +28,7 @@ def attach_profiles(papers):
    p['url']='https://people.idsia.ch/~juergen/diploma.html'
    b['takeaway']='原论文摘要明确说其初步实验不足以展示具体 self-reference，受当时计算能力限制，主要是启发性构造；不能把高阶可编辑设计直接当成已验证的多代自改进。'
    b['novelty']='原作者区分 meta-level GP 与 PSALM：前者递归寻找更好的程序修改程序，后者让生成、连接和分配 credit 的 agents 竞争，且总 credit 受守恒约束。'
+  if pid in readable:b.update(readable[pid])
   # Recover typed values from detailed notes rather than showing a placeholder beside real information.
   if n:
    rows={}
@@ -59,7 +61,7 @@ def attach_profiles(papers):
     label={'object':'被测的变化 / 能力','modifier':'被测系统如何更新','seed':'被测系统 / 参照基线','verdict':'评测如何判分','diagnosis':'如何分析失败与归因','update':'评测开放哪些更新方式','acceptance':'候选选模 / 评估控制','protocol':'任务组织与评估隔离'}.get(key,label)
     if key in ('modifier','update') and not value:
      value='由被测方法决定；此条贡献是评估协议，不假设 benchmark 自身修改。';status='not-applicable'
-   fields.append(dict(key=key,label=label,value=value,status=status,source='原文定向补查' if pid in changes and (key in changes[pid] or (key=='protocol' and 'experiments' in changes[pid])) else '更新笔记' if n else '现有记录 / 定位对照'))
+   fields.append(dict(key=key,label=label,value=value,status=status,source=('原文 §3–4 与附录 C 核查' if pid=='2608.31111' else '依据现有记录展开说明') if pid in readable and (key in readable[pid] or (key=='protocol' and 'protocolDetail' in readable[pid])) else '原文定向补查' if pid in changes and (key in changes[pid] or (key=='protocol' and 'experiments' in changes[pid])) else '更新笔记' if n else '现有记录 / 定位对照'))
   missing=[x['label'] for x in fields if x['status']=='missing']
   partial=[x['label'] for x in fields if x['status']=='partial']
   p['profile']={'fields':fields,'missing':missing,'partial':partial,'sourceCheck':checks[pid], 'focus':b.get('novelty') or b['summary']}

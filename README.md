@@ -80,3 +80,9 @@ All 134 entries now have twelve research questions, with recorded, partial, miss
 `data/source-checks.json` records the scope and link for the primary-source positioning pass. This is targeted reading of abstracts, methods or experimental passages, not a claim of complete full-text audits. `data/dimension-updates.json` contains 17 focused supplements; `data/distinctions.json` replaces repeated category-level descriptions with mechanism-specific distinctions. `scripts/profiles.py` merges these layers after preserving the original and updated notes.
 
 Continual Harness is now classified under joint harness/weight evolution because its co-learning experiment updates both; its frozen-model setting remains explicitly described. Methods with different protocols across experiments retain those differences instead of receiving a single unqualified held-out claim.
+
+## 卡片说明写作口径
+
+每篇默认按顺序展示：谁执行、谁来改、什么在进化、反馈是什么、基础 harness 是什么。完整专题解读也使用同一组卡片字段，全文保留。
+
+`data/readability.json` 保存易读性修订，不覆盖原始笔记。角色要写清决策模型与实际运行程序；反馈要说明提供者、判断依据和可见内容，区分自测与正式评测。基础系统要说明来源、工具和运行流程；只有来源支持时才能写“没有某功能”，不能从记录缺失推断系统没有。自建数据在实验字段中交代任务内容、构造方式和隔离，不能只报数据集名字。未核实的五个默认字段仍显示具体缺项。
