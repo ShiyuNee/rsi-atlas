@@ -1,0 +1,429 @@
+{
+  "2506.10943": {
+    "summary": "SEAL 让模型先把新材料改写成适合自己学习的数据或更新指令，再实际做一次权重更新。外层训练奖励的不是这段 self-edit 看起来是否合理，而是更新后的模型能否更好完成任务，因此它学习的是“怎样准备自己的学习材料”。",
+    "novelty": "区别于把反思留在上下文中的方法，self-edit 会触发梯度更新；又区别于普通合成数据，生成策略用更新后的实际任务表现训练。内层改权重，外层学习怎样生成有效的改写。",
+    "object": "self-edit 生成策略与适应后的模型权重；self-edit 可包含训练文本、数据增强与优化超参数。",
+    "executor": "知识学习：Qwen2.5-7B；ARC 少样本实验：Llama-3.2-1B-Instruct。",
+    "modifier": "同一模型生成 self-edit；固定内层梯度更新与外层 RL/ReSTEM 训练程序实施参数更新。",
+    "seed": "知识学习从 passage 生成训练文本并做适应；ARC 提供数据增强与 TTT 工具，模型选择配置。",
+    "fixed": "工具接口、内外层训练算法和奖励定义预先设计；不是模型自行重写 optimizer。",
+    "verdict": "更新后在对应问题上的答题成绩；ARC 用正确/错误，知识学习的答案由 GPT-4.1 判分。",
+    "diagnosis": "没有独立的逐步错误定位器；通过多个 self-edit 实际训练后的效果，反向筛选有用的生成策略。",
+    "update": "生成数据/更新配置 → 内层微调 → 评估适应模型 → 外层强化有效 self-edit。",
+    "acceptance": "知识学习每个 context 比较 5 个生成、各跑 3 seeds，保留平均表现最好的一个用于外层训练。",
+    "experiments": [
+      {
+        "name": "ARC",
+        "evolve": "11 个经筛选、可由 TTT 解出的 training tasks",
+        "selection": "保留成功且符合计算限制的配置",
+        "test": "8 个 held-out tasks，每题生成 5 个配置",
+        "isolation": "任务划分独立",
+        "note": "小而经过可解性筛选的任务子集，不能代表完整 ARC 能力。"
+      },
+      {
+        "name": "知识学习",
+        "evolve": "SQuAD train；每轮抽 50 contexts 训练 self-edit policy",
+        "selection": "按适应后 QA 表现选 self-edit",
+        "test": "200 个 evaluation passages / 974 questions",
+        "isolation": "外层训练与测试材料分开",
+        "note": "测试时仍要读取新 passage 并进行内层适应；不是完全冻结模型直接答题。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2506.10943v2"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2409.07429": {
+    "summary": "AWM 从成功的网页操作轨迹中抽出可复用的多步 workflow，例如把某个具体页面上的操作抽象成未来任务可遵循的步骤。执行者遇到新任务时把这些 workflow 当作记忆来使用；因此积累的是操作程序，而不是原样堆叠整条案例。",
+    "novelty": "核心对照是“复用具体案例”与“归纳案例里的 procedure”。论文同时有从训练示例预先归纳的 offline 版本，以及在测试任务流中边执行边积累的 online 版本，不能合写成一种 held-out 协议。",
+    "object": "归纳出的 workflow memory；执行模型权重和归纳/调用流程固定。",
+    "executor": "WebArena：GPT-4 + BrowserGym；Mind2Web：GPT-3.5-turbo 或 GPT-4。",
+    "modifier": "workflow induction 与 action generation 使用同一模型；固定归纳程序负责把轨迹转为流程。",
+    "seed": "BrowserGym 网页代理；Mind2Web 使用元素过滤与文本轨迹式动作接口，在其上加入 workflows。",
+    "verdict": "在线成功轨迹用于归纳；benchmark 最终用网页任务/动作指标评价，不能把最终 evaluator 都当成归纳器可见监督。",
+    "diagnosis": "主要抽取成功轨迹里的公共子程序，并非以逐步定位失败代码为核心。",
+    "update": "成功轨迹 → 抽象 reusable workflow → 加入记忆 → 后续任务调用。",
+    "acceptance": "本轮未核实有独立 candidate regression gate；不能把成功轨迹筛选等同于独立验证。",
+    "experiments": [
+      {
+        "name": "Mind2Web offline",
+        "evolve": "提供的训练示例归纳 workflows",
+        "selection": "原文该段未单列独立选模集",
+        "test": "cross-task / cross-website / cross-domain",
+        "isolation": "offline 与 online 分开看",
+        "note": ""
+      },
+      {
+        "name": "WebArena / Mind2Web online",
+        "evolve": "在 test queries 流上持续归纳",
+        "selection": "任务流内更新记忆",
+        "test": "同一流中后续 queries",
+        "isolation": "在线经验积累",
+        "note": "跨网站/域设置存在，但 online 不是先 freeze 再测试。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2409.07429v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2509.25140": {
+    "summary": "ReasoningBank 同时从成功与失败轨迹中提炼推理策略：成功时解释为什么有效，失败时提炼以后如何避免。它先由与执行者同源的模型判断成败，再抽取少量记忆；MaTTS 另外增加多条尝试，让轨迹之间的比较产生更丰富的经验。",
+    "novelty": "关键不只是“有 memory”，而是成功/失败策略都可写入，并与额外 test-time rollouts 结合。要区分记忆本身的收益与更多尝试的收益，也要区分自判 feedback 与外部 verifier。",
+    "object": "推理策略记忆条目；不是权重或记忆管理代码。",
+    "executor": "Gemini-2.5 / Claude-3.7 系列；网页用 BrowserGym，SWE 用 bash-only ReAct agent。",
+    "modifier": "抽取器和 success/failure classifier 使用与执行者相同的 backbone，角色提示分别固定。",
+    "seed": "ReAct agent + 外部记忆检索/抽取模块。",
+    "fixed": "模型权重与抽取/检索流程固定。",
+    "verdict": "轨迹和用户问题交给同一 backbone 的二分类 judge，自判 Success/Failure。",
+    "diagnosis": "按自判成败选择不同反思提示，归纳成功策略或错误原因；每条轨迹最多抽取 3 条 memory items。",
+    "update": "新条目直接追加；MaTTS 从多条候选轨迹抽取更丰富经验。",
+    "acceptance": "原文采用最小 consolidation：直接加入、不额外 pruning；不是经独立 regression gate 才写入。",
+    "experiments": [
+      {
+        "name": "WebArena / Mind2Web / SWE-bench Verified",
+        "evolve": "运行中产生轨迹并积累记忆",
+        "selection": "自判与记忆抽取；MaTTS 另有候选选择",
+        "test": "同类任务序列及跨任务/网站/域设置",
+        "isolation": "不能自动等同于冻结后测试",
+        "note": "Memory-free、其他 memory 与额外 rollout 的对照需要分别比较。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2509.25140v2"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2606.01314": {
+    "summary": "SkillSmith 把一次修复看成 skill 与 tool 的联合变更：如果文字步骤要求的操作没有工具支持，就连工具实现一起改。它还统计技能共同使用时互相帮助还是冲突，用这个关系决定检索、修改、合并或淘汰，并记住以前被证实失败的配置，防止反复提出同一种错误。",
+    "novelty": "与只更新 skill.md 的方法相比，重点是 skill–tool 依赖和技能之间的交互。anti-pattern memory 阻止的是已验证失败的实现路径，而不必否决修复需求本身。",
+    "object": "自然语言技能、可执行工具及失败模式记忆；包含工具 wrap/edit/compose/split/retire。",
+    "executor": "Qwen3.5 五种规模的目标 agent；OfficeQA、SealQA、WildClawBench 三种任务设置。",
+    "modifier": "reflector/evolver 提出联合 bundle，Tool-Smith 实施工具修改；具体角色配置随规模实验。",
+    "seed": "带 skill/tool library 的 agent scaffold；不是任意重写所有 runtime 部件。",
+    "verdict": "OfficeQA 用答案匹配；SealQA 用冻结 Qwen3.5-122B judge 对照 gold，3 次多数票；WildClaw 按其任务评价。",
+    "diagnosis": "失败轨迹定位涉及的 skill/tool、错误类型与症状；同时根据共同出现的结果估计 skill 间冲突。",
+    "update": "生成 skill–tool bundle，执行工具操作，按效用调整检索、合并和淘汰。",
+    "acceptance": "工具单测 → 集成验证 → regression 检查；失败指纹写入 anti-pattern memory，后续相似错误可被 veto。",
+    "experiments": [
+      {
+        "name": "OfficeQA",
+        "evolve": "24 train",
+        "selection": "17 validation：Pareto 选择与 regression",
+        "test": "205 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "SealQA seal-0",
+        "evolve": "11 train",
+        "selection": "8 validation",
+        "test": "92 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "WildClawBench",
+        "evolve": "6 个 day–night rounds，日间用户交互产经验",
+        "selection": "夜间反思、proposal、验证、部署",
+        "test": "任务每天重复评价",
+        "isolation": "连续运行协议",
+        "note": "不能把前两个 benchmark 的 held-out 结论直接移到这里。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2606.01314v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2606.06324": {
+    "summary": "HarnessFix 先把原始失败轨迹变成能对应到 harness 实现的中间表示，再判断问题属于哪一步、哪个组件。修改者拿到的是有范围的 repair specification，而不是一句“请让 agent 更好”；补丁必须证明目标缺陷减少，并检查是否破坏原来成功的任务。",
+    "novelty": "诊断单位与修改单位连起来：trace → runtime 层 → implementation → scoped operator → regression acceptance。与自由编辑整个代码库相比，它限制补丁范围，并有去掉诊断、scoped repair、regression gate 的对照。",
+    "object": "已有 harness 的运行机制与组件，按诊断出的缺陷进行 scoped patches。",
+    "executor": "默认 GPT-5 mini；按任务使用不同 H0。",
+    "modifier": "默认 GPT-5 mini 驱动 HarnessFix 的诊断/修补流程。",
+    "seed": "GAIA：open-deep-research；SWE：mini-swe-agent；AppWorld：官方 simplified ReAct code agent；TB2：Harbor Terminus-2。",
+    "verdict": "各任务官方执行/答案评分与 validation 结果。",
+    "diagnosis": "HTIR 将失败步骤映射到运行层和实现位置，聚合 recurring flaw。",
+    "update": "依据 flaw-specific repair specification 选择 scoped repair operators 生成补丁。",
+    "acceptance": "validation 检查目标缺陷减少和新引入 regressions；不是只看训练集总分。",
+    "experiments": [
+      {
+        "name": "GAIA",
+        "evolve": "60 train",
+        "selection": "30 validation",
+        "test": "60 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "SWE-bench Verified",
+        "evolve": "100 train",
+        "selection": "50 validation",
+        "test": "100 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "AppWorld",
+        "evolve": "90 train",
+        "selection": "45 validation",
+        "test": "90 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "TB2",
+        "evolve": "34 train",
+        "selection": "17 validation",
+        "test": "34 test",
+        "isolation": "独立 test",
+        "note": ""
+      },
+      {
+        "name": "跨模型",
+        "evolve": "沿用 GPT-5 mini 选出的 GAIA harness",
+        "selection": "不重做进化",
+        "test": "同一 held-out GAIA split，换 4 个模型",
+        "isolation": "冻结迁移",
+        "note": ""
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2606.06324v2"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2607.13683": {
+    "summary": "HarnessBank 把候选放进按语义机制区分的 bank，让不同类型的高质量方案可以同时存活。新候选可重组已有机制，也可提出新机制；先用小批任务检查“实验有效、改动真的生效、收益有统计依据”，通过后才付出完整训练集评估的成本。",
+    "novelty": "两个关键变量是 bank 的机制多样性与分阶段验证。保留多个候选不是装饰：它给后续重组提供不同机制；入库得分也不是最终 held-out 泛化证明。",
+    "object": "完整 harness 候选及语义分区的 Harness Gene Bank。",
+    "seed": "可进化 agent harness + semantic quality-diversity archive；具体底座名称本轮未核实。",
+    "verdict": "任务结果、执行轨迹与配对候选表现。",
+    "diagnosis": "从当前训练任务生成 comprehensive diagnosis，供重组/重构候选。",
+    "update": "reinvention / recombination 产生 offspring，按语义 cell 竞争入库。",
+    "acceptance": "sampled train 上依次检查 validity、mechanism activation、significance、gain；通过后做 full-train evaluation 再竞争入库。",
+    "experiments": [
+      {
+        "name": "论文定义的 train / test 协议",
+        "evolve": "D_train：诊断、小批筛选和最终入库评分",
+        "selection": "入库仍使用 train，不是额外 test credit",
+        "test": "D_test 不参与 evolution decisions",
+        "isolation": "测试被排除于进化决策",
+        "note": "具体 benchmark 数量及模型配置仍待补查。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2607.13683v2"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2608.24876": {
+    "summary": "Recuris 把工作记忆与经验记忆接起来：当前任务进展决定调用什么经验，结构化执行证据又能定位是哪一块经验导致失败。Meta-Agent 因而只修局部 memory component；候选通过含已成功 anchor tasks 的 dev gate 后才进入下一版。",
+    "novelty": "重点是让诊断对象和被修改对象一致，并分离“加上记忆控制层”与“层里真正学到的内容”。小 dev 集的保守 gate 也会拒绝在更大 held-out 集上实际有效的补丁，不能把拒绝理解为补丁一定无效。",
+    "object": "Working / Experiential Memory 中的局部技能内容；外围 Meta-Agent 与 gate 固定。",
+    "seed": "中性初始记忆包 M0 + memory-control layer；另与 benchmark 原 agent 对照。",
+    "verdict": "任务成败及 repeated-run dev evidence。",
+    "diagnosis": "结构化 trace 指向具体 memory workflow，例如换货时误用原商品 ID，定位后只修对应步骤。",
+    "update": "Meta-Agent 对被定位的经验组件提出局部补丁。",
+    "acceptance": "dev 中包含已成功 anchor tasks 检查副作用；在统计证据无法区分于零时拒绝提交。",
+    "experiments": [
+      {
+        "name": "τ² Retail",
+        "evolve": "16 evolve",
+        "selection": "12 dev",
+        "test": "86 test",
+        "isolation": "三路分离",
+        "note": ""
+      },
+      {
+        "name": "τ² Airline",
+        "evolve": "两条 lineage：10 / 11 evolve",
+        "selection": "15 / 10 dev",
+        "test": "各自未见的补集 25 / 29 tasks",
+        "isolation": "三路分离",
+        "note": "test 文件字段为空，但原文明示用 evolve/dev 的补集。"
+      },
+      {
+        "name": "SkillFlow",
+        "evolve": "family 内顺序任务",
+        "selection": "在 family 内选 winning template",
+        "test": "迁移给未参与构建的模型",
+        "isolation": "任务内选择 + 跨模型迁移",
+        "note": "没有 held-out task split。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2608.24876v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2606.17546": {
+    "experiments": [
+      {
+        "name": "统一 evolution evaluation",
+        "evolve": "80 source train tasks：TB2 + HLE text-only Math/Physics",
+        "selection": "35 source validation tasks",
+        "test": "55 source test；80 HLE CS/AI 与 Engineering OOD tasks",
+        "isolation": "学习、选模、ID/OOD 分开",
+        "note": "snapshot、replay 与成本单独测量，不只报最终最高分。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2606.17546v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2608.11350": {
+    "experiments": [
+      {
+        "name": "VLABench",
+        "evolve": "15 training episodes",
+        "selection": "固定 24 validation episodes",
+        "test": "800 held-out evaluation episodes",
+        "isolation": "三路分离",
+        "note": "这是 VLABench 的具体设置，不自动代表所有实验。"
+      }
+    ],
+    "novelty": "固定模型和环境动作接口，通过 target-environment rollouts 改可复用 skills 与 context-code harness。与直接编写任意机器人 API 程序的方法不同，它适用于不能改底层动作接口的设置。",
+    "sources": [
+      "https://arxiv.org/html/2608.11350v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2603.13131": {
+    "experiments": [
+      {
+        "name": "Minecraft hard tasks",
+        "evolve": "先交互 0/50/100/200/400 episodes 积累知识",
+        "selection": "在对应节点冻结知识库",
+        "test": "Iron、Redstone、Diamond、Armor held-out hard tasks",
+        "isolation": "冻结知识后测试",
+        "note": "测试时不再生成或更新知识，区分积累经验的效果与测试时继续学习。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2603.13131v3"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2607.00272": {
+    "experiments": [
+      {
+        "name": "LIBERO repair-skill transfer",
+        "evolve": "LIBERO-90 上 0/25/50/90 个 source tasks 形成 library snapshots",
+        "selection": "使用不同规模冻结技能库",
+        "test": "LIBERO-Pro Long held-out tasks",
+        "isolation": "冻结后零样本迁移",
+        "note": "每个测试任务只生成一个程序；跨 seeds 执行，无额外调试、重试或任务专门技能更新。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2607.00272v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2406.07496": {
+    "experiments": [
+      {
+        "name": "BBH Object Counting / Word Sorting",
+        "evolve": "50 train",
+        "selection": "100 validation",
+        "test": "100 test",
+        "isolation": "随机三路划分",
+        "note": "Object Counting 用 exact match，Word Sorting 用 LLM 对照 gold。"
+      },
+      {
+        "name": "GSM8K",
+        "evolve": "沿用 DSPy train split",
+        "selection": "沿用 DSPy validation",
+        "test": "沿用 DSPy test",
+        "isolation": "分开划分",
+        "note": "本条补查覆盖 prompt optimization 实验；TextGrad 还优化其他文字可描述变量。"
+      }
+    ],
+    "novelty": "把系统当作计算图，把自然语言批评沿图传回具体变量；所谓 gradient 是文字反馈的类比，并非真的对黑盒 LLM API 求数值导数。",
+    "diagnosis": "LLM 结合当前变量、局部计算和下游反馈产生针对该变量的 textual gradient。",
+    "sources": [
+      "https://arxiv.org/html/2406.07496v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2310.03714": {
+    "experiments": [
+      {
+        "name": "HotPotQA fullwiki case study",
+        "evolve": "官方 training 中 hard 子集再划分；训练采 200",
+        "selection": "同一 training pool 划分后 development 采 300",
+        "test": "官方 validation 抽 1,000 作为测试",
+        "isolation": "原始数据集 split 名称与本文用途不同",
+        "note": "因官方 test 隐藏，本文的 test 实际来自官方 validation；检索使用 Wikipedia 2017 abstracts + ColBERTv2。"
+      }
+    ],
+    "novelty": "用声明式模块表达任务流水线，把示例选择和提示适配交给 compiler；本文 HotPotQA 中官方 validation 被用作最终测试，不能只按数据集字段名判断是否参与优化。",
+    "sources": [
+      "https://arxiv.org/html/2310.03714v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2607.26784": {
+    "diagnosis": "不把成功全归给当轮 solver：当前任务结果监督 solving，折扣后的后续任务结果监督 skill curation。",
+    "update": "一个 policy 在相关任务序列中交替解题与编辑 skill document，文档直接交给下一任务。",
+    "novelty": "明确区分“当前任务做得好”和“写出的技能让后续任务做得好”的 credit；这是跨任务训练目标的差别，不只是把经验存进 skill 文件。",
+    "sources": [
+      "https://arxiv.org/html/2607.26784v1"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2602.22480": {
+    "experiments": [
+      {
+        "name": "VeRO budget ablation",
+        "evolve": "5 benchmark-study tasks；预算按 ExperimentRunner 调用计",
+        "selection": "通常选 best-validation commit；GPQA 无 validation，按 train 选",
+        "test": "有 test 时用 test，否则使用 validation",
+        "isolation": "不同任务混合口径",
+        "note": "Claude Sonnet 4.5 optimizer；每组 3 runs。不能把所有 holdout 统一当成 untouched test。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2602.22480v4"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2604.10547": {
+    "experiments": [
+      {
+        "name": "GSM8K",
+        "evolve": "标准 training",
+        "selection": "grading 由框架管理",
+        "test": "标准 test",
+        "isolation": "标准划分",
+        "note": ""
+      },
+      {
+        "name": "HumanEval",
+        "evolve": "164题中的82个 training-visible problems",
+        "selection": "框架控制 grading API",
+        "test": "另82个 disjoint held-out problems",
+        "isolation": "按题目索引分开",
+        "note": "不是原 HumanEval 全164题的排行榜口径；允许 SFT，不能把涨分全部归因于 RL。"
+      }
+    ],
+    "sources": [
+      "https://arxiv.org/html/2604.10547v2"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  },
+  "2308.10144": {
+    "diagnosis": "收集多任务成功与失败经历，比较并提炼自然语言 insights；与只在原题重试的 reflection 分开。",
+    "update": "训练任务允许反复试错；得到的 insights 和成功示例用于未来测试任务的上下文。",
+    "seed": "ReAct planner + Reflexion 式训练任务重试 + experience pool。",
+    "novelty": "把 Reflexion 的同题试错经验扩展为跨任务学习：训练时多次试错，测试时利用 insights 与成功示例做单次尝试；参数不更新。",
+    "sources": [
+      "https://arxiv.org/html/2308.10144v3"
+    ],
+    "reading": "2026-09-09 补查原文的方法、实验设置或附录对应段落；非整篇逐项审计。"
+  }
+}

@@ -71,3 +71,20 @@ assert(get('2604.25850').readingNote.caveats.length>0);
 assert(get('2608.12307').readingNote.caveats.length>0);
 assert(query({q:'General Topic 跨 benchmark'}).some(p=>p.id==='2608.15071'));
 console.log('Passed: 9 complete six-section readings; full mechanisms, results, caveats and search coverage.');
+assert.equal(data.coverage.total,134);
+for(const p of papers){
+ assert.equal(p.profile.fields.length,12,p.id);
+ assert(p.brief.novelty.length>15,p.id);
+ assert.equal(p.profile.sourceCheck.date,'2026-09-09');
+ assert(p.profile.sourceCheck.url.startsWith('https://'));
+ assert(p.profile.fields.every(f=>['recorded','partial','missing','not-applicable'].includes(f.status)),p.id);
+ assert(p.profile.fields.filter(f=>f.status==='missing').every(f=>f.value===''),p.id);
+}
+assert.equal(get('2605.09998').methodType,'joint');
+assert(get('2606.01314').brief.experiments.some(e=>e.test==='205 test'));
+assert(get('2608.24876').brief.experiments.some(e=>e.name==='SkillFlow'&&e.note.includes('没有 held-out')));
+assert(get('2409.07429').brief.experiments.some(e=>e.name.includes('online')));
+assert(get('2310.03714').brief.experiments[0].test.includes('validation'));
+assert(query({facets:{gaps:['哪些部分保持固定']}}).length>0);
+assert(!readingSections(get('2608.03764')).some(s=>s.title.includes('执行者、修改者')));
+console.log('Passed: 134 question-led profiles; explicit source scopes, gaps, distinct mechanisms and protocol corrections.');

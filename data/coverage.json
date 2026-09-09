@@ -1,0 +1,1957 @@
+[
+  {
+    "id": "cs-0309048",
+    "title": "Gödel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements",
+    "url": "https://arxiv.org/abs/cs/0309048",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2303.11366",
+    "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2303.11366",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2305.16291",
+    "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+    "url": "https://arxiv.org/abs/2305.16291",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2505.22954",
+    "title": "Darwin Gödel Machine (DGM): Open-Ended Evolution of Self-Improving Agents",
+    "url": "https://arxiv.org/abs/2505.22954",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2511.10395",
+    "title": "AgentEvolver: Towards Efficient Self-Evolving Agent System",
+    "url": "https://arxiv.org/abs/2511.10395",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.19461",
+    "title": "Hyperagents",
+    "url": "https://arxiv.org/abs/2603.19461",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.28052",
+    "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+    "url": "https://arxiv.org/abs/2603.28052",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.25850",
+    "title": "Agentic Harness Engineering (AHE)",
+    "url": "https://arxiv.org/abs/2604.25850",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.09498",
+    "title": "Self-Harness: Harnesses That Improve Themselves",
+    "url": "https://arxiv.org/abs/2606.09498",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.17546",
+    "title": "SEAGym: An Evaluation Environment for Self-Evolving LLM Agents",
+    "url": "https://arxiv.org/abs/2606.17546",
+    "missing": [
+      "哪些部分保持固定"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.14777",
+    "title": "SEED: Self-Evolving On-Policy Distillation for Agentic RL",
+    "url": "https://arxiv.org/abs/2607.14777",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.15524",
+    "title": "Recursive Harness Self-Improvement",
+    "url": "https://arxiv.org/abs/2607.15524",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.25886",
+    "title": "RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement",
+    "url": "https://arxiv.org/abs/2607.25886",
+    "missing": [
+      "哪些部分保持固定"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.28568",
+    "title": "Frontis-MA1: Training an AI4AI Model towards Recursive Self-Improvement in Machine Learning Engineering",
+    "url": "https://arxiv.org/abs/2607.28568",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.02276",
+    "title": "Harness-R1: Learning to Edit Executable Runtime Harnesses from Agent Failure Trajectories",
+    "url": "https://arxiv.org/abs/2608.02276",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.05144",
+    "title": "Argus: A General-Purpose Agentic Reasoning Runtime for Long-Horizon Tasks",
+    "url": "https://arxiv.org/abs/2608.05144",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.09819",
+    "title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
+    "url": "https://arxiv.org/abs/2608.09819",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "endlessfrontier.tech-assets-paper.pdf",
+    "title": "BigBang: Pursuing Open-Ended Intelligence through Self-Evolving Synthesis of Verifiable Frontier Tasks",
+    "url": "https://endlessfrontier.tech/assets/paper.pdf",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.05297",
+    "title": "MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution",
+    "url": "https://arxiv.org/abs/2607.05297",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.15071",
+    "title": "Evo-Harness: Context-to-Harness Skill Compilation for Self-Evolving Agents",
+    "url": "https://arxiv.org/abs/2608.15071",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.09096",
+    "title": "Evo-Bench: Can Language Models Improve Agent Harness?",
+    "url": "https://arxiv.org/abs/2608.09096",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.31111",
+    "title": "Aspire: Can Models Self-Evolve from Vague Goals?",
+    "url": "https://arxiv.org/abs/2608.31111",
+    "missing": [
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2408.08435",
+    "title": "Automated Design of Agentic Systems (ADAS)",
+    "url": "https://arxiv.org/abs/2408.08435",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2609.01437",
+    "title": "HarnessDev",
+    "url": "https://arxiv.org/abs/2609.01437",
+    "missing": [
+      "被测的变化 / 能力"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.03764",
+    "title": "GDPevo",
+    "url": "https://arxiv.org/abs/2608.03764",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2602.22480",
+    "title": "VeRO",
+    "url": "https://arxiv.org/abs/2602.22480",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2410.04444",
+    "title": "Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement",
+    "url": "https://arxiv.org/abs/2410.04444",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2506.10943",
+    "title": "SEAL / Self-Adapting Language Models",
+    "url": "https://arxiv.org/abs/2506.10943",
+    "missing": [
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.23472",
+    "title": "Escher-Loop",
+    "url": "https://arxiv.org/abs/2604.23472",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.04465",
+    "title": "SePO",
+    "url": "https://arxiv.org/abs/2606.04465",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.26294",
+    "title": "Red Queen Gödel Machine",
+    "url": "https://arxiv.org/abs/2606.26294",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.07645",
+    "title": "Mendel Gödel Machine",
+    "url": "https://arxiv.org/abs/2608.07645",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2403.03186",
+    "title": "Cradle",
+    "url": "https://arxiv.org/abs/2403.03186",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2409.07429",
+    "title": "Agent Workflow Memory (AWM)",
+    "url": "https://arxiv.org/abs/2409.07429",
+    "missing": [
+      "哪些部分保持固定",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "如何接受、拒绝或回退"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2502.12110",
+    "title": "A-MEM: Agentic Memory for LLM Agents",
+    "url": "https://arxiv.org/abs/2502.12110",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2508.06433",
+    "title": "Memp",
+    "url": "https://arxiv.org/abs/2508.06433",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2509.25140",
+    "title": "ReasoningBank",
+    "url": "https://arxiv.org/abs/2509.25140",
+    "missing": [
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.10923",
+    "title": "Mem²Evolve",
+    "url": "https://arxiv.org/abs/2604.10923",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.16839",
+    "title": "HeLa-Mem",
+    "url": "https://arxiv.org/abs/2604.16839",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.16114",
+    "title": "HyperSkill",
+    "url": "https://arxiv.org/abs/2608.16114",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.24876",
+    "title": "Recuris",
+    "url": "https://arxiv.org/abs/2608.24876",
+    "missing": [
+      "哪些部分保持固定",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.01314",
+    "title": "SkillSmith",
+    "url": "https://arxiv.org/abs/2606.01314",
+    "missing": [
+      "哪些部分保持固定",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.17220",
+    "title": "When Rules Learn",
+    "url": "https://arxiv.org/abs/2606.17220",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.22793",
+    "title": "TRACE",
+    "url": "https://arxiv.org/abs/2608.22793",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.23397",
+    "title": "MediSkill-Evo",
+    "url": "https://arxiv.org/abs/2608.23397",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.23552",
+    "title": "Prime Agent",
+    "url": "https://arxiv.org/abs/2608.23552",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.09998",
+    "title": "Continual Harness: Online Adaptation for Self-Improving Foundation Agents",
+    "url": "https://arxiv.org/abs/2605.09998",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.24539",
+    "title": "DemoEvolve: Overcoming Sparse Feedback in Agentic Harness Evolution with Demonstrations",
+    "url": "https://arxiv.org/abs/2605.24539",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.06324",
+    "title": "HarnessFix",
+    "url": "https://arxiv.org/abs/2606.06324",
+    "missing": [
+      "哪些部分保持固定",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.14249",
+    "title": "HarnessX",
+    "url": "https://arxiv.org/abs/2606.14249",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.13683",
+    "title": "HarnessBank / Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity",
+    "url": "https://arxiv.org/abs/2607.13683",
+    "missing": [
+      "哪些部分保持固定",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "基础 harness / 初始系统",
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.21877",
+    "title": "P²O: Joint Policy and Prompt Optimization",
+    "url": "https://arxiv.org/abs/2603.21877",
+    "missing": [
+      "谁在变 / 具体改什么",
+      "基础 harness / 初始系统",
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "进化、选模与测试数据",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.04455",
+    "title": "Meta-Agent Challenge",
+    "url": "https://arxiv.org/abs/2606.04455",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.06301",
+    "title": "HarnessOpt-Bench: Evaluating LLMs at Harness Optimization",
+    "url": "https://arxiv.org/abs/2608.06301",
+    "missing": [
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2505.11942",
+    "title": "LifelongAgentBench",
+    "url": "https://arxiv.org/abs/2505.11942",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2507.05257",
+    "title": "MemoryAgentBench",
+    "url": "https://arxiv.org/abs/2507.05257",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2508.19005",
+    "title": "StuLife / ELL",
+    "url": "https://arxiv.org/abs/2508.19005",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2510.17281",
+    "title": "MemoryBench",
+    "url": "https://arxiv.org/abs/2510.17281",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2511.20857",
+    "title": "Evo-Memory",
+    "url": "https://arxiv.org/abs/2511.20857",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.17308",
+    "title": "SkillFlow",
+    "url": "https://arxiv.org/abs/2604.17308",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.20087",
+    "title": "SkillLearnBench",
+    "url": "https://arxiv.org/abs/2604.20087",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.18421",
+    "title": "EvoMemBench",
+    "url": "https://arxiv.org/abs/2605.18421",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.05661",
+    "title": "CL-Bench",
+    "url": "https://arxiv.org/abs/2606.05661",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.05202",
+    "title": "EvoAgentBench",
+    "url": "https://arxiv.org/abs/2607.05202",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.00155",
+    "title": "AgentStream",
+    "url": "https://arxiv.org/abs/2608.00155",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.01149",
+    "title": "PATH-Bench",
+    "url": "https://arxiv.org/abs/2608.01149",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.03874",
+    "title": "ContinualSkillBench: Can LLM Agents Truly Evolve Their Capabilities?",
+    "url": "https://arxiv.org/abs/2608.03874",
+    "missing": [
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.04003",
+    "title": "PAST-Bench",
+    "url": "https://arxiv.org/abs/2608.04003",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.06144",
+    "title": "FinEvo-Bench",
+    "url": "https://arxiv.org/abs/2608.06144",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.08640",
+    "title": "PostTrainBench",
+    "url": "https://arxiv.org/abs/2603.08640",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.10547",
+    "title": "Agent² RL-Bench",
+    "url": "https://arxiv.org/abs/2604.10547",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.04261",
+    "title": "Curation-Bench",
+    "url": "https://arxiv.org/abs/2606.04261",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.05080",
+    "title": "AutoLab",
+    "url": "https://arxiv.org/abs/2606.05080",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.05155",
+    "title": "EdgeBench",
+    "url": "https://arxiv.org/abs/2607.05155",
+    "missing": [
+      "被测的变化 / 能力",
+      "被测系统 / 参照基线",
+      "哪些部分保持固定",
+      "评测如何判分",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "doi.org-10.1016-S0065-2458-08-60418-0",
+    "title": "Speculations Concerning the First Ultraintelligent Machine",
+    "url": "https://doi.org/10.1016/S0065-2458(08)60418-0",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文引言与 intelligence-explosion 论证初核；完整扫描件可访问，但本轮未逐页审读。"
+  },
+  {
+    "id": "people.idsia.ch-juergen",
+    "title": "Evolutionary Principles in Self-Referential Learning (Meta-Meta-Hook)",
+    "url": "https://people.idsia.ch/~juergen/diploma.html",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原论文扫描件的摘要与引言定位初核；另对照作者说明页。未逐页审读全文。"
+  },
+  {
+    "id": "cs-0207097",
+    "title": "Optimal Ordered Problem Solver (OOPS)",
+    "url": "https://arxiv.org/abs/cs/0207097",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "1805.06610",
+    "title": "A Formulation of Recursive Self-Improvement and Its Possible Efficiency",
+    "url": "https://arxiv.org/abs/1805.06610",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2203.11171",
+    "title": "Self-Consistency Improves Chain of Thought Reasoning in Language Models",
+    "url": "https://arxiv.org/abs/2203.11171",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2303.17651",
+    "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+    "url": "https://arxiv.org/abs/2303.17651",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2305.11738",
+    "title": "CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing",
+    "url": "https://arxiv.org/abs/2305.11738",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2305.20050",
+    "title": "Let’s Verify Step by Step",
+    "url": "https://arxiv.org/abs/2305.20050",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2309.11495",
+    "title": "Chain-of-Verification Reduces Hallucination in Large Language Models",
+    "url": "https://arxiv.org/abs/2309.11495",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2310.01798",
+    "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+    "url": "https://arxiv.org/abs/2310.01798",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2310.04406",
+    "title": "Language Agent Tree Search (LATS)",
+    "url": "https://arxiv.org/abs/2310.04406",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2309.03409",
+    "title": "Large Language Models as Optimizers (OPRO)",
+    "url": "https://arxiv.org/abs/2309.03409",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2309.16797",
+    "title": "Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution",
+    "url": "https://arxiv.org/abs/2309.16797",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2310.03714",
+    "title": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+    "url": "https://arxiv.org/abs/2310.03714",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2310.02304",
+    "title": "STOP: Self-Taught Optimizer / Recursively Self-Improving Code Generation",
+    "url": "https://arxiv.org/abs/2310.02304",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2406.07496",
+    "title": "TextGrad: Automatic “Differentiation” via Text",
+    "url": "https://arxiv.org/abs/2406.07496",
+    "missing": [
+      "哪些部分保持固定",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2410.10762",
+    "title": "AFlow: Automating Agentic Workflow Generation",
+    "url": "https://arxiv.org/abs/2410.10762",
+    "missing": [
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2507.03616",
+    "title": "EvoAgentX: An Automated Framework for Evolving Agentic Workflows",
+    "url": "https://arxiv.org/abs/2507.03616",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2509.19349",
+    "title": "ShinkaEvolve: Towards Open-Ended and Sample-Efficient Program Evolution",
+    "url": "https://arxiv.org/abs/2509.19349",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2305.10250",
+    "title": "MemoryBank: Enhancing Large Language Models with Long-Term Memory",
+    "url": "https://arxiv.org/abs/2305.10250",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2308.10144",
+    "title": "ExpeL: LLM Agents Are Experiential Learners",
+    "url": "https://arxiv.org/abs/2308.10144",
+    "missing": [
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2409.00872",
+    "title": "SAGE: Self-evolving Agents with Reflective and Memory-Augmented Abilities",
+    "url": "https://arxiv.org/abs/2409.00872",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2510.04618",
+    "title": "Agentic Context Engineering (ACE)",
+    "url": "https://arxiv.org/abs/2510.04618",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2510.16079",
+    "title": "EvolveR: Self-Evolving LLM Agents through an Experience-Driven Lifecycle",
+    "url": "https://arxiv.org/abs/2510.16079",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2512.18746",
+    "title": "MemEvolve: Meta-Evolution of Agent Memory Systems",
+    "url": "https://arxiv.org/abs/2512.18746",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2602.07755",
+    "title": "ALMA: Learning to Continually Learn via Meta-learning Agentic Memory Designs",
+    "url": "https://arxiv.org/abs/2602.07755",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.18620",
+    "title": "Learning to Self-Evolve",
+    "url": "https://arxiv.org/abs/2603.18620",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2402.17574",
+    "title": "Agent-Pro: Learning to Evolve via Policy-Level Reflection and Optimization",
+    "url": "https://arxiv.org/abs/2402.17574",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2510.23601",
+    "title": "Alita-G: Self-Evolving Generative Agent for Agent Generation",
+    "url": "https://arxiv.org/abs/2510.23601",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.13131",
+    "title": "MineEvolve: Self-Evolution with Accumulated Knowledge for Long-Horizon Embodied Minecraft Agents",
+    "url": "https://arxiv.org/abs/2603.13131",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.18000",
+    "title": "AgentFactory: A Self-Evolving Framework Through Executable Subagent Accumulation and Reuse",
+    "url": "https://arxiv.org/abs/2603.18000",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.18743",
+    "title": "Memento-Skills: Let Agents Design Agents",
+    "url": "https://arxiv.org/abs/2603.18743",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.15097",
+    "title": "From Procedural Skills to Strategy Genes: Towards Experience-Driven Test-Time Evolution",
+    "url": "https://arxiv.org/abs/2604.15097",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2604.20133",
+    "title": "EvoAgent: An Evolvable Agent Framework with Skill Learning and Multi-Agent Delegation",
+    "url": "https://arxiv.org/abs/2604.20133",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.23904",
+    "title": "SkillOpt: Executive Strategy for Self-Evolving Agent Skills",
+    "url": "https://arxiv.org/abs/2605.23904",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.00272",
+    "title": "ASPIRE: Agentic /Skills Discovery for Robotics",
+    "url": "https://arxiv.org/abs/2607.00272",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.26784",
+    "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
+    "url": "https://arxiv.org/abs/2607.26784",
+    "missing": [
+      "哪些部分保持固定",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.11350",
+    "title": "SHAPER: Self-Evolving Embodied Agents via Skill-Harness Evolution",
+    "url": "https://arxiv.org/abs/2608.11350",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2504.15228",
+    "title": "A Self-Improving Coding Agent (SICA)",
+    "url": "https://arxiv.org/abs/2504.15228",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2603.03329",
+    "title": "AutoHarness: Improving LLM Agents by Automatically Synthesizing a Code Harness",
+    "url": "https://arxiv.org/abs/2603.03329",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2606.19980",
+    "title": "ENPIRE: Agentic Robot Policy Self-Improvement in the Real World",
+    "url": "https://arxiv.org/abs/2606.19980",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.14159",
+    "title": "MemoHarness: Agent Harnesses That Learn from Experience",
+    "url": "https://arxiv.org/abs/2607.14159",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.01918",
+    "title": "HarnessCompass: Guiding Automatic Harness Evolution toward Generalizable and Effective Agent Harnesses",
+    "url": "https://arxiv.org/abs/2608.01918",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.08466",
+    "title": "Hierarchical Self-Improvement: A Framework for Task-Specific Evolvable Agent Harnesses (HSI)",
+    "url": "https://arxiv.org/abs/2608.08466",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.09380",
+    "title": "OpenLoopEvolve: A Verifiable Self-Evolution Framework for Loop Policies in Long-Horizon Complex Tasks",
+    "url": "https://arxiv.org/abs/2608.09380",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.12307",
+    "title": "AI4AI at Test-Time: Strong-to-Weak Capability Transfer via Harnesses",
+    "url": "https://arxiv.org/abs/2608.12307",
+    "missing": [
+      "哪些部分保持固定"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.24735",
+    "title": "Meta^n: Recursive Self-Improvement through Emergent Depth",
+    "url": "https://arxiv.org/abs/2608.24735",
+    "missing": [],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.27276",
+    "title": "SIA: Self Improving AI with Harness & Weight Updates",
+    "url": "https://arxiv.org/abs/2605.27276",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2607.21971",
+    "title": "Teaching LLMs to Self-Evolve: Cultivating Core Meta-Skills with Reinforcement Learning (MetaEvolve)",
+    "url": "https://arxiv.org/abs/2607.21971",
+    "missing": [
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.05446",
+    "title": "EvoHarness-RL: Learning Self-Evolving Runtime Harness for Long-Horizon LLM Agents",
+    "url": "https://arxiv.org/abs/2608.05446",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.13951",
+    "title": "HELIX: Model-Harness Co-evolution for Recursive Self-Improvement",
+    "url": "https://arxiv.org/abs/2608.13951",
+    "missing": [
+      "证据边界与局限"
+    ],
+    "partial": [],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2505.19955",
+    "title": "MLR-Bench: Evaluating AI Agents on Open-Ended Machine Learning Research",
+    "url": "https://arxiv.org/abs/2505.19955",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2605.08678",
+    "title": "MLS-Bench: A Holistic and Rigorous Assessment of AI Systems on Building Better AI",
+    "url": "https://arxiv.org/abs/2605.08678",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.17271",
+    "title": "ASI-Bench: At the Dawn of Artificial Superintelligence",
+    "url": "https://arxiv.org/abs/2608.17271",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "证据边界与局限"
+    ],
+    "partial": [
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2507.19457",
+    "title": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+    "url": "https://arxiv.org/abs/2507.19457",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "基础 harness / 初始系统",
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2609.00829",
+    "title": "HarnessEvolve: Learning from Reference Trajectories for Reliable Agent Self-Evolution",
+    "url": "https://arxiv.org/abs/2609.00829",
+    "missing": [
+      "哪些部分保持固定"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.27311",
+    "title": "HarnessLens: Verify Smarter, Evolve Further",
+    "url": "https://arxiv.org/abs/2608.27311",
+    "missing": [
+      "哪些部分保持固定"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.10178",
+    "title": "One Recipe, Many Harnesses: What Self-Evolution Encodes Across Languages and Models",
+    "url": "https://arxiv.org/abs/2608.10178",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2608.31100",
+    "title": "S³Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+    "url": "https://arxiv.org/abs/2608.31100",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新",
+      "任务组织与评估隔离"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  },
+  {
+    "id": "2609.01481",
+    "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
+    "url": "https://arxiv.org/abs/2609.01481",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改",
+      "进化、选模与测试数据"
+    ],
+    "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。"
+  }
+]

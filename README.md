@@ -72,3 +72,11 @@ Cards expose the mechanism, novelty, actors and seed; expandable feedback chains
 `data/updated-research-notes.md` preserves the updated user-supplied file verbatim. `scripts/reading_notes.py` attaches its nine complete paper discussions, keeping the website taxonomy independent from document headings. Each includes research gap, method, experimental protocol, results, limitations and overall assessment. Cards introduce the paper and evidence; a full reading page has section navigation and a shareable paper URL. Other papers retain their structured records and existing detailed notes.
 
 The AHE body/appendix reasoning-tier discrepancy and AI4AI validation/full-set count discrepancy are explicit annotations rather than silently resolved facts. Importing user notes is not represented as a new primary-source audit.
+
+## Question-led profiles (2026-09-09)
+
+All 134 entries now have twelve research questions, with recorded, partial, missing and not-applicable states. A recorded value is not a certification that every number has been checked. `data/coverage.json` lists remaining gaps; the site can filter by missing dimensions. Evaluation readers use assessment-specific questions rather than assuming every benchmark has a self-modifier.
+
+`data/source-checks.json` records the scope and link for the primary-source positioning pass. This is targeted reading of abstracts, methods or experimental passages, not a claim of complete full-text audits. `data/dimension-updates.json` contains 17 focused supplements; `data/distinctions.json` replaces repeated category-level descriptions with mechanism-specific distinctions. `scripts/profiles.py` merges these layers after preserving the original and updated notes.
+
+Continual Harness is now classified under joint harness/weight evolution because its co-learning experiment updates both; its frozen-model setting remains explicitly described. Methods with different protocols across experiments retain those differences instead of receiving a single unqualified held-out claim.
