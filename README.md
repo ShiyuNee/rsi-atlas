@@ -17,11 +17,11 @@ This is a research index, not a claim that every paper or experimental detail ha
 
 ## Readable research tables (2026-09-09)
 
-All 134 records use one maintained table in `data/research-tables.json`, shared by cards and detail pages. The five visible dimensions are executor, modifier, evolving object, feedback, and initial harness. The disclosure contains the full table, including update/acceptance, training/evolution data, debugging/selection data, final evaluation, isolation, and distinctive contribution. Each row links to its primary-source location.
+All 134 records use one maintained table in `data/research-tables.json`, shared by cards and detail pages. Each article starts with three source-linked TL;DR points: the authors’ stated research gap, the paper’s positioning, and its contribution/conclusion. The five visible dimensions then follow this order: evolving object, executor, modifier, feedback, initial harness. The disclosure contains the full table, including update/acceptance, training/evolution data, debugging/selection data, final evaluation, isolation, and distinctive contribution. Each row links to its primary-source location.
 
 Paper omissions and conflicting protocols are stated as concrete evidence boundaries. A reported validation or adaptive score is not relabeled as a sealed test result. Historical notes remain downloadable and are not the current table's source of truth. This release focuses on the listed research dimensions; it is not an independent replication of the papers' experiments.
 
-Edit `data/research-tables.json` to update displayed content and citations. `scripts/research_tables.py` attaches it after historical imports, so older prose cannot overwrite current entries. Regenerate `data/papers.json` and run the checks before publishing.
+Edit `data/research-tables.json` for full research dimensions and citations. Maintain each paper’s three-point TL;DR and optional plain-language field summaries in `data/overviews.json`; summaries retain model identities and factual boundaries, while research-question numbers and internal notation belong in the full table. `scripts/research_tables.py` attaches it after historical imports, so older prose cannot overwrite current entries. Regenerate `data/papers.json` and run the checks before publishing.
 
 ## Maintain the catalog
 
@@ -93,7 +93,7 @@ Continual Harness is now classified under joint harness/weight evolution because
 
 每篇默认按顺序展示：谁执行、谁来改、什么在进化、反馈是什么、基础 harness 是什么。完整专题解读也使用同一组卡片字段，全文保留。
 
-`data/readability.json` 保存易读性修订，不覆盖原始笔记。角色要写清决策模型与实际运行程序；反馈要说明提供者、判断依据和可见内容，区分自测与正式评测。基础系统要说明来源、工具和运行流程；只有来源支持时才能写“没有某功能”，不能从记录缺失推断系统没有。自建数据在实验字段中交代任务内容、构造方式和隔离，不能只报数据集名字。未核实的五个默认字段仍显示具体缺项。
+`data/readability.json` 保存易读性修订，不覆盖原始笔记。角色要写清决策模型与实际运行程序；反馈要说明提供者、判断依据和可见内容，区分自测与正式评测。基础系统要说明来源、工具和运行流程；只有来源支持时才能写“没有某功能”，不能从记录缺失推断系统没有。自建数据在实验字段中交代任务内容、构造方式和隔离，不能只报数据集名字。概览不显示 RQ 编号或内部层级代号；原文未披露的信息以读者能理解的具体缺项说明，完整口径与出处留在表格中。
 
 ## Dataset and initial-harness audit (2026-09-09)
 

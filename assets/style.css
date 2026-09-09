@@ -17,3 +17,14 @@
 
 /* One source-linked table shared by cards and the paper reader. */
 .profile-table{table-layout:fixed;min-width:700px}.profile-table th:first-child{width:145px}.profile-table th:last-child,.profile-table td:last-child{width:180px;font-size:12px;overflow-wrap:anywhere}.profile-table td:nth-child(2){overflow-wrap:anywhere}.field-source{display:block;font-size:11px;line-height:1.6;margin-top:6px;color:var(--muted)}.field-source a{color:var(--muted)}.field-source br{display:none}.field-source a+a:before{content:" · "}.mechanism{margin-top:18px}.reader-intro{margin:20px 0}
+
+/* Lead with the paper's argument, then expose the five comparable dimensions. */
+.paper-tldr{margin:20px 0 24px;padding:18px 20px;background:#f4f8f6;border-left:3px solid var(--accent);border-radius:0 5px 5px 0}
+.paper-tldr h3{font-size:12px;letter-spacing:.09em;color:var(--accent);margin:0 0 14px}
+.paper-tldr ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.paper-tldr li{display:grid;grid-template-columns:145px minmax(0,1fr);gap:14px;align-items:start}
+.paper-tldr strong{font-size:13px;line-height:1.8;color:#36534c}
+.paper-tldr p{margin:0;font-size:15px;line-height:1.85}
+.paper-tldr .field-source{margin-top:3px}
+.research-fields>div:first-child{grid-column:1/-1}
+@media(max-width:760px){.paper-tldr{padding:15px 14px}.paper-tldr li{grid-template-columns:1fr;gap:4px}.paper-tldr ol{gap:17px}.paper-tldr p{font-size:14px}}

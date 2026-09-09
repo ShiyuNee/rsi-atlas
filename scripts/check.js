@@ -98,3 +98,26 @@ assert(field('2606.04455','executor').includes('Qwen3-8B'));
 assert(field('2606.04455','executor').includes('Claude Haiku 4.5'));
 assert(field('2608.06301','executor').includes('grok-build'));
 console.log('Passed: all 134 role audits; matching card/table text; explicit executor, modifier and router identities.');
+
+const overviews=require('../data/overviews.json');
+assert.equal(Object.keys(overviews).length,papers.length);
+const overviewKeys=['object','executor','modifier','verdict','seed'];
+for(const p of papers){
+ assert.deepEqual(p.overview,overviews[p.id],p.id);
+ assert.deepEqual(p.overview.tldr.map(f=>f.key),['gap','position','conclusion'],p.id);
+ for(const f of p.overview.tldr){
+  assert(f.value.length>=15,p.id+':'+f.key);
+  assert(f.sources.length>0&&f.sources.every(s=>s.label&&s.url.startsWith('https://')),p.id);
+  assert(!/RQ\s*\d|§|最干净的理论 M3|当前记录未/.test(f.value),p.id);
+ }
+ assert(Object.keys(p.overview.fields).every(k=>overviewKeys.includes(k)),p.id);
+ for(const k of overviewKeys){
+  const v=p.overview.fields[k]||field(p.id,k);
+  assert(!/RQ\s*\d|§|\bM[012](?:[-+/：])|当前记录未|本轮尚/.test(v),p.id+':'+k);
+ }
+}
+assert(field('2608.31111','executor').includes('RQ2')); // Detailed source mapping stays available.
+assert(!overviews['2608.31111'].fields.executor.includes('RQ2'));
+assert(overviews['2608.31111'].fields.executor.includes('Qwen3.5-9B'));
+assert(overviews['2608.31111'].fields.modifier.includes('GPT-5.6'));
+console.log('Passed: 134 sourced three-point TL;DRs; plain overview fields; technical detail retained in research tables.');
