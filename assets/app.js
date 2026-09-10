@@ -14,6 +14,7 @@ const GROUPS = [
  ['reading','原始收录状态',['原记录 · 详细介绍','原记录 · 横向定位','新增 · 方法与实验设置核对','新增 · 摘要核对']]
 ];
 const LABELS={C:'Core · 代表作',K:'Key · 重点',R:'Related · 相关',EditorWeights:'修改者的参数',HarnessCode:'Harness code',MemoryContent:'Memory 内容',MemoryMechanism:'Memory 机制',SameModel:'同一模型',SeparateEvolver:'独立 Evolver',StrongerBuilder:'更强 Builder',LearnedUpdater:'训练过的 Updater',JointEvolution:'联合进化',ExecutableVerifier:'可执行 Verifier',EnvironmentReward:'环境 Reward',BenchmarkScore:'Benchmark 分数',GoldLabel:'Gold label / 答案',LLMJudge:'LLM judge',SelfFeedback:'模型自反馈',HumanDemo:'人类示范',PairwiseFeedback:'成对偏好',ProcessReward:'过程 Reward'};
+Object.assign(LABELS,{"HarnessCode": "运行框架代码", "Prompt": "提示词", "Context": "上下文", "MemoryContent": "记忆内容", "MemoryMechanism": "记忆管理机制", "Skill": "技能说明", "Tool": "工具", "Workflow": "工作流程", "Subagent": "子代理", "Evaluator": "评估器", "Data": "学习数据", "Weights": "模型参数", "Improver": "修改机制", "SameModel": "同一模型修改", "SeparateEvolver": "独立修改者", "StrongerBuilder": "更强模型构建", "LearnedUpdater": "经过训练的修改者", "ExecutableVerifier": "程序检查任务结果", "EnvironmentReward": "环境给出的奖励", "BenchmarkScore": "基准评测分数", "GoldLabel": "标准标签或答案", "LLMJudge": "模型按要求评审", "ProcessReward": "中间步骤奖励", "OfflineSearch": "部署前搜索", "Online": "执行任务时更新", "Prequential": "先做当前任务，再用其反馈学习", "Archive": "保存历史版本", "Population": "同时维护多个候选", "Sequential": "逐轮更新", "CoEvolution": "共同进化", "Continual": "持续学习", "Streaming": "连续任务流"});
 const LEVEL={C:'Core',K:'Key',R:'Related'};
 const PAGE_SIZE=12;
 let dataset, papers=[],state={q:'',category:'',quick:'all',year:'',sort:'priority',page:1,facets:{},tags:[],paper:'',view:'library',paper:''};
@@ -125,6 +126,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=position-20260910');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=explain-20260910');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

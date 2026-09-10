@@ -142,7 +142,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "ALFWorld 使用 GPT-3 执行动作；编程实验以 GPT-4 生成代码，并运行自建单元测试。模型配置随任务变化，不能统一写成一款 LLM 执行任务的模型。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） 使用 GPT-3 执行动作；编程实验以 GPT-4 生成代码，并运行自建单元测试。模型配置随任务变化，不能统一写成一款 LLM 执行任务的模型。",
         "sources": [
           {
             "label": "§3",
@@ -170,7 +170,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定反思提示让语言模型把失败反馈写成文字经验，下一次执行时读取。算法将执行任务的模型、evaluator、reflector 分为角色；§4 没有逐项列出所有角色对应的 API 快照，不能据此断言都用同一个版本。",
+        "value": "固定反思提示让语言模型把失败反馈写成文字经验，下一次执行时读取。算法将执行任务的模型、evaluator、reflector 分为角色；§4 没有逐项列出所有角色对应的 API（供程序调用模型、工具或服务的接口） 快照，不能据此断言都用同一个版本。",
         "sources": [
           {
             "label": "§3",
@@ -282,7 +282,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "不做参数训练。ALFWorld 的 134 个环境、HotpotQA 的 100 道题在当前题上反思重试。",
+        "value": "不做参数训练。ALFWorld（通过文字动作完成家居物体操作的交互环境） 的 134 个环境、HotpotQA（需要结合多份资料作答的多跳问答基准） 的 100 道题在当前题上反思重试。",
         "sources": [
           {
             "label": "§4.1",
@@ -314,7 +314,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "编程在 HumanEval、MBPP（Python/Rust）及 LeetcodeHardGym 40 题上，用正式测试判断最终代码。",
+        "value": "编程在 HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）、MBPP（Python/Rust）及 LeetcodeHardGym 40 题上，用正式测试判断最终代码。",
         "sources": [
           {
             "label": "§4.1",
@@ -848,7 +848,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定GRPO训练程序更新Qwen2.5-7B/14B；Self-Questioning的探索和任务合成用Qwen-Plus，任务评分者用Qwen3-235B-A22B。步骤归因另见Self-Attributing配置。",
+        "value": "固定GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）训练程序更新Qwen2.5-7B/14B；Self-Questioning的探索和任务合成用Qwen-Plus，任务评分者用Qwen3-235B-A22B。步骤归因另见Self-Attributing配置。",
         "sources": [
           {
             "label": "§3",
@@ -880,7 +880,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "行为策略 weights + 自生成 task / experience / credit strategy；deployment 运行框架不是主要对象。\n\n固定部分：环境 API、GRPO 训练规则和辅助模块的流程固定。",
+        "value": "行为策略 weights + 自生成 task / experience / credit strategy；deployment 运行框架不是主要对象。\n\n固定部分：环境 API（供程序调用模型、工具或服务的接口）、GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 训练规则和辅助模块的流程固定。",
         "sources": [
           {
             "label": "§3",
@@ -936,7 +936,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "以可训练任务代理的行为策略接入 AppWorld 和 BFCL 的工具交互，系统自行构造探索任务、利用已有成功经验导航，并给轨迹分配训练信用。基础工具环境固定，主要训练行为策略，而非随意改底层 API。",
+        "value": "以可训练任务代理的行为策略接入 AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 和 BFCL 的工具交互，系统自行构造探索任务、利用已有成功经验导航，并给轨迹分配训练信用。基础工具环境固定，主要训练行为策略，而非随意改底层 API（供程序调用模型、工具或服务的接口）。",
         "sources": [
           {
             "label": "§6.3、§7.1.1–7.1.3",
@@ -948,7 +948,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "Self-Attributing 用 Qwen-Max 对整条轨迹各步判断 GOOD/BAD，将局部信用与最终奖励结合。固定 GRPO 流程训练 Qwen2.5-7B/14B；经验提取、检索和合成任务辅助采样，不由模型重写训练算法。这是按训练目标进行梯度更新的策略学习，不采用运行框架补丁的接受/回退门控。",
+        "value": "Self-Attributing 用 Qwen-Max 对整条轨迹各步判断 GOOD/BAD，将局部信用与最终奖励结合。固定 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 流程训练 Qwen2.5-7B/14B；经验提取、检索和合成任务辅助采样，不由模型重写训练算法。这是按训练目标进行梯度更新的策略学习，不采用运行框架补丁的接受/回退门控。",
         "sources": [
           {
             "label": "§3",
@@ -972,7 +972,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "在 AppWorld、BFCL 环境探索后合成任务。消融分别比较 100/200/500 条合成数据；它们不是三套最终测试集。",
+        "value": "在 AppWorld（通过多个应用的程序接口完成日常事务的交互基准）、BFCL 环境探索后合成任务。消融分别比较 100/200/500 条合成数据；它们不是三套最终测试集。",
         "sources": [
           {
             "label": "§7.1",
@@ -1004,7 +1004,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AppWorld 任务完成率 TGC；BFCL v3 的 multi-turn split，检查后端状态及执行路径。主实验每题 8 次运行，报告 avg@8/best@8。",
+        "value": "AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 任务完成率 TGC；BFCL v3 的 multi-turn split，检查后端状态及执行路径。主实验每题 8 次运行，报告 avg@8/best@8。",
         "sources": [
           {
             "label": "§7.1",
@@ -1296,11 +1296,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Code 中的 Claude Opus 4.6 作为候选方案提出者，读取历史运行框架、分数和执行轨迹，改写单文件 Python 运行框架；执行任务的基础模型按领域另设并保持冻结。",
+        "value": "Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 中的 Claude Opus 4.6 作为候选方案提出者，读取历史运行框架、分数和执行轨迹，改写单文件 Python 运行框架；执行任务的基础模型按领域另设并保持冻结。",
         "sources": [
           {
             "label": "§3",
             "url": "https://arxiv.org/html/2603.28052#S3"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -1344,7 +1348,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "coding 候选方案提出者自行用终端检索历代代码、分数和执行轨迹，决定修补哪个失败机制。直接编辑检索、状态管理、提示构造与执行控制代码；每轮留下完整候选和日志。候选先过接口有效性检查，再执行搜索集；维护性能/成本的 Pareto 候选，最终评估入选版本。",
+        "value": "coding 候选方案提出者自行用终端检索历代代码、分数和执行轨迹，决定修补哪个失败机制。直接编辑检索、状态管理、提示构造与执行控制代码；每轮留下完整候选和日志。候选先过接口有效性检查，再执行搜索集；维护性能/成本的 Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案） 候选，最终评估入选版本。",
         "sources": [
           {
             "label": "§3",
@@ -1422,7 +1426,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.4（high）在 NexAU 的 Code Agent 中运行任务；跨模型测试再替换这个执行端，复用已进化的运行框架。",
+        "value": "GPT-5.4（high）在 NexAU（组织模型、工具和任务执行的模块化代理框架） 的 Code Agent 中运行任务；跨模型测试再替换这个执行端，复用已进化的运行框架。",
         "sources": [
           {
             "label": "§3",
@@ -1447,6 +1451,10 @@
           {
             "label": "附录A",
             "url": "https://arxiv.org/html/2604.25850#A1.SS0.SSS0.Px3"
+          },
+          {
+            "label": "NexAU 官方说明",
+            "url": "https://github.com/nex-agi/NexAU"
           }
         ],
         "status": "recorded"
@@ -1534,11 +1542,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "从 NexAU₀ 的仅提供 Bash 命令行工具起点出发，没有预置完整专用工具、middleware 和长期记忆；通过改提示、工具和运行逻辑建立这些能力。具体示例包括改命令行 timeout 接口，而非仅换一句提示词。",
+        "value": "从 NexAU（组织模型、工具和任务执行的模块化代理框架）₀ 的仅提供 Bash 命令行工具起点出发，没有预置完整专用工具、middleware（处理模型与工具之间消息、调用和返回结果的中间代码） 和长期记忆；通过改提示、工具和运行逻辑建立这些能力。具体示例包括改命令行 timeout 接口，而非仅换一句提示词。",
         "sources": [
           {
             "label": "实验设置与转移实验；原文口径补注",
             "url": "https://arxiv.org/abs/2604.25850"
+          },
+          {
+            "label": "NexAU 官方说明",
+            "url": "https://github.com/nex-agi/NexAU"
           }
         ],
         "status": "recorded"
@@ -1546,7 +1558,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "Debugger 从原始轨迹生成逐任务根因/成功分析，再汇总成评测基准层证据。增删改 system 提示词、tools、middleware、memory 等文件；manifest 绑定改动与预期影响。下一轮验证 manifest 的修复/退化预测，保留或撤回修改；还做单组件移植分析。",
+        "value": "Debugger 从原始轨迹生成逐任务根因/成功分析，再汇总成评测基准层证据。增删改 system 提示词、tools、middleware（处理模型与工具之间消息、调用和返回结果的中间代码）、memory 等文件；manifest 绑定改动与预期影响。下一轮验证 manifest 的修复/退化预测，保留或撤回修改；还做单组件移植分析。",
         "sources": [
           {
             "label": "§3",
@@ -1772,7 +1784,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "只向候选方案提出者暴露 held-in traces、失败簇、passing behavior 和既往改动摘要。提出少量 diverse / 简化的 配置改动，分别对应可解释的失败机制。自动 promotion gate 同时检查 held-in 与单独留出的分数；单独留出的 trace 不暴露，但分数参与接受。",
+        "value": "只向候选方案提出者暴露 held-in traces、失败簇、passing behavior 和既往改动摘要。提出少量 diverse / 简化的 配置改动，分别对应可解释的失败机制。自动 promotion gate（决定是否接受修改的检查条件） 同时检查 held-in 与单独留出的分数；单独留出的 trace 不暴露，但分数参与接受。",
         "sources": [
           {
             "label": "§3.1",
@@ -1792,7 +1804,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "不训权重。TB2 固定 64 题子集；SWE-bench Verified 67 道 held-in；AppWorld 90 道官方训练题，提供失败轨迹。",
+        "value": "不训权重。TB2 固定 64 题子集；SWE-bench Verified 67 道 held-in；AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 90 道官方训练题，提供失败轨迹。",
         "sources": [
           {
             "label": "§4.1",
@@ -1812,7 +1824,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "SWE 33 道单独留出的、AppWorld 90 道从 test_normal/test_challenge 抽取的题，加上各自 held-in 分数共同决定是否接受候选。",
+        "value": "SWE 33 道单独留出的、AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 90 道从 test_normal/test_challenge 抽取的题，加上各自 held-in 分数共同决定是否接受候选。",
         "sources": [
           {
             "label": "§4.1",
@@ -1872,7 +1884,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "把候选方案提出者内化到目标模型自身，并聚类共性失败而不是逐题硬编码修补；“同模型”不意味着没有固定外层 gate。",
+        "value": "把候选方案提出者内化到目标模型自身，并聚类共性失败而不是逐题硬编码修补；“同模型”不意味着没有固定外层 gate（决定是否接受修改的检查条件）。",
         "sources": [
           {
             "label": "§3.1",
@@ -1994,7 +2006,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "Terminal-Bench 2 与 HLE 数学/物理文本题组成 80 道 train，按批运行并更新。",
+        "value": "Terminal-Bench 2 与 HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准） 数学/物理文本题组成 80 道 train，按批运行并更新。",
         "sources": [
           {
             "label": "§3.3",
@@ -2018,7 +2030,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "55 道 ID test；另有 80 道 HLE CS/AI、Engineering 题测 OOD；额外重放训练题以观察遗忘。",
+        "value": "55 道 ID test；另有 80 道 HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准） CS/AI、Engineering 题测 OOD；额外重放训练题以观察遗忘。",
         "sources": [
           {
             "label": "§3.3",
@@ -2060,7 +2072,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen2.5-3B-Instruct、Qwen2.5-7B-Instruct、Qwen3-1.7B-Instruct的当前checkpoint；多模态扩展用Qwen2.5-VL-3B-Instruct。",
+        "value": "Qwen2.5-3B-Instruct、Qwen2.5-7B-Instruct、Qwen3-1.7B-Instruct的当前checkpoint（某个时刻保存的模型或系统版本）；多模态扩展用Qwen2.5-VL-3B-Instruct。",
         "sources": [
           {
             "label": "附录B.3",
@@ -2080,7 +2092,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Stage1由GLM-5.2从轨迹抽取事后技能以构造监督微调（用示范数据训练模型）；Stage2由当前策略checkpoint兼任分析器，固定GRPO与从当前模型实际执行的记录中进行蒸馏学习程序更新参数。",
+        "value": "Stage1由GLM-5.2从轨迹抽取事后技能以构造监督微调（用示范数据训练模型）；Stage2由当前策略checkpoint（某个时刻保存的模型或系统版本）兼任分析器，固定GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）与从当前模型实际执行的记录中进行蒸馏学习程序更新参数。",
         "sources": [
           {
             "label": "附录B.3",
@@ -2124,7 +2136,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "固定任务交互接口上的可训练任务代理，先用轨迹—技能数据 监督微调（用示范数据训练模型），再进行 on-policy distillation/强化学习（根据奖励调整模型行为）。技能是训练信号，不等同于部署时另外维护一个永久技能库；ALFWorld、WebShop、搜索各有原生动作接口。",
+        "value": "固定任务交互接口上的可训练任务代理，先用轨迹—技能数据 监督微调（用示范数据训练模型），再进行 on-policy distillation/强化学习（根据奖励调整模型行为）。技能是训练信号，不等同于部署时另外维护一个永久技能库；ALFWorld（通过文字动作完成家居物体操作的交互环境）、WebShop（根据用户要求挑选和购买商品的交互基准）、搜索各有原生动作接口。",
         "sources": [
           {
             "label": "Table 3 与训练数据配置",
@@ -2136,7 +2148,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "分析器从当前策略生成的轨迹中提取事后技能；技能条件下的 token 概率提供更密集的训练信号。先做轨迹—技能 监督微调（用示范数据训练模型），再联合 GRPO 与从当前模型实际执行的记录中进行蒸馏学习；分析器随策略同步更新。按 强化学习（根据奖励调整模型行为）/蒸馏目标更新参数，不是用测试分数接受某段运行框架补丁。",
+        "value": "分析器从当前策略生成的轨迹中提取事后技能；技能条件下的 token 概率提供更密集的训练信号。先做轨迹—技能 监督微调（用示范数据训练模型），再联合 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 与从当前模型实际执行的记录中进行蒸馏学习；分析器随策略同步更新。按 强化学习（根据奖励调整模型行为）/蒸馏目标更新参数，不是用测试分数接受某段运行框架补丁。",
         "sources": [
           {
             "label": "附录B.3",
@@ -2148,7 +2160,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "监督微调（用示范数据训练模型） 每类 180 题×8 条轨迹；强化学习（根据奖励调整模型行为）：ALFWorld 2,400、WebShop 2,400、搜索 QA 19,200 条训练实例。",
+        "value": "监督微调（用示范数据训练模型） 每类 180 题×8 条轨迹；强化学习（根据奖励调整模型行为）：ALFWorld（通过文字动作完成家居物体操作的交互环境） 2,400、WebShop（根据用户要求挑选和购买商品的交互基准） 2,400、搜索 QA 19,200 条训练实例。",
         "sources": [
           {
             "label": "附录B.1",
@@ -2180,7 +2192,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "ALFWorld 140 seen＋134 unseen；WebShop 128 题；搜索 QA 共 51,713 题，涵盖 NQ、TriviaQA、PopQA、HotpotQA、2Wiki、MuSiQue、Bamboogle。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） 140 seen＋134 unseen；WebShop（根据用户要求挑选和购买商品的交互基准） 128 题；搜索 QA 共 51,713 题，涵盖 NQ、TriviaQA、PopQA、HotpotQA（需要结合多份资料作答的多跳问答基准）、2Wiki、MuSiQue、Bamboogle。",
         "sources": [
           {
             "label": "附录B.1",
@@ -2196,7 +2208,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "训练和评估分别配置；ALFWorld 的 seen/unseen 结果分开报告。七个 QA 评估集不能全部当成训练集。",
+        "value": "训练和评估分别配置；ALFWorld（通过文字动作完成家居物体操作的交互环境） 的 seen/unseen 结果分开报告。七个 QA 评估集不能全部当成训练集。",
         "sources": [
           {
             "label": "附录B.1",
@@ -2484,7 +2496,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "主矩阵：Claude Code + Opus-4.8/Sonnet-5（high），Codex + GPT-5.6-Sol/Terra（max）。生成训练轨迹的外部模型固定Claude Opus4.8，Tinker执行训练。另有Claude Code + Kimi-K2.6指导Kimi-K2.6的案例。",
+        "value": "主矩阵：Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus-4.8/Sonnet-5（high），Codex + GPT-5.6-Sol/Terra（max）。生成训练轨迹的外部模型固定Claude Opus4.8，Tinker执行训练。另有Claude Code + Kimi-K2.6指导Kimi-K2.6的案例。",
         "sources": [
           {
             "label": "§3.1",
@@ -2513,6 +2525,10 @@
           {
             "label": "§5.5",
             "url": "https://arxiv.org/html/2607.25886#S5.SS5.SSS0.Px1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -2548,7 +2564,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "checkpoint 评测得分、诊断与执行反馈。",
+        "value": "checkpoint（某个时刻保存的模型或系统版本） 评测得分、诊断与执行反馈。",
         "sources": [
           {
             "label": "§3.1",
@@ -2576,11 +2592,19 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "固定 Tinker 后训练与模型服务栈；SWE 任务用 mini-swe-agent，其他任务用 Terminus-2。研究任务代理的主要自由度是合成数据、修改数据策略，不能同时改最终评估运行框架来涨分。",
+        "value": "固定 Tinker 后训练与模型服务栈；SWE 任务用 mini-swe-agent（主要通过命令行读写文件、运行测试的轻量编程代理），其他任务用 Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）。研究任务代理的主要自由度是合成数据、修改数据策略，不能同时改最终评估运行框架来涨分。",
         "sources": [
           {
             "label": "§3 固定设施；§4.3 与附录 A",
             "url": "https://arxiv.org/abs/2607.25886"
+          },
+          {
+            "label": "mini-swe-agent 官方说明",
+            "url": "https://github.com/SWE-agent/mini-swe-agent"
+          },
+          {
+            "label": "Terminus：终端任务代理",
+            "url": "https://www.tbench.ai/news/terminus"
           }
         ],
         "status": "recorded"
@@ -2588,7 +2612,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "researcher 从错误提出能力缺口假设，再判断该合成什么训练经验。修改 data strategy / 数据集，训练 candidate 低秩适配（LoRA，只训练少量适配参数）；不是重写 deployment 运行框架。按 selection 分数 选择 checkpoint；另运行 official evaluation。",
+        "value": "researcher 从错误提出能力缺口假设，再判断该合成什么训练经验。修改 data strategy / 数据集，训练 candidate 低秩适配（LoRA，只训练少量适配参数）；不是重写 deployment 运行框架。按 selection 分数 选择 checkpoint（某个时刻保存的模型或系统版本）；另运行 official evaluation。",
         "sources": [
           {
             "label": "§3.1",
@@ -2632,7 +2656,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "SWE-bench Verified/Multilingual/Pro 各 100 题、GPQA Diamond 100 题、TB2 89 题、AIME 2026 30 题提供候选反馈。",
+        "value": "SWE-bench Verified/Multilingual/Pro 各 100 题、GPQA（研究生级科学问答基准） Diamond 100 题、TB2 89 题、AIME 2026 30 题提供候选反馈。",
         "sources": [
           {
             "label": "§3.5",
@@ -2648,7 +2672,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "选定 checkpoint 后，在新环境用同一目标任务子集重新评估；AIME 每题 4 次解码。",
+        "value": "选定 checkpoint（某个时刻保存的模型或系统版本） 后，在新环境用同一目标任务子集重新评估；AIME 每题 4 次解码。",
         "sources": [
           {
             "label": "§3.5",
@@ -3080,7 +3104,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "独立的 Qwen3.5-9B Harness Engineer 生成和修改运行框架；先用 GPT-5.5 提供冷启动示例，再用在线 GRPO 训练工程师模型。",
+        "value": "独立的 Qwen3.5-9B Harness Engineer 生成和修改运行框架；先用 GPT-5.5 提供冷启动示例，再用在线 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 训练工程师模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -3100,7 +3124,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "harness-editor model weights + executable 运行系统 hooks；target weights不变。\n\n固定部分：每阶段 target weights 固定；engineer 权重受训练，hook API / 外层优化规则固定。",
+        "value": "harness-editor model weights + executable 运行系统 hooks；target weights不变。\n\n固定部分：每阶段 target weights 固定；engineer 权重受训练，hook API（供程序调用模型、工具或服务的接口） / 外层优化规则固定。",
         "sources": [
           {
             "label": "§3.1",
@@ -3152,7 +3176,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "engineer 读取 target 的 failure batch，决定应在哪个 lifecycle 阶段干预。生成并验证 executable 运行系统 patch；奖励分数反传给 engineer。先验证 patch 可执行，再用 same-batch 任务结果构造训练奖励分数；这不等于单独留出的 regression gate。",
+        "value": "engineer 读取 target 的 failure batch，决定应在哪个 lifecycle 阶段干预。生成并验证 executable 运行系统 patch；奖励分数反传给 engineer。先验证 patch 可执行，再用 same-batch 任务结果构造训练奖励分数；这不等于单独留出的 regression gate（决定是否接受修改的检查条件）。",
         "sources": [
           {
             "label": "§3.1",
@@ -3172,7 +3196,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "编辑器的 监督微调（用示范数据训练模型）/强化学习（根据奖励调整模型行为） 任务：WebShop 5,290/5,190；ALFWorld 1,380/1,280；DBBench 2,401/2,302。先分任务再采轨迹，两个训练分区互斥。",
+        "value": "编辑器的 监督微调（用示范数据训练模型）/强化学习（根据奖励调整模型行为） 任务：WebShop（根据用户要求挑选和购买商品的交互基准） 5,290/5,190；ALFWorld（通过文字动作完成家居物体操作的交互环境） 1,380/1,280；DBBench 2,401/2,302。先分任务再采轨迹，两个训练分区互斥。",
         "sources": [
           {
             "label": "附录D",
@@ -3188,7 +3212,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "299 道 validation 用于选择编辑器 checkpoint；另一个迁移实验每个评测基准给编辑器 10 条失败示例，据此生成补丁。",
+        "value": "299 道 validation 用于选择编辑器 checkpoint（某个时刻保存的模型或系统版本）；另一个迁移实验每个评测基准给编辑器 10 条失败示例，据此生成补丁。",
         "sources": [
           {
             "label": "附录D",
@@ -3204,7 +3228,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "完整测试 1,300 题：WebShop 500、ALFWorld 500、DBBench 300。附录 F 的未见题结果为扣除 30 道示例后的 1,270 题。",
+        "value": "完整测试 1,300 题：WebShop（根据用户要求挑选和购买商品的交互基准） 500、ALFWorld（通过文字动作完成家居物体操作的交互环境） 500、DBBench 300。附录 F 的未见题结果为扣除 30 道示例后的 1,270 题。",
         "sources": [
           {
             "label": "附录D",
@@ -3220,7 +3244,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "区分编辑器训练、checkpoint 验证和最终测试；测试内又区分补丁生成时可见的 30 道示例与未见的 1,270 道题。",
+        "value": "区分编辑器训练、checkpoint（某个时刻保存的模型或系统版本） 验证和最终测试；测试内又区分补丁生成时可见的 30 道示例与未见的 1,270 道题。",
         "sources": [
           {
             "label": "附录D",
@@ -3236,7 +3260,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "改进器的 editing 行为策略可以通过 监督微调（用示范数据训练模型） + GRPO 学出来；被训练的是独立 editor，不是同一个 target 的权重与运行框架同时自演化。",
+        "value": "改进器的 editing 行为策略可以通过 监督微调（用示范数据训练模型） + GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 学出来；被训练的是独立 editor，不是同一个 target 的权重与运行框架同时自演化。",
         "sources": [
           {
             "label": "§3.1",
@@ -3262,7 +3286,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "七个主基准均用 GPT-5.5：SWE-Bench Pro 经 Copilot 运行，推理强度 xhigh；其余六项经 Codex 运行。GLM-5.2 经 Claude Code 的结果属于尚在进行、没有匹配 Direct 基线的补充实验。",
+        "value": "七个主基准均用 GPT-5.5：SWE-Bench Pro 经 Copilot 运行，推理强度 xhigh；其余六项经 Codex 运行。GLM-5.2 经 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 的结果属于尚在进行、没有匹配 Direct 基线的补充实验。",
         "sources": [
           {
             "label": "§4.1",
@@ -3283,6 +3307,10 @@
           {
             "label": "§6.1",
             "url": "https://arxiv.org/html/2608.05144#S6.SS1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -3500,7 +3528,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "MindForge / Expansion search；adapter training 由相应训练栈完成。",
+        "value": "MindForge 是本文的学习任务生成与执行记录筛选模块；Expansion search 是运行配置搜索流程，负责尝试不同提示、工具和技能配置。需要更新模型适配参数时，由对应训练程序执行。",
         "sources": [
           {
             "label": "§3.1",
@@ -3596,7 +3624,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "HCP 保存版本化运行配置，MoL 在冻结基础模型上路由 Chat/Agent/Coding/GenUI 四类 低秩适配（LoRA，只训练少量适配参数） 专家。基础设施已有模型服务与适配器管理；Expansion 研究的配置搜索与整套参数训练是两层不同过程。",
+        "value": "HCP（本文保存和管理运行配置的组件）保存版本化运行配置，MoL（多个专长适配器及其路由机制）在冻结基础模型上路由 聊天、代理任务、编程、界面生成四类 低秩适配（LoRA，只训练少量适配参数） 专家。基础设施已有模型服务与适配器管理；Expansion（本文的运行配置搜索实验）研究的配置搜索与整套参数训练是两层不同过程。",
         "sources": [
           {
             "label": "§2–3 Expansion；Table 8",
@@ -3870,7 +3898,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "BrowseComp、xbench-DeepSearch、SWE-bench Pro、SciCode-Verified（Sub/Main）、FrontierScience-Research、HLE、BioMysteryBench（HS/HD）、MLE-Bench Lite、PaperBench Code-Dev。",
+        "value": "BrowseComp、xbench-DeepSearch、SWE-bench Pro、SciCode-Verified（Sub/Main）、FrontierScience-Research、HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准）、BioMysteryBench（HS/HD）、MLE-Bench Lite、PaperBench Code-Dev。",
         "sources": [
           {
             "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
@@ -4004,7 +4032,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "OfficeQA、SealQA、ALFWorld，按任务类别分层划分；train 用于采失败轨迹，不更新模型参数。",
+        "value": "OfficeQA、SealQA、ALFWorld（通过文字动作完成家居物体操作的交互环境），按任务类别分层划分；train 用于采失败轨迹，不更新模型参数。",
         "sources": [
           {
             "label": "§4.1",
@@ -4408,11 +4436,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "参数固定的任务执行模型运行同一个最小 CodeAct 任务代理，修改者可改任务运行代码；构造评测基准时另用多个修改者产生辅助运行框架，筛选对运行框架差异敏感的题。构造阶段与被测进化阶段不混为训练。",
+        "value": "参数固定的任务执行模型运行同一个最小 CodeAct（让模型生成并执行代码来采取行动的代理方式） 任务代理，修改者可改任务运行代码；构造评测基准时另用多个修改者产生辅助运行框架，筛选对运行框架差异敏感的题。构造阶段与被测进化阶段不混为训练。",
         "sources": [
           {
             "label": "主评估协议；附录 B.2",
             "url": "https://arxiv.org/abs/2608.09096"
+          },
+          {
+            "label": "CodeAct 原论文：可执行代码动作",
+            "url": "https://arxiv.org/abs/2402.01030"
           }
         ],
         "status": "recorded"
@@ -4436,7 +4468,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "不训练行为策略权重；修改者用可见 validation 改 CodeAct 运行框架。构造评测基准时另用辅助任务产生候选运行框架。",
+        "value": "不训练行为策略权重；修改者用可见 validation 改 CodeAct（让模型生成并执行代码来采取行动的代理方式） 运行框架。构造评测基准时另用辅助任务产生候选运行框架。",
         "sources": [
           {
             "label": "§3",
@@ -4445,6 +4477,10 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2608.09096#S4"
+          },
+          {
+            "label": "CodeAct 原论文：可执行代码动作",
+            "url": "https://arxiv.org/abs/2402.01030"
           }
         ],
         "status": "recorded"
@@ -4452,7 +4488,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "160 道 validation：BrowseComp、HLE、GDPval、APEX-Agents、Claw-Eval 各 32 题，返回成绩、轨迹和诊断。",
+        "value": "160 道 validation：BrowseComp、HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准）、GDPval、APEX-Agents、Claw-Eval 各 32 题，返回成绩、轨迹和诊断。",
         "sources": [
           {
             "label": "§3",
@@ -4630,7 +4666,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "作者自建平台把数据搜索/导入/生成、训练、查进度、评估和停止封装成统一工具，创建者不用直接操作命令行或分布式训练。RQ3以Qwen-Agent为参照，创建者设计外围运行框架；最终执行模型固定为Qwen3.5-4B。",
+        "value": "作者自建平台把数据搜索/导入/生成、训练、查进度、评估和停止封装成统一工具，创建者不用直接操作命令行或分布式训练。RQ3以Qwen-Agent（Qwen 团队提供的代理开发框架，组织模型调用工具和执行任务）为参照，创建者设计外围运行框架；最终执行模型固定为Qwen3.5-4B。",
         "sources": [
           {
             "label": "§3.3",
@@ -4647,6 +4683,10 @@
           {
             "label": "§4.4",
             "url": "https://arxiv.org/html/2608.31111#S4.SS4.SSS0.Px2"
+          },
+          {
+            "label": "Qwen-Agent 官方说明",
+            "url": "https://github.com/QwenLM/Qwen-Agent"
           }
         ],
         "status": "recorded"
@@ -4682,7 +4722,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "RQ2：创建者自行下载或合成数据，轨迹明确使用 GSM8K 与 Hendrycks 数学数据。RQ3：只改 Qwen-Agent 周边代码，不训练权重。RQ1 单独沿用 PostTrainBench。",
+        "value": "RQ2：创建者自行下载或合成数据，轨迹明确使用 GSM8K（小学数学应用题基准） 与 Hendrycks 数学数据。RQ3：只改 Qwen-Agent（Qwen 团队提供的代理开发框架，组织模型调用工具和执行任务） 周边代码，不训练权重。RQ1 单独沿用 PostTrainBench。",
         "sources": [
           {
             "label": "§4.2",
@@ -4699,6 +4739,10 @@
           {
             "label": "附录C.4",
             "url": "https://arxiv.org/html/2608.31111#A3.SS4.SSS0.Px2"
+          },
+          {
+            "label": "Qwen-Agent 官方说明",
+            "url": "https://github.com/QwenLM/Qwen-Agent"
           }
         ],
         "status": "recorded"
@@ -4920,7 +4964,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "ARC 小网格题 20；GPQA Diamond 32；DROP、MGSM、MMLU 各 128。代码报错时最多再反思修复 5 次。",
+        "value": "ARC 小网格题 20；GPQA（研究生级科学问答基准） Diamond 32；DROP、MGSM、MMLU 各 128。代码报错时最多再反思修复 5 次。",
         "sources": [
           {
             "label": "§4.1",
@@ -4936,7 +4980,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "ARC 60；GPQA 166；其他推理领域各 800。另测 MGSM 设计向 GSM8K、GSM-Hard 及不同模型迁移。",
+        "value": "ARC 60；GPQA（研究生级科学问答基准） 166；其他推理领域各 800。另测 MGSM 设计向 GSM8K（小学数学应用题基准）、GSM-Hard 及不同模型迁移。",
         "sources": [
           {
             "label": "§4.1",
@@ -5176,7 +5220,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Codex或Claude Code加载所学技能，候选模型为GPT-5.5、Opus4.8、GLM5.2、DeepSeek-V4-Pro-Preview。",
+        "value": "Codex或Claude Code（可读写项目文件、运行命令和测试的编程代理工具）加载所学技能，候选模型为GPT-5.5、Opus4.8、GLM5.2、DeepSeek-V4-Pro-Preview。",
         "sources": [
           {
             "label": "§3",
@@ -5189,6 +5233,10 @@
           {
             "label": "§4.1",
             "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px3"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -5386,7 +5434,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "VeRO-Agent或Claude Code负责改代码；默认Claude Sonnet4.5，Orchestrator另用Claude Opus4.5、GPT-5.2-Codex。",
+        "value": "VeRO-Agent或Claude Code（可读写项目文件、运行命令和测试的编程代理工具）负责改代码；默认Claude Sonnet4.5，Orchestrator另用Claude Opus4.5、GPT-5.2-Codex。",
         "sources": [
           {
             "label": "§3",
@@ -5403,6 +5451,10 @@
           {
             "label": "§5.2",
             "url": "https://arxiv.org/html/2602.22480#S5.SS2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -5454,7 +5506,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "编程任务代理修改代码、提交版本化快照、读取运行反馈继续修复；按 validation 选版本，GPQA 无 validation 时按 train 选。",
+        "value": "编程任务代理修改代码、提交版本化快照、读取运行反馈继续修复；按 validation 选版本，GPQA（研究生级科学问答基准） 无 validation 时按 train 选。",
         "sources": [
           {
             "label": "§3",
@@ -5470,7 +5522,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GAIA 50、GPQA Diamond 98、MATH 59、τ-bench Retail 100、SimpleQA 46。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） 50、GPQA（研究生级科学问答基准） Diamond 98、MATH 59、τ-bench Retail 100、SimpleQA 46。",
         "sources": [
           {
             "label": "附录A.2",
@@ -5486,7 +5538,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "GAIA validation 87、MATH 60、τ-bench Retail 20、SimpleQA 45；GPQA 直接使用训练成绩。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） validation 87、MATH 60、τ-bench Retail 20、SimpleQA 45；GPQA（研究生级科学问答基准） 直接使用训练成绩。",
         "sources": [
           {
             "label": "附录A.2",
@@ -5502,7 +5554,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GPQA 100、MATH 486、τ-bench Retail 115、SimpleQA 80；GAIA 最终仍报告 87 validation。",
+        "value": "GPQA（研究生级科学问答基准） 100、MATH 486、τ-bench Retail 115、SimpleQA 80；GAIA（需要检索、推理和使用工具的通用助理任务基准） 最终仍报告 87 validation。",
         "sources": [
           {
             "label": "附录A.2",
@@ -5518,7 +5570,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "四项有最终 test；GAIA validation 同时参与选择和报告，不能视为额外盲测。SimpleQA 先筛出三个模型均失败的 171 题再划分。",
+        "value": "四项有最终 test；GAIA（需要检索、推理和使用工具的通用助理任务基准） validation 同时参与选择和报告，不能视为额外盲测。SimpleQA 先筛出三个模型均失败的 171 题再划分。",
         "sources": [
           {
             "label": "附录A.2",
@@ -5668,7 +5720,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "GPQA 32 题；DROP、MGSM、MMLU 各 128 题，用于改进期间计分。",
+        "value": "GPQA（研究生级科学问答基准） 32 题；DROP、MGSM、MMLU 各 128 题，用于改进期间计分。",
         "sources": [
           {
             "label": "§5.2",
@@ -5684,7 +5736,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GPQA 剩余 166 题；DROP、MGSM、MMLU 各 800 题，均用 GPT-3.5 运行候选。",
+        "value": "GPQA（研究生级科学问答基准） 剩余 166 题；DROP、MGSM、MMLU 各 800 题，均用 GPT-3.5 运行候选。",
         "sources": [
           {
             "label": "§5.2",
@@ -6246,7 +6298,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "任务提示搜索：s1K-1.1 数学 535、ARC 416、MBPP 474、Sudoku 440；GPQA 用 MMLU STEM 作代理训练池。通用优化器另用 LIMO/MMLU 任务混合。",
+        "value": "任务提示搜索：s1K-1.1 数学 535、ARC 416、MBPP 474、Sudoku 440；GPQA（研究生级科学问答基准） 用 MMLU STEM 作代理训练池。通用优化器另用 LIMO/MMLU 任务混合。",
         "sources": [
           {
             "label": "§4.1",
@@ -6278,7 +6330,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AIME’25 30、ARC-AGI-1 419、MBPP 500、Sudoku 100、GPQA 198。",
+        "value": "AIME’25 30、ARC-AGI-1 419、MBPP 500、Sudoku 100、GPQA（研究生级科学问答基准） 198。",
         "sources": [
           {
             "label": "§4.1",
@@ -6294,7 +6346,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "代理训练池与最终任务分别定义；GPQA 训练量在表中标 N/A，不能补造统一数量。",
+        "value": "代理训练池与最终任务分别定义；GPQA（研究生级科学问答基准） 训练量在表中标 N/A，不能补造统一数量。",
         "sources": [
           {
             "label": "§4.1",
@@ -6808,7 +6860,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "作者自建通用电脑控制框架，通过截图理解界面、用键鼠执行操作，不调用游戏内部状态 API。模块包括信息获取、反思、任务推断、技能管理、动作规划和记忆；因此是完整的视觉交互底座，不是只有文本 ReAct。",
+        "value": "作者自建通用电脑控制框架，通过截图理解界面、用键鼠执行操作，不调用游戏内部状态 API（供程序调用模型、工具或服务的接口）。模块包括信息获取、反思、任务推断、技能管理、动作规划和记忆；因此是完整的视觉交互底座，不是只有文本 ReAct（交替进行推理、调用工具和读取结果的执行方式）。",
         "sources": [
           {
             "label": "框架模块；实验与 Stardew Valley 环境说明",
@@ -7090,7 +7142,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "轨迹及模型归纳结果决定写入内容；Mind2Web 以元素准确率、动作 F1、步骤/任务成功率评估。",
+        "value": "轨迹及模型归纳结果决定写入内容；Mind2Web 以元素准确率、动作 F1（同时考虑找出的内容有多少正确、应找出的内容找到了多少；匹配对象看当前任务）、步骤/任务成功率评估。",
         "sources": [
           {
             "label": "§2.3",
@@ -7300,7 +7352,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "LoCoMo、DialSim 的长对话用于构建记忆，不进行模型参数训练。",
+        "value": "LoCoMo（检查模型能否利用长期多轮对话记忆的基准）、DialSim 的长对话用于构建记忆，不进行模型参数训练。",
         "sources": [
           {
             "label": "§4.1",
@@ -7332,7 +7384,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "LoCoMo 多类长期问答（该版本报告 7,512 对）；DialSim 的多人长对话问答。",
+        "value": "LoCoMo（检查模型能否利用长期多轮对话记忆的基准） 多类长期问答（该版本报告 7,512 对）；DialSim 的多人长对话问答。",
         "sources": [
           {
             "label": "§4.1",
@@ -7498,7 +7550,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "TravelPlanner、ALFWorld 交互轨迹用于构建程序记忆，比较完整轨迹、抽象脚本及两者结合。",
+        "value": "TravelPlanner、ALFWorld（通过文字动作完成家居物体操作的交互环境） 交互轨迹用于构建程序记忆，比较完整轨迹、抽象脚本及两者结合。",
         "sources": [
           {
             "label": "§4.1",
@@ -7518,7 +7570,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "ALFWorld 环境返回 0/1；TravelPlanner 计划转 JSON 后检查常识与硬约束。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） 环境返回 0/1；TravelPlanner 计划转 JSON 后检查常识与硬约束。",
         "sources": [
           {
             "label": "§4.1",
@@ -7538,7 +7590,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "ALFWorld 分别报告 dev/test；TravelPlanner 使用 test 的两阶段计划评估。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） 分别报告 dev/test；TravelPlanner 使用 test 的两阶段计划评估。",
         "sources": [
           {
             "label": "§4.1",
@@ -7600,7 +7652,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Gemini2.5 Flash、Gemini2.5 Pro、Claude3.7 Sonnet；网页任务配BrowserGym，SWE配仅提供 Bash 命令行工具 ReAct。",
+        "value": "Gemini2.5 Flash、Gemini2.5 Pro、Claude3.7 Sonnet；网页任务配BrowserGym，SWE配仅提供 Bash 命令行工具 ReAct（交替进行推理、调用工具和读取结果的执行方式）。",
         "sources": [
           {
             "label": "§3",
@@ -7688,7 +7740,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "Gemini-2.5/Claude-3.7 的 ReAct 任务代理，网页用 BrowserGym，SWE 用仅提供 Bash 命令行工具；外部模块从成功和失败轨迹提取可检索原则。任务执行器与记忆提取不是不同训练出来的专用网络。",
+        "value": "Gemini-2.5/Claude-3.7 的 ReAct（交替进行推理、调用工具和读取结果的执行方式） 任务代理，网页用 BrowserGym，SWE 用仅提供 Bash 命令行工具；外部模块从成功和失败轨迹提取可检索原则。任务执行器与记忆提取不是不同训练出来的专用网络。",
         "sources": [
           {
             "label": "Datasets、agent 设置与记忆更新",
@@ -7700,7 +7752,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "按自判成败选择不同反思提示，归纳成功策略或错误原因；每条轨迹最多抽取 3 条 memory items。新条目直接追加；MaTTS 从多条候选轨迹抽取更丰富经验。原文采用最小 consolidation：直接加入、不额外 pruning；不是经独立 regression gate 才写入。",
+        "value": "按自判成败选择不同反思提示，归纳成功策略或错误原因；每条轨迹最多抽取 3 条 memory items。新条目直接追加；MaTTS 从多条候选轨迹抽取更丰富经验。原文采用最小 consolidation：直接加入、不额外 pruning；不是经独立 regression gate（决定是否接受修改的检查条件） 才写入。",
         "sources": [
           {
             "label": "§3",
@@ -8010,7 +8062,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GAIA、ALFWorld；HotpotQA/2Wiki 各 500；AIME 2024/2025 各 30；TravelPlanner 1,000；WebShop 251。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准）、ALFWorld（通过文字动作完成家居物体操作的交互环境）；HotpotQA/2Wiki 各 500；AIME 2024/2025 各 30；TravelPlanner 1,000；WebShop（根据用户要求挑选和购买商品的交互基准） 251。",
         "sources": [
           {
             "label": "附录B.2",
@@ -8208,7 +8260,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "LoCoMo 10 段长对话写入记忆；无需参数训练。",
+        "value": "LoCoMo（检查模型能否利用长期多轮对话记忆的基准） 10 段长对话写入记忆；无需参数训练。",
         "sources": [
           {
             "label": "附录C",
@@ -8240,7 +8292,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "LoCoMo 1,986 个问题；另测 LongMemEval-S 500 题。",
+        "value": "LoCoMo（检查模型能否利用长期多轮对话记忆的基准） 1,986 个问题；另测 LongMemEval-S 500 题。",
         "sources": [
           {
             "label": "附录C",
@@ -8470,7 +8522,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "在 xBench、GAIA、WebWalkerQA 的连续任务经历中积累技能及轨迹超边。",
+        "value": "在 xBench、GAIA（需要检索、推理和使用工具的通用助理任务基准）、WebWalkerQA 的连续任务经历中积累技能及轨迹超边。",
         "sources": [
           {
             "label": "§4.1",
@@ -8502,7 +8554,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "xBench、GAIA、WebWalkerQA，报告成功率、步骤和工具调用数，并比较 GPT-4o/Qwen3 骨干。",
+        "value": "xBench、GAIA（需要检索、推理和使用工具的通用助理任务基准）、WebWalkerQA，报告成功率、步骤和工具调用数，并比较 GPT-4o/Qwen3 骨干。",
         "sources": [
           {
             "label": "§4.1",
@@ -8592,7 +8644,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定 Meta-Agent 读取失败轨迹并修改对应记忆组件。主实现使用 Claude Code，替换实验使用 DeepSeek Harness；§3.1 和 §3.4.3 没有为这两个修改端分别给出底层模型型号，不能把工具名当成模型名。",
+        "value": "固定 Meta-Agent 读取失败轨迹并修改对应记忆组件。主实现使用 Claude Code（可读写项目文件、运行命令和测试的编程代理工具），替换实验使用 DeepSeek Harness；§3.1 和 §3.4.3 没有为这两个修改端分别给出底层模型型号，不能把工具名当成模型名。",
         "sources": [
           {
             "label": "§2.1",
@@ -8609,6 +8661,10 @@
           {
             "label": "§3.4",
             "url": "https://arxiv.org/html/2608.24876#S3.SS4.SSS3"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -8616,7 +8672,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "Working / Experiential Memory 中的局部技能内容；外围 Meta-Agent 与 gate 固定。\n\n固定部分：Claude Code Meta-Agent、底层任务运行框架和模型固定；可改的是技能记忆及其控制组件。",
+        "value": "Working / Experiential Memory 中的局部技能内容；外围 Meta-Agent 与 gate（决定是否接受修改的检查条件） 固定。\n\n固定部分：Claude Code（可读写项目文件、运行命令和测试的编程代理工具） Meta-Agent、底层任务运行框架和模型固定；可改的是技能记忆及其控制组件。",
         "sources": [
           {
             "label": "§2.1",
@@ -8629,6 +8685,10 @@
           {
             "label": "附录E",
             "url": "https://arxiv.org/html/2608.24876#A5"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -8656,11 +8716,23 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "沿用每套评测基准的原任务代理：τ² 工具调用任务代理、SkillFlow 的 Qwen-Code CLI、Terminal-Bench 2.1 的 Terminus-2；外加中性 M0 记忆与控制层。固定 Claude Code 负责设计或修改任务代理的上层代理读失败并只改对应记忆组件，不修改自己。",
+        "value": "沿用每套评测基准的原任务代理：τ² 工具调用任务代理、SkillFlow 的 Qwen-Code（Qwen 团队的终端编程代理工具） CLI（通过终端命令使用的程序界面）、Terminal-Bench 2.1 的 Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）；外加中性 M0 记忆与控制层。固定 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 负责设计或修改任务代理的上层代理读失败并只改对应记忆组件，不修改自己。",
         "sources": [
           {
             "label": "§2.3；附录 C",
             "url": "https://arxiv.org/abs/2608.24876"
+          },
+          {
+            "label": "Qwen Code 官方说明",
+            "url": "https://github.com/QwenLM/qwen-code"
+          },
+          {
+            "label": "Terminus：终端任务代理",
+            "url": "https://www.tbench.ai/news/terminus"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -8752,7 +8824,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "重点是让诊断对象和被修改对象一致，并分离“加上记忆控制层”与“层里真正学到的内容”。小 dev 集的保守 gate 也会拒绝在更大单独留出的集上实际有效的补丁，不能把拒绝理解为补丁一定无效。",
+        "value": "重点是让诊断对象和被修改对象一致，并分离“加上记忆控制层”与“层里真正学到的内容”。小 dev 集的保守 gate（决定是否接受修改的检查条件） 也会拒绝在更大单独留出的集上实际有效的补丁，不能把拒绝理解为补丁一定无效。",
         "sources": [
           {
             "label": "§2.1",
@@ -8910,7 +8982,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "OfficeQA 17、SealQA 8 道 validation，选 Pareto 候选并做回归检查；工具另需单元/集成检查。",
+        "value": "OfficeQA 17、SealQA 8 道 validation，选 Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案） 候选并做回归检查；工具另需单元/集成检查。",
         "sources": [
           {
             "label": "附录D.1",
@@ -8980,7 +9052,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "所有实验都由Qwen3-4B-Thinking改写检索查询，再交BM25检索；不是由规则进化模型直接替代检索器。",
+        "value": "所有实验都由Qwen3-4B-Thinking改写检索查询，再交BM25（根据查询词与文档词项匹配程度排序的检索算法）检索；不是由规则进化模型直接替代检索器。",
         "sources": [
           {
             "label": "§4",
@@ -9148,7 +9220,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "在法律检索中搜索 query-rewrite rule 的组合，并移除无效规则；最终仍由 BM25 检索，改进没有写入模型权重。",
+        "value": "在法律检索中搜索 query-rewrite rule 的组合，并移除无效规则；最终仍由 BM25（根据查询词与文档词项匹配程度排序的检索算法） 检索，改进没有写入模型权重。",
         "sources": [
           {
             "label": "§4",
@@ -9856,7 +9928,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "Pokémon Red 等 RPG 的持续交互；开放模型先用 frontier 轨迹 监督微调（用示范数据训练模型） 和离线 GRPO 预热。",
+        "value": "Pokémon Red 等 RPG 的持续交互；开放模型先用 frontier 轨迹 监督微调（用示范数据训练模型） 和离线 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 预热。",
         "sources": [
           {
             "label": "§4.5",
@@ -10188,7 +10260,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "主任务执行者是GPT-5-mini；GAIA迁移再换Qwen3.5 Plus、DeepSeekV3.2、Gemini3 Pro、Claude Sonnet4.5。",
+        "value": "主任务执行者是GPT-5-mini；GAIA（需要检索、推理和使用工具的通用助理任务基准）迁移再换Qwen3.5 Plus、DeepSeekV3.2、Gemini3 Pro、Claude Sonnet4.5。",
         "sources": [
           {
             "label": "§3",
@@ -10260,11 +10332,23 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "每域沿用可工作底座：GAIA 用 open-deep-research，SWE 用 mini-swe-agent，AppWorld 用官方 simplified ReAct code 任务代理，TB2 用 Harbor Terminus-2。修复过程把运行失败对应到实现位置，再做受限修补和回归检查。",
+        "value": "每域沿用可工作底座：GAIA（需要检索、推理和使用工具的通用助理任务基准） 用 open-deep-research，SWE 用 mini-swe-agent（主要通过命令行读写文件、运行测试的轻量编程代理），AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 用官方 simplified ReAct（交替进行推理、调用工具和读取结果的执行方式） code 任务代理，TB2 用 Harbor（运行隔离任务环境、代理和验收程序的评测工具） Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）。修复过程把运行失败对应到实现位置，再做受限修补和回归检查。",
         "sources": [
           {
             "label": "§IV-B、RQ4",
             "url": "https://arxiv.org/abs/2606.06324"
+          },
+          {
+            "label": "mini-swe-agent 官方说明",
+            "url": "https://github.com/SWE-agent/mini-swe-agent"
+          },
+          {
+            "label": "Harbor：任务与验收接口",
+            "url": "https://www.harborframework.com/docs/tasks"
+          },
+          {
+            "label": "Terminus：终端任务代理",
+            "url": "https://www.tbench.ai/news/terminus"
           }
         ],
         "status": "recorded"
@@ -10288,7 +10372,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GAIA 60、SWE-bench Verified 100、AppWorld 90、TB2 34 题提供训练轨迹。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） 60、SWE-bench Verified 100、AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 90、TB2 34 题提供训练轨迹。",
         "sources": [
           {
             "label": "§4.2",
@@ -10320,7 +10404,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "相应单独留出的 test 为 60/100/90/34。另把修好的 GAIA 运行框架给四个新模型复用。",
+        "value": "相应单独留出的 test 为 60/100/90/34。另把修好的 GAIA（需要检索、推理和使用工具的通用助理任务基准） 运行框架给四个新模型复用。",
         "sources": [
           {
             "label": "§4.2",
@@ -10336,7 +10420,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "三个分区互斥；跨模型仍测同一 GAIA 留出集，不是额外跨评测基准泛化。",
+        "value": "三个分区互斥；跨模型仍测同一 GAIA（需要检索、推理和使用工具的通用助理任务基准） 留出集，不是额外跨评测基准泛化。",
         "sources": [
           {
             "label": "§4.2",
@@ -10352,7 +10436,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "诊断单位与修改单位连起来：trace → 运行系统层 → implementation → scoped operator → regression acceptance。与自由编辑整个代码库相比，它限制补丁范围，并有去掉诊断、scoped repair、regression gate 的对照。",
+        "value": "诊断单位与修改单位连起来：trace → 运行系统层 → implementation → scoped operator → regression acceptance。与自由编辑整个代码库相比，它限制补丁范围，并有去掉诊断、scoped repair、regression gate（决定是否接受修改的检查条件） 的对照。",
         "sources": [
           {
             "label": "§3",
@@ -10394,7 +10478,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "默认Claude Opus4.6作为负责设计或修改任务代理的上层代理驱动AEGIS进化；与上述任务执行者分开。共同训练阶段的参数更新仍由GRPO程序执行。",
+        "value": "默认Claude Opus4.6作为负责设计或修改任务代理的上层代理驱动AEGIS进化；与上述任务执行者分开。共同训练阶段的参数更新仍由GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）程序执行。",
         "sources": [
           {
             "label": "§5.4",
@@ -10458,7 +10542,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "AEGIS 从执行轨迹诊断失败并修改 processor；联合阶段将同批轨迹放进共享 replay buffer，用 cross-harness GRPO 更新模型，不另采专用 强化学习（根据奖励调整模型行为） 执行尝试（从开始做任务到得到结果的过程）。",
+        "value": "AEGIS 从执行轨迹诊断失败并修改 processor；联合阶段将同批轨迹放进共享 replay buffer，用 cross-harness GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 更新模型，不另采专用 强化学习（根据奖励调整模型行为） 执行尝试（从开始做任务到得到结果的过程）。",
         "sources": [
           {
             "label": "§5.4",
@@ -10474,7 +10558,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GAIA 103、ALFWorld valid-unseen 134、WebShop 100、τ³ Retail/Airline/Telecom 全任务、SWE-Verified 55，形成演化轨迹。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） 103、ALFWorld（通过文字动作完成家居物体操作的交互环境） valid-unseen 134、WebShop（根据用户要求挑选和购买商品的交互基准） 100、τ³ Retail/Airline/Telecom 全任务、SWE-Verified 55，形成演化轨迹。",
         "sources": [
           {
             "label": "§9.1",
@@ -10660,7 +10744,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "TB2、AppWorld、LiveCode、Omni-MATH、BrowseComp+、GDPval、SWE-bench 的 train。",
+        "value": "TB2、AppWorld（通过多个应用的程序接口完成日常事务的交互基准）、LiveCode、Omni-MATH、BrowseComp+、GDPval、SWE-bench 的 train。",
         "sources": [
           {
             "label": "§4.1",
@@ -10746,7 +10830,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3-4B的当前训练checkpoint，在当前候选提示下解题。",
+        "value": "Qwen3-4B的当前训练checkpoint（某个时刻保存的模型或系统版本），在当前候选提示下解题。",
         "sources": [
           {
             "label": "§3.1",
@@ -10834,7 +10918,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "Qwen3-4B 的数学求解训练流程，结合 GRPO 参数更新与提示模板优化。提示候选保存在前沿集合中，训练时采样使用；变化包括权重和提示，不是只往外部记忆追加文字。",
+        "value": "Qwen3-4B 的数学求解训练流程，结合 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 参数更新与提示模板优化。提示候选保存在前沿集合中，训练时采样使用；变化包括权重和提示，不是只往外部记忆追加文字。",
         "sources": [
           {
             "label": "实验设置与主结果表",
@@ -10846,7 +10930,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "GRPO 更新策略后找低奖励困难题；GEPA 在困难题内部划 train/dev 搜索模板，保留 Pareto 提示，再用于下一轮策略采样。",
+        "value": "GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 更新策略后找低奖励困难题；GEPA 在困难题内部划 train/dev 搜索模板，保留 Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案） 提示，再用于下一轮策略采样。",
         "sources": [
           {
             "label": "§3.1",
@@ -10886,7 +10970,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "训练困难题的内部 train/dev 用于 GEPA 模板搜索；以 dev 表现选择模型 checkpoint。",
+        "value": "训练困难题的内部 train/dev 用于 GEPA 模板搜索；以 dev 表现选择模型 checkpoint（某个时刻保存的模型或系统版本）。",
         "sources": [
           {
             "label": "§4.1",
@@ -10946,7 +11030,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "专门处理所有执行尝试（从开始做任务到得到结果的过程）都失败、GRPO advantage 消失的难样本：GEPA 找到能触发成功的提示词，再蒸馏进行为策略 weights。",
+        "value": "专门处理所有执行尝试（从开始做任务到得到结果的过程）都失败、GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） advantage 消失的难样本：GEPA 找到能触发成功的提示词，再蒸馏进行为策略 weights。",
         "sources": [
           {
             "label": "§3.1",
@@ -10996,7 +11080,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "外层编程代理包括 Claude Code + Opus 4.7／Opus 4.6／Sonnet 4.6、Gemini CLI + Gemini 3.1 Pro、Codex + GPT-5.3-Codex／GPT-5.4；另有接入 Claude Code 的开源模型配置。它们写 agent.py，不是最终答题的 Qwen3-8B 或 Haiku 4.5。",
+        "value": "外层编程代理包括 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus 4.7／Opus 4.6／Sonnet 4.6、Gemini CLI（通过终端命令使用的程序界面） + Gemini 3.1 Pro、Codex + GPT-5.3-Codex／GPT-5.4；另有接入 Claude Code 的开源模型配置。它们写 agent.py，不是最终答题的 Qwen3-8B 或 Haiku 4.5。",
         "sources": [
           {
             "label": "§3.2",
@@ -11013,6 +11097,10 @@
           {
             "label": "§5.2",
             "url": "https://arxiv.org/html/2606.04455#S5.SS2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -11064,7 +11152,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "编程任务代理实现、运行并修改程序；预算结束后扫描 API 使用合规性，再注入私有结果检查器（按测试或判分规则检查任务结果）测最终版本。",
+        "value": "编程任务代理实现、运行并修改程序；预算结束后扫描 API（供程序调用模型、工具或服务的接口） 使用合规性，再注入私有结果检查器（按测试或判分规则检查任务结果）测最终版本。",
         "sources": [
           {
             "label": "§3.2",
@@ -11080,7 +11168,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "不训权重；开发题用于设计任务代理。数学 AIME 2022–23 共 60；科学 HLE 多选 591；LiveCodeBench 732。",
+        "value": "不训权重；开发题用于设计任务代理。数学 AIME 2022–23 共 60；科学 HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准） 多选 591；LiveCodeBench（使用较新竞赛编程题评价代码能力的基准） 732。",
         "sources": [
           {
             "label": "附录C",
@@ -11112,7 +11200,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AIME 2024–25 共 60；GPQA Diamond 198；LiveCodeBench 323。",
+        "value": "AIME 2024–25 共 60；GPQA（研究生级科学问答基准） Diamond 198；LiveCodeBench（使用较新竞赛编程题评价代码能力的基准） 323。",
         "sources": [
           {
             "label": "附录C",
@@ -11166,7 +11254,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "按任务固定目标模型：OfficeQA、BrowseComp-Plus 用 DeepSeek-V4-Flash；Terminal-Bench 用 grok-build；GAIA 用 GPT-5.4-mini。这些模型运行候选运行框架，不负责外层优化。",
+        "value": "按任务固定目标模型：OfficeQA、BrowseComp-Plus 用 DeepSeek-V4-Flash；Terminal-Bench 用 grok-build；GAIA（需要检索、推理和使用工具的通用助理任务基准） 用 GPT-5.4-mini。这些模型运行候选运行框架，不负责外层优化。",
         "sources": [
           {
             "label": "附录B",
@@ -11182,7 +11270,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "五种优化器：Claude Opus5、Sonnet5、GPT-5.6 Sol、GPT-5.6 Terra、Kimi K3。各自比较统一OpenCode与原生Claude Code/Codex/Kimi CLI。",
+        "value": "五种优化器：Claude Opus5、Sonnet5、GPT-5.6 Sol、GPT-5.6 Terra、Kimi K3。各自比较统一OpenCode（可连接不同模型的开源编程代理工具）与原生Claude Code/Codex/Kimi CLI（通过终端命令使用的程序界面）。",
         "sources": [
           {
             "label": "附录B",
@@ -11195,6 +11283,10 @@
           {
             "label": "§4",
             "url": "https://arxiv.org/html/2608.06301#S4.SS0.SSS0.Px1"
+          },
+          {
+            "label": "OpenCode 官方说明",
+            "url": "https://opencode.ai/docs"
           }
         ],
         "status": "recorded"
@@ -11234,7 +11326,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "每题域固定一个刻意未调优的小型 Python 任务代理。OfficeQA 起点约 130 行、3 个工具、24 轮循环和通用提示；GAIA 起点则是不能完成任务的只有接口、尚未实现求解功能的占位程序。这两种起点的零/低分意义不同，不能统一写成一个可工作的成熟运行框架。",
+        "value": "每题域固定一个刻意未调优的小型 Python 任务代理。OfficeQA 起点约 130 行、3 个工具、24 轮循环和通用提示；GAIA（需要检索、推理和使用工具的通用助理任务基准） 起点则是不能完成任务的只有接口、尚未实现求解功能的占位程序。这两种起点的零/低分意义不同，不能统一写成一个可工作的成熟运行框架。",
         "sources": [
           {
             "label": "§3.2、Table 3；附录 E",
@@ -11262,7 +11354,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GAIA、OfficeQA Pro、BrowseComp-Plus、TB2，各按提交的固定 manifest 取 20% development；不训练目标模型。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准）、OfficeQA Pro、BrowseComp-Plus、TB2，各按提交的固定 manifest 取 20% development；不训练目标模型。",
         "sources": [
           {
             "label": "附录B",
@@ -11310,7 +11402,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "20/40/40 是互斥比例，不是题目数量。GAIA seed 是不可工作的只有接口、尚未实现求解功能的占位程序，其他任务的初始能力另计。",
+        "value": "20/40/40 是互斥比例，不是题目数量。GAIA（需要检索、推理和使用工具的通用助理任务基准） seed 是不可工作的只有接口、尚未实现求解功能的占位程序，其他任务的初始能力另计。",
         "sources": [
           {
             "label": "附录B",
@@ -11606,7 +11698,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "未另指定时，RAG及商业记忆任务代理的回答基础模型统一GPT-4o-mini；长上下文对照与附录算力匹配实验另列模型。",
+        "value": "未另指定时，RAG（先检索相关资料，再把资料交给模型回答）及商业记忆任务代理的回答基础模型统一GPT-4o-mini；长上下文对照与附录算力匹配实验另列模型。",
         "sources": [
           {
             "label": "§3.1",
@@ -11718,7 +11810,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "统一按块输入历史材料，再让被测系统用长上下文、RAG 或由任务代理管理、写入和检索的记忆保存并检索。比较的是记忆组件而非统一重写任务代理源码；分块大小会影响结果，不能略去输入协议。",
+        "value": "统一按块输入历史材料，再让被测系统用长上下文、RAG（先检索相关资料，再把资料交给模型回答） 或由任务代理管理、写入和检索的记忆保存并检索。比较的是记忆组件而非统一重写任务代理源码；分块大小会影响结果，不能略去输入协议。",
         "sources": [
           {
             "label": "§3.1–3.3、实验设置",
@@ -12210,7 +12302,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "语言模型系统外接可替换记忆模块和用户反馈模拟器，比较 BM25、嵌入检索、A-Mem、Mem0、MemoryOS 等；已有静态知识先载入，后续对话逐批写入记忆。",
+        "value": "语言模型系统外接可替换记忆模块和用户反馈模拟器，比较 BM25（根据查询词与文档词项匹配程度排序的检索算法）、嵌入检索、A-Mem、Mem0、MemoryOS 等；已有静态知识先载入，后续对话逐批写入记忆。",
         "sources": [
           {
             "label": "数据分区；on-policy 实验流程",
@@ -12238,7 +12330,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "11 来源：LoCoMo、DialSim、LexEval、JuDGE、IdeaBench、LimitGen-Syn、WritingPrompts、HelloBench、WritingBench、NF-Cats、SciTechNews；各分区抽样后按 4:1 划分。",
+        "value": "11 来源：LoCoMo（检查模型能否利用长期多轮对话记忆的基准）、DialSim、LexEval、JuDGE、IdeaBench、LimitGen-Syn、WritingPrompts、HelloBench、WritingBench、NF-Cats、SciTechNews；各分区抽样后按 4:1 划分。",
         "sources": [
           {
             "label": "§2.3",
@@ -12536,7 +12628,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "MMLU-Pro、GPQA Diamond、AIME24/25、ToolBench、ALFWorld、BabyAI、ScienceWorld、PDDL。",
+        "value": "MMLU-Pro、GPQA（研究生级科学问答基准） Diamond、AIME24/25、ToolBench、ALFWorld（通过文字动作完成家居物体操作的交互环境）、BabyAI、ScienceWorld、PDDL。",
         "sources": [
           {
             "label": "§4.1",
@@ -12614,7 +12706,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "11种模型：Claude Sonnet4.5/4.6、Opus4.5/4.6、MiniMaxM2.5/M2.7、GPT-5.4、GPT-5.3-Codex、Qwen-Coder-Next、Qwen3-Coder-480B、Kimi K2.5；配Claude Code、Codex CLI、Qwen-Coder或Kimi-CLI。",
+        "value": "11种模型：Claude Sonnet4.5/4.6、Opus4.5/4.6、MiniMaxM2.5/M2.7、GPT-5.4、GPT-5.3-Codex、Qwen-Coder-Next、Qwen3-Coder-480B、Kimi K2.5；配Claude Code（可读写项目文件、运行命令和测试的编程代理工具）、Codex CLI（在终端中读写代码、运行命令的编程代理工具）、Qwen-Coder或Kimi-CLI。",
         "sources": [
           {
             "label": "§3.1",
@@ -12623,6 +12715,10 @@
           {
             "label": "附录B.1",
             "url": "https://arxiv.org/html/2604.17308#A2.SS1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -12678,11 +12774,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "任务以 Harbor 格式运行；任务代理在每个任务族开始时没有技能，完成任务后读取轨迹与评分细则（逐项规定要满足的要求及给分标准）反馈并用显式补丁更新技能库。原始任务环境固定，待积累的是可复用技能。",
+        "value": "任务以 Harbor（运行隔离任务环境、代理和验收程序的评测工具） 格式运行；任务代理在每个任务族开始时没有技能，完成任务后读取轨迹与评分细则（逐项规定要满足的要求及给分标准）反馈并用显式补丁更新技能库。原始任务环境固定，待积累的是可复用技能。",
         "sources": [
           {
             "label": "benchmark 构造与 lifelong protocol",
             "url": "https://arxiv.org/abs/2604.17308"
+          },
+          {
+            "label": "Harbor：任务与验收接口",
+            "url": "https://www.harborframework.com/docs/tasks"
           }
         ],
         "status": "recorded"
@@ -13306,7 +13406,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "任务内知识 2,800；BFCL LongContext 800；跨任务知识 120 上下文/884 题；另有 BFCL Base、xbench、WebWalkerQA 170、ALFWorld。",
+        "value": "任务内知识 2,800；BFCL LongContext 800；跨任务知识 120 上下文/884 题；另有 BFCL Base、xbench、WebWalkerQA 170、ALFWorld（通过文字动作完成家居物体操作的交互环境）。",
         "sources": [
           {
             "label": "§4.1",
@@ -13762,7 +13862,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "BrowseComp+ 154、SWE-Verified 87、LiveCodeBench 182、GDPval 105，总计 528。",
+        "value": "BrowseComp+ 154、SWE-Verified 87、LiveCodeBench（使用较新竞赛编程题评价代码能力的基准） 182、GDPval 105，总计 528。",
         "sources": [
           {
             "label": "§3.1",
@@ -14008,7 +14108,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AppWorld test-challenge、BFCL multi-turn base、BrowseComp+、HLE、SWE、τ² telecom 各 50，共 300 题。",
+        "value": "AppWorld（通过多个应用的程序接口完成日常事务的交互基准） test-challenge、BFCL multi-turn base、BrowseComp+、HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准）、SWE、τ² telecom 各 50，共 300 题。",
         "sources": [
           {
             "label": "§4",
@@ -14384,7 +14484,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "按技能链组织来源任务：OlympiadBench、LawBench、TAT-QA，逐渐过渡到 GAIA、ClawBench、MedAgentsBench、MathCoder、OneMillionBench。",
+        "value": "按技能链组织来源任务：OlympiadBench、LawBench、TAT-QA，逐渐过渡到 GAIA（需要检索、推理和使用工具的通用助理任务基准）、ClawBench、MedAgentsBench、MathCoder、OneMillionBench。",
         "sources": [
           {
             "label": "§3.1",
@@ -14470,7 +14570,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定 Hermes 框架比较 GPT-5.4、GLM-5.1、Kimi K2.6、DeepSeek-V4-Pro、MiniMax-M2.7、Claude Sonnet 4.6、Claude Opus 4.6；比较不同框架时统一使用 MiniMax-M2.7，包括补充的 Codex CLI 和 Claude Code 实验。",
+        "value": "固定 Hermes 框架比较 GPT-5.4、GLM-5.1、Kimi K2.6、DeepSeek-V4-Pro、MiniMax-M2.7、Claude Sonnet 4.6、Claude Opus 4.6；比较不同框架时统一使用 MiniMax-M2.7，包括补充的 Codex CLI（在终端中读写代码、运行命令的编程代理工具） 和 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 实验。",
         "sources": [
           {
             "label": "§3.1",
@@ -14491,6 +14591,10 @@
           {
             "label": "附录C.2",
             "url": "https://arxiv.org/html/2608.04003#A3.SS2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -14648,7 +14752,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Claude Code、Codex、Letta、GenericAgent四种执行框架全部使用Qwen3.7-Max；1M上下文、64K最大输出、temperature=0。",
+        "value": "Claude Code（可读写项目文件、运行命令和测试的编程代理工具）、Codex、Letta、GenericAgent四种执行框架全部使用Qwen3.7-Max；1M上下文、64K最大输出、temperature=0。",
         "sources": [
           {
             "label": "附录B.4",
@@ -14665,6 +14769,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.06144#A2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -14672,7 +14780,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "仍由各框架中的Qwen3.7-Max在原会话内读取judge.md后反思和更新。独立评分任务代理使用Claude Code + Claude Opus4.6。",
+        "value": "仍由各框架中的Qwen3.7-Max在原会话内读取judge.md后反思和更新。独立评分任务代理使用Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Claude Opus4.6。",
         "sources": [
           {
             "label": "附录B.4",
@@ -14689,6 +14797,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.06144#A2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -14712,7 +14824,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "独立Claude Code + Claude Opus4.6按固定评估流程检查金融产物并写judge.md；该文件反馈给Qwen3.7-Max执行任务代理用于下一阶段改进。",
+        "value": "独立Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Claude Opus4.6按固定评估流程检查金融产物并写judge.md；该文件反馈给Qwen3.7-Max执行任务代理用于下一阶段改进。",
         "sources": [
           {
             "label": "附录B.4",
@@ -14729,6 +14841,10 @@
           {
             "label": "附录B",
             "url": "https://arxiv.org/html/2608.06144#A2"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -14736,11 +14852,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "比较 Letta、Codex、Claude Code 等四个现成框架，在相同 Qwen3.7-Max 下开启或关闭持久经验。另由 Claude Code＋Claude Opus 4.6 独立评分，执行模型和评分模型不是同一个角色。",
+        "value": "比较 Letta、Codex、Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 等四个现成框架，在相同 Qwen3.7-Max 下开启或关闭持久经验。另由 Claude Code＋Claude Opus 4.6 独立评分，执行模型和评分模型不是同一个角色。",
         "sources": [
           {
             "label": "§3 数据构造；§4.1",
             "url": "https://arxiv.org/abs/2608.06144"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -14874,7 +14994,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "表 1 比较多种研究模型与 CLI 的组合，包括 Claude Code + Opus 4.6／4.5、Codex CLI + GPT-5.1／5.2，以及 OpenCode + GPT-5.1 Codex Max 等；研究模型选择数据和训练代码，不等于被训练的四个基础模型。",
+        "value": "表 1 比较多种研究模型与 CLI（通过终端命令使用的程序界面） 的组合，包括 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus 4.6／4.5、Codex CLI（在终端中读写代码、运行命令的编程代理工具） + GPT-5.1／5.2，以及 OpenCode（可连接不同模型的开源编程代理工具） + GPT-5.1 Codex Max 等；研究模型选择数据和训练代码，不等于被训练的四个基础模型。",
         "sources": [
           {
             "label": "§1",
@@ -14907,6 +15027,14 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2603.08640#S3.SS1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
+          },
+          {
+            "label": "OpenCode 官方说明",
+            "url": "https://opencode.ai/docs"
           }
         ],
         "status": "recorded"
@@ -14914,7 +15042,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "指定小模型的后训练 checkpoint；数据和训练方法由任务代理选择。",
+        "value": "指定小模型的后训练 checkpoint（某个时刻保存的模型或系统版本）；数据和训练方法由任务代理选择。",
         "sources": [
           {
             "label": "§1",
@@ -14962,11 +15090,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "用 Codex CLI、Claude Code、Gemini CLI 等标准开发工具代理，能读写文件、运行代码、处理上下文和权限。提供一张 H100 与 10 小时预算，修改对象是指定基础模型的训练结果；评估运行框架不允许改。",
+        "value": "用 Codex CLI（在终端中读写代码、运行命令的编程代理工具）、Claude Code（可读写项目文件、运行命令和测试的编程代理工具）、Gemini CLI（通过终端命令使用的程序界面） 等标准开发工具代理，能读写文件、运行代码、处理上下文和权限。提供一张 H100 与 10 小时预算，修改对象是指定基础模型的训练结果；评估运行框架不允许改。",
         "sources": [
           {
             "label": "任务定义与代理执行设置",
             "url": "https://arxiv.org/abs/2603.08640"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -15038,7 +15170,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AIME25、GSM8K、GPQA、HumanEval、BFCL、ArenaHard、HealthBench 中指定的一项。",
+        "value": "AIME25、GSM8K（小学数学应用题基准）、GPQA（研究生级科学问答基准）、HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）、BFCL、ArenaHard、HealthBench 中指定的一项。",
         "sources": [
           {
             "label": "§1",
@@ -15108,7 +15240,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "第一组交付并测试Qwen2.5-7B-Instruct的训练后模型；受控CLI组交付Qwen3-8B-Base的训练后模型。负责写训练代码的driver不是这两个目标模型。",
+        "value": "第一组交付并测试Qwen2.5-7B-Instruct的训练后模型；受控CLI（通过终端命令使用的程序界面）组交付Qwen3-8B-Base的训练后模型。负责写训练代码的driver不是这两个目标模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -15132,7 +15264,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "第一组：GPT-5.4驱动OpenHands/OpenCode，Claude Opus4.6驱动Claude Code。受控组driver包括Opus4.6、Sonnet4.5、GPT-5.4、GPT-5.2、GPT-4o、Gemini2.5 Flash。",
+        "value": "第一组：GPT-5.4驱动OpenHands/OpenCode，Claude Opus4.6驱动Claude Code（可读写项目文件、运行命令和测试的编程代理工具）。受控组driver包括Opus4.6、Sonnet4.5、GPT-5.4、GPT-5.2、GPT-4o、Gemini2.5 Flash。",
         "sources": [
           {
             "label": "§2.1",
@@ -15149,6 +15281,10 @@
           {
             "label": "附录A.4",
             "url": "https://arxiv.org/html/2604.10547#A1.SS4"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -15156,7 +15292,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "任务代理交付的训练代码与模型 checkpoint。",
+        "value": "任务代理交付的训练代码与模型 checkpoint（某个时刻保存的模型或系统版本）。",
         "sources": [
           {
             "label": "§2.1",
@@ -15216,7 +15352,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GSM8K 标准 train；HumanEval 82 道可见题；其他任务给相应训练资料。",
+        "value": "GSM8K（小学数学应用题基准） 标准 train；HumanEval（根据函数要求生成代码、用测试检查结果的编程基准） 82 道可见题；其他任务给相应训练资料。",
         "sources": [
           {
             "label": "§2.1",
@@ -15248,7 +15384,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GSM8K test、HumanEval 另 82 题；AlpacaEval 2.0、ALFWorld 134、WebShop 100、DeepSearchQA 200。",
+        "value": "GSM8K（小学数学应用题基准） test、HumanEval（根据函数要求生成代码、用测试检查结果的编程基准） 另 82 题；AlpacaEval 2.0、ALFWorld（通过文字动作完成家居物体操作的交互环境） 134、WebShop（根据用户要求挑选和购买商品的交互基准） 100、DeepSearchQA 200。",
         "sources": [
           {
             "label": "§2.1",
@@ -15264,7 +15400,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "HumanEval 是自定义 82/82，不直接对比全量 164 榜单；最佳提交评分不同于只提交一次模型。",
+        "value": "HumanEval（根据函数要求生成代码、用测试检查结果的编程基准） 是自定义 82/82，不直接对比全量 164 榜单；最佳提交评分不同于只提交一次模型。",
         "sources": [
           {
             "label": "§2.1",
@@ -15330,7 +15466,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Claude Code + Opus4.7/Sonnet4.6、Codex + GPT-5.4/GPT-5.3负责数据策划；开源对照通过OpenHands运行Kimi K2.5和Qwen3.5-397B。",
+        "value": "Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus4.7/Sonnet4.6、Codex + GPT-5.4/GPT-5.3负责数据策划；开源对照通过OpenHands运行Kimi K2.5和Qwen3.5-397B。",
         "sources": [
           {
             "label": "§2",
@@ -15351,6 +15487,10 @@
           {
             "label": "附录D.5",
             "url": "https://arxiv.org/html/2606.04261#A4.SS5"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -15520,7 +15660,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "固定Terminus-2框架下比较Opus4.6、Gemini3.1 Pro、GPT-5.4、Grok4-20、Qwen3.6 Plus、DeepSeekV4Pro、GLM5、Kimi K2.6、Hunyuan3 Preview、MiMoV2.5Pro、MiniMaxM2.7。",
+        "value": "固定Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）框架下比较Opus4.6、Gemini3.1 Pro、GPT-5.4、Grok4-20、Qwen3.6 Plus、DeepSeekV4Pro、GLM5、Kimi K2.6、Hunyuan3 Preview、MiMoV2.5Pro、MiniMaxM2.7。",
         "sources": [
           {
             "label": "§2.3",
@@ -15545,6 +15685,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2606.05080#S3.SS1"
+          },
+          {
+            "label": "Terminus：终端任务代理",
+            "url": "https://www.tbench.ai/news/terminus"
           }
         ],
         "status": "recorded"
@@ -15552,7 +15696,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2和评估器固定。附录另有更旧/更小模型消融。",
+        "value": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）和评估器固定。附录另有更旧/更小模型消融。",
         "sources": [
           {
             "label": "§2.3",
@@ -15577,6 +15721,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2606.05080#S3.SS1"
+          },
+          {
+            "label": "Terminus：终端任务代理",
+            "url": "https://www.tbench.ai/news/terminus"
           }
         ],
         "status": "recorded"
@@ -15810,7 +15958,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "GPT-5.5/GPT-5.4配Codex；Claude Opus4.8、GLM5.1、DeepSeek-V4-Pro-preview配Claude Code。",
+        "value": "GPT-5.5/GPT-5.4配Codex；Claude Opus4.8、GLM5.1、DeepSeek-V4-Pro-preview配Claude Code（可读写项目文件、运行命令和测试的编程代理工具）。",
         "sources": [
           {
             "label": "§2.1",
@@ -15823,6 +15971,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2607.05155#S3.SS1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -16736,7 +16888,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GSM8K、SVAMP、AQuA、AddSub、MultiArith、ASDiv；CommonsenseQA、StrategyQA、ARC；末字母拼接、Coinflip。",
+        "value": "GSM8K（小学数学应用题基准）、SVAMP、AQuA、AddSub、MultiArith、ASDiv；CommonsenseQA、StrategyQA、ARC；末字母拼接、Coinflip。",
         "sources": [
           {
             "label": "§3.1",
@@ -16930,7 +17082,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "FED 对话 342；GSM8K 1,319；代码优化、代码可读性 300、情感反转、缩写 250、约束生成 200。",
+        "value": "FED 对话 342；GSM8K（小学数学应用题基准） 1,319；代码优化、代码可读性 300、情感反转、缩写 250、约束生成 200。",
         "sources": [
           {
             "label": "§3",
@@ -17140,7 +17292,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "问答读检索证据；数学读 Python 执行；文本毒性读 Perspective API。",
+        "value": "问答读检索证据；数学读 Python 执行；文本毒性读 Perspective API（供程序调用模型、工具或服务的接口）。",
         "sources": [
           {
             "label": "§4.2",
@@ -17160,7 +17312,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AmbigNQ、TriviaQA、HotpotQA；GSM8K、SVAMP、TabMWP 官方 test；RealToxicityPrompts 抽 1,000 个非毒性提示。",
+        "value": "AmbigNQ、TriviaQA、HotpotQA（需要结合多份资料作答的多跳问答基准）；GSM8K（小学数学应用题基准）、SVAMP、TabMWP 官方 test；RealToxicityPrompts 抽 1,000 个非毒性提示。",
         "sources": [
           {
             "label": "§4.2",
@@ -17838,7 +17990,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GSM8K、CommonsenseQA dev 1,221、HotpotQA 100；GPT-3.5 用全量，其他模型每集抽 200（HotpotQA 100）。",
+        "value": "GSM8K（小学数学应用题基准）、CommonsenseQA dev 1,221、HotpotQA（需要结合多份资料作答的多跳问答基准） 100；GPT-3.5 用全量，其他模型每集抽 200（HotpotQA 100）。",
         "sources": [
           {
             "label": "§3.1",
@@ -17888,7 +18040,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "LATS 使用 GPT-3.5 或 GPT-4 生成行动与答案；正文报告 GPT-3.5 的 HotPotQA／WebShop 结果，以及 GPT-4 的 HumanEval 结果。",
+        "value": "LATS 使用 GPT-3.5 或 GPT-4 生成行动与答案；正文报告 GPT-3.5 的 HotPotQA／WebShop（根据用户要求挑选和购买商品的交互基准） 结果，以及 GPT-4 的 HumanEval（根据函数要求生成代码、用测试检查结果的编程基准） 结果。",
         "sources": [
           {
             "label": "§4.2",
@@ -17952,7 +18104,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "在 ReAct 的推理—动作—观察接口外加蒙特卡洛树搜索，节点保留候选轨迹，结合模型评分、环境反馈和反思选择分支。要求搜索时能回到相应状态，不等于一般现实环境都能无代价回滚。",
+        "value": "在 ReAct（交替进行推理、调用工具和读取结果的执行方式） 的推理—动作—观察接口外加蒙特卡洛树搜索，节点保留候选轨迹，结合模型评分、环境反馈和反思选择分支。要求搜索时能回到相应状态，不等于一般现实环境都能无代价回滚。",
         "sources": [
           {
             "label": "任务定义、实验和 MBPP 设置",
@@ -18008,7 +18160,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "HotpotQA、HumanEval 全 164、MBPP 抽 397、WebShop。代码最终按正式测试计分。",
+        "value": "HotpotQA（需要结合多份资料作答的多跳问答基准）、HumanEval（根据函数要求生成代码、用测试检查结果的编程基准） 全 164、MBPP 抽 397、WebShop（根据用户要求挑选和购买商品的交互基准）。代码最终按正式测试计分。",
         "sources": [
           {
             "label": "§5.2",
@@ -18174,7 +18326,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GSM8K 约 3.5% 官方训练题用于提示搜索；BBH 每任务 20%。",
+        "value": "GSM8K（小学数学应用题基准） 约 3.5% 官方训练题用于提示搜索；BBH 每任务 20%。",
         "sources": [
           {
             "label": "§4.1",
@@ -18206,7 +18358,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GSM8K 官方 1,319 test；BBH 23 个任务的剩余 80%。",
+        "value": "GSM8K（小学数学应用题基准） 官方 1,319 test；BBH 23 个任务的剩余 80%。",
         "sources": [
           {
             "label": "§4.1",
@@ -18368,7 +18520,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GSM8K、SVAMP、MultiArith、AddSub、AQuA-RAT、SingleEQ 等训练题，每次随机 100 题计算适应度。",
+        "value": "GSM8K（小学数学应用题基准）、SVAMP、MultiArith、AddSub、AQuA-RAT、SingleEQ 等训练题，每次随机 100 题计算适应度。",
         "sources": [
           {
             "label": "附录J.2",
@@ -18562,7 +18714,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GSM8K 200；HotpotQA hard 题 200，用于编译/自举示例。",
+        "value": "GSM8K（小学数学应用题基准） 200；HotpotQA（需要结合多份资料作答的多跳问答基准） hard 题 200，用于编译/自举示例。",
         "sources": [
           {
             "label": "§6",
@@ -18582,7 +18734,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "各 300 道 development；HotpotQA 从官方 train 内部划分。",
+        "value": "各 300 道 development；HotpotQA（需要结合多份资料作答的多跳问答基准） 从官方 train 内部划分。",
         "sources": [
           {
             "label": "§6",
@@ -18602,7 +18754,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GSM8K 1,319；HotpotQA 从官方 validation 抽 1,000，因为正式 test 隐藏。",
+        "value": "GSM8K（小学数学应用题基准） 1,319；HotpotQA（需要结合多份资料作答的多跳问答基准） 从官方 validation 抽 1,000，因为正式 test 隐藏。",
         "sources": [
           {
             "label": "§6",
@@ -18942,7 +19094,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "提示优化：BBH Word Sorting/Object Counting 各 50，GSM8K 200。其他应用直接优化当前实例。",
+        "value": "提示优化：BBH Word Sorting/Object Counting 各 50，GSM8K（小学数学应用题基准） 200。其他应用直接优化当前实例。",
         "sources": [
           {
             "label": "§3.3",
@@ -18958,7 +19110,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "对应 validation 为 BBH 各 100、GSM8K 300；代码用本地测试，放疗用 matRad 计划与临床约束。",
+        "value": "对应 validation 为 BBH 各 100、GSM8K（小学数学应用题基准） 300；代码用本地测试，放疗用 matRad 计划与临床约束。",
         "sources": [
           {
             "label": "§3.3",
@@ -18974,7 +19126,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "BBH 各 100、GSM8K 1,319；另有 GPQA/MMLU 回答、LeetCode Hard 代码及科学设计实验。",
+        "value": "BBH 各 100、GSM8K（小学数学应用题基准） 1,319；另有 GPQA/MMLU 回答、LeetCode Hard 代码及科学设计实验。",
         "sources": [
           {
             "label": "§3.3",
@@ -19006,7 +19158,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "把系统当作计算图，把自然语言批评沿图传回具体变量；所谓 gradient 是文字反馈的类比，并非真的对黑盒 LLM API 求数值导数。",
+        "value": "把系统当作计算图，把自然语言批评沿图传回具体变量；所谓 gradient 是文字反馈的类比，并非真的对黑盒 LLM API（供程序调用模型、工具或服务的接口） 求数值导数。",
         "sources": [
           {
             "label": "§3.1",
@@ -19104,7 +19256,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "QA 的 F1、数学 solve rate、代码 pass@1。",
+        "value": "QA 的 F1（同时考虑找出的内容有多少正确、应找出的内容找到了多少；匹配对象看当前任务）、数学 solve rate、代码 pass@1（单次尝试完成任务的比例）。",
         "sources": [
           {
             "label": "§4",
@@ -19156,7 +19308,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "不训练参数。GSM8K、HumanEval、MBPP，以及 HotpotQA/DROP 各抽 1,000、MATH 四类难度5题共617，供工作流实验。",
+        "value": "不训练参数。GSM8K（小学数学应用题基准）、HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）、MBPP，以及 HotpotQA/DROP 各抽 1,000、MATH 四类难度5题共617，供工作流实验。",
         "sources": [
           {
             "label": "§4",
@@ -19414,7 +19566,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "算法部分涉及 HotpotQA、MBPP、MATH 等；应用部分报告 GAIA 上的优化前后表现。",
+        "value": "算法部分涉及 HotpotQA（需要结合多份资料作答的多跳问答基准）、MBPP、MATH 等；应用部分报告 GAIA（需要检索、推理和使用工具的通用助理任务基准） 上的优化前后表现。",
         "sources": [
           {
             "label": "§3.5",
@@ -19434,7 +19586,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "论文框架支持 train/dev/test 不等于每个应用都给出独立测试证据；GAIA 应按优化前后应用对照阅读。",
+        "value": "论文框架支持 train/dev/test 不等于每个应用都给出独立测试证据；GAIA（需要检索、推理和使用工具的通用助理任务基准） 应按优化前后应用对照阅读。",
         "sources": [
           {
             "label": "§3.5",
@@ -19698,7 +19850,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "SiliconFriend分别接ChatGPT、ChatGLM（6.2B）和BELLE（由LLaMA7B微调）；ChatGPT在论文中未给具体API快照名。",
+        "value": "SiliconFriend分别接ChatGPT、ChatGLM（6.2B）和BELLE（由LLaMA7B微调）；ChatGPT在论文中未给具体API（供程序调用模型、工具或服务的接口）快照名。",
         "sources": [
           {
             "label": "§2",
@@ -19924,7 +20076,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "评估阶段统一gpt-3.5-turbo-0613，按ReAct流程执行任务。",
+        "value": "评估阶段统一gpt-3.5-turbo-0613，按ReAct（交替进行推理、调用工具和读取结果的执行方式）流程执行任务。",
         "sources": [
           {
             "label": "§4.4",
@@ -19996,7 +20148,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "ReAct 规划器在训练任务失败后允许 Reflexion 式重试，把成功轨迹与提炼规则保存在经验池；测试题可检索经验，而不是重新执行训练阶段的多次试错。",
+        "value": "ReAct（交替进行推理、调用工具和读取结果的执行方式） 规划器在训练任务失败后允许 Reflexion 式重试，把成功轨迹与提炼规则保存在经验池；测试题可检索经验，而不是重新执行训练阶段的多次试错。",
         "sources": [
           {
             "label": "实验数据与交叉验证",
@@ -20008,7 +20160,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "ReAct 执行，失败时借助 Reflexion 重试；LLM 比较成功与失败经历，修改 insight 列表，测试时检索成功示例和规则。",
+        "value": "ReAct（交替进行推理、调用工具和读取结果的执行方式） 执行，失败时借助 Reflexion 重试；LLM 比较成功与失败经历，修改 insight 列表，测试时检索成功示例和规则。",
         "sources": [
           {
             "label": "§4.4",
@@ -20024,7 +20176,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "HotpotQA distractor-dev 100 题、ALFWorld 134 题、WebShop 100 题组成任务池；每次用一半收集成功/失败轨迹。",
+        "value": "HotpotQA（需要结合多份资料作答的多跳问答基准） distractor-dev 100 题、ALFWorld（通过文字动作完成家居物体操作的交互环境） 134 题、WebShop（根据用户要求挑选和购买商品的交互基准） 100 题组成任务池；每次用一半收集成功/失败轨迹。",
         "sources": [
           {
             "label": "附录D.1",
@@ -20056,7 +20208,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "另一半任务评估，并交换两半；论文报告四折均值及标准误。另做 HotpotQA→FEVER 知识迁移。",
+        "value": "另一半任务评估，并交换两半；论文报告四折均值及标准误。另做 HotpotQA（需要结合多份资料作答的多跳问答基准）→FEVER 知识迁移。",
         "sources": [
           {
             "label": "附录D.1",
@@ -20110,7 +20262,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "AgentBench比较GPT-3.5、GPT-4、Llama2-7B、CodeLlama-7B、Qwen-1.8B及ChatGLM2；具体商用API快照没有在§4.1中展开。",
+        "value": "AgentBench比较GPT-3.5、GPT-4、Llama2-7B、CodeLlama-7B、Qwen-1.8B及ChatGLM2；具体商用API（供程序调用模型、工具或服务的接口）快照没有在§4.1中展开。",
         "sources": [
           {
             "label": "§3",
@@ -20246,7 +20398,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AgentBench 六类任务；LCC、RepoBench-P、HotpotQA、TriviaQA 长文本；RAG 实验还有 Natural Questions，附录另列 MultiWOZ/ALFWorld。",
+        "value": "AgentBench 六类任务；LCC、RepoBench-P、HotpotQA（需要结合多份资料作答的多跳问答基准）、TriviaQA 长文本；RAG（先检索相关资料，再把资料交给模型回答） 实验还有 Natural Questions，附录另列 MultiWOZ/ALFWorld。",
         "sources": [
           {
             "label": "§4",
@@ -20416,7 +20568,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "固定任务执行器外维护结构化操作指南；生成器执行，反思器提炼经验，整理器用增量改动合并规则，避免每轮全文重写。AppWorld 使用 ReAct 等底座，其他领域有各自程序。",
+        "value": "固定任务执行器外维护结构化操作指南；生成器执行，反思器提炼经验，整理器用增量改动合并规则，避免每轮全文重写。AppWorld（通过多个应用的程序接口完成日常事务的交互基准） 使用 ReAct（交替进行推理、调用工具和读取结果的执行方式） 等底座，其他领域有各自程序。",
         "sources": [
           {
             "label": "§4.1–4.4",
@@ -20448,7 +20600,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "离线：AppWorld、FiNER、Formula、DDXPlus、BIRD-SQL 的原始训练划分生成操作指南。在线：此前测试题的交互经验。",
+        "value": "离线：AppWorld（通过多个应用的程序接口完成日常事务的交互基准）、FiNER、Formula、DDXPlus、BIRD-SQL 的原始训练划分生成操作指南。在线：此前测试题的交互经验。",
         "sources": [
           {
             "label": "§4.1",
@@ -20480,7 +20632,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "AppWorld test-normal/test-challenge 报 TGC/SGC；FiNER、Formula、DDXPlus 报准确率；BIRD-SQL 在本文用 GPT-4o-mini 评审。",
+        "value": "AppWorld（通过多个应用的程序接口完成日常事务的交互基准） test-normal/test-challenge 报 TGC/SGC；FiNER、Formula、DDXPlus 报准确率；BIRD-SQL 在本文用 GPT-4o-mini 评审。",
         "sources": [
           {
             "label": "§4.1",
@@ -20566,7 +20718,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "EvolveR 从执行轨迹中总结经验，并用 GRPO 更新 Qwen2.5 参数；GPT-4o-mini 是教师模型消融配置，不应写成所有实验都依赖的外部教师。",
+        "value": "EvolveR 从执行轨迹中总结经验，并用 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 更新 Qwen2.5 参数；GPT-4o-mini 是教师模型消融配置，不应写成所有实验都依赖的外部教师。",
         "sources": [
           {
             "label": "§3.3",
@@ -20630,7 +20782,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "将轨迹压缩为经验原则，检索后指导下一批搜索轨迹，再用 GRPO 训练有效利用经验的策略。",
+        "value": "将轨迹压缩为经验原则，检索后指导下一批搜索轨迹，再用 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 训练有效利用经验的策略。",
         "sources": [
           {
             "label": "§3.3",
@@ -20642,7 +20794,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "Natural Questions 与 HotpotQA 的训练 split 构建经验库；用经验引导的轨迹做 GRPO。",
+        "value": "Natural Questions 与 HotpotQA（需要结合多份资料作答的多跳问答基准） 的训练 split 构建经验库；用经验引导的轨迹做 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）。",
         "sources": [
           {
             "label": "§4.1",
@@ -20666,7 +20818,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "域内 NQ、HotpotQA；仅用于域外评估的 TriviaQA、PopQA、2WikiMultiHopQA、MuSiQue、Bamboogle。",
+        "value": "域内 NQ、HotpotQA（需要结合多份资料作答的多跳问答基准）；仅用于域外评估的 TriviaQA、PopQA、2WikiMultiHopQA、MuSiQue、Bamboogle。",
         "sources": [
           {
             "label": "§4.1",
@@ -20748,7 +20900,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "experiential memory + memory architecture/code。\n\n固定部分：M1+：memory mechanism 变，但 outer Pareto selection/evolution protocol fixed",
+        "value": "experiential memory + memory architecture/code。\n\n固定部分：M1+：memory mechanism 变，但 outer Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案） selection/evolution protocol fixed",
         "sources": [
           {
             "label": "§3.3",
@@ -20808,7 +20960,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "TaskCraft 抽 300 题作为工作子集，其中 120 题分三轮做记忆架构进化（每轮40）。GAIA 设置另用 Level-1 加 67 条 TaskCraft。",
+        "value": "TaskCraft 抽 300 题作为工作子集，其中 120 题分三轮做记忆架构进化（每轮40）。GAIA（需要检索、推理和使用工具的通用助理任务基准） 设置另用 Level-1 加 67 条 TaskCraft。",
         "sources": [
           {
             "label": "§9.1",
@@ -20832,7 +20984,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GAIA 165 题；WebWalkerQA 抽 170 题；xBench-DeepSearch 100 题；另报告 TaskCraft。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） 165 题；WebWalkerQA 抽 170 题；xBench-DeepSearch 100 题；另报告 TaskCraft。",
         "sources": [
           {
             "label": "§9.1",
@@ -20844,7 +20996,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "WebWalkerQA/xBench 使用 TaskCraft 上进化出的固定架构。GAIA Level-1 参与对应架构进化，不能把全部 GAIA 称为未见测试；架构固定后记忆内容仍可更新。",
+        "value": "WebWalkerQA/xBench 使用 TaskCraft 上进化出的固定架构。GAIA（需要检索、推理和使用工具的通用助理任务基准） Level-1 参与对应架构进化，不能把全部 GAIA 称为未见测试；架构固定后记忆内容仍可更新。",
         "sources": [
           {
             "label": "§9.1",
@@ -20978,7 +21130,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "ALFWorld train 前30题；BALROG 的 TextWorld/Baba Is AI 各取一半；MiniHack 取30%。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） train 前30题；BALROG 的 TextWorld/Baba Is AI 各取一半；MiniHack 取30%。",
         "sources": [
           {
             "label": "§4.1",
@@ -21026,7 +21178,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "TextWorld/Baba Is AI 剩余一半、MiniHack 剩余70%；测试材料也先收集后部署。ALFWorld 另比较静态与动态记忆模式。",
+        "value": "TextWorld/Baba Is AI 剩余一半、MiniHack 剩余70%；测试材料也先收集后部署。ALFWorld（通过文字动作完成家居物体操作的交互环境） 另比较静态与动态记忆模式。",
         "sources": [
           {
             "label": "§4.1",
@@ -21468,7 +21620,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Manager为Claude Sonnet4，负责协调；Web Agent为GPT-4.1，负责检索和网页交互；MCP检索embedding用text-embedding-3-large。",
+        "value": "Manager为Claude Sonnet4，负责协调；Web Agent为GPT-4.1，负责检索和网页交互；MCP（让代理以统一接口连接外部工具的协议）检索embedding用text-embedding-3-large。",
         "sources": [
           {
             "label": "§3.4",
@@ -21484,7 +21636,7 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Manager/generator沿Alita流程把成功执行抽象成MCP工具，并按相似度选择复用；§4.1的角色配对是Claude Sonnet4与GPT-4.1，不能笼统写“同一任务代理”。",
+        "value": "Manager/generator沿Alita流程把成功执行抽象成MCP（让代理以统一接口连接外部工具的协议）工具，并按相似度选择复用；§4.1的角色配对是Claude Sonnet4与GPT-4.1，不能笼统写“同一任务代理”。",
         "sources": [
           {
             "label": "§3.4",
@@ -21500,7 +21652,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "MCP tool library。",
+        "value": "MCP（让代理以统一接口连接外部工具的协议） tool library。",
         "sources": [
           {
             "label": "§3.4",
@@ -21532,11 +21684,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "Master Agent 先从成功轨迹生成工具，泛化参数、去除特定上下文并统一接口，组成 MCP Box；专门任务代理再按任务检索工具，以 CodeAct 循环执行。起点已有工具生成与检索框架。",
+        "value": "Master Agent 先从成功轨迹生成工具，泛化参数、去除特定上下文并统一接口，组成 MCP（让代理以统一接口连接外部工具的协议） Box；专门任务代理再按任务检索工具，以 CodeAct（让模型生成并执行代码来采取行动的代理方式） 循环执行。起点已有工具生成与检索框架。",
         "sources": [
           {
             "label": "MCP 生成流程与实验数据",
             "url": "https://arxiv.org/abs/2510.23601"
+          },
+          {
+            "label": "CodeAct 原论文：可执行代码动作",
+            "url": "https://arxiv.org/abs/2402.01030"
           }
         ],
         "status": "recorded"
@@ -21544,7 +21700,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "Alita 的 Manager（Claude Sonnet 4）协调、Web Agent（GPT-4.1）检索；从成功执行沉淀 MCP，再检索组装专门任务代理。",
+        "value": "Alita 的 Manager（Claude Sonnet 4）协调、Web Agent（GPT-4.1）检索；从成功执行沉淀 MCP（让代理以统一接口连接外部工具的协议），再检索组装专门任务代理。",
         "sources": [
           {
             "label": "§3.4",
@@ -21560,7 +21716,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "Master 任务代理完成目标任务，把可复用工具及调用经验整理成 MCP box；比较单次与三次执行构造。",
+        "value": "Master 任务代理完成目标任务，把可复用工具及调用经验整理成 MCP（让代理以统一接口连接外部工具的协议） box；比较单次与三次执行构造。",
         "sources": [
           {
             "label": "§4.1",
@@ -21576,7 +21732,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "根据新任务与 MCP 描述的 embedding 相似度筛选，实验阈值0.7；不是更新模型参数。",
+        "value": "根据新任务与 MCP（让代理以统一接口连接外部工具的协议） 描述的 embedding 相似度筛选，实验阈值0.7；不是更新模型参数。",
         "sources": [
           {
             "label": "§4.1",
@@ -21592,7 +21748,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GAIA 完整 validation；PathVQA 随机100题；HLE 随机100题；报告准确率及 token 开销。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） 完整 validation；PathVQA 随机100题；HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准） 随机100题；报告准确率及 token 开销。",
         "sources": [
           {
             "label": "§4.1",
@@ -21608,7 +21764,7 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "§4.1 指明评测抽样，但没有声明 MCP 构造题与报告题互斥；不能据此称严格未见迁移。",
+        "value": "§4.1 指明评测抽样，但没有声明 MCP（让代理以统一接口连接外部工具的协议） 构造题与报告题互斥；不能据此称严格未见迁移。",
         "sources": [
           {
             "label": "§4.1",
@@ -21624,7 +21780,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "相对 Voyager 把 executable 技能进一步标准化为可移植 MCP tool；但主要从成功经验生成，不系统利用失败诊断。",
+        "value": "相对 Voyager 把 executable 技能进一步标准化为可移植 MCP（让代理以统一接口连接外部工具的协议） tool；但主要从成功经验生成，不系统利用失败诊断。",
         "sources": [
           {
             "label": "§3.4",
@@ -22162,7 +22318,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "GAIA validation 的100题；HLE按8领域抽788题。另为路由器从约8000技能中抽约3000个合成正负查询。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准） validation 的100题；HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准）按8领域抽788题。另为路由器从约8000技能中抽约3000个合成正负查询。",
         "sources": [
           {
             "label": "§2.3",
@@ -22218,7 +22374,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "GAIA另65题；HLE另342题。路由器另报告140条合成查询的 Recall@K。",
+        "value": "GAIA（需要检索、推理和使用工具的通用助理任务基准）另65题；HLE（涵盖多个学科高难度问题的 Humanity’s Last Exam 基准）另342题。路由器另报告140条合成查询的 Recall@K。",
         "sources": [
           {
             "label": "§2.3",
@@ -22590,7 +22746,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "作者自建五层系统：API、路由编排、运行时、工具/会话、持久化；主任务代理用 ReAct 并分层委派子任务代理，逐步披露技能以控制上下文。基础系统已含多任务代理和记忆管理。",
+        "value": "作者自建五层系统：API（供程序调用模型、工具或服务的接口）、路由编排、运行时、工具/会话、持久化；主任务代理用 ReAct（交替进行推理、调用工具和读取结果的执行方式） 并分层委派子任务代理，逐步披露技能以控制上下文。基础系统已含多任务代理和记忆管理。",
         "sources": [
           {
             "label": "§3 架构、§4 数据收集",
@@ -22804,7 +22960,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "固定任务代理在执行时参考这份领域操作说明。表格任务仍使用 openpyxl/pandas，OfficeQA 保留工具调用循环，ALFWorld 保留多步动作接口；修改范围是说明文档，不包含这些执行程序。",
+        "value": "固定任务代理在执行时参考这份领域操作说明。表格任务仍使用 openpyxl/pandas，OfficeQA 保留工具调用循环，ALFWorld（通过文字动作完成家居物体操作的交互环境） 保留多步动作接口；修改范围是说明文档，不包含这些执行程序。",
         "sources": [
           {
             "label": "实验设置与数据划分",
@@ -22836,7 +22992,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "SearchQA、SpreadsheetBench、OfficeQA、DocVQA、LiveMathematicianBench、ALFWorld；无特殊声明默认20%用于技能学习。ALFWorld实际39训练任务，LiveMath每轮35训练题。",
+        "value": "SearchQA、SpreadsheetBench、OfficeQA、DocVQA、LiveMathematicianBench、ALFWorld（通过文字动作完成家居物体操作的交互环境）；无特殊声明默认20%用于技能学习。ALFWorld实际39训练任务，LiveMath每轮35训练题。",
         "sources": [
           {
             "label": "§4",
@@ -22856,7 +23012,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "默认10% selection，仅据此接受或拒绝编辑；ALFWorld使用140 selection。分数须严格提高，平分拒绝。",
+        "value": "默认10% selection，仅据此接受或拒绝编辑；ALFWorld（通过文字动作完成家居物体操作的交互环境）使用140 selection。分数须严格提高，平分拒绝。",
         "sources": [
           {
             "label": "§4",
@@ -22916,7 +23072,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "重点是单一技能文档的优化纪律：textual learning rate、验证 gate、被拒编辑缓存和跨进化轮次慢更新；不是完整运行系统 code evolution。",
+        "value": "重点是单一技能文档的优化纪律：textual learning rate、验证 gate（决定是否接受修改的检查条件）、被拒编辑缓存和跨进化轮次慢更新；不是完整运行系统 code evolution。",
         "sources": [
           {
             "label": "§4",
@@ -22942,7 +23098,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "仿真中由Claude Code + Claude Opus4.6（1M上下文）写程序，机器人执行引擎实际执行控制；真实双臂YAM迁移实验用Codex + GPT-5.5 xhigh。",
+        "value": "仿真中由Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Claude Opus4.6（1M上下文）写程序，机器人执行引擎实际执行控制；真实双臂YAM迁移实验用Codex + GPT-5.5 xhigh。",
         "sources": [
           {
             "label": "§2",
@@ -22955,6 +23111,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2607.00272#S3.SS1"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -23014,11 +23174,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "Claude Code＋Claude Opus 4.6 写 Python 机器人程序，基于 CaP-X/MuJoCo Playground 的感知、几何、运动规划 API。任务代理、环境及 API 固定，增长的是可复用机器人技能，不是更换低层执行接口。",
+        "value": "Claude Code（可读写项目文件、运行命令和测试的编程代理工具）＋Claude Opus 4.6 写 Python 机器人程序，基于 CaP-X/MuJoCo Playground 的感知、几何、运动规划 API（供程序调用模型、工具或服务的接口）。任务代理、环境及 API 固定，增长的是可复用机器人技能，不是更换低层执行接口。",
         "sources": [
           {
             "label": "模拟环境设置与技能迁移协议",
             "url": "https://arxiv.org/abs/2607.00272"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -23144,7 +23308,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Qwen3-1.7B和Qwen3-4B；主表展示4B在ALFWorld、WebShop、ScienceWorld的结果。",
+        "value": "Qwen3-1.7B和Qwen3-4B；主表展示4B在ALFWorld（通过文字动作完成家居物体操作的交互环境）、WebShop（根据用户要求挑选和购买商品的交互基准）、ScienceWorld的结果。",
         "sources": [
           {
             "label": "§3",
@@ -23236,7 +23400,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "ALFWorld、1000商品版 WebShop（合成目标）、ScienceWorld；每更新16序列×3任务×8 trials，共384次任务执行，最多150更新。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境）、1000商品版 WebShop（合成目标）、ScienceWorld；每更新16序列×3任务×8 trials，共384次任务执行，最多150更新。",
         "sources": [
           {
             "label": "§4.1",
@@ -23284,7 +23448,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "每环境128个留出任务。Pass@2/3允许同题带技能重试；ALFWorld另按2/4/6题序列、每题一次测试跨题积累。",
+        "value": "每环境128个留出任务。Pass@2/3允许同题带技能重试；ALFWorld（通过文字动作完成家居物体操作的交互环境）另按2/4/6题序列、每题一次测试跨题积累。",
         "sources": [
           {
             "label": "§4.1",
@@ -23354,7 +23518,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "上层固定Qwen3.6-27B规划。VLABench下层为官方π0 checkpoint，通过OpenPI执行5-action chunks；ESI-Bench用固定交互API。",
+        "value": "上层固定Qwen3.6-27B规划。VLABench下层为官方π0 checkpoint（某个时刻保存的模型或系统版本），通过OpenPI执行5-action chunks；ESI-Bench用固定交互API（供程序调用模型、工具或服务的接口）。",
         "sources": [
           {
             "label": "§3",
@@ -23430,7 +23594,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "冻结 Qwen3.6-27B 上层规划器；VLABench 用官方 π0 检查点经 OpenPI 执行子目标，每次输出 5 个低层动作，最多 10 轮规划/400 环境步。ESI-Bench 使用固定交互 API，最多 30 步。可演化的是技能和上层运行框架，不重训这些执行模型。",
+        "value": "冻结 Qwen3.6-27B 上层规划器；VLABench 用官方 π0 检查点经 OpenPI 执行子目标，每次输出 5 个低层动作，最多 10 轮规划/400 环境步。ESI-Bench 使用固定交互 API（供程序调用模型、工具或服务的接口），最多 30 步。可演化的是技能和上层运行框架，不重训这些执行模型。",
         "sources": [
           {
             "label": "§4.1、优化协议、Table 2",
@@ -23474,7 +23638,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "VLABench固定24验证 episodes；ESI-Bench10验证题。4轮、宽度3的 beam search，先优化技能，再固定技能优化运行框架。",
+        "value": "VLABench固定24验证 episodes；ESI-Bench10验证题。4轮、宽度3的 beam search（每轮保留若干较好候选继续搜索），先优化技能，再固定技能优化运行框架。",
         "sources": [
           {
             "label": "§4.1",
@@ -23522,7 +23686,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "固定模型和环境动作接口，通过 target-environment 执行尝试（从开始做任务到得到结果的过程）改可复用 skills 与 context-code 运行框架。与直接编写任意机器人 API 程序的方法不同，它适用于不能改底层动作接口的设置。",
+        "value": "固定模型和环境动作接口，通过 target-environment 执行尝试（从开始做任务到得到结果的过程）改可复用 skills 与 context-code 运行框架。与直接编写任意机器人 API（供程序调用模型、工具或服务的接口） 程序的方法不同，它适用于不能改底层动作接口的设置。",
         "sources": [
           {
             "label": "§3",
@@ -23600,7 +23764,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "初始编程任务代理已有文件/shell/计算器、子任务代理、异步监督和上下文管理。编辑先以代码改动记录追加，随后合并文件视图以利用缓存；进化可以改变这些已有组件，不是从空白 ReAct 起步。",
+        "value": "初始编程任务代理已有文件/shell/计算器、子任务代理、异步监督和上下文管理。编辑先以代码改动记录追加，随后合并文件视图以利用缓存；进化可以改变这些已有组件，不是从空白 ReAct（交替进行推理、调用工具和读取结果的执行方式） 起步。",
         "sources": [
           {
             "label": "基础 agent、Algorithm 1、Table 1",
@@ -23624,7 +23788,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "固定抽50题 SWE-bench Verified、50题 LiveCodeBench；另自建文件编辑和代码符号定位任务。",
+        "value": "固定抽50题 SWE-bench Verified、50题 LiveCodeBench（使用较新竞赛编程题评价代码能力的基准）；另自建文件编辑和代码符号定位任务。",
         "sources": [
           {
             "label": "§4",
@@ -23860,7 +24024,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "真实YAM机器人执行学到的控制策略或脚本；研究代码由Codex + GPT-5.5 xhigh、Claude Code + Opus4.7 High、Kimi Code + Kimi K2.6 thinking生成。",
+        "value": "真实YAM机器人执行学到的控制策略或脚本；研究代码由Codex + GPT-5.5 xhigh、Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus4.7 High、Kimi Code + Kimi K2.6 thinking生成。",
         "sources": [
           {
             "label": "§2",
@@ -23881,6 +24045,10 @@
           {
             "label": "附录C.4",
             "url": "https://arxiv.org/html/2606.19980#A3.SS4"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -24226,7 +24394,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "Terminal-Bench89题按80/20分，搜索部分71题；另在LiveCodeBench、FinanceAgent搜索。",
+        "value": "Terminal-Bench89题按80/20分，搜索部分71题；另在LiveCodeBench（使用较新竞赛编程题评价代码能力的基准）、FinanceAgent搜索。",
         "sources": [
           {
             "label": "附录C",
@@ -24266,7 +24434,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "Terminal-Bench18题留出，另报告LiveCodeBench、FinanceAgent；选定运行框架无再训练迁移到另外六种模型。",
+        "value": "Terminal-Bench18题留出，另报告LiveCodeBench（使用较新竞赛编程题评价代码能力的基准）、FinanceAgent；选定运行框架无再训练迁移到另外六种模型。",
         "sources": [
           {
             "label": "附录C",
@@ -24392,7 +24560,7 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "system 提示词、tool descriptions/implementations、middleware、subagent configs、skills、long-term memory 等 full 运行框架 components。\n\n固定部分：modifier algorithm固定",
+        "value": "system 提示词、tool descriptions/implementations、middleware（处理模型与工具之间消息、调用和返回结果的中间代码）、subagent configs、skills、long-term memory 等 full 运行框架 components。\n\n固定部分：modifier algorithm固定",
         "sources": [
           {
             "label": "HarnessCompass",
@@ -24440,7 +24608,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "与 AHE 使用同样的仅提供 Bash 命令行工具 H₀：没有初始 middleware、skills、subagents。修改受到跨任务通用性约束，不能把某题私有符号或路径编码进规则。",
+        "value": "与 AHE 使用同样的仅提供 Bash 命令行工具 H₀：没有初始 middleware（处理模型与工具之间消息、调用和返回结果的中间代码）、skills、subagents。修改受到跨任务通用性约束，不能把某题私有符号或路径编码进规则。",
         "sources": [
           {
             "label": "Table 2 与跨模型设置",
@@ -25822,7 +25990,7 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "ALFWorld 适配器提供 BPE：世界状态 Belief、已承诺子目标 Progress、跨 episode 技能 Experience；模型可用 track/commit/recall/note 等动作操作状态。相同接口先用教师采轨迹，再 监督微调（用示范数据训练模型）＋GRPO 训练。",
+        "value": "ALFWorld（通过文字动作完成家居物体操作的交互环境） 适配器提供 BPE：世界状态 Belief、已承诺子目标 Progress、跨 episode 技能 Experience；模型可用 track/commit/recall/note 等动作操作状态。相同接口先用教师采轨迹，再 监督微调（用示范数据训练模型）＋GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 训练。",
         "sources": [
           {
             "label": "SFT 数据构造；Table 1",
@@ -25850,7 +26018,7 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "教师在500个ALFWorld training games运行，保留87成功轨迹、1153下一动作样本；监督微调（用示范数据训练模型）后接GRPO。",
+        "value": "教师在500个ALFWorld（通过文字动作完成家居物体操作的交互环境） training games运行，保留87成功轨迹、1153下一动作样本；监督微调（用示范数据训练模型）后接GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）。",
         "sources": [
           {
             "label": "§3.1",
@@ -26534,7 +26702,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "表 2 比较 18 种模型／工具组合：包括 Codex + GPT-5.6 Sol（xhigh／ultra），Claude Code + Opus 5／Opus 4.8／GLM-5.3／GLM-5.2／Kimi K3／K2.7／MiniMax M3／DeepSeek V4 Flash／Pro／MiMo V2.5 Pro，以及 Kimi Code、MiMo Code、OpenHands 下的对应配置。代理执行完整科研项目。",
+        "value": "表 2 比较 18 种模型／工具组合：包括 Codex + GPT-5.6 Sol（xhigh／ultra），Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus 5／Opus 4.8／GLM-5.3／GLM-5.2／Kimi K3／K2.7／MiniMax M3／DeepSeek V4 Flash／Pro／MiMo V2.5 Pro，以及 Kimi Code、MiMo Code、OpenHands 下的对应配置。代理执行完整科研项目。",
         "sources": [
           {
             "label": "§2.1",
@@ -26555,6 +26723,10 @@
           {
             "label": "§3.1",
             "url": "https://arxiv.org/html/2608.17271#S3.SS1.SSS0.Px3"
+          },
+          {
+            "label": "Claude Code 官方说明",
+            "url": "https://code.claude.com/docs/en/overview"
           }
         ],
         "status": "recorded"
@@ -26808,7 +26980,7 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "利用执行轨迹和评估器诊断文本定向改提示，按逐题Pareto优势保留多样候选，必要时合并互补模块。",
+        "value": "利用执行轨迹和评估器诊断文本定向改提示，按逐题Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案）优势保留多样候选，必要时合并互补模块。",
         "sources": [
           {
             "label": "§3",
@@ -26836,7 +27008,7 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "训练材料内部区分产生反思的反馈与Pareto比较；外部validation可查分、限制直接读题。Hotpot/IF各300、AIME45、PUPA111验证。HoVer300验证。",
+        "value": "训练材料内部区分产生反思的反馈与Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案）比较；外部validation可查分、限制直接读题。Hotpot/IF各300、AIME45、PUPA111验证。HoVer300验证。",
         "sources": [
           {
             "label": "§4",
@@ -26884,7 +27056,7 @@
       {
         "key": "novelty",
         "label": "文章特点",
-        "value": "把自然语言反思与 Pareto 候选组合用于提示词搜索；关键是从轨迹里抽出可复用规则，而非仅根据标量分数选一个提示词。",
+        "value": "把自然语言反思与 Pareto（保留在不同评价维度上各有优势、不能被另一候选全面超过的方案） 候选组合用于提示词搜索；关键是从轨迹里抽出可复用规则，而非仅根据标量分数选一个提示词。",
         "sources": [
           {
             "label": "§3",
@@ -26938,7 +27110,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "终局判定 → 与可靠参考路径对齐 → 错误聚类 → candidate edits → 质量/性能 gate。",
+        "value": "终局判定 → 与可靠参考路径对齐 → 错误聚类 → candidate edits → 质量/性能 gate（决定是否接受修改的检查条件）。",
         "sources": [
           {
             "label": "§4.1",
@@ -27040,7 +27212,7 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "DeepSeek-V4-Flash-preview，分别在OpenCode、Codex CLI、Pi Coding Agent中执行。",
+        "value": "DeepSeek-V4-Flash-preview，分别在OpenCode（可连接不同模型的开源编程代理工具）、Codex CLI（在终端中读写代码、运行命令的编程代理工具）、Pi Coding Agent中执行。",
         "sources": [
           {
             "label": "附录A.1",
@@ -27053,6 +27225,10 @@
           {
             "label": "§5.1",
             "url": "https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2"
+          },
+          {
+            "label": "OpenCode 官方说明",
+            "url": "https://opencode.ai/docs"
           }
         ],
         "status": "recorded"
@@ -27104,7 +27280,7 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "执行轨迹 → 行为相关任务 → attributable-evidence gate。",
+        "value": "执行轨迹 → 行为相关任务 → attributable-evidence gate（决定是否接受修改的检查条件）。",
         "sources": [
           {
             "label": "附录A.1",
@@ -27124,11 +27300,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "用 OpenCode 1.17.13、Codex CLI 0.144.4、Pi 0.80.10 的用户可配置组件作为起点；任务模型/工具/推理预算由评估端覆盖固定。Banking Knowledge 用 BM25 检索，修改不能擅自扩工具或预算。",
+        "value": "用 OpenCode（可连接不同模型的开源编程代理工具） 1.17.13、Codex CLI（在终端中读写代码、运行命令的编程代理工具） 0.144.4、Pi 0.80.10 的用户可配置组件作为起点；任务模型/工具/推理预算由评估端覆盖固定。Banking Knowledge 用 BM25（根据查询词与文档词项匹配程度排序的检索算法） 检索，修改不能擅自扩工具或预算。",
         "sources": [
           {
             "label": "附录 B.1–B.4、Tables 7–9",
             "url": "https://arxiv.org/abs/2608.27311"
+          },
+          {
+            "label": "OpenCode 官方说明",
+            "url": "https://opencode.ai/docs"
           }
         ],
         "status": "recorded"
@@ -27310,11 +27490,15 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "极简 ReAct：两句话系统提示、任务与提交模板、一个 bash 工具、空 hooks/记忆。没有预置测试、构建、验证或代码改动记录范围规则；另以原版 mini-SWE-agent 作人写强底座对照，预算相同。",
+        "value": "极简 ReAct（交替进行推理、调用工具和读取结果的执行方式）：两句话系统提示、任务与提交模板、一个 bash 工具、空 hooks/记忆。没有预置测试、构建、验证或代码改动记录范围规则；另以原版 mini-SWE-agent（主要通过命令行读写文件、运行测试的轻量编程代理） 作人写强底座对照，预算相同。",
         "sources": [
           {
             "label": "附录 B.1–B.3",
             "url": "https://arxiv.org/abs/2608.10178"
+          },
+          {
+            "label": "mini-swe-agent 官方说明",
+            "url": "https://github.com/SWE-agent/mini-swe-agent"
           }
         ],
         "status": "recorded"
@@ -27584,7 +27768,7 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "更严格配置：如扫雷首雷即结束、Snake碰撞结束、Trust Evolution均匀抽对手；逐checkpoint评价收益。",
+        "value": "更严格配置：如扫雷首雷即结束、Snake碰撞结束、Trust Evolution均匀抽对手；逐checkpoint（某个时刻保存的模型或系统版本）评价收益。",
         "sources": [
           {
             "label": "§4.4",

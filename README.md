@@ -104,3 +104,7 @@ Continual Harness is now classified under joint harness/weight evolution because
 ## Writing the paper positioning
 
 `overview.tldr[position]` explains the research question or objective, not the procedure. Evaluation papers identify the setting and capability being tested; method papers identify the problem they aim to solve; theory papers identify the proposition and its scope. Data selection, training loops, code edits and scoring belong in the research dimensions. State an aim as an aim, not as an established result. Link the positioning to the paper’s abstract or introduction. The 134 positioning summaries were revised against these distinctions on 2026-09-10.
+
+## Explain names where they appear
+
+Framework names should identify their function and their role in the experiment (initial system, modifier, or comparison). Expand unfamiliar abbreviations beside the relevant sentence. Preserve original names, filenames and source links so readers can find the underlying implementation. Generic framework capabilities do not imply that every experiment enabled those capabilities.

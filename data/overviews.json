@@ -70,7 +70,7 @@
       }
     ],
     "fields": {
-      "modifier": "语言模型按固定反思提示，将失败反馈写成下一次可读取的经验。执行、评估和反思是不同角色；原文没有逐一披露全部角色的 API 版本。",
+      "modifier": "语言模型按固定反思提示，将失败反馈写成下一次可读取的经验。执行、评估和反思是不同角色；原文没有逐一披露全部角色的 API（供程序调用模型、工具或服务的接口） 版本。",
       "object": "供下一次尝试读取的文字反思记忆；模型权重与执行、评估、反思流程固定。"
     }
   },
@@ -877,11 +877,15 @@
       },
       {
         "key": "conclusion",
-        "value": "代理能跑通改进流程，却常练错内容、相信狭窄自测；参数收益不稳定，生成的运行框架仍落后于 Qwen-Agent。",
+        "value": "代理能跑通改进流程，却常练错内容、相信狭窄自测；参数收益不稳定。生成的运行框架仍落后于人工设计的 Qwen-Agent（组织模型工具调用和任务执行的代理框架），说明自主建设的系统尚未超过这一工程对照。",
         "sources": [
           {
             "label": "摘要",
             "url": "https://arxiv.org/abs/2608.31111"
+          },
+          {
+            "label": "Qwen-Agent 官方说明",
+            "url": "https://github.com/QwenLM/Qwen-Agent"
           }
         ]
       }
@@ -890,7 +894,7 @@
       "executor": "参数进化：由 Qwen3.5-4B 或 Qwen3.5-9B 训练后的候选模型答题。Harness 进化：固定 Qwen3.5-4B，配合新生成的运行代码答题。",
       "modifier": "自行改进时，由初始 Qwen3.5-4B／9B 决定学习数据与训练方案，平台执行；外部指导时，由 GPT-5.6 Luna、Terra、Sol 指导 Qwen3.5-4B。Harness 创建者是 Qwen3.5-4B 或上述 GPT-5.6 配置。",
       "verdict": "参数进化可查询专家题组的汇总分数，但看不到题目和逐题错误；仅最终提交的设置则不提供中途分数。框架进化靠创建者设计的本地检查，例如 Luna 的八项写作检查表；正式 20 题的分数不返回创建者。",
-      "seed": "自建平台提供数据搜索、导入、生成、训练、进度查询和评估工具，代办底层训练工程。Harness 实验让创建者设计外围运行代码，并与人工设计的 Qwen-Agent 比较。"
+      "seed": "作者自建平台提供数据搜索、导入、生成、训练、进度查询和评估工具，代办底层训练工程。框架进化实验让创建者设计模型外围的运行代码；Qwen-Agent 是 Qwen 团队提供的代理开发框架，负责组织工具调用和任务执行，在这里作为人工设计的对照。两者都配合同一 Qwen3.5-4B 模型比较。"
     }
   },
   "2408.08435": {
@@ -1287,7 +1291,7 @@
       },
       {
         "key": "conclusion",
-        "value": "覆盖多个商业游戏、日常软件和 OSWorld，展示无需专用环境 API 的长程电脑操作。",
+        "value": "覆盖多个商业游戏、日常软件和 OSWorld，展示无需专用环境 API（供程序调用模型、工具或服务的接口） 的长程电脑操作。",
         "sources": [
           {
             "label": "摘要",
@@ -1589,8 +1593,8 @@
     ],
     "fields": {
       "executor": "进化时由冻结的 doubao-seed-2-0-pro 执行任务、产生失败轨迹；在 τ²-Bench 中它也模拟用户。之后将同一份技能记忆迁移给其他目标模型测试。",
-      "modifier": "固定元代理读取失败轨迹并修订对应记忆组件。两种实现分别使用 Claude Code 和 DeepSeek Harness；原文没有明确给出它们各自的底层模型型号。",
-      "seed": "保留原基准的执行工具：τ²-Bench 的工具调用代理、SkillFlow 的 Qwen-Code CLI、Terminal-Bench 2.1 的 Terminus-2。额外加入初始记忆和控制层，元代理只改记忆组件。",
+      "modifier": "固定元代理读取失败轨迹并修订对应记忆组件。两种实现分别使用 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） 和 DeepSeek Harness；原文没有明确给出它们各自的底层模型型号。",
+      "seed": "保留原基准的执行工具：τ²-Bench 的工具调用代理、SkillFlow 的 Qwen-Code（Qwen 团队的终端编程代理工具） CLI（通过终端命令使用的程序界面）、Terminal-Bench 2.1 的 Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）。额外加入初始记忆和控制层，元代理只改记忆组件。",
       "object": "工作记忆与经验记忆中的局部技能及控制组件；元代理、任务框架和基础模型固定。"
     }
   },
@@ -1636,7 +1640,7 @@
     "tldr": [
       {
         "key": "gap",
-        "value": "法律检索需要精确的措辞对齐，强 BM25 基线仍难仅靠普通模型重写进一步提升。",
+        "value": "法律检索需要精确的措辞对齐，强 BM25（根据查询词与文档词项匹配程度排序的检索算法） 基线仍难仅靠普通模型重写进一步提升。",
         "sources": [
           {
             "label": "摘要",
@@ -2149,7 +2153,7 @@
     ],
     "fields": {
       "object": "逐步积累的记忆内容，及其保留、更新和遗忘状态。",
-      "executor": "未另指定时，RAG及商业记忆任务代理的回答基础模型统一GPT-4o-mini；长上下文对照与补充实验的算力匹配实验另列模型。"
+      "executor": "未另指定时，RAG（先检索相关资料，再把资料交给模型回答）及商业记忆任务代理的回答基础模型统一GPT-4o-mini；长上下文对照与补充实验的算力匹配实验另列模型。"
     }
   },
   "2508.19005": {
@@ -2668,7 +2672,7 @@
       }
     ],
     "fields": {
-      "modifier": "研究端包括 Claude Code + Opus 4.6／4.5、Codex CLI + GPT-5.1／5.2、OpenCode + GPT-5.1 Codex Max 等配置，负责找数据和写训练代码。最终受训模型是另一组基础模型。",
+      "modifier": "研究端包括 Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus 4.6／4.5、Codex CLI（在终端中读写代码、运行命令的编程代理工具） + GPT-5.1／5.2、OpenCode（可连接不同模型的开源编程代理工具） + GPT-5.1 Codex Max 等配置，负责找数据和写训练代码。最终受训模型是另一组基础模型。",
       "object": "给定基础模型的后训练参数；研究代理选择数据和训练方法。"
     }
   },
@@ -2781,7 +2785,7 @@
     ],
     "fields": {
       "object": "目标任务的代码、训练配置或数据选择产物；执行任务的运行框架固定。",
-      "modifier": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2和评估器固定。补充实验的另有更旧/更小模型消融。"
+      "modifier": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2（Terminal-Bench 团队提供的终端任务代理，负责让模型操作命令行环境）和评估器固定。补充实验的另有更旧/更小模型消融。"
     }
   },
   "2607.05155": {
@@ -3493,8 +3497,8 @@
       }
     ],
     "fields": {
-      "executor": "EvoAgentX 可以配置不同执行模型；论文的 HumanEval／AFlow 示例用 GPT-4o-mini。",
-      "modifier": "框架调度 TextGrad、AFlow 或 MIPRO 优化流程。HumanEval／AFlow 示例用 Claude3.5-Sonnet-20240620 修改、GPT-4o-mini 执行；该配置不代表所有应用。",
+      "executor": "EvoAgentX 可以配置不同执行模型；论文的 HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）／AFlow 示例用 GPT-4o-mini。",
+      "modifier": "框架调度 TextGrad、AFlow 或 MIPRO 优化流程。HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）／AFlow 示例用 Claude3.5-Sonnet-20240620 修改、GPT-4o-mini 执行；该配置不代表所有应用。",
       "object": "代理提示、工具配置和工作流结构，具体取决于接入的优化算法。"
     }
   },
@@ -3643,7 +3647,7 @@
       }
     ],
     "fields": {
-      "executor": "AgentBench 实验比较 GPT-3.5、GPT-4、Llama2-7B、CodeLlama-7B、Qwen-1.8B 和 ChatGLM2；商用 API 的具体版本未披露。",
+      "executor": "AgentBench 实验比较 GPT-3.5、GPT-4、Llama2-7B、CodeLlama-7B、Qwen-1.8B 和 ChatGLM2；商用 API（供程序调用模型、工具或服务的接口） 的具体版本未披露。",
       "modifier": "检查、反思及记忆维护按 SAGE 的固定流程运行。论文没有逐配置说明独立检查模型的型号，不能默认它是 GPT-4。",
       "object": "记忆内容、保留与裁剪状态，以及当前行为策略。"
     }
@@ -3904,8 +3908,8 @@
       }
     ],
     "fields": {
-      "modifier": "管理与生成角色采用 Claude Sonnet 4 和 GPT-4.1 的配对，将成功轨迹整理为可复用 MCP 工具，再按任务检索；两个角色不应合写成同一个任务代理。",
-      "object": "可检索并执行的 MCP 工具库。"
+      "modifier": "管理与生成角色采用 Claude Sonnet 4 和 GPT-4.1 的配对，将成功轨迹整理为可复用 MCP（让代理以统一接口连接外部工具的协议） 工具，再按任务检索；两个角色不应合写成同一个任务代理。",
+      "object": "可检索并执行的 MCP（让代理以统一接口连接外部工具的协议） 工具库。"
     }
   },
   "2603.13131": {
@@ -4701,7 +4705,7 @@
       },
       {
         "key": "conclusion",
-        "value": "在 ALFWorld 上取得较高成功率，训练后模型更选择性地访问外部状态，减少机械式频繁调用。",
+        "value": "在 ALFWorld（通过文字动作完成家居物体操作的交互环境） 上取得较高成功率，训练后模型更选择性地访问外部状态，减少机械式频繁调用。",
         "sources": [
           {
             "label": "摘要",
@@ -4711,7 +4715,7 @@
       }
     ],
     "fields": {
-      "modifier": "训练程序通过监督微调和 GRPO 更新 Qwen3-8B；Claude Opus 提供训练轨迹并在训练阶段边界合并经验。教师只披露为 Claude Opus，没有具体版本。",
+      "modifier": "训练程序通过监督微调和 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 更新 Qwen3-8B；Claude Opus 提供训练轨迹并在训练阶段边界合并经验。教师只披露为 Claude Opus，没有具体版本。",
       "object": "记录信念、进度与经验的外部状态，以及学习何时读写这些状态的模型策略。"
     }
   },
@@ -4868,7 +4872,7 @@
       }
     ],
     "fields": {
-      "executor": "比较 18 种模型／工具组合：包括 Codex + GPT-5.6 Sol（xhigh／ultra），Claude Code + Opus 5／Opus 4.8／GLM-5.3／GLM-5.2／Kimi K3／K2.7／MiniMax M3／DeepSeek V4 Flash／Pro／MiMo V2.5 Pro，以及 Kimi Code、MiMo Code、OpenHands 下的对应配置。代理执行完整科研项目。",
+      "executor": "比较 18 种模型／工具组合：包括 Codex + GPT-5.6 Sol（xhigh／ultra），Claude Code（可读写项目文件、运行命令和测试的编程代理工具） + Opus 5／Opus 4.8／GLM-5.3／GLM-5.2／Kimi K3／K2.7／MiniMax M3／DeepSeek V4 Flash／Pro／MiMo V2.5 Pro，以及 Kimi Code、MiMo Code、OpenHands 下的对应配置。代理执行完整科研项目。",
       "object": "系统不进化；逐步减少提供给科研代理的方法与步骤指导。"
     }
   },
