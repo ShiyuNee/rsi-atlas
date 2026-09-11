@@ -5199,5 +5199,58 @@
     "fields": {
       "object": "正在开发的软件项目与版本历史。"
     }
+  },
+  "rsi-exam": {
+    "tldr": [
+      {
+        "key": "gap",
+        "value": "只看开发分数上涨或最终答案，难判断代理是否通过持续研究改进了方法，以及这些改进能否在未参与调试的数据上成立。",
+        "sources": [
+          {
+            "label": "官方报告 · 研究目标",
+            "url": "https://rsi-exam.ai/blog.html#introduction"
+          },
+          {
+            "label": "官方报告 · 评测流程、数据隔离与分数标定",
+            "url": "https://rsi-exam.ai/blog.html#benchmark"
+          }
+        ]
+      },
+      {
+        "key": "position",
+        "value": "评测研究代理在有限时间内，能否从可运行但较弱的起点出发，自主开展多轮实验，形成更有效、能泛化的方法或运行框架。",
+        "sources": [
+          {
+            "label": "官方报告 · 研究目标",
+            "url": "https://rsi-exam.ai/blog.html#introduction"
+          }
+        ]
+      },
+      {
+        "key": "conclusion",
+        "value": "提供 88 项、6 领域的研究评测及版本轨迹。在 37 项可比任务上，九组系统各自的平均隐藏分数都低于平均开发分数；持续实验和开发涨分不足以保证最终收益。每组在每题仅测一次，不能据此确定重跑稳定性。",
+        "sources": [
+          {
+            "label": "官方报告 · 结果与泛化分析",
+            "url": "https://rsi-exam.ai/blog.html#results"
+          },
+          {
+            "label": "官方报告 · 被测模型与执行框架",
+            "url": "https://rsi-exam.ai/blog.html#models-harnesses"
+          },
+          {
+            "label": "官方报告 · 适用范围与限制",
+            "url": "https://rsi-exam.ai/blog.html#conclusion"
+          }
+        ]
+      }
+    ],
+    "fields": {
+      "object": "任务指定的算法、程序或固定模型外围的框架。部分任务训练作为产物的学生模型，法律任务交付回答；提出改进方案的研究者模型自身不训练。",
+      "executor": "候选方法各自执行：记忆系统用 gpt-4o-mini，科学发现用 gpt-4o，证明流程用 gpt-5.4-2026-03-05 和 Lean 编译器；数学任务由训练后的 Qwen3-1.7B 学生答题，数值任务直接运行程序。",
+      "modifier": "九组研究者模型与编程代理工具各自提出修改，例如 Opus 5 + Claude Code、GPT-5.6-sol + Codex。它们根据实验结果改代码或训练方案；完整配对见表格。",
+      "verdict": "各任务提供自己的检查：答案匹配、证明编译、仿真误差或按保密要求评分。开发结果用于改进与选版本，正式结果在最终提交后评价；下表分别解释六项公开任务的反馈。",
+      "seed": "研究者使用现成编程工具和统一研究指令；每题已有可运行弱方法。例如记忆起点只按关键词检索，证明起点只允许一次报错修复。Harbor（组织隔离容器与评测的工具）提供运行环境。"
+    }
   }
 }

@@ -2067,5 +2067,22 @@
     ],
     "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。",
     "systemDataScope": "数据与基础系统定向核查；数值、来源和角色按原文对应段落记录，未确认的细节在正文标明。"
+  },
+  {
+    "id": "rsi-exam",
+    "title": "RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research",
+    "url": "https://rsi-exam.ai/blog.html",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新"
+    ],
+    "scope": "官方技术报告、研究协议、模型配置与六项公开任务说明核对；未将53项未公开任务的逐项细节推断为事实。",
+    "systemDataScope": "依据项目官方报告、公开任务说明与固定提交版本核对数据、角色与初始系统。"
   }
 ]

@@ -56,7 +56,7 @@ console.log('Passed: two-level taxonomy, independent priority, all four method t
 
 const {readingSections}=require('../assets/app.js');
 const tables=require('../data/research-tables.json');
-assert.equal(Object.keys(tables).length,134);
+assert.equal(Object.keys(tables).length,papers.length);
 const expected=['executor','modifier','object','verdict','seed','cycle','train','debug','test','isolation','novelty'];
 for(const p of papers){
  assert.deepEqual(p.profile.fields.map(f=>f.key),expected,p.id);
@@ -79,11 +79,11 @@ assert(field('2608.02276','test').includes('1270')||field('2608.02276','test').i
 assert(field('2608.13951','isolation').includes('公开用例'));
 assert(field('2608.31100','isolation').includes('不写入'));
 assert.equal(get('2605.09998').methodType,'joint');
-console.log('Passed: 134 maintained tables, all dimensions, per-row sources, no research placeholders, and experiment-specific regression checks.');
+console.log('Passed: All maintained tables, all dimensions, per-row sources, no research placeholders, and experiment-specific regression checks.');
 
 // Keep execution, modification and judging models distinct when rebuilding notes.
 for(const p of papers){
- assert.equal(tables[p.id].roleAuditDate,'2026-09-09',p.id);
+ assert(/^\d{4}-\d{2}-\d{2}$/.test(tables[p.id].roleAuditDate),p.id);
  for(const k of ['executor','modifier','verdict']) assert.equal(p.brief[k],field(p.id,k),p.id+':'+k);
  assert(!/^LLM actor。|^修改后的同一 agent。|^同 agent 后续执行。/.test(field(p.id,'executor')),p.id);
 }
@@ -97,7 +97,7 @@ assert(field('2603.18743','executor').includes('不是答题模型'));
 assert(field('2606.04455','executor').includes('Qwen3-8B'));
 assert(field('2606.04455','executor').includes('Claude Haiku 4.5'));
 assert(field('2608.06301','executor').includes('grok-build'));
-console.log('Passed: all 134 role audits; matching card/table text; explicit executor, modifier and router identities.');
+console.log('Passed: all role audits; matching card/table text; explicit executor, modifier and router identities.');
 
 const overviews=require('../data/overviews.json');
 assert.equal(Object.keys(overviews).length,papers.length);
@@ -125,7 +125,7 @@ assert(field('2608.31111','executor').includes('运行框架实验'));
 assert(!overviews['2608.31111'].fields.executor.includes('RQ2'));
 assert(overviews['2608.31111'].fields.executor.includes('Qwen3.5-9B'));
 assert(overviews['2608.31111'].fields.modifier.includes('GPT-5.6'));
-console.log('Passed: 134 sourced three-point TL;DRs; plain overview fields; technical detail retained in research tables.');
+console.log('Passed: All sourced three-point TL;DRs; plain overview fields; technical detail retained in research tables.');
 
 // Feedback must remain benchmark-specific in both catalog views.
 const feedback=require('../data/feedback-protocols.json');
@@ -153,3 +153,12 @@ assert(feedbackText('2603.18743').includes('参考答案'));
 assert(feedbackText('2608.13951').includes('不是')||feedbackText('2608.13951').includes('不能'));
 assert(query({q:'五级进展评分'}).some(p=>p.id==='2608.11350'));
 console.log(`Passed: ${papers.length} sourced feedback protocols, ${Object.values(feedback).flat().length} experiment rows; feedback access and judging distinctions preserved.`);
+
+// RSI-Exam includes task-specific artifact and information boundaries.
+assert.equal(get('rsi-exam').category,'evaluation');
+assert.equal(get('rsi-exam').priority,'C');
+assert.equal(get('rsi-exam').publicationType,'project-report');
+assert.equal(get('rsi-exam').profile.feedbackCases.length,7);
+assert(field('rsi-exam','isolation').includes('最终问题本身可见'));
+assert(field('rsi-exam','object').includes('学生模型'));
+assert(query({q:'RSI-Exam',facets:{priority:['C']}}).some(p=>p.id==='rsi-exam'));

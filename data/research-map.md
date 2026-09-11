@@ -76,6 +76,8 @@
 | 存了技能，与技能确实带来额外收益 | [ContinualSkillBench](?paper=2608.03874)、[PAST-Bench](?paper=2608.04003) | 用保留历史上下文或关闭经验积累的对照，并检查经验实际有没有被调用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)） （[原文 §3.1](https://arxiv.org/html/2608.04003#S3.SS1)；[原文 附录A.3](https://arxiv.org/html/2608.04003#A1.SS3)） |
 | 工程调出高分，与发现可泛化的方法 | [PostTrainBench](?paper=2603.08640)、[MLS-Bench](?paper=2605.08678) | 前者看给定模型与算力后能否完成有效后训练；后者进一步要求方法跨设置、扩大规模后仍成立。（[原文 §1](https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2)；[原文 附录E](https://arxiv.org/html/2603.08640#A5)） （[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1)；[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1)） |
 
+**补充对照：[RSI-Exam](?paper=rsi-exam)** 让研究者从可运行弱方法出发，在可见材料上反复实验，再评价最终交付物。它把方法改进与固定模型的框架改进放进同一任务库，并保留版本轨迹；部分任务另训练学生模型或提交回答，信息边界要按任务解释。与 Aspire 的宽泛目标设置相比，它提供具体任务目标和评分规则，更集中地测“已知研究目标后，能否做出有效改进”。（[RSI-Exam 研究目标与任务构造](https://rsi-exam.ai/blog.html#benchmark)；[数学训练任务](https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html)；[法律任务](https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html)；[Aspire §4](https://arxiv.org/html/2608.31111#S4)）
+
 ## 名字相近，但关键区别在哪里？
 
 | 对照论文 | 最值得记住的差别 | 展开实验表时继续看什么 |

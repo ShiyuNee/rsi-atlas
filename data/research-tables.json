@@ -28714,5 +28714,319 @@
     ],
     "sourceDate": "2026-09-09",
     "roleAuditDate": "2026-09-09"
+  },
+  "rsi-exam": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "**研究过程：** 被测模型在编程代理工具中运行实验，模型与框架配对见“谁来改”。\n\n**候选方法的执行：** 按任务区分。记忆架构调用固定 gpt-4o-mini；科学发现框架调用固定 gpt-4o；Lean 证明流程调用固定 gpt-5.4-2026-03-05 并交给 Lean 4.9 检查。数学后训练任务由提交的 Qwen3-1.7B-Base 衍生模型答题；数值求解任务直接运行提交的程序。",
+        "sources": [
+          {
+            "label": "官方报告 · 被测模型与执行框架",
+            "url": "https://rsi-exam.ai/blog.html#models-harnesses"
+          },
+          {
+            "label": "任务内模型配置（固定版本仓库）",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/.env.local.example"
+          },
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "公开报告比较九组研究者模型与代理工具：Opus 5、GLM 5.3、DeepSeek V4 Pro 配 Claude Code；GPT-5.6-sol、GPT-5.5 配 Codex；Kimi K3 配 Kimi CLI；Grok 4.6 配 Grok Build；Qwen3.8 Max 配 Qwen Coder；Gemini 3.7 Flash 配 Antigravity CLI。这些工具负责文件编辑、命令执行和上下文管理。研究者自行提假设、修改、测量并选择最终版本，统一提示给出研究流程；研究者模型自身不在本次任务中训练。",
+        "sources": [
+          {
+            "label": "官方报告 · 被测模型与执行框架",
+            "url": "https://rsi-exam.ai/blog.html#models-harnesses"
+          },
+          {
+            "label": "统一研究指令：实验、保存版本与回退",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/infra/prompts/autoresearch.j2"
+          },
+          {
+            "label": "官方报告 · 适用范围与限制",
+            "url": "https://rsi-exam.ai/blog.html#conclusion"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "每项任务指定可修改的交付物：可能是数值算法、程序或驱动固定模型的运行框架。要区分研究者自身与被研究对象：数学后训练任务会训练另一个 Qwen3-1.7B-Base 学生模型，但不训练提出方案的研究者模型。法律任务则交付最终回答文件。固定部分包括任务接口、资源约束和评测规则；不能把全部 88 项一概称为框架自修改。",
+        "sources": [
+          {
+            "label": "官方报告 · 研究目标",
+            "url": "https://rsi-exam.ai/blog.html#introduction"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "开发反馈来自各任务自己的检查程序或评分服务：记忆问答对照参考答案算词元 F1；Lean 证明由编译器验收；科学发现报告行动进度、完成情况与解释性知识；数学训练只返回开发题总体正确率；法律问答返回满足了几项保密要求。修改者可根据这些分数及允许查看的运行记录继续实验；正式结果原则上只在提交后计算。",
+        "sources": [
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "**研究者的外层工具：** 使用现成编程代理，并统一提供“提假设—实现—测量—保存或撤回”的研究指令；Harbor 负责容器、执行预算与独立评分环境。报告运行未使用额外技能库或 MCP 外部工具连接服务。\n\n**被改进的起点：** 每题提供任务专属的可运行弱方法。例如记忆系统只抽取零散事实、按 BM25 词项匹配检索后调用一次模型；证明系统先生成证明，编译失败后至多修复一次；科学发现初始框架每步重新调用模型并重放历史，没有独立的持久状态管理。",
+        "sources": [
+          {
+            "label": "官方报告 · 运行与访问限制",
+            "url": "https://rsi-exam.ai/blog.html#execution-records"
+          },
+          {
+            "label": "统一研究指令：实验、保存版本与回退",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/infra/prompts/autoresearch.j2"
+          },
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "先运行起点，提出修改假设、编辑实现，再用可见数据测量。日志记录版本、父版本、改动、成绩及保留或撤回决定，所有版本都保存。哪些额外验证能检验泛化由研究者选择；科学发现任务另强制每个版本跑完同一六场景开发套件并撤回退化版本。预算结束后评价留下的最终交付物，未根据最终隐藏分数再选一次版本。一般任务上限 12 小时，数学后训练任务明确为 8 小时；其他计算限制按任务规定。",
+        "sources": [
+          {
+            "label": "统一研究指令：实验、保存版本与回退",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/infra/prompts/autoresearch.j2"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "README · 时间预算",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/README.md#-quick-start"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "没有供全部研究者共同训练的统一训练集；每次研究从一个任务包开始。可见材料由任务定义：记忆任务给 4 段多轮对话、812 对问答；科学发现给两类场景各 3 个种子；Lean 给 54 道定理；潮汐反演给 6 个流域案例。数学后训练另提供本地 train.jsonl（题目与整数答案）、固定 8B 教师及 Qwen3-1.7B-Base 学生，训练仅可用规定的本地资源；公开说明未点名训练语料的原始基准，也未列出教师型号。",
+        "sources": [
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 潮汐反演：观测、验证测站与误差",
+            "url": "https://rsi-exam.ai/tasks/tidal_friction_inverse.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "主要用每题可见开发分区比较版本，研究者也可自行再划验证集。记忆任务允许按对话或问答子集检查；Lean 比较版本须覆盖全部 54 题；科学发现须覆盖六个场景。数学后训练的 dev.jsonl 只给题目，有限查询仅返回总体正确率。法律任务用 18 道开发问题、合计 90 次提交额度，返回满足要求的数量，隐藏要求正文。各项判分与使用方式在反馈行分别列出。",
+        "sources": [
+          {
+            "label": "统一研究指令：实验、保存版本与回退",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/infra/prompts/autoresearch.j2"
+          },
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "RSI-Exam 0.1 含 88 项研究任务、6 个领域，35 项公开、53 项未公开；35/53 指任务包的发布状态，不是每项任务内的训练/测试划分。主协议在独立环境中重跑最终交付物：记忆换未见对话，Lean 换未见定理，科学发现换同两主题各 2 个新参数种子，潮汐反演换流域和测站，数学学生在分离的整数答案题上测试。法律任务另有 18 道最终问题，其题目开局可见、评分要求保密，最终只交一次。公开主报告每个模型—任务组合仅运行一次；全部 88 项逐任务配置不能仅从 35 个公开任务外推。",
+        "sources": [
+          {
+            "label": "官方报告 · 评测流程、数据隔离与分数标定",
+            "url": "https://rsi-exam.ai/blog.html#benchmark"
+          },
+          {
+            "label": "官方报告 · 被测模型与执行框架",
+            "url": "https://rsi-exam.ai/blog.html#models-harnesses"
+          },
+          {
+            "label": "任务说明 · 记忆架构：数据、固定模型、判分",
+            "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
+          },
+          {
+            "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
+            "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
+          },
+          {
+            "label": "任务说明 · 科学发现：场景、预算、三项指标",
+            "url": "https://rsi-exam.ai/tasks/discoveryworld_agent_harness_low2.html"
+          },
+          {
+            "label": "任务说明 · 潮汐反演：观测、验证测站与误差",
+            "url": "https://rsi-exam.ai/tasks/tidal_friction_inverse.html"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "主协议将开发环境与评分环境分离，只传规定的交付物，保护测试目标和评分资产，并限制网络访问。两点例外必须保留：数学任务交付合并后的模型权重，评分端不执行研究者代码；法律任务的最终问题本身可见，隐藏的是评分标准且不返回最终反馈。因此“隐藏测试”不统一意味着题目不可见。研究者使用不同模型与代理框架，结果是二者组合的表现；单次运行不能估计同一组合重跑的波动。本站依据 0.1 官方网页报告、任务说明和公开代码收录，日期采用项目首发 2026-08-26，数据与代码于 08-28 公开。",
+        "sources": [
+          {
+            "label": "官方报告 · 评测流程、数据隔离与分数标定",
+            "url": "https://rsi-exam.ai/blog.html#benchmark"
+          },
+          {
+            "label": "官方报告 · 运行与访问限制",
+            "url": "https://rsi-exam.ai/blog.html#execution-records"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          },
+          {
+            "label": "官方报告 · 适用范围与限制",
+            "url": "https://rsi-exam.ai/blog.html#conclusion"
+          },
+          {
+            "label": "README · News：项目与数据发布时间",
+            "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/README.md#-news"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "给研究者一个能跑但较弱的起点，要求它经历多轮实验后交付可被重新执行的方法；用任务原有指标评价，再将起点标为 0、可用的强参考方法标为 0.6。版本日志和最终泛化结果一起保留，可以观察改进来自反复调同一方法，还是换了更有效的设计。具体任务也保留各自的模型训练或回答提交协议。",
+        "sources": [
+          {
+            "label": "官方报告 · 评测流程、数据隔离与分数标定",
+            "url": "https://rsi-exam.ai/blog.html#benchmark"
+          },
+          {
+            "label": "官方报告 · 三条研究轨迹",
+            "url": "https://rsi-exam.ai/blog.html#trajectory-analysis"
+          },
+          {
+            "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
+            "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
+          },
+          {
+            "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
+            "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
   }
 }

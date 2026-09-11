@@ -7,7 +7,7 @@ A research catalog for recursive self-improvement, especially **harness evolutio
 
 ## What you can explore
 
-- 128 original papers, including 28 detailed records, plus 6 additions checked on 2026-09-08.
+- 128 original papers, including 28 detailed records, plus 7 additions (including the RSI-Exam project report added on 2026-09-11).
 - Editable object, modifier, executor, seed harness, feedback, train/evolution data, model selection and test isolation.
 - Category and tag filters, full-record search, publication date, priority and reading status.
 - Shareable URLs for queries and individual paper records.
@@ -17,11 +17,11 @@ This is a research index, not a claim that every paper or experimental detail ha
 
 ## Readable research tables (2026-09-09)
 
-All 134 records use one research table, shared by cards and detail pages. General dimensions are maintained in `data/research-tables.json`; benchmark-specific feedback is maintained in `data/feedback-protocols.json`. Each article starts with three source-linked TL;DR points: the authors’ stated research gap, the paper’s research question or objective, and its contribution/conclusion. The five visible dimensions then follow this order: evolving object, executor, modifier, feedback, initial harness. The disclosure contains the full table, including update/acceptance, training/evolution data, debugging/selection data, final evaluation, isolation, and distinctive contribution. Each row links to its primary-source location.
+All 135 records use one research table, shared by cards and detail pages. General dimensions are maintained in `data/research-tables.json`; benchmark-specific feedback is maintained in `data/feedback-protocols.json`. Each article starts with three source-linked TL;DR points: the authors’ stated research gap, the paper’s research question or objective, and its contribution/conclusion. The five visible dimensions then follow this order: evolving object, executor, modifier, feedback, initial harness. The disclosure contains the full table, including update/acceptance, training/evolution data, debugging/selection data, final evaluation, isolation, and distinctive contribution. Each row links to its primary-source location.
 
 Paper omissions and conflicting protocols are stated as concrete evidence boundaries. A reported validation or adaptive score is not relabeled as a sealed test result. Historical notes remain downloadable and are not the current table's source of truth. This release focuses on the listed research dimensions; it is not an independent replication of the papers' experiments.
 
-Edit `data/research-tables.json` for general research dimensions and citations. Edit `data/feedback-protocols.json` for the detailed feedback rows: `label` names the experiment; `data` identifies evolution/debug/test data; `scoring` explains the verifier, reference or judge; `visible` records feedback available to the modifier; `use` states how it drives changes or final reporting; `sources` links to primary-source locations. All 134 records currently have these rows (346 total). Paper omissions must remain explicit, and final evaluation scores must not be described as optimization feedback without evidence. Maintain each paper’s three-point TL;DR and optional plain-language field summaries in `data/overviews.json`; summaries retain model identities and factual boundaries, while research-question numbers and internal notation belong in the full table. `scripts/research_tables.py` attaches it after historical imports, so older prose cannot overwrite current entries. Regenerate `data/papers.json` and run the checks before publishing.
+Edit `data/research-tables.json` for general research dimensions and citations. Edit `data/feedback-protocols.json` for the detailed feedback rows: `label` names the experiment; `data` identifies evolution/debug/test data; `scoring` explains the verifier, reference or judge; `visible` records feedback available to the modifier; `use` states how it drives changes or final reporting; `sources` links to primary-source locations. All 135 records currently have these rows (353 total). Paper omissions must remain explicit, and final evaluation scores must not be described as optimization feedback without evidence. Maintain each paper’s three-point TL;DR and optional plain-language field summaries in `data/overviews.json`; summaries retain model identities and factual boundaries, and both summaries and tables use meaningful experiment names instead of research-question numbers. `scripts/research_tables.py` attaches it after historical imports, so older prose cannot overwrite current entries. Regenerate `data/papers.json` and run the checks before publishing.
 
 ## Maintain the catalog
 
@@ -118,3 +118,5 @@ Framework names should identify their function and their role in the experiment 
 每篇第三条 TL;DR 直接展示研究表中维护的关键设计，再给出论文结论；两段分别关联原文位置，避免重复维护特点。`data/reading-guide.md` 解释研究对象、反馈和实验指标；`data/research-map.md` 整理六条阅读路线、论文对照与证据判断。脉络属于本站的比较分析，不代表所有文章具有直接继承关系。
 
 维护时应描述具体可变对象、反馈来源、更新与验收过程，避免只写“研究自进化”。模型、程序和实验角色须分清；原文未披露的信息不得以猜测补齐。修改关键设计时同时检查概览结论与展开表格是否一致。
+
+RSI-Exam is recorded as an official project report with a project-release date, not an unverified arXiv publication. Its seven feedback rows cover the overall protocol and six public tasks, explicitly preserving the legal task’s visible final prompts and the math task’s student-weight submission.
