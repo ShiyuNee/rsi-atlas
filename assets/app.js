@@ -69,21 +69,34 @@ function fieldSources(p,f){return [...new Map((f.sources||[]).map(r=>[r.url,r]))
 function experimentFeedback(p,indices){
  return (indices||[]).map(i=>{const c=p.profile.feedbackCases[i];return `<div class="experiment-feedback"><strong>${escapeHTML(c.label)}</strong><p>${markdownInline(c.judgment)}</p><details><summary>数据、检查方法与反馈用途</summary><p><b>数据：</b>${markdownInline(c.data)}</p><p><b>如何判分：</b>${markdownInline(c.scoring)}</p><p><b>谁能看到什么：</b>${markdownInline(c.visible)}</p><p><b>用于哪一步：</b>${markdownInline(c.use)}</p><small class="field-source">${fieldSources(p,c)}</small></details></div>`;}).join('');
 }
+const ROLE_LABELS={executor:'谁执行',modifier:'谁来改',seed:'基础 harness（运行框架）'};
+function experimentRoles(p,r){
+ if(p.profile.experiments.length===1)return '';
+ return `<div class="experiment-roles">${Object.entries(ROLE_LABELS).map(([key,label])=>`<div><b>${label}</b>${markdown(r.roles[key].value)}<small class="field-source">${fieldSources(p,r.roles[key])}</small></div>`).join('')}</div>`;
+}
+function scopedRole(p,key){
+ const groups=new Map();
+ for(const r of p.profile.experiments){const v=r.roles[key];if(!groups.has(v.value))groups.set(v.value,{...v,labels:[]});groups.get(v.value).labels.push(r.label);}
+ return [...groups.values()].map(g=>`<div class="role-scope"><b class="scope-label">${p.profile.experiments.length===1?'适用任务／配置见下文':groups.size===1?'以下各实验共用（型号组合按说明）':g.labels.join('；')}</b>${markdown(g.value)}<small class="field-source">${fieldSources(p,g)}</small></div>`).join('');
+}
 function experimentTable(p){
  const cell=(r,key)=>`${markdown(r[key])}<small class="field-source">${fieldSources(p,{sources:r.sources[key]})}</small>`;
- return `<section class="experiment-block"><h3>每个实验：在哪些数据上进化 → 在哪些数据上测试</h3><div class="table-scroll"><table class="experiment-table"><thead><tr><th>实验</th><th>获得反馈并进化</th><th>测试与数据隔离</th></tr></thead><tbody>${p.profile.experiments.map(r=>`<tr><th scope="row">${escapeHTML(r.label)}</th><td data-label="获得反馈并进化">${cell(r,'evolution')}${experimentFeedback(p,r.learningCases)}<div class="experiment-stage"><b>调试／选版本：</b>${cell(r,'selection')}</div></td><td data-label="测试与数据隔离">${cell(r,'evaluation')}${experimentFeedback(p,r.testCases)}<div class="experiment-stage"><b>是否参与过修改或选版本：</b>${cell(r,'isolation')}</div></td></tr>${r.feedbackCases?.length?`<tr class="experiment-shared"><td colspan="3"><b>本组实验各任务的判分与反馈用途</b>${experimentFeedback(p,r.feedbackCases)}</td></tr>`:''}`).join('')}</tbody></table></div></section>`;
+ return `<section class="experiment-block"><h3>每个实验：在哪些数据上进化 → 在哪些数据上测试</h3><div class="table-scroll"><table class="experiment-table"><thead><tr><th>实验与角色配置</th><th>获得反馈并进化</th><th>测试与数据隔离</th></tr></thead><tbody>${p.profile.experiments.map(r=>`<tr><th scope="row">${escapeHTML(r.label)}${experimentRoles(p,r)}</th><td data-label="获得反馈并进化">${cell(r,'evolution')}${experimentFeedback(p,r.learningCases)}<div class="experiment-stage"><b>调试／选版本：</b>${cell(r,'selection')}</div></td><td data-label="测试与数据隔离">${cell(r,'evaluation')}${experimentFeedback(p,r.testCases)}<div class="experiment-stage"><b>是否参与过修改或选版本：</b>${cell(r,'isolation')}</div></td></tr>${r.feedbackCases?.length?`<tr class="experiment-shared"><td colspan="3"><b>本组实验各任务的判分与反馈用途</b>${experimentFeedback(p,r.feedbackCases)}</td></tr>`:''}`).join('')}</tbody></table></div></section>`;
 }
 function profileTable(p){
- const rows=p.profile.fields.filter(f=>!['verdict','train','debug','test','isolation'].includes(f.key)).map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`);
+ const rows=p.profile.fields.filter(f=>!['executor','modifier','seed','verdict','train','debug','test','isolation'].includes(f.key)).map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`);
  return `<section class="profile-block">${experimentTable(p)}<div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></section>`;
 }
 function feedbackOverview(p){
- return p.profile.feedbackCases.map(c=>`<p><strong>${escapeHTML(c.label)}：</strong>${markdownInline(c.judgment)}。 <a class="feedback-source" href="${escapeHTML(safeURL(c.sources[0].url))}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(c.sources[0].label)}">原文 ↗</a></p>`).join('');
+ return p.profile.feedbackCases.map((c,i)=>{
+ const uses=p.profile.experiments.flatMap(r=>{const phases=[];if(r.learningCases?.includes(i))phases.push('进化／选版本反馈');if(r.testCases?.includes(i))phases.push('测试判分');return phases.length?[`${r.label}：${phases.join('、')}`]:r.feedbackCases?.includes(i)?[`${c.label}（具体阶段见本组实验的反馈用途）`]:[];});
+ return `<div class="feedback-scope"><p><strong>${escapeHTML(c.label)}：</strong>${markdownInline(c.judgment)}。 <a class="feedback-source" href="${escapeHTML(safeURL(c.sources[0].url))}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(c.sources[0].label)}">原文 ↗</a></p><small class="scope-label">适用范围：${escapeHTML(uses.join('；'))}</small></div>`;
+ }).join('');
 }
 function research(p){
  const labels={object:'什么在进化',executor:'谁执行',modifier:'谁来改',verdict:'反馈是什么',seed:'基础 harness 是什么'};
  const selected=Object.keys(labels).map(key=>p.profile.fields.find(f=>f.key===key));
- return `<dl class="research-fields">${selected.map(f=>`<div><dt>${labels[f.key]}</dt><dd>${f.key==='verdict'?feedbackOverview(p):`${markdown(p.overview.fields[f.key]||f.value)}<small class="field-source">${fieldSources(p,f)}</small>`}</dd></div>`).join('')}</dl><details class="mechanism"><summary>查看更新规则与全部研究维度</summary>${profileTable(p)}</details>`;
+ return `<dl class="research-fields">${selected.map(f=>`<div><dt>${labels[f.key]}</dt><dd>${f.key==='verdict'?feedbackOverview(p):ROLE_LABELS[f.key]?scopedRole(p,f.key):`${markdown(p.overview.fields[f.key]||f.value)}<small class="field-source">${fieldSources(p,f)}</small>`}</dd></div>`).join('')}</dl><details class="mechanism"><summary>查看更新规则与全部研究维度</summary>${profileTable(p)}</details>`;
 }
 function tldr(p){
  const labels={gap:'研究缺口（作者判断）',position:'本文定位',conclusion:'关键设计与结论'};
@@ -150,6 +163,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=experiments-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=scopes-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

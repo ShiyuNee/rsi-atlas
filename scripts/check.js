@@ -173,3 +173,13 @@ for(const p of papers){
  assert.equal(covered.size,p.profile.feedbackCases.length,`${p.id}: omitted feedback`);
 }
 console.log('Passed: experiment data pairing, source locations and full feedback coverage.');
+
+for(const p of papers)for(const r of p.profile.experiments){
+ for(const key of ['executor','modifier','seed']){assert(r.roles[key].value,`${p.id}: ${r.label}/${key}`);assert(r.roles[key].sources.length,`${p.id}: role source`);}
+}
+assert(!get('2608.31111').profile.experiments[1].roles.modifier.value.includes('外部指导时'));
+assert(get('2609.00196').profile.experiments[0].roles.executor.value.includes('2B'));
+assert(get('2609.00196').profile.experiments[2].roles.executor.value.includes('4B'));
+assert(get('2506.10943').profile.experiments[0].roles.executor.value.includes('Qwen2.5-7B'));
+assert(get('2506.10943').profile.experiments[1].roles.executor.value.includes('Llama-3.2-1B'));
+console.log('Passed: experiment role sources, model distinctions and scope boundaries.');

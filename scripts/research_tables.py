@@ -20,6 +20,10 @@ def attach_tables(papers):
             row=dict(config)
             for target, key in row.pop('fieldRefs',{}).items():
                 row[target]=fields[key]['value']
+            explicit_roles=row.pop('roles',{})
+            row['roles']={key:{'value':explicit_roles.get(key,{}).get('value',fields[key]['value']),
+                              'sources':explicit_roles.get(key,{}).get('sources',fields[key]['sources'])}
+                          for key in ('executor','modifier','seed')}
             row['sources']={target:fields[key]['sources'] for target,key in
                 [('evolution','train'),('selection','debug'),('evaluation','test'),('isolation','isolation')]}
             indices=set(row.get('learningCases',[])+row.get('testCases',[])+row.get('feedbackCases',[]))

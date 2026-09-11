@@ -138,3 +138,5 @@ Do not equate a verifier with a deterministic checker, a function named Judge wi
 ### 按实验配对数据与反馈
 
 `data/experiment-protocols.json` 维护实验行：进化数据、调试／选版本数据、测试数据和隔离边界。不同设置分行；`learningCases` / `testCases` 引用 `feedback-protocols.json` 中的反馈项，避免重复维护判分说明。共同协议通过 `fieldRefs` 引用研究表已有数据字段，并在同组内列出各任务的反馈用途，不自动推断所有反馈同时用于训练与测试。构建时检查每篇所有反馈项均被覆盖。
+
+每个实验可在 `roles` 下维护 `executor`、`modifier`、`seed` 的 `value` 和可选 `sources`；未覆盖时引用原研究表完整说明，不能用缩略概览代替。概览按完全相同的角色说明合并作用范围，多实验表同时展示每行配置；冻结迁移、理论分析与实际更新必须分别交代修改者是否在本阶段工作。
