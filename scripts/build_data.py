@@ -120,9 +120,11 @@ def build():
     coverage = attach_profiles(list(papers.values()))
     from research_tables import attach_tables
     coverage = attach_tables(list(papers.values()))
-    output = dict(coverage=coverage, readingCount=reading_count, taxonomy=taxonomy, methodTypes=METHOD_TYPES, updated='2026-09-09',originalCount=sum(p['source']=='original' for p in papers.values()),
+    output = dict(coverage=coverage, readingCount=reading_count, taxonomy=taxonomy, methodTypes=METHOD_TYPES, updated='2026-09-11',originalCount=sum(p['source']=='original' for p in papers.values()),
         papers=list(papers.values()), framework=source.split('## 0.5 ')[0],
-        conclusions='## 4. '+source.split('## 4. ')[1])
+        conclusions='## 4. '+source.split('## 4. ')[1],
+        readingGuide=(ROOT/'data/reading-guide.md').read_text(),
+        researchMap=(ROOT/'data/research-map.md').read_text())
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(f"Built {len(papers)} papers ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output

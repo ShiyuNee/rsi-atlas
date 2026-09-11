@@ -108,3 +108,13 @@ Continual Harness is now classified under joint harness/weight evolution because
 ## Explain names where they appear
 
 Framework names should identify their function and their role in the experiment (initial system, modifier, or comparison). Expand unfamiliar abbreviations beside the relevant sentence. Preserve original names, filenames and source links so readers can find the underlying implementation. Generic framework capabilities do not imply that every experiment enabled those capabilities.
+
+## Reading for newcomers (2026-09-10)
+
+`data/reading-guide.md` explains model/harness/artifact distinctions, roles, feedback access, data split usage, and how to interpret gains. It is available through the introduction and article detail links. The readability pass rewrites shorthand feedback summaries and update procedures as complete causal descriptions; exact experiment protocols and source citations remain in the expanded table. Preserve identifiers, filenames and original dataset split names when editing prose.
+
+### 面向初读者的介绍与脉络
+
+每篇第三条 TL;DR 直接展示研究表中维护的关键设计，再给出论文结论；两段分别关联原文位置，避免重复维护特点。`data/reading-guide.md` 解释研究对象、反馈和实验指标；`data/research-map.md` 整理六条阅读路线、论文对照与证据判断。脉络属于本站的比较分析，不代表所有文章具有直接继承关系。
+
+维护时应描述具体可变对象、反馈来源、更新与验收过程，避免只写“研究自进化”。模型、程序和实验角色须分清；原文未披露的信息不得以猜测补齐。修改关键设计时同时检查概览结论与展开表格是否一致。
