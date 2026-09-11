@@ -81,10 +81,31 @@ function dimensionSources(p,f){
  if(f.key==='verdict')sources.push(...p.profile.feedbackCases.flatMap(c=>c.sources));
  return fieldSources(p,{sources});
 }
+function groupedSettings(p,entries){
+ const groups=new Map();
+ for(const e of entries){const id=e.value.trim();if(!groups.has(id))groups.set(id,{value:e.value,labels:[],sources:[]});const g=groups.get(id);g.labels.push(e.label);g.sources.push(...e.sources);}
+ return [...groups.values()].map(g=>{
+  const label=entries.length===1?'':groups.size===1?'各项共用':g.labels.join('；');
+  return `<div class="dimension-setting">${label?`<b>${escapeHTML(label)}</b>`:''}${markdown(g.value)}<small class="setting-source">${fieldSources(p,g)}</small></div>`;
+ }).join('');
+}
+function detailedDimension(p,f){
+ if(['executor','modifier','seed'].includes(f.key))return groupedSettings(p,p.profile.experiments.map(r=>({label:r.label,...r.roles[f.key]})));
+ if(f.key==='verdict')return groupedSettings(p,p.profile.feedbackCases.map(c=>({label:c.label,value:c.scoring,sources:c.sources})));
+ const dataKeys={train:'evolution',debug:'selection',test:'evaluation',isolation:'isolation'};
+ if(dataKeys[f.key])return groupedSettings(p,p.profile.experiments.map(r=>({label:r.label,value:r[dataKeys[f.key]],sources:r.sources[dataKeys[f.key]]})));
+ return markdown(f.value);
+}
 function studyTable(p){
- const rows=Object.keys(DIMENSIONS).map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<tr><th scope="row">${DIMENSIONS[key]}</th><td>${markdown(dimensionValue(p,f))}</td><td>${dimensionSources(p,f)}</td></tr>`;});
+ const rows=Object.keys(DIMENSIONS).map(key=>{
+  const f=p.profile.fields.find(f=>f.key===key);
+  const inlineSources=['executor','modifier','seed','verdict','train','debug','test','isolation'].includes(key);
+  const row=`<tr><th scope="row">${DIMENSIONS[key]}</th><td>${detailedDimension(p,f)}${inlineSources?'':`<small class="setting-source">${dimensionSources(p,f)}</small>`}</td></tr>`;
+  if(key!=='verdict')return row;
+  return row+`<tr><th scope="row">返回哪些反馈</th><td>${groupedSettings(p,p.profile.feedbackCases.map(c=>({label:c.label,value:c.visible,sources:c.sources})))}</td></tr>`;
+ });
  const refs=p.overview.tldr.map(f=>`<p><b>${{gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'}[f.key]}：</b>${fieldSources(p,f)}</p>`).join('');
- return `<div class="table-scroll"><table class="profile-table study-table"><thead><tr><th>关注维度</th><th>各任务／数据集的设置</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}<tr><th scope="row">TL;DR 依据</th><td colspan="2">${refs}</td></tr></tbody></table></div>`;
+ return `<div class="table-scroll"><table class="profile-table study-table dimension-table"><thead><tr><th>关注维度</th><th>各任务／数据集的设置与原文依据</th></tr></thead><tbody>${rows.join('')}<tr><th scope="row">TL;DR 依据</th><td>${refs}</td></tr></tbody></table></div>`;
 }
 function research(p){
  const keys=['object','executor','modifier','verdict','seed'];
@@ -154,6 +175,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=dimensions-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=readable-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
