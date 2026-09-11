@@ -1,0 +1,1570 @@
+{
+  "reviewedAt": "2026-09-11",
+  "paperCount": 142,
+  "scope": "逐条对照已取得的原文引言，修订研究缺口与动机及出处。来源摘要哈希用于追溯本轮阅读材料；不是全文审计或实时版本监测。",
+  "papers": {
+    "cs-0309048": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction and Outline（第 2 页）",
+        "url": "https://arxiv.org/pdf/cs/0309048v5#page=2"
+      },
+      "sourceTextSha256": "e19760737f414482f5b00a908343b984521fb74098d6b67e92fdf56c548612c5",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2303.11366": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2303.11366#S1"
+      },
+      "sourceTextSha256": "b20696d55b52784cd8677816987634564831390bea869ca306157f28301e91d2",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2305.16291": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2305.16291#S1"
+      },
+      "sourceTextSha256": "4a9a80db0a72f8ee111dbbcd78019008fc2d722c194979eff570f861cbe821d5",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2505.22954": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2505.22954#S1"
+      },
+      "sourceTextSha256": "75b0fa8339079a307ecd07241b3fb622341344261a5c98cd9c3f96e7eaf1233e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2511.10395": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2511.10395#S1"
+      },
+      "sourceTextSha256": "051e93fff7123f7c2e9ba79a022254ee89214c01a0711541af8bae7cbac44d78",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.19461": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.19461#S1"
+      },
+      "sourceTextSha256": "16c69d5b9b2a47fe1fad6d3451e3cc90a44de0e1e05db151c5a46f847d3dec1b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.28052": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.28052#S1"
+      },
+      "sourceTextSha256": "64ba922e13f27381c885b68ff0d02e5f4992e4286b11254c6e8e99b2ed942880",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.25850": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.25850#S1"
+      },
+      "sourceTextSha256": "df1355aa45d9f1455e58569045e657718fa508dc1aa9ed7956384236307be2e1",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.09498": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.09498#S1"
+      },
+      "sourceTextSha256": "8307b3233a3d928042adfd711d07888dfe208c8874eb7c340ef04a64cc082f2e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.17546": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.17546#S1"
+      },
+      "sourceTextSha256": "7c6dbaab79222c5819366ac08728fbafee720e9ab037cc92b7b0b651ed581cfa",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.14777": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.14777#S1"
+      },
+      "sourceTextSha256": "a4e6388d90d82df3f012cc7de970830e3c209c86cc75f5238f0970893cc7f3f8",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.15524": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.15524#S1"
+      },
+      "sourceTextSha256": "2713be0e4a43f4357b81b6e4a877f7cf20dbe24a9fbc7dfb9de6d119b6a30884",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.25886": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.25886#S1"
+      },
+      "sourceTextSha256": "9ae459dba731c59da9d39c40743a63506ec885c773b1c45e677257ef237f2640",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.28568": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.28568#S1"
+      },
+      "sourceTextSha256": "1faa70a6126a40d16011098e88aaa0d6dd91454c7ba9a6ae3346edaa02180f1f",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.02276": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.02276#S1"
+      },
+      "sourceTextSha256": "b4971241a50edc034a6b3d90544b316b5718fdd0fa774bd1041ef4f7f927360d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.05144": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.05144#S1"
+      },
+      "sourceTextSha256": "d2fab3d039c8c0d581fb3895341209f9179b775bfac8d6b2eb29e5260fd9d043",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.09819": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.09819#S1"
+      },
+      "sourceTextSha256": "378692fbe350ecbd9a26ac4af4080e7f0aa30e95621fd7aa552a045e6ace0b23",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "endlessfrontier.tech-assets-paper.pdf": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（第 1–3 页）",
+        "url": "https://endlessfrontier.tech/assets/paper.pdf#page=1"
+      },
+      "sourceTextSha256": "9c3f4366de559df1f32392928a029c299c63486b21752cbb6ea7f7aaab310f79",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.05297": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.05297#S1"
+      },
+      "sourceTextSha256": "59638de619e69dae159d39379c7e5b0c2fa799ae42aa8af6b327b7059a3bc0a1",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.15071": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.15071#S1"
+      },
+      "sourceTextSha256": "414cba68e98b32ce936510ec70fdb918b728a085447ce35f5d68e43f84bb145b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten",
+      "relatedCorrection": "同时纠正本文定位中“每道任务通常只有一次执行机会”的过度概括。"
+    },
+    "2608.09096": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.09096#S1"
+      },
+      "sourceTextSha256": "289c9d7e48355b0ec0182f89f37b1d2237176bee3aea29c72adbdfd16daaa058",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.31111": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.31111#S1"
+      },
+      "sourceTextSha256": "b046ed65c17591b0fbdcca59890274a55eaa6f57d48d08e2a69e22932b08fa29",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2408.08435": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2408.08435#S1"
+      },
+      "sourceTextSha256": "b0a88023445a2cbe4652e21456be95a9c965a3dfa9efe2208c16ac6cf675fe0c",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.01437": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.01437#S1"
+      },
+      "sourceTextSha256": "3b0c8aeda5fbdcdc83c2a585bd5182d203467726749df355b76778781d3f59d1",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.03764": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.03764#S1"
+      },
+      "sourceTextSha256": "5c481128a4a935043e98f839c0c3c060bf39a5f4b3e86676260c84439944c684",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2602.22480": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2602.22480#S1"
+      },
+      "sourceTextSha256": "9870a2bfb6e93f3aac7dc26f5b8813836f792f477f3888a77e6d13c30b9271d5",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2410.04444": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2410.04444#S1"
+      },
+      "sourceTextSha256": "63d77f274e90ea6f3a6a062d01b6991d61b987a4d37c2396c7b24d007eddd9bb",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2506.10943": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2506.10943#S1"
+      },
+      "sourceTextSha256": "e23f72039bcd715f02616bb0a43894bedfdab89e6fe9695d9d7be405f72bbddf",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.23472": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.23472#S1"
+      },
+      "sourceTextSha256": "57cb45ada2c3b5d0ffd576e8237849ef24c6423ad8fcf3482e2d790f29026561",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.04465": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.04465#S1"
+      },
+      "sourceTextSha256": "aba64e77f61324ce789a08323e1c3edfd6abb7a80e52c685654faf9e8f095ab8",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.26294": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（第 1–2 页）",
+        "url": "https://arxiv.org/pdf/2606.26294v2#page=1"
+      },
+      "sourceTextSha256": "6ecbe8ef12d25d52469e95e076d1a28b1ca828a58e9c70850ff23139d3f0eaeb",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.07645": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.07645#S1"
+      },
+      "sourceTextSha256": "3ec35a611cbc224a660e5bc4a7333c0d466abbbe989032907f6737f65c49aa1c",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2403.03186": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2403.03186#S1"
+      },
+      "sourceTextSha256": "af0ad5cbd388e1d5b2d6ba6de8bd13a557ba5ab65cac95bf4fb0a3f60193ba2d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2409.07429": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2409.07429#S1"
+      },
+      "sourceTextSha256": "087714db173a17555f8277ae472aabeb1de5df2212be8c75c01e14d5e48b08c3",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2502.12110": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2502.12110#S1"
+      },
+      "sourceTextSha256": "0788c1158a70d9bb5f1323598878c43f37c2556c5f224d74882b430f5f65ad07",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2508.06433": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2508.06433#S1"
+      },
+      "sourceTextSha256": "1f7c42e9c3edd3e58230362ba24b3ef86f972a6948dd8ce6da749e8ed88f9af6",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2509.25140": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2509.25140#S1"
+      },
+      "sourceTextSha256": "d8c42214f86e4d6edb1e909c4d5f1f726e95480211767c9ccdd753f8c87eabda",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.10923": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.10923#S1"
+      },
+      "sourceTextSha256": "5acf0d43e3a8cdc2430a146d58276bcb96cb8c88a04431cc74333b33148a3a74",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.16839": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.16839#S1"
+      },
+      "sourceTextSha256": "7778fca11611dc3737a670a4255252d50f3ed13de6accd6a1915d0a8fff7ad45",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.16114": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.16114#S1"
+      },
+      "sourceTextSha256": "ab97036205b1e49db37904c8f1f040feb5df3ab79c55f9e0e1b2f2d39e827790",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.24876": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.24876#S1"
+      },
+      "sourceTextSha256": "e4685a1ad61db22aae86887553aaa1027cf88a4118760f12acd1805446a266bb",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.01314": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.01314#S1"
+      },
+      "sourceTextSha256": "fab6710a47eb48dbd63fa4259da0deffe9ace38e32e909c826a49dfc58fb0f92",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.17220": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.17220#S1"
+      },
+      "sourceTextSha256": "b3cf2ceee32b9b4acfd37bebb92237066973066571b644a41fa29ded486ab131",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.22793": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.22793#S1"
+      },
+      "sourceTextSha256": "db1322f7f19f080e8fac6dd126e29e7635aed52a9f240c6d9e49fe606b0bc6b3",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.23397": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.23397#S1"
+      },
+      "sourceTextSha256": "29a9ed038eb7fed8f4333c9fd79cfbc9c9b43ac5295d170aced4048b42c32852",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.23552": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.23552#S1"
+      },
+      "sourceTextSha256": "aa308cd3ba9ca50b5b28f0366a5539a92089b97ddd3231d2e78c00d4172abd7d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.09998": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.09998#S1"
+      },
+      "sourceTextSha256": "3aa0e0a9f64c7f2ffd5bcf3954315a560a2c7d127c8ef009f6e3da8919875f9b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.24539": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.24539#S1"
+      },
+      "sourceTextSha256": "c4c77d1b2b07149a5595624207a8794df9e5ae8b7d38b2791a9492cfcf518bf5",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.06324": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.06324#S1"
+      },
+      "sourceTextSha256": "b846e7352073615f23f816b5f1ba331517f120dc6ac7bf9de668b1979cd4a656",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.14249": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.14249#S1"
+      },
+      "sourceTextSha256": "9e1efe5ce1838207478ef878f9104081dfab0f3b1974f292c9ed8481e0f3686e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.13683": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.13683#S1"
+      },
+      "sourceTextSha256": "54c0c23e9e2dffbb1e4981c7d0312c1ebd1b8af77e6aa8f6b7a15705bb131a10",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.21877": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.21877#S1"
+      },
+      "sourceTextSha256": "39eff7adccdd53b5072a23da8c0f7a566027556ba9f5bb6c977908b4df295eb7",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.04455": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.04455#S1"
+      },
+      "sourceTextSha256": "9fb2415598173ab6c4c5723506e67610f74ffe97612b69e46ce8799208c49300",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.06301": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.06301#S1"
+      },
+      "sourceTextSha256": "2b4296c8ace3d5908511a34f802ce6f1a43deee4f08560cabb1b7019289d1f46",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2505.11942": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2505.11942#S1"
+      },
+      "sourceTextSha256": "2c7d4562e1471740abd43e86fc48e694d282f1a1d5ea193d2ede2640f1fdb67e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2507.05257": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2507.05257#S1"
+      },
+      "sourceTextSha256": "313a8860a66a2de52f38377d14c6d389b86064fd5fc3d9fbca019500bc5570d5",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2508.19005": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2508.19005#S1"
+      },
+      "sourceTextSha256": "531d5048ae68c5ec4dcddc781f424635ed0b322e06ae073fba56c875bbc498b8",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2510.17281": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2510.17281#S1"
+      },
+      "sourceTextSha256": "12b6b3b7f820db053a87381a1e82faa8c337d7dafc41254d0114a1a25bbc5581",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2511.20857": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2511.20857#S1"
+      },
+      "sourceTextSha256": "5b07a11dea7b9333cc4d1d464fbed09738d8de968517bf7dd472d49732b5b72d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.17308": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.17308#S1"
+      },
+      "sourceTextSha256": "221bd3fe2cb5f31ffbee4a91f3fe08c3a945862e2f8a2117802145a89186b37c",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.20087": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.20087#S1"
+      },
+      "sourceTextSha256": "346de9e797292199b6c9b91e610c31cb2907c082ff4f216c16118858cd215888",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.18421": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.18421#S1"
+      },
+      "sourceTextSha256": "666a425a23ba23e8c41c22ca53005d9ea25cd874541b44fbad7494a51ee1a644",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.05661": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.05661#S1"
+      },
+      "sourceTextSha256": "40054f86407ef839d1d59d3bdbce48289f092b60dcb10ab12ec23ff3a971e699",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.05202": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.05202#S1"
+      },
+      "sourceTextSha256": "ac2ed0652a18536bdac41220446b845cab929b478a42de5b7d07f784c3567540",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.00155": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.00155#S1"
+      },
+      "sourceTextSha256": "ac529ed3cf06ab92bc46d77c72a92a315414dfe500cf792d653185c73c10a7e8",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.01149": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.01149#S1"
+      },
+      "sourceTextSha256": "1c94ee45e0adad3e45cdda1c147f6bf043cb28fa2da80498a2a687c3db2b510e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.03874": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.03874#S1"
+      },
+      "sourceTextSha256": "65ad1693aad57dccbfd4c50636fbf4a3ba1c858cd8a5c0baed9f202c7f2ea1c0",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.04003": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.04003#S1"
+      },
+      "sourceTextSha256": "5c0a41cfa9df29ffc535deae602b548e3f618a56bd97e4ded460093449d65220",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.06144": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.06144#S1"
+      },
+      "sourceTextSha256": "a8a44b805d2daeab370222b514431800e82a3244491c921d6338a46f39ce61d4",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.08640": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · Why post-training?",
+        "url": "https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px1"
+      },
+      "sourceTextSha256": "5b7e63cb63b332ea25f936933b98752e83897b732eaa606dbff0139c74ac0f74",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.10547": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.10547#S1"
+      },
+      "sourceTextSha256": "a1fdb5732c6909e335f3e62883395b7809503b598923ab248c6253e0e61b56ca",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.04261": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.04261#S1"
+      },
+      "sourceTextSha256": "6bae168d0c161ea1bc109633c48b24d1c867f4fdbca7daf2a34c50897d029e26",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.05080": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.05080#S1"
+      },
+      "sourceTextSha256": "c9896f995dff416161597eb13d641f22f25ae8f2c2da962e8b0a150258144e1d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.05155": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.05155#S1"
+      },
+      "sourceTextSha256": "824ebcb4f7f69b733356a12e6f51b131795eb5d1d265ff40deb8905baf74b29f",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "doi.org-10.1016-S0065-2458-08-60418-0": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（原刊第 31–33 页）",
+        "url": "https://languagelog.ldc.upenn.edu/myl/Good1964.pdf#page=1"
+      },
+      "sourceTextSha256": "a99d5d5ca791011f65e948f68578d2e5126e9556e9d6ab740bf451384ca37dcd",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "people.idsia.ch-juergen": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（学习策略的多样性与情境依赖）",
+        "url": "https://people.idsia.ch/~juergen/diploma1987ocr.pdf"
+      },
+      "sourceTextSha256": "c63167c37e08652ad78a3c53e9ca5d7e993f029c332945ba7c25897288d7571f",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "cs-0207097": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（第 3 页）",
+        "url": "https://arxiv.org/pdf/cs/0207097v2#page=3"
+      },
+      "sourceTextSha256": "b6a02135078588be27102585b98c88955e435f5d52ae305c2a0ec102acb0dced",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "1805.06610": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/1805.06610#S1"
+      },
+      "sourceTextSha256": "6805c9348f785a6d842429c2c6aee45941f0b8bb6f16a731cee2c5b84d6c9986",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2203.11171": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2203.11171#S1"
+      },
+      "sourceTextSha256": "091543fcf2f4e3333143232af1e0f18f70863e7888f595fc4e12bf4bc9ee9b68",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2303.17651": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2303.17651#S1"
+      },
+      "sourceTextSha256": "79a5d25941c5d2d6a0e487a0b8e2952b45d9b39433d0a127ef51ee59a642f277",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2305.11738": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2305.11738#S1"
+      },
+      "sourceTextSha256": "0fc30579efa266e613333329fdaf759a00cb4f41f34d1e93ef47eb2181383ab8",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2305.20050": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2305.20050#S1"
+      },
+      "sourceTextSha256": "bf8f8f526e824be922af812cf35a0fd47f21a08da1e1dde067a966e0458f03c2",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2309.11495": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2309.11495#S1"
+      },
+      "sourceTextSha256": "adee2b8ca883d99992450abac0d0f8b5012df839208bc5af3f1766ed618022ae",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2310.01798": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2310.01798#S1"
+      },
+      "sourceTextSha256": "cffd40bc721922802f352f8f648417cb6a6c1a32fc5f7205d72a8fc813c1c814",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2310.04406": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2310.04406#S1"
+      },
+      "sourceTextSha256": "8fbcf51cf090bad8817a379373522d18efd21444b729fd65a33d44b41b1b772b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2309.03409": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2309.03409#S1"
+      },
+      "sourceTextSha256": "5c1c6bfd09821c3ead37b76c63f9094f11e4193ab0ecb146d935bf22effba299",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2309.16797": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2309.16797#S1"
+      },
+      "sourceTextSha256": "23a73954abd32e80e1f4be11d8b3b5d7284e646ff1e72a0181fb9bf1e5b23bfe",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2310.03714": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2310.03714#S1"
+      },
+      "sourceTextSha256": "2b1e1830a69d1ad05ec6c9d79f3cb90bfd7008910e26426e30426dc7d70ff723",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2310.02304": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（第 1–2 页）",
+        "url": "https://arxiv.org/pdf/2310.02304v3#page=1"
+      },
+      "sourceTextSha256": "f9b302273af0c305706f1c9345322cd539fc110c5c18de97859796e722eea2b5",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2406.07496": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2406.07496#S1"
+      },
+      "sourceTextSha256": "11a3060bb4cce1d97c2f7cbd1e509d3bf11f95a1f8b946dd7f4e7e6984ba0939",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2410.10762": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2410.10762#S1"
+      },
+      "sourceTextSha256": "ed769722c9984eef30a718c262821fe73d26ccaffde3ca88ff9d8b6b88f66573",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2507.03616": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2507.03616#S1"
+      },
+      "sourceTextSha256": "68a673c7f3e313871a589712081b41f881a50db28527f9c4eb71739fcda9f211",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2509.19349": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2509.19349#S1"
+      },
+      "sourceTextSha256": "bc220fc9c5294303a3f7d3d00d326baf1c380460731e686f8a9b174a1dd0c526",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2305.10250": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2305.10250#S1"
+      },
+      "sourceTextSha256": "0d85e5f11bc8c0655d64bdb7d5f32c3810e9f98495dbd97bea90cf35c3a54c9b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2308.10144": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2308.10144#S1"
+      },
+      "sourceTextSha256": "310262d920659bbd0d7a2106f5a800121dd27367ae7ba5c105b5f1fcc2f6b8e4",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2409.00872": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2409.00872#S1"
+      },
+      "sourceTextSha256": "5f278d0150273a7eeb65f2ae9fc8ab54e8b741e4d19eb4e427f80012fb043fa0",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2510.04618": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2510.04618#S1"
+      },
+      "sourceTextSha256": "53c3bd46ee051ebd503d00b6a15ce6a256ea368df590732fac3ab956623be3d1",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2510.16079": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2510.16079#S1"
+      },
+      "sourceTextSha256": "efbc77084ffbdeae071921065098573fc7542922af4d7759185401f5a278ee03",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2512.18746": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2512.18746#S1"
+      },
+      "sourceTextSha256": "4f3d9e466b49d5d7ef3bb43aca237a1e57f9792757ed00f8c1f8f670d9e03aeb",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2602.07755": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2602.07755#S1"
+      },
+      "sourceTextSha256": "f006240be17fe43efc1e9d9bc2c90724e148406dd6362eb4f736295f682d048e",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.18620": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.18620#S1"
+      },
+      "sourceTextSha256": "697b2d99f002fdbc62a1e6394c8c2b54590bf59d2a15631601a12d137741f12b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2402.17574": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2402.17574#S1"
+      },
+      "sourceTextSha256": "5d44929083a7aa001094a30b6aab4c062c0205ab5a87cf35be0001951b124fa6",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2510.23601": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2510.23601#S1"
+      },
+      "sourceTextSha256": "cbefc6ca0b1488b7f5743a7d8865d468c12df981664fed7a3774d74bf7b96430",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.13131": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.13131#S1"
+      },
+      "sourceTextSha256": "b353bee68d34e5de8124adeaa9d57b96e4b5b899a2eb52ced2ea4f229bdbec2f",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.18000": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.18000#S1"
+      },
+      "sourceTextSha256": "a7bf638453c269a02dd7de7da58e4712bc0d56c902e247145ee0e5366bcde620",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.18743": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1.1 Why Frozen LLMs Need External Memory",
+        "url": "https://arxiv.org/html/2603.18743#S1.SS1"
+      },
+      "sourceTextSha256": "66c5376dbb16d662d4e2c0be5d4722d58bdc7bbe840f18f42d4115ce2533e1e3",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.15097": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.15097#S1"
+      },
+      "sourceTextSha256": "82d3ecd0f0c5963ca8c2fe2fa4772691983c96eab1b3380034e79567bb0f0754",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2604.20133": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2604.20133#S1"
+      },
+      "sourceTextSha256": "14c7becd2cb87520e71dda16ee5467e30112f8e582e84db30b3980f7a85bd78b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.23904": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.23904#S1"
+      },
+      "sourceTextSha256": "71c071de8317d38208478f348c750cfee17b46ab4eb5888dca4c243d49571b2b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.00272": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.00272#S1"
+      },
+      "sourceTextSha256": "b9159c4fdeaeba21b1a2de838b3274b62865de9a84f9532aabf517a78016fc82",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.26784": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.26784#S1"
+      },
+      "sourceTextSha256": "af962c3993adbcce04e4f11d8fe6219e167af56c6e3833825a4f6509dae8fa4a",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.11350": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.11350#S1"
+      },
+      "sourceTextSha256": "cc601678484b2373dbb31df6ba3b3f484a050bc658192ceb2ca8e11b3b197c02",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2504.15228": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2504.15228#S1"
+      },
+      "sourceTextSha256": "c2ea8142ec2aa4e2cf15e039394583688440ad0e6d3c55c17eadb163745b92ec",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2603.03329": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2603.03329#S1"
+      },
+      "sourceTextSha256": "ed9026d049551ff53afc72874e83916c5f3af0c5c18dfeff50dc988ca5beb9af",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.19980": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.19980#S1"
+      },
+      "sourceTextSha256": "4c4012d6acec7c2faf23a0a7a6da59123776242dd7617fcb8a99314201225bd5",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.14159": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.14159#S1"
+      },
+      "sourceTextSha256": "919e37cdee2adb3ab23a6e12007d4782ceb6dbf602d8c014e0edf0fe80d19bf9",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.01918": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "Introduction · 三项局限及其后果",
+        "url": "https://arxiv.org/html/2608.01918#Sx1"
+      },
+      "sourceTextSha256": "1da41926117594d25a53bddb9c8b212048398b9700336e22e513407aac846f5d",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.08466": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.08466#S1"
+      },
+      "sourceTextSha256": "fbd906e690db7fea160fe91071a0743cea94925d52dc6a6d7c6577804094845b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.09380": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.09380#S1"
+      },
+      "sourceTextSha256": "11356e2dd9095800dc3c5625027b8c47e35ee5bd77149bb07dd5e64762b52f10",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.12307": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.12307#S1"
+      },
+      "sourceTextSha256": "4f57cba39a579b4c9ec8c74b2654b0aecd6c3b11c77ba1a390440bfcd6706edf",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.24735": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.24735#S1"
+      },
+      "sourceTextSha256": "e1d4b7ebab8aa4bee4e8aae7f0147ab12c6dffc4880c476caced0e503015c0c2",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.27276": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1.1–1.2 人工瓶颈与两条独立改进路线",
+        "url": "https://arxiv.org/html/2605.27276#S1.SS1"
+      },
+      "sourceTextSha256": "e591199a6ff5e2562d136d6382c508e5767aac49fc4bfd94cfeaea9c750bd69b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.21971": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.21971#S1"
+      },
+      "sourceTextSha256": "b61b474c1e73094aae8e58979d5d0700fcd5f95be8c5b9e0fa6bbc8727ca9bbd",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.05446": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.05446#S1"
+      },
+      "sourceTextSha256": "7ba5cceea9643f12c086264a17e4fe57dc77bdd93e200ee50e26835a7a921847",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.13951": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.13951#S1"
+      },
+      "sourceTextSha256": "1427ae3587cb3f9222938df7324480bfef8834886386614c0c998a4e1fb4e8d7",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2505.19955": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2505.19955#S1"
+      },
+      "sourceTextSha256": "86aba3b97647d8acf6897a54b3df2b7f2981582b4784d7d33f0772e8affccde4",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.08678": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.08678#S1"
+      },
+      "sourceTextSha256": "c319c0997359042c0142f8e67ba5ae964bab34f8eb793c47bc503c153447c449",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.17271": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.17271#S1"
+      },
+      "sourceTextSha256": "06b7c3850512279ac8f4b0b730a29b7674d682a4f8847d25a43ffb6d0d6a610b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2507.19457": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2507.19457#S1"
+      },
+      "sourceTextSha256": "076a8df380645e13b4d1f6e5f718987a777c987909203be4f28de79b4a61f590",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.00829": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.00829#S1"
+      },
+      "sourceTextSha256": "7349fc56a23129d8fe62796cb064d5599fcb7a9004ef47d6fd040cffd9fbfe13",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.27311": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.27311#S1"
+      },
+      "sourceTextSha256": "c6f74b93b22e7b3bda6cefa37a4365098cacb9fefed44bf988fd05c520caa118",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.10178": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.10178#S1"
+      },
+      "sourceTextSha256": "afbac74348d7c2175abd08c9193f08f5c787e135319df669c7a750b9937728f3",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2608.31100": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2608.31100#S1"
+      },
+      "sourceTextSha256": "e5221ef914ebd0239990b6df3cdfd180782034dd0a7c5a4743d3e750c768222b",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.01481": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.01481#S1"
+      },
+      "sourceTextSha256": "af0e1225e91c59e247611360b1eb35df29d117ca96f19e7cf4127a203cfbc0c0",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "rsi-exam": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "官方报告 · Introduction / What RSI-Exam measures",
+        "url": "https://rsi-exam.ai/blog.html#introduction"
+      },
+      "sourceTextSha256": "ff1527ae4a15ff3b3ee09a9dfe715b50fc0447598b786b0651675e34edd1dbdd",
+      "hashedMaterial": "cached official-report HTML",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.00196": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.00196#S1"
+      },
+      "sourceTextSha256": "743b4bf3b3646b019033ef885cb845a9920d08a6196de731070e01359b6d3b67",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.09646": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.09646#S1"
+      },
+      "sourceTextSha256": "65f5b6c8a405db10f56bc41145b20afbcf6566ee806fec513209384c9383af29",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.09153": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2609.09153#S1"
+      },
+      "sourceTextSha256": "ccc8c9edb5e5f8d79b7ac507053b70974101a0ca727ac0e91a0dbf9e96e619ea",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2607.22688": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2607.22688#S1"
+      },
+      "sourceTextSha256": "f53b4bcb8a12b7e1dd05f18cb046d7a43e2422e1a0739211aef36421f755b124",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2606.01779": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2606.01779#S1"
+      },
+      "sourceTextSha256": "3525de38986cca75be12f699e5bc3b8c7e415761220d6c73f4aa90c301b80b68",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2605.30621": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction · 问题背景与研究动机",
+        "url": "https://arxiv.org/html/2605.30621#S1"
+      },
+      "sourceTextSha256": "b9b881b8cf2a0edf41fbda2498726cf215a4fcb55b047d5e48e44a24f1676f85",
+      "hashedMaterial": "cached introduction-section extraction",
+      "status": "introduction-checked-and-rewritten"
+    },
+    "2609.08175": {
+      "reviewedAt": "2026-09-11",
+      "scope": "研究缺口与动机；依据引言，不代表本轮重新核验全部实验或最新修订版。",
+      "source": {
+        "label": "§1 Introduction（第 1–3 页）",
+        "url": "https://arxiv.org/pdf/2609.08175v1#page=1"
+      },
+      "sourceTextSha256": "89c83b8cb728b352ba745410eca70edf46006997911a068798839902e7276986",
+      "hashedMaterial": "cached full-text extraction",
+      "status": "introduction-checked-and-rewritten"
+    }
+  }
+}

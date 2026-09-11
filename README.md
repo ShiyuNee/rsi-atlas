@@ -91,7 +91,7 @@ Continual Harness is now classified under joint harness/weight evolution because
 
 ## 卡片说明写作口径
 
-每篇默认按顺序展示：谁执行、谁来改、什么在进化、反馈是什么、基础 harness 是什么。完整专题解读也使用同一组卡片字段，全文保留。
+每篇先展示三个 TL;DR 要点，再按顺序展示：什么在进化、谁执行、谁来改、反馈是什么、基础 harness 是什么。完整专题解读也使用同一组卡片字段，全文保留。
 
 `data/readability.json` 保存易读性修订，不覆盖原始笔记。角色要写清决策模型与实际运行程序；反馈要说明提供者、判断依据和可见内容，区分自测与正式评测。基础系统要说明来源、工具和运行流程；只有来源支持时才能写“没有某功能”，不能从记录缺失推断系统没有。自建数据在实验字段中交代任务内容、构造方式和隔离，不能只报数据集名字。概览不显示 RQ 编号或内部层级代号；原文未披露的信息以读者能理解的具体缺项说明，完整口径与出处留在表格中。
 
@@ -122,3 +122,9 @@ Framework names should identify their function and their role in the experiment 
 RSI-Exam is recorded as an official project report with a project-release date, not an unverified arXiv publication. Its seven feedback rows cover the overall protocol and six public tasks, explicitly preserving the legal task’s visible final prompts and the math task’s student-weight submission.
 
 The 2026-09-11 literature update adds WHALE, Procedural Graphs, RobustSGPO, Safe Harness Self-Evolution, Co-Harness, HarnessForge, and Harness Updating Is Not Harness Benefit. See `data/literature-update-2026-09-11.md` for selection reasons and evidence boundaries; the research map connects them to existing entries. New papers are Key reading, not automatically Core classics.
+
+## Research gaps from the original introduction (2026-09-11)
+
+All 142 `overview.tldr` gap entries were checked against the available primary-source introductions and rewritten. `data/introduction-audit.json` records the scope, section link and source-text hash for this targeted pass; it does not certify a new full-paper audit or the latest revision of every source. Gap citations now point to the introduction or the official report’s opening motivation.
+
+Record the author’s argument: the limitation of existing work, its consequence, and why the problem warrants study. Do not substitute a phenomenon, the proposed method, or an experimental finding for that argument. Do not invent a causal motivation or a literature criticism when the introduction only states a research question; preserve that distinction for historical theory and project reports. Keep the author’s motivation separate from the site’s cross-paper analysis.
