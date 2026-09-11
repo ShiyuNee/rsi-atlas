@@ -116,7 +116,12 @@ for(const p of papers){
   assert(!/RQ\s*\d|§|\bM[012](?:[-+/：])|当前记录未|本轮尚/.test(v),p.id+':'+k);
  }
 }
-assert(field('2608.31111','executor').includes('RQ2')); // Detailed source mapping stays available.
+// Research descriptions must remain understandable without the paper's question numbers.
+for(const p of papers){
+ assert(!/\bRQ\s*[-–]?\s*\d/i.test(JSON.stringify({overview:p.overview,fields:p.profile.fields,feedback:p.profile.feedbackCases})),p.id);
+}
+assert(field('2608.31111','executor').includes('参数更新实验'));
+assert(field('2608.31111','executor').includes('运行框架实验'));
 assert(!overviews['2608.31111'].fields.executor.includes('RQ2'));
 assert(overviews['2608.31111'].fields.executor.includes('Qwen3.5-9B'));
 assert(overviews['2608.31111'].fields.modifier.includes('GPT-5.6'));
