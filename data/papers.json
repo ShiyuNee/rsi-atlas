@@ -333,7 +333,8 @@
                 "label": "§3 Formal Description",
                 "url": "https://arxiv.org/abs/cs/0309048"
               }
-            ]
+            ],
+            "judgment": "形式证明检查；没有 benchmark 答案或模型裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -790,7 +791,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2303.11366#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境成功信号；另用失败检测触发反思"
           },
           {
             "label": "同题反思：HotpotQA",
@@ -815,7 +817,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2303.11366#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "规则将最终回答与 HotpotQA 标准答案精确匹配"
           },
           {
             "label": "代码反思与正式判分",
@@ -840,7 +843,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2303.11366#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "调试：模型生成的单元测试；正式判分：基准隐藏测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -1270,7 +1274,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2305.16291#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "GPT-4 依据任务目标与环境状态判断成功并给批评；代码错误来自执行器"
           },
           {
             "label": "新世界目标测试",
@@ -1291,7 +1296,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2305.16291#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "按 Minecraft 新目标完成情况评测，区别于探索期技能累计数"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -1803,7 +1809,8 @@
                 "label": "附录E.3",
                 "url": "https://arxiv.org/html/2505.22954#A5.SS3"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试检查补丁功能"
           },
           {
             "label": "进化 / 迁移：Polyglot",
@@ -1840,7 +1847,8 @@
                 "label": "附录E.3",
                 "url": "https://arxiv.org/html/2505.22954#A5.SS3"
               }
-            ]
+            ],
+            "judgment": "Polyglot 编程题自带测试检查代码输出"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -2304,7 +2312,7 @@
           {
             "label": "自建任务与训练奖励",
             "data": "在 AppWorld（通过多个应用的程序接口完成日常事务的交互基准）、BFCL 的交互环境探索，生成新的训练任务；100/200/500 是合成数据量消融。",
-            "scoring": "Qwen3-235B-A22B 参与合成任务评判与去重；另由 Qwen-Max 一次读取完整执行记录，标出各步 G分布外任务/BAD，再结合任务最终结果形成训练奖励。",
+            "scoring": "Qwen3-235B-A22B 参与合成任务评判与去重；另由 Qwen-Max 一次读取完整执行记录，标出各步 GOOD（好）/BAD（差），再结合任务最终结果形成训练奖励。",
             "visible": "任务/经验质量反馈、最终任务结果和分步贡献评价。",
             "use": "用于学习任务模型；任务质量评审、分步归因模型与最终基准判分必须分开。",
             "sources": [
@@ -2340,7 +2348,8 @@
                 "label": "§7.3",
                 "url": "https://arxiv.org/html/2511.10395#S7.SS3.SSS2"
               }
-            ]
+            ],
+            "judgment": "Qwen3-235B-A22B 审合成任务；Qwen-Max 评轨迹步骤，两者与终局任务奖励分开"
           },
           {
             "label": "最终评估：AppWorld / BFCL v3",
@@ -2381,7 +2390,8 @@
                 "label": "§7.3",
                 "url": "https://arxiv.org/html/2511.10395#S7.SS3.SSS2"
               }
-            ]
+            ],
+            "judgment": "AppWorld 程序验收目标；BFCL 程序检查状态与执行路径"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -2853,7 +2863,8 @@
                 "label": "附录C.4",
                 "url": "https://arxiv.org/html/2603.19461#A3.SS4"
               }
-            ]
+            ],
+            "judgment": "规则比较预测接收／拒绝标签与会议真实结果"
           },
           {
             "label": "IMO-GradingBench",
@@ -2886,7 +2897,8 @@
                 "label": "附录C.4",
                 "url": "https://arxiv.org/html/2603.19461#A3.SS4"
               }
-            ]
+            ],
+            "judgment": "规则比较代理输出的分数与人类专家分数；代理本身负责评证明"
           },
           {
             "label": "Polyglot",
@@ -2919,7 +2931,8 @@
                 "label": "附录C.4",
                 "url": "https://arxiv.org/html/2603.19461#A3.SS4"
               }
-            ]
+            ],
+            "judgment": "Polyglot 的可执行代码测试"
           },
           {
             "label": "Go2 机器人奖励设计",
@@ -2952,7 +2965,8 @@
                 "label": "附录C.4",
                 "url": "https://arxiv.org/html/2603.19461#A3.SS4"
               }
-            ]
+            ],
+            "judgment": "实际训练机器人策略，再由环境指标评价奖励函数"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -3392,7 +3406,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2603.28052#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "规则比较预测类别与标注类别"
           },
           {
             "label": "数学检索框架搜索与测试",
@@ -3409,7 +3424,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2603.28052#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "数学任务各用自身评分协议；混合答案题、证明题与研究题，未公开完整判分实现"
           },
           {
             "label": "终端框架搜索与报告",
@@ -3426,7 +3442,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2603.28052#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "终端基准原生测试程序"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -4016,7 +4033,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2604.25850#A1"
               }
-            ]
+            ],
+            "judgment": "TB2 原生测试程序判通过／失败"
           },
           {
             "label": "冻结迁移：SWE-bench Verified",
@@ -4053,7 +4071,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2604.25850#A1"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试验收补丁"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -4535,7 +4554,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2606.09498#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "TB2 原生测试程序检查终端产物"
           },
           {
             "label": "SWE-bench Verified：提出修改与回归检查",
@@ -4564,7 +4584,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2606.09498#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试验收补丁"
           },
           {
             "label": "AppWorld：提出修改与回归检查",
@@ -4593,7 +4614,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2606.09498#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "AppWorld 任务自带验收程序检查应用状态与目标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -4969,7 +4991,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2606.17546#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "TB2 用程序验收；HLE 用题目评分元数据，本文未展开具体比对器"
           },
           {
             "label": "冻结快照评估与重放",
@@ -4986,7 +5009,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2606.17546#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "固定任务后端判分；不是用快照评审模型代替任务裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -5415,7 +5439,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查目标完成"
           },
           {
             "label": "WebShop",
@@ -5436,7 +5461,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "WebShop 环境计算目标约束满足分"
           },
           {
             "label": "搜索问答",
@@ -5457,7 +5483,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "参考答案比对；所引方法段未说明规则匹配或模型裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -5937,7 +5964,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2607.15524#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "模型按功能、任务对齐和可复现性等评审要求比较两版代码仓库"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -6512,7 +6540,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2607.25886#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "受保护的仓库测试程序检查补丁"
           },
           {
             "label": "Terminal-Bench 2",
@@ -6549,7 +6578,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2607.25886#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "受保护的终端任务测试程序检查产物"
           },
           {
             "label": "GPQA Diamond",
@@ -6586,7 +6616,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2607.25886#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "对照 GPQA 参考选项；本文未展开答案抽取实现"
           },
           {
             "label": "AIME 2026",
@@ -6623,7 +6654,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2607.25886#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "对照 AIME 标准答案；本文未展开答案抽取和比对实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -7217,7 +7249,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2607.28568#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "实际运行训练程序；任务生成的 metric.py 按预测与标签计算指标"
           },
           {
             "label": "最终 ML / 科研迁移",
@@ -7266,7 +7299,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2607.28568#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "运行任务后按原任务指标计分；不同竞赛的指标分别定义"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -7713,7 +7747,8 @@
                 "label": "附录F",
                 "url": "https://arxiv.org/html/2608.02276#A6"
               }
-            ]
+            ],
+            "judgment": "WebShop 环境按商品与购物要求的匹配程度计算奖励"
           },
           {
             "label": "编辑器训练 / ALFWorld",
@@ -7742,7 +7777,8 @@
                 "label": "附录F",
                 "url": "https://arxiv.org/html/2608.02276#A6"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查物体操作目标"
           },
           {
             "label": "编辑器训练 / DBBench",
@@ -7771,7 +7807,8 @@
                 "label": "附录F",
                 "url": "https://arxiv.org/html/2608.02276#A6"
               }
-            ]
+            ],
+            "judgment": "DBBench 环境给二元成功信号；本文未展开每题内部检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -8248,7 +8285,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.05144#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "SWE-bench Pro 仓库测试"
           },
           {
             "label": "SOL-ExecBench",
@@ -8273,7 +8311,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.05144#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "可执行数值正确性检查 + 内核运行计时"
           },
           {
             "label": "nanochat B200 / H100",
@@ -8298,7 +8337,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.05144#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "验证集损失指标 BPB，由程序计算"
           },
           {
             "label": "nanoGPT speedrun",
@@ -8323,7 +8363,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.05144#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "达到指定验证损失的训练耗时，由程序计时"
           },
           {
             "label": "AARRI-Bench / Arbor 数学数据合成",
@@ -8348,7 +8389,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.05144#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "按各科研任务的复现或训练指标验收；未统一成答案裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -8916,7 +8958,8 @@
                 "label": "Harbor 官方协议：测试脚本与奖励文件（接口说明）",
                 "url": "https://www.harborframework.com/docs/tasks"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 任务自带测试程序检查容器产物"
           },
           {
             "label": "系统设计：合成任务与训练轨迹",
@@ -8933,7 +8976,8 @@
                 "label": "§3.2.3：任务生成与筛选",
                 "url": "https://arxiv.org/html/2608.09819#S3.SS2.SSS3.Px1"
               }
-            ]
+            ],
+            "judgment": "合成题配答案或评分细则；论文未逐任务披露程序／模型裁判配置"
           },
           {
             "label": "工具复用检查",
@@ -8946,7 +8990,8 @@
                 "label": "§3.1.2：Validated Reuse",
                 "url": "https://arxiv.org/html/2608.09819#S3.SS1.SSS2"
               }
-            ]
+            ],
+            "judgment": "私有参考验证工具；未逐工具公开验证实现"
           },
           {
             "label": "成品评测：ChatBench",
@@ -8959,7 +9004,8 @@
                 "label": "附录 B.1：ChatBench",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "GLM-5.2 按案例专属 1–5 分细则评审"
           },
           {
             "label": "成品评测：LivingBench",
@@ -8972,7 +9018,8 @@
                 "label": "附录 B.1：LivingBench",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "Claude Opus 4.6 按需求满足与过程质量评分"
           },
           {
             "label": "成品评测：VitaBench",
@@ -8985,7 +9032,8 @@
                 "label": "附录 B.3：VitaBench",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS3.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "GLM-5.1 作模型裁判；本文替换原基准裁判"
           },
           {
             "label": "成品评测：VitaBench2",
@@ -8998,7 +9046,8 @@
                 "label": "附录 B.3：VitaBench2",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS3.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "子任务奖励汇总；此处未披露奖励内部是规则还是模型判定"
           },
           {
             "label": "成品评测：τ³-Bench",
@@ -9011,7 +9060,8 @@
                 "label": "附录 B.3：τ³-Bench",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS3.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "任务成功验收；未展开内部规则，GPT-5.2 是模拟用户"
           },
           {
             "label": "成品评测：PinchBench / ClawGym",
@@ -9028,7 +9078,8 @@
                 "label": "ClawGym",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS3.SSS0.Px5"
               }
-            ]
+            ],
+            "judgment": "PinchBench：Claude Haiku 4.5；ClawGym：GPT-5.4 模型评审"
           },
           {
             "label": "成品评测：SWE-Verified / TB2.1 / DeepSWE",
@@ -9057,7 +9108,8 @@
                 "label": "Harbor：任务与验收接口",
                 "url": "https://www.harborframework.com/docs/tasks"
               }
-            ]
+            ],
+            "judgment": "软件／终端基准的可执行测试验收产物"
           },
           {
             "label": "成品评测：SWE Atlas QnA",
@@ -9074,7 +9126,8 @@
                 "label": "Claude Code 官方说明",
                 "url": "https://code.claude.com/docs/en/overview"
               }
-            ]
+            ],
+            "judgment": "Claude Opus 4.8 作问答裁判；该段未展开具体比对提示"
           },
           {
             "label": "成品评测：UI4A-Bench",
@@ -9087,7 +9140,8 @@
                 "label": "附录 B.5",
                 "url": "https://arxiv.org/html/2608.09819#A2.SS5.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "Gemini 3.5 Flash 按五维评分要求评审，并结合可运行性检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -9466,7 +9520,8 @@
                 "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
                 "url": "https://endlessfrontier.tech/assets/paper.pdf"
               }
-            ]
+            ],
+            "judgment": "Critic 评任务质量，配合形式证明／计算／模拟等任务验证；非统一判分器"
           },
           {
             "label": "搜索 / 问答 / 科研评估",
@@ -9479,7 +9534,8 @@
                 "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
                 "url": "https://endlessfrontier.tech/assets/paper.pdf"
               }
-            ]
+            ],
+            "judgment": "下游基准的答案或评分细则；本文未逐项披露规则／模型比对配置"
           },
           {
             "label": "代码执行与机器学习评估",
@@ -9492,7 +9548,8 @@
                 "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
                 "url": "https://endlessfrontier.tech/assets/paper.pdf"
               }
-            ]
+            ],
+            "judgment": "代码测试／实际训练后的数值指标"
           },
           {
             "label": "PaperBench Code-Dev",
@@ -9505,7 +9562,8 @@
                 "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
                 "url": "https://endlessfrontier.tech/assets/paper.pdf"
               }
-            ]
+            ],
+            "judgment": "gpt-5.5 按分层评分细则审查代码"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -9943,7 +10001,8 @@
                 "label": "附录G",
                 "url": "https://arxiv.org/html/2607.05297#A7.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "问答参考答案判分；本文未明确规则／模型比对实现"
           },
           {
             "label": "ALFWorld",
@@ -9972,7 +10031,8 @@
                 "label": "附录G",
                 "url": "https://arxiv.org/html/2607.05297#A7.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查目标完成"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -10480,7 +10540,8 @@
                 "label": "§3.1–3.2",
                 "url": "https://arxiv.org/html/2608.15071#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "基准程序检查最终网页应用状态"
           },
           {
             "label": "在线技能进化：Terminal-Bench 2",
@@ -10497,7 +10558,8 @@
                 "label": "§3.1–3.2",
                 "url": "https://arxiv.org/html/2608.15071#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "基准容器内的可执行测试检查产物"
           },
           {
             "label": "在线技能进化：SWE-bench Lite",
@@ -10514,12 +10576,13 @@
                 "label": "§3.1–3.2",
                 "url": "https://arxiv.org/html/2608.15071#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "仓库测试检查补丁：应修好的测试通过、原本通过的测试保持通过"
           },
           {
             "label": "在线技能进化：CL-Bench",
             "data": "1,899 个知识推理、发现/模拟、程序执行和规则应用任务",
-            "scoring": "按当前题的评分细则评审输出；附录只明确为细则评审流程，没有给出统一评审模型型号。",
+            "scoring": "模型读取回答和当前题的评分细则，逐项判断是否满足要求；附录 F 明确使用 rubric-based judge pipeline，即按评分细则进行模型评审。本文没有给出统一裁判模型型号或完整逐题细则。",
             "visible": "当前任务完成后，读取执行记录和该基准可提供的失败信息；模型从失败或负面反馈中提炼候选经验。",
             "use": "每批任务后修改文字技能，供后续任务使用；当前任务的反馈不是预先学完技能后的独立测试。",
             "sources": [
@@ -10530,8 +10593,13 @@
               {
                 "label": "§3.1–3.2",
                 "url": "https://arxiv.org/html/2608.15071#S3.SS1"
+              },
+              {
+                "label": "附录 F：CL-Bench 的 rubric-based judge pipeline",
+                "url": "https://arxiv.org/html/2608.15071#A6"
               }
-            ]
+            ],
+            "judgment": "模型按逐题评分细则评审；本文未披露统一裁判型号"
           },
           {
             "label": "在线技能进化：τ-bench",
@@ -10548,7 +10616,8 @@
                 "label": "§3.1–3.2",
                 "url": "https://arxiv.org/html/2608.15071#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "官方程序比较最终数据库状态与任务目标"
           },
           {
             "label": "反馈消融与冻结迁移",
@@ -10565,7 +10634,8 @@
                 "label": "§4.6：反馈消融",
                 "url": "https://arxiv.org/html/2608.15071#S4.SS6"
               }
-            ]
+            ],
+            "judgment": "分别比较模型自评、环境成败信号、环境成败加诊断信息"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -11023,7 +11093,8 @@
                 "label": "CodeAct 原论文：可执行代码动作",
                 "url": "https://arxiv.org/abs/2402.01030"
               }
-            ]
+            ],
+            "judgment": "Qwen3.7-Plus 对照问答参考答案作模型判分"
           },
           {
             "label": "GDPval",
@@ -11044,7 +11115,8 @@
                 "label": "CodeAct 原论文：可执行代码动作",
                 "url": "https://arxiv.org/abs/2402.01030"
               }
-            ]
+            ],
+            "judgment": "Qwen3.7-Plus 按 GDPval 任务评分细则评审"
           },
           {
             "label": "APEX-Agents",
@@ -11065,7 +11137,8 @@
                 "label": "CodeAct 原论文：可执行代码动作",
                 "url": "https://arxiv.org/abs/2402.01030"
               }
-            ]
+            ],
+            "judgment": "Qwen3.7-Plus 按 APEX-Agents 任务评分细则评审"
           },
           {
             "label": "Claw-Eval",
@@ -11086,7 +11159,8 @@
                 "label": "CodeAct 原论文：可执行代码动作",
                 "url": "https://arxiv.org/abs/2402.01030"
               }
-            ]
+            ],
+            "judgment": "基准规则检查 + Qwen3.7-Plus 模型评审"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -11601,7 +11675,8 @@
                 "label": "附录 C.5：公开记录边界",
                 "url": "https://arxiv.org/html/2608.31111#A3.SS5"
               }
-            ]
+            ],
+            "judgment": "创建者自测；论文未逐次公开所用答案、规则脚本或模型裁判"
           },
           {
             "label": "参数进化：允许中途查分",
@@ -11618,7 +11693,8 @@
                 "label": "附录 C.2、C.4",
                 "url": "https://arxiv.org/html/2608.31111#A3.SS2"
               }
-            ]
+            ],
+            "judgment": "参考答案／评分细则：客观题用规则，开放题用模型评审"
           },
           {
             "label": "参数进化：仅最终提交",
@@ -11631,7 +11707,8 @@
                 "label": "附录 C.3",
                 "url": "https://arxiv.org/html/2608.31111#A3.SS3"
               }
-            ]
+            ],
+            "judgment": "gemini-3.5-flash 按题目评分要求评审"
           },
           {
             "label": "框架进化：Luna 的本地写作检查",
@@ -11644,7 +11721,8 @@
                 "label": "附录 D：Luna 案例",
                 "url": "https://arxiv.org/html/2608.31111#A4.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "Luna 按自建八项检查表自评"
           },
           {
             "label": "框架进化：Terra / Sol 的本地检查",
@@ -11665,7 +11743,8 @@
                 "label": "Qwen-Agent 官方说明",
                 "url": "https://github.com/QwenLM/Qwen-Agent"
               }
-            ]
+            ],
+            "judgment": "创建者检查本地输出与运行错误；未公开统一判分实现"
           },
           {
             "label": "框架进化：最终写作评测",
@@ -11686,20 +11765,38 @@
                 "label": "Qwen-Agent 官方说明",
                 "url": "https://github.com/QwenLM/Qwen-Agent"
               }
-            ]
+            ],
+            "judgment": "按专家题目的保密评分细则评审；该实验未单独披露裁判型号"
           },
           {
             "label": "PostTrainBench 对照实验",
             "data": "AIME 2025、GPQA（研究生级科学问答基准） Main、HealthBench、HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）、GSM8K（小学数学应用题基准）、ArenaHard、BFCL；这组实验独立于上述 520 道专家题。",
-            "scoring": "沿用 PostTrainBench 的各任务评测器：原文比较明确任务名和宽泛目标提示下的成绩，没有用统一的写作检查表给这些任务判分。",
+            "scoring": "原 PostTrainBench 将 AIME25、GSM8K、GPQA、BFCL 列为答案精确匹配；HumanEval 执行单元测试；ArenaHard Writing 由 GPT-5-mini 与基线输出比较，HealthBench-Easy 由 GPT-5-mini 按医疗评分细则评审。Aspire 表示沿用其评测，未另列完整逐任务改动；这里的具体机制引用原 PostTrainBench，不能据此把自建练习也视为相同评分。",
             "visible": "代理自行构造训练和验证方法；正式分数、工具访问与训练过程按 PostTrainBench 对照协议记录。",
             "use": "比较给不给具体任务定义的影响；附录 B 的分数不能混入新专家题库。逐基准评测规则应以原 PostTrainBench 协议为准。",
             "sources": [
               {
                 "label": "§4.2 与附录 B",
                 "url": "https://arxiv.org/html/2608.31111#S4.SS2.SSS0.Px2"
+              },
+              {
+                "label": "§1",
+                "url": "https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2"
+              },
+              {
+                "label": "§5.2",
+                "url": "https://arxiv.org/html/2603.08640#S5.SS2"
+              },
+              {
+                "label": "附录B",
+                "url": "https://arxiv.org/html/2603.08640#A2"
+              },
+              {
+                "label": "附录E",
+                "url": "https://arxiv.org/html/2603.08640#A5"
               }
-            ]
+            ],
+            "judgment": "沿用 PostTrainBench：答案匹配、代码测试、模型评审分别使用"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -12130,7 +12227,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2408.08435#A5"
               }
-            ]
+            ],
+            "judgment": "运行变换代码，规则比较输出网格与标准网格"
           },
           {
             "label": "阅读、数学、综合与科学问答",
@@ -12155,7 +12253,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2408.08435#A5"
               }
-            ]
+            ],
+            "judgment": "DROP 用词项 F1；MGSM 比最终答案；MMLU／GPQA 比参考选项"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -12538,7 +12637,8 @@
                 "label": "§5",
                 "url": "https://arxiv.org/html/2609.01437#S5.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "创建者自行设计本地测试；不存在统一公开的自测判分器"
           },
           {
             "label": "Evolution：SWE-Pro / Terminal-Bench",
@@ -12563,7 +12663,8 @@
                 "label": "§5",
                 "url": "https://arxiv.org/html/2609.01437#S5.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "SWE-Pro 仓库测试；Terminal-Bench 容器验收测试"
           },
           {
             "label": "Creation 的正式测试",
@@ -12588,7 +12689,8 @@
                 "label": "§5",
                 "url": "https://arxiv.org/html/2609.01437#S5.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "软件／终端用程序验收，ML 用实验指标；其余按各基准评审协议"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -12952,7 +13054,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
               }
-            ]
+            ],
+            "judgment": "reflect：人工编写的规则脚本按加权检查项评分；fewshot：直接给标注答案；self：无答案反馈"
           },
           {
             "label": "GDPevo：最终测试",
@@ -12969,7 +13072,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
               }
-            ]
+            ],
+            "judgment": "人工编写的确定性业务检查脚本，按预设权重计分"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -13350,7 +13454,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS4"
               }
-            ]
+            ],
+            "judgment": "GAIA／SimpleQA 对照参考答案；本文未明确两项各自的规则／模型判分实现"
           },
           {
             "label": "GPQA Diamond / MATH",
@@ -13375,7 +13480,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS4"
               }
-            ]
+            ],
+            "judgment": "GPQA 比参考选项；MATH 比参考数学答案，未逐项展开解析器"
           },
           {
             "label": "τ-bench Retail",
@@ -13400,7 +13506,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS4"
               }
-            ]
+            ],
+            "judgment": "τ-bench 官方程序比较最终数据库与目标状态"
           },
           {
             "label": "TerminalBench-2 案例",
@@ -13425,7 +13532,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2602.22480#A1.SS2.SSS4"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 原生任务验收程序"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -13797,7 +13905,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2410.04444#A2"
               }
-            ]
+            ],
+            "judgment": "规则比较预测选项与数据集标签"
           },
           {
             "label": "DROP / MGSM",
@@ -13818,7 +13927,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2410.04444#A2"
               }
-            ]
+            ],
+            "judgment": "DROP 用词项 F1；MGSM 比最终数学答案"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -14179,7 +14289,8 @@
                 "label": "附录B.1",
                 "url": "https://arxiv.org/html/2506.10943#A2.SS1"
               }
-            ]
+            ],
+            "judgment": "GPT-4.1 对照 SQuAD 参考答案作模型判分"
           },
           {
             "label": "少样本适应：ARC",
@@ -14204,7 +14315,8 @@
                 "label": "附录B.1",
                 "url": "https://arxiv.org/html/2506.10943#A2.SS1"
               }
-            ]
+            ],
+            "judgment": "规则比较模型预测的 ARC 网格与标准网格"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -14562,7 +14674,8 @@
                 "label": "附录C.3",
                 "url": "https://arxiv.org/html/2604.23472#A3.SS3"
               }
-            ]
+            ],
+            "judgment": "程序检查几何约束，再计算合法构型的接触数"
           },
           {
             "label": "Circle Packing（26 圆）",
@@ -14587,7 +14700,8 @@
                 "label": "附录C.3",
                 "url": "https://arxiv.org/html/2604.23472#A3.SS3"
               }
-            ]
+            ],
+            "judgment": "程序检查不越界、不重叠，再计算半径和"
           },
           {
             "label": "Heilbronn Triangle（11 点）",
@@ -14612,7 +14726,8 @@
                 "label": "附录C.3",
                 "url": "https://arxiv.org/html/2604.23472#A3.SS3"
               }
-            ]
+            ],
+            "judgment": "程序检查点构型并计算最小三角形面积"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -15043,7 +15158,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04465#A3.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "规则抽取方框内整数，与标准整数比较"
           },
           {
             "label": "ARC",
@@ -15076,7 +15192,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04465#A3.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "规则比较预测网格与标准网格"
           },
           {
             "label": "GPQA",
@@ -15109,7 +15226,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04465#A3.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "规则比较选项字母与标准选项"
           },
           {
             "label": "MBPP",
@@ -15142,7 +15260,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04465#A3.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "MBPP 隐藏单元测试执行代码"
           },
           {
             "label": "Sudoku",
@@ -15175,7 +15294,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04465#A3.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "程序检查数独行、列和子块约束"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -15484,7 +15604,8 @@
                 "label": "Appendix C.5",
                 "url": "https://arxiv.org/abs/2606.26294"
               }
-            ]
+            ],
+            "judgment": "写作由当轮冻结评审代理评分；评审代理用真实接收标签验收"
           },
           {
             "label": "数学证明 / 评分",
@@ -15497,7 +15618,8 @@
                 "label": "Appendix C.5",
                 "url": "https://arxiv.org/abs/2606.26294"
               }
-            ]
+            ],
+            "judgment": "证明由当轮冻结评分代理按要求给分；评分代理再与人类分数比对"
           },
           {
             "label": "编程",
@@ -15510,7 +15632,8 @@
                 "label": "Appendix C.5",
                 "url": "https://arxiv.org/abs/2606.26294"
               }
-            ]
+            ],
+            "judgment": "代码题可执行测试"
           },
           {
             "label": "代码评审",
@@ -15523,7 +15646,8 @@
                 "label": "Appendix C.5",
                 "url": "https://arxiv.org/abs/2606.26294"
               }
-            ]
+            ],
+            "judgment": "规则比较预测 PR 接收标签与数据集标签"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -15905,7 +16029,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2608.07645#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试／Polyglot 编程题测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -16321,7 +16446,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2403.03186#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "模型从屏幕、视频与状态变化自评子目标；研究端另计游戏完成指标"
           },
           {
             "label": "电脑软件 / OSWorld",
@@ -16350,7 +16476,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2403.03186#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "OSWorld 每题人工编写的可执行验收脚本"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -16793,7 +16920,8 @@
                 "label": "§3.2",
                 "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
               }
-            ]
+            ],
+            "judgment": "规则比较预测元素、动作与人工标注，计算准确率和 F1"
           },
           {
             "label": "在线归纳：WebArena / Mind2Web",
@@ -16818,7 +16946,8 @@
                 "label": "§3.2",
                 "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
               }
-            ]
+            ],
+            "judgment": "记忆写入用模型预测成功；正式 WebArena 用环境验收、Mind2Web 用标注动作比对"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -17229,7 +17358,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2502.12110#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "模型判断记忆语义关联；写入时无标准答案正确性奖励"
           },
           {
             "label": "记忆问答评估",
@@ -17254,7 +17384,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2502.12110#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "规则计算回答与参考答案的词项重合指标；另计算语义相似度"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -17659,7 +17790,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2508.06433#A3"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序判任务是否完成"
           },
           {
             "label": "TravelPlanner",
@@ -17688,7 +17820,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2508.06433#A3"
               }
-            ]
+            ],
+            "judgment": "TravelPlanner 程序检查 JSON 行程中的常识与硬约束"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -18085,7 +18218,8 @@
                 "label": "附录B.2",
                 "url": "https://arxiv.org/html/2509.25140#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "执行模型读取自己的轨迹自评，无标准答案"
           },
           {
             "label": "最终任务评分",
@@ -18114,7 +18248,8 @@
                 "label": "附录B.2",
                 "url": "https://arxiv.org/html/2509.25140#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "WebArena 用状态验收；Mind2Web 比标注动作；SWE 用仓库测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -18549,7 +18684,8 @@
                 "label": "附录B.2",
                 "url": "https://arxiv.org/html/2604.10923#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "LLM 读取任务、轨迹和回答自评，不访问标准答案"
           },
           {
             "label": "最终问答 / 规划 / 操作评估",
@@ -18582,7 +18718,8 @@
                 "label": "附录B.2",
                 "url": "https://arxiv.org/html/2604.10923#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "问答／数学按参考答案，本文未逐项展开比对器；规划／操作按环境规则检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -19003,7 +19140,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2604.16839#A4"
               }
-            ]
+            ],
+            "judgment": "记忆访问、共同激活和关联统计驱动维护，无逐条标准答案奖励"
           },
           {
             "label": "问答评估",
@@ -19036,7 +19174,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2604.16839#A4"
               }
-            ]
+            ],
+            "judgment": "LoCoMo 用词项重合指标；LongMemEval-S 沿用其问答协议，本文未展开裁判实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -19486,7 +19625,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2608.16114#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "GT-judge 对照标准答案判成败；本文未明确该 judge 是规则还是模型实现"
           },
           {
             "label": "自评消融与最终指标",
@@ -19523,7 +19663,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2608.16114#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "自评变体由模型读取轨迹判断成败，不看标准答案"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -19947,7 +20088,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2608.24876#A3"
               }
-            ]
+            ],
+            "judgment": "τ² 环境验收最终状态；规则另计必需操作召回"
           },
           {
             "label": "Terminal-Bench 2.1 同题重试",
@@ -19972,7 +20114,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2608.24876#A3"
               }
-            ]
+            ],
+            "judgment": "TB2.1 隐藏测试程序验收；重试只给失败标记"
           },
           {
             "label": "SkillFlow",
@@ -19997,7 +20140,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2608.24876#A3"
               }
-            ]
+            ],
+            "judgment": "SkillFlow 按任务族配置的验收器／评分细则判分，本文未逐族列出实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -20375,7 +20519,7 @@
           {
             "label": "OfficeQA",
             "data": "24 道训练、17 道验证、205 道测试。",
-            "scoring": "官方五档容差模糊匹配：数值看相对误差，文字看归一化编辑距离，再映射为任务分数；低于阈值的样本进入失败池。",
+            "scoring": "官方五档容差模糊匹配：数值看相对误差，文字看归一化编辑距离，再映射为任务分数；低于阈值的样本进入失败池。 主文准确率除特别声明外使用 0% 容差的精确匹配；不能把较宽容差下的反馈分直接当成主表准确率。",
             "visible": "除分数外还读取缺失文档、编译错误、约束违规等结构化诊断。",
             "use": "据失败改技能或工具，以独立验证筛选/回归检查，最终在 205 题报告效果。",
             "sources": [
@@ -20399,7 +20543,8 @@
                 "label": "附录D.6",
                 "url": "https://arxiv.org/html/2606.01314#A4.SS6"
               }
-            ]
+            ],
+            "judgment": "OfficeQA 规则比对数值误差／文字编辑距离；主表准确率采用 0% 容差"
           },
           {
             "label": "SealQA",
@@ -20428,7 +20573,8 @@
                 "label": "附录D.6",
                 "url": "https://arxiv.org/html/2606.01314#A4.SS6"
               }
-            ]
+            ],
+            "judgment": "Qwen3.5-122B 对照问题、标准答案和回答判对错，三次多数票"
           },
           {
             "label": "WildClawBench",
@@ -20457,7 +20603,8 @@
                 "label": "附录D.6",
                 "url": "https://arxiv.org/html/2606.01314#A4.SS6"
               }
-            ]
+            ],
+            "judgment": "按每题二元检查点和关键项规则汇总；本文未逐项说明检查点由程序或模型判断"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -20829,7 +20976,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2606.17220#S5.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则比较检索结果与人工相关性标注，计算召回率"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -21179,7 +21327,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2608.22793#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "沿用 CAR-bench 任务成功判定；所引段落未展开内部规则／模型检查"
           },
           {
             "label": "隐藏评测",
@@ -21204,7 +21353,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2608.22793#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "沿用 CAR-bench 成功判定，再统计多次运行可靠性"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -21590,7 +21740,8 @@
                 "label": "§3.2",
                 "url": "https://arxiv.org/html/2608.23397#S3.SS2.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "符号规则检查证据和前置条件 + 临床模型按过程评分要求评审"
           },
           {
             "label": "冻结病例与压力评估",
@@ -21615,7 +21766,8 @@
                 "label": "§3.2",
                 "url": "https://arxiv.org/html/2608.23397#S3.SS2.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "程序检查事件与格式；模型对照目标和完整轨迹作语义评审"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -21951,7 +22103,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2608.23552#A1"
               }
-            ]
+            ],
+            "judgment": "nanoGPT 用验证损失；EmulatorBench 用程序测试；游戏用环境目标"
           },
           {
             "label": "能力评测",
@@ -21968,7 +22121,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2608.23552#A1"
               }
-            ]
+            ],
+            "judgment": "按任务分别用环境状态、参考答案或诊断测试；非统一模型裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -22412,7 +22566,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2605.09998#A4"
               }
-            ]
+            ],
+            "judgment": "过程奖励模型评状态转移；低分窗口再由教师模型重标"
           },
           {
             "label": "预热与最终进度",
@@ -22437,7 +22592,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2605.09998#A4"
               }
-            ]
+            ],
+            "judgment": "程序检查预热格式；环境里程碑衡量长期进度"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -22862,7 +23018,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2605.24539#A1.SS0.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "Liar’s Dice 游戏规则计算胜负"
           },
           {
             "label": "Balatro",
@@ -22887,7 +23044,8 @@
                 "label": "附录A",
                 "url": "https://arxiv.org/html/2605.24539#A1.SS0.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "Balatro 游戏规则计算终局成绩；人类示范仅作修正参照"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -23301,7 +23459,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2606.06324#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "GAIA 标注答案比对；本文未展开采用规则还是模型裁判"
           },
           {
             "label": "SWE-bench Verified",
@@ -23326,7 +23485,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2606.06324#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试验收"
           },
           {
             "label": "AppWorld",
@@ -23351,7 +23511,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2606.06324#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "AppWorld 任务验收程序"
           },
           {
             "label": "Terminal-Bench 2",
@@ -23376,7 +23537,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2606.06324#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 容器验收程序"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -23725,7 +23887,7 @@
           {
             "label": "GAIA",
             "data": "103 题",
-            "scoring": "按问答参考答案评价回答。",
+            "scoring": "程序将最终回答与 GAIA 参考答案作精确匹配，按正确比例计分；论文任务说明明确为 exact match。",
             "visible": "各任务分数与全执行记录持续写入存储，修改者据此诊断处理逻辑并提出候选。",
             "use": "每轮反复使用相同适应任务；曲线仍是这批题的表现。每题重置环境只隔离运行状态，不等于另有测试集。",
             "sources": [
@@ -23744,8 +23906,13 @@
               {
                 "label": "§9.2",
                 "url": "https://arxiv.org/html/2606.14249#S9.SS2"
+              },
+              {
+                "label": "§9.1：GAIA exact match",
+                "url": "https://arxiv.org/html/2606.14249#S9.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "GAIA：规则将回答与参考答案精确匹配"
           },
           {
             "label": "ALFWorld / WebShop",
@@ -23770,7 +23937,8 @@
                 "label": "§9.2",
                 "url": "https://arxiv.org/html/2606.14249#S9.SS2"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 目标检查；WebShop 商品约束奖励，均由环境程序计算"
           },
           {
             "label": "τ³ Retail / Airline / Telecom",
@@ -23795,7 +23963,8 @@
                 "label": "§9.2",
                 "url": "https://arxiv.org/html/2606.14249#S9.SS2"
               }
-            ]
+            ],
+            "judgment": "客服环境的目标／状态验收；本文未逐任务展开内部判分"
           },
           {
             "label": "SWE-bench Verified",
@@ -23820,7 +23989,8 @@
                 "label": "§9.2",
                 "url": "https://arxiv.org/html/2606.14249#S9.SS2"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 仓库测试验收"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -24183,7 +24353,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2607.13683#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "终端验收测试／仓库测试／代码题测试"
           },
           {
             "label": "AppWorld",
@@ -24204,7 +24375,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2607.13683#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "AppWorld 环境状态验收"
           },
           {
             "label": "Omni-MATH / BrowseComp+",
@@ -24225,7 +24397,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2607.13683#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "参考答案判分；本文未逐基准说明规则或模型比对器"
           },
           {
             "label": "GDPval",
@@ -24246,7 +24419,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2607.13683#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "按 GDPval 任务评分细则评价；所引段落未明确裁判型号"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -24656,7 +24830,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2603.21877#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "数学标准答案验证奖励；本文未展开具体答案解析与比对实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -25027,7 +25202,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04455#A3.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "数学标准答案比对；本文未展开解析器实现"
           },
           {
             "label": "科学选择题",
@@ -25052,7 +25228,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04455#A3.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "参考选项判对错"
           },
           {
             "label": "代码生成",
@@ -25077,7 +25254,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2606.04455#A3.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "执行代码题单元测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -25453,7 +25631,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2608.06301#A5"
               }
-            ]
+            ],
+            "judgment": "固定问答评分器对照参考答案；本文未逐项披露规则或模型判分实现"
           },
           {
             "label": "OfficeQA Pro",
@@ -25470,7 +25649,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2608.06301#A5"
               }
-            ]
+            ],
+            "judgment": "固定文档问答评分器；本文未展开其规则／模型比对实现"
           },
           {
             "label": "Terminal-Bench 2",
@@ -25487,7 +25667,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2608.06301#A5"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 原生验收测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -25917,7 +26098,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2505.11942#A1.SS1.SSS1"
               }
-            ]
+            ],
+            "judgment": "执行 SQL 后检查查询结果或数据库目标"
           },
           {
             "label": "Operating System",
@@ -25942,7 +26124,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2505.11942#A1.SS1.SSS1"
               }
-            ]
+            ],
+            "judgment": "执行 Bash 后检查文件／系统目标状态"
           },
           {
             "label": "Knowledge Graph",
@@ -25967,7 +26150,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2505.11942#A1.SS1.SSS1"
               }
-            ]
+            ],
+            "judgment": "执行图谱操作并比较任务目标或参考结果"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -26442,7 +26626,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2507.05257#S3.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "输入材料及其中标签是学习信息，无统一逐步正确性奖励"
           },
           {
             "label": "分类 / 检索 / 事实问答",
@@ -26483,7 +26668,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2507.05257#S3.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "分类／事实任务比参考标签；LongMemEval 用有参考答案的模型评审"
           },
           {
             "label": "长程理解与推荐",
@@ -26524,7 +26710,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2507.05257#S3.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "各任务原生指标；所引段落未逐任务展开比对器"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -26922,7 +27109,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2508.19005#S5.SS2.SSS1.Px2"
               }
-            ]
+            ],
+            "judgment": "校园仿真环境检查活动与考试结果，再汇总 StuGPA"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -27278,7 +27466,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2510.17281#A1.SS1"
               }
-            ]
+            ],
+            "judgment": "规则计算参考答案 F1／准确率，再映射为反馈模板"
           },
           {
             "label": "开放输出的反馈模拟与评价",
@@ -27303,7 +27492,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2510.17281#A1.SS1"
               }
-            ]
+            ],
+            "judgment": "WritingBench 用 Qwen-7B critic；其余需模型评审的任务用 DeepSeek-V3"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -27800,7 +27990,8 @@
                 "label": "附录F.1",
                 "url": "https://arxiv.org/html/2511.20857#A6.SS1"
               }
-            ]
+            ],
+            "judgment": "选择题比参考选项；AIME 用规则精确匹配答案"
           },
           {
             "label": "交互任务流",
@@ -27845,7 +28036,8 @@
                 "label": "附录F.1",
                 "url": "https://arxiv.org/html/2511.20857#A6.SS1"
               }
-            ]
+            ],
+            "judgment": "交互环境分别验收工具、操作、实验和规划任务目标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -28202,7 +28394,8 @@
                 "label": "附录A.2",
                 "url": "https://arxiv.org/html/2604.17308#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "各任务族配置验收器，反馈包含分数及错误说明；本文未逐族列出程序／模型实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -28760,7 +28953,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2604.20087#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "执行失败信息用于自反馈；教师模型依据任务和可用参考技能给建议"
           },
           {
             "label": "变体任务与技能质量评测",
@@ -28809,7 +29003,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2604.20087#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "可验证任务用确定性检查器；需要模型评价的指标用 GPT-5-mini"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -29214,7 +29409,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2605.18421#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "依据各知识任务的参考答案／评分细则；本文未逐项明确规则或模型配置"
           },
           {
             "label": "执行状态与工具记忆",
@@ -29247,7 +29443,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2605.18421#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "原工具环境检查动作和状态目标"
           },
           {
             "label": "跨任务交互迁移",
@@ -29280,7 +29477,8 @@
                 "label": "§4.4",
                 "url": "https://arxiv.org/html/2605.18421#S4.SS4"
               }
-            ]
+            ],
+            "judgment": "搜索问答按参考答案，未展开比对实现；ALFWorld 用环境目标检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -29665,7 +29863,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则计算预测频段与真实频段的交并比"
           },
           {
             "label": "Codebase Adaptation",
@@ -29686,7 +29885,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "可执行代码测试验收修复"
           },
           {
             "label": "Cohort Studies",
@@ -29707,7 +29907,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序比较预测与真实生存概率，按基线归一"
           },
           {
             "label": "Database Exploration",
@@ -29728,7 +29929,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序检查答案、预算和超时，并计查询成本"
           },
           {
             "label": "Exploitable Poker",
@@ -29749,7 +29951,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "扑克环境规则结算筹码利润"
           },
           {
             "label": "Sales Prediction",
@@ -29770,7 +29973,8 @@
                 "label": "附录D",
                 "url": "https://arxiv.org/html/2606.05661#A4.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序用真实销量计算加权绝对百分比误差"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -30228,7 +30432,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "LLM 使用 BrowseComp+ 官方提示，对照标准答案判语义正确性"
           },
           {
             "label": "GDPval",
@@ -30257,7 +30462,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "模型对照标准产物／内容评 GDPval 结果"
           },
           {
             "label": "SWE-bench Verified",
@@ -30286,7 +30492,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 隐藏仓库测试"
           },
           {
             "label": "LiveCodeBench",
@@ -30315,7 +30522,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2607.05202#A5.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "LiveCodeBench 隐藏代码测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -30656,7 +30864,8 @@
                 "label": "§5.3",
                 "url": "https://arxiv.org/html/2608.00155#S5.SS3.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "AppWorld／BFCL／τ² 各自原生状态与动作验收"
           },
           {
             "label": "BrowseComp+ / HLE",
@@ -30673,7 +30882,8 @@
                 "label": "§5.3",
                 "url": "https://arxiv.org/html/2608.00155#S5.SS3.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "GPT-5.4 按源问答评估协议对照参考答案判分"
           },
           {
             "label": "SWE",
@@ -30690,7 +30900,8 @@
                 "label": "§5.3",
                 "url": "https://arxiv.org/html/2608.00155#S5.SS3.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "SWE 仓库测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -31080,7 +31291,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2608.01149#A2.SS0.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "BigCodeBench 用单元测试；WildToolBench 用子任务完成率，未展开其所有检查实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -31479,7 +31691,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2608.03874#A5"
               }
-            ]
+            ],
+            "judgment": "数值答案检查／标准输出精确匹配，由规则判分"
           },
           {
             "label": "开放与交互题目的技能链",
@@ -31504,7 +31717,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2608.03874#A5"
               }
-            ]
+            ],
+            "judgment": "按逐题评分细则或任务工具检查；本文未明确所有裁判的规则／模型实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -31854,7 +32068,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2608.04003#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "确定性任务检查器 + MiniMax-M2.7 开放回答评审；另作人工盲评核对"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -32231,7 +32446,8 @@
                 "label": "Claude Code 官方说明",
                 "url": "https://code.claude.com/docs/en/overview"
               }
-            ]
+            ],
+            "judgment": "Claude Opus 4.6 在 Claude Code 中按人工审核的场景评分细则评审"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -32689,7 +32905,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2603.08640#A5"
               }
-            ]
+            ],
+            "judgment": "原文将这些任务列为答案精确匹配；此处 BFCL 不应套用其他论文的状态评测"
           },
           {
             "label": "HumanEval",
@@ -32714,7 +32931,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2603.08640#A5"
               }
-            ]
+            ],
+            "judgment": "HumanEval 单元测试执行程序"
           },
           {
             "label": "ArenaHard Writing / HealthBench-Easy",
@@ -32739,7 +32957,8 @@
                 "label": "附录E",
                 "url": "https://arxiv.org/html/2603.08640#A5"
               }
-            ]
+            ],
+            "judgment": "GPT-5-mini：ArenaHard 作回答对比，HealthBench 按医疗评分细则评审"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -33115,7 +33334,8 @@
                 "label": "§2.6",
                 "url": "https://arxiv.org/html/2604.10547#S2.SS6.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "GSM8K 规则验证答案；HumanEval 单元测试"
           },
           {
             "label": "AlpacaEval 2.0",
@@ -33136,7 +33356,8 @@
                 "label": "§2.6",
                 "url": "https://arxiv.org/html/2604.10547#S2.SS6.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "LLM 作单轮回答偏好评审；本文未在该段指定裁判型号"
           },
           {
             "label": "ALFWorld / WebShop",
@@ -33157,7 +33378,8 @@
                 "label": "§2.6",
                 "url": "https://arxiv.org/html/2604.10547#S2.SS6.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境二元成功；WebShop 环境连续奖励"
           },
           {
             "label": "DeepSearchQA",
@@ -33178,7 +33400,8 @@
                 "label": "§2.6",
                 "url": "https://arxiv.org/html/2604.10547#S2.SS6.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "自建搜索交互与模型判分器；不等同于原基准排行榜协议"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -33567,7 +33790,8 @@
                 "label": "附录D.3",
                 "url": "https://arxiv.org/html/2606.04261#A4.SS3.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "VLMEvalKit 各任务客观规则 + 独立 Qwen3.5-27B 处理需模型判读的指标"
           },
           {
             "label": "CLIP 图文筛选",
@@ -33588,7 +33812,8 @@
                 "label": "附录D.3",
                 "url": "https://arxiv.org/html/2606.04261#A4.SS3.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "DataComp 官方 38 项任务的程序化指标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -34061,7 +34286,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2606.05080#A1.SS1.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "程序验证功能正确性，再测速度、成本或任务目标"
           },
           {
             "label": "模型开发任务",
@@ -34090,7 +34316,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2606.05080#A1.SS1.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "IFEval 用格式规则；图像／视频任务用指定质量或预测指标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -34480,7 +34707,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2607.05155#S3.SS1"
               }
-            ]
+            ],
+            "judgment": "本地实验反馈 + 隔离任务评估器；具体判分按工程任务定义"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -34780,7 +35008,8 @@
                 "label": "关于 ultraintelligent machine 与 intelligence explosion 的论述",
                 "url": "https://doi.org/10.1016/S0065-2458(08)60418-0"
               }
-            ]
+            ],
+            "judgment": "理论论证，无训练反馈或实验判分器"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -35081,7 +35310,8 @@
                 "label": "PSALM 实现与初步实验",
                 "url": "https://people.idsia.ch/~juergen/diploma.html"
               }
-            ]
+            ],
+            "judgment": "自建环境的目标／适应度与信用分配，无现代 benchmark 或 LLM 裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -35381,7 +35611,8 @@
                 "label": "§6 Experiments",
                 "url": "https://arxiv.org/abs/cs/0207097"
               }
-            ]
+            ],
+            "judgment": "执行候选程序验证当前任务解，并计算搜索／运行时间"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -35718,7 +35949,8 @@
                 "label": "§4",
                 "url": "https://arxiv.org/html/1805.06610#S4"
               }
-            ]
+            ],
+            "judgment": "按理论模拟预设的程序分数与期望搜索步数计算"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -36067,7 +36299,8 @@
                 "label": "§4",
                 "url": "https://arxiv.org/html/2203.11171#S4.SS0.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "候选答案规则多数票；选择阶段不使用标准答案"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -36463,7 +36696,8 @@
                 "label": "附录M.2",
                 "url": "https://arxiv.org/html/2303.17651#A13.SS2.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "同一个模型按任务反馈提示自评并修改，无外部答案验收"
           },
           {
             "label": "自动指标评估",
@@ -36488,7 +36722,8 @@
                 "label": "附录M.2",
                 "url": "https://arxiv.org/html/2303.17651#A13.SS2.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "最终按数学正确性、代码性能和约束覆盖等任务指标评价"
           },
           {
             "label": "人工偏好评估",
@@ -36513,7 +36748,8 @@
                 "label": "附录M.2",
                 "url": "https://arxiv.org/html/2303.17651#A13.SS2.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "人类盲评两份输出的偏好"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -36946,7 +37182,8 @@
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2305.11738#A4.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "纠错时模型核对搜索证据；最终用参考答案 EM／F1 规则计分"
           },
           {
             "label": "数学程序纠错",
@@ -36979,7 +37216,8 @@
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2305.11738#A4.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "纠错时执行 Python；最终规则比较计算答案与标准数值"
           },
           {
             "label": "降低文本毒性",
@@ -37012,7 +37250,8 @@
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2305.11738#A4.SS1.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "Perspective API 返回毒性模型分数"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -37401,7 +37640,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2305.20050#A3"
               }
-            ]
+            ],
+            "judgment": "人类对推理步骤逐条标注正确性"
           },
           {
             "label": "最终解答选择与测试",
@@ -37426,7 +37666,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2305.20050#A3"
               }
-            ]
+            ],
+            "judgment": "训练出的奖励模型选择候选；最终答案再与标准数学答案核对"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -37867,7 +38108,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS4"
               }
-            ]
+            ],
+            "judgment": "模型独立回答自建核查问题；不是查询标准答案"
           },
           {
             "label": "最终事实性评估",
@@ -37892,7 +38134,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS4"
               }
-            ]
+            ],
+            "judgment": "列表／问答按参考内容；传记用检索增强模型逐条核实事实"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -38252,7 +38495,8 @@
                 "label": "§5",
                 "url": "https://arxiv.org/html/2310.01798#S5"
               }
-            ]
+            ],
+            "judgment": "纯自纠错无对错信号；对照组给真实正确性标记；最终按基准参考答案计分"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -38600,7 +38844,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2310.04406#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "搜索终局用标准答案反馈；模型另估计中间节点价值"
           },
           {
             "label": "HumanEval / MBPP 搜索",
@@ -38621,7 +38866,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2310.04406#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "内部单元测试指导搜索；隐藏正式测试负责最终判分"
           },
           {
             "label": "WebShop 搜索",
@@ -38642,7 +38888,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2310.04406#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "WebShop 环境奖励 + 模型节点估值"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -39017,7 +39264,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2309.03409#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "规则以任务模型的回答对照参考答案算准确率；scorer LLM 是答题者"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -39392,7 +39640,8 @@
                 "label": "附录L",
                 "url": "https://arxiv.org/html/2309.16797#A12"
               }
-            ]
+            ],
+            "judgment": "回答与参考答案比较的准确率；所引段落未展开各任务解析器"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -39801,7 +40050,8 @@
                 "label": "§7",
                 "url": "https://arxiv.org/html/2310.03714#S7"
               }
-            ]
+            ],
+            "judgment": "用户定义的程序化 metric，例如参考答案精确匹配／词项 F1"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -40108,7 +40358,8 @@
                 "label": "§5.1 Fixed Downstream Task",
                 "url": "https://arxiv.org/abs/2310.02304"
               }
-            ]
+            ],
+            "judgment": "执行生成的程序，按各任务定义的效用函数与资源预算计分"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -40540,7 +40791,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2406.07496#A5.SS1"
               }
-            ]
+            ],
+            "judgment": "GSM8K／Object Counting 用字符串精确匹配；Word Sorting 用模型对照标准排序"
           },
           {
             "label": "当前实例的代码 / 科学优化",
@@ -40569,7 +40821,8 @@
                 "label": "附录E.1",
                 "url": "https://arxiv.org/html/2406.07496#A5.SS1"
               }
-            ]
+            ],
+            "judgment": "代码测试／放疗数值约束／分子性质指标，按实验分别评价"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -40981,7 +41234,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2410.10762#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "规则计算回答与参考答案的词项 F1"
           },
           {
             "label": "GSM8K / MATH",
@@ -41006,7 +41260,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2410.10762#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "数学参考答案判分；本文未在该段展开所有答案解析器"
           },
           {
             "label": "HumanEval / MBPP",
@@ -41031,7 +41286,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2410.10762#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "HumanEval／MBPP 正式代码测试；内部调试另用公开测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -41430,7 +41686,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2507.03616#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "规则计算 HotpotQA 回答与标注答案的词项 F1"
           },
           {
             "label": "工作流优化：MBPP",
@@ -41455,7 +41712,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2507.03616#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "MBPP 可执行代码测试"
           },
           {
             "label": "工作流优化：MATH",
@@ -41480,7 +41738,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2507.03616#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "对照 MATH 标准答案；本文未在该段展开比对实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -41879,7 +42138,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "ALE-Bench 比赛测试程序计算目标分"
           },
           {
             "label": "损失函数进化：MoE",
@@ -41908,7 +42168,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "实际训练模型，计算验证损失／困惑度及下游指标"
           },
           {
             "label": "几何程序：圆 packing",
@@ -41937,7 +42198,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序检查几何合法性，计算半径和等目标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -42347,7 +42609,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2305.10250#S4.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "对话内容与时间／回忆使用驱动记忆维护，无答案奖励"
           },
           {
             "label": "最终记忆评估",
@@ -42380,7 +42643,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2305.10250#S4.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "人类按相关性、正确性、连贯性进行离散评分"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -42728,7 +42992,7 @@
           {
             "label": "经验提炼：HotpotQA",
             "data": "distractor-dev 中 100 题；每次一半收集经验、另一半评估，交换两半，按论文四折汇总。",
-            "scoring": "对照问答标准答案检查回答正确性。",
+            "scoring": "使用规则将最终回答与标准答案精确匹配，返回成功／失败；论文明确沿用 ReAct 的任务成功指标。",
             "visible": "带结果的成功和失败执行轨迹。",
             "use": "比较成败过程，提炼、增删文字规则，在另一半题上使用；另有 HotpotQA（需要结合多份资料作答的多跳问答基准）→FEVER 迁移。",
             "sources": [
@@ -42737,14 +43001,15 @@
                 "url": "https://arxiv.org/html/2308.10144#S4.SS4"
               },
               {
-                "label": "§5.1",
+                "label": "§5.1：明确规定 HotpotQA exact matching",
                 "url": "https://arxiv.org/html/2308.10144#S5.SS1"
               },
               {
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2308.10144#A4.SS1"
               }
-            ]
+            ],
+            "judgment": "规则将 HotpotQA 最终回答与参考答案精确匹配"
           },
           {
             "label": "经验提炼：ALFWorld",
@@ -42765,7 +43030,8 @@
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2308.10144#A4.SS1"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境检查目标"
           },
           {
             "label": "经验提炼：WebShop",
@@ -42786,7 +43052,8 @@
                 "label": "附录D.1",
                 "url": "https://arxiv.org/html/2308.10144#A4.SS1"
               }
-            ]
+            ],
+            "judgment": "WebShop 程序计算商品对购物要求的满足程度"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -43192,7 +43459,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2409.00872#A3"
               }
-            ]
+            ],
+            "judgment": "Checker 模型依据回答和交互历史作批评，不读取基准真值作验收"
           },
           {
             "label": "长文本与检索问答评价",
@@ -43209,7 +43477,8 @@
                 "label": "§4.5：检索问答",
                 "url": "https://arxiv.org/html/2409.00872#S4.SS5"
               }
-            ]
+            ],
+            "judgment": "参考答案／代码行的词项匹配指标；检索实验另计准确率"
           },
           {
             "label": "其他交互任务评价",
@@ -43238,7 +43507,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2409.00872#A3"
               }
-            ]
+            ],
+            "judgment": "各任务完成指标；本文未逐环境展开检查角色的全部判分实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -43647,7 +43917,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "AppWorld 官方程序检查任务／场景目标；无标签变体只用执行反馈"
           },
           {
             "label": "FiNER / Formula / DDXPlus",
@@ -43668,7 +43939,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则精确匹配预测答案与数据集标签"
           },
           {
             "label": "BIRD-SQL",
@@ -43681,7 +43953,8 @@
                 "label": "§4.1：Evaluation Metrics",
                 "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "GPT-4o-mini 作 BIRD-SQL 裁判；不能默认是 SQL 结果集比较"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -44014,7 +44287,8 @@
                 "label": "§3.3：奖励函数",
                 "url": "https://arxiv.org/html/2510.16079#S3.SS3.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则精确匹配最终答案 + 轨迹格式检查"
           },
           {
             "label": "最终问答测试",
@@ -44031,7 +44305,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2510.16079#S4.SS1.SSS1"
               }
-            ]
+            ],
+            "judgment": "对照问答基准参考答案计算正确性"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -44413,7 +44688,8 @@
                 "label": "§9.1",
                 "url": "https://arxiv.org/html/2512.18746#S9.SS1"
               }
-            ]
+            ],
+            "judgment": "框架支持精确匹配和模型评审；本文未逐实验明确选用了哪一种"
           },
           {
             "label": "最终迁移评估",
@@ -44434,7 +44710,8 @@
                 "label": "§9.1",
                 "url": "https://arxiv.org/html/2512.18746#S9.SS1"
               }
-            ]
+            ],
+            "judgment": "沿用各任务正确性评测；未逐基准披露具体裁判配置"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -44897,7 +45174,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2602.07755#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境规则检查目标与步数上限"
           },
           {
             "label": "TextWorld",
@@ -44930,7 +45208,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2602.07755#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "TextWorld 游戏规则计算进度／完成奖励"
           },
           {
             "label": "Baba Is AI",
@@ -44963,7 +45242,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2602.07755#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "Baba Is AI 游戏规则判胜利"
           },
           {
             "label": "MiniHack",
@@ -44996,7 +45276,8 @@
                 "label": "附录B.4",
                 "url": "https://arxiv.org/html/2602.07755#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "MiniHack 环境规则判关卡目标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -45405,7 +45686,8 @@
                 "label": "§4.1：任务与指标",
                 "url": "https://arxiv.org/html/2603.18620#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "执行 SQL 后检查查询结果正确性"
           },
           {
             "label": "问答：上下文编辑学习与部署",
@@ -45426,7 +45708,8 @@
                 "label": "§4.1：任务与指标",
                 "url": "https://arxiv.org/html/2603.18620#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "问答参考答案判分；本文未展开规则或模型比对实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -45742,7 +46025,8 @@
                 "label": "附录A.4",
                 "url": "https://arxiv.org/html/2402.17574#A1.SS4"
               }
-            ]
+            ],
+            "judgment": "游戏规则结算筹码；模型另反思自己的文字信念"
           },
           {
             "label": "德州扑克：最终测试",
@@ -45759,7 +46043,8 @@
                 "label": "附录A.4",
                 "url": "https://arxiv.org/html/2402.17574#A1.SS4"
               }
-            ]
+            ],
+            "judgment": "游戏规则结算最终筹码"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -46118,7 +46403,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2510.23601#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "任务执行成功记录用于抽象工具；未公开统一工具验收器"
           },
           {
             "label": "最终问答评价",
@@ -46143,7 +46429,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2510.23601#S4.SS2"
               }
-            ]
+            ],
+            "judgment": "报告答案准确率，但未逐基准披露规则或模型判分实现"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -46555,7 +46842,8 @@
                 "label": "§3.2：知识生成",
                 "url": "https://arxiv.org/html/2603.13131#S3.SS2"
               }
-            ]
+            ],
+            "judgment": "程序比较状态与背包，生成进度／停滞／错误信号；模型另整理知识"
           },
           {
             "label": "Minecraft：任务评价",
@@ -46584,7 +46872,8 @@
                 "label": "附录D.5",
                 "url": "https://arxiv.org/html/2603.13131#A4.SS5"
               }
-            ]
+            ],
+            "judgment": "Minecraft 环境中的物品获取与目标完成检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -46929,7 +47218,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2603.18000#A2"
               }
-            ]
+            ],
+            "judgment": "实际执行 Python，修改者根据异常与产物检查并修复"
           },
           {
             "label": "复用测试",
@@ -46950,7 +47240,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2603.18000#A2"
               }
-            ]
+            ],
+            "judgment": "自建任务的完成与开销评价，无统一公共答案裁判"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -47416,7 +47707,8 @@
                 "label": "§3.1：GAIA 迭代",
                 "url": "https://arxiv.org/html/2603.18743#S3.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "Judge 接收题目、回答和标准答案；算法未明确该调用的规则／模型实现"
           },
           {
             "label": "最终任务测试",
@@ -47453,7 +47745,8 @@
                 "label": "§3.1",
                 "url": "https://arxiv.org/html/2603.18743#S3.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "参考答案正确率；与技能学习中的重试成功率分开"
           },
           {
             "label": "路由器：合成查询训练与评估",
@@ -47470,7 +47763,8 @@
                 "label": "§2.4：检索指标",
                 "url": "https://arxiv.org/html/2603.18743#S2.SS4.SSS0.Px3"
               }
-            ]
+            ],
+            "judgment": "模型检查查询与技能的适配；Recall@K 用目标技能标签计算"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -47857,7 +48151,8 @@
                 "label": "附录 B.1：评价协议与指标",
                 "url": "https://arxiv.org/html/2604.15097#A2.SS1"
               }
-            ]
+            ],
+            "judgment": "场景自带沙箱测试，规则计算通过检查点比例"
           },
           {
             "label": "CritPt 评价",
@@ -47882,7 +48177,8 @@
                 "label": "附录D.3",
                 "url": "https://arxiv.org/html/2604.15097#A4.SS3"
               }
-            ]
+            ],
+            "judgment": "沿用 CritPt 任务评测；该处未展开具体判分器"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -48274,7 +48570,8 @@
                 "label": "§3.3：技能成熟度",
                 "url": "https://arxiv.org/html/2604.20133#S3.SS3.SSS0.Px6"
               }
-            ]
+            ],
+            "judgment": "用户交互与技能使用统计，没有显式统一的数值训练奖励"
           },
           {
             "label": "外贸回答质量评价",
@@ -48287,7 +48584,8 @@
                 "label": "§4.1：回答评估设计",
                 "url": "https://arxiv.org/html/2604.20133#S4.SS1.SSS2.Px2"
               }
-            ]
+            ],
+            "judgment": "规则算 ROUGE-L 等；LLM 按五维 1–5 分细则另作质量评审"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -48735,7 +49033,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2605.23904#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "使用任务原生硬分／精确匹配；本文未逐项列出答案解析器"
           },
           {
             "label": "SpreadsheetBench",
@@ -48764,7 +49063,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2605.23904#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "SpreadsheetBench 原生产物检查程序"
           },
           {
             "label": "OfficeQA / SealQA",
@@ -48793,7 +49093,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2605.23904#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "OfficeQA／SealQA 参考答案判分；本文未逐项披露比对器实现"
           },
           {
             "label": "LiveMathematicianBench",
@@ -48822,7 +49123,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2605.23904#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则比较数学选择题的输出选项与标准选项"
           },
           {
             "label": "ALFWorld",
@@ -48851,7 +49153,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2605.23904#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境检查最终任务状态"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -49252,7 +49555,8 @@
                 "label": "附录 E.2：接口及成功验收",
                 "url": "https://arxiv.org/html/2607.00272#A5.SS2"
               }
-            ]
+            ],
+            "judgment": "LIBERO-Pro 模拟器原生成功条件"
           },
           {
             "label": "Robosuite：机器人程序搜索与测试",
@@ -49269,7 +49573,8 @@
                 "label": "附录 E.2：接口及成功验收",
                 "url": "https://arxiv.org/html/2607.00272#A5.SS2"
               }
-            ]
+            ],
+            "judgment": "Robosuite 模拟器原生成功条件"
           },
           {
             "label": "BEHAVIOR-1K：机器人程序搜索与测试",
@@ -49286,7 +49591,8 @@
                 "label": "附录 E.2：接口及成功验收",
                 "url": "https://arxiv.org/html/2607.00272#A5.SS2"
               }
-            ]
+            ],
+            "judgment": "BEHAVIOR-1K 模拟器原生成功条件"
           },
           {
             "label": "跨任务技能迁移",
@@ -49315,7 +49621,8 @@
                 "label": "§3.3",
                 "url": "https://arxiv.org/html/2607.00272#S3.SS3"
               }
-            ]
+            ],
+            "judgment": "目标模拟环境原生成功检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -49707,7 +50014,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2607.26784#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查物体操作目标"
           },
           {
             "label": "WebShop：跨任务技能强化学习",
@@ -49736,7 +50044,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2607.26784#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "WebShop 环境程序检查购买结果与目标约束"
           },
           {
             "label": "ScienceWorld：跨任务技能强化学习",
@@ -49765,7 +50074,8 @@
                 "label": "§5.1",
                 "url": "https://arxiv.org/html/2607.26784#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "ScienceWorld 环境程序计算实验目标进度／完成"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -50146,7 +50456,8 @@
                 "label": "§4.1：划分",
                 "url": "https://arxiv.org/html/2608.11350#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "环境程序判最终成功；模型另按五级进展要求评动作前后观察"
           },
           {
             "label": "ESI-Bench：空间问答",
@@ -50167,7 +50478,8 @@
                 "label": "§4.1：任务划分",
                 "url": "https://arxiv.org/html/2608.11350#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "ESI-Bench 标准答案判最终正确性；模型另评探索证据与过程"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -50504,7 +50816,8 @@
                 "label": "§4：四类基准",
                 "url": "https://arxiv.org/html/2504.15228#S4"
               }
-            ]
+            ],
+            "judgment": "SWE-bench／LiveCodeBench 可执行测试，另计时间与费用"
           },
           {
             "label": "自建文件编辑",
@@ -50521,7 +50834,8 @@
                 "label": "§4：四类基准",
                 "url": "https://arxiv.org/html/2504.15228#S4"
               }
-            ]
+            ],
+            "judgment": "规则比较最终文件与目标提交内容的相似度，另计成本"
           },
           {
             "label": "自建代码定位",
@@ -50538,7 +50852,8 @@
                 "label": "§4：四类基准",
                 "url": "https://arxiv.org/html/2504.15228#S4"
               }
-            ]
+            ],
+            "judgment": "规则核对符号定义的文件、行、列，另计成本"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -50876,7 +51191,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2603.03329#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "TextArena 游戏程序检查动作合法性"
           },
           {
             "label": "策略收益：TextArena 对局",
@@ -50897,7 +51213,8 @@
                 "label": "§4.3",
                 "url": "https://arxiv.org/html/2603.03329#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "TextArena 游戏规则结算胜负／奖励"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -51379,7 +51696,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2606.19980#A4.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "任务传感器规则或经示范训练的视觉成功分类器"
           },
           {
             "label": "RoboCasa 与真实任务评价",
@@ -51420,7 +51738,8 @@
                 "label": "附录D.2",
                 "url": "https://arxiv.org/html/2606.19980#A4.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "RoboCasa 原生成功函数；真实任务用既定环境成功检查"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -51793,7 +52112,8 @@
                 "label": "§3.2",
                 "url": "https://arxiv.org/html/2607.14159#S3.SS2"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 任务验收测试"
           },
           {
             "label": "LiveCodeBench / FinanceAgent",
@@ -51810,7 +52130,8 @@
                 "label": "附录 C：基准说明",
                 "url": "https://arxiv.org/html/2607.14159#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "LiveCodeBench 用代码测试；FinanceAgent 判分实现未明确"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -52274,7 +52595,8 @@
                 "label": "The advantage is more evident on held-out tasks.",
                 "url": "https://arxiv.org/html/2608.01918#Sx4.SSx2.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "仓库测试给 0/1；GPT-5.4 另作失败诊断，不替代测试判分"
           },
           {
             "label": "最终测试与跨模型迁移",
@@ -52303,7 +52625,8 @@
                 "label": "The advantage is more evident on held-out tasks.",
                 "url": "https://arxiv.org/html/2608.01918#Sx4.SSx2.SSS0.Px2"
               }
-            ]
+            ],
+            "judgment": "仓库测试检查补丁是否修复问题"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -52629,7 +52952,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2608.08466#S4.SS2.SSS2"
               }
-            ]
+            ],
+            "judgment": "BALROG 各游戏程序计算进展奖励，再按重复运行统计筛选"
           },
           {
             "label": "两种最终评价范围",
@@ -52646,7 +52970,8 @@
                 "label": "§4.2",
                 "url": "https://arxiv.org/html/2608.08466#S4.SS2.SSS2"
               }
-            ]
+            ],
+            "judgment": "同一游戏环境规则计算进展分"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -53043,7 +53368,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.09380#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "YC-Bench 仿真状态与经营指标的程序化比较"
           },
           {
             "label": "YC-Bench：比较协议",
@@ -53072,7 +53398,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2608.09380#S5.SS2"
               }
-            ]
+            ],
+            "judgment": "模拟器输出资金等状态，按协议计算可靠性与成本"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -53502,7 +53829,8 @@
                 "label": "§5.3",
                 "url": "https://arxiv.org/html/2608.12307#S5.SS3"
               }
-            ]
+            ],
+            "judgment": "按四类心智推理题的标准标签计准确率；文中未逐项展开解析器"
           },
           {
             "label": "完整题库评测",
@@ -53519,7 +53847,8 @@
                 "label": "§5.3",
                 "url": "https://arxiv.org/html/2608.12307#S5.SS3"
               }
-            ]
+            ],
+            "judgment": "沿用各任务标签判分；与创建者的验证反馈分开报告"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -53944,7 +54273,8 @@
                 "label": "附录 C：八类基准",
                 "url": "https://arxiv.org/html/2608.24735#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序检查组合优化解的可行性与目标值"
           },
           {
             "label": "Symptom2Disease / LawBench",
@@ -53961,7 +54291,8 @@
                 "label": "附录 C：八类基准",
                 "url": "https://arxiv.org/html/2608.24735#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则比对类别标签，计算准确率／F1"
           },
           {
             "label": "Terminal-Bench 2",
@@ -53978,7 +54309,8 @@
                 "label": "附录 C：八类基准",
                 "url": "https://arxiv.org/html/2608.24735#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 原生验收测试"
           },
           {
             "label": "AlphaEvolve Math / Symbolic Regression / AlgoTune",
@@ -53995,7 +54327,8 @@
                 "label": "附录 C：八类基准",
                 "url": "https://arxiv.org/html/2608.24735#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "程序分别计算数学目标、拟合误差、算法正确性与速度"
           },
           {
             "label": "ARC-AGI-2",
@@ -54012,7 +54345,8 @@
                 "label": "附录 C：八类基准",
                 "url": "https://arxiv.org/html/2608.24735#A3.SS0.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "规则比较预测网格与标准网格"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -54420,7 +54754,8 @@
                 "label": "§6.3",
                 "url": "https://arxiv.org/html/2605.27276#S6.SS3.SSS1"
               }
-            ]
+            ],
+            "judgment": "规则对照罪名标注计算任务分"
           },
           {
             "label": "TriMul",
@@ -54449,7 +54784,8 @@
                 "label": "§6.3",
                 "url": "https://arxiv.org/html/2605.27276#S6.SS3.SSS1"
               }
-            ]
+            ],
+            "judgment": "程序检查数值输出正确性，再计 GPU 耗时"
           },
           {
             "label": "MAGIC",
@@ -54478,7 +54814,8 @@
                 "label": "§6.3",
                 "url": "https://arxiv.org/html/2605.27276#S6.SS3.SSS1"
               }
-            ]
+            ],
+            "judgment": "程序比较去噪输出与参考真值的误差"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -54888,7 +55225,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2607.21971#A2"
               }
-            ]
+            ],
+            "judgment": "执行代码测试，检查功能并测运行效率"
           },
           {
             "label": "测试时程序搜索",
@@ -54917,7 +55255,8 @@
                 "label": "附录B",
                 "url": "https://arxiv.org/html/2607.21971#A2"
               }
-            ]
+            ],
+            "judgment": "执行候选程序的测试并测效率"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -55360,7 +55699,8 @@
                 "label": "附录 C：GRPO",
                 "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境成功奖励 + 动作／格式规则惩罚"
           },
           {
             "label": "ALFWorld：最终成绩",
@@ -55397,7 +55737,8 @@
                 "label": "§3.4",
                 "url": "https://arxiv.org/html/2608.05446#S3.SS4"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查最终目标"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -55789,7 +56130,8 @@
                 "label": "§9.1",
                 "url": "https://arxiv.org/html/2608.13951#S9.SS1"
               }
-            ]
+            ],
+            "judgment": "实际运行公开 test_solution.py，以通过输出作成功证据"
           },
           {
             "label": "重复运行与 SWE-bench 迁移",
@@ -55806,7 +56148,8 @@
                 "label": "§6.2：候选覆盖解释",
                 "url": "https://arxiv.org/html/2608.13951#S6.SS2"
               }
-            ]
+            ],
+            "judgment": "LCB 用公开执行证据；SWE-bench 用官方仓库测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -56154,7 +56497,8 @@
                 "label": "附录 D.2：评分细则",
                 "url": "https://arxiv.org/html/2505.19955#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "Gemini-2.5-Pro-Preview 与 Claude-3.7-Sonnet 按阶段评分细则评审，取平均"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -56531,7 +56875,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2605.08678#S5.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "受保护训练与评测程序计算各研究任务指标"
           },
           {
             "label": "低延迟进化 / 测试时训练对照",
@@ -56556,7 +56901,8 @@
                 "label": "§5.2",
                 "url": "https://arxiv.org/html/2605.08678#S5.SS2.SSS0.Px1"
               }
-            ]
+            ],
+            "judgment": "同一受保护程序在另一数据／规模设置重新评价"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -56942,7 +57288,8 @@
                 "label": "附录C",
                 "url": "https://arxiv.org/html/2608.17271#A3.SS0.SSS0.Px6"
               }
-            ]
+            ],
+            "judgment": "各题可执行评分逻辑对照参考结果；任务间指标不同"
           },
           {
             "label": "基准构建质量检查",
@@ -56955,7 +57302,8 @@
                 "label": "附录 C：任务提交与修订",
                 "url": "https://arxiv.org/html/2608.17271#A3.SS0.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "专家人工审查科学问题与评分协议，不作为代理每步奖励"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -57298,7 +57646,8 @@
                 "label": "§4：访问边界",
                 "url": "https://arxiv.org/html/2507.19457#S4"
               }
-            ]
+            ],
+            "judgment": "参考答案与支持文档反馈；按该实验的阶段指标判断检索和作答"
           },
           {
             "label": "IFBench",
@@ -57315,7 +57664,8 @@
                 "label": "§4：访问边界",
                 "url": "https://arxiv.org/html/2507.19457#S4"
               }
-            ]
+            ],
+            "judgment": "IFBench 确定性程序检查文本约束"
           },
           {
             "label": "AIME / LiveBench-Math",
@@ -57332,7 +57682,8 @@
                 "label": "§4：访问边界",
                 "url": "https://arxiv.org/html/2507.19457#S4"
               }
-            ]
+            ],
+            "judgment": "数学标准答案判分；该段未展开全部比对器"
           },
           {
             "label": "HoVer",
@@ -57349,7 +57700,8 @@
                 "label": "§4：访问边界",
                 "url": "https://arxiv.org/html/2507.19457#S4"
               }
-            ]
+            ],
+            "judgment": "规则对照标注支持文档计算检索结果"
           },
           {
             "label": "PUPA",
@@ -57366,7 +57718,8 @@
                 "label": "§4：访问边界",
                 "url": "https://arxiv.org/html/2507.19457#S4"
               }
-            ]
+            ],
+            "judgment": "分别计算质量与隐私泄漏指标；不是单一正确答案匹配"
           },
           {
             "label": "推理时搜索：内核代码",
@@ -57379,7 +57732,8 @@
                 "label": "§5.1：反馈驱动手册检索",
                 "url": "https://arxiv.org/html/2507.19457#S5.SS1"
               }
-            ]
+            ],
+            "judgment": "编译、执行内核并读取错误与性能反馈"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -57683,7 +58037,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2609.00829#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "问答参考答案判分；本文未逐项明确规则或模型比对器"
           },
           {
             "label": "SpreadsheetBench",
@@ -57696,7 +58051,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2609.00829#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "表格产物验收；本文未展开完整检查实现"
           },
           {
             "label": "CloudCoreNetwork-QA / Wireless-QA",
@@ -57709,7 +58065,8 @@
                 "label": "§4.1",
                 "url": "https://arxiv.org/html/2609.00829#S4.SS1"
               }
-            ]
+            ],
+            "judgment": "企业题目标答案／查询结果判分；未公开逐题实现"
           },
           {
             "label": "修改质量审核",
@@ -57722,7 +58079,8 @@
                 "label": "§3.5：质量门控",
                 "url": "https://arxiv.org/html/2609.00829#S3.SS5"
               }
-            ]
+            ],
+            "judgment": "独立 gate 模型评泄漏；规则统计新增示例数量"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -58128,7 +58486,8 @@
                 "label": "附录 B.2：原生运行与 grader",
                 "url": "https://arxiv.org/html/2608.27311#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "τ² 原生客服环境验收"
           },
           {
             "label": "τ³ Banking Knowledge",
@@ -58153,7 +58512,8 @@
                 "label": "附录 B.2：原生运行与 grader",
                 "url": "https://arxiv.org/html/2608.27311#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "τ³ 原生 verifier；本文未展开其规则或模型实现"
           },
           {
             "label": "Terminal-Bench 2",
@@ -58178,7 +58538,8 @@
                 "label": "附录 B.2：原生运行与 grader",
                 "url": "https://arxiv.org/html/2608.27311#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "Terminal-Bench 原生验收测试"
           },
           {
             "label": "BIRD Mini-Dev Challenging",
@@ -58203,7 +58564,8 @@
                 "label": "附录 B.2：原生运行与 grader",
                 "url": "https://arxiv.org/html/2608.27311#A2.SS2"
               }
-            ]
+            ],
+            "judgment": "运行 SQL，以 BIRD 基准程序检查结果正确性"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -58571,7 +58933,8 @@
                 "label": "§4",
                 "url": "https://arxiv.org/html/2608.10178#S4"
               }
-            ]
+            ],
+            "judgment": "八语言仓库测试验收补丁；模型分析器另分失败类型"
           },
           {
             "label": "最终留出评价",
@@ -58600,7 +58963,8 @@
                 "label": "§4",
                 "url": "https://arxiv.org/html/2608.10178#S4"
               }
-            ]
+            ],
+            "judgment": "留出题仍使用仓库测试验收"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -58981,7 +59345,8 @@
                 "label": "§2：隐藏 verifier 的边界",
                 "url": "https://arxiv.org/html/2608.31100#S2"
               }
-            ]
+            ],
+            "judgment": "代理根据自身行为轨迹自评；不返回真实环境判分"
           },
           {
             "label": "严格测试与自评可靠性",
@@ -59010,7 +59375,8 @@
                 "label": "附录A.1",
                 "url": "https://arxiv.org/html/2608.31100#A1.SS1"
               }
-            ]
+            ],
+            "judgment": "外部可执行环境验证器判真实结果，再与代理自评比较"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -59402,7 +59768,8 @@
                 "label": "附录 A.2：公开输入与角色",
                 "url": "https://arxiv.org/html/2609.01481#A1.SS2"
               }
-            ]
+            ],
+            "judgment": "QA 代理按公开产品规格审查代码与运行证据"
           },
           {
             "label": "最终验收：GameCraft-Bench",
@@ -59415,7 +59782,8 @@
                 "label": "§4.1：各基准指标",
                 "url": "https://arxiv.org/html/2609.01481#S4.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "程序检查可运行性；其余按游戏四维细则，本文未在该段展开裁判实现"
           },
           {
             "label": "最终验收：FrontierSWE",
@@ -59428,7 +59796,8 @@
                 "label": "§4.1：各基准指标",
                 "url": "https://arxiv.org/html/2609.01481#S4.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "FrontierSWE 官方任务 verifier，按各题规则验收"
           },
           {
             "label": "最终验收：ProgramBench",
@@ -59441,7 +59810,8 @@
                 "label": "§4.1：各基准指标",
                 "url": "https://arxiv.org/html/2609.01481#S4.SS1.SSS0.Px4"
               }
-            ]
+            ],
+            "judgment": "ProgramBench 隐藏行为测试"
           }
         ],
         "sourceDate": "2026-09-09"
@@ -59938,7 +60308,8 @@
                 "label": "任务说明 · 法律任务：可见最终问题与保密评分标准",
                 "url": "https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html"
               }
-            ]
+            ],
+            "judgment": "各任务原生指标经冻结的归一化规则计算总分"
           },
           {
             "label": "记忆架构：LoCoMo 多轮对话",
@@ -59951,7 +60322,8 @@
                 "label": "任务说明 · 记忆架构：数据、固定模型、判分",
                 "url": "https://rsi-exam.ai/tasks/locomo_longterm_memory.html"
               }
-            ]
+            ],
+            "judgment": "程序计算回答与 LoCoMo 参考答案的词元 F1"
           },
           {
             "label": "科学发现：DiscoveryWorld 两类模拟任务",
@@ -59968,7 +60340,8 @@
                 "label": "任务内模型配置（固定版本仓库）",
                 "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/.env.local.example"
               }
-            ]
+            ],
+            "judgment": "模拟器计算进度与完成；知识分对照解释评分要求，报告未在此处展开内部裁判"
           },
           {
             "label": "Lean 4：证明工作流程",
@@ -59981,7 +60354,8 @@
                 "label": "任务说明 · Lean 证明：开发题、模型与编译检查",
                 "url": "https://rsi-exam.ai/tasks/lean_formal_proof_workflow_design.html"
               }
-            ]
+            ],
+            "judgment": "Lean 编译器验证形式证明，可信进程重新编译"
           },
           {
             "label": "数学后训练：1.7B 学生与 8B 教师",
@@ -59994,7 +60368,8 @@
                 "label": "任务说明 · 数学后训练：数据、学生模型、答案匹配",
                 "url": "https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html"
               }
-            ]
+            ],
+            "judgment": "规则抽取并精确匹配标准整数答案"
           },
           {
             "label": "潮汐反演：数值方法",
@@ -60007,7 +60382,8 @@
                 "label": "任务说明 · 潮汐反演：观测、验证测站与误差",
                 "url": "https://rsi-exam.ai/tasks/tidal_friction_inverse.html"
               }
-            ]
+            ],
+            "judgment": "可信物理模拟器计算隐藏测站的数值误差"
           },
           {
             "label": "法律多事项：保密要求评分，最终题目可见",
@@ -60024,7 +60400,8 @@
                 "label": "任务内模型配置（固定版本仓库）",
                 "url": "https://github.com/aiming-lab/RSI-Exam/blob/0386e19fe41fa924c04a68702f20591ab612132d/.env.local.example"
               }
-            ]
+            ],
+            "judgment": "gemini-3-flash-preview 按保密逐项要求评审，全部满足才通过"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -60406,7 +60783,8 @@
                 "label": "§4：交替流程与返回规则",
                 "url": "https://arxiv.org/html/2609.00196#S4"
               }
-            ]
+            ],
+            "judgment": "GPT-5.4-mini 对照问题、参考答案与回答判语义正确性；格式先由规则检查"
           },
           {
             "label": "数学：DAPO 训练，AIME 测试",
@@ -60431,7 +60809,8 @@
                 "label": "§4：交替流程与返回规则",
                 "url": "https://arxiv.org/html/2609.00196#S4"
               }
-            ]
+            ],
+            "judgment": "DAPO 规则抽取方框答案，与标准答案匹配"
           },
           {
             "label": "棋题：Lichess 参考着法序列",
@@ -60452,7 +60831,8 @@
                 "label": "附录B.3：三个固定判分器",
                 "url": "https://arxiv.org/html/2609.00196#A2.SS3"
               }
-            ]
+            ],
+            "judgment": "python-chess 检查合法性，再用规则逐步匹配参考着法"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -60833,7 +61213,8 @@
                 "label": "§6.5、表3：等词元成本结果",
                 "url": "https://arxiv.org/html/2609.09646#S6.SS5"
               }
-            ]
+            ],
+            "judgment": "成对重放的验证分；本文未披露完整 0–5 质量评分规则和裁判实现"
           },
           {
             "label": "任务切换：旧能力保留与新任务适应",
@@ -60850,7 +61231,8 @@
                 "label": "§6.1：120题划分与接受规则",
                 "url": "https://arxiv.org/html/2609.09646#S6.SS1"
               }
-            ]
+            ],
+            "judgment": "相同重放评分机制，旧／新任务分别评价"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -61235,7 +61617,8 @@
                 "label": "附录D.3：迭代构图实验",
                 "url": "https://arxiv.org/html/2609.09153#A4.SS3"
               }
-            ]
+            ],
+            "judgment": "Gemini 3.1 Pro 对照参考答案判语义等价；构图实验另算 EM／词级 F1"
           },
           {
             "label": "MultiChallenge：多轮对话约束",
@@ -61260,7 +61643,8 @@
                 "label": "附录D.2：五种图构造方案",
                 "url": "https://arxiv.org/html/2609.09153#A4.SS2"
               }
-            ]
+            ],
+            "judgment": "Gemini 3.1 Pro 按四类对话要求评审"
           },
           {
             "label": "GDPval：专业工作产物",
@@ -61281,7 +61665,8 @@
                 "label": "§3：图表示、使用与更新",
                 "url": "https://arxiv.org/html/2609.09153#S3"
               }
-            ]
+            ],
+            "judgment": "按专家逐题评分细则评审；本文未在该项指定裁判型号"
           },
           {
             "label": "ALFWorld：家务环境",
@@ -61302,7 +61687,8 @@
                 "label": "§3：图表示、使用与更新",
                 "url": "https://arxiv.org/html/2609.09153#S3"
               }
-            ]
+            ],
+            "judgment": "ALFWorld 环境程序检查家务目标"
           },
           {
             "label": "τ-bench：零售客服工具使用",
@@ -61323,7 +61709,8 @@
                 "label": "§4：模型与共享执行框架",
                 "url": "https://arxiv.org/html/2609.09153#S4"
               }
-            ]
+            ],
+            "judgment": "τ-bench 程序比较最终数据库与标注目标状态"
           },
           {
             "label": "BFCL v3：多轮函数调用",
@@ -61344,7 +61731,8 @@
                 "label": "附录F.1：报价后正确停止",
                 "url": "https://arxiv.org/html/2609.09153#A6.SS1"
               }
-            ]
+            ],
+            "judgment": "BFCL 官方多轮评估器；本文未逐项展开内部检查"
           },
           {
             "label": "EnterpriseArena：企业现金流与危机",
@@ -61369,7 +61757,8 @@
                 "label": "附录B.6：验证、拒绝记录与结构检查",
                 "url": "https://arxiv.org/html/2609.09153#A2.SS6"
               }
-            ]
+            ],
+            "judgment": "企业仿真程序计算现金、存活、估值和融资指标"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -61765,7 +62154,8 @@
                 "label": "附录E：两组验收任务",
                 "url": "https://arxiv.org/html/2607.22688#A5"
               }
-            ]
+            ],
+            "judgment": "任务答案正确性验证；本文未公开完整答案解析及比对实现"
           },
           {
             "label": "AIME24：22版本长期框架优化案例",
@@ -61778,7 +62168,8 @@
                 "label": "附录H：AIME24长期案例",
                 "url": "https://arxiv.org/html/2607.22688#A8"
               }
-            ]
+            ],
+            "judgment": "同一数学任务正确率 + 运行计时；后期另用候选答案多数票"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -62169,7 +62560,8 @@
                 "label": "附录D：每条分支的模型适配",
                 "url": "https://arxiv.org/html/2606.01779#A4"
               }
-            ]
+            ],
+            "judgment": "EnvScaler-RL 程序逐项检查最终环境状态"
           },
           {
             "label": "ToolHop：工具链进化与测试",
@@ -62198,7 +62590,8 @@
                 "label": "附录E.1–E.2：迁移与成本口径",
                 "url": "https://arxiv.org/html/2606.01779#A5.SS1"
               }
-            ]
+            ],
+            "judgment": "标准化答案正确性 + 程序检查中间目标完成率"
           },
           {
             "label": "本地检索：NQ、HotpotQA、2WikiMultiHopQA",
@@ -62227,7 +62620,8 @@
                 "label": "附录E.2：搜索基线的验证指标",
                 "url": "https://arxiv.org/html/2606.01779#A5.SS2"
               }
-            ]
+            ],
+            "judgment": "规则计算标准化答案与参考答案的词级 F1"
           },
           {
             "label": "RestBench-TMDB：只做迁移测试",
@@ -62244,7 +62638,8 @@
                 "label": "附录E.1–E.2：迁移与成本口径",
                 "url": "https://arxiv.org/html/2606.01779#A5.SS1"
               }
-            ]
+            ],
+            "judgment": "参考 API 顺序用规则检查；最终答案检查实现未明确"
           },
           {
             "label": "API-Bank：只做迁移测试",
@@ -62261,7 +62656,8 @@
                 "label": "附录E.1–E.2：迁移与成本口径",
                 "url": "https://arxiv.org/html/2606.01779#A5.SS1"
               }
-            ]
+            ],
+            "judgment": "规则检查调用名称、标准化参数和序列；完整响应另按基准验收"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -62662,7 +63058,8 @@
                 "label": "§3.2：先答题再更新",
                 "url": "https://arxiv.org/html/2605.30621#S3.SS2"
               }
-            ]
+            ],
+            "judgment": "SWE-bench 官方失败转通过／原通过保持通过测试"
           },
           {
             "label": "MCP-Atlas：跨服务工具问答",
@@ -62683,7 +63080,8 @@
                 "label": "附录B.4：初始提示与可写范围",
                 "url": "https://arxiv.org/html/2605.30621#A2.SS4"
               }
-            ]
+            ],
+            "judgment": "对照参考事实逐条验收；本文未指定事实裁判模型"
           },
           {
             "label": "SkillsBench：技能效果",
@@ -62704,7 +63102,8 @@
                 "label": "§4.3：执行者收益与失败分析",
                 "url": "https://arxiv.org/html/2605.30621#S4.SS3"
               }
-            ]
+            ],
+            "judgment": "SkillsBench 各任务的确定性产物／状态检查器"
           },
           {
             "label": "单独诊断：加载技能后有没有照做",
@@ -62721,7 +63120,8 @@
                 "label": "附录D.4：分阶段遵循评分",
                 "url": "https://arxiv.org/html/2605.30621#A4.SS4"
               }
-            ]
+            ],
+            "judgment": "Claude Sonnet 4.6 将技能转成检查要求，再按轨迹评遵循程度"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -63124,7 +63524,8 @@
                 "label": "§6.3，p15–16：两组诊断实验",
                 "url": "https://arxiv.org/pdf/2609.08175#page=15"
               }
-            ]
+            ],
+            "judgment": "DS-1000 可执行程序测试 + 有限样本统计验收"
           },
           {
             "label": "WorkBuddy Code：DeepSeek系统提示修改",
@@ -63141,7 +63542,8 @@
                 "label": "§6.3，p15–16：两组诊断实验",
                 "url": "https://arxiv.org/pdf/2609.08175#page=15"
               }
-            ]
+            ],
+            "judgment": "采用 WorkBuddy Code 记录的基准分；本文未展开其原始判分器"
           },
           {
             "label": "DS-1000：变好以后还会不会产生好修改",
@@ -63158,7 +63560,8 @@
                 "label": "§6.4，p16–17：多轮保证及实证",
                 "url": "https://arxiv.org/pdf/2609.08175#page=16"
               }
-            ]
+            ],
+            "judgment": "DS-1000 可执行测试；按改善／退化阈值统计候选比例"
           },
           {
             "label": "理论保证：统计条件，而非新增基准",
@@ -63179,7 +63582,8 @@
                 "label": "§6.4，p16–17：多轮保证及实证",
                 "url": "https://arxiv.org/pdf/2609.08175#page=16"
               }
-            ]
+            ],
+            "judgment": "理论期望奖励与统计误差界，无新增任务裁判"
           }
         ],
         "sourceDate": "2026-09-11"
@@ -63245,6 +63649,6 @@
   ],
   "framework": "# RSI / Harness Self-Evolution 论文调研记录\n\n> **本文件为合并精简版。** 在原长期记录基础上合并系统补全文献；所有相关论文至少保留一行横向定位，只有 **Core / 经典代表作** 中最能定义主线的工作保留详细介绍。目标不是跟随论文自己的 “RSI / self-evolving” story，而是统一回答：**什么在变、谁来改、谁来执行、基础 harness、feedback 来源、evolution→eval 是否隔离、相对更早工作到底多开放了哪一层 editable space。**\n\n>\n> **主标签（代表性）**：**C = Core / 经典代表作**（领域绕不开、定义了范式、热度/影响力高，或直接改变后续论文如何做问题/评估）；**K = Key / 重要工作**（有清楚的新机制或关键证据）；**R = Related / 定位即可**（谱系相关，但通常表格一行即可）。\n>\n> **证据强度与“经典性”完全分开。** 一篇论文可以是 **Core 但证据有明显缺陷**（如 same-set adaptation / selection–eval leakage / attribution confounding），也可以是 **Key 但实验非常干净**。以后不再因为 protocol 不够干净就把领域代表作降级。\n>\n> **热度只作为辅助信号，不作为科学结论。** 对 2026 新论文，citation index 尚不稳定，因此综合看：后续工作是否频繁把它当 baseline/前驱、是否形成独立方法范式、官方开源/社区关注，以及我们原调研中是否已将其列为核心。\n\n## 0. 统一分析框架\n\n### 0.1 Meta-depth\n\n| 层级 | 定义 | 典型形态 |\n|---|---|---|\n| **M0：persistent state** | memory/skill/context 内容持续变化，但 updater 固定 | Reflexion、ExpeL、Voyager |\n| **M1：task-facing mechanism** | prompt/workflow/memory algorithm/tool/full harness 可编辑，但 modifier/search/selection 机制固定或外置 | ADAS、ALMA、SkillOpt、Meta-Harness、AHE |\n| **M2：improver also evolves** | 产生后续改进的 modifier/meta-skill/self-mod procedure 也被继承和修改；外层 evaluator/selection 常仍固定 | Promptbreeder、STOP、DGM、MetaSkill-Evolve |\n| **M3：full self-reference ideal** | 外层 improvement machinery 也处于同一可修改系统，并有准则决定何时重写 | Gödel Machine（理论） |\n\n### 0.2 Evaluation isolation\n\n| Protocol | 含义 | 我们如何解读 |\n|---|---|---|\n| **Held-out** | evolve/train/selection → freeze → unseen tasks | 最能支持可泛化 improvement |\n| **Prequential** | 每个 task 只做一次，feedback 只影响未来 task | 支持 online accumulation，但 stream 同时是 experience source |\n| **Same-set adaptive** | 同一 tasks 反复执行→修改→再评分 | 主要证明针对固定 tasks 可优化，不能直接当泛化 |\n| **Within-instance** | 只改当前 response/trajectory | feedback substrate，不是 persistent self-evolution |\n\n### 0.3 重新审计后的核心阅读层级\n\n> **这次以“领域代表性”为第一原则重新审核。** 我们原先已经重点记录的工作优先保留；新增论文只有在确实形成新范式/重要证据时才进入 Core，而不是因为更新、更干净就自动挤掉旧的代表作。\n\n#### Core-15：主干论文（优先完整读）\n\n| 时间 | 论文 | 为什么是主干 | 证据边界要记住 |\n|---|---|---|---|\n| 2003/2006 | **[Gödel Machines](https://arxiv.org/abs/cs/0309048)** | 严格 RSI 的理论原型：连 improver/proof-searcher 自身也可被重写。 | 理论构造，不是现代 agent 实证。 |\n| 2023-03 | **[Reflexion](https://arxiv.org/abs/2303.11366)** | `feedback→reflection→persistent experience→future behavior` 的经典 LLM 前史。 | updater 固定，更像 persistent memory 而非 harness mechanism evolution。 |\n| 2023-05 | **[Voyager](https://arxiv.org/abs/2305.16291)** | executable skill library 的经典起点。 | Minecraft/open-ended embodied setting；不是 full harness。 |\n| 2025-05 | **[Darwin Gödel Machine](https://arxiv.org/abs/2505.22954)** | self-modifying agent source + open-ended archive 的代表，是现代 RSI/harness program evolution 的直接前驱。 | outer archive / selection mechanism 仍固定。 |\n| 2025-11 | **[AgentEvolver](https://arxiv.org/abs/2511.10395)** | 2025–26 “self-evolving agent training loop” 的高影响代表：task generation、experience navigation、credit assignment 一体化。 | 主要更新 policy/data/credit loop，不是 deployment harness evolution。 |\n| 2026-03 | **[Hyperagents](https://arxiv.org/abs/2603.19461)** | 明确把 **modification procedure 本身**放入 editable program，是 improver-level RSI 的代表。 | evaluator/archive/outer selection 仍大体固定。 |\n| 2026-03 | **[Meta-Harness](https://arxiv.org/abs/2603.28052)** | full executable harness optimization 的主干 baseline：完整 source/history/raw trace 都进入 proposer context。 | TerminalBench headline 同集 search/eval；其他任务更干净。 |\n| 2026-04 | **[Agentic Harness Engineering (AHE)](https://arxiv.org/abs/2604.25850)** | full-harness evolution 工程化代表：observability、attribution、rollback、regression。 | TB2 主结果同集；cross-benchmark accuracy transfer 较小。 |\n| 2026-06 | **[Self-Harness](https://arxiv.org/abs/2606.09498)** | same-model self-harness 的最直接代表：target 根据自己的 failure 修改自己的 harness。 | held-out regression score 参与 acceptance，不是 untouched test。 |\n| 2026-06 | **[SEAGym](https://arxiv.org/abs/2606.17546)** | self-evolving harness 的 reliability/evaluation 代表：held-out ID/OOD、replay、snapshot、cost 分开评。 | 自己不提出新的 evolution 方法；价值在评测框架和负面证据。 |\n| 2026-07 | **[SEED](https://arxiv.org/abs/2607.14777)** | endogenous model self-improvement 代表：当前 policy 自己产生/分析 on-policy experience，再蒸馏回 weights。 | Stage-1 有外部 bootstrap；外层训练算法固定。 |\n| 2026-07 | **[Recursive Harness Self-Improvement (RHI)](https://arxiv.org/abs/2607.15524)** | harness revision-history / recursive revision 这条路线的代表。 | evaluator/optimizer role 分离，不是纯 same-model self-loop。 |\n| 2026-07 | **[RSIBench-Data](https://arxiv.org/abs/2607.25886)** | RSI benchmark/研究过程的经典代表；提出最重要的 **discovery–reliability gap** 证据之一。 | selection 与 final official eval 使用同一 task subset。 |\n| 2026-07 | **[Frontis-MA1](https://arxiv.org/abs/2607.28568)** | “训练一个专门的 meta-evolution / AI4AI improver” 的代表，且 OpenMLE 全栈开源。 | learned improver 变强，但 outer evolution system 仍固定。 |\n| 2026-08 | **[Harness-R1](https://arxiv.org/abs/2608.02276)** | 把 harness editing 从 prompt frontier LLM 变成 **可 post-train 的独立能力**；trained harness engineer 是清晰的新范式。 | target 与 editor 是分开的；cold start 依赖更强 teacher。 |\n\n#### Core-扩展：同样是领域代表作，按问题补读\n\n| 论文 | 为什么仍应视为 Core / 强代表 |\n|---|---|\n| **[Argus](https://arxiv.org/abs/2608.05144)** | persistent runtime / durable-state / verified objective pivot 的代表；强调 role separation 与 commit authority。 |\n| **[Macaron-V1](https://arxiv.org/abs/2608.09819)** | versioned **model–harness pair** / continual learning framing 的高热代表；系统设计很完整。 |\n| **[BigBang](https://endlessfrontier.tech/assets/paper.pdf)** | data-level RSI / self-evolving frontier-task synthesis 的系统级代表；不是 deployment harness，但 RSI 叙事里绕不开。 |\n| **[MetaSkill-Evolve](https://arxiv.org/abs/2607.05297)** | 明确 fast skill + slow meta-skill，两层 improvement procedure evolution；meta-depth 讨论的关键参照。 |\n| **[Evo-Harness](https://arxiv.org/abs/2608.15071)** | skill-level harness evolution + grounded feedback vs self-feedback 的直接证据，对我们当前问题非常相关。 |\n| **[Evo-Bench](https://arxiv.org/abs/2608.09096)** | 当前最接近“统一测试 harness-evolving capability”的 benchmark 骨架；Search 里含 BrowseComp/HLE。 |\n| **[Aspire](https://arxiv.org/abs/2608.31111)** | hidden downstream eval + vague goal，直接测试 self-evaluation/objective construction 是否可靠。 |\n| **[ADAS](https://arxiv.org/abs/2408.08435)** | executable agent program search 的重要前驱；related work 中解释 full-harness 从哪里来时必读。 |\n| **[HarnessDev](https://arxiv.org/abs/2609.01437)** | 2026-09-01 新出的直接 benchmark：把 **Creation 与 Evolution** 分开，hidden downstream eval 同时测 capability、efficiency 和 cross-runtime-model transfer；对我们当前实验设计极直接，但因过新暂不按“经典热度”评级。 |\n| **[GDPevo](https://arxiv.org/abs/2608.03764)** | evolution-native held-out business benchmark，并给 fully-informed **oracle ceiling**；对我们“是否接近/突破能力上限”问题非常直接。 |\n| **[VeRO](https://arxiv.org/abs/2602.22480)** | harness optimizer 的 outer instrumentation / audit substrate：versioning、budgeted rewards、structured observations，是 HarnessOpt-Bench 等统一评测路线的早期直接节点。 |\n\n> **一个关键修正**：Core 不再等于“实验最干净”。例如 RSIBench-Data / Self-Harness / Macaron-V1 的 protocol 都有清楚的限制，但它们依然是领域代表作；相反，某些很干净的新 benchmark 可以放在 Key，而不自动取代已有经典工作。\n\n### 0.4 热度 / 代表性辅助审计（2026-09-04）\n\n> 对 2026 新工作，引用次数仍严重滞后，所以这里**不把热度当排名**，只用公开社区信号检查“是不是把明显的热门代表作漏了”。\n\n| 论文 | 当前公开热度信号 | 我们怎么用这个信号 |\n|---|---|---|\n| **Macaron-V1** | Hugging Face Papers **342 upvotes，#2 Paper of the Day** | 明显属于当前 continual learning / model–harness RSI 的高热系统工作，必须保留 Core。 |\n| **SkillOpt** | Hugging Face Papers **265 upvotes，#1 Paper of the Day** | skill evolution 分支的高热代表；虽然不是 full harness，也值得保留详细介绍。 |\n| **Frontis-MA1** | Hugging Face Papers **186 upvotes** | AI4AI / learned meta-evolution 路线的显著代表；上一版漏掉是错误。 |\n| **SEED** | Hugging Face Papers **107 upvotes，#3 Paper of the Day** | model-level endogenous self-evolution 的高热代表，应该和 harness 路线并列保留作核心对照。 |\n| **Hyperagents** | Meta/Facebook Research 官方仓库约 **2.6k GitHub stars** | improver self-modification 并非边缘概念论文，而是目前很有传播度的 recursive/improver-level 代表。 |\n| **Meta-Harness** | Hugging Face Papers **23 upvotes**，Stanford/MIT/KRAFTON；已有多个 harness survey/data collection 引用其框架 | 热度不是最高，但在 full-harness 方法谱系中具有定义性，因此仍是 Core。 |\n| **Self-Harness** | Hugging Face Papers 当前仅 **3 upvotes** | 反例：社区 upvote 低不代表不重要；same-model self-harness setting 对我们的研究问题具有直接定义性，因此仍是 Core。 |\n\n**因此以后采用两个独立判断：**`代表性/热度` 决定要不要进入 Core 视野；`实验隔离/归因` 决定我们能相信它的 claim 到什么程度。两者不能再混成一个优先级。\n\n\n\n",
   "conclusions": "## 4. 跨论文结论：现在真正需要记住什么\n\n| 问题 | 跨论文结论 |\n|---|---|\n| **历史上真正发生的变化** | `当前输出 self-correction → persistent memory/reflection → executable skill/tool → memory/skill mechanism → workflow/agent program → full harness → improver/meta-skill`。不要用论文是否自称 RSI 来判断 novelty。 |\n| **最重要的 distinction** | **state 在变 ≠ mechanism 在变 ≠ improver 在变。** Reflexion/Voyager 主要是 M0；ALMA/SkillOpt/Meta-Harness 是 M1；DGM/MetaSkill-Evolve 才触及 M2。 |\n| **Feedback** | 多条独立证据都指向：无 grounded verifier 时，reflection 容易把错误写进 persistent state。Evo-Harness 甚至直接观察到 pure self-feedback regression。 |\n| **Generalization** | 现在最普遍的证据缺口不是“能不能搜到过更高分”，而是 **freeze 后能否在 held-out tasks 保留**。AI4AI、ALMA、SkillOpt、Evo-Bench 的协议比 same-set headline 更值得学。 |\n| **基础 harness** | 从 minimal/raw interface 大涨，与从成熟 harness 继续提升，不是同一种证据。Meta-Harness/AHE 的价值之一正是让这个差异变得可见。 |\n| **Regression / reliability** | AHE、HarnessCompass、Evo-Bench、Aspire 都说明 improvement 非单调：会修复不代表会预见 collateral regression；local evaluator 变好也不代表 hidden capability 变好。 |\n| **对我们最有区分度的问题** | 仍然是 **capability ceiling + systematic behavior drift**：evolution 到底是在 eliciting latent capability、学到可泛化 procedure，还是 benchmark-specific overfit / cheat / judge gaming。 |\n\n## 5. 下一步阅读优先级\n\n如果目标是 **最快建立领域主干**，不要按 80 篇顺序读，先按下面四组：\n\n1. **历史/范式**：Gödel Machines → Reflexion → Voyager → DGM → AgentEvolver。\n2. **Harness 主线**：Meta-Harness → AHE → Self-Harness → RHI → Harness-R1。\n3. **更接近 RSI / improver**：Hyperagents → SEED → Frontis-MA1 → Macaron-V1 / BigBang。\n4. **怎么判断它到底 work 不 work**：SEAGym → RSIBench-Data → Evo-Bench → Aspire。\n\n对于我们现在要做的 **Harness 自进化 capability ceiling / 系统性行为偏移**，不建议再只看 6 篇，而是按问题分三组：\n\n1. **Harness 方法本体（先看它到底怎么改）**：`Meta-Harness + AHE + Self-Harness + Evo-Harness`。\n2. **最干净/最直接的 harness-evolution 评测骨架**：`VeRO → HarnessOpt-Bench → Evo-Bench → HarnessDev`。这条线能看出评测如何从 instrumentation 逐渐走到 held-out、harness-sensitive task、Creation-vs-Evolution、cross-runtime transfer。\n3. **我们真正想研究的 failure / ceiling**：`SEAGym + RSIBench-Data + GDPevo + PATH-Bench + Aspire`。其中 **GDPevo 的 oracle ceiling**、PATH-Bench 的 interference/forgetting、Aspire 的 hidden objective mismatch 都比“又一个更高 evolved score”更贴近我们的差异化问题。\n\n如果只允许再精读 **8 篇**，我会选：`Meta-Harness、AHE、Self-Harness、Evo-Bench、HarnessDev、SEAGym、RSIBench-Data、GDPevo`。PATH-Bench / Aspire 随后补。\n\n但写 related work / 讲领域版图时，必须把 **AgentEvolver、Hyperagents、SEED、Frontis-MA1、Harness-R1、Argus、Macaron-V1、BigBang** 放回来；否则会把 2026 RSI 的主流叙事读窄成“只改 deployment harness”。\n",
-  "readingGuide": "# 第一次读 RSI 论文：先分清研究对象与实验结果\n\n这个网站围绕一个问题整理文章：**系统从经历中改进了什么，这种改进是否真的帮助它完成后续任务？** RSI 是 Recursive Self-Improvement，通常译为递归自改进。本库也收录自纠错、记忆学习及相关评测；收录不代表论文已经实现了无限递归改进。\n\n## 模型、运行框架和产物是什么关系？\n\n以“修好一个软件错误”为例，下面只是帮助理解的示意，并非某篇论文的实验结果。\n\n| 对象 | 负责什么 | 修改它意味着什么 |\n| --- | --- | --- |\n| 模型 | 根据输入生成分析、答案或下一步动作，例如 Qwen、GPT、Claude 系列模型 | 训练参数，改变模型本身的行为 |\n| 运行框架（harness） | 决定给模型看什么、能调用什么工具、如何保存记忆、何时重试和停止 | 改模型外围的提示、工具、记忆或控制代码 |\n| 当前产物 | 模型为这道任务交付的代码补丁、答案或报告 | 把当前作品改好；未必改进了以后做题的系统 |\n\n**模型名与软件名要分开。** “Claude Code + 某模型”表示模型在一套编程代理工具中运行。Qwen-Agent 是组织模型调用和工具执行的框架。旧论文中的 Codex 也可能是模型名，不能看到同一个词就认定是同一种软件。\n\n## 怎么读每篇文章？\n\n先读三个 TL;DR 要点：**研究缺口与动机**说明作者认为现有做法有什么不足、会造成什么后果，以及为什么值得解决；**本文定位**说明要研究什么问题或检验什么能力；**关键设计与结论**说明独特做法和实际得到的结果。\n\n研究缺口依据原文引言，是作者提出工作的理由，不等于本站对整片领域的定论。理论文章和项目报告按原文记录提出问题的出发点；原文没有明确提出的缺陷，不额外补写。研究目标也不等于已经实现的能力。\n\n接着按五个维度读：\n\n1. **什么在进化：** 参数、提示、技能、记忆、运行代码，还是当前答案？下一道任务会继承什么？\n2. **谁执行：** 真正答题或操作环境的模型是什么？软件框架、机器人控制器是否承担了其他执行步骤？\n3. **谁来改：** 同一个模型、另一个更强模型，还是固定训练程序？“模型决定训练什么”与“平台实际运行训练”是两种角色。\n4. **反馈是什么：** 谁判断对错，依据测试、参考答案还是模型评审？修改者能看到总分、具体错误，还是只有自己的猜测？\n5. **基础框架是什么：** 起点已有工具、记忆和重试机制吗？如果一开始就有复杂系统，最后的成绩不能全部归功于进化。\n\n展开表格后，连起来读一次改进过程：**执行任务 → 获得反馈 → 定位问题 → 修改 → 检查并保留或撤回。** 有的论文不包含所有步骤，例如只追加经验而不检查回归；表格会按实际设置说明。\n\n## 训练、验证、测试要按用途区分\n\n| 用途 | 主要问题 | 可以怎样使用成绩？ |\n| --- | --- | --- |\n| 训练／进化 | 用哪些经历提出修改或更新参数？ | 可以反复利用题目、反馈和允许访问的答案 |\n| 开发／验证 | 哪个候选版本值得保留？ | 可以用成绩调方案或选版本，因此这份成绩已参与决策 |\n| 独立最终测试 | 选定系统能否处理未参与修改和选择的任务？ | 冻结系统后评价；若再据此改版本，就需要重新说明隔离边界 |\n\n**数据集原本叫 test，不表示在这篇论文中仍是独立测试。** 作者可能把官方测试题拿来反复调框架；反过来，也可能把官方 validation 留作最后测验。网站保留原分区名称，并说明论文实际怎么使用。\n\n“留出”（held-out）只说明预先划出一部分数据。如果它的分数用于挑版本，它仍参与了选择。“在线学习”则允许前一道题的经历帮助后一道题，评价的是连续适应过程，不能照搬“全程冻结”的理解。\n\n## 几种反馈不能混为一谈\n\n- **代码测试：** 运行程序，检查输出或状态是否符合任务断言。通过所给测试不等于覆盖了所有可能情况。\n- **答案对照：** 将回答与参考答案比较；有的精确匹配，有的允许数值误差或使用模型判断语义是否一致。\n- **模型评审：** 另一个模型或同一模型依据评分细则给出意见。需要看它是否有参考答案，以及判断是否经过外部校验。\n- **自评：** 系统根据自己的轨迹判断成败，可能判断错；与环境真正的任务结果分开。\n- **过程信息：** 报错、动作前后截图、工具返回和执行日志，帮助解释哪里出了问题，本身不一定是最终成绩。\n\n## 怎么理解常见结果？\n\n**单次成功、重试成功和多版本覆盖不同。** pass@1 看一次尝试；pass@k 通常看最多 k 次中至少成功一次，具体以论文协议为准。如果每题事后挑最好的框架，得到的是候选集合的覆盖能力，不能当成一个固定框架能达到的成功率。\n\n**百分点与相对提升不同。** 成功率从 40% 到 50%，是提高 10 个百分点、相对提高 25%，不是同一个数字口径。\n\n**迁移说明不同事情。** 换新题检验任务泛化，换基础模型检验框架能否复用，换领域检验更远的适用性；它们不能互相替代。\n\n**论文未披露，不等于没有。** 若全文没有给出某组练习题、模型版本或裁判实现，网站会标明能确认到哪里，不用推测填成事实。\n\n**筛选中的 M0–M3 是原调研笔记的比较口径。** 分别指经验内容变化、任务执行机制变化、产生修改的机制也变化，以及完整自指的理论设想。这不是统一的论文分级标准，也不是分数越高能力越强；实际开放哪些修改，要以每篇的对象和更新规则为准。\n\n## 常见训练与模型术语\n\n- **冻结参数：** 不通过训练改变这部分模型权重，但外围提示或记忆仍可以变化。如果训练了额外适配参数，需要把它单独计入变化对象。\n- **LoRA：** 只训练少量附加适配参数的一种方法。它仍属于参数学习，不能因为主干权重不动就称整个系统完全不训练。\n- **监督微调：** 用示范输入和输出教模型产生目标行为。\n- **强化学习：** 用执行后的奖励调整行为；GRPO 等名称指具体训练算法。\n- **蒸馏：** 把教师模型或额外提示带来的行为指导，通过训练转进另一个模型的参数。\n- **检查点：** 保存下来的某个模型或系统版本。最终版本、最高分版本与按验证集选出的版本可能不同。\n- **轨迹：** 一次执行中的模型输出、动作、工具返回和结果记录。\n- **B、词元、推理强度：** 模型名中的 4B 通常表示约 40 亿参数；词元是模型处理文本的单位，不等于汉字数；high、xhigh 等是论文所用的推理强度设置，不是另一个执行角色。\n\n接着可以打开[研究脉络](?view=notes)，按问题对照几篇文章，再看展开表格中的数据与隔离。只有把这些条件对齐，成功率的差异才有可解释的含义。\n",
+  "readingGuide": "# 第一次读 RSI 论文：先分清研究对象与实验结果\n\n这个网站围绕一个问题整理文章：**系统从经历中改进了什么，这种改进是否真的帮助它完成后续任务？** RSI 是 Recursive Self-Improvement，通常译为递归自改进。本库也收录自纠错、记忆学习及相关评测；收录不代表论文已经实现了无限递归改进。\n\n## 模型、运行框架和产物是什么关系？\n\n以“修好一个软件错误”为例，下面只是帮助理解的示意，并非某篇论文的实验结果。\n\n| 对象 | 负责什么 | 修改它意味着什么 |\n| --- | --- | --- |\n| 模型 | 根据输入生成分析、答案或下一步动作，例如 Qwen、GPT、Claude 系列模型 | 训练参数，改变模型本身的行为 |\n| 运行框架（harness） | 决定给模型看什么、能调用什么工具、如何保存记忆、何时重试和停止 | 改模型外围的提示、工具、记忆或控制代码 |\n| 当前产物 | 模型为这道任务交付的代码补丁、答案或报告 | 把当前作品改好；未必改进了以后做题的系统 |\n\n**模型名与软件名要分开。** “Claude Code + 某模型”表示模型在一套编程代理工具中运行。Qwen-Agent 是组织模型调用和工具执行的框架。旧论文中的 Codex 也可能是模型名，不能看到同一个词就认定是同一种软件。\n\n## 怎么读每篇文章？\n\n先读三个 TL;DR 要点：**研究缺口与动机**说明作者认为现有做法有什么不足、会造成什么后果，以及为什么值得解决；**本文定位**说明要研究什么问题或检验什么能力；**关键设计与结论**说明独特做法和实际得到的结果。\n\n研究缺口依据原文引言，是作者提出工作的理由，不等于本站对整片领域的定论。理论文章和项目报告按原文记录提出问题的出发点；原文没有明确提出的缺陷，不额外补写。研究目标也不等于已经实现的能力。\n\n接着按五个维度读：\n\n1. **什么在进化：** 参数、提示、技能、记忆、运行代码，还是当前答案？下一道任务会继承什么？\n2. **谁执行：** 真正答题或操作环境的模型是什么？软件框架、机器人控制器是否承担了其他执行步骤？\n3. **谁来改：** 同一个模型、另一个更强模型，还是固定训练程序？“模型决定训练什么”与“平台实际运行训练”是两种角色。\n4. **反馈是什么：** 谁判断对错，依据测试、参考答案还是模型评审？修改者能看到总分、具体错误，还是只有自己的猜测？\n5. **基础框架是什么：** 起点已有工具、记忆和重试机制吗？如果一开始就有复杂系统，最后的成绩不能全部归功于进化。\n\n展开表格后，连起来读一次改进过程：**执行任务 → 获得反馈 → 定位问题 → 修改 → 检查并保留或撤回。** 有的论文不包含所有步骤，例如只追加经验而不检查回归；表格会按实际设置说明。\n\n## 反馈到底是谁给的？\n\n**“有 verifier”还没有说明怎样判分。** verifier 指负责验证的组件，它内部可能运行规则，也可能调用模型。“比对标注答案”同样要继续问：是程序匹配，还是模型判断含义相同？\n\n| 判分机制 | 实际做什么 | 阅读时要确认 |\n| --- | --- | --- |\n| 基准自带的可执行检查 | 运行测试，或检查数据库、文件、模拟器状态是否达到目标 | 用的是官方检查器还是论文改写的版本？修改者能否看到测试内容？ |\n| 规则比对参考答案 | 程序抽取答案，再做精确匹配、数值容差检查或计算词项重合分 | 比较字符串、选项、数值还是结果集合？怎样处理格式与容差？ |\n| 模型比对参考答案 | 把题目、标注答案和模型回答交给另一个模型判断语义是否等价 | 哪个模型作裁判？能否看到标准答案？ |\n| 模型按评分细则评审 | 按逐题检查项判断完整性、约束满足或质量；rubric 就是这些评分细则 | 谁写细则、检查哪些方面、怎样汇总分数？ |\n| 模型自评 | 模型看自身回答或轨迹提出成败判断、批评，没有标准答案保证 | 自评是否作为学习信号？正式测试是否另有独立判分？ |\n| 环境指标与数值测量 | 按游戏规则结算，或计算误差、训练损失、运行时间等 | 指标方向、成功阈值与资源限制是什么？ |\n\n每篇“反馈是什么”按实验列出判分机制；展开表格可继续查看数据、具体检查方式、反馈可见范围和用途。判分模型与写修改建议的模型是不同角色，不可互相替代。原文没有交代具体实现时会说明缺的是哪一项；不能根据基准名称或 `Judge` 函数名自行补出裁判。\n\n## 训练、验证、测试要按用途区分\n\n| 用途 | 主要问题 | 可以怎样使用成绩？ |\n| --- | --- | --- |\n| 训练／进化 | 用哪些经历提出修改或更新参数？ | 可以反复利用题目、反馈和允许访问的答案 |\n| 开发／验证 | 哪个候选版本值得保留？ | 可以用成绩调方案或选版本，因此这份成绩已参与决策 |\n| 独立最终测试 | 选定系统能否处理未参与修改和选择的任务？ | 冻结系统后评价；若再据此改版本，就需要重新说明隔离边界 |\n\n**数据集原本叫 test，不表示在这篇论文中仍是独立测试。** 作者可能把官方测试题拿来反复调框架；反过来，也可能把官方 validation 留作最后测验。网站保留原分区名称，并说明论文实际怎么使用。\n\n“留出”（held-out）只说明预先划出一部分数据。如果它的分数用于挑版本，它仍参与了选择。“在线学习”则允许前一道题的经历帮助后一道题，评价的是连续适应过程，不能照搬“全程冻结”的理解。\n\n## 几种反馈不能混为一谈\n\n- **代码测试：** 运行程序，检查输出或状态是否符合任务断言。通过所给测试不等于覆盖了所有可能情况。\n- **答案对照：** 将回答与参考答案比较；有的精确匹配，有的允许数值误差或使用模型判断语义是否一致。\n- **模型评审：** 另一个模型或同一模型依据评分细则给出意见。需要看它是否有参考答案，以及判断是否经过外部校验。\n- **自评：** 系统根据自己的轨迹判断成败，可能判断错；与环境真正的任务结果分开。\n- **过程信息：** 报错、动作前后截图、工具返回和执行日志，帮助解释哪里出了问题，本身不一定是最终成绩。\n\n## 怎么理解常见结果？\n\n**单次成功、重试成功和多版本覆盖不同。** pass@1 看一次尝试；pass@k 通常看最多 k 次中至少成功一次，具体以论文协议为准。如果每题事后挑最好的框架，得到的是候选集合的覆盖能力，不能当成一个固定框架能达到的成功率。\n\n**百分点与相对提升不同。** 成功率从 40% 到 50%，是提高 10 个百分点、相对提高 25%，不是同一个数字口径。\n\n**迁移说明不同事情。** 换新题检验任务泛化，换基础模型检验框架能否复用，换领域检验更远的适用性；它们不能互相替代。\n\n**论文未披露，不等于没有。** 若全文没有给出某组练习题、模型版本或裁判实现，网站会标明能确认到哪里，不用推测填成事实。\n\n**筛选中的 M0–M3 是原调研笔记的比较口径。** 分别指经验内容变化、任务执行机制变化、产生修改的机制也变化，以及完整自指的理论设想。这不是统一的论文分级标准，也不是分数越高能力越强；实际开放哪些修改，要以每篇的对象和更新规则为准。\n\n## 常见训练与模型术语\n\n- **冻结参数：** 不通过训练改变这部分模型权重，但外围提示或记忆仍可以变化。如果训练了额外适配参数，需要把它单独计入变化对象。\n- **LoRA：** 只训练少量附加适配参数的一种方法。它仍属于参数学习，不能因为主干权重不动就称整个系统完全不训练。\n- **监督微调：** 用示范输入和输出教模型产生目标行为。\n- **强化学习：** 用执行后的奖励调整行为；GRPO 等名称指具体训练算法。\n- **蒸馏：** 把教师模型或额外提示带来的行为指导，通过训练转进另一个模型的参数。\n- **检查点：** 保存下来的某个模型或系统版本。最终版本、最高分版本与按验证集选出的版本可能不同。\n- **轨迹：** 一次执行中的模型输出、动作、工具返回和结果记录。\n- **B、词元、推理强度：** 模型名中的 4B 通常表示约 40 亿参数；词元是模型处理文本的单位，不等于汉字数；high、xhigh 等是论文所用的推理强度设置，不是另一个执行角色。\n\n接着可以打开[研究脉络](?view=notes)，按问题对照几篇文章，再看展开表格中的数据与隔离。只有把这些条件对齐，成功率的差异才有可解释的含义。\n",
   "researchMap": "# RSI 研究脉络：系统到底学会了什么？\n\n从本库论文看，可以沿三个问题建立整体认识：**改进留下了什么？产生改进的能力有没有变化？怎样证明下一次真的更好？** 下文是本站依据论文方法与实验作的对照整理；顺序表示阅读线索，直接继承关系仍需论文证据。\n\n## 先建立时间与问题的坐标\n\n| 阅读阶段 | 代表工作 | 问题如何展开 |\n| --- | --- | --- |\n| 理论起点 | [自修改的形式保证](?paper=cs-0309048) | 如果连寻找改进的方法都允许修改，依据什么相信切换后更好？理论保证要结合公理和可证明性理解。（[原文 §3 Formal Description](https://arxiv.org/abs/cs/0309048)） |\n| 2023：改答案、留经验、积技能 | [Self-Refine](?paper=2303.17651)、[Reflexion](?paper=2303.11366)、[Voyager](?paper=2305.16291) | 从当前答案的多轮修订，走到留下文字教训、积累可执行技能。开始需要问：哪部分能力能被下一次任务继承？ |\n| 2024–2025：系统设计成为可搜索对象 | [ADAS](?paper=2408.08435)、[AFlow](?paper=2410.10762)、[DGM](?paper=2505.22954) | 提示之外，模块组合、执行步骤和实际代理代码进入搜索空间；不同工作对谁修改、修改范围和候选保留方式作出不同设计。 |\n| 2026：拆开诊断、修改能力与学习证据 | [Self-Harness](?paper=2606.09498)、[Harness-R1](?paper=2608.02276)、[Hyperagents](?paper=2603.19461)、[Aspire](?paper=2608.31111) | 同模型适配、训练专门修改者、修改改进程序、宽泛目标下自主选择学习方向，是几个不同问题，需要分别看实证。 |\n\n这几类研究至今可以并行开展。可修改范围更大，带来的是更多设计自由，也增加了诊断、选择和验证的难度。下面按问题展开，并在各处链接到方法与实验来源。\n\n## 路线一：从改好这道题，到留下后续能用的经验\n\n**阅读顺序：** [Self-Refine](?paper=2303.17651) → [Reflexion](?paper=2303.11366) → [ExpeL](?paper=2308.10144) → [Voyager](?paper=2305.16291)。\n\n- **Self-Refine：改当前产物。** 模型写初稿、提批评、再修订；你应该关注这一题有没有变好。（[原文 §3](https://arxiv.org/html/2303.17651#S3)；[原文 §4](https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1)）\n- **Reflexion：让重试读到教训。** 失败反思成为下一次可读的文字记忆，主要围绕同题的后续尝试。（[原文 §3](https://arxiv.org/html/2303.11366#S3)；[原文 §4.3](https://arxiv.org/html/2303.11366#S4.SS3)）\n- **ExpeL：把旧题经验带到新题。** 训练任务的试错被整理为一般规则和成功示例，供新任务单次执行使用。（[原文 §4.4](https://arxiv.org/html/2308.10144#S4.SS4)；[原文 §5.1](https://arxiv.org/html/2308.10144#S5.SS1)）\n- **Voyager：把经验变成能执行的技能。** Minecraft 中的成功行为被写成代码并入库，后续可以检索、组合使用。（[原文 §2](https://arxiv.org/html/2305.16291#S2)；[原文 附录A.1](https://arxiv.org/html/2305.16291#A1.SS1)）\n\n**沿这条线看什么：** 经验服务同题重试，还是后续不同任务？保存的是原始记录、一般规则，还是可执行代码？这决定了“学习”的具体含义。\n\n## 路线二：从增加记忆内容，到改变怎样管理记忆\n\n**阅读顺序：** [ACE](?paper=2510.04618) → [Memento-Skills](?paper=2603.18743) → [MemEvolve](?paper=2512.18746) / [ALMA](?paper=2602.07755)。\n\n**ACE** 维护逐条可增改的经验手册，重点是长期内容如何避免在反复重写中丢失细节。**Memento-Skills** 将技能作为执行期间可修订的能力资源，失败后定位并修复技能，还要解决该选哪个技能的问题。（[原文 §2.1](https://arxiv.org/html/2510.04618#S2.SS1)；[原文 §4.1](https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1)） （[原文 §2.1](https://arxiv.org/html/2603.18743#S2.SS1)；[原文 §2.3](https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2)）\n\n**MemEvolve、ALMA** 把问题推进到记忆管理程序：怎样编码、存储、检索或使用经验也可以被搜索。这里应分别标注“记了什么”和“怎样记、怎样取”，因为前者增加条目，并不自动改变后者的机制。（[原文 §3.3](https://arxiv.org/html/2512.18746#S3.SS3)；[原文 §5.2](https://arxiv.org/html/2512.18746#S5.SS2)） （[原文 §3.2](https://arxiv.org/html/2602.07755#S3.SS2)；[原文 §3.3](https://arxiv.org/html/2602.07755#S3.SS3)）\n\n**关键对照：** [ContinualSkillBench](?paper=2608.03874) 直接比较显式技能学习和保留历史上下文。如果简单保留历史也能达到相近效果，就需要进一步证明提炼技能本身的额外作用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)）\n\n## 路线三：从设计执行流程，到修改真实运行框架\n\n**阅读顺序：** [ADAS](?paper=2408.08435) / [AFlow](?paper=2410.10762) → [SICA](?paper=2504.15228) / [DGM](?paper=2505.22954) → [Meta-Harness](?paper=2603.28052) / [Self-Harness](?paper=2606.09498)。\n\n**ADAS** 用代码表达代理设计，**AFlow** 搜索节点和连接组成的工作流程；读它们时要先确定预设了哪些模块、允许改变哪些组合。（[原文 §3](https://arxiv.org/html/2408.08435#S3)；[原文 附录B](https://arxiv.org/html/2408.08435#A2)） （[原文 §4](https://arxiv.org/html/2410.10762#S4)；[原文 附录A.6](https://arxiv.org/html/2410.10762#A1.SS6)）\n\n**SICA** 让编程代理改自身实际使用的工具和实现；**DGM** 还保留多个历史分支，允许从暂时不领先的版本继续生长。这里的问题从“这一次怎样解题”扩展为“以后用哪套执行程序解题”。（[原文 §3](https://arxiv.org/html/2504.15228#S3)） （[原文 §3](https://arxiv.org/html/2505.22954#S3)；[原文 附录C.3](https://arxiv.org/html/2505.22954#A3.SS3)）\n\n**Meta-Harness** 强調修改者可以检索完整历史代码、分数和轨迹，以重新诊断问题。**Self-Harness** 强调由执行任务的同一种模型识别自己的失败习惯，再改自己的框架；其检查分数参与接受修改，因此要进一步看哪些数据仍用于选版本。（[原文 §3](https://arxiv.org/html/2603.28052#S3)） （[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)）\n\n**这条线中的工程分工：** [AHE](?paper=2604.25850) 追踪组件改动及其相互影响；[HarnessFix](?paper=2606.06324) 把失败定位接到限定范围的修复；[HarnessLens](?paper=2608.27311) 研究怎样选择更相关的验证题、减少验收成本。它们分别处理改动的可解释性、修复范围和验证预算。（[原文 §3](https://arxiv.org/html/2604.25850#S3)；[原文 §3.3](https://arxiv.org/html/2604.25850#S3.SS3)） （[原文 §3](https://arxiv.org/html/2606.06324#S3)；[原文 §6](https://arxiv.org/html/2606.06324#S6)） （[原文 附录A.1](https://arxiv.org/html/2608.27311#A1.SS1)；[原文 §5.1](https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2)）\n\n**近期补充：修改范围和经验结构也值得单独研究。** [RobustSGPO](?paper=2609.09646) 先决定改哪些代理、做哪类操作，再生成补丁并保留不同类别的历史起点；它问的是“开放了修改权限后，怎样让有效结构修改真正发生”。[Procedural Graphs](?paper=2609.09153) 则把经验组织成带条件的步骤图，让模型每一步读取当前位置附近的指导。前者控制搜索过程，后者设计可学习、可使用的经验结构，两者不是同一种贡献。（[RobustSGPO §4–5](https://arxiv.org/html/2609.09646#S4)；[Procedural Graphs §3](https://arxiv.org/html/2609.09153#S3)）\n\n## 路线四：让系统更会提出改进\n\n**阅读顺序：** [Promptbreeder](?paper=2309.16797) → [MetaSkill-Evolve](?paper=2607.05297) / [Hyperagents](?paper=2603.19461)，再对照 [Harness-R1](?paper=2608.02276) / [MetaEvolve](?paper=2607.21971)。\n\n这里有两种需要分开理解的做法。\n\n**把改进规则也设为可变对象。** Promptbreeder 改指导提示变异的指令；MetaSkill-Evolve 改指导技能修订的文字说明；Hyperagents 把改进程序本身与任务代理放进可修改系统，并检查改进能力能否用于新领域。文字规则、程序和外层选择流程，要分别说明哪些真的变了。（[原文 §3.1](https://arxiv.org/html/2309.16797#S3.SS1)；[原文 附录F](https://arxiv.org/html/2309.16797#A6)） （[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §5.1](https://arxiv.org/html/2603.19461#S5.SS1)；[原文 §5.3](https://arxiv.org/html/2603.19461#S5.SS3)）\n\n**专门训练提出改进的模型。** Harness-R1 训练独立编辑模型，让它读失败记录、写框架补丁，再用补丁装上后的任务表现学习。MetaEvolve 训练利用反馈与历史提出更好改进的能力。这说明修改能力可以被训练；还要另查部署时它是否继续修改自身参数或改进规则。（[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)）\n\n**先排除一个混淆：** [Harness Updating Is Not Harness Benefit](?paper=2605.30621) 将执行者和修改者独立配对。在技能、提示和记忆的受限编辑实验中，强模型未必写出更有帮助的更新；弱执行者也可能因为不加载或不遵循技能而得不到收益。它解释的是“会修改”与“能受益”的分工，不是在证明小模型能同样胜任任意源码自修改。（[原文 §4.2–4.3](https://arxiv.org/html/2605.30621#S4.SS2)；[附录B.4：编辑范围](https://arxiv.org/html/2605.30621#A2.SS4)）\n\n**判断递归改进的核心问题：** 新版本只是更会做任务，还是也更会产生下一次改进？如果论文单独测了后者，证据来自什么新任务、什么对照？\n\n## 路线五：经验留在框架里，还是训练进模型？\n\n**阅读顺序：** [SEAL](?paper=2506.10943) → [SIA](?paper=2605.27276)，再对照 [HELIX](?paper=2608.13951) / [Macaron-V1](?paper=2608.09819)。\n\n**SEAL** 学习怎样把新输入整理成有效的参数更新材料。**SIA** 在同一流程中开放两种操作：改外围框架，或训练模型；关键是根据失败决定改哪里，以及两者有无互补收益。（[原文 §3](https://arxiv.org/html/2506.10943#S3)；[原文 §3.1](https://arxiv.org/html/2506.10943#S3.SS1)） （[原文 §4.3](https://arxiv.org/html/2605.27276#S4.SS3)；[原文 §6.2](https://arxiv.org/html/2605.27276#S6.SS2)）\n\n**HELIX** 强调执行框架还应产出可追踪、适合后续模型训练的轨迹；当前论文主要验证框架与数据接口。**Macaron-V1** 的系统架构连接专长适配参数和运行配置，但其直接框架搜索实验证据来自冻结模型、多个配置覆盖失败题。把“支持共同更新”“完成了一轮训练”“多代互相推动”分开看，才能准确理解论文进展。（[原文 §5.1](https://arxiv.org/html/2608.13951#S5.SS1)） （[原文 §3.1](https://arxiv.org/html/2608.09819#S3.SS1.SSS2)；[原文 §4](https://arxiv.org/html/2608.09819#S4)）\n\n**联合进化的三个具体设计可以并读：**\n\n| 论文 | 框架与参数怎样配合 | 读结果时保留什么条件 |\n| --- | --- | --- |\n| [HarnessForge](?paper=2606.01779) | 先按故障修框架，每个保留框架再训练自己的模型适配参数，形成独立分支。 | 3,800道适配题与测试分开；TMDB/API-Bank只做迁移测试。框架筛选还看词元与耗时。（[原文附录B–D](https://arxiv.org/html/2606.01779#A2)） |\n| [Co-Harness](?paper=2607.22688) | 修复生成训练轨迹的系统，再把新框架下成功行为训练进模型，下一轮继续发现故障。 | 虽提出两组行为验收，但训练、验收与最终竞赛题的完整隔离未披露；不能直接把涨分解释成泛化。（[原文 §3.4–4.1](https://arxiv.org/html/2607.22688#S3.SS4)；[附录E](https://arxiv.org/html/2607.22688#A5)） |\n| [WHALE](?paper=2609.00196) | 固定模型搜框架、固定框架练模型，并专门研究何时切换；训练信号停滞可触发换阶段。 | 阶段内选择用训练信号，但论文主要比较各运行最好测试点；与事先选定版本后独立测一次不同。（[原文 §4](https://arxiv.org/html/2609.00196#S4)；[§6.2](https://arxiv.org/html/2609.00196#S6.SS2)） |\n\n这些工作使问题更具体：**新框架能否产生值得学的行为？模型学会后，什么框架才更适合它？两边每次应改多少？** 不能只看到“同时更新两部分”就视为同一方法。\n\n## 路线六：评测从有没有涨分，走向为什么涨分\n\n| 想区分什么能力 | 可以对照读的文章 | 评测中专门改变或检查了什么 |\n| --- | --- | --- |\n| 使用现成代理，与建设有效代理系统 | [HarnessDev](?paper=2609.01437)、[Evo-Bench](?paper=2608.09096) | 前者拆开从弱起点建设与继续改进；后者控制执行者及预算比较修改模型。（[原文 §3.2](https://arxiv.org/html/2609.01437#S3.SS2.SSS0.Px1)；[原文 附录E.2](https://arxiv.org/html/2609.01437#A5.SS2)） （[原文 §3](https://arxiv.org/html/2608.09096#S3)；[原文 附录E.1](https://arxiv.org/html/2608.09096#A5.SS1)） |\n| 连续变好，与中途达到峰值后退步 | [SEAGym](?paper=2606.17546)、[RSIBench-Data](?paper=2607.25886) | 前者同时跟踪泛化、遗忘和成本；后者观察数据研究找到的好方案能否最终保住。（[原文 附录A.1](https://arxiv.org/html/2606.17546#A1.SS1)） （[原文 §3.1](https://arxiv.org/html/2607.25886#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2607.25886#S4.SS2)） |\n| 会尝试、会判断，与能把经历用于后续提升 | [S³Gym](?paper=2608.31100)、[Aspire](?paper=2608.31111) | 前者拆测探索、自评与经验利用；后者让模型面对宽泛目标自行确定学习方向，最终检查是否练对了能力。（[原文 §4.4](https://arxiv.org/html/2608.31100#S4.SS4)；[原文 §5.2](https://arxiv.org/html/2608.31100#S5.SS2.SSS0.Px1)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） |\n| 存了技能，与技能确实带来额外收益 | [ContinualSkillBench](?paper=2608.03874)、[PAST-Bench](?paper=2608.04003) | 用保留历史上下文或关闭经验积累的对照，并检查经验实际有没有被调用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)） （[原文 §3.1](https://arxiv.org/html/2608.04003#S3.SS1)；[原文 附录A.3](https://arxiv.org/html/2608.04003#A1.SS3)） |\n| 工程调出高分，与发现可泛化的方法 | [PostTrainBench](?paper=2603.08640)、[MLS-Bench](?paper=2605.08678) | 前者看给定模型与算力后能否完成有效后训练；后者进一步要求方法跨设置、扩大规模后仍成立。（[原文 §1](https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2)；[原文 附录E](https://arxiv.org/html/2603.08640#A5)） （[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1)；[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1)） |\n\n**补充对照：[RSI-Exam](?paper=rsi-exam)** 让研究者从可运行弱方法出发，在可见材料上反复实验，再评价最终交付物。它把方法改进与固定模型的框架改进放进同一任务库，并保留版本轨迹；部分任务另训练学生模型或提交回答，信息边界要按任务解释。与 Aspire 的宽泛目标设置相比，它提供具体任务目标和评分规则，更集中地测“已知研究目标后，能否做出有效改进”。（[RSI-Exam 研究目标与任务构造](https://rsi-exam.ai/blog.html#benchmark)；[数学训练任务](https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html)；[法律任务](https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html)；[Aspire §4](https://arxiv.org/html/2608.31111#S4)）\n\n**从涨分到可信验收：** [Safe Harness Self-Evolution](?paper=2609.08175) 将候选确实改善、能否生成它、有限数据能否确认它，以及更新后还能否继续进步分别研究。其 DS-1000 与 WorkBuddy 诊断显示：审计点估计认为一些修改有益，验收阶段仍可能因为区间过宽而全部拒绝。因此，停止更新可能是评估预算问题；一次成功也不自动说明“产生下次改进的能力”增强。这里的理论保证依赖固定任务分布与抽样条件，“安全”主要指可靠改善并控制旧任务退化。（[原文 §4–6，p7–17](https://arxiv.org/pdf/2609.08175#page=7)）\n\n## 名字相近，但关键区别在哪里？\n\n| 对照论文 | 最值得记住的差别 | 展开实验表时继续看什么 |\n| --- | --- | --- |\n| [Evo-Harness](?paper=2608.15071) / [EvoHarness-RL](?paper=2608.05446) | 前者从轨迹写后续可读的文字技能；后者训练模型何时读写外部状态。（[原文 §4.5](https://arxiv.org/html/2608.15071#S4.SS5)；[原文 §3.1–3.4：说明的选取、注入与修改](https://arxiv.org/html/2608.15071#S3.SS1)） （[原文 附录C](https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5)；[原文 附录D.2](https://arxiv.org/html/2608.05446#A4.SS2)） | 改变的是文字内容、运行代码，还是模型参数？ |\n| [MetaSkill-Evolve](?paper=2607.05297) / [MetaEvolve](?paper=2607.21971) | 前者更新指导技能修订的外部说明；后者把提出改进的能力训练进模型参数。（[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)） | 改进机制哪些部分仍固定？训练与部署阶段分别改什么？ |\n| [Self-Harness](?paper=2606.09498) / [Harness-R1](?paper=2608.02276) | 前者由同一种模型为自己适配框架；后者训练独立编辑者帮助冻结的执行模型。（[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)） （[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） | 修改者能看到哪些失败信息？检查题是否也参与了接受修改？ |\n| [ASPIRE（机器人）](?paper=2607.00272) / [Aspire（宽泛目标评测）](?paper=2608.31111) | 前者从机器人失败中发现修复技能；后者测试模型能否自主确定合理学习方向。（[原文 §2](https://arxiv.org/html/2607.00272#S2)；[原文 附录E.4](https://arxiv.org/html/2607.00272#A5.SS4)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） | 任务领域、反馈接口与研究目标完全不同，要用标题和日期区分。 |\n| [Harness-of-Harness](?paper=2609.01481) / [Meta-Harness](?paper=2603.28052) | 前者组织长期开发，持续改进软件产物；后者搜索用于执行任务的框架程序。（[原文 附录A.2](https://arxiv.org/html/2609.01481#A1.SS2)；[原文 §4.2](https://arxiv.org/html/2609.01481#S4.SS2.SSS0.Px2)） （[原文 §3](https://arxiv.org/html/2603.28052#S3)） | 最终交付的是更好的项目，还是下一道任务会使用的更好系统？ |\n\n## 用哪些证据判断这个领域走到了哪里？\n\n根据上面几条路线，本站建议把证据拆成三个层面阅读：\n\n1. **局部改进是否成立。** 新版本在论文指定任务和预算下比起点更好；先确认提升来自什么改动，额外模型、重试和参考答案有没有变化。\n2. **可复用改进是否成立。** 冻结版本后，换题、换领域或换模型仍有效；分别看这些迁移设置，不能用一种替代另一种。\n3. **产生改进的能力是否也增强。** 改进机制本身发生可描述的变化，并能在后续问题上更有效地提出改进；最好有独立测量和固定改进者对照。\n\n这些是本文库的比较问题，而非所有论文共用的等级标准。看见一条上升曲线后，继续问：**哪些题参与了修改和选版本？做错的细节从哪里来？最终继承了什么？** 对齐这些条件，才能判断论文解决的是哪一块问题，以及仍留下什么。\n\n接着可以[回到全部论文](?view=library)，或筛选[运行框架进化](?category=methods&quick=harness)、[模型参数进化](?category=methods&quick=weights)、[联合进化](?category=methods&quick=joint)、[评测研究](?category=evaluation)。需要先理解名词时，查看[入门说明](?view=guide)。\n"
 }

@@ -136,7 +136,7 @@ for(const p of papers){
  assert(cases.length>0,p.id);
  assert.equal(new Set(cases.map(c=>c.label)).size,cases.length,p.id);
  for(const c of cases){
-  for(const k of ['label','data','scoring','visible','use']) assert(typeof c[k]==='string'&&c[k].trim().length>(k==='label'?0:3),p.id+':'+k);
+  for(const k of ['label','data','judgment','scoring','visible','use']) assert(typeof c[k]==='string'&&c[k].trim().length>(k==='label'?0:3),p.id+':'+k);
   assert(c.sources.length>0&&c.sources.every(s=>s.label&&s.url.startsWith('https://')),p.id);
   assert(!/待核|待补|本轮尚|\ufffd/.test(JSON.stringify(c)),p.id);
  }

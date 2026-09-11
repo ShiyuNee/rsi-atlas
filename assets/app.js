@@ -68,14 +68,17 @@ function caution(p){return /Same-set|混合|参与|重试/.test(p.protocol);}
 function fieldSources(p,f){return [...new Map((f.sources||[]).map(r=>[r.url,r])).values()].map(r=>`<a href="${escapeHTML(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(r.label)} ↗</a>`).join('<br>');}
 function profileTable(p){
  const rows=p.profile.fields.flatMap(f=>f.key==='verdict'&&p.profile.feedbackCases?.length
-  ? p.profile.feedbackCases.map(c=>`<tr class="feedback-case"><th scope="row">反馈 / 判分<br><small>${escapeHTML(c.label)}</small></th><td><p><strong>使用数据：</strong>${markdownInline(c.data)}</p><p><strong>谁判、依据什么：</strong>${markdownInline(c.scoring)}</p><p><strong>返回哪些信息：</strong>${markdownInline(c.visible)}</p><p><strong>用于哪一步：</strong>${markdownInline(c.use)}</p></td><td>${fieldSources(p,c)}</td></tr>`)
+  ? p.profile.feedbackCases.map(c=>`<tr class="feedback-case"><th scope="row">反馈 / 判分<br><small>${escapeHTML(c.label)}</small></th><td><p><strong>使用数据：</strong>${markdownInline(c.data)}</p><p><strong>判分机制：</strong>${markdownInline(c.judgment)}</p><p><strong>具体检查与比对：</strong>${markdownInline(c.scoring)}</p><p><strong>返回哪些信息：</strong>${markdownInline(c.visible)}</p><p><strong>用于哪一步：</strong>${markdownInline(c.use)}</p></td><td>${fieldSources(p,c)}</td></tr>`)
   : [`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`]);
  return `<section class="profile-block"><div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></section>`;
+}
+function feedbackOverview(p){
+ return p.profile.feedbackCases.map(c=>`<p><strong>${escapeHTML(c.label)}：</strong>${markdownInline(c.judgment)}。 <a class="feedback-source" href="${escapeHTML(safeURL(c.sources[0].url))}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(c.sources[0].label)}">原文 ↗</a></p>`).join('');
 }
 function research(p){
  const labels={object:'什么在进化',executor:'谁执行',modifier:'谁来改',verdict:'反馈是什么',seed:'基础 harness 是什么'};
  const selected=Object.keys(labels).map(key=>p.profile.fields.find(f=>f.key===key));
- return `<dl class="research-fields">${selected.map(f=>`<div><dt>${labels[f.key]}</dt><dd>${markdown(p.overview.fields[f.key]||f.value)}<small class="field-source">${fieldSources(p,f)}</small></dd></div>`).join('')}</dl><details class="mechanism"><summary>查看更新规则与全部研究维度</summary>${profileTable(p)}</details>`;
+ return `<dl class="research-fields">${selected.map(f=>`<div><dt>${labels[f.key]}</dt><dd>${f.key==='verdict'?feedbackOverview(p):`${markdown(p.overview.fields[f.key]||f.value)}<small class="field-source">${fieldSources(p,f)}</small>`}</dd></div>`).join('')}</dl><details class="mechanism"><summary>查看更新规则与全部研究维度</summary>${profileTable(p)}</details>`;
 }
 function tldr(p){
  const labels={gap:'研究缺口（作者判断）',position:'本文定位',conclusion:'关键设计与结论'};
@@ -142,6 +145,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=intro-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=feedback-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
