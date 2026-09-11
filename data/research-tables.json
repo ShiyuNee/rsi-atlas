@@ -29028,5 +29028,1463 @@
     ],
     "sourceDate": "2026-09-11",
     "roleAuditDate": "2026-09-11"
+  },
+  "2609.00196": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "搜索问答和数学由 Qwen3.5-2B 执行，棋题由 Qwen3.5-4B 执行。参数阶段更新这些模型，下一阶段由更新后的模型配合候选框架做题；搜索工具、Python 运行环境与棋盘规则保持固定。",
+        "sources": [
+          {
+            "label": "§5.2：执行模型与评测",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS2"
+          },
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "Claude Opus 4.7 通过 Meta-Harness 搜索器读历史框架代码、逐题成败和轨迹，每轮提出 3 个候选框架。参数更新由训练程序完成：当前执行模型每题采样 8 条轨迹，仅留下判对的轨迹做监督微调。修改框架的 Claude 本身不在这个循环中训练。",
+        "sources": [
+          {
+            "label": "附录B、表1：修改模型和预算",
+            "url": "https://arxiv.org/html/2609.00196#A2"
+          },
+          {
+            "label": "§3–4：参数更新与框架搜索",
+            "url": "https://arxiv.org/html/2609.00196#S3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "共同变化的是执行模型参数，以及调用它的可执行框架代码。框架可改提示、工具输入输出整理、调用后反馈、停止条件与轮数；还可调整检索查询、Python 代码提取或棋盘呈现。判分器、答案、环境转移规则和各阶段数据固定。",
+        "sources": [
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          },
+          {
+            "label": "附录B.2：各领域初始框架",
+            "url": "https://arxiv.org/html/2609.00196#A2.SS2"
+          },
+          {
+            "label": "§3–4：参数更新与框架搜索",
+            "url": "https://arxiv.org/html/2609.00196#S3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "问答：GPT-5.4-mini 将提取出的答案与参考答案比对；数学：程序提取最终方框答案并与标准答案匹配；棋题：python-chess 检查合法性，并要求走完题库参考着法。二元正确标记同时用于筛训练轨迹、评候选框架和统计测试成绩；Python 报错和棋盘反馈另供执行、诊断使用。",
+        "sources": [
+          {
+            "label": "附录B.3：三个固定判分器",
+            "url": "https://arxiv.org/html/2609.00196#A2.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "三个领域各有简单起点。问答只原样转发查询，每次返回截断到 200 词元的一段文档，最多 2 轮；数学没有系统提示，提取第一个 Python 代码块，回传原始输出/报错，最多 2 轮；棋题展示棋盘及完整历史，格式错误和非法着法各重试 1 次，最多 9 轮。搜索空间允许扩展这些控制，但棋题框架不能替模型搜索或代选着法。",
+        "sources": [
+          {
+            "label": "附录B.2：各领域初始框架",
+            "url": "https://arxiv.org/html/2609.00196#A2.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "先固定框架，用当前模型产生正确轨迹并微调；再固定新模型，让 Claude 搜索更适配的框架，按框架训练集分数保留最好候选。固定方案每轮约 0.6 个训练轮次、6 次框架搜索；自适应方案在训练信号连续不涨后切换。算法最终返回规则另使用最好测试成绩，需与阶段内训练分数选框架区分。",
+        "sources": [
+          {
+            "label": "§4：交替流程与返回规则",
+            "url": "https://arxiv.org/html/2609.00196#S4"
+          },
+          {
+            "label": "§6.2：交替节奏及自适应切换",
+            "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+          },
+          {
+            "label": "附录B、表1：修改模型和预算",
+            "url": "https://arxiv.org/html/2609.00196#A2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "问答参数训练：HotpotQA 14,801 题 + Natural Questions 4,145 题；框架搜索：同两来源 200 + 56 题。数学参数训练：DAPO-Math-17K 17,917 题；框架搜索从中抽 256 题。棋题来自 Lichess，参数训练 16,384 题、框架搜索 256 题；两者与测试互不重叠。SearchQA 在本文是搜索问答实验的名称，不是另一个统一数据集。",
+        "sources": [
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "每个候选在对应 256 道框架搜索题上各运行一次，汇总正确率进入历史档案，逐题结果和完整轨迹供修改者检查。自适应切换只看训练奖励及档案最好训练分数，没有另设验证集。数学的这 256 题属于参数训练集的子集。",
+        "sources": [
+          {
+            "label": "§3–4：参数更新与框架搜索",
+            "url": "https://arxiv.org/html/2609.00196#S3"
+          },
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          },
+          {
+            "label": "§6.2：交替节奏及自适应切换",
+            "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "问答共 700 题：2WikiMultiHopQA、Bamboogle、HotpotQA、MuSiQue、Natural Questions、PopQA、TriviaQA 各 100 题；数学测 AIME 2024/2025；棋题测另外 256 道 Lichess 题。每题采样 8 次，报告 8 次的平均正确率，再比较各运行过程中最好的测试点；不是“8 次任一次答对”指标。",
+        "sources": [
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          },
+          {
+            "label": "§5.2：执行模型与评测",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS2"
+          },
+          {
+            "label": "§5.3、图2：最好测试成绩",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "候选生成与阶段切换使用训练信号，但算法明确返回测试正确率最高的模型—框架组合，图表也是搜索期间最好测试成绩。因此有分开的测试题，却不是完全不参与最终版本选择的封闭测试。棋题明确三分区互斥；数学框架搜索集与参数训练集重叠。计算效率图按执行轨迹计数，不含修改者计算。",
+        "sources": [
+          {
+            "label": "§4：交替流程与返回规则",
+            "url": "https://arxiv.org/html/2609.00196#S4"
+          },
+          {
+            "label": "§5.1：三个领域的数据",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+          },
+          {
+            "label": "§5.3、图2：最好测试成绩",
+            "url": "https://arxiv.org/html/2609.00196#S5.SS3"
+          },
+          {
+            "label": "§6.1：轨迹成本口径",
+            "url": "https://arxiv.org/html/2609.00196#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "把“交替改参数与改可执行框架”的节奏单独拿出来研究：一次长训练再长搜索，不如多次小步交替；某些数学能力必须先训练，框架搜索才开始有效。进一步用训练信号停滞自动决定何时切换，而不是每个领域手调同一阶段预算。",
+        "sources": [
+          {
+            "label": "§6.2：交替节奏及自适应切换",
+            "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+          },
+          {
+            "label": "§6.1：不同领域的瓶颈",
+            "url": "https://arxiv.org/html/2609.00196#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2609.09646": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "AgentX 的头脑风暴工作流协调提问、构思和验证代理完成实验提案任务。所有条件固定相同执行模型、工具和评分规则；本文正文没有列出所用执行模型的具体型号，不能据 AgentX 其他实验反推。",
+        "sources": [
+          {
+            "label": "§3：AgentX 与诊断—修改—重放循环",
+            "url": "https://arxiv.org/html/2609.09646#S3"
+          },
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "模型诊断执行记录并生成修改内容；控制器先决定改几个代理、做哪类操作、改哪些目标。预写程序负责规定的增加/删除代理文件操作，其余指令改写由模型完成。本文未披露诊断、修改与评分角色的具体模型型号及是否共用模型。",
+        "sources": [
+          {
+            "label": "§3：AgentX 与诊断—修改—重放循环",
+            "url": "https://arxiv.org/html/2609.09646#S3"
+          },
+          {
+            "label": "§5：指定改动、检查与保留版本",
+            "url": "https://arxiv.org/html/2609.09646#S5"
+          },
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "多代理框架的指令、输入输出字段约定，以及允许时的代理增删与路由。三级权限依次允许：改一个指定代理；改任意已有代理但不增删；再开放代理增删及路由变化。执行模型权重、评分规则和受保护路径保持固定。",
+        "sources": [
+          {
+            "label": "§4：三级修改权限",
+            "url": "https://arxiv.org/html/2609.09646#S4"
+          },
+          {
+            "label": "§3：AgentX 与诊断—修改—重放循环",
+            "url": "https://arxiv.org/html/2609.09646#S3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "根据旧执行轨迹构造可重放任务与评分要求，再将新旧框架在相同任务及随机种子上配对运行。优化轨迹与静态编辑错误用于提出补丁，验证分数用于接受和保留版本。论文报告0–5质量分与完成率，但没有给出逐项评分表、质量分聚合细则或评审模型名称。",
+        "sources": [
+          {
+            "label": "§3：AgentX 与诊断—修改—重放循环",
+            "url": "https://arxiv.org/html/2609.09646#S3"
+          },
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          },
+          {
+            "label": "§6.5、表3：等词元成本结果",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS5"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "沿用 AgentX 已有的多代理头脑风暴流程，有提问、构思、验证及提案协调分工，也已有根据失败诊断、写补丁、配对重放、接受或撤回的 SGPO 循环。新增的是明确指定修改范围/操作、保证目标一致及保留其他候选起点，并非从空白代理开始。",
+        "sources": [
+          {
+            "label": "§3：AgentX 与诊断—修改—重放循环",
+            "url": "https://arxiv.org/html/2609.09646#S3"
+          },
+          {
+            "label": "§5：指定改动、检查与保留版本",
+            "url": "https://arxiv.org/html/2609.09646#S5"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "控制器选改动类别与目标，模型写内容，程序检查是否恰好改到指定对象及结构是否有效；有效候选与当前版本做3次配对重放。平均验证增益须超过0.05并通过保护检查，每轮最多接受1个候选。可从当前版本或保留档案继续改，但后代仍必须胜过当前版本才能被采用。",
+        "sources": [
+          {
+            "label": "§5：指定改动、检查与保留版本",
+            "url": "https://arxiv.org/html/2609.09646#S5"
+          },
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "作者在 AgentX 头脑风暴工作流中组织120个任务：60个单代理指令问题、60个跨代理交接/结构问题。每类按30/15/15分为优化、验证和测试，共60/30/30。先按源对话和底层要求分组再划分，避免同源问题跨区。模型参数不训练。",
+        "sources": [
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "60道优化题的轨迹和静态补丁错误供生成候选；30道验证题用于新旧版本比较、档案排名及任务切换后的重评分。每轮3次提案，每个提案最多改120行、增加6,000字符；无效提案和重试同样计成本。",
+        "sources": [
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          },
+          {
+            "label": "§6.4：任务切换实验",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "30道未参与搜索的测试题，两类各15题。测试质量曲线、任务完成率及相同2,000万词元预算下最后可负担的版本分别报告；任务切换仅在这两类头脑风暴问题之间进行，并未测跨行业泛化。",
+        "sources": [
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          },
+          {
+            "label": "§6.5、表3：等词元成本结果",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS5"
+          },
+          {
+            "label": "§6.4：任务切换实验",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "测试反馈不进入搜索；等成本比较按预算选最后版本，不按测试最高分选。实验只有一个 AgentX 工作流、五个配对随机种子；与其他论文方法没有共享基准上的直接排名。执行/修改/评分模型型号及完整评分要求未在本文披露，结论可用于理解搜索控制，但复现实验仍需这些配置。",
+        "sources": [
+          {
+            "label": "§6.1：120题划分与接受规则",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS1"
+          },
+          {
+            "label": "§6.5、表3：等词元成本结果",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS5"
+          },
+          {
+            "label": "§2：未跨系统比较的范围说明",
+            "url": "https://arxiv.org/html/2609.09646#S2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "将“允许改很多东西”和“实际产生有效修改”分开：先指定目标，再用程序落实结构编辑；把暂时落后但属于不同改动类别的整套框架留作未来起点。还比较轮流开放小范围到大范围权限，以及档案在新任务适应与保留旧能力间的取舍。",
+        "sources": [
+          {
+            "label": "§5：指定改动、检查与保留版本",
+            "url": "https://arxiv.org/html/2609.09646#S5"
+          },
+          {
+            "label": "§4：三级修改权限",
+            "url": "https://arxiv.org/html/2609.09646#S4"
+          },
+          {
+            "label": "§6.4：任务切换实验",
+            "url": "https://arxiv.org/html/2609.09646#S6.SS4"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2609.09153": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "统一使用 ReAct 执行器，即循环“决定下一步—调用工具—读取结果”。分别测试 Claude Sonnet 4.6、Gemini 3.1 Pro、Gemini 3.5 Flash、Grok 4.1 Fast；每组的图指导模型与图修改模型和执行器使用同一种模型。专门的图构造及十轮企业仿真实验使用冻结 Gemini 3.5 Flash。",
+        "sources": [
+          {
+            "label": "§4：模型与共享执行框架",
+            "url": "https://arxiv.org/html/2609.09153#S4"
+          },
+          {
+            "label": "附录D.3：迭代构图实验",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS3"
+          },
+          {
+            "label": "§5.4：最终图与中途最高分",
+            "url": "https://arxiv.org/html/2609.09153#S5.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "与该组执行器同型号的冻结模型作为图修改者，对照高分/低分轨迹，增删步骤节点和连接、改边上的条件与提醒。另一次同型号模型调用将当前节点附近的图转成下一步指导。固定程序定位节点、检查结构并按验证分决定是否接受；没有训练模型参数。",
+        "sources": [
+          {
+            "label": "§3：图表示、使用与更新",
+            "url": "https://arxiv.org/html/2609.09153#S3"
+          },
+          {
+            "label": "§4：模型与共享执行框架",
+            "url": "https://arxiv.org/html/2609.09153#S4"
+          },
+          {
+            "label": "附录B.6：验证、拒绝记录与结构检查",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS6"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "持久改变的是“程序图”：节点表示工具调用或推理步骤，边说明什么条件下进入下一步、怎么做、要避开什么错误。执行时取当前节点两步以内的邻域，由模型翻译成指导文字；执行器仍自行决定行动。图可变，ReAct 循环、工具接口、修改流程与模型权重固定。",
+        "sources": [
+          {
+            "label": "§3：图表示、使用与更新",
+            "url": "https://arxiv.org/html/2609.09153#S3"
+          },
+          {
+            "label": "§4：模型与共享执行框架",
+            "url": "https://arxiv.org/html/2609.09153#S4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "每条训练轨迹带对应任务评分，修改者比较高低分轨迹并读失败记录。问答对照参考答案；对话任务由 Gemini 3.1 Pro 按指令要求评审；工具任务用各基准的状态/调用检查；企业仿真用存活、寿命及财务分数。迭代方案还在独立验证集上验收，退步则拒绝并保留拒绝原因。",
+        "sources": [
+          {
+            "label": "附录B.2：各基准判分",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS2"
+          },
+          {
+            "label": "§3：图表示、使用与更新",
+            "url": "https://arxiv.org/html/2609.09153#S3"
+          },
+          {
+            "label": "附录B.6：验证、拒绝记录与结构检查",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS6"
+          },
+          {
+            "label": "附录C.1：企业仿真规则与指标",
+            "url": "https://arxiv.org/html/2609.09153#A3.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "共用能调用工具、读取结果的 ReAct 执行器。图的起点有两种：人写的工具步骤与条件图，或只含 Start→End、没有中间知识的最小骨架。另设无图起点作为对照。一次性构图直接接收修改；逐批迭代构图才有独立验证集的回退门槛，不能混写成所有方案都有验证保护。",
+        "sources": [
+          {
+            "label": "§4：模型与共享执行框架",
+            "url": "https://arxiv.org/html/2609.09153#S4"
+          },
+          {
+            "label": "附录D.2：五种图构造方案",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "执行一批训练任务→按分数对照轨迹→提出图编辑→先检查边端点、节点类型和能否走到终止节点→验证集不掉分才保留。拒绝候选、训练记录及验证分留给下一次修改。每道题内部和测试时图固定；文中“在线进化”指训练批次之间更新图，并非在测试题上边做边改。",
+        "sources": [
+          {
+            "label": "附录B.6：验证、拒绝记录与结构检查",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS6"
+          },
+          {
+            "label": "附录D.2：五种图构造方案",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "主比较的训练数：HotpotQA 1,000；MultiChallenge 100；GDPval 88；ALFWorld 238；τ-bench 500；BFCL v3 100；EnterpriseArena 50场。这里训练指收集轨迹构图，不更新模型权重。专门十轮企业自进化另用20场训练；不能与主表50场混为一个设置。",
+        "sources": [
+          {
+            "label": "附录B.1、表5：数据划分",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS1"
+          },
+          {
+            "label": "附录D.2：五种图构造方案",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "迭代构图：HotpotQA 每100题更新一次，用额外1,000题验证；MultiChallenge 每20题更新一次，用额外100题验证；企业十轮实验用20场验证。一次性构图方案无验证回退。三类迭代实验明确验证/测试不重叠，其他基准的独立验证样本数没有在表5逐项列出。",
+        "sources": [
+          {
+            "label": "附录B.1、表5：数据划分",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS1"
+          },
+          {
+            "label": "附录D.3：迭代构图实验",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS3"
+          },
+          {
+            "label": "附录D.2：五种图构造方案",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "主表：HotpotQA 1,000题；MultiChallenge 166题；GDPval 44题；ALFWorld 134题；τ-bench 零售115题；BFCL v3 多轮基础类100题；EnterpriseArena 50场。构图消融的 MultiChallenge 只测56题。十轮企业自进化另用20场测试，最终返回图存活率85%，中途最高95%不作最终成绩。",
+        "sources": [
+          {
+            "label": "附录B.1、表5：数据划分",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS1"
+          },
+          {
+            "label": "§5.4：最终图与中途最高分",
+            "url": "https://arxiv.org/html/2609.09153#S5.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "图在测试期间冻结；企业主比较按互斥随机种子区分训练/测试，十轮实验另按20/20/20划分并由验证集选图。HotpotQA 去重按题号分区，GDPval 按职业确定性划分，ALFWorld 用标准未见任务。十轮实验每分区只有20场，少数场景即可影响接受决定；85%不能替换成测试中途最高95%。",
+        "sources": [
+          {
+            "label": "附录B.1、表5：数据划分",
+            "url": "https://arxiv.org/html/2609.09153#A2.SS1"
+          },
+          {
+            "label": "§5.4：最终图与中途最高分",
+            "url": "https://arxiv.org/html/2609.09153#S5.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "将零散文字经验组织成“有条件连接的步骤图”，每一步只给与当前位置有关的指导。可从只有起止节点的骨架逐步长出程序知识，也能修复一个错误的人写先验。它改变图结构与边上说明，不任意重写整个代理源码。",
+        "sources": [
+          {
+            "label": "§3：图表示、使用与更新",
+            "url": "https://arxiv.org/html/2609.09153#S3"
+          },
+          {
+            "label": "附录D.2：五种图构造方案",
+            "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+          },
+          {
+            "label": "§5.3：骨架构图与错误先验修复",
+            "url": "https://arxiv.org/html/2609.09153#S5.SS3"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2607.22688": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "Qwen3-8B 或 Qwen3-32B 在数学推理中多轮调用 Python，训练后继续用对应候选模型。主实验两轮，每轮包含框架更新和成功轨迹监督微调；长期22版本案例使用 Qwen3-8B。",
+        "sources": [
+          {
+            "label": "§4.1：模型、基准、轮次",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+          },
+          {
+            "label": "附录H：AIME24长期案例",
+            "url": "https://arxiv.org/html/2607.22688#A8"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "HarnessCritic 是读失败轨迹、诊断根因并给局部补丁的模型角色，随后固定程序合并兼容建议并验收。论文没有为主实验单独列出这个角色的具体模型型号；附录D只说明归因对照使用初始模型，不能扩写为全部轮次都由某个确定外部模型修改。模型参数由监督微调程序更新。",
+        "sources": [
+          {
+            "label": "§3.3：归因和局部补丁",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+          },
+          {
+            "label": "§3.4：成功轨迹微调",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+          },
+          {
+            "label": "附录D：归因人工对照",
+            "url": "https://arxiv.org/html/2607.22688#A4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "框架配置与执行模型参数交替变化。框架包含提示、Python调用格式、技能、工具运行/重试/上下文管理程序及记忆。修改者把失败归到具体字段，局部修补；判断主要是模型本身出错时，不为该轨迹生成框架补丁。",
+        "sources": [
+          {
+            "label": "§3.3：归因和局部补丁",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+          },
+          {
+            "label": "§3.4：成功轨迹微调",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "失败轨迹记录模型输出、工具调用、Python标准输出/错误和终态。HarnessCritic 根据具体事件定位格式错误、缺少技能、重试或上下文问题；程序再比较目标失败类和原有成功类任务的新旧得分。成功轨迹须通过任务检查才用于微调，但原文未公开逐基准答案解析器及完整判分实现。",
+        "sources": [
+          {
+            "label": "§3.3：归因和局部补丁",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+          },
+          {
+            "label": "§3.4：成功轨迹微调",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+          },
+          {
+            "label": "附录E：两组验收任务",
+            "url": "https://arxiv.org/html/2607.22688#A5"
+          },
+          {
+            "label": "附录A：工具输出与失败类型",
+            "url": "https://arxiv.org/html/2607.22688#A1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "初始框架有512词元的数学/Python使用提示、带JSON调用格式的沙箱Python解释器（默认30秒超时）、异常最多重试3次、滑窗保留最后4,000词元、工具输出截断2,000词元；初始技能库为空、没有长期记忆或外部检索。代码解释器循环起始最多15轮。",
+        "sources": [
+          {
+            "label": "附录A/C：Python循环与初始配置",
+            "url": "https://arxiv.org/html/2607.22688#A3"
+          },
+          {
+            "label": "附录A：多轮执行",
+            "url": "https://arxiv.org/html/2607.22688#A1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "按当前框架收集失败→模型给根因与字段补丁→按复现频率、严重性和字段一致性合并→两组任务重放验收→在改好框架下收集成功轨迹微调→下一轮。主实验两轮，每轮框架内部5次迭代；比较起点已先经过一次框架优化，所以不等于原始未经调整的 Qwen。",
+        "sources": [
+          {
+            "label": "§3.2–3.5：两个循环与验收",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS2"
+          },
+          {
+            "label": "§3.3：归因和局部补丁",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+          },
+          {
+            "label": "附录E：两组验收任务",
+            "url": "https://arxiv.org/html/2607.22688#A5"
+          },
+          {
+            "label": "§4.1：模型、基准、轮次",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "微调使用当前模型在接受后的框架下产生并通过任务检查的轨迹。本文实验点名 AIME 2024、AIME 2025、HMMT February 2025 各30题，但没有明确列出另一个训练题库、成功轨迹总数及其与90道评测题的题号关系。不能据此写成在某训练基准上训练、再独立测竞赛题。",
+        "sources": [
+          {
+            "label": "§3.4：成功轨迹微调",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+          },
+          {
+            "label": "§4.1：模型、基准、轮次",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "补丁分别在两组任务上重放：含目标失败类型的一组必须改善；原有成功或其他行为的一组不得退步。附录E给出接受公式，但未列这两组的来源、题号及样本数。长期案例明确围绕 AIME24 连续迭代22个版本，并根据准确率与耗时回退。",
+        "sources": [
+          {
+            "label": "附录E：两组验收任务",
+            "url": "https://arxiv.org/html/2607.22688#A5"
+          },
+          {
+            "label": "附录H：AIME24长期案例",
+            "url": "https://arxiv.org/html/2607.22688#A8"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "主表在 AIME24、AIME25、HMMT25 各30题上比较 Qwen3-8B/32B 的两轮更新，报告多次运行平均的单次答对率。另一个AIME24长期案例探索6条轨迹多数投票和时间预算；它与主表单次正确率不是同一种统计。",
+        "sources": [
+          {
+            "label": "§4.1：模型、基准、轮次",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+          },
+          {
+            "label": "§4.2、表6：两轮改进",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS2"
+          },
+          {
+            "label": "附录H：AIME24长期案例",
+            "url": "https://arxiv.org/html/2607.22688#A8"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "论文提出防退化验收，但未披露训练题、两组验收题与最终90道题之间的完整隔离关系。AIME24长期案例用同一基准迭代并选设计，不能视为另一份独立测试。收录它是因为联合训练和故障归因的设计有对照价值，而不是将其涨分当作已证明跨数据泛化。",
+        "sources": [
+          {
+            "label": "§4.1：模型、基准、轮次",
+            "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+          },
+          {
+            "label": "附录E：两组验收任务",
+            "url": "https://arxiv.org/html/2607.22688#A5"
+          },
+          {
+            "label": "附录H：AIME24长期案例",
+            "url": "https://arxiv.org/html/2607.22688#A8"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "先修好产生训练轨迹的框架，再把新框架下成功的行为训练进模型，使下一轮暴露出新的框架瓶颈。与广泛搜索代理代码相比，重点是“哪项失败由哪个框架字段导致”的局部修补及两组行为验收。",
+        "sources": [
+          {
+            "label": "§1：联合后训练动机",
+            "url": "https://arxiv.org/html/2607.22688#S1"
+          },
+          {
+            "label": "§3.3：归因和局部补丁",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+          },
+          {
+            "label": "§3.4：成功轨迹微调",
+            "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+          },
+          {
+            "label": "附录E：两组验收任务",
+            "url": "https://arxiv.org/html/2607.22688#A5"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2606.01779": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "Qwen3-4B 或 Qwen3-8B 配当前框架执行。每个保留下来的框架有自己的一份模型分支，训练新增 LoRA 适配参数（少量附加可训练矩阵），再在下一轮继承；同一个父模型分出的兄弟框架不共享后续适配参数。",
+        "sources": [
+          {
+            "label": "附录C.2：模型与适配参数配置",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS2"
+          },
+          {
+            "label": "附录D：每条分支的模型适配",
+            "url": "https://arxiv.org/html/2606.01779#A4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "GPT-5.5 担任外部修改者，依次诊断失败、规划修补方向、生成框架代码、按初步运行检查修复；最多3次修复重试。训练程序再用对应框架收集的成功轨迹更新 Qwen 的 LoRA，GPT-5.5 不随此过程训练。",
+        "sources": [
+          {
+            "label": "附录C.2：模型与适配参数配置",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS2"
+          },
+          {
+            "label": "附录C.4：诊断、编写和筛选",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS4"
+          },
+          {
+            "label": "附录D：每条分支的模型适配",
+            "url": "https://arxiv.org/html/2606.01779#A4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "把一套框架及其匹配模型视为共同进化单位。可改规划（分解、重规划、停止）、动作（参数格式、路由、重试）、记忆（写什么、何时取用）等代码/配置；再训练该框架专属的 LoRA 适配参数。底层任务接口、评测器与工具可用范围保持约束。",
+        "sources": [
+          {
+            "label": "§3.2：联合进化流程与起点",
+            "url": "https://arxiv.org/html/2606.01779#S3.SS2"
+          },
+          {
+            "label": "附录C.3：代码表示与修改范围",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS3"
+          },
+          {
+            "label": "附录C.2：模型与适配参数配置",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "ToolHop：最终答案正确率与中间目标完成率各占一半；本地检索问答：答案与参考答案的词级F1；EnvScaler-RL：环境终态满足了多少项程序检查。各候选还记录词元和耗时。GPT-5.5 读这些结果与轨迹定位首次实质错误，再比较任务分、词元、延迟筛候选。TMDB/API-Bank只作迁移测试。",
+        "sources": [
+          {
+            "label": "附录C.1：进化反馈具体计算",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS1"
+          },
+          {
+            "label": "附录C.4：诊断、编写和筛选",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS4"
+          },
+          {
+            "label": "附录E.1–E.2：迁移与成本口径",
+            "url": "https://arxiv.org/html/2606.01779#A5.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "从一个人工设计的框架和原始 Qwen 开始。论文将框架定义为规划、动作、记忆三个模块的可执行代码/配置，接口检查要求工具格式、动作名和记忆字段有效。方法段没有完整列出初始框架每项启用的功能，因此不能把“允许修改的重试/记忆能力”一律说成初始就已配置。",
+        "sources": [
+          {
+            "label": "§3.2：联合进化流程与起点",
+            "url": "https://arxiv.org/html/2606.01779#S3.SS2"
+          },
+          {
+            "label": "附录C.3：代码表示与修改范围",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "每轮用约1,200题收集执行证据，GPT-5.5 提出8个框架；先通过可导入、接口与简单运行检查。随后两批各200题筛选：8→4→2，兼顾任务分、词元和耗时。保留者用剩余题完成运行，成功轨迹复用于各自模型适配；主实验共3轮。档案记录父版本、故障、改动和成绩供以后参考。",
+        "sources": [
+          {
+            "label": "附录C.2：模型与适配参数配置",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS2"
+          },
+          {
+            "label": "附录C.4.5：两阶段筛选",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS4.SSS5"
+          },
+          {
+            "label": "附录C.4：诊断、编写和筛选",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS4"
+          },
+          {
+            "label": "附录D：每条分支的模型适配",
+            "url": "https://arxiv.org/html/2606.01779#A4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "训练和进化共3,800题：EnvScaler-RL 2,000题（带状态和检查函数的多步环境）；ToolHop 800题；Natural Questions、HotpotQA、2WikiMultiHopQA 合计1,000题（转换成固定本地文档检索任务）。同一池用于框架进化、成功轨迹筛选和LoRA训练，不另虚构一份参数训练题库。",
+        "sources": [
+          {
+            "label": "附录B.2–B.3：3,800题及去重隔离",
+            "url": "https://arxiv.org/html/2606.01779#A2.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "从每轮约1,200题中逐步取新的200题子集做两阶段筛选；剩余任务给保留框架收集轨迹。它们属于可用于适配的训练/进化池。候选比较同时看任务表现、词元与延迟，优先保留在这些指标上没有被另一方案全面超越的版本；不能理解成只取正确率最高者。",
+        "sources": [
+          {
+            "label": "附录C.4.5：两阶段筛选",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS4.SSS5"
+          },
+          {
+            "label": "附录C.1：进化反馈具体计算",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "五个数据集、四组实验：ToolHop 195题，RestBench-TMDB 100题，API-Bank 114题，以及本地检索 HotpotQA、2WikiMultiHopQA 两个测试子集。附录B.1没有列出后两子集题数。TMDB和API-Bank用 ToolHop 上进化出的框架直接迁移，不在目标测试题上再次进化。",
+        "sources": [
+          {
+            "label": "附录B.1：各基准测试指标",
+            "url": "https://arxiv.org/html/2606.01779#A2.SS1"
+          },
+          {
+            "label": "附录E.1–E.2：迁移与成本口径",
+            "url": "https://arxiv.org/html/2606.01779#A5.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "3,800题与正式测试集严格分离；同源基准按题号和标准化任务指令去重，本地文档库在适配前固定，测试题号不对搜索、训练或选模开放。候选筛选集仍属适配数据。论文轨迹成本不含外部修改模型生成费用；不能把执行轨迹更少等同总费用必然更低。",
+        "sources": [
+          {
+            "label": "附录B.3：测试隔离",
+            "url": "https://arxiv.org/html/2606.01779#A2.SS3"
+          },
+          {
+            "label": "附录E.1–E.2：迁移与成本口径",
+            "url": "https://arxiv.org/html/2606.01779#A5.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "不是让所有候选框架共享一个训练后的模型，而是保留各自匹配的模型分支；修好的规划、工具和记忆接口所产生的成功轨迹，立即用来训练这套接口的执行者。选择时同时考虑任务分、词元与延迟，避免只把更复杂、开销更大的框架当作进步。",
+        "sources": [
+          {
+            "label": "附录D：每条分支的模型适配",
+            "url": "https://arxiv.org/html/2606.01779#A4"
+          },
+          {
+            "label": "附录C.1：进化反馈具体计算",
+            "url": "https://arxiv.org/html/2606.01779#A3.SS1"
+          },
+          {
+            "label": "§3.2：联合进化流程与起点",
+            "url": "https://arxiv.org/html/2606.01779#S3.SS2"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2605.30621": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "六种执行模型：Claude Opus 4.6、Sonnet 4.6、Haiku 4.5、Qwen3-235B-A22B、Qwen3-32B、GPT-OSS-120B。测修改者时固定 Opus、Sonnet、Qwen3-235B 三个代表执行者；测执行收益时固定同三种代表修改者。Qwen3.5-9B只作为修改者，不列为执行者。",
+        "sources": [
+          {
+            "label": "§4.1、附录B.2：模型配对",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+          },
+          {
+            "label": "§4.2：修改者能力实验",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS2"
+          },
+          {
+            "label": "§4.3：执行者收益与失败分析",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "上述六种模型加 Qwen3.5-9B，共七种修改者，按相同提示、轨迹窗口和预算读执行证据、改允许的外部文件。执行者与修改者独立配对，模型权重都不训练。工具与评测脚本禁止修改，修改者自己的系统提示固定。",
+        "sources": [
+          {
+            "label": "§4.1、附录B.2：模型配对",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+          },
+          {
+            "label": "附录B.4：初始提示与可写范围",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS4"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "SWE-bench Verified 和 SkillsBench 只允许修改技能目录，即供后续任务加载的程序经验说明；MCP-Atlas 另外允许改系统提示、向JSONL记忆文件追加条目。不是随意改整个代理运行源码，也没有参数更新。",
+        "sources": [
+          {
+            "label": "附录B.4：初始提示与可写范围",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS4"
+          },
+          {
+            "label": "§4.1、附录B.2：模型配对",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "SWE用问题对应的隐藏测试检查补丁；MCP-Atlas看最终答案满足了多少条参考事实要求；SkillsBench运行每题确定性检查器。成绩先锁定，再把该次任务的执行证据交给修改者，供以后任务使用。Claude Sonnet 4.6 对“技能是否被遵循”的评审是单独分析，不是这些任务通用的正确性判分。",
+        "sources": [
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          },
+          {
+            "label": "附录D.3–D.4：技能遵循诊断",
+            "url": "https://arxiv.org/html/2605.30621#A4.SS3"
+          },
+          {
+            "label": "§3.2：先答题再更新",
+            "url": "https://arxiv.org/html/2605.30621#S3.SS2"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "同一基准所有配对从相同起点、同任务流和工具开始。SWE系统提示是828字节的修复问题指南；MCP是1,309字节的API调用指南；SkillsBench不加系统提示，从空技能库开始，去掉基准原配的人工技能，只允许使用此前任务中进化出的技能。",
+        "sources": [
+          {
+            "label": "附录B.4：初始提示与可写范围",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS4"
+          },
+          {
+            "label": "附录B.1：三个任务流",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "当前框架执行一批任务并锁定成绩→把轨迹和结果整理成固定格式的证据→修改者更新可写技能、提示或记忆→后面的任务使用新版本。论文控制各模型的更新预算和任务轮数；没有额外列出独立验证集挑最佳框架或回放当前题后覆盖旧分数的步骤。",
+        "sources": [
+          {
+            "label": "§3.2：先答题再更新",
+            "url": "https://arxiv.org/html/2605.30621#S3.SS2"
+          },
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          },
+          {
+            "label": "§4.1、附录B.2：模型配对",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "没有参数训练集。学习证据来自同一任务流中已经做过的任务：SWE-bench Verified全500题；MCP-Atlas公开500题；SkillsBench 86题。技能或记忆只在这些任务完成、计分之后更新。",
+        "sources": [
+          {
+            "label": "附录B.1：三个任务流",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS1"
+          },
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "当前任务的执行记录和已取得结果供后续更新；不同模型配对共享提示格式、轨迹窗口、更新预算和任务顺序。本文没有单设开发/验证分区，不能把“先计分再用经验”改写成训练—验证—测试三分法。",
+        "sources": [
+          {
+            "label": "§4.1、附录B.2：模型配对",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+          },
+          {
+            "label": "§3.2：先答题再更新",
+            "url": "https://arxiv.org/html/2605.30621#S3.SS2"
+          },
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "最终统计上述同一条任务流的成绩：SWE补丁通过率；MCP严格全事实满足率及平均事实覆盖分；SkillsBench按每题5次运行的结果平均。另分析技能加载率与加载后遵循率，并不是另建一份隐藏测试集。",
+        "sources": [
+          {
+            "label": "附录B.1：三个任务流",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS1"
+          },
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          },
+          {
+            "label": "附录D.3–D.4：技能遵循诊断",
+            "url": "https://arxiv.org/html/2605.30621#A4.SS3"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "每道题的分数在它自己的证据用于更新前锁定，因此该题反馈不反过来提高该题已记录成绩；但经验和评价来自同一连续任务流，不是最终冻结后测未见集合。结论限定在这种技能/提示/记忆编辑空间与三类任务，不能外推为所有代码修改都不需要强模型。",
+        "sources": [
+          {
+            "label": "附录B.3：各基准判分及顺序",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS3"
+          },
+          {
+            "label": "附录B.4：初始提示与可写范围",
+            "url": "https://arxiv.org/html/2605.30621#A2.SS4"
+          },
+          {
+            "label": "§6：范围与限制",
+            "url": "https://arxiv.org/html/2605.30621#S6"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "把两个通常混在一起的因素交叉控制：谁能写出有帮助的框架，谁能真正利用框架。再从日志区分“根本没加载技能”和“加载了但后续不按步骤做”，解释为什么能力更弱、理论提升空间更大的模型，实际收益反而可能更小。",
+        "sources": [
+          {
+            "label": "§3.3：固定一侧的能力指标",
+            "url": "https://arxiv.org/html/2605.30621#S3.SS3"
+          },
+          {
+            "label": "§4.2：修改者能力实验",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS2"
+          },
+          {
+            "label": "§4.3：执行者收益与失败分析",
+            "url": "https://arxiv.org/html/2605.30621#S4.SS3"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
+  },
+  "2609.08175": {
+    "fields": [
+      {
+        "key": "executor",
+        "label": "谁执行",
+        "value": "理论中是任意固定模型配当前框架。实证分两套：DS-1000所有模型请求返回 gpt-5.4-mini-2026-03-17；WorkBuddy Code使用 deepseek-v4-flash-260425 配 DeepSeek Harness 0.1.0-rc.5（提交47f943859bef）。每套执行模型保持冻结。",
+        "sources": [
+          {
+            "label": "§1–2，p1–4：研究对象与假设",
+            "url": "https://arxiv.org/pdf/2609.08175#page=1"
+          },
+          {
+            "label": "附录I.3.4，p84–85：请求与模型身份记录",
+            "url": "https://arxiv.org/pdf/2609.08175#page=84"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "modifier",
+        "label": "谁来改",
+        "value": "DS-1000同一冻结 gpt-5.4-mini 模型生成或修订Python框架源码；WorkBuddy由相同DeepSeek模型/代理组合，根据生成分区的题目、旧成绩及失败材料提出4个持久系统角色提示。固定统计验收程序判断能否采用，模型不自己凭一句“我改好了”决定。",
+        "sources": [
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.4，p84–85：请求与模型身份记录",
+            "url": "https://arxiv.org/pdf/2609.08175#page=84"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          },
+          {
+            "label": "§4，p7–10：有限数据验收",
+            "url": "https://arxiv.org/pdf/2609.08175#page=7"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "object",
+        "label": "什么在进化 / 哪些部分不变",
+        "value": "理论覆盖持久改变提示、工具、代码和调度但冻结模型的框架更新。DS-1000具体改 CandidateHarness 源模块：提示组装、答案提取、模型调用次数与顺序；WorkBuddy只改每个新会话会加载的完整系统角色提示，工具、压缩策略和执行预算都固定。",
+        "sources": [
+          {
+            "label": "§1–2，p1–4：研究对象与假设",
+            "url": "https://arxiv.org/pdf/2609.08175#page=1"
+          },
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "verdict",
+        "label": "反馈是什么 / 怎样判对错",
+        "value": "DS-1000按程序题执行检查得到通过/失败，再分别统计修好了多少旧失败、损害了多少旧成功；WorkBuddy用Code任务的基准评分。两者都另用有限样本算不确定区间决定是否可接受，并保留独立审计任务事后检查。审计点估计看起来变好，不代表区间足够窄、已被可靠验收。",
+        "sources": [
+          {
+            "label": "§6.3，p15–16：两组诊断实验",
+            "url": "https://arxiv.org/pdf/2609.08175#page=15"
+          },
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          },
+          {
+            "label": "§4，p7–10：有限数据验收",
+            "url": "https://arxiv.org/pdf/2609.08175#page=7"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "seed",
+        "label": "基础 harness / 初始系统",
+        "value": "DS-1000起点只把公开题目交给模型调用一次，没有多调用编排或后处理搜索；候选可以改变这些外围流程，但静态审查禁止访问文件、进程、环境、网络、隐藏测试和参考解。WorkBuddy起点是已有DeepSeek Harness编程代理，修改只替换系统角色提示，不增工具或改变上下文管理。",
+        "sources": [
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "cycle",
+        "label": "怎样定位问题、修改与保留版本",
+        "value": "生成候选→独立任务估计修复与退化→用同时控制多个判断错误风险的区间验收→通过才选择，否则保留旧版本→最后独立审计。DS-1000比较独立生成、只看无标签运行记录修订、再加正确性标签修订三种方式；WorkBuddy固定4个提示候选后再验收。跨步实证另以点估计选更新，不等同理论的高置信接受规则。",
+        "sources": [
+          {
+            "label": "§6.3，p15–16：两组诊断实验",
+            "url": "https://arxiv.org/pdf/2609.08175#page=15"
+          },
+          {
+            "label": "§4，p7–10：有限数据验收",
+            "url": "https://arxiv.org/pdf/2609.08175#page=7"
+          },
+          {
+            "label": "附录I.3.4，p85–87：跨步骤测量",
+            "url": "https://arxiv.org/pdf/2609.08175#page=85"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "train",
+        "label": "训练 / 进化数据",
+        "value": "不训练参数。DS-1000排除试运行清单涉及的516题，从剩余484题取480题；分4个上下文，每组8题生成、8题低预算验收、48题高预算验收、56题独立审计，各题只分配一次。WorkBuddy Code全80题按固定哈希分20题生成、20题验收、40题审计。",
+        "sources": [
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "debug",
+        "label": "调试 / 选版本数据",
+        "value": "DS-1000每组/每生成方式产生6个候选池，每池4个，共288个终态输出；两套验收数据分别计算区间，按高预算验收结果选择。标签反馈只给生成题的公开题意、生成解、有效性、通过位和错误类别，不给参考解或验收/审计记录。WorkBuddy先冻结4个提示候选，20题验收每个系统取前3次有效运行。",
+        "sources": [
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "test",
+        "label": "最终测试数据",
+        "value": "独立审计并非只测胜者：DS-1000每上下文56题，WorkBuddy40题，均用来检查所有候选，包括被拒绝者，以区分没生成好修改与验收证据不足。另一个DS-1000跨步研究有4条序列、每条2次更新机会，选更新用48题；新生成候选的能力另在不重叠48题上测量。",
+        "sources": [
+          {
+            "label": "附录I.3.4，p82–85：DS-1000设置与模型",
+            "url": "https://arxiv.org/pdf/2609.08175#page=82"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          },
+          {
+            "label": "附录I.3.4，p85–87：跨步骤测量",
+            "url": "https://arxiv.org/pdf/2609.08175#page=85"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "isolation",
+        "label": "数据隔离与证据边界",
+        "value": "生成、验收和审计数据互斥；WorkBuddy必须完成验收并记录选择后才开放审计。理论保证以固定用户任务分布、固定奖励与声明的抽样/误差条件为前提；有限题集的点估计不能直接当作全分布保证。“安全”在这里主要指改进可信且控制原有任务退化，不是全面的部署安全证明。",
+        "sources": [
+          {
+            "label": "§1–2，p1–4：研究对象与假设",
+            "url": "https://arxiv.org/pdf/2609.08175#page=1"
+          },
+          {
+            "label": "§4，p7–10：有限数据验收",
+            "url": "https://arxiv.org/pdf/2609.08175#page=7"
+          },
+          {
+            "label": "§6.3，p15–16：两组诊断实验",
+            "url": "https://arxiv.org/pdf/2609.08175#page=15"
+          },
+          {
+            "label": "附录I.3.5，p87–89：WorkBuddy–DSH设置",
+            "url": "https://arxiv.org/pdf/2609.08175#page=87"
+          }
+        ],
+        "status": "recorded"
+      },
+      {
+        "key": "novelty",
+        "label": "关键设计 / 与相近研究的区别",
+        "value": "把候选真的更好、生成器能找到它、有限数据能认证它、选中后还能继续进步拆开证明与测量。达到性能上限附近时，识别微小真实改进的最坏情况评估成本会增加；当前执行变好本身，也不能保证下一轮更容易找到好修改。",
+        "sources": [
+          {
+            "label": "§3，p4–7：改进目标与生成概率",
+            "url": "https://arxiv.org/pdf/2609.08175#page=4"
+          },
+          {
+            "label": "§5，p10–13：瓶颈及评估成本",
+            "url": "https://arxiv.org/pdf/2609.08175#page=10"
+          },
+          {
+            "label": "§6.4，p16–17：多轮保证及实证",
+            "url": "https://arxiv.org/pdf/2609.08175#page=16"
+          }
+        ],
+        "status": "recorded"
+      }
+    ],
+    "sourceDate": "2026-09-11",
+    "roleAuditDate": "2026-09-11"
   }
 }

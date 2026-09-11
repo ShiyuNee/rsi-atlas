@@ -2084,5 +2084,130 @@
     ],
     "scope": "官方技术报告、研究协议、模型配置与六项公开任务说明核对；未将53项未公开任务的逐项细节推断为事实。",
     "systemDataScope": "依据项目官方报告、公开任务说明与固定提交版本核对数据、角色与初始系统。"
+  },
+  {
+    "id": "2609.00196",
+    "title": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+    "url": "https://arxiv.org/abs/2609.00196",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2609.09646",
+    "title": "RobustSGPO: Search-Space Control for Agent Harness Evolution",
+    "url": "https://arxiv.org/abs/2609.09646",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2609.09153",
+    "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+    "url": "https://arxiv.org/abs/2609.09153",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2607.22688",
+    "title": "Co-Harness: Co-Evolving Harnesses and Model Weights for LLM Agents",
+    "url": "https://arxiv.org/abs/2607.22688",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2606.01779",
+    "title": "HarnessForge: Joint Harness and Policy Evolution for Adaptive Agent Systems",
+    "url": "https://arxiv.org/abs/2606.01779",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2605.30621",
+    "title": "Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
+    "url": "https://arxiv.org/abs/2605.30621",
+    "missing": [
+      "哪些部分保持固定",
+      "如何分析失败与归因",
+      "候选选模 / 评估控制",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "被测系统如何更新"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
+  },
+  {
+    "id": "2609.08175",
+    "title": "Safe Harness Self-Evolution: A Theoretical Analysis of Feasibility and Limits",
+    "url": "https://arxiv.org/abs/2609.08175",
+    "missing": [
+      "哪些部分保持固定",
+      "如何定位错误",
+      "如何生成改动",
+      "如何接受、拒绝或回退",
+      "与相近工作的区别"
+    ],
+    "partial": [
+      "谁执行任务",
+      "谁提出与实施修改"
+    ],
+    "scope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。",
+    "systemDataScope": "核对原文方法、实验设置、结果与相关附录；逐项区分作者披露内容、数据用途和实验边界，不代表独立复现实验。"
   }
 ]
