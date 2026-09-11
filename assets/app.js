@@ -66,24 +66,29 @@ function buildFilters(){
 }
 function caution(p){return /Same-set|混合|参与|重试/.test(p.protocol);}
 function fieldSources(p,f){return [...new Map((f.sources||[]).map(r=>[r.url,r])).values()].map(r=>`<a href="${escapeHTML(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(r.label)} ↗</a>`).join('<br>');}
+const DIMENSIONS={object:'什么在进化',executor:'谁执行',modifier:'谁来改',verdict:'反馈与判分',seed:'基础 harness',cycle:'更新规则',train:'训练／进化数据',debug:'调试／选版本数据',test:'测试数据',isolation:'数据隔离',novelty:'方法特点'};
+function dimensionValue(p,f){
+ const value=p.overview.fields[f.key]||f.value;
+ if(['executor','modifier','seed'].includes(f.key)&&p.profile.experiments.length>1){
+  const configs=new Set(p.profile.experiments.map(r=>r.roles[f.key].value));
+  if(configs.size===1)return '各实验共用：'+value;
+ }
+ return value;
+}
+function dimensionSources(p,f){
+ const sources=[...f.sources];
+ if(['executor','modifier','seed'].includes(f.key))sources.push(...p.profile.experiments.flatMap(r=>r.roles[f.key].sources));
+ if(f.key==='verdict')sources.push(...p.profile.feedbackCases.flatMap(c=>c.sources));
+ return fieldSources(p,{sources});
+}
 function studyTable(p){
- const source=(v)=>fieldSources(p,v);
- const researchRows=p.profile.fields.map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${source(f)}</td></tr>`);
- const experiments=p.profile.experiments.map(r=>{
-  const roles=Object.entries({executor:'执行',modifier:'修改',seed:'基础框架'}).map(([k,label])=>`<p><b>${label}：</b>${markdownInline(r.roles[k].value)}</p>`).join('');
-  const cases=[...new Set([...(r.learningCases||[]),...(r.testCases||[]),...(r.feedbackCases||[])])];
-  const feedback=cases.map(i=>{const c=p.profile.feedbackCases[i];const phases=[];if(r.learningCases?.includes(i))phases.push('进化／选版本');if(r.testCases?.includes(i))phases.push('测试');return `<p><b>${escapeHTML(c.label)}${phases.length?'（'+phases.join('、')+'）':''}：</b>${markdownInline(c.data)} ${markdownInline(c.scoring)} ${markdownInline(c.visible)} ${markdownInline(c.use)}</p>`;}).join('');
-  const sources=[...Object.values(r.sources).flat(),...Object.values(r.roles).flatMap(v=>v.sources),...cases.flatMap(i=>p.profile.feedbackCases[i].sources)];
-  return `<tr class="study-experiment"><th scope="row">${escapeHTML(r.label)}</th><td><div class="study-data"><p><b>进化数据：</b>${markdownInline(r.evolution)}</p><p><b>调试／选版本：</b>${markdownInline(r.selection)}</p><p><b>测试数据：</b>${markdownInline(r.evaluation)}</p><p><b>数据隔离：</b>${markdownInline(r.isolation)}</p></div>${roles}${feedback}</td><td>${source({sources})}</td></tr>`;
- });
- // Dataset, feedback and roles are together above; do not repeat their full fields below.
- const extras=researchRows.filter((_,i)=>['object','cycle','novelty'].includes(p.profile.fields[i].key));
- const refs=p.overview.tldr.map(f=>`<tr><th scope="row">TL;DR · ${{gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'}[f.key]}</th><td>${markdown(f.value)}</td><td>${source(f)}</td></tr>`);
- return `<div class="table-scroll"><table class="profile-table study-table"><thead><tr><th>实验／维度</th><th>具体设置</th><th>原文位置</th></tr></thead><tbody>${experiments.join('')}${extras.join('')}${refs.join('')}</tbody></table></div>`;
+ const rows=Object.keys(DIMENSIONS).map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<tr><th scope="row">${DIMENSIONS[key]}</th><td>${markdown(dimensionValue(p,f))}</td><td>${dimensionSources(p,f)}</td></tr>`;});
+ const refs=p.overview.tldr.map(f=>`<p><b>${{gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'}[f.key]}：</b>${fieldSources(p,f)}</p>`).join('');
+ return `<div class="table-scroll"><table class="profile-table study-table"><thead><tr><th>关注维度</th><th>各任务／数据集的设置</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}<tr><th scope="row">TL;DR 依据</th><td colspan="2">${refs}</td></tr></tbody></table></div>`;
 }
 function research(p){
- const labels={object:'什么在进化',executor:'谁执行',modifier:'谁来改',verdict:'反馈是什么',seed:'基础 harness'};
- return `<dl class="key-dimensions">${Object.entries(labels).map(([key,label])=>{const f=p.profile.fields.find(f=>f.key===key);return `<div><dt>${label}</dt><dd>${markdown(p.overview.fields[key]||f.value)}</dd></div>`;}).join('')}</dl><details class="mechanism"><summary>查看实验设置、更新规则与全部研究维度</summary>${studyTable(p)}</details>`;
+ const keys=['object','executor','modifier','verdict','seed'];
+ return `<dl class="key-dimensions">${keys.map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<div><dt>${key==='verdict'?'反馈是什么':DIMENSIONS[key]}</dt><dd>${markdown(dimensionValue(p,f))}</dd></div>`;}).join('')}</dl><details class="mechanism"><summary>查看全部研究维度与原文依据</summary>${studyTable(p)}</details>`;
 }
 function tldr(p){
  const labels={gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'};
@@ -149,6 +154,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=clear-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=dimensions-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
