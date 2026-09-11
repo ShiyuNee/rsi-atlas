@@ -134,3 +134,7 @@ Record the author’s argument: the limitation of existing work, its consequence
 `data/feedback-protocols.json` is the source for both visible feedback summaries and expanded protocol rows. Each of its 380 cases now has a `judgment` description identifying the supported scoring mechanism (or the precise disclosure boundary). The UI uses this field directly, rather than the older generic overview feedback prose. `scoring`, `data`, `visible`, `use`, and `sources` preserve implementation details, datasets, access boundaries, and source locations.
 
 Do not equate a verifier with a deterministic checker, a function named Judge with an LLM, or reference-answer evaluation with exact match. Distinguish task scoring from trajectory diagnosis, candidate selection, and final evaluation. Specify benchmark-specific overrides; upstream benchmark documentation alone does not establish a paper's implementation. This pass classifies the maintained evidence and makes targeted primary-source corrections; it is not a claim that every paper discloses its full evaluator.
+
+### 按实验配对数据与反馈
+
+`data/experiment-protocols.json` 维护实验行：进化数据、调试／选版本数据、测试数据和隔离边界。不同设置分行；`learningCases` / `testCases` 引用 `feedback-protocols.json` 中的反馈项，避免重复维护判分说明。共同协议通过 `fieldRefs` 引用研究表已有数据字段，并在同组内列出各任务的反馈用途，不自动推断所有反馈同时用于训练与测试。构建时检查每篇所有反馈项均被覆盖。

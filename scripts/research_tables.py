@@ -5,6 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def attach_tables(papers):
     tables=json.loads((ROOT/'data/research-tables.json').read_text())
     overviews=json.loads((ROOT/'data/overviews.json').read_text())
+    experiments=json.loads((ROOT/'data/experiment-protocols.json').read_text())
     feedback=json.loads((ROOT/'data/feedback-protocols.json').read_text())
     assert set(tables)==set(overviews)==set(feedback)=={p['id'] for p in papers}
     for p in papers:
@@ -12,6 +13,21 @@ def attach_tables(papers):
         p['overview']=overviews[p['id']]
         p['profile']['fields']=table['fields']
         p['profile']['feedbackCases']=feedback[p['id']]
+        fields={f['key']:f for f in table['fields']}
+        rows=[]
+        covered=set()
+        for config in experiments[p['id']]:
+            row=dict(config)
+            for target, key in row.pop('fieldRefs',{}).items():
+                row[target]=fields[key]['value']
+            row['sources']={target:fields[key]['sources'] for target,key in
+                [('evolution','train'),('selection','debug'),('evaluation','test'),('isolation','isolation')]}
+            indices=set(row.get('learningCases',[])+row.get('testCases',[])+row.get('feedbackCases',[]))
+            assert all(0<=i<len(feedback[p['id']]) for i in indices),p['id']
+            covered.update(indices)
+            rows.append(row)
+        assert covered==set(range(len(feedback[p['id']]))),p['id']
+        p['profile']['experiments']=rows
         p['profile']['missing']=[]
         p['profile']['partial']=[]
         p['profile']['sourceDate']=table['sourceDate']

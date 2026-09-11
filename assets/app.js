@@ -66,11 +66,16 @@ function buildFilters(){
 }
 function caution(p){return /Same-set|混合|参与|重试/.test(p.protocol);}
 function fieldSources(p,f){return [...new Map((f.sources||[]).map(r=>[r.url,r])).values()].map(r=>`<a href="${escapeHTML(safeURL(r.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(r.label)} ↗</a>`).join('<br>');}
+function experimentFeedback(p,indices){
+ return (indices||[]).map(i=>{const c=p.profile.feedbackCases[i];return `<div class="experiment-feedback"><strong>${escapeHTML(c.label)}</strong><p>${markdownInline(c.judgment)}</p><details><summary>数据、检查方法与反馈用途</summary><p><b>数据：</b>${markdownInline(c.data)}</p><p><b>如何判分：</b>${markdownInline(c.scoring)}</p><p><b>谁能看到什么：</b>${markdownInline(c.visible)}</p><p><b>用于哪一步：</b>${markdownInline(c.use)}</p><small class="field-source">${fieldSources(p,c)}</small></details></div>`;}).join('');
+}
+function experimentTable(p){
+ const cell=(r,key)=>`${markdown(r[key])}<small class="field-source">${fieldSources(p,{sources:r.sources[key]})}</small>`;
+ return `<section class="experiment-block"><h3>每个实验：在哪些数据上进化 → 在哪些数据上测试</h3><div class="table-scroll"><table class="experiment-table"><thead><tr><th>实验</th><th>获得反馈并进化</th><th>测试与数据隔离</th></tr></thead><tbody>${p.profile.experiments.map(r=>`<tr><th scope="row">${escapeHTML(r.label)}</th><td data-label="获得反馈并进化">${cell(r,'evolution')}${experimentFeedback(p,r.learningCases)}<div class="experiment-stage"><b>调试／选版本：</b>${cell(r,'selection')}</div></td><td data-label="测试与数据隔离">${cell(r,'evaluation')}${experimentFeedback(p,r.testCases)}<div class="experiment-stage"><b>是否参与过修改或选版本：</b>${cell(r,'isolation')}</div></td></tr>${r.feedbackCases?.length?`<tr class="experiment-shared"><td colspan="3"><b>本组实验各任务的判分与反馈用途</b>${experimentFeedback(p,r.feedbackCases)}</td></tr>`:''}`).join('')}</tbody></table></div></section>`;
+}
 function profileTable(p){
- const rows=p.profile.fields.flatMap(f=>f.key==='verdict'&&p.profile.feedbackCases?.length
-  ? p.profile.feedbackCases.map(c=>`<tr class="feedback-case"><th scope="row">反馈 / 判分<br><small>${escapeHTML(c.label)}</small></th><td><p><strong>使用数据：</strong>${markdownInline(c.data)}</p><p><strong>判分机制：</strong>${markdownInline(c.judgment)}</p><p><strong>具体检查与比对：</strong>${markdownInline(c.scoring)}</p><p><strong>返回哪些信息：</strong>${markdownInline(c.visible)}</p><p><strong>用于哪一步：</strong>${markdownInline(c.use)}</p></td><td>${fieldSources(p,c)}</td></tr>`)
-  : [`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`]);
- return `<section class="profile-block"><div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></section>`;
+ const rows=p.profile.fields.filter(f=>!['verdict','train','debug','test','isolation'].includes(f.key)).map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`);
+ return `<section class="profile-block">${experimentTable(p)}<div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></section>`;
 }
 function feedbackOverview(p){
  return p.profile.feedbackCases.map(c=>`<p><strong>${escapeHTML(c.label)}：</strong>${markdownInline(c.judgment)}。 <a class="feedback-source" href="${escapeHTML(safeURL(c.sources[0].url))}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(c.sources[0].label)}">原文 ↗</a></p>`).join('');
@@ -145,6 +150,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=feedback-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=experiments-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

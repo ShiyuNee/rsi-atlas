@@ -162,3 +162,14 @@ assert.equal(get('rsi-exam').profile.feedbackCases.length,7);
 assert(field('rsi-exam','isolation').includes('最终问题本身可见'));
 assert(field('rsi-exam','object').includes('学生模型'));
 assert(query({q:'RSI-Exam',facets:{priority:['C']}}).some(p=>p.id==='rsi-exam'));
+
+for(const p of papers){
+ const covered=new Set();
+ assert(p.profile.experiments.length,p.id);
+ for(const r of p.profile.experiments){
+  for(const key of ['evolution','selection','evaluation','isolation'])assert(r[key]&&r.sources[key].length,`${p.id}: ${key}`);
+  for(const i of [...(r.learningCases||[]),...(r.testCases||[]),...(r.feedbackCases||[])]){assert(p.profile.feedbackCases[i],p.id);covered.add(i);}
+ }
+ assert.equal(covered.size,p.profile.feedbackCases.length,`${p.id}: omitted feedback`);
+}
+console.log('Passed: experiment data pairing, source locations and full feedback coverage.');

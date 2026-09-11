@@ -1,0 +1,2695 @@
+{
+  "2608.31111": [
+    {
+      "label": "参数更新：允许中途查分",
+      "learningCases": [
+        0,
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "创建者自行导入或合成训练材料；附录记录 GSM8K、Hendrycks 数学数据，但没有逐次公开样本及划分。本地检查之外，可有限次查询专家题组总分，并据此继续训练。",
+      "selection": "用本地检查和对应专家题组汇总分选择检查点或停止；题目、答案和逐题错误不可见。",
+      "evaluation": "自建 520 道专家题中对应目标的一组；最终仍报告这组题的分数。",
+      "isolation": "同一专家题组已提供适应与选模信号，不能当作从未参与选择的独立最终测试。"
+    },
+    {
+      "label": "参数更新：只在最终提交后评测",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "创建者自行导入或合成训练材料，并用自行构建的本地验证判断训练；附录记录上述两类数学数据的导入。",
+      "selection": "用本地检查选一个最终检查点；提交前不能查询保密专家题组成绩。",
+      "evaluation": "同一 520 道专家题库中对应目标的一组；4B/9B × 六个目标，每个组合两次独立运行。",
+      "isolation": "正式题目和分数在提交前不可见。自造练习与专家题组是两种数据，不能混称验证集。"
+    },
+    {
+      "label": "运行框架：创建者自测后，冻结框架测写作",
+      "learningCases": [
+        3,
+        4
+      ],
+      "testCases": [
+        5
+      ],
+      "evolution": "Luna 用一条自建写作提示及八项检查，修改后再检查原提示和两条相似提示；Terra/Sol 也用本地任务与运行证据调试，Sol 覆盖四类验证任务。不更新模型参数。",
+      "selection": "依据创建者的本地输出、检查结果和运行问题保留或撤回修改。",
+      "evaluation": "专家题库中的 20 道学术／科学写作题。每个冻结框架配 Qwen3.5-4B 运行三次。",
+      "isolation": "20 题的正式题目及分数不返回创建者；三次测量执行波动，不是三代进化。"
+    },
+    {
+      "label": "目标描述对照：沿用 PostTrainBench",
+      "learningCases": [
+        6
+      ],
+      "testCases": [
+        6
+      ],
+      "evolution": "在 PostTrainBench 中自主选择数据和训练方式；分别给出明确任务名或宽泛能力目标。",
+      "selection": "沿用 PostTrainBench 的开发和评估接口。",
+      "evaluation": "AIME 2025、GPQA Main、HealthBench、HumanEval、GSM8K、ArenaHard、BFCL。",
+      "isolation": "这组实验独立于自建 520 道专家题库；数据权限和最终选模应按 PostTrainBench 协议解释。"
+    }
+  ],
+  "2606.01314": [
+    {
+      "label": "OfficeQA",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "24 道训练题产生失败案例，据此改技能或工具。",
+      "selection": "17 道独立验证题筛选候选并检查回归；工具另做单元／集成检查。",
+      "evaluation": "205 道未用于进化的测试题。",
+      "isolation": "训练、验证、测试三段隔离；反馈可用容差分，主表准确率采用 0% 容差。"
+    },
+    {
+      "label": "SealQA",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "11 道训练题提供有标准答案的评审反馈。",
+      "selection": "8 道验证题筛选与回归检查。",
+      "evaluation": "92 道未用于进化的测试题。",
+      "isolation": "三段隔离；外部模型对照标准答案评审，不是执行者自评。"
+    },
+    {
+      "label": "WildClawBench：在线运行",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "六个昼夜的在线任务经历，按检查点反馈持续改技能和工具。",
+      "selection": "在持续运行中依据结果调整；不是独立固定的问答验证集。",
+      "evaluation": "报告持续运行的任务成绩；另有 100 轮任务池抗扰动实验。",
+      "isolation": "在线协议，不能套用 OfficeQA／SealQA 的三段数据划分。"
+    }
+  ],
+  "2608.15071": [
+    {
+      "label": "WebArena-Infinity：在线技能学习",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "80 个网页应用任务形成连续任务流；每批任务结束后获取反馈并修改文字技能，供后续任务使用。",
+      "selection": "依据当前已完成任务的反馈修订技能。",
+      "evaluation": "报告同一任务流中逐步执行的成功率；后续任务使用此前积累的技能。",
+      "isolation": "这是在线“先做题、再从反馈学习”，不是先在全部题上进化后进行一次独立盲测。"
+    },
+    {
+      "label": "Terminal-Bench 2：在线技能学习",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "89 个终端任务形成连续任务流；每批任务结束后获取反馈并修改文字技能，供后续任务使用。",
+      "selection": "依据当前已完成任务的反馈修订技能。",
+      "evaluation": "报告同一任务流中逐步执行的成功率；后续任务使用此前积累的技能。",
+      "isolation": "这是在线“先做题、再从反馈学习”，不是先在全部题上进化后进行一次独立盲测。"
+    },
+    {
+      "label": "SWE-bench Lite：在线技能学习",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "300 个 GitHub 问题形成连续任务流；每批任务结束后获取反馈并修改文字技能，供后续任务使用。",
+      "selection": "依据当前已完成任务的反馈修订技能。",
+      "evaluation": "报告同一任务流中逐步执行的成功率；后续任务使用此前积累的技能。",
+      "isolation": "这是在线“先做题、再从反馈学习”，不是先在全部题上进化后进行一次独立盲测。"
+    },
+    {
+      "label": "CL-Bench：在线技能学习",
+      "learningCases": [
+        3
+      ],
+      "testCases": [
+        3
+      ],
+      "evolution": "1,899 个知识推理、发现与规则任务形成连续任务流；每批任务结束后获取反馈并修改文字技能，供后续任务使用。",
+      "selection": "依据当前已完成任务的反馈修订技能。",
+      "evaluation": "报告同一任务流中逐步执行的成功率；后续任务使用此前积累的技能。",
+      "isolation": "这是在线“先做题、再从反馈学习”，不是先在全部题上进化后进行一次独立盲测。"
+    },
+    {
+      "label": "τ-bench：在线技能学习",
+      "learningCases": [
+        4
+      ],
+      "testCases": [
+        4
+      ],
+      "evolution": "165 个航空与零售客服任务形成连续任务流；每批任务结束后获取反馈并修改文字技能，供后续任务使用。",
+      "selection": "依据当前已完成任务的反馈修订技能。",
+      "evaluation": "报告同一任务流中逐步执行的成功率；后续任务使用此前积累的技能。",
+      "isolation": "这是在线“先做题、再从反馈学习”，不是先在全部题上进化后进行一次独立盲测。"
+    },
+    {
+      "label": "反馈消融与冻结迁移",
+      "learningCases": [
+        5
+      ],
+      "testCases": [
+        5
+      ],
+      "evolution": "反馈消融在 CL-Bench、SWE-bench Lite 比较自评、通过／失败和详细诊断；独立迁移实验由 Sonnet 4.5 在训练划分构造技能。",
+      "selection": "消融保持相应实验设置并改变反馈；迁移前冻结技能。",
+      "evaluation": "迁移由 Opus 4.7 在测试划分使用冻结技能。",
+      "isolation": "迁移实验不根据测试反馈继续改技能，须与在线主表分开解释。"
+    }
+  ],
+  "2609.00196": [
+    {
+      "label": "搜索问答（SearchQA 是实验名称）",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "参数训练：HotpotQA 14,801 题 + Natural Questions 4,145 题；框架搜索：同两来源 200 + 56 题。正确轨迹用于微调，搜索题反馈用于改框架。",
+      "selection": "对应 256 道框架搜索题的成绩与轨迹筛选候选；没有另设验证集。",
+      "evaluation": "七个基准各 100 题：2WikiMultiHopQA、Bamboogle、HotpotQA、MuSiQue、Natural Questions、PopQA、TriviaQA。每题八次采样取平均正确率。",
+      "isolation": "阶段切换用训练信号，但最终展示搜索过程中最高测试点，测试成绩参与最终版本选择。"
+    },
+    {
+      "label": "数学",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "DAPO-Math-17K 17,917 题用于参数训练，其中 256 题也用于框架搜索。",
+      "selection": "用这 256 题的正确率和轨迹选框架、判断是否切换阶段。",
+      "evaluation": "AIME 2024、AIME 2025；每题八次采样取平均正确率。",
+      "isolation": "框架搜索集属于参数训练集；最终选择最高测试点，因此不是完全封闭的最终测试。"
+    },
+    {
+      "label": "棋题",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "Lichess 16,384 题训练参数；另 256 题搜索框架。",
+      "selection": "使用框架搜索的 256 题比较候选；无额外验证集。",
+      "evaluation": "另外 256 道 Lichess 棋题；每题八次采样取平均正确率。",
+      "isolation": "三份题互不重叠，但最终报告仍按搜索期间最佳测试点选择。"
+    }
+  ],
+  "2603.08640": [
+    {
+      "label": "AIME25 / GSM8K / GPQA / BFCL",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "每次运行指定一个目标基准与一个基础模型，由代理自行选择或生成训练数据；预算单 H100、十小时。",
+      "selection": "可调用 evaluate.py 查询目标基准成绩，也可用 --limit 缩小评估规模，结果用于改训练方案。",
+      "evaluation": "在本行指定基准上评测提交的训练后模型。",
+      "isolation": "禁止用测试题训练，但开发时允许查询评测成绩；不能表述为分数全程隐藏。"
+    },
+    {
+      "label": "HumanEval",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "每次运行指定一个目标基准与一个基础模型，由代理自行选择或生成训练数据；预算单 H100、十小时。",
+      "selection": "可调用 evaluate.py 查询目标基准成绩，也可用 --limit 缩小评估规模，结果用于改训练方案。",
+      "evaluation": "在本行指定基准上评测提交的训练后模型。",
+      "isolation": "禁止用测试题训练，但开发时允许查询评测成绩；不能表述为分数全程隐藏。"
+    },
+    {
+      "label": "ArenaHard Writing / HealthBench-Easy",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "每次运行指定一个目标基准与一个基础模型，由代理自行选择或生成训练数据；预算单 H100、十小时。",
+      "selection": "可调用 evaluate.py 查询目标基准成绩，也可用 --limit 缩小评估规模，结果用于改训练方案。",
+      "evaluation": "在本行指定基准上评测提交的训练后模型。",
+      "isolation": "禁止用测试题训练，但开发时允许查询评测成绩；不能表述为分数全程隐藏。"
+    }
+  ],
+  "2608.09819": [
+    {
+      "label": "实际框架搜索：Terminal-Bench 2.1",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "29 个来源族构造的 122 个模拟任务，固定 GLM-5.2-FP8 初始全部未通过；运行失败题获得验收反馈并修改框架。",
+      "selection": "根据已通过／未通过状态与轨迹，后续优先继续处理失败任务。",
+      "evaluation": "报告同一 122 题上多个配置的累计覆盖，69 批、450 次尝试。",
+      "isolation": "122/122 表示每题至少被某个配置通过，不是一个冻结框架在独立测试集上全过。"
+    },
+    {
+      "label": "系统设计：合成任务、训练轨迹与工具入库",
+      "learningCases": [
+        1,
+        2
+      ],
+      "testCases": [],
+      "evolution": "MindForge 从种子任务库生成变体，配答案或评分细则；验证后的轨迹用于所描述的适配参数训练。候选工具先进入暂存池。",
+      "selection": "工具须通过私有参考验证才能入库；任务质量、难度与轨迹另经筛选。",
+      "evaluation": "该架构描述不能单独对应为某项已完成的多代联合训练测试；成品基准另列。",
+      "isolation": "122 题框架搜索没有执行参数更新，不能把它当作整个训练架构的实证。"
+    },
+    {
+      "label": "成品系统：问答、交互、编程与界面评测",
+      "learningCases": [],
+      "testCases": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "evolution": "这些基准在论文中作为已发布系统的成品评测，没有证据表明其分数逐轮用于上述框架搜索。",
+      "selection": "各基准按其规定次数重复、平均或取最好；具体规则见本行测试说明。",
+      "evaluation": "ChatBench、LivingBench、VitaBench、VitaBench2、τ³-Bench、PinchBench、ClawGym、SWE-Verified、TB2.1、DeepSWE、SWE Atlas QnA、UI4A-Bench；每项数据规模与判分分别保留在下方。",
+      "isolation": "成品成绩与 122 题框架搜索、合成训练架构分开解释。"
+    }
+  ],
+  "2606.09498": [
+    {
+      "label": "Terminal-Bench 2",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "固定 64 道终端任务；运行失败与验收结果用于提出修改。",
+      "selection": "同一任务子集上的成绩约束是否保留修改。",
+      "evaluation": "仍报告这 64 题的成绩。",
+      "isolation": "没有另设第三套不参与修改或选版本的最终测试集。"
+    },
+    {
+      "label": "SWE-bench Verified",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "67 道代码修复题用于执行、分析失败和提出修改。",
+      "selection": "另 33 道留出题做回归检查；轨迹不展示给提议者，但成绩参与选版本。",
+      "evaluation": "报告上述进化题与留出题上的结果。",
+      "isolation": "33 题是选版本用的留出集，不是选定后才首次使用的最终测试集。"
+    },
+    {
+      "label": "AppWorld",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "90 道官方训练题用于执行、失败分析和修改框架。",
+      "selection": "从 test_normal / test_challenge 另抽 90 题检查回归，成绩参与选版本。",
+      "evaluation": "报告上述训练题与回归检查题上的结果。",
+      "isolation": "回归题虽来自官方 test split，但已用于选择框架；没有第三套最终盲测。"
+    }
+  ],
+  "2604.25850": [
+    {
+      "label": "Terminal-Bench 2：十轮框架进化",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "全部 89 题，连续十轮，每题每轮运行两次；根据验收结果与轨迹修改框架。",
+      "selection": "在同一 89 题上检查改动并继续进化。",
+      "evaluation": "仍在同一 89 题上报告成绩；更换执行模型的比较也沿用 TB2。",
+      "isolation": "这是同题集上的持续改进，不是新任务上的独立测试。"
+    },
+    {
+      "label": "冻结框架迁移到 SWE-bench Verified",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "使用上述 TB2 的 89 题进化得到的框架。",
+      "selection": "迁移前冻结框架。",
+      "evaluation": "SWE-bench Verified 的 500 道代码修复题。",
+      "isolation": "这 500 题不参与 TB2 的十轮修改；与同题集 TB2 成绩分开解释。"
+    }
+  ],
+  "2506.10943": [
+    {
+      "label": "知识适应：SQuAD",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "SQuAD 训练集文本与配套问答；先根据自生成材料微调，再用答题正确性奖励材料生成策略。",
+      "selection": "内部微调后的问答表现用于外层策略训练。",
+      "evaluation": "200 个新段落及其 974 个问题；测试时仍根据新段落生成材料并适应。",
+      "isolation": "外层训练与最终新段落分开，但测试包含对当前段落的参数适应，不是完全冻结参数答题。"
+    },
+    {
+      "label": "少样本适应：ARC",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "11 个筛选后的 ARC 训练任务；实际执行适应方案后的正确性奖励方案生成策略。",
+      "selection": "训练任务上的适应效果用于策略更新。",
+      "evaluation": "八个未见 ARC 任务；根据任务示例进行内部适应后答题。",
+      "isolation": "外层训练任务与最终任务分开；最终任务内部仍允许从所给示例学习。"
+    }
+  ],
+  "2605.27276": [
+    {
+      "label": "LawBench：法律罪名分类",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "191 类罪名、5,332 条训练样本用于训练；913 道评分题返回成绩，指导框架修改及后续参数更新。",
+      "selection": "反复查询上述 913 题成绩作修改决策。",
+      "evaluation": "报告同一 913 题的分类成绩。",
+      "isolation": "评分题参与了进化决策，不是冻结后的独立测试。"
+    },
+    {
+      "label": "TriMul：GPU 算子优化",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "固定张量形状的 H100 三角矩阵乘法任务；运行候选实现并检查正确性、耗时。",
+      "selection": "依据同一计算任务上的性能反馈选择改动。",
+      "evaluation": "报告所优化计算任务的正确性与性能。",
+      "isolation": "直接优化目标计算任务，不是常规问答数据集的训练／测试划分。"
+    },
+    {
+      "label": "MAGIC：单细胞数据去噪",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "pancreas 单细胞数据去噪任务；根据参考真值计算候选结果质量，指导修改。",
+      "selection": "根据同一目标任务的反馈比较候选。",
+      "evaluation": "报告该去噪任务上的结果。",
+      "isolation": "属于直接目标优化；不能据此宣称在另一套未见数据上泛化。"
+    }
+  ],
+  "2608.01918": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.02276": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2608.09096": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2505.22954": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2303.11366": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2305.16291": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2603.19461": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2607.14777": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2607.25886": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2605.23904": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "2608.12307": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "cs-0309048": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2607.05297": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2603.28052": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2606.17546": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2607.15524": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2607.28568": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2511.10395": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2602.07755": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2408.08435": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2512.18746": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.05144": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "endlessfrontier.tech-assets-paper.pdf": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2609.01437": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0,
+        1
+      ],
+      "testCases": [
+        2,
+        1
+      ]
+    }
+  ],
+  "2608.03764": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2602.22480": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2410.04444": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2604.23472": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2606.04465": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "2606.26294": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2608.07645": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2403.03186": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2409.07429": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0,
+        1
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2502.12110": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2508.06433": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2509.25140": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2604.10923": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2604.16839": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.16114": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0,
+        1
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.24876": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2606.17220": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2608.22793": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.23397": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.23552": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2605.09998": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2605.24539": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2606.06324": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2606.14249": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2607.13683": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2603.21877": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2606.04455": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2608.06301": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2505.11942": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2507.05257": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1,
+        2
+      ]
+    }
+  ],
+  "2508.19005": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2510.17281": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2511.20857": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2604.17308": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2604.20087": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2605.18421": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2606.05661": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "2607.05202": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2608.00155": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2608.01149": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2608.03874": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0,
+        1
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.04003": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2608.06144": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2604.10547": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2606.04261": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2606.05080": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2607.05155": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "doi.org-10.1016-S0065-2458-08-60418-0": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "people.idsia.ch-juergen": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "cs-0207097": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "1805.06610": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2203.11171": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2303.17651": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1,
+        2
+      ]
+    }
+  ],
+  "2305.11738": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2305.20050": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2309.11495": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2310.01798": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2310.04406": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2309.03409": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2309.16797": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2310.03714": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2310.02304": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2406.07496": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2410.10762": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2507.03616": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2509.19349": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2305.10250": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2308.10144": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2409.00872": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1,
+        2
+      ]
+    }
+  ],
+  "2510.04618": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2510.16079": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2603.18620": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2402.17574": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2510.23601": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2603.13131": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2603.18000": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2603.18743": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0,
+        2
+      ],
+      "testCases": [
+        1,
+        2
+      ]
+    }
+  ],
+  "2604.15097": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2604.20133": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2607.00272": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2607.26784": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2608.11350": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2504.15228": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "2603.03329": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2606.19980": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2607.14159": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.08466": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.09380": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.24735": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "2607.21971": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.05446": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.13951": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2505.19955": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0
+      ]
+    }
+  ],
+  "2605.08678": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2608.17271": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2507.19457": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ],
+  "2609.00829": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2608.27311": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "2608.10178": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2608.31100": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1
+      ]
+    }
+  ],
+  "2609.01481": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "rsi-exam": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "2609.09646": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2609.09153": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ],
+  "2607.22688": [
+    {
+      "label": "实验数据与反馈对照",
+      "fieldRefs": {
+        "evolution": "train",
+        "selection": "debug",
+        "evaluation": "test",
+        "isolation": "isolation"
+      },
+      "feedbackCases": [
+        0,
+        1
+      ]
+    }
+  ],
+  "2606.01779": [
+    {
+      "label": "EnvScaler-RL：训练环境",
+      "learningCases": [
+        0
+      ],
+      "testCases": [],
+      "evolution": "3,800 道总适配题中的 2,000 道 EnvScaler-RL 任务；环境状态检查提供反馈，成功轨迹用于 LoRA 参数训练。",
+      "selection": "总适配池每轮约 1,200 题，逐步取新 200 题子集两阶段筛选，综合任务表现、词元和延迟。",
+      "evaluation": "正式测试列表未单列 EnvScaler-RL；其他任务和迁移测试见后续行。",
+      "isolation": "训练、框架搜索与候选筛选都属于适配阶段，不能把筛选子集当最终测试。"
+    },
+    {
+      "label": "ToolHop：进化后测同类新题",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "总适配池中的 800 道 ToolHop 题用于框架进化、成功轨迹筛选与 LoRA 训练。",
+      "selection": "在适配池的新子集上两阶段筛选；综合表现、词元与延迟。",
+      "evaluation": "另外 195 道 ToolHop 测试题。",
+      "isolation": "适配题与正式测试题按题号和标准化指令去重；测试题不开放给搜索或选模。"
+    },
+    {
+      "label": "本地文档检索",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "Natural Questions、HotpotQA、2WikiMultiHopQA 合计 1,000 题，改成固定本地文档检索任务；用于进化和训练。",
+      "selection": "沿用适配池内的两阶段筛选。",
+      "evaluation": "HotpotQA 与 2WikiMultiHopQA 的本地检索测试子集；附录 B.1 未列出两者题数。",
+      "isolation": "文档库适配前固定；适配与测试任务去重，测试题不用于搜索和选模。"
+    },
+    {
+      "label": "ToolHop 框架直接迁移",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        3,
+        4
+      ],
+      "evolution": "使用在上述 800 道 ToolHop 适配题上进化出的框架。",
+      "selection": "迁移前完成候选选择，不在目标测试题上继续进化。",
+      "evaluation": "RestBench-TMDB 100 题；API-Bank 114 题。",
+      "isolation": "两项目标基准仅用于迁移测试，判分方式分别列在本格。"
+    }
+  ],
+  "2605.30621": [
+    {
+      "label": "SWE-bench Verified：先计分，再更新",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "全部 500 道代码修复题组成在线任务流；当前题执行完并锁定成绩后，轨迹与结果才用于更新技能／记忆。",
+      "selection": "没有独立开发集；各模型配对共享任务顺序和更新预算。",
+      "evaluation": "统计本行同一任务流的成绩；后续题可使用前面已完成任务积累的经验。",
+      "isolation": "不会用当前题的反馈提高该题已记录分数，但不是冻结后在另一套题上的测试。"
+    },
+    {
+      "label": "MCP-Atlas：先计分，再更新",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "公开的 500 道工具问答题组成在线任务流；当前题执行完并锁定成绩后，轨迹与结果才用于更新技能／记忆。",
+      "selection": "没有独立开发集；各模型配对共享任务顺序和更新预算。",
+      "evaluation": "统计本行同一任务流的成绩；后续题可使用前面已完成任务积累的经验。",
+      "isolation": "不会用当前题的反馈提高该题已记录分数，但不是冻结后在另一套题上的测试。"
+    },
+    {
+      "label": "SkillsBench：先计分，再更新",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "86 道技能任务，每题五次运行组成在线任务流；当前题执行完并锁定成绩后，轨迹与结果才用于更新技能／记忆。",
+      "selection": "没有独立开发集；各模型配对共享任务顺序和更新预算。",
+      "evaluation": "统计本行同一任务流的成绩；后续题可使用前面已完成任务积累的经验。",
+      "isolation": "不会用当前题的反馈提高该题已记录分数，但不是冻结后在另一套题上的测试。"
+    },
+    {
+      "label": "技能加载与遵循诊断",
+      "learningCases": [],
+      "testCases": [
+        3
+      ],
+      "evolution": "沿用上述任务执行记录，不另建参数训练集。",
+      "selection": "该分析用来区分“没有加载技能”和“加载后没有照做”。",
+      "evaluation": "检查技能加载率与加载后遵循率；不另建隐藏任务测试集。",
+      "isolation": "诊断指标与任务成功率分开统计。"
+    }
+  ],
+  "2609.08175": [
+    {
+      "label": "DS-1000：单次修改的验收",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "排除 516 道试运行题后，从剩余 484 道取 480 道，分四个上下文；每组八题用于生成修改。",
+      "selection": "每组另外八题低预算验收、48 题高预算验收；根据高预算验收选择候选。",
+      "evaluation": "每组另 56 题独立审计；测试全部候选，包括被验收拒绝的候选。",
+      "isolation": "生成、两套验收、审计题互斥；生成者看不到参考解、验收或审计记录。"
+    },
+    {
+      "label": "WorkBuddy Code：提示修改",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "80 道题按固定哈希分配：20 题用于生成。",
+      "selection": "另 20 题验收四个冻结提示候选，每个系统取前三次有效运行。",
+      "evaluation": "另外 40 题审计全部候选。",
+      "isolation": "完成验收并记录选择后才开放审计；三段题互斥。"
+    },
+    {
+      "label": "DS-1000：连续修改",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "四条序列，每条两次更新机会，考察修改后的系统能否继续生成好修改。",
+      "selection": "用 48 题选择更新。",
+      "evaluation": "在不重叠的另 48 题上测量新候选的能力。",
+      "isolation": "选更新与测量用题分离；与前述单次验收实验分开。"
+    },
+    {
+      "label": "理论保证的适用条件",
+      "learningCases": [],
+      "testCases": [
+        3
+      ],
+      "evolution": "理论分析，不是新增训练数据或经验进化实验。",
+      "selection": "以固定任务分布、固定奖励以及声明的抽样和误差条件为前提。",
+      "evaluation": "数学保证不等同有限题集上的点估计，也不是另一项基准测试。",
+      "isolation": "这里主要讨论可信改进及控制原有任务退化；保证受理论条件约束。"
+    }
+  ]
+}
