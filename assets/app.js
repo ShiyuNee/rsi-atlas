@@ -71,37 +71,25 @@ function experimentFeedback(p,indices){
 }
 const ROLE_LABELS={executor:'谁执行',modifier:'谁来改',seed:'基础 harness（运行框架）'};
 function experimentRoles(p,r){
- if(p.profile.experiments.length===1)return '';
+
  return `<div class="experiment-roles">${Object.entries(ROLE_LABELS).map(([key,label])=>`<div><b>${label}</b>${markdown(r.roles[key].value)}<small class="field-source">${fieldSources(p,r.roles[key])}</small></div>`).join('')}</div>`;
-}
-function scopedRole(p,key){
- const groups=new Map();
- for(const r of p.profile.experiments){const v=r.roles[key];if(!groups.has(v.value))groups.set(v.value,{...v,labels:[]});groups.get(v.value).labels.push(r.label);}
- return [...groups.values()].map(g=>`<div class="role-scope"><b class="scope-label">${p.profile.experiments.length===1?'适用任务／配置见下文':groups.size===1?'以下各实验共用（型号组合按说明）':g.labels.join('；')}</b>${markdown(g.value)}<small class="field-source">${fieldSources(p,g)}</small></div>`).join('');
 }
 function experimentTable(p){
  const cell=(r,key)=>`${markdown(r[key])}<small class="field-source">${fieldSources(p,{sources:r.sources[key]})}</small>`;
  return `<section class="experiment-block"><h3>每个实验：在哪些数据上进化 → 在哪些数据上测试</h3><div class="table-scroll"><table class="experiment-table"><thead><tr><th>实验与角色配置</th><th>获得反馈并进化</th><th>测试与数据隔离</th></tr></thead><tbody>${p.profile.experiments.map(r=>`<tr><th scope="row">${escapeHTML(r.label)}${experimentRoles(p,r)}</th><td data-label="获得反馈并进化">${cell(r,'evolution')}${experimentFeedback(p,r.learningCases)}<div class="experiment-stage"><b>调试／选版本：</b>${cell(r,'selection')}</div></td><td data-label="测试与数据隔离">${cell(r,'evaluation')}${experimentFeedback(p,r.testCases)}<div class="experiment-stage"><b>是否参与过修改或选版本：</b>${cell(r,'isolation')}</div></td></tr>${r.feedbackCases?.length?`<tr class="experiment-shared"><td colspan="3"><b>本组实验各任务的判分与反馈用途</b>${experimentFeedback(p,r.feedbackCases)}</td></tr>`:''}`).join('')}</tbody></table></div></section>`;
 }
-function profileTable(p){
- const rows=p.profile.fields.filter(f=>!['executor','modifier','seed','verdict','train','debug','test','isolation'].includes(f.key)).map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`);
- return `<section class="profile-block">${experimentTable(p)}<div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${rows.join('')}</tbody></table></div></section>`;
-}
-function feedbackOverview(p){
- return p.profile.feedbackCases.map((c,i)=>{
- const uses=p.profile.experiments.flatMap(r=>{const phases=[];if(r.learningCases?.includes(i))phases.push('进化／选版本反馈');if(r.testCases?.includes(i))phases.push('测试判分');return phases.length?[`${r.label}：${phases.join('、')}`]:r.feedbackCases?.includes(i)?[`${c.label}（具体阶段见本组实验的反馈用途）`]:[];});
- return `<div class="feedback-scope"><p><strong>${escapeHTML(c.label)}：</strong>${markdownInline(c.judgment)}。 <a class="feedback-source" href="${escapeHTML(safeURL(c.sources[0].url))}" target="_blank" rel="noopener noreferrer" title="${escapeHTML(c.sources[0].label)}">原文 ↗</a></p><small class="scope-label">适用范围：${escapeHTML(uses.join('；'))}</small></div>`;
- }).join('');
-}
 function research(p){
- const labels={object:'什么在进化',executor:'谁执行',modifier:'谁来改',verdict:'反馈是什么',seed:'基础 harness 是什么'};
- const selected=Object.keys(labels).map(key=>p.profile.fields.find(f=>f.key===key));
- return `<dl class="research-fields">${selected.map(f=>`<div><dt>${labels[f.key]}</dt><dd>${f.key==='verdict'?feedbackOverview(p):ROLE_LABELS[f.key]?scopedRole(p,f.key):`${markdown(p.overview.fields[f.key]||f.value)}<small class="field-source">${fieldSources(p,f)}</small>`}</dd></div>`).join('')}</dl><details class="mechanism"><summary>查看更新规则与全部研究维度</summary>${profileTable(p)}</details>`;
+ const object=p.profile.fields.find(f=>f.key==='object');
+ const other=p.profile.fields.filter(f=>['cycle','novelty'].includes(f.key));
+ const experiments=p.profile.experiments.map(r=>{
+  const one={...p,profile:{...p.profile,experiments:[r]}};
+  return `<details class="experiment-accordion"><summary>${escapeHTML(r.label)}<span>执行与修改 · 框架 · 数据与反馈</span></summary>${experimentTable(one)}</details>`;
+ }).join('');
+ return `<div class="compact-object"><b>什么在进化</b>${markdown(p.overview.fields.object||object.value)}</div><section class="compact-experiments" aria-label="按实验查看研究设置">${experiments}</section><details class="mechanism supplementary"><summary>更新规则、方法特点与原文依据</summary><div class="table-scroll"><table class="profile-table"><thead><tr><th>研究维度</th><th>具体说明</th><th>原文位置</th></tr></thead><tbody>${other.map(f=>`<tr><th>${escapeHTML(f.label)}</th><td>${markdown(f.value)}</td><td>${fieldSources(p,f)}</td></tr>`).join('')}<tr><th>进化对象依据</th><td>${markdown(object.value)}</td><td>${fieldSources(p,object)}</td></tr></tbody></table></div></details>`;
 }
 function tldr(p){
- const labels={gap:'研究缺口（作者判断）',position:'本文定位',conclusion:'关键设计与结论'};
- const feature=p.profile.fields.find(f=>f.key==='novelty');
- return `<section class="paper-tldr" aria-label="论文 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${f.key==='conclusion'?`<div class="tldr-design"><b>关键设计：</b>${markdownInline(feature.value)}<small class="field-source">${fieldSources(p,feature)}</small></div><b>贡献 / 结论：</b>`:''}${markdown(f.value)}<small class="field-source">${fieldSources(p,f)}</small></div></li>`).join('')}</ol></section>`;
+ const labels={gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'};
+ return `<section class="paper-tldr" aria-label="论文 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${markdown(f.value)}</div></li>`).join('')}</ol><details class="tldr-references"><summary>TL;DR 原文依据</summary>${p.overview.tldr.map(f=>`<p><b>${labels[f.key]}：</b>${fieldSources(p,f)}</p>`).join('')}</details></section>`;
 }
 function card(p){
  return `<article class="paper-card"><div class="card-main"><div class="card-meta"><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><span class="level level-${p.priority}">${LEVEL[p.priority]}</span>${p.publicationType==='project-report'?'<span>官方项目报告</span>':''}<time class="date">${p.publicationType==='project-report'?'项目首发 ':''}${escapeHTML(p.date)}</time></div><h2><button class="paper-title" data-paper="${p.id}">${escapeHTML(p.title)}</button></h2>${tldr(p)}${research(p)}</div><div class="card-foot"><div class="tags">${p.tags.filter(t=>!/^M[0-3]$/.test(t)).map(t=>`<button class="tag" data-tag="${escapeHTML(t)}">#${escapeHTML(LABELS[t]||t)}</button>`).join('')}</div><div class="card-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">${p.publicationType==='project-report'?'官方报告':'论文'} ↗</a><button class="read-action" data-paper="${p.id}">查看研究表 →</button></div></div></article>`;
@@ -163,6 +151,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=scopes-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=compact-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
