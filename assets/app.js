@@ -112,8 +112,9 @@ function research(p){
  return `<dl class="key-dimensions">${keys.map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<div><dt>${key==='verdict'?'反馈是什么':DIMENSIONS[key]}</dt><dd>${markdown(dimensionValue(p,f))}</dd></div>`;}).join('')}</dl><details class="mechanism"><summary>查看全部研究维度与原文依据</summary>${studyTable(p)}</details>`;
 }
 function tldr(p){
- const labels={gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'};
- return `<section class="paper-tldr" aria-label="论文 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${markdown(f.value)}</div></li>`).join('')}</ol></section>`;
+ const labels={gap:'研究缺口',position:'本文定位',conclusion:'关键做法与结论'};
+ const method=p.profile.fields.find(f=>f.key==='novelty');
+ return `<section class="paper-tldr" aria-label="论文 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${f.key==='conclusion'?`<p class="tldr-method"><b>关键做法：</b>${markdownInline(method.value)}</p><b>结果与边界：</b>`:''}${markdown(f.value)}</div></li>`).join('')}</ol></section>`;
 }
 function card(p){
  return `<article class="paper-card"><div class="card-main"><div class="card-meta"><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><span class="level level-${p.priority}">${LEVEL[p.priority]}</span>${p.publicationType==='project-report'?'<span>官方项目报告</span>':''}<time class="date">${p.publicationType==='project-report'?'项目首发 ':''}${escapeHTML(p.date)}</time></div><h2><button class="paper-title" data-paper="${p.id}">${escapeHTML(p.title)}</button></h2>${tldr(p)}${research(p)}</div><div class="card-foot"><div class="tags">${p.tags.filter(t=>!/^M[0-3]$/.test(t)).map(t=>`<button class="tag" data-tag="${escapeHTML(t)}">#${escapeHTML(LABELS[t]||t)}</button>`).join('')}</div><div class="card-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">${p.publicationType==='project-report'?'官方报告':'论文'} ↗</a><button class="read-action" data-paper="${p.id}">查看研究表 →</button></div></div></article>`;
@@ -175,6 +176,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=readable-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=tldr-20260911');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
