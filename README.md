@@ -144,3 +144,5 @@ Do not equate a verifier with a deterministic checker, a function named Judge wi
 阅读展示按维度组织。概览使用 `overviews.json` 的简短说明；展开表使用完整角色配置、判分规则、反馈可见内容和数据协议，同一维度中相同设置合并一次。来源跟随具体设置显示；不得再用概览短句替换展开表的细节，也不按实验重复整张研究表。
 
 文案原则：保留 agent、harness、API、LoRA 等常用术语；必要时只解释功能。进化对象写具体修改项及重要的固定边界，概览与研究表使用一致口径。避免中英词语拼接和反复解释同一术语。
+
+Core 阅读优先级包含用户指定的团队／学者重点。2026-09-15：Seed / TokenWave 的 Aspire、S³Gym、HarnessDev，以及 arXiv 作者列表确认有 Mengdi Wang 署名的 Alita-G、Recuris、PAST-Bench、AutoLab。每项在 annotations 或 additions 中保存 priorityBasis 和 prioritySources；不据作者次序声称主导关系。

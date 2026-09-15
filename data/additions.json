@@ -167,7 +167,7 @@
     "title": "S³Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
     "date": "2026-08-31",
     "url": "https://arxiv.org/abs/2608.31100",
-    "priority": "K",
+    "priority": "C",
     "categories": [
       "B-Lifelong",
       "B-Reliability"
@@ -199,7 +199,14 @@
       "https://arxiv.org/abs/2608.31100"
     ],
     "links": [],
-    "source": "addition"
+    "source": "addition",
+    "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+    "prioritySources": [
+      {
+        "label": "团队项目页",
+        "url": "https://self-developing-agents.github.io/"
+      }
+    ]
   },
   {
     "id": "2609.01481",

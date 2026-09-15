@@ -201,7 +201,15 @@
       "HeldOut",
       "Weights"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+    "prioritySources": [
+      {
+        "label": "团队项目页",
+        "url": "https://self-developing-agents.github.io/"
+      }
+    ]
   },
   "2607.14777": {
     "protocol": "有 held-out 报告",
@@ -467,6 +475,56 @@
     "updateNote": "原记录简称 HarnessBank；本轮按相同 arXiv ID 去重并补充正式标题。",
     "sources": [
       "https://arxiv.org/abs/2607.13683"
+    ]
+  },
+  "2609.01437": {
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+    "prioritySources": [
+      {
+        "label": "团队项目页",
+        "url": "https://self-developing-agents.github.io/"
+      }
+    ]
+  },
+  "2608.24876": {
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+    "prioritySources": [
+      {
+        "label": "arXiv 作者列表",
+        "url": "https://arxiv.org/abs/2608.24876"
+      }
+    ]
+  },
+  "2608.04003": {
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+    "prioritySources": [
+      {
+        "label": "arXiv 作者列表",
+        "url": "https://arxiv.org/abs/2608.04003"
+      }
+    ]
+  },
+  "2606.05080": {
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+    "prioritySources": [
+      {
+        "label": "arXiv 作者列表",
+        "url": "https://arxiv.org/abs/2606.05080"
+      }
+    ]
+  },
+  "2510.23601": {
+    "priority": "C",
+    "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+    "prioritySources": [
+      {
+        "label": "arXiv 作者列表",
+        "url": "https://arxiv.org/abs/2510.23601"
+      }
     ]
   }
 }

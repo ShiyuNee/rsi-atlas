@@ -14983,6 +14983,13 @@
         "未明确"
       ],
       "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+      "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+      "prioritySources": [
+        {
+          "label": "团队项目页",
+          "url": "https://self-developing-agents.github.io/"
+        }
+      ],
       "legacyCategories": [
         "B-RSI"
       ],
@@ -16744,7 +16751,7 @@
       "title": "HarnessDev",
       "url": "https://arxiv.org/abs/2609.01437",
       "date": "2026-09-01",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "evaluation"
       ],
@@ -16791,6 +16798,13 @@
       "year": "2026",
       "depth": [
         "M1"
+      ],
+      "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+      "prioritySources": [
+        {
+          "label": "团队项目页",
+          "url": "https://self-developing-agents.github.io/"
+        }
       ],
       "legacyCategories": [
         "B-Harness"
@@ -26218,7 +26232,7 @@
       "title": "Recuris",
       "url": "https://arxiv.org/abs/2608.24876",
       "date": "2026-08-25",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "methods"
       ],
@@ -26258,6 +26272,13 @@
       "year": "2026",
       "depth": [
         "M1"
+      ],
+      "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+      "prioritySources": [
+        {
+          "label": "arXiv 作者列表",
+          "url": "https://arxiv.org/abs/2608.24876"
+        }
       ],
       "legacyCategories": [
         "H-Mem",
@@ -41746,7 +41767,7 @@
       "title": "PAST-Bench",
       "url": "https://arxiv.org/abs/2608.04003",
       "date": "2026-08-04",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "evaluation"
       ],
@@ -41785,6 +41806,13 @@
       "year": "2026",
       "depth": [
         "未明确"
+      ],
+      "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+      "prioritySources": [
+        {
+          "label": "arXiv 作者列表",
+          "url": "https://arxiv.org/abs/2608.04003"
+        }
       ],
       "legacyCategories": [
         "B-Lifelong"
@@ -44774,7 +44802,7 @@
       "title": "AutoLab",
       "url": "https://arxiv.org/abs/2606.05080",
       "date": "2026-06-03",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "evaluation"
       ],
@@ -44813,6 +44841,13 @@
       "year": "2026",
       "depth": [
         "未明确"
+      ],
+      "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+      "prioritySources": [
+        {
+          "label": "arXiv 作者列表",
+          "url": "https://arxiv.org/abs/2606.05080"
+        }
       ],
       "legacyCategories": [
         "B-RSI"
@@ -60289,7 +60324,7 @@
       "title": "Alita-G: Self-Evolving Generative Agent for Agent Generation",
       "url": "https://arxiv.org/abs/2510.23601",
       "date": "2025-10-27",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "methods"
       ],
@@ -60334,6 +60369,13 @@
       "depth": [
         "M0",
         "M1"
+      ],
+      "priorityBasis": "用户指定阅读重点：Mengdi Wang（王梦迪，Princeton）署名论文。",
+      "prioritySources": [
+        {
+          "label": "arXiv 作者列表",
+          "url": "https://arxiv.org/abs/2510.23601"
+        }
       ],
       "legacyCategories": [
         "H-Skill"
@@ -76866,7 +76908,7 @@
       "title": "S³Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
       "date": "2026-08-31",
       "url": "https://arxiv.org/abs/2608.31100",
-      "priority": "K",
+      "priority": "C",
       "categories": [
         "evaluation"
       ],
@@ -76898,6 +76940,13 @@
       ],
       "links": [],
       "source": "addition",
+      "priorityBasis": "用户指定阅读重点：ByteDance Seed / TokenWave 的 Self-Developing Agents 系列。",
+      "prioritySources": [
+        {
+          "label": "团队项目页",
+          "url": "https://self-developing-agents.github.io/"
+        }
+      ],
       "year": "2026",
       "details": [],
       "occurrences": [],
