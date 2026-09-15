@@ -183,3 +183,14 @@ assert(get('2609.00196').profile.experiments[2].roles.executor.value.includes('4
 assert(get('2506.10943').profile.experiments[0].roles.executor.value.includes('Qwen2.5-7B'));
 assert(get('2506.10943').profile.experiments[1].roles.executor.value.includes('Llama-3.2-1B'));
 console.log('Passed: experiment role sources, model distinctions and scope boundaries.');
+// Attribution filters use verified authorship, independently of priority.
+assert.equal(query({facets:{institution:['org:bytedance-seed']}}).length,4);
+assert(!query({facets:{institution:['org:bytedance-seed']}}).some(p=>p.id==='2607.14777'));
+assert.equal(query({facets:{scholar:['person:mengdi-wang']}}).length,4);
+assert.equal(query({facets:{institution:['org:washington']}}).length,2);
+for(const p of papers){
+ assert.equal(new Set(p.attributions.map(a=>a.tag)).size,p.attributions.length);
+ for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(p.tags.includes(a.tag));assert(a.sources.every(s=>s.url.startsWith('https://arxiv.org/')));}
+}
+assert(query({facets:{institution:['org:bytedance-seed'],priority:['C']}}).every(p=>p.priority==='C'));
+console.log('Passed: sourced institution/scholar tags and combined filters.');

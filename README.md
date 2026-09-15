@@ -146,3 +146,9 @@ Do not equate a verifier with a deterministic checker, a function named Judge wi
 文案原则：保留 agent、harness、API、LoRA 等常用术语；必要时只解释功能。进化对象写具体修改项及重要的固定边界，概览与研究表使用一致口径。避免中英词语拼接和反复解释同一术语。
 
 Core 阅读优先级包含用户指定的团队／学者重点。2026-09-15：Seed / TokenWave 的 Aspire、S³Gym、HarnessDev，以及 arXiv 作者列表确认有 Mengdi Wang 署名的 Alita-G、Recuris、PAST-Bench、AutoLab。每项在 annotations 或 additions 中保存 priorityBasis 和 prioritySources；不据作者次序声称主导关系。
+
+### 机构与学者标签
+
+`data/attributions.json` 维护机构／团队和学者标签，逐篇记录署名依据链接。机构按论文发表时署名记录；学者标签只表示作者署名，不表示主导。使用某机构的模型、引用某位作者或作者后来的任职不作为归属依据。未核实的不添加。标签与 Core 优先级独立维护。
+
+运行 `python3 scripts/build.py` 后，标签进入论文卡片、搜索及机构／学者筛选；同组多选为“或”，不同筛选组为“且”。只有已用于论文的标签显示为筛选选项，原文依据在折叠表格中。

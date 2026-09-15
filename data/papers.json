@@ -442,7 +442,8 @@
         "fields": {
           "object": "机器自身的代码，包括负责寻找改进方案与证明改进有效的程序。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2303.11366",
@@ -457,7 +458,10 @@
         "EnvironmentReward",
         "ExecutableVerifier",
         "M0",
-        "MemoryContent"
+        "MemoryContent",
+        "org:princeton",
+        "org:mit",
+        "person:shunyu-yao"
       ],
       "fields": {
         "本质定位": "actor 执行任务，evaluator 给 outcome，reflector 把失败/成功转成自然语言 reflection 存入 episodic memory，供同任务后续 trial 使用。",
@@ -1071,7 +1075,42 @@
           "object": "跨尝试保留的反思记忆：记录失败原因和下一次的改进建议。模型参数及执行、评估、反思流程固定。",
           "verdict": "编程任务运行测试检查代码，问答任务对照答案，交互任务读取环境给出的成功或失败。模型把这些结果与执行过程一起用于反思；不同任务的具体判分方式见展开表格。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:princeton",
+          "label": "Princeton University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.11366"
+            }
+          ]
+        },
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.11366"
+            }
+          ]
+        },
+        {
+          "tag": "person:shunyu-yao",
+          "label": "Shunyu Yao",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2303.11366"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2305.16291",
@@ -1088,7 +1127,8 @@
         "Online",
         "SelfFeedback",
         "Skill",
-        "Tool"
+        "Tool",
+        "org:stanford"
       ],
       "fields": {
         "本质定位": "GPT-4 在 Minecraft 中自动提出 curriculum、写/调试 executable code skills，把通过环境验证的程序存入 skill library 并检索复用。",
@@ -1643,7 +1683,20 @@
           "executor": "主实验由 gpt-4-0314 为 Minecraft 游戏编写行动代码，再通过 Mineflayer（让程序控制游戏角色的工具库）执行；gpt-3.5-turbo-0301 辅助问答，text-embedding-ada-002 将技能描述转成可按相似度检索的向量。",
           "seed": "自建 Minecraft agent 包含自动课程、代码技能库和失败后修改代码的流程。自动课程选择探索目标，技能库复用已完成的行为，Mineflayer 工具库把代码变成游戏动作；模型参数不更新。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2305.16291"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2505.22954",
@@ -1660,7 +1713,10 @@
         "HarnessCode",
         "Improver",
         "M2",
-        "Population"
+        "Population",
+        "org:ubc",
+        "org:sakana",
+        "person:jeff-clune"
       ],
       "fields": {
         "本质定位": "让 coding agents 修改自己的 code，并保留多个已验证 stepping stones 形成 open-ended archive，而不是只沿单一 best chain。",
@@ -2328,7 +2384,42 @@
           "object": "coding agent 的代码与 harness，包括任务执行方式和工具使用逻辑。基础模型参数、外层父代选择和评测器固定。",
           "verdict": "在 SWE-bench 和 Polyglot 中运行代码测试，判断修复是否成功；诊断者结合测试结果和执行日志提出改进建议。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:ubc",
+          "label": "University of British Columbia",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2505.22954"
+            }
+          ]
+        },
+        {
+          "tag": "org:sakana",
+          "label": "Sakana AI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2505.22954"
+            }
+          ]
+        },
+        {
+          "tag": "person:jeff-clune",
+          "label": "Jeff Clune",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2505.22954"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2511.10395",
@@ -2997,7 +3088,8 @@
           "object": "策略模型参数，以及训练中生成的任务和经验；环境接口与训练规则固定。",
           "verdict": "最终任务结果用于训练；Qwen-Max 另对整条轨迹的各步标记好坏，把最终收益分配到具体步骤。合成任务的评审由 Qwen3-235B-A22B 承担，两种评审角色不同。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2603.19461",
@@ -3011,7 +3103,11 @@
       "tags": [
         "HarnessCode",
         "Improver",
-        "M2"
+        "M2",
+        "org:meta-superintelligence",
+        "org:meta-fair",
+        "org:ubc",
+        "person:jeff-clune"
       ],
       "fields": {
         "本质定位": "把 task agent 与 editable meta-agent 放入同一 program；meta-agent 不只改 task agent，也能修改自己的 self-modification procedure，并把 meta-improvements 跨 domain transfer。",
@@ -3706,7 +3802,53 @@
           "object": "两层代码：执行任务的 agent，以及负责修改它的 meta-agent。后者的改进程序也能被修改；外层父代选择和评测协议固定。",
           "verdict": "反馈随领域变化：编程看执行测试，机器人看环境任务收益，论文评审和数学评分看评价结果。修改者读取相应成绩及执行日志，详细任务协议分行列在表格中。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:meta-superintelligence",
+          "label": "Meta Superintelligence Labs",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.19461"
+            }
+          ]
+        },
+        {
+          "tag": "org:meta-fair",
+          "label": "Meta FAIR",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.19461"
+            }
+          ]
+        },
+        {
+          "tag": "org:ubc",
+          "label": "University of British Columbia",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.19461"
+            }
+          ]
+        },
+        {
+          "tag": "person:jeff-clune",
+          "label": "Jeff Clune",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2603.19461"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2603.28052",
@@ -3725,7 +3867,12 @@
         "OfflineSearch",
         "Prompt",
         "StrongerBuilder",
-        "Workflow"
+        "Workflow",
+        "org:stanford",
+        "org:mit",
+        "org:krafton",
+        "person:chelsea-finn",
+        "person:omar-khattab"
       ],
       "fields": {
         "本质定位": "Claude Opus 4.6 + Claude Code 直接读取所有历史 harness source/score/full traces，搜索完整 executable harness。",
@@ -4260,7 +4407,64 @@
           "object": "可执行 harness 的代码：模型调用、工具使用、记忆与检索、执行步骤。目标模型参数和外层搜索规则固定。",
           "seed": "不同实验有不同起点。分类比较无示范提示、少量示范提示、ACE（通过反思整理经验来构造上下文）和 MCE（维护文字技能库来构造上下文）；数学任务提供检索语料及提示、路由逻辑；终端任务与 Terminus 等已有执行框架比较。不能据某个实验推断全篇只有一套初始工具。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.28052"
+            }
+          ]
+        },
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.28052"
+            }
+          ]
+        },
+        {
+          "tag": "org:krafton",
+          "label": "KRAFTON",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.28052"
+            }
+          ]
+        },
+        {
+          "tag": "person:chelsea-finn",
+          "label": "Chelsea Finn",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2603.28052"
+            }
+          ]
+        },
+        {
+          "tag": "person:omar-khattab",
+          "label": "Omar Khattab",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2603.28052"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2604.25850",
@@ -4280,7 +4484,8 @@
         "SameSet",
         "SeparateEvolver",
         "Tool",
-        "Workflow"
+        "Workflow",
+        "org:peking"
       ],
       "fields": {
         "本质定位": "冻结 GPT-5.4，Evolve Agent 编辑 system prompt、tools、middleware、skills、subagents、memory；Debugger 把超长 rollout 压成 evidence，edit manifest 记录 expected fixes/regressions 并验证/rollback。",
@@ -5189,7 +5394,20 @@
           "verdict": "Terminal-Bench 2 的任务验收程序判断是否完成；同时比较同一题在修改前后是否由失败变成功、是否反而退化，再检查改动是否符合原先预测。",
           "seed": "从 NexAU 的初始版本出发，仅提供 Bash 命令行工具。NexAU 是组织模型、工具和执行过程的 agent 框架；这个实验的起点未预置完整专用工具、中间处理代码和长期记忆，进化逐步补充这些机制，例如改命令超时处理。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.25850"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.09498",
@@ -5206,7 +5424,8 @@
         "M1",
         "OfflineSearch",
         "RegressionGate",
-        "SameModel"
+        "SameModel",
+        "org:shanghai-ai-lab"
       ],
       "fields": {
         "本质定位": "不依赖更强 external builder：当前固定模型从自身 execution traces 中聚类 model-specific failures，提出 diverse/minimal harness edits，并经 regression validation 后 merge。",
@@ -6080,7 +6299,20 @@
           "object": "harness 配置允许修改的提示词、工具、记忆、状态和执行机制；不修改模型参数、任务环境或候选接受规则，也不能任意重写整个 SDK。",
           "verdict": "TB2 用原生测试检查终端产物；SWE-bench 用仓库测试验收补丁；AppWorld 用任务验收程序检查应用状态。结果用于提出修改和检查已有能力是否退步。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:shanghai-ai-lab",
+          "label": "Shanghai AI Laboratory",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.09498"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.17546",
@@ -6094,7 +6326,8 @@
       "tags": [
         "CrossBenchmark",
         "HeldOut",
-        "RegressionGate"
+        "RegressionGate",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "专门评估 self-evolving harness 的可靠性：train/update-validation、held-out ID/OOD、replay、cost、snapshot 分开记录，关注“持续更新是否真的持续变强”。",
@@ -6570,7 +6803,20 @@
           "object": "基准本身固定；比较的是不同方法如何更新可持续保留的运行框架与状态。",
           "verdict": "各任务原生评分器给出成绩；平台另外比较不同版本在验证、新任务、旧任务重做和成本上的表现，区分能力提升、遗忘与额外开销。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.17546"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.14777",
@@ -6586,7 +6832,9 @@
         "HeldOut",
         "M1",
         "SameModel",
-        "Weights"
+        "Weights",
+        "org:tsinghua",
+        "org:ntu"
       ],
       "fields": {
         "本质定位": "当前 policy rollout 后自己充当 trajectory analyzer 生成 hindsight skill，再通过 OPD + GRPO 把 skill-conditioned action preference 蒸馏进 weights。",
@@ -7144,7 +7392,31 @@
         "fields": {
           "object": "策略模型的参数；事后技能用于训练，不作为永久部署记忆。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.14777"
+            }
+          ]
+        },
+        {
+          "tag": "org:ntu",
+          "label": "Nanyang Technological University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.14777"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.15524",
@@ -7161,7 +7433,9 @@
         "SeparateEvolver",
         "PairwiseFeedback",
         "Sequential",
-        "M1"
+        "M1",
+        "org:berkeley",
+        "org:sakana"
       ],
       "fields": {
         "本质定位": "把 user-constructed harness 表示成 **prompt-level agent-loop specification**，每轮只与上一 revision 的产物做一次 pairwise LLM preference，并把累计 self-comparison history 当作后续 update 的 momentum-like signal。",
@@ -7750,7 +8024,31 @@
           "object": "描述 agent 角色、通信方式、工作流和上下文管理的提示文本；不修改可执行代码或模型参数。",
           "verdict": "模型按功能、任务要求和可复现性等标准比较前后两个产物，判断哪版更好；这是成对质量评审，并非所有任务都由代码测试给出通过率。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.15524"
+            }
+          ]
+        },
+        {
+          "tag": "org:sakana",
+          "label": "Sakana AI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.15524"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.25886",
@@ -7766,7 +8064,8 @@
         "BenchmarkScore",
         "Data",
         "Improver",
-        "SameSet"
+        "SameSet",
+        "org:nus"
       ],
       "fields": {
         "本质定位": "固定 post-training/serving/eval stack，只让 frontier researcher 根据 checkpoint feedback 改 training-data strategy。",
@@ -8578,7 +8877,20 @@
           "verdict": "训练服务实际生成候选模型，评估端返回其成绩及诊断记录；研究 agent 用这些反馈调整数据策略和选择模型版本。",
           "seed": "平台通过 Tinker 训练服务执行参数更新并提供训练后的模型调用。软件修复任务使用 mini-swe-agent（主要用命令行读写文件和运行测试），其他任务使用 Terminus-2（组织模型操作终端环境）。研究 agent 主要决定数据策略和合成数据内容，最终评分所用框架固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.25886"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.28568",
@@ -9404,7 +9716,8 @@
           "object": "负责程序进化的模型参数，以及它生成的机器学习程序；外层搜索框架固定。",
           "seed": "作者的 OpenMLE-Gym 是标准任务环境，OpenMLE-RL 负责训练研究模型，OpenMLE-Evo 负责提出、组合和筛选候选改进。每题已有公开数据、示例提交和 metric.py 评分程序；隐藏答案留在私有区域，研究者有可运行的起点。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.02276",
@@ -9421,7 +9734,8 @@
         "LearnedUpdater",
         "SeparateEvolver",
         "ExecutableVerifier",
-        "M1"
+        "M1",
+        "org:sjtu"
       ],
       "fields": {
         "本质定位": "专门 post-train 一个 9B Harness Engineer，把“读 failure trajectory→写 executable lifecycle hooks→target fresh rerun”训练成独立能力；target frozen。",
@@ -10018,7 +10332,20 @@
           "verdict": "修改框架后，让固定任务模型在同一批题上重新执行，比较真实任务奖励的变化；这份变化训练修改者，不能当作独立留出题的泛化成绩。",
           "seed": "初始框架已经能组织模型与环境交互，并在任务开始、模型决策前、动作执行前、收到反馈后预留四处可插入辅助代码的位置。编辑模型可以在这里调整输入、检查动作或处理停滞；答题模型参数及任务环境接口固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:sjtu",
+          "label": "Shanghai Jiao Tong University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.02276"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.05144",
@@ -10706,7 +11033,8 @@
           "object": "跨任务保留的记忆、技能、验证指导、路由规则及部分操作目标；角色分工固定。",
           "verdict": "审阅角色检查任务产物、运行记录及其证据是否支持目标完成；需要确认的事项依照系统权限处理。不同任务有不同验收条件，开放科研没有统一自动正确答案。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.09819",
@@ -11925,7 +12253,8 @@
           "verdict": "框架搜索用 Terminal-Bench 自带测试程序验收产物，并读取失败轨迹。合成训练数据另配答案或评分细则；成品基准另用代码测试、参考答案或模型评分，不是全部用于框架进化。",
           "executor": "122 题框架搜索固定 GLM-5.2-FP8；成品 Venti 用 GLM-5.2，Tall 用 Qwen3.6-35B-A3B，均配四个专长适配器。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "endlessfrontier.tech-assets-paper.pdf",
@@ -12394,7 +12723,8 @@
           "object": "任务合成代码、评价标准、训练数据分布，以及接受后训练的模型参数。",
           "verdict": "先通过计算、模拟、工具或形式检查验证合成任务，再观察用这些任务训练出的模型是否在下游评测中提升；题目能验证与题目有训练价值分开判断。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2607.05297",
@@ -12971,7 +13301,8 @@
           "object": "任务技能和指导五个改进角色的元技能；基础模型、角色连接及评测规则固定。",
           "verdict": "OfficeQA、SealQA 和 ALFWorld 各按自己的答案或环境判定给出结果；训练题的失败轨迹用于提出改动，验证题的成绩用于选择技能版本。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.15071",
@@ -12988,7 +13319,8 @@
         "M1",
         "Prequential",
         "SeparateEvolver",
-        "Skill"
+        "Skill",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "sequential one-shot tasks：失败后把完整 trajectory + grounded feedback 编译成 General/Topic natural-language skills，更新 external skill harness，只影响未来任务。",
@@ -14260,7 +14592,20 @@
           "object": "供后续任务读取的文字技能库：新增、合并或修改通用经验和任务操作说明。模型参数与底层执行代码固定。",
           "seed": "参数固定的任务求解模型配合外部文字说明库。每次执行前，系统挑选相关说明加入模型上下文；每批任务结束后，再把失败经验整理为新增、合并或修改的说明。这里“技能编译”指整理文字经验，不是把它编译成可执行代码。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.15071"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.09096",
@@ -14887,7 +15232,8 @@
           "object": "不同修改者生成的可执行 harness；执行模型、初始接口、预算与测试服务固定。",
           "verdict": "修改阶段返回验证题分数、逐题结果和执行诊断。问答、办公产物及工具任务分别采用对应判分规则，需要模型评审时统一使用 Qwen3.7-Plus；最终测试不参与修改。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.31111",
@@ -14901,7 +15247,8 @@
       "tags": [
         "HarnessCode",
         "HeldOut",
-        "Weights"
+        "Weights",
+        "org:bytedance-seed"
       ],
       "fields": {
         "本质定位": "只给自然语言 capability goal，不给 downstream eval；agent需自己解释目标、选数据/update method、构造train/validation signal、决定何时评估；最终在hidden expert-authored 520 items上测。",
@@ -16189,7 +16536,20 @@
           "seed": "参数训练用作者平台，提供数据搜索、导入、生成和训练工具。框架实验由创建者编写运行代码；Qwen-Agent（组织工具调用与执行的 agent 框架）是对照，不是所有候选的共同起点。",
           "object": "分别研究两种更新：训练模型参数；固定参数、修改提示、工具规则和执行流程。没有验证两者同步进化。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:bytedance-seed",
+          "label": "ByteDance Seed",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.31111"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2408.08435",
@@ -16207,7 +16567,9 @@
         "HeldOut",
         "M1",
         "StrongerBuilder",
-        "Workflow"
+        "Workflow",
+        "org:ubc",
+        "person:jeff-clune"
       ],
       "fields": {
         "本质定位": "Meta Agent Search 让 LLM 直接发明 executable agent code，并把历史 agent archive 当作搜索经验。",
@@ -16744,7 +17106,31 @@
         "fields": {
           "object": "task agent 的完整代码，包括模型调用、提示和控制流程；外层 meta-agent 及搜索规则保持固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:ubc",
+          "label": "University of British Columbia",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2408.08435"
+            }
+          ]
+        },
+        {
+          "tag": "person:jeff-clune",
+          "label": "Jeff Clune",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2408.08435"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2609.01437",
@@ -16760,7 +17146,8 @@
         "CrossModel",
         "HarnessCode",
         "HeldOut",
-        "M1"
+        "M1",
+        "org:bytedance-seed"
       ],
       "fields": {
         "本质定位": "**B-Harness**。把 harness development 拆成 **Creation**（minimal seed→完整 runnable infrastructure）和 **Evolution**（从自己创建的 harness 再改），同时测 capability+token efficiency。",
@@ -17293,7 +17680,20 @@
           "verdict": "创建阶段读取公开开发任务的成绩与日志；继续进化时，SWE-Pro 和 Terminal-Bench 的真实执行结果帮助定位框架缺陷。创建能力与继续修订能力分别评价。",
           "object": "可执行 harness 的控制循环、工具编排、上下文、状态、生命周期与验证机制；被测模型权重固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:bytedance-seed",
+          "label": "ByteDance Seed",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.01437"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.03764",
@@ -17782,7 +18182,8 @@
           "object": "各任务组的 SKILL.md 文件：业务规则、操作步骤、输出格式和失败经验。修改的是技能内容。",
           "verdict": "三种设置给的信息不同：自主探索只见环境；示例监督额外给标准答案；反思监督给程序判分并允许三轮反思。测试考察学到的业务规则能否用于新案例。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2602.22480",
@@ -18355,7 +18756,8 @@
         "fields": {
           "object": "目标 agent 的 Python 实现，包括提示、工具及调用编排。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2410.04444",
@@ -18372,7 +18774,8 @@
         "Improver",
         "M2",
         "OfflineSearch",
-        "SameModel"
+        "SameModel",
+        "org:peking"
       ],
       "fields": {
         "本质定位": "agent 可 inspect/modify 自己整个 executable logic，包括负责分析和修改自己的 procedure；更新后新 agent 继续下一轮。",
@@ -18858,7 +19261,20 @@
         "fields": {
           "object": "agent 执行逻辑及负责自修改的程序。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2410.04444"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2506.10943",
@@ -19434,7 +19850,8 @@
           "modifier": "SQuAD：Qwen2.5-7B 生成训练文本；ARC：Llama-3.2-1B-Instruct 生成训练配置。训练程序执行参数更新，再用更新后的答题成绩改进材料或配置的生成策略。",
           "verdict": "SQuAD：GPT-4.1 对照参考答案给更新后的回答判分；ARC：规则比较预测网格与标准网格。适应后的成绩用于训练改进策略。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2604.23472",
@@ -19451,7 +19868,9 @@
         "Improver",
         "JointEvolution",
         "M2",
-        "Population"
+        "Population",
+        "org:tsinghua",
+        "org:nus"
       ],
       "fields": {
         "本质定位": "**Meta**。同时维护 task-agent 与 optimizer-agent population；optimizer 不只改 task program，也改 optimizer 自己，形成 mutual evolution。",
@@ -19946,7 +20365,31 @@
         "fields": {
           "object": "任务求解程序，以及负责优化它们的优化器提示。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.23472"
+            }
+          ]
+        },
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.23472"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.04465",
@@ -19963,7 +20406,8 @@
         "M2",
         "OfflineSearch",
         "Prompt",
-        "SameModel"
+        "SameModel",
+        "org:nus"
       ],
       "fields": {
         "本质定位": "**H-Prompt / Meta**。先让 prompt optimizer 的**自身 system prompt**在多任务上变好，再用它优化 target prompts；是 prompt-level improver evolution。",
@@ -20642,7 +21086,20 @@
           "object": "提示优化器自己的系统提示，以及它为各 task agent 修改的提示。",
           "verdict": "任务题目的评分器给训练或开发成绩，用来比较新旧提示；保留更好的提示，并在后续任务中检验优化经验是否能迁移。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.04465"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.26294",
@@ -21071,7 +21528,8 @@
         "fields": {
           "object": "task agent 与学习式评审器；每个选择阶段内部暂时固定评分规则。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.07645",
@@ -21570,7 +22028,8 @@
           "object": "coding agent 的可执行代码与运行结构。",
           "verdict": "读取不同任务、不同历史分支的代码测试结果和执行记录，比较哪些改动有效、哪些导致退化，再提出修改或组合已有方案。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2403.03186",
@@ -21587,7 +22046,9 @@
         "MemoryContent",
         "Online",
         "Skill",
-        "Tool"
+        "Tool",
+        "org:peking",
+        "org:ntu"
       ],
       "fields": {
         "本质定位": "**H-Mem / H-Skill**。长程 computer-control 中持续记录 observation/reflection，并在出现重复 procedure 时固化成 executable skill；是“experience→executable skill”的重要早期扩展。",
@@ -22136,7 +22597,31 @@
           "object": "交互中积累的经验记忆和可执行技能代码。",
           "verdict": "读取操作前后的截图或视频帧，由视觉模型判断动作是否完成并解释失败，再调整计划。最终效果按对应游戏或软件任务评价。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2403.03186"
+            }
+          ]
+        },
+        {
+          "tag": "org:ntu",
+          "label": "Nanyang Technological University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2403.03186"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2409.07429",
@@ -22153,7 +22638,10 @@
         "MemoryContent",
         "Online",
         "Prequential",
-        "Workflow"
+        "Workflow",
+        "org:mit",
+        "org:cmu",
+        "person:graham-neubig"
       ],
       "fields": {
         "本质定位": "**H-Mem / H-Skill**。从 demos 或 agent 自己完成的 web trajectories 抽象 reusable workflow，再检索指导 future tasks；关键是存 procedure 而不是 raw episode。",
@@ -22750,7 +23238,42 @@
           "object": "从轨迹归纳的多步工作流记忆；执行模型及工作流归纳、调用流程固定。",
           "executor": "WebArena 网页交互实验使用 gpt-4-0613，并通过 BrowserGym 浏览器操作环境执行；Mind2Web 网页动作预测实验使用 gpt-3.5-turbo 或 gpt-4，采样温度设为 0，以减少输出随机性。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2409.07429"
+            }
+          ]
+        },
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2409.07429"
+            }
+          ]
+        },
+        {
+          "tag": "person:graham-neubig",
+          "label": "Graham Neubig",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2409.07429"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2502.12110",
@@ -23311,7 +23834,8 @@
           "executor": "GPT-4o-mini／4o、Qwen2.5-1.5B／3B、Llama3.2-1B／3B 配合记忆回答问题；扩展实验还比较 DeepSeek-R1-32B 和 Claude Haiku 系列。",
           "verdict": "新对话提供记忆内容；模型判断新旧笔记之间的关联，决定连接或修订哪些信息。最终问答成绩用于评价记忆效果，不是每次写记忆时得到的奖励。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2508.06433",
@@ -23874,7 +24398,8 @@
           "object": "程序记忆中的具体轨迹与抽象操作脚本。",
           "verdict": "用任务的执行过程及成败结果整理操作经验，后续做题时检索复用；经验可以增加、修改或删除，各任务的最终评价方法见表格。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2509.25140",
@@ -23890,7 +24415,9 @@
         "MemoryContent",
         "Online",
         "Prequential",
-        "SelfFeedback"
+        "SelfFeedback",
+        "org:google-cloud-ai",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "**H-Mem**。从自判 success/failure 中抽 generalizable reasoning strategy；额外 test-time rollouts继续扩 memory bank。真正风险是 self-judge contamination。",
@@ -24435,7 +24962,31 @@
         "fields": {
           "object": "推理策略记忆条目；不是权重或记忆管理代码。\n\n固定部分：模型权重与抽取/检索流程固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-cloud-ai",
+          "label": "Google Cloud AI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2509.25140"
+            }
+          ]
+        },
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2509.25140"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2604.10923",
@@ -25026,7 +25577,8 @@
           "object": "工具与专家 agent 组成的能力库，以及从执行中提炼的策略经验库。",
           "verdict": "模型评审者根据实际执行结果给出成功判断与批评，再提炼经验、保留有用工具或专家；更新阶段不提供标准答案。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2604.16839",
@@ -25600,7 +26152,8 @@
           "verdict": "记忆被共同检索和使用时增强关联，模型从高度关联的内容中总结知识；这与最后用问答成绩衡量效果是两个不同环节。",
           "object": "记忆图的关联权重、情节节点及压缩后的语义记忆。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.16114",
@@ -26225,7 +26778,8 @@
         "fields": {
           "object": "连接子任务、技能与整条轨迹的超图记忆。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.24876",
@@ -26242,7 +26796,12 @@
         "MemoryContent",
         "RegressionGate",
         "SeparateEvolver",
-        "Skill"
+        "Skill",
+        "org:princeton",
+        "org:stanford",
+        "org:nus",
+        "org:oxford",
+        "person:mengdi-wang"
       ],
       "fields": {
         "本质定位": "**H-Mem / H-Skill**。工作记忆不仅压缩 history，还把“当前 task progress→skill selection”对齐，并让 execution evidence 能定位到具体 memory component；固定 Meta-Agent 再做 localized validation-gated Skill Memory update。",
@@ -26840,7 +27399,64 @@
           "object": "工作记忆与经验记忆中的局部技能及控制组件；meta-agent、任务框架和基础模型固定。",
           "verdict": "从任务成败和多次开发集执行中判断改动是否有效；失败轨迹负责定位记忆中的错误步骤，已成功任务用于检查新补丁是否破坏原有行为。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:princeton",
+          "label": "Princeton University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.24876"
+            }
+          ]
+        },
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.24876"
+            }
+          ]
+        },
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.24876"
+            }
+          ]
+        },
+        {
+          "tag": "org:oxford",
+          "label": "University of Oxford",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.24876"
+            }
+          ]
+        },
+        {
+          "tag": "person:mengdi-wang",
+          "label": "Mengdi Wang",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2608.24876"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.01314",
@@ -26858,7 +27474,8 @@
         "RegressionGate",
         "SeparateEvolver",
         "Skill",
-        "Tool"
+        "Tool",
+        "org:sjtu"
       ],
       "fields": {
         "本质定位": "**H-Skill**。failure-driven **joint skill + executable tool** edit；还能 wrap/edit/compose/split/retire tools。更特别的是从 traces 估计 skill pair 的 complement/conflict interaction matrix，用“ecological utility”指导 retrieval/mutation/retirement，并用 anti-pattern veto 重复错误。",
@@ -27629,7 +28246,20 @@
           "verdict": "OfficeQA：规则比对数值／文字答案；SealQA：Qwen3.5-122B 对照标准答案判对错，三次多数票；WildClaw：按任务检查点汇总，未逐项披露检查器实现。",
           "seed": "OfficeQA：文档检索、表格解析、数值计算技能和工具；SealQA：搜索、抓取、来源筛选；WildClaw：消息、日历、文件、创作和 Git 工具。各任务都有初始技能库。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:sjtu",
+          "label": "Shanghai Jiao Tong University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.01314"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.17220",
@@ -28092,7 +28722,8 @@
           "object": "法律检索的查询改写规则及规则组合。",
           "verdict": "在法律案例检索中，对照标注的相关案例计算检索指标，再用历史实验分数比较查询规则及规则组合。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.22793",
@@ -28108,7 +28739,8 @@
         "M1",
         "SeparateEvolver",
         "Sequential",
-        "Skill"
+        "Skill",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "**H-Skill**。按 invoked skill 聚合 trajectories，直接 contrast success vs failure 后重写 behavioral skill bank；比只看单次失败更强调 skill-conditioned evidence。",
@@ -28578,7 +29210,20 @@
         "fields": {
           "object": "车载任务的行为技能文本与技能划分。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.22793"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.23397",
@@ -29116,7 +29761,8 @@
           "verdict": "检查经验的来源与适用范围、临床流程约束和任务执行结果，再决定是否允许写入或使用。病例和压力测试分别评价诊断与流程表现。",
           "seed": "自建医生、患者与检查结果交互框架：医生 agent 发出合法检查请求后才能获得结果，未请求或不可得的证据保持未知；控制程序限制技能知识怎样影响动作。隐藏诊断答案由评测端保存，医生 agent 不能提前读取。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.23552",
@@ -29134,7 +29780,9 @@
         "Online",
         "SameModel",
         "Skill",
-        "Subagent"
+        "Subagent",
+        "org:princeton",
+        "org:mit"
       ],
       "fields": {
         "本质定位": "**H-Mem / H-Skill / H-Prompt**。RLM-style persistent harness 跨 trajectory 保留 histories、memory、skills、prompts、subagent specs；更像**持续 state accumulation substrate**，而非强 outer-loop harness search。",
@@ -29563,7 +30211,31 @@
           "object": "跨轨迹保留的 Python 执行状态、记忆、技能和sub-agent 配置；部分任务还迭代工程产物。",
           "verdict": "读取工具执行、程序运行及环境结果，判断当前任务是否完成、哪里需要恢复；具体任务各有自己的验收方式，不能用一个总称代替所有裁判。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:princeton",
+          "label": "Princeton University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.23552"
+            }
+          ]
+        },
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.23552"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2605.09998",
@@ -29584,7 +30256,9 @@
         "Prompt",
         "Skill",
         "Subagent",
-        "Weights"
+        "Weights",
+        "org:google-deepmind",
+        "org:princeton"
       ],
       "fields": {
         "本质定位": "不 reset environment，同一 long-horizon run 中周期性读取 trajectory window，CRUD 修改 prompt、subagents、skills、memory。",
@@ -30175,7 +30849,31 @@
         "fields": {
           "object": "冻结模型设置更新提示、技能、记忆和sub-agent；共同学习设置还更新模型参数。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.09998"
+            }
+          ]
+        },
+        {
+          "tag": "org:princeton",
+          "label": "Princeton University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.09998"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2605.24539",
@@ -30191,7 +30889,8 @@
         "HumanDemo",
         "M1",
         "OfflineSearch",
-        "SeparateEvolver"
+        "SeparateEvolver",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "研究 reward-only harness evolution 在长程随机环境为什么不稳定，并用 competent human demonstrations 作为 reference experience 给 coding proposer 做诊断和编辑。",
@@ -30752,7 +31451,20 @@
           "object": "冻结模型外的可执行 harness。",
           "verdict": "Liar’s Dice 较容易从自己对局获得奖励；Balatro 的奖励更稀疏且随机，因此额外利用人类成功执行的完整过程定位改进方向。教程文字是另一种较弱对照。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.24539"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.06324",
@@ -31360,7 +32072,8 @@
           "verdict": "代码任务运行测试，问答任务按参考答案或相应裁判评分；失败轨迹帮助定位组件，验证集检查修复是否有效以及是否引入新问题。",
           "seed": "按任务使用已有 agent：GAIA 用 open-deep-research 检索研究框架；SWE 用 mini-swe-agent 命令行 agent；AppWorld 用官方简化 ReAct agent（推理、调用工具、读取结果）；TB2 用 Harbor 中的 Terminus-2 终端 agent。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2606.14249",
@@ -31915,7 +32628,8 @@
           "verdict": "执行记录用于分析运行组件，任务成绩用于判断实际效果；ALFWorld、GAIA、WebShop、τ³ 和 SWE-bench 的环境验收或答案检查方式分别列在表格中。",
           "seed": "从各任务的人工基础框架开始，修改过程分为整理轨迹、规划改动、生成候选和评审四个角色。每轮提出 4 个候选并保留执行记录；每题重建环境，避免购物车、游戏状态或工作目录互相影响。主要修改提示和运行逻辑；这种环境重置不说明训练题和测试题已隔离。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2607.13683",
@@ -32445,7 +33159,8 @@
         "fields": {
           "object": "完整运行框架候选，以及按不同语义机制组织的候选库。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2603.21877",
@@ -32980,7 +33695,8 @@
           "object": "策略模型参数和帮助解决难题的提示模板；奖励及外层提示搜索、训练算法固定。",
           "verdict": "数学题按参考答案判断解答正确性；先比较不同提示的解题表现，再利用较好提示带来的奖励训练模型参数。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2606.04455",
@@ -33517,7 +34233,8 @@
           "object": "meta-agent 写出的可执行 task agent 程序。",
           "executor": "提交的 agent.py 在数学、科学和竞赛编程任务中调用 Qwen3-8B，模型通过 vLLM 推理服务运行在独占的 A100 显卡上；软件修复 SWE-Bench 和终端操作 Terminal-Bench 使用 Claude Haiku 4.5。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.06301",
@@ -34031,7 +34748,8 @@
           "object": "修改者编辑的目标 agent 运行框架；基准、执行模型和测试边界固定。",
           "verdict": "可见开发与验证题的成绩用于改框架和选候选，评估次数受固定预算约束；最终测试分区在修改过程中不可访问，各任务评分器保持固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2505.11942",
@@ -34654,7 +35372,8 @@
         "fields": {
           "object": "连续任务间积累和复用的经验；基准衡量这些经验如何影响后续执行。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2507.05257",
@@ -35390,7 +36109,8 @@
           "object": "逐步积累的记忆内容，及其保留、更新和遗忘状态。",
           "executor": "未另指定时，RAG（先检索相关资料，再把资料交给模型回答）及商业记忆 task agent 的回答基础模型统一GPT-4o-mini；长上下文对照与补充实验的算力匹配实验另列模型。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2508.19005",
@@ -35895,7 +36615,8 @@
         "fields": {
           "object": "校园生活中积累的经验、工作流，或通过强化微调学到的策略。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2510.17281",
@@ -35910,7 +36631,8 @@
         "M0",
         "MemoryContent",
         "Online",
-        "Streaming"
+        "Streaming",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "**B-Lifelong**。重点从“读长文并记住”转到**service-time 用户 feedback accumulation**；多域多语言。",
@@ -36371,7 +37093,20 @@
           "object": "从用户反馈形成的事实知识与操作经验记忆。",
           "executor": "主系统基础模型为Qwen3-8B；补充实验的Legal消融另换Mistral-Small3.2-24B。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2510.17281"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2511.20857",
@@ -36386,7 +37121,9 @@
         "M0",
         "MemoryContent",
         "Prequential",
-        "Streaming"
+        "Streaming",
+        "org:google-deepmind",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "**B-Lifelong + baseline framework**。把 10+ memory modules 放到 sequential task streams，要求每次 interaction 后 search/adapt/update memory。",
@@ -37070,7 +37807,31 @@
         "fields": {
           "object": "连续测试过程中提取、积累和重组的经验记忆。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2511.20857"
+            }
+          ]
+        },
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2511.20857"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2604.17308",
@@ -37528,7 +38289,8 @@
           "object": "在同一任务族中不断创建和修订的技能文件。",
           "verdict": "每次执行后提供任务判定或逐项评分要求，agent 据此修改技能；实验还检查新技能在后续任务中是否真的被调用。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2604.20087",
@@ -37544,7 +38306,8 @@
         "LLMJudge",
         "M0",
         "SelfFeedback",
-        "Skill"
+        "Skill",
+        "org:cmu"
       ],
       "fields": {
         "本质定位": "**B-Lifelong / Skill**。20 verified skill-dependent tasks、15 subdomains，同时评 skill quality、trajectory、task outcome。",
@@ -38312,7 +39075,20 @@
           "verdict": "技能内容和执行过程中的模型评审统一由 GPT-5-mini 完成；最终任务结果另按基准检查。技能作者的自评只是一种学习条件，不等于最终验收。",
           "executor": "固定 Claude Sonnet 4.6 读取各模型生成的技能并完成任务，采样温度为 0，以减少输出随机性；每题最多 100 轮，使用容器内任务工具。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.20087"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2605.18421",
@@ -38925,7 +39701,8 @@
         "fields": {
           "object": "单次任务内与跨任务的知识记忆、操作经验。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2606.05661",
@@ -38940,7 +39717,8 @@
         "M0",
         "MemoryContent",
         "Prequential",
-        "Streaming"
+        "Streaming",
+        "org:berkeley"
       ],
       "fields": {
         "本质定位": "**B-Lifelong / B-Reliability**。6 个 expert-validated stateful domains，共享 latent structure；用 gain metric 隔离 “base capability” 与“从过去经验学到多少”。",
@@ -39542,7 +40320,20 @@
           "object": "顺序任务中对共享规律的适应与保留；具体状态依被测方法而定。",
           "executor": "Claude Opus 4.7、Sonnet 4.6、Gemini 3.1 Pro、Gemini 3 Flash、GPT-5.4 分别搭配记忆方法或 ICL（直接把可用经历放进输入上下文）。计算归一化成绩时，以不保留跨任务状态的 GPT-5.4 + ICL 为基准。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.05661"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.05202",
@@ -40240,7 +41031,8 @@
         "fields": {
           "object": "从训练经历形成的案例、推理经验、技能或全局提示。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.00155",
@@ -40711,7 +41503,8 @@
         "fields": {
           "object": "跨领域任务流中持续保留的记忆与技能状态。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.01149",
@@ -41221,7 +42014,8 @@
         "fields": {
           "object": "随学习路径积累的记忆与技能；基准测历史顺序对迁移和遗忘的影响。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.03874",
@@ -41237,7 +42031,8 @@
         "Context",
         "M0",
         "Prequential",
-        "Skill"
+        "Skill",
+        "org:peking"
       ],
       "fields": {
         "本质定位": "五个 domain、每域100个相互关联且难度递增 subtasks，专门比较 sequential context adaptation 与显式 persistent skill maintenance。",
@@ -41760,7 +42555,20 @@
           "object": "被测系统的上下文与技能库，按各自方法持续更新。",
           "verdict": "agent 读取前一任务的上下文、执行结果与评审反馈，更新后续可用技能；实验考察之后的任务是否改善，而非只看当前技能文件是否写完。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.03874"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.04003",
@@ -41776,7 +42584,8 @@
         "MemoryContent",
         "Prequential",
         "Skill",
-        "Streaming"
+        "Streaming",
+        "person:mengdi-wang"
       ],
       "fields": {
         "本质定位": "**B-Lifelong / personal agent**。用 matched retained-experience ON/OFF fresh-session sequences，不只看 later gain，还检查是否真的经过 save→retrieve→update pathway。",
@@ -42208,7 +43017,20 @@
         "fields": {
           "object": "跨会话保留的事实、流程、检索条件及更新后的规则。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "person:mengdi-wang",
+          "label": "Mengdi Wang",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2608.04003"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.06144",
@@ -42690,7 +43512,8 @@
           "object": "金融任务执行后积累的记忆与技能。",
           "executor": "Claude Code、Codex、Letta、GenericAgent 四套 agent 执行框架均调用 Qwen3.7-Max；前两者是 coding agent 工具，后两者提供其他 agent 与记忆组织方式。输入上下文上限 100 万词元，最大输出约 6.4 万词元；采样温度为 0，以减少输出随机性。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2603.08640",
@@ -43707,7 +44530,8 @@
           "modifier": "研究端包括 Claude Code（可读写项目文件、运行命令和测试的 coding agent 工具） + Opus 4.6／4.5、Codex CLI（在终端中读写代码、运行命令的 coding agent 工具） + GPT-5.1／5.2、OpenCode（可连接不同模型的开源 coding agent 工具） + GPT-5.1 Codex Max 等配置，负责找数据和写训练代码。最终受训模型是另一组基础模型。",
           "object": "给定基础模型的后训练参数；研究 agent 选择数据和训练方法。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2604.10547",
@@ -43722,7 +44546,8 @@
         "B-RSI",
         "Data",
         "ProcessReward",
-        "Weights"
+        "Weights",
+        "org:peking"
       ],
       "fields": {
         "本质定位": "**B-RSI**。专门测 agent 能否 design/implement/debug/execute **agentic RL post-training loop**，而不是只写一个训练脚本。",
@@ -44263,7 +45088,20 @@
         "fields": {
           "object": "研究 agent 开发的训练程序，以及提交的模型参数版本。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.10547"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.04261",
@@ -44278,7 +45116,9 @@
         "B-RSI",
         "BenchmarkScore",
         "Data",
-        "Improver"
+        "Improver",
+        "org:berkeley",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "**B-RSI / M-Data**。固定 model/training/eval，只让 agent 修改 data-curation policy，专门隔离“research decision quality”。",
@@ -44795,7 +45635,31 @@
         "fields": {
           "object": "交给固定训练后端的数据子集与数据筛选策略。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.04261"
+            }
+          ]
+        },
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.04261"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.05080",
@@ -44811,7 +45675,8 @@
         "BenchmarkScore",
         "ExecutableVerifier",
         "Improver",
-        "LongHorizon"
+        "LongHorizon",
+        "person:mengdi-wang"
       ],
       "fields": {
         "本质定位": "**B-RSI / long-horizon improvement**。36 个任务都给“正确但次优”的 baseline，要求 agent 在 wall-clock budget 内反复 benchmark→edit→measure。",
@@ -45472,7 +46337,20 @@
           "modifier": "同一次运行中的上述任务模型修改题目允许的代码或科研产物；外层Terminus-2（Terminal-Bench 团队提供的终端 task agent，负责让模型操作命令行环境）和评估器固定。补充实验的另有更旧/更小模型消融。",
           "verdict": "运行每题的检查程序，既验证产物是否满足正确性约束，也计算运行速度、误差或产物质量等优化目标；目标随任务变化。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "person:mengdi-wang",
+          "label": "Mengdi Wang",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2606.05080"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.05155",
@@ -45487,7 +46365,8 @@
         "B-Reliability",
         "EnvironmentReward",
         "LongHorizon",
-        "Streaming"
+        "Streaming",
+        "org:bytedance-seed"
       ],
       "fields": {
         "本质定位": "**B-RSI / learning dynamics**。134 real-world ultra-long tasks、约38k小时 interaction，用丰富多层 feedback 测 deployment-time learning curve。",
@@ -45980,7 +46859,20 @@
         "fields": {
           "object": "长程科研或工程任务中的候选方案与保留状态，用于观察环境学习过程。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:bytedance-seed",
+          "label": "ByteDance Seed",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.05155"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "doi.org-10.1016-S0065-2458-08-60418-0",
@@ -46348,7 +47240,8 @@
         "fields": {
           "object": "概念上是机器本身及设计更好机器的能力；没有定义具体可执行修改对象。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "people.idsia.ch-juergen",
@@ -46717,7 +47610,8 @@
         "fields": {
           "object": "产生学习与程序变异的高阶机制及参数。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "cs-0207097",
@@ -47085,7 +47979,8 @@
         "fields": {
           "object": "已发现的程序及可复用的搜索程序；任务正确性标准与时间分配原则固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "1805.06610",
@@ -47096,7 +47991,9 @@
       "categories": [
         "theory"
       ],
-      "tags": [],
+      "tags": [
+        "org:ubc"
+      ],
       "fields": {
         "本质定位": "给出一类受限 RSI 的形式定义，并分析何时递归改进可计算且高效。",
         "什么在变": "受限系统的 improvement mapping。",
@@ -47503,7 +48400,20 @@
           "object": "受限形式系统中产生改进的映射；程序分布和评分构造受理论设定约束。",
           "verdict": "使用形式化目标和模拟实验中的数值结果；本文把到达最优程序所需的期望步数作为分数，越低越好。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:ubc",
+          "label": "University of British Columbia",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/1805.06610"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2203.11171",
@@ -47514,7 +48424,10 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:google-brain",
+        "person:denny-zhou"
+      ],
       "fields": {
         "本质定位": "同一问题采样多条不同 reasoning paths，再以最终答案的一致性/多数结果做选择。",
         "什么在变": "当前问题的 sampled trajectories 与最终 answer selection；系统本身不变。",
@@ -47940,7 +48853,31 @@
           "object": "当前问题的多条推理候选与最终答案选择；模型、提示和投票规则不变。",
           "verdict": "同一模型多次回答后的答案一致性用于选择输出；选择时没有环境验收或标准答案反馈。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-brain",
+          "label": "Google Brain",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2203.11171"
+            }
+          ]
+        },
+        {
+          "tag": "person:denny-zhou",
+          "label": "Denny Zhou",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2203.11171"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2303.17651",
@@ -47952,7 +48889,11 @@
         "methods"
       ],
       "tags": [
-        "SelfFeedback"
+        "SelfFeedback",
+        "org:google-brain",
+        "org:washington",
+        "org:cmu",
+        "org:allenai"
       ],
       "fields": {
         "本质定位": "同一个 LLM 依次充当 generator、feedback provider、refiner，对当前输出反复修改。",
@@ -48516,7 +49457,53 @@
           "object": "当前回答；模型和生成、反馈、修订流程固定。",
           "verdict": "由同一个模型写出具体批评并据此改稿；迭代中没有外部正确性判定，最终研究评测与模型自评分开。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-brain",
+          "label": "Google Brain",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.17651"
+            }
+          ]
+        },
+        {
+          "tag": "org:washington",
+          "label": "University of Washington",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.17651"
+            }
+          ]
+        },
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.17651"
+            }
+          ]
+        },
+        {
+          "tag": "org:allenai",
+          "label": "Allen Institute for AI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2303.17651"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2305.11738",
@@ -48529,7 +49516,8 @@
       ],
       "tags": [
         "ExecutableVerifier",
-        "Tool"
+        "Tool",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "让 LLM 用搜索、代码执行等外部工具验证初始输出，再根据工具 evidence 修正。",
@@ -49151,7 +50139,20 @@
           "object": "当前输出；模型权重、工具接口与反馈修订流程固定。",
           "verdict": "问答使用检索证据，数学程序使用代码执行结果，文本安全使用毒性检测工具；这些外部检查帮助模型判断初稿哪里有错。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2305.11738"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2305.20050",
@@ -49162,7 +50163,9 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:openai"
+      ],
       "fields": {
         "本质定位": "训练 process reward model (PRM) 对推理中间步骤打分，用过程监督选择更可靠的数学解。",
         "什么在变": "训练的是 verifier/reward-model weights；task solver/harness 不持续自改。",
@@ -49677,7 +50680,20 @@
           "object": "评价推理步骤的奖励模型参数；任务求解器不在此过程中持续自改。",
           "verdict": "人类逐步标注数学解答是否正确，形成约 80 万条步骤标签；模型用这些标注学习评审推理过程，标签并非模型自评生成。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:openai",
+          "label": "OpenAI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2305.20050"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2309.11495",
@@ -49688,7 +50704,9 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:eth"
+      ],
       "fields": {
         "本质定位": "先生成 draft，再规划 verification questions，尽量独立回答这些问题，最后根据验证结果重写答案。",
         "什么在变": "当前 response 与临时 verification questions。",
@@ -50295,7 +51313,20 @@
           "object": "当前回答及临时验证问题；基础模型与验证流程固定。",
           "verdict": "模型自己提出核验问题、回答这些问题，再修订初稿；核验仍依赖模型自身知识，没有持续接入外部正确性检查程序。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:eth",
+          "label": "ETH Zürich",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2309.11495"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2310.01798",
@@ -50307,7 +51338,9 @@
         "evaluation"
       ],
       "tags": [
-        "SelfFeedback"
+        "SelfFeedback",
+        "org:uiuc",
+        "person:denny-zhou"
       ],
       "fields": {
         "本质定位": "系统评估 intrinsic self-correction：不给外部反馈，仅要求模型检查并修改自己 reasoning。",
@@ -50738,7 +51771,31 @@
         "fields": {
           "object": "当前答案和推理；评测比较不同反馈条件下的自纠错效果。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2310.01798"
+            }
+          ]
+        },
+        {
+          "tag": "person:denny-zhou",
+          "label": "Denny Zhou",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2310.01798"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2310.04406",
@@ -50749,7 +51806,9 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:uiuc"
+      ],
       "fields": {
         "本质定位": "MCTS 把 reasoning/action trajectory 当树节点，结合 LM value、self-reflection 与 environment feedback 做当前任务搜索。",
         "什么在变": "当前 task 的 search tree / trajectory。",
@@ -51233,7 +52292,20 @@
           "object": "当前任务的搜索树与行动轨迹；搜索、价值回传及提示规则固定。",
           "verdict": "当前任务的环境奖励、工具返回或可用测试，与模型对候选路径的评价共同指导搜索；失败后另生成反思来尝试其他路径。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2310.04406"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2309.03409",
@@ -51245,7 +52317,10 @@
         "methods"
       ],
       "tags": [
-        "Prompt"
+        "Prompt",
+        "org:google-deepmind",
+        "person:denny-zhou",
+        "person:quoc-le"
       ],
       "fields": {
         "本质定位": "optimizer LLM 读取历史 candidate + score，提出新的自然语言 solution/prompt。",
@@ -51723,7 +52798,42 @@
         "fields": {
           "object": "任务提示或自然语言候选方案；评分模型、指标与优化提示模板固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2309.03409"
+            }
+          ]
+        },
+        {
+          "tag": "person:denny-zhou",
+          "label": "Denny Zhou",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2309.03409"
+            }
+          ]
+        },
+        {
+          "tag": "person:quoc-le",
+          "label": "Quoc V. Le",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2309.03409"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2309.16797",
@@ -51738,7 +52848,8 @@
         "Improver",
         "M2",
         "Population",
-        "Prompt"
+        "Prompt",
+        "org:google-deepmind"
       ],
       "fields": {
         "本质定位": "同时演化 task prompt 与负责产生 prompt mutation 的 mutation prompt。",
@@ -52207,7 +53318,20 @@
           "executor": "PaLM 2-L 读取候选任务提示并解题，模型参数不随提示进化而更新。",
           "object": "任务提示和指导其变异的提示；基础模型与适应度评分规则固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2309.16797"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2310.03714",
@@ -52221,7 +53345,11 @@
       "tags": [
         "GoldLabel",
         "M1",
-        "Prompt"
+        "Prompt",
+        "org:stanford",
+        "org:cmu",
+        "org:berkeley",
+        "person:omar-khattab"
       ],
       "fields": {
         "本质定位": "把 LM application 写成 declarative modules/signatures，再用 compiler 自动优化 instructions / demonstrations。",
@@ -52740,7 +53868,53 @@
           "object": "提示、示例与模块配置；参数微调设置还会更新执行模型。",
           "verdict": "由使用者定义任务评分指标，结合带标签示例比较程序输出；优化器据此选择提示和示例，部分分支也训练模型参数。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2310.03714"
+            }
+          ]
+        },
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2310.03714"
+            }
+          ]
+        },
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2310.03714"
+            }
+          ]
+        },
+        {
+          "tag": "person:omar-khattab",
+          "label": "Omar Khattab",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2310.03714"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2310.02304",
@@ -53114,7 +54288,8 @@
         "fields": {
           "object": "代码改进器的程序，以及它优化的下游程序；基础模型、预算和外部效用定义固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2406.07496",
@@ -53128,7 +54303,8 @@
       "tags": [
         "LLMJudge",
         "M1",
-        "Prompt"
+        "Prompt",
+        "org:stanford"
       ],
       "fields": {
         "本质定位": "将 compound AI system 表示成 computation graph，LLM 产生 textual gradients，沿图反向传播以更新 prompt/code/text variables。",
@@ -53694,7 +54870,20 @@
           "object": "计算图中的提示、代码或其他文本变量；不通过数值梯度训练基础语言模型。",
           "verdict": "任务执行器或评分器给出损失和错误，模型把它转成针对不同组件的文字批评，再据此修改上游提示、代码或配置。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2406.07496"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2410.10762",
@@ -54284,7 +55473,8 @@
           "object": "工作流代码、节点提示、操作模块与连接关系。",
           "seed": "从预留节点与操作接口的模板工作流开始。节点表示执行步骤，操作是可复用的调用或处理模块；优化器补全函数并修改节点、提示和连接，起点已有这些模块和接口。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2507.03616",
@@ -54855,7 +56045,8 @@
           "object": "agent 提示、工具配置和工作流结构，具体取决于接入的优化算法。",
           "verdict": "反馈由任务和优化器组合决定：问答比较答案，代码运行测试，数学检查解答；TextGrad 等方法再把执行信息用于文字批评或候选比较。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2509.19349",
@@ -54866,7 +56057,9 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:sakana"
+      ],
       "fields": {
         "本质定位": "LLM ensemble + evolutionary archive 做 sample-efficient program evolution；用 parent sampling、novelty rejection 与 bandit-based model selection 提高搜索效率。",
         "什么在变": "candidate programs / scientific code / 某些 harness code；evolution engine本身主要固定。",
@@ -55445,7 +56638,20 @@
         "fields": {
           "object": "候选程序、科研代码或特定任务的运行框架；进化引擎和外部评分规则固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:sakana",
+          "label": "Sakana AI",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2509.19349"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2305.10250",
@@ -56016,7 +57222,8 @@
         "fields": {
           "object": "长期记忆内容及各条记忆的保留强度。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2308.10144",
@@ -56526,7 +57733,8 @@
         "fields": {
           "object": "跨任务的文字经验库与成功示例池；经验抽取和检索机制保持固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2409.00872",
@@ -57119,7 +58327,8 @@
           "object": "记忆内容、保留与裁剪状态，以及当前行为策略。",
           "verdict": "检查者模型阅读回答与交互历史，给出批评供助手重试。检查者的意见与基准的最终判分是两个来源，不能自动等同。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2510.04618",
@@ -57133,7 +58342,8 @@
       "tags": [
         "Context",
         "M0",
-        "MemoryContent"
+        "MemoryContent",
+        "org:berkeley"
       ],
       "fields": {
         "本质定位": "把 context 当 structured playbook，用 Generator→Reflector→Curator 做增量 ADD/UPDATE/REMOVE，保留有效细节并避免整段重写造成 context collapse。",
@@ -57688,7 +58898,20 @@
           "object": "结构化上下文与操作手册中的策略条目；生成、反思和整理的外层机制保持固定。",
           "verdict": "AppWorld 可仅用工具执行反馈更新指南；FiNER、Formula、DDXPlus 对照标准答案，BIRD-SQL 在本文由 GPT-4o-mini 评审。离线与在线可见反馈范围不同。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2510.04618"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2510.16079",
@@ -57699,7 +58922,10 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:sjtu",
+        "org:shanghai-ai-lab"
+      ],
       "fields": {
         "本质定位": "offline 把 trajectories 蒸馏成 abstract strategic principles，online 检索原则指导行动，并用 policy reinforcement 更新模型形成闭环。",
         "什么在变": "strategic-principle repository + policy weights。",
@@ -58141,7 +59367,31 @@
         "fields": {
           "object": "可复用策略原则库与执行模型的参数。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:sjtu",
+          "label": "Shanghai Jiao Tong University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2510.16079"
+            }
+          ]
+        },
+        {
+          "tag": "org:shanghai-ai-lab",
+          "label": "Shanghai AI Laboratory",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2510.16079"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2512.18746",
@@ -58632,7 +59882,8 @@
         "fields": {
           "object": "经验记忆内容，以及编码、存储、检索和管理记忆的程序；外层候选选择与评测协议保持固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2602.07755",
@@ -58649,7 +59900,9 @@
         "M1",
         "MemoryContent",
         "MemoryMechanism",
-        "StrongerBuilder"
+        "StrongerBuilder",
+        "org:ubc",
+        "person:jeff-clune"
       ],
       "fields": {
         "本质定位": "Meta Agent 直接搜索 executable memory design code，包括 schema、update、retrieval；找到的设计供弱 target agent 在 sequential environment 中持续记忆。",
@@ -59333,7 +60586,31 @@
           "object": "记忆数据结构、更新和检索代码，以及运行时积累的记忆内容。",
           "verdict": "先从一组任务收集记忆，再冻结记忆内容，在另一组任务中检索使用；实际任务成功率用于比较记忆设计。论文另外比较记忆量及更新模式的影响。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:ubc",
+          "label": "University of British Columbia",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2602.07755"
+            }
+          ]
+        },
+        {
+          "tag": "person:jeff-clune",
+          "label": "Jeff Clune",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2602.07755"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2603.18620",
@@ -59905,7 +61182,8 @@
           "object": "训练时更新模型参数以学会上下文编辑；部署时持续修改外部上下文。",
           "verdict": "编辑者能看到已做题的题目、模型输出、标准答案和逐题正确性；比较修改上下文前后任务表现的增量，训练怎样改上下文。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2402.17574",
@@ -60317,7 +61595,8 @@
         "fields": {
           "object": "自然语言表示的信念与整体行为策略。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2510.23601",
@@ -60329,7 +61608,8 @@
         "methods"
       ],
       "tags": [
-        "Skill"
+        "Skill",
+        "person:mengdi-wang"
       ],
       "fields": {
         "本质定位": "从成功 trajectory 合成 candidate MCP tools，抽象/参数化后合并进 MCP Box；后续任务检索这些工具。",
@@ -60810,7 +62090,20 @@
           "object": "可检索并执行的 MCP（让 agent 以统一接口连接外部工具的协议） 工具库。",
           "seed": "先由管理 agent 把成功执行过程整理成通用工具：把写死的输入改为参数，去掉题目专属信息，统一调用接口。这些工具组成 MCP Box（按统一工具协议连接的工具库）；后续 agent 检索工具，通过生成并运行代码完成任务。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "person:mengdi-wang",
+          "label": "Mengdi Wang",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2510.23601"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2603.13131",
@@ -61388,7 +62681,8 @@
           "object": "成功技能、失败补救与行为约束组成的知识库。",
           "verdict": "比较动作前后的背包物品和环境状态，检测是否取得进展、是否停滞，并标记失败类型；这些具体证据用于生成技能或补救规则。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2603.18000",
@@ -61400,7 +62694,8 @@
         "methods"
       ],
       "tags": [
-        "Skill"
+        "Skill",
+        "org:peking"
       ],
       "fields": {
         "本质定位": "成功 solution 被保存成 pure-Python subagent + SKILL.md；后续相似任务检索、执行、根据 feedback 直接修改 subagent code。",
@@ -61839,7 +63134,20 @@
         "fields": {
           "object": "可执行 Python sub-agent 代码库。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.18000"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2603.18743",
@@ -61851,7 +63159,8 @@
         "methods"
       ],
       "tags": [
-        "Skill"
+        "Skill",
+        "person:jun-wang"
       ],
       "fields": {
         "本质定位": "冻结底层 LLM，把 structured SKILL.md / executable skill folders 当 persistent skill memory；任务时 retrieve/generate skill，执行后 Reflect→Write，成功提高 utility、失败则修复/重写 skill。",
@@ -62531,7 +63840,20 @@
           "object": "技能说明、代码、元数据与效用，以及技能路由器；底层执行语言模型保持冻结。",
           "verdict": "评审者对照任务回答与参考答案给出结果和理由，失败分析再定位到具体技能。技能修改后运行系统合成的检查用例；合成检查与独立留出题评测分开。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "person:jun-wang",
+          "label": "Jun Wang",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2603.18743"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2604.15097",
@@ -62543,7 +63865,8 @@
         "methods"
       ],
       "tags": [
-        "Skill"
+        "Skill",
+        "org:tsinghua"
       ],
       "fields": {
         "本质定位": "不是提出更复杂 evolution loop，而是控制实验比较 Skill、free-form experience、compact editable Gene 等表示，研究什么 experience representation 更适合持续进化。",
@@ -63069,7 +64392,20 @@
           "object": "紧凑策略或技能表示中的经验内容与失败警示。",
           "verdict": "自建科学代码场景通过测试脚本逐项检查完成情况；执行失败历史用于提炼经验。CritPt 的外部任务评价另行统计。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2604.15097"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2604.20133",
@@ -63603,7 +64939,8 @@
           "object": "技能库、技能元数据、记忆与用户信息。",
           "verdict": "技能更新主要利用用户交互和使用记录；论文最后另用模型从专业性、准确性等维度评审回答。最终评审分数不应自动当作每次技能更新的奖励。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2605.23904",
@@ -64293,7 +65630,8 @@
         "fields": {
           "object": "一份供模型阅读的技能文档，写明领域任务的操作策略；改变的是文档中的文字，目标模型参数和执行程序保持固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2607.00272",
@@ -64305,7 +65643,10 @@
         "methods"
       ],
       "tags": [
-        "Skill"
+        "Skill",
+        "org:cmu",
+        "org:berkeley",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "coding agent 根据逐原语多模态 robot traces 诊断失败、修 control program，验证成功修复后蒸馏进持续扩张 skill library；另用 evolutionary search 探索 task sequences/programs。",
@@ -64888,7 +66229,42 @@
           "object": "机器人控制程序及可跨任务复用的技能库。",
           "verdict": "机器人模拟器判断目标是否完成，执行视频、关键帧和工具记录帮助定位抓取、移动等步骤的失败；调试与最终测试采用不同随机种子。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.00272"
+            }
+          ]
+        },
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.00272"
+            }
+          ]
+        },
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.00272"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.26784",
@@ -64899,7 +66275,10 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:sjtu",
+        "org:nus"
+      ],
       "fields": {
         "本质定位": "同一 policy 在 task solving 与 skill-document curation 两个角色间交替；训练时用跨任务 downstream reward 学“什么时候/怎样更新 skill”。",
         "什么在变": "runtime skill document + model weights（学会 curate）。",
@@ -65465,7 +66844,31 @@
         "fields": {
           "object": "跨任务传递的技能文档，以及学习如何执行和整理技能的模型参数。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:sjtu",
+          "label": "Shanghai Jiao Tong University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.26784"
+            }
+          ]
+        },
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.26784"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.11350",
@@ -65975,7 +67378,8 @@
           "verdict": "VLABench 用环境成功信号验收，ESI-Bench 用答案正确率评价；诊断模型另外分析动作前后观察与轨迹，解释问题出在技能、上下文还是环境。",
           "executor": "Qwen3.6-27B 负责上层规划。VLABench 中由官方 π0 机器人行动模型通过 OpenPI 运行接口执行，每次连续执行五个动作；ESI-Bench 使用固定交互接口。规划模型与底层行动执行不是同一个角色。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2504.15228",
@@ -66440,7 +67844,8 @@
         "fields": {
           "object": "coding agent 的完整实现；改进后的 agent 可继续修改后代，外层档案管理和评价规则保持固定。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2603.03329",
@@ -66455,7 +67860,8 @@
         "EnvironmentReward",
         "HarnessCode",
         "M1",
-        "SameModel"
+        "SameModel",
+        "org:google-deepmind"
       ],
       "fields": {
         "本质定位": "Gemini-2.5-Flash 根据 game environment 的 illegal-action feedback 自动写/改 code harness；极端情况下直接把整个 policy 编译成 code。",
@@ -66886,7 +68292,20 @@
           "object": "防止无效动作的代码运行框架，或完全取代模型逐步决策的代码策略。",
           "verdict": "游戏环境反馈动作是否合法、违反什么规则，以及终局胜负或奖励；“不再犯非法动作”与“更容易赢”是两种不同评价目标。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2603.03329"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2606.19980",
@@ -66897,7 +68316,10 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:cmu",
+        "org:berkeley"
+      ],
       "fields": {
         "本质定位": "coding/research agent 在真实机器人上循环 reset→rollout→verify→诊断→修改 policy/training-infra/algorithm code→重跑。",
         "什么在变": "robot policy code、training infrastructure、algorithm code。",
@@ -67579,7 +69001,31 @@
           "object": "机器人策略、训练基础设施和算法代码；组织复位、运行、验证和改进的外层流程保持固定。",
           "verdict": "真实机器人环境通过传感器判据或视觉奖励识别器判断成功，结合视频和运行记录诊断失败；RoboCasa 模拟实验采用其原生成功函数。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.19980"
+            }
+          ]
+        },
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2606.19980"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.14159",
@@ -68087,7 +69533,8 @@
           "modifier": "GPT-5.3-Codex 参与搜索，依据历史诊断配置和修订运行框架；原文没有为诊断与修改角色分别披露独立型号。",
           "object": "控制上下文、工具、生成、编排、记忆和输出的配置，以及指导配置的经验库。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.01918",
@@ -68691,7 +70138,8 @@
           "object": "系统提示、工具说明和实现、中间处理、sub-agent 配置、技能与长期记忆；外层修改算法固定。",
           "verdict": "运行 SWE-bench 仓库测试判断补丁是否解决问题，再结合执行日志和执行模型对自身失败的解释决定怎么改框架。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.08466",
@@ -69121,7 +70569,8 @@
           "object": "任务运行框架和产生修改的进化策略代码；最外层控制及选择规则固定。",
           "verdict": "游戏环境给出任务进展奖励；多次执行后采用偏保守的分数比较候选，降低偶然高分的影响。开发反馈驱动修改，验证结果用于最终选版本。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.09380",
@@ -69132,7 +70581,9 @@
       "categories": [
         "methods"
       ],
-      "tags": [],
+      "tags": [
+        "org:tsinghua"
+      ],
       "fields": {
         "本质定位": "把 observation/planning/memory/action/verification/recovery/stopping/budget 八类 control rule 显式化为 versioned Loop Policy；支持 online/offline evolution、Champion–Challenger、release monitor与 rollback。",
         "什么在变": "八部分 Loop Policy +版本/lineage；模型weights不以更新为主。",
@@ -69658,7 +71109,20 @@
           "verdict": "读取企业经营的在线记录或归档失败经历，再在相同条件下比较候选与当前版本的资金、存活、任务成功和风险指标。",
           "seed": "作者在 YC-Bench 业务模拟环境中维护有版本的控制流程，规定怎样观察、计划、调用工具、验证、重试和停止。新候选与当前保留版本在相同条件下比较，通过检查后在下一任务开始时启用；发现退化可退回旧版本。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.09380"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.12307",
@@ -69673,7 +71137,9 @@
         "HarnessCode",
         "HeldOut",
         "M1",
-        "StrongerBuilder"
+        "StrongerBuilder",
+        "org:uiuc",
+        "person:heng-ji"
       ],
       "fields": {
         "本质定位": "强 builder 在约5% labeled validation 上反复看 scaffold accuracy 与错误样本 (x,gold,pred)，修改 executable scaffold；freeze 后弱 target 在95% hidden test。",
@@ -70206,7 +71672,31 @@
           "object": "为冻结弱模型构建的执行代码、路由与验证流程；不更新弱模型参数。",
           "verdict": "用心智推理任务的可见验证题检查回答正确性，供强模型选择运行框架；最终评测与验证数据的具体边界存在原文口径冲突，表格保留了说明。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.12307"
+            }
+          ]
+        },
+        {
+          "tag": "person:heng-ji",
+          "label": "Heng Ji",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2608.12307"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.24735",
@@ -70835,7 +72325,8 @@
           "object": "逐层增加的策略上下文及可调用辅助代码；基础模型和生成下一层的操作保持固定。",
           "verdict": "候选程序实际运行后，返回输出、报错、退出状态及任务得分；组合优化、分类、终端任务等分别由相应评估器判断，不能用统一“答对率”概括。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2605.27276",
@@ -71619,7 +73110,8 @@
           "modifier": "Claude Sonnet 4.6 分别担任上层设计者和反馈分析者，设计 task agent 并决定改运行框架还是训练参数；Modal 云计算平台上的训练程序实际更新 gpt-oss-120B 的参数。",
           "seed": "上层设计模型生成面向任务的运行框架，并可通过 LoRA（只训练少量附加适配参数）调整 gpt-oss-120b。实验比较只改框架与联合更新；每类任务另有按程序规则判结果的评分器。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2607.21971",
@@ -71632,7 +73124,9 @@
       ],
       "tags": [
         "EditorWeights",
-        "LearnedUpdater"
+        "LearnedUpdater",
+        "org:uiuc",
+        "person:heng-ji"
       ],
       "fields": {
         "本质定位": "在 coding 上用程序执行产生连续 verifiable fitness，合成多轮 evolution histories，并用 RL 训练模型掌握“看历史+看 fitness→提出更好改动”的 meta-skill；推理时再进入 evolutionary search。",
@@ -72198,7 +73692,31 @@
         "fields": {
           "object": "训练阶段学习多轮进化能力的模型参数；使用时继续改进候选程序。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2607.21971"
+            }
+          ]
+        },
+        {
+          "tag": "person:heng-ji",
+          "label": "Heng Ji",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2607.21971"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.05446",
@@ -72213,7 +73731,8 @@
         "EnvironmentReward",
         "M0",
         "MemoryContent",
-        "Weights"
+        "Weights",
+        "org:uiuc"
       ],
       "fields": {
         "本质定位": "预定义 Belief/Progress/Experience 外部 state 与 read/update/consolidate action；先 SFT 教 harness action，再 cost-aware GRPO 学 runtime harness-use policy。",
@@ -72833,7 +74352,20 @@
           "verdict": "ALFWorld 环境判断家居任务是否完成；奖励还考虑非法动作与框架使用成本，以训练模型何时值得读写外部状态。",
           "seed": "ALFWorld 家居操作环境外提供三类状态：当前世界信息、已确定的子目标进度、跨任务可复用经验，论文合称 BPE。track 查询物体，commit 记录子目标，recall 检索经验，note 写下新经验。先收集教师使用这些接口的示范，再训练模型自主选择何时调用。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.05446"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.13951",
@@ -73380,7 +74912,8 @@
         "fields": {
           "object": "可组合的运行框架组件与运行策略；展示的搜索阶段冻结执行模型，轨迹供后续模型学习使用。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2505.19955",
@@ -73391,7 +74924,9 @@
       "categories": [
         "evaluation"
       ],
-      "tags": [],
+      "tags": [
+        "org:nus"
+      ],
       "fields": {
         "本质定位": "不做 self-evolution；把 AI research 拆成 idea→proposal→experiment→paper，并用201个 workshop-derived research tasks + MLR-Judge评估。",
         "什么在变": "系统不进化；被测的是research-agent capability。",
@@ -73817,7 +75352,20 @@
           "object": "系统不做持续自进化；评测科研 agent 从想法到实验和论文的能力。",
           "verdict": "Gemini-2.5-Pro-Preview 与 Claude-3.7-Sonnet 按研究阶段的评分要求分别评审，读取研究产物及实验日志后取平均；另与人类专家评价比较一致性。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:nus",
+          "label": "National University of Singapore",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2505.19955"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2605.08678",
@@ -73828,7 +75376,14 @@
       "categories": [
         "evaluation"
       ],
-      "tags": [],
+      "tags": [
+        "org:washington",
+        "org:princeton",
+        "org:cmu",
+        "org:berkeley",
+        "org:tsinghua",
+        "org:sjtu"
+      ],
       "fields": {
         "本质定位": "140 tasks×12 domains，要求 agent 改进某个 ML component，并验证方法能跨 controlled settings generalize/scale；重点区分 engineering tuning 与真正 method invention。",
         "什么在变": "被测 agent 不被要求 persistent self-evolve；评价其提出/验证更好 ML method 的能力。",
@@ -74333,7 +75888,75 @@
           "verdict": "在固定训练和评估流程下运行修改后的算法，比较多个数据、环境或模型规模设置的成绩；隐藏设置用于检查改进是否能推广。",
           "seed": "起点提供完整对照方案、代码、数据协议和预算，后端在隔离软件环境中运行。agent 用四种工具实验：edit 修改指定组件，test 运行训练并查看允许公开的指标，submit 提交此前结果，undo 撤回改动。训练和评估规则由平台固定。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:washington",
+          "label": "University of Washington",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        },
+        {
+          "tag": "org:princeton",
+          "label": "Princeton University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        },
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        },
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        },
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        },
+        {
+          "tag": "org:sjtu",
+          "label": "Shanghai Jiao Tong University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.08678"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2608.17271",
@@ -74344,7 +75967,12 @@
       "categories": [
         "evaluation"
       ],
-      "tags": [],
+      "tags": [
+        "org:mit",
+        "org:cmu",
+        "org:uiuc",
+        "org:tsinghua"
+      ],
       "fields": {
         "本质定位": "60个project-level research tasks×11科学domain，逐级撤掉 human methodological guidance，测创新探索+自主科学执行。",
         "什么在变": "系统不进化；改变的是 human guidance level。",
@@ -74854,7 +76482,53 @@
           "object": "系统不进化；逐步减少提供给科研 agent 的方法与步骤指导。",
           "verdict": "科研项目各有参考生成和评分逻辑，通过沙箱执行与评分重放检查产物；专家审查主要用于保证基准任务质量，不是 agent 执行时的实时指导。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.17271"
+            }
+          ]
+        },
+        {
+          "tag": "org:cmu",
+          "label": "Carnegie Mellon University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.17271"
+            }
+          ]
+        },
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.17271"
+            }
+          ]
+        },
+        {
+          "tag": "org:tsinghua",
+          "label": "Tsinghua University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.17271"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2507.19457",
@@ -74869,7 +76543,11 @@
         "OfflineSearch",
         "Population",
         "Prompt",
-        "SeparateEvolver"
+        "SeparateEvolver",
+        "org:stanford",
+        "org:mit",
+        "org:berkeley",
+        "person:omar-khattab"
       ],
       "depth": [
         "M1"
@@ -75383,7 +77061,53 @@
           "object": "模型系统中的一个或多个提示；基础模型参数保持不变。",
           "verdict": "执行轨迹提供推理、工具调用和返回信息；任务反馈进一步指出缺失文档、未满足约束或结果错误，供模型提出有针对性的提示修改。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2507.19457"
+            }
+          ]
+        },
+        {
+          "tag": "org:mit",
+          "label": "MIT",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2507.19457"
+            }
+          ]
+        },
+        {
+          "tag": "org:berkeley",
+          "label": "UC Berkeley",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2507.19457"
+            }
+          ]
+        },
+        {
+          "tag": "person:omar-khattab",
+          "label": "Omar Khattab",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2507.19457"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2609.00829",
@@ -75801,7 +77525,8 @@
           "object": "执行代码、提示、技能和工具；模型冻结。",
           "verdict": "先判断任务成败，再把失败过程与成功参考路径对齐，找出反复出错的步骤；候选修改还要通过防记答案检查和任务表现检查。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.27311",
@@ -76399,7 +78124,8 @@
           "object": "用户可配置的运行框架组件。",
           "verdict": "从失败轨迹识别需要修复的行为，再在相关训练题上比较修改前后；除了成绩提高，还要确认改动确实触发并恢复了目标行为。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.10178",
@@ -76901,7 +78627,8 @@
           "verdict": "仓库测试给出修复成败，轨迹分析标记失败类型；修改者预测哪些题会改善或退化，下一轮实际执行再核对这些预测。",
           "seed": "极简推理—行动循环：两句系统提示、任务与提交模板、一个命令行工具，记忆和自动触发处理代码起初为空。未预先写入测试、构建、补丁范围等指导规则；另与人工设计的 mini-SWE-agent 轻量编程框架在相同预算下比较。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2608.31100",
@@ -76918,7 +78645,8 @@
         "Weights",
         "SelfFeedback",
         "ExecutableVerifier",
-        "HeldOut"
+        "HeldOut",
+        "org:bytedance-seed"
       ],
       "depth": [
         "未明确"
@@ -77440,7 +79168,20 @@
         "fields": {
           "object": "对比保留交互历史、维护摘要记忆和训练模型参数三条学习路径。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:bytedance-seed",
+          "label": "ByteDance Seed",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2608.31100"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2609.01481",
@@ -77454,7 +79195,8 @@
       "tags": [
         "Workflow",
         "Tool",
-        "Skill"
+        "Skill",
+        "org:shanghai-ai-lab"
       ],
       "depth": [
         "未明确"
@@ -78011,7 +79753,20 @@
         "fields": {
           "object": "正在开发的软件项目与版本历史。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:shanghai-ai-lab",
+          "label": "Shanghai AI Laboratory",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.01481"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "rsi-exam",
@@ -78814,7 +80569,8 @@
           "verdict": "各任务提供自己的检查：答案匹配、证明编译、仿真误差或按保密要求评分。开发结果用于改进与选版本，正式结果在最终提交后评价；下表分别解释六项公开任务的反馈。",
           "seed": "研究者使用现成编程工具和统一研究指令；每题已有可运行弱方法。例如记忆起点只按关键词检索，证明起点只允许一次报错修复。Harbor（组织隔离容器与评测的工具）提供运行环境。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2609.00196",
@@ -78834,7 +80590,10 @@
         "ExecutableVerifier",
         "SeparateEvolver",
         "Archive",
-        "CoEvolution"
+        "CoEvolution",
+        "org:stanford",
+        "org:krafton",
+        "person:chelsea-finn"
       ],
       "depth": [
         "未明确"
@@ -79563,7 +81322,42 @@
           "verdict": "问答由 GPT-5.4-mini 对照参考答案；数学按标准答案匹配；棋题按合法性和参考着法检查。正确标记用于训练筛选和框架比较。",
           "seed": "问答：每次返回一段最多 200 词元的文档，最多 2 轮；数学：提取并运行 Python，返回输出或报错，最多 2 轮；棋题：展示棋盘和完整历史，格式错误、非法着法各重试 1 次，最多 9 轮。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:stanford",
+          "label": "Stanford University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.00196"
+            }
+          ]
+        },
+        {
+          "tag": "org:krafton",
+          "label": "KRAFTON",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.00196"
+            }
+          ]
+        },
+        {
+          "tag": "person:chelsea-finn",
+          "label": "Chelsea Finn",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "arXiv 作者列表",
+              "url": "https://arxiv.org/abs/2609.00196"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2609.09646",
@@ -80063,7 +81857,8 @@
           "verdict": "用60道优化题的轨迹诊断，用30道验证题配对比较新旧版本；另30题测试。原文给出0–5质量分和完成率，但没有完整评分细则。",
           "seed": "已有 AgentX 多 agent 头脑风暴流程，且已有失败诊断、补丁生成、重放验收和回退能力；本文增强修改控制和历史版本保留。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2609.09153",
@@ -80083,7 +81878,9 @@
         "LLMJudge",
         "ExecutableVerifier",
         "SameModel",
-        "OfflineSearch"
+        "OfflineSearch",
+        "org:google",
+        "org:peking"
       ],
       "depth": [
         "未明确"
@@ -80702,7 +82499,31 @@
           "verdict": "训练任务的参考答案、环境检查或评分要求产生分数；迭代方案再用独立验证集筛图。七个基准的判分和数据分别列在表内。",
           "seed": "已有 ReAct 工具调用循环；步骤图可从人工规则起步，也可只有“开始→结束”。一次性构图与逐批验证构图分别比较。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:google",
+          "label": "Google",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.09153"
+            }
+          ]
+        },
+        {
+          "tag": "org:peking",
+          "label": "Peking University",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2609.09153"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2607.22688",
@@ -81225,7 +83046,8 @@
           "verdict": "Python运行与失败日志用于定位问题；两组任务分别查目标失败是否修好、原有能力是否退步。具体判分实现和完整数据划分未披露。",
           "seed": "已有 Python沙箱、调用格式、最多3次异常重试与上下文截断；没有初始技能库、长期记忆或外部检索。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2606.01779",
@@ -82098,7 +83920,8 @@
           "verdict": "ToolHop核对答案和中间目标；检索问答对照参考答案算F1；EnvScaler-RL用终态检查函数。筛选还计词元和耗时。",
           "seed": "人工设计的规划/动作/记忆框架配原始Qwen，需满足固定工具接口；原文未完整列出初始各功能配置，不能将全部可改功能算作已有能力。"
         }
-      }
+      },
+      "attributions": []
     },
     {
       "id": "2605.30621",
@@ -82117,7 +83940,8 @@
         "ExecutableVerifier",
         "LLMJudge",
         "SeparateEvolver",
-        "Streaming"
+        "Streaming",
+        "org:uiuc"
       ],
       "depth": [
         "未明确"
@@ -83006,7 +84830,20 @@
           "verdict": "SWE看隐藏测试，MCP看参考事实要求，SkillsBench用任务检查器。先锁定本题成绩，再用本题证据改后续框架。",
           "seed": "基准内共享工具与任务提示；SkillsBench从空技能库、无系统提示开始，去掉原配人工技能，确保后续技能来自任务经验。"
         }
-      }
+      },
+      "attributions": [
+        {
+          "tag": "org:uiuc",
+          "label": "UIUC",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "论文作者机构署名",
+              "url": "https://arxiv.org/html/2605.30621"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "2609.08175",
@@ -83956,11 +85793,235 @@
           "verdict": "DS-1000 用可执行测试判对错；WorkBuddy 使用其基准分，论文未展开原始判分器。验收程序统计修复与退化及其不确定性，判断是否采用；独立审计题检查验收结果。",
           "seed": "DS-1000只调用一次模型；WorkBuddy沿用已有 coding agent，只开放系统提示修改。“安全”主要指可靠改善并控制任务退化。"
         }
-      }
+      },
+      "attributions": []
     }
   ],
   "framework": "# RSI / Harness Self-Evolution 论文调研记录\n\n> **本文件为合并精简版。** 在原长期记录基础上合并系统补全文献；所有相关论文至少保留一行横向定位，只有 **Core / 经典代表作** 中最能定义主线的工作保留详细介绍。目标不是跟随论文自己的 “RSI / self-evolving” story，而是统一回答：**什么在变、谁来改、谁来执行、基础 harness、feedback 来源、evolution→eval 是否隔离、相对更早工作到底多开放了哪一层 editable space。**\n\n>\n> **主标签（代表性）**：**C = Core / 经典代表作**（领域绕不开、定义了范式、热度/影响力高，或直接改变后续论文如何做问题/评估）；**K = Key / 重要工作**（有清楚的新机制或关键证据）；**R = Related / 定位即可**（谱系相关，但通常表格一行即可）。\n>\n> **证据强度与“经典性”完全分开。** 一篇论文可以是 **Core 但证据有明显缺陷**（如 same-set adaptation / selection–eval leakage / attribution confounding），也可以是 **Key 但实验非常干净**。以后不再因为 protocol 不够干净就把领域代表作降级。\n>\n> **热度只作为辅助信号，不作为科学结论。** 对 2026 新论文，citation index 尚不稳定，因此综合看：后续工作是否频繁把它当 baseline/前驱、是否形成独立方法范式、官方开源/社区关注，以及我们原调研中是否已将其列为核心。\n\n## 0. 统一分析框架\n\n### 0.1 Meta-depth\n\n| 层级 | 定义 | 典型形态 |\n|---|---|---|\n| **M0：persistent state** | memory/skill/context 内容持续变化，但 updater 固定 | Reflexion、ExpeL、Voyager |\n| **M1：task-facing mechanism** | prompt/workflow/memory algorithm/tool/full harness 可编辑，但 modifier/search/selection 机制固定或外置 | ADAS、ALMA、SkillOpt、Meta-Harness、AHE |\n| **M2：improver also evolves** | 产生后续改进的 modifier/meta-skill/self-mod procedure 也被继承和修改；外层 evaluator/selection 常仍固定 | Promptbreeder、STOP、DGM、MetaSkill-Evolve |\n| **M3：full self-reference ideal** | 外层 improvement machinery 也处于同一可修改系统，并有准则决定何时重写 | Gödel Machine（理论） |\n\n### 0.2 Evaluation isolation\n\n| Protocol | 含义 | 我们如何解读 |\n|---|---|---|\n| **Held-out** | evolve/train/selection → freeze → unseen tasks | 最能支持可泛化 improvement |\n| **Prequential** | 每个 task 只做一次，feedback 只影响未来 task | 支持 online accumulation，但 stream 同时是 experience source |\n| **Same-set adaptive** | 同一 tasks 反复执行→修改→再评分 | 主要证明针对固定 tasks 可优化，不能直接当泛化 |\n| **Within-instance** | 只改当前 response/trajectory | feedback substrate，不是 persistent self-evolution |\n\n### 0.3 重新审计后的核心阅读层级\n\n> **这次以“领域代表性”为第一原则重新审核。** 我们原先已经重点记录的工作优先保留；新增论文只有在确实形成新范式/重要证据时才进入 Core，而不是因为更新、更干净就自动挤掉旧的代表作。\n\n#### Core-15：主干论文（优先完整读）\n\n| 时间 | 论文 | 为什么是主干 | 证据边界要记住 |\n|---|---|---|---|\n| 2003/2006 | **[Gödel Machines](https://arxiv.org/abs/cs/0309048)** | 严格 RSI 的理论原型：连 improver/proof-searcher 自身也可被重写。 | 理论构造，不是现代 agent 实证。 |\n| 2023-03 | **[Reflexion](https://arxiv.org/abs/2303.11366)** | `feedback→reflection→persistent experience→future behavior` 的经典 LLM 前史。 | updater 固定，更像 persistent memory 而非 harness mechanism evolution。 |\n| 2023-05 | **[Voyager](https://arxiv.org/abs/2305.16291)** | executable skill library 的经典起点。 | Minecraft/open-ended embodied setting；不是 full harness。 |\n| 2025-05 | **[Darwin Gödel Machine](https://arxiv.org/abs/2505.22954)** | self-modifying agent source + open-ended archive 的代表，是现代 RSI/harness program evolution 的直接前驱。 | outer archive / selection mechanism 仍固定。 |\n| 2025-11 | **[AgentEvolver](https://arxiv.org/abs/2511.10395)** | 2025–26 “self-evolving agent training loop” 的高影响代表：task generation、experience navigation、credit assignment 一体化。 | 主要更新 policy/data/credit loop，不是 deployment harness evolution。 |\n| 2026-03 | **[Hyperagents](https://arxiv.org/abs/2603.19461)** | 明确把 **modification procedure 本身**放入 editable program，是 improver-level RSI 的代表。 | evaluator/archive/outer selection 仍大体固定。 |\n| 2026-03 | **[Meta-Harness](https://arxiv.org/abs/2603.28052)** | full executable harness optimization 的主干 baseline：完整 source/history/raw trace 都进入 proposer context。 | TerminalBench headline 同集 search/eval；其他任务更干净。 |\n| 2026-04 | **[Agentic Harness Engineering (AHE)](https://arxiv.org/abs/2604.25850)** | full-harness evolution 工程化代表：observability、attribution、rollback、regression。 | TB2 主结果同集；cross-benchmark accuracy transfer 较小。 |\n| 2026-06 | **[Self-Harness](https://arxiv.org/abs/2606.09498)** | same-model self-harness 的最直接代表：target 根据自己的 failure 修改自己的 harness。 | held-out regression score 参与 acceptance，不是 untouched test。 |\n| 2026-06 | **[SEAGym](https://arxiv.org/abs/2606.17546)** | self-evolving harness 的 reliability/evaluation 代表：held-out ID/OOD、replay、snapshot、cost 分开评。 | 自己不提出新的 evolution 方法；价值在评测框架和负面证据。 |\n| 2026-07 | **[SEED](https://arxiv.org/abs/2607.14777)** | endogenous model self-improvement 代表：当前 policy 自己产生/分析 on-policy experience，再蒸馏回 weights。 | Stage-1 有外部 bootstrap；外层训练算法固定。 |\n| 2026-07 | **[Recursive Harness Self-Improvement (RHI)](https://arxiv.org/abs/2607.15524)** | harness revision-history / recursive revision 这条路线的代表。 | evaluator/optimizer role 分离，不是纯 same-model self-loop。 |\n| 2026-07 | **[RSIBench-Data](https://arxiv.org/abs/2607.25886)** | RSI benchmark/研究过程的经典代表；提出最重要的 **discovery–reliability gap** 证据之一。 | selection 与 final official eval 使用同一 task subset。 |\n| 2026-07 | **[Frontis-MA1](https://arxiv.org/abs/2607.28568)** | “训练一个专门的 meta-evolution / AI4AI improver” 的代表，且 OpenMLE 全栈开源。 | learned improver 变强，但 outer evolution system 仍固定。 |\n| 2026-08 | **[Harness-R1](https://arxiv.org/abs/2608.02276)** | 把 harness editing 从 prompt frontier LLM 变成 **可 post-train 的独立能力**；trained harness engineer 是清晰的新范式。 | target 与 editor 是分开的；cold start 依赖更强 teacher。 |\n\n#### Core-扩展：同样是领域代表作，按问题补读\n\n| 论文 | 为什么仍应视为 Core / 强代表 |\n|---|---|\n| **[Argus](https://arxiv.org/abs/2608.05144)** | persistent runtime / durable-state / verified objective pivot 的代表；强调 role separation 与 commit authority。 |\n| **[Macaron-V1](https://arxiv.org/abs/2608.09819)** | versioned **model–harness pair** / continual learning framing 的高热代表；系统设计很完整。 |\n| **[BigBang](https://endlessfrontier.tech/assets/paper.pdf)** | data-level RSI / self-evolving frontier-task synthesis 的系统级代表；不是 deployment harness，但 RSI 叙事里绕不开。 |\n| **[MetaSkill-Evolve](https://arxiv.org/abs/2607.05297)** | 明确 fast skill + slow meta-skill，两层 improvement procedure evolution；meta-depth 讨论的关键参照。 |\n| **[Evo-Harness](https://arxiv.org/abs/2608.15071)** | skill-level harness evolution + grounded feedback vs self-feedback 的直接证据，对我们当前问题非常相关。 |\n| **[Evo-Bench](https://arxiv.org/abs/2608.09096)** | 当前最接近“统一测试 harness-evolving capability”的 benchmark 骨架；Search 里含 BrowseComp/HLE。 |\n| **[Aspire](https://arxiv.org/abs/2608.31111)** | hidden downstream eval + vague goal，直接测试 self-evaluation/objective construction 是否可靠。 |\n| **[ADAS](https://arxiv.org/abs/2408.08435)** | executable agent program search 的重要前驱；related work 中解释 full-harness 从哪里来时必读。 |\n| **[HarnessDev](https://arxiv.org/abs/2609.01437)** | 2026-09-01 新出的直接 benchmark：把 **Creation 与 Evolution** 分开，hidden downstream eval 同时测 capability、efficiency 和 cross-runtime-model transfer；对我们当前实验设计极直接，但因过新暂不按“经典热度”评级。 |\n| **[GDPevo](https://arxiv.org/abs/2608.03764)** | evolution-native held-out business benchmark，并给 fully-informed **oracle ceiling**；对我们“是否接近/突破能力上限”问题非常直接。 |\n| **[VeRO](https://arxiv.org/abs/2602.22480)** | harness optimizer 的 outer instrumentation / audit substrate：versioning、budgeted rewards、structured observations，是 HarnessOpt-Bench 等统一评测路线的早期直接节点。 |\n\n> **一个关键修正**：Core 不再等于“实验最干净”。例如 RSIBench-Data / Self-Harness / Macaron-V1 的 protocol 都有清楚的限制，但它们依然是领域代表作；相反，某些很干净的新 benchmark 可以放在 Key，而不自动取代已有经典工作。\n\n### 0.4 热度 / 代表性辅助审计（2026-09-04）\n\n> 对 2026 新工作，引用次数仍严重滞后，所以这里**不把热度当排名**，只用公开社区信号检查“是不是把明显的热门代表作漏了”。\n\n| 论文 | 当前公开热度信号 | 我们怎么用这个信号 |\n|---|---|---|\n| **Macaron-V1** | Hugging Face Papers **342 upvotes，#2 Paper of the Day** | 明显属于当前 continual learning / model–harness RSI 的高热系统工作，必须保留 Core。 |\n| **SkillOpt** | Hugging Face Papers **265 upvotes，#1 Paper of the Day** | skill evolution 分支的高热代表；虽然不是 full harness，也值得保留详细介绍。 |\n| **Frontis-MA1** | Hugging Face Papers **186 upvotes** | AI4AI / learned meta-evolution 路线的显著代表；上一版漏掉是错误。 |\n| **SEED** | Hugging Face Papers **107 upvotes，#3 Paper of the Day** | model-level endogenous self-evolution 的高热代表，应该和 harness 路线并列保留作核心对照。 |\n| **Hyperagents** | Meta/Facebook Research 官方仓库约 **2.6k GitHub stars** | improver self-modification 并非边缘概念论文，而是目前很有传播度的 recursive/improver-level 代表。 |\n| **Meta-Harness** | Hugging Face Papers **23 upvotes**，Stanford/MIT/KRAFTON；已有多个 harness survey/data collection 引用其框架 | 热度不是最高，但在 full-harness 方法谱系中具有定义性，因此仍是 Core。 |\n| **Self-Harness** | Hugging Face Papers 当前仅 **3 upvotes** | 反例：社区 upvote 低不代表不重要；same-model self-harness setting 对我们的研究问题具有直接定义性，因此仍是 Core。 |\n\n**因此以后采用两个独立判断：**`代表性/热度` 决定要不要进入 Core 视野；`实验隔离/归因` 决定我们能相信它的 claim 到什么程度。两者不能再混成一个优先级。\n\n\n\n",
   "conclusions": "## 4. 跨论文结论：现在真正需要记住什么\n\n| 问题 | 跨论文结论 |\n|---|---|\n| **历史上真正发生的变化** | `当前输出 self-correction → persistent memory/reflection → executable skill/tool → memory/skill mechanism → workflow/agent program → full harness → improver/meta-skill`。不要用论文是否自称 RSI 来判断 novelty。 |\n| **最重要的 distinction** | **state 在变 ≠ mechanism 在变 ≠ improver 在变。** Reflexion/Voyager 主要是 M0；ALMA/SkillOpt/Meta-Harness 是 M1；DGM/MetaSkill-Evolve 才触及 M2。 |\n| **Feedback** | 多条独立证据都指向：无 grounded verifier 时，reflection 容易把错误写进 persistent state。Evo-Harness 甚至直接观察到 pure self-feedback regression。 |\n| **Generalization** | 现在最普遍的证据缺口不是“能不能搜到过更高分”，而是 **freeze 后能否在 held-out tasks 保留**。AI4AI、ALMA、SkillOpt、Evo-Bench 的协议比 same-set headline 更值得学。 |\n| **基础 harness** | 从 minimal/raw interface 大涨，与从成熟 harness 继续提升，不是同一种证据。Meta-Harness/AHE 的价值之一正是让这个差异变得可见。 |\n| **Regression / reliability** | AHE、HarnessCompass、Evo-Bench、Aspire 都说明 improvement 非单调：会修复不代表会预见 collateral regression；local evaluator 变好也不代表 hidden capability 变好。 |\n| **对我们最有区分度的问题** | 仍然是 **capability ceiling + systematic behavior drift**：evolution 到底是在 eliciting latent capability、学到可泛化 procedure，还是 benchmark-specific overfit / cheat / judge gaming。 |\n\n## 5. 下一步阅读优先级\n\n如果目标是 **最快建立领域主干**，不要按 80 篇顺序读，先按下面四组：\n\n1. **历史/范式**：Gödel Machines → Reflexion → Voyager → DGM → AgentEvolver。\n2. **Harness 主线**：Meta-Harness → AHE → Self-Harness → RHI → Harness-R1。\n3. **更接近 RSI / improver**：Hyperagents → SEED → Frontis-MA1 → Macaron-V1 / BigBang。\n4. **怎么判断它到底 work 不 work**：SEAGym → RSIBench-Data → Evo-Bench → Aspire。\n\n对于我们现在要做的 **Harness 自进化 capability ceiling / 系统性行为偏移**，不建议再只看 6 篇，而是按问题分三组：\n\n1. **Harness 方法本体（先看它到底怎么改）**：`Meta-Harness + AHE + Self-Harness + Evo-Harness`。\n2. **最干净/最直接的 harness-evolution 评测骨架**：`VeRO → HarnessOpt-Bench → Evo-Bench → HarnessDev`。这条线能看出评测如何从 instrumentation 逐渐走到 held-out、harness-sensitive task、Creation-vs-Evolution、cross-runtime transfer。\n3. **我们真正想研究的 failure / ceiling**：`SEAGym + RSIBench-Data + GDPevo + PATH-Bench + Aspire`。其中 **GDPevo 的 oracle ceiling**、PATH-Bench 的 interference/forgetting、Aspire 的 hidden objective mismatch 都比“又一个更高 evolved score”更贴近我们的差异化问题。\n\n如果只允许再精读 **8 篇**，我会选：`Meta-Harness、AHE、Self-Harness、Evo-Bench、HarnessDev、SEAGym、RSIBench-Data、GDPevo`。PATH-Bench / Aspire 随后补。\n\n但写 related work / 讲领域版图时，必须把 **AgentEvolver、Hyperagents、SEED、Frontis-MA1、Harness-R1、Argus、Macaron-V1、BigBang** 放回来；否则会把 2026 RSI 的主流叙事读窄成“只改 deployment harness”。\n",
   "readingGuide": "# 第一次读 RSI 论文：先分清研究对象与实验结果\n\n这个网站围绕一个问题整理文章：**系统从经历中改进了什么，这种改进是否真的帮助它完成后续任务？** RSI 是 Recursive Self-Improvement，通常译为递归自改进。本库也收录自纠错、记忆学习及相关评测；收录不代表论文已经实现了无限递归改进。\n\n## 模型、运行框架和产物是什么关系？\n\n以“修好一个软件错误”为例，下面只是帮助理解的示意，并非某篇论文的实验结果。\n\n| 对象 | 负责什么 | 修改它意味着什么 |\n| --- | --- | --- |\n| 模型 | 根据输入生成分析、答案或下一步动作，例如 Qwen、GPT、Claude 系列模型 | 训练参数，改变模型本身的行为 |\n| 运行框架（harness） | 决定给模型看什么、能调用什么工具、如何保存记忆、何时重试和停止 | 改模型外围的提示、工具、记忆或控制代码 |\n| 当前产物 | 模型为这道任务交付的代码补丁、答案或报告 | 把当前作品改好；未必改进了以后做题的系统 |\n\n**模型名与软件名要分开。** “Claude Code + 某模型”表示模型在一套编程代理工具中运行。Qwen-Agent 是组织模型调用和工具执行的框架。旧论文中的 Codex 也可能是模型名，不能看到同一个词就认定是同一种软件。\n\n## 怎么读每篇文章？\n\n先读三个 TL;DR 要点：**研究缺口与动机**说明作者认为现有做法有什么不足、会造成什么后果，以及为什么值得解决；**本文定位**说明要研究什么问题或检验什么能力；**关键设计与结论**说明独特做法和实际得到的结果。\n\n研究缺口依据原文引言，是作者提出工作的理由，不等于本站对整片领域的定论。理论文章和项目报告按原文记录提出问题的出发点；原文没有明确提出的缺陷，不额外补写。研究目标也不等于已经实现的能力。\n\n接着按五个维度读：\n\n1. **什么在进化：** 参数、提示、技能、记忆、运行代码，还是当前答案？下一道任务会继承什么？\n2. **谁执行：** 真正答题或操作环境的模型是什么？软件框架、机器人控制器是否承担了其他执行步骤？\n3. **谁来改：** 同一个模型、另一个更强模型，还是固定训练程序？“模型决定训练什么”与“平台实际运行训练”是两种角色。\n4. **反馈是什么：** 谁判断对错，依据测试、参考答案还是模型评审？修改者能看到总分、具体错误，还是只有自己的猜测？\n5. **基础框架是什么：** 起点已有工具、记忆和重试机制吗？如果一开始就有复杂系统，最后的成绩不能全部归功于进化。\n\n展开表格后，连起来读一次改进过程：**执行任务 → 获得反馈 → 定位问题 → 修改 → 检查并保留或撤回。** 有的论文不包含所有步骤，例如只追加经验而不检查回归；表格会按实际设置说明。\n\n## 反馈到底是谁给的？\n\n**“有 verifier”还没有说明怎样判分。** verifier 指负责验证的组件，它内部可能运行规则，也可能调用模型。“比对标注答案”同样要继续问：是程序匹配，还是模型判断含义相同？\n\n| 判分机制 | 实际做什么 | 阅读时要确认 |\n| --- | --- | --- |\n| 基准自带的可执行检查 | 运行测试，或检查数据库、文件、模拟器状态是否达到目标 | 用的是官方检查器还是论文改写的版本？修改者能否看到测试内容？ |\n| 规则比对参考答案 | 程序抽取答案，再做精确匹配、数值容差检查或计算词项重合分 | 比较字符串、选项、数值还是结果集合？怎样处理格式与容差？ |\n| 模型比对参考答案 | 把题目、标注答案和模型回答交给另一个模型判断语义是否等价 | 哪个模型作裁判？能否看到标准答案？ |\n| 模型按评分细则评审 | 按逐题检查项判断完整性、约束满足或质量；rubric 就是这些评分细则 | 谁写细则、检查哪些方面、怎样汇总分数？ |\n| 模型自评 | 模型看自身回答或轨迹提出成败判断、批评，没有标准答案保证 | 自评是否作为学习信号？正式测试是否另有独立判分？ |\n| 环境指标与数值测量 | 按游戏规则结算，或计算误差、训练损失、运行时间等 | 指标方向、成功阈值与资源限制是什么？ |\n\n每篇“反馈是什么”按实验列出判分机制；展开表格可继续查看数据、具体检查方式、反馈可见范围和用途。判分模型与写修改建议的模型是不同角色，不可互相替代。原文没有交代具体实现时会说明缺的是哪一项；不能根据基准名称或 `Judge` 函数名自行补出裁判。\n\n## 训练、验证、测试要按用途区分\n\n| 用途 | 主要问题 | 可以怎样使用成绩？ |\n| --- | --- | --- |\n| 训练／进化 | 用哪些经历提出修改或更新参数？ | 可以反复利用题目、反馈和允许访问的答案 |\n| 开发／验证 | 哪个候选版本值得保留？ | 可以用成绩调方案或选版本，因此这份成绩已参与决策 |\n| 独立最终测试 | 选定系统能否处理未参与修改和选择的任务？ | 冻结系统后评价；若再据此改版本，就需要重新说明隔离边界 |\n\n**数据集原本叫 test，不表示在这篇论文中仍是独立测试。** 作者可能把官方测试题拿来反复调框架；反过来，也可能把官方 validation 留作最后测验。网站保留原分区名称，并说明论文实际怎么使用。\n\n“留出”（held-out）只说明预先划出一部分数据。如果它的分数用于挑版本，它仍参与了选择。“在线学习”则允许前一道题的经历帮助后一道题，评价的是连续适应过程，不能照搬“全程冻结”的理解。\n\n## 几种反馈不能混为一谈\n\n- **代码测试：** 运行程序，检查输出或状态是否符合任务断言。通过所给测试不等于覆盖了所有可能情况。\n- **答案对照：** 将回答与参考答案比较；有的精确匹配，有的允许数值误差或使用模型判断语义是否一致。\n- **模型评审：** 另一个模型或同一模型依据评分细则给出意见。需要看它是否有参考答案，以及判断是否经过外部校验。\n- **自评：** 系统根据自己的轨迹判断成败，可能判断错；与环境真正的任务结果分开。\n- **过程信息：** 报错、动作前后截图、工具返回和执行日志，帮助解释哪里出了问题，本身不一定是最终成绩。\n\n## 怎么理解常见结果？\n\n**单次成功、重试成功和多版本覆盖不同。** pass@1 看一次尝试；pass@k 通常看最多 k 次中至少成功一次，具体以论文协议为准。如果每题事后挑最好的框架，得到的是候选集合的覆盖能力，不能当成一个固定框架能达到的成功率。\n\n**百分点与相对提升不同。** 成功率从 40% 到 50%，是提高 10 个百分点、相对提高 25%，不是同一个数字口径。\n\n**迁移说明不同事情。** 换新题检验任务泛化，换基础模型检验框架能否复用，换领域检验更远的适用性；它们不能互相替代。\n\n**论文未披露，不等于没有。** 若全文没有给出某组练习题、模型版本或裁判实现，网站会标明能确认到哪里，不用推测填成事实。\n\n**筛选中的 M0–M3 是原调研笔记的比较口径。** 分别指经验内容变化、任务执行机制变化、产生修改的机制也变化，以及完整自指的理论设想。这不是统一的论文分级标准，也不是分数越高能力越强；实际开放哪些修改，要以每篇的对象和更新规则为准。\n\n## 常见训练与模型术语\n\n- **冻结参数：** 不通过训练改变这部分模型权重，但外围提示或记忆仍可以变化。如果训练了额外适配参数，需要把它单独计入变化对象。\n- **LoRA：** 只训练少量附加适配参数的一种方法。它仍属于参数学习，不能因为主干权重不动就称整个系统完全不训练。\n- **监督微调：** 用示范输入和输出教模型产生目标行为。\n- **强化学习：** 用执行后的奖励调整行为；GRPO 等名称指具体训练算法。\n- **蒸馏：** 把教师模型或额外提示带来的行为指导，通过训练转进另一个模型的参数。\n- **检查点：** 保存下来的某个模型或系统版本。最终版本、最高分版本与按验证集选出的版本可能不同。\n- **轨迹：** 一次执行中的模型输出、动作、工具返回和结果记录。\n- **B、词元、推理强度：** 模型名中的 4B 通常表示约 40 亿参数；词元是模型处理文本的单位，不等于汉字数；high、xhigh 等是论文所用的推理强度设置，不是另一个执行角色。\n\n接着可以打开[研究脉络](?view=notes)，按问题对照几篇文章，再看展开表格中的数据与隔离。只有把这些条件对齐，成功率的差异才有可解释的含义。\n",
-  "researchMap": "# RSI 研究脉络：系统到底学会了什么？\n\n从本库论文看，可以沿三个问题建立整体认识：**改进留下了什么？产生改进的能力有没有变化？怎样证明下一次真的更好？** 下文是本站依据论文方法与实验作的对照整理；顺序表示阅读线索，直接继承关系仍需论文证据。\n\n## 先建立时间与问题的坐标\n\n| 阅读阶段 | 代表工作 | 问题如何展开 |\n| --- | --- | --- |\n| 理论起点 | [自修改的形式保证](?paper=cs-0309048) | 如果连寻找改进的方法都允许修改，依据什么相信切换后更好？理论保证要结合公理和可证明性理解。（[原文 §3 Formal Description](https://arxiv.org/abs/cs/0309048)） |\n| 2023：改答案、留经验、积技能 | [Self-Refine](?paper=2303.17651)、[Reflexion](?paper=2303.11366)、[Voyager](?paper=2305.16291) | 从当前答案的多轮修订，走到留下文字教训、积累可执行技能。开始需要问：哪部分能力能被下一次任务继承？ |\n| 2024–2025：系统设计成为可搜索对象 | [ADAS](?paper=2408.08435)、[AFlow](?paper=2410.10762)、[DGM](?paper=2505.22954) | 提示之外，模块组合、执行步骤和实际代理代码进入搜索空间；不同工作对谁修改、修改范围和候选保留方式作出不同设计。 |\n| 2026：拆开诊断、修改能力与学习证据 | [Self-Harness](?paper=2606.09498)、[Harness-R1](?paper=2608.02276)、[Hyperagents](?paper=2603.19461)、[Aspire](?paper=2608.31111) | 同模型适配、训练专门修改者、修改改进程序、宽泛目标下自主选择学习方向，是几个不同问题，需要分别看实证。 |\n\n这几类研究至今可以并行开展。可修改范围更大，带来的是更多设计自由，也增加了诊断、选择和验证的难度。下面按问题展开，并在各处链接到方法与实验来源。\n\n## 路线一：从改好这道题，到留下后续能用的经验\n\n**阅读顺序：** [Self-Refine](?paper=2303.17651) → [Reflexion](?paper=2303.11366) → [ExpeL](?paper=2308.10144) → [Voyager](?paper=2305.16291)。\n\n- **Self-Refine：改当前产物。** 模型写初稿、提批评、再修订；你应该关注这一题有没有变好。（[原文 §3](https://arxiv.org/html/2303.17651#S3)；[原文 §4](https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1)）\n- **Reflexion：让重试读到教训。** 失败反思成为下一次可读的文字记忆，主要围绕同题的后续尝试。（[原文 §3](https://arxiv.org/html/2303.11366#S3)；[原文 §4.3](https://arxiv.org/html/2303.11366#S4.SS3)）\n- **ExpeL：把旧题经验带到新题。** 训练任务的试错被整理为一般规则和成功示例，供新任务单次执行使用。（[原文 §4.4](https://arxiv.org/html/2308.10144#S4.SS4)；[原文 §5.1](https://arxiv.org/html/2308.10144#S5.SS1)）\n- **Voyager：把经验变成能执行的技能。** Minecraft 中的成功行为被写成代码并入库，后续可以检索、组合使用。（[原文 §2](https://arxiv.org/html/2305.16291#S2)；[原文 附录A.1](https://arxiv.org/html/2305.16291#A1.SS1)）\n\n**沿这条线看什么：** 经验服务同题重试，还是后续不同任务？保存的是原始记录、一般规则，还是可执行代码？这决定了“学习”的具体含义。\n\n## 路线二：从增加记忆内容，到改变怎样管理记忆\n\n**阅读顺序：** [ACE](?paper=2510.04618) → [Memento-Skills](?paper=2603.18743) → [MemEvolve](?paper=2512.18746) / [ALMA](?paper=2602.07755)。\n\n**ACE** 维护逐条可增改的经验手册，重点是长期内容如何避免在反复重写中丢失细节。**Memento-Skills** 将技能作为执行期间可修订的能力资源，失败后定位并修复技能，还要解决该选哪个技能的问题。（[原文 §2.1](https://arxiv.org/html/2510.04618#S2.SS1)；[原文 §4.1](https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1)） （[原文 §2.1](https://arxiv.org/html/2603.18743#S2.SS1)；[原文 §2.3](https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2)）\n\n**MemEvolve、ALMA** 把问题推进到记忆管理程序：怎样编码、存储、检索或使用经验也可以被搜索。这里应分别标注“记了什么”和“怎样记、怎样取”，因为前者增加条目，并不自动改变后者的机制。（[原文 §3.3](https://arxiv.org/html/2512.18746#S3.SS3)；[原文 §5.2](https://arxiv.org/html/2512.18746#S5.SS2)） （[原文 §3.2](https://arxiv.org/html/2602.07755#S3.SS2)；[原文 §3.3](https://arxiv.org/html/2602.07755#S3.SS3)）\n\n**关键对照：** [ContinualSkillBench](?paper=2608.03874) 直接比较显式技能学习和保留历史上下文。如果简单保留历史也能达到相近效果，就需要进一步证明提炼技能本身的额外作用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)）\n\n## 路线三：从设计执行流程，到修改真实运行框架\n\n**阅读顺序：** [ADAS](?paper=2408.08435) / [AFlow](?paper=2410.10762) → [SICA](?paper=2504.15228) / [DGM](?paper=2505.22954) → [Meta-Harness](?paper=2603.28052) / [Self-Harness](?paper=2606.09498)。\n\n**ADAS** 用代码表达代理设计，**AFlow** 搜索节点和连接组成的工作流程；读它们时要先确定预设了哪些模块、允许改变哪些组合。（[原文 §3](https://arxiv.org/html/2408.08435#S3)；[原文 附录B](https://arxiv.org/html/2408.08435#A2)） （[原文 §4](https://arxiv.org/html/2410.10762#S4)；[原文 附录A.6](https://arxiv.org/html/2410.10762#A1.SS6)）\n\n**SICA** 让编程代理改自身实际使用的工具和实现；**DGM** 还保留多个历史分支，允许从暂时不领先的版本继续生长。这里的问题从“这一次怎样解题”扩展为“以后用哪套执行程序解题”。（[原文 §3](https://arxiv.org/html/2504.15228#S3)） （[原文 §3](https://arxiv.org/html/2505.22954#S3)；[原文 附录C.3](https://arxiv.org/html/2505.22954#A3.SS3)）\n\n**Meta-Harness** 强調修改者可以检索完整历史代码、分数和轨迹，以重新诊断问题。**Self-Harness** 强调由执行任务的同一种模型识别自己的失败习惯，再改自己的框架；其检查分数参与接受修改，因此要进一步看哪些数据仍用于选版本。（[原文 §3](https://arxiv.org/html/2603.28052#S3)） （[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)）\n\n**这条线中的工程分工：** [AHE](?paper=2604.25850) 追踪组件改动及其相互影响；[HarnessFix](?paper=2606.06324) 把失败定位接到限定范围的修复；[HarnessLens](?paper=2608.27311) 研究怎样选择更相关的验证题、减少验收成本。它们分别处理改动的可解释性、修复范围和验证预算。（[原文 §3](https://arxiv.org/html/2604.25850#S3)；[原文 §3.3](https://arxiv.org/html/2604.25850#S3.SS3)） （[原文 §3](https://arxiv.org/html/2606.06324#S3)；[原文 §6](https://arxiv.org/html/2606.06324#S6)） （[原文 附录A.1](https://arxiv.org/html/2608.27311#A1.SS1)；[原文 §5.1](https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2)）\n\n**近期补充：修改范围和经验结构也值得单独研究。** [RobustSGPO](?paper=2609.09646) 先决定改哪些代理、做哪类操作，再生成补丁并保留不同类别的历史起点；它问的是“开放了修改权限后，怎样让有效结构修改真正发生”。[Procedural Graphs](?paper=2609.09153) 则把经验组织成带条件的步骤图，让模型每一步读取当前位置附近的指导。前者控制搜索过程，后者设计可学习、可使用的经验结构，两者不是同一种贡献。（[RobustSGPO §4–5](https://arxiv.org/html/2609.09646#S4)；[Procedural Graphs §3](https://arxiv.org/html/2609.09153#S3)）\n\n## 路线四：让系统更会提出改进\n\n**阅读顺序：** [Promptbreeder](?paper=2309.16797) → [MetaSkill-Evolve](?paper=2607.05297) / [Hyperagents](?paper=2603.19461)，再对照 [Harness-R1](?paper=2608.02276) / [MetaEvolve](?paper=2607.21971)。\n\n这里有两种需要分开理解的做法。\n\n**把改进规则也设为可变对象。** Promptbreeder 改指导提示变异的指令；MetaSkill-Evolve 改指导技能修订的文字说明；Hyperagents 把改进程序本身与任务代理放进可修改系统，并检查改进能力能否用于新领域。文字规则、程序和外层选择流程，要分别说明哪些真的变了。（[原文 §3.1](https://arxiv.org/html/2309.16797#S3.SS1)；[原文 附录F](https://arxiv.org/html/2309.16797#A6)） （[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §5.1](https://arxiv.org/html/2603.19461#S5.SS1)；[原文 §5.3](https://arxiv.org/html/2603.19461#S5.SS3)）\n\n**专门训练提出改进的模型。** Harness-R1 训练独立编辑模型，让它读失败记录、写框架补丁，再用补丁装上后的任务表现学习。MetaEvolve 训练利用反馈与历史提出更好改进的能力。这说明修改能力可以被训练；还要另查部署时它是否继续修改自身参数或改进规则。（[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)）\n\n**先排除一个混淆：** [Harness Updating Is Not Harness Benefit](?paper=2605.30621) 将执行者和修改者独立配对。在技能、提示和记忆的受限编辑实验中，强模型未必写出更有帮助的更新；弱执行者也可能因为不加载或不遵循技能而得不到收益。它解释的是“会修改”与“能受益”的分工，不是在证明小模型能同样胜任任意源码自修改。（[原文 §4.2–4.3](https://arxiv.org/html/2605.30621#S4.SS2)；[附录B.4：编辑范围](https://arxiv.org/html/2605.30621#A2.SS4)）\n\n**判断递归改进的核心问题：** 新版本只是更会做任务，还是也更会产生下一次改进？如果论文单独测了后者，证据来自什么新任务、什么对照？\n\n## 路线五：经验留在框架里，还是训练进模型？\n\n**阅读顺序：** [SEAL](?paper=2506.10943) → [SIA](?paper=2605.27276)，再对照 [HELIX](?paper=2608.13951) / [Macaron-V1](?paper=2608.09819)。\n\n**SEAL** 学习怎样把新输入整理成有效的参数更新材料。**SIA** 在同一流程中开放两种操作：改外围框架，或训练模型；关键是根据失败决定改哪里，以及两者有无互补收益。（[原文 §3](https://arxiv.org/html/2506.10943#S3)；[原文 §3.1](https://arxiv.org/html/2506.10943#S3.SS1)） （[原文 §4.3](https://arxiv.org/html/2605.27276#S4.SS3)；[原文 §6.2](https://arxiv.org/html/2605.27276#S6.SS2)）\n\n**HELIX** 强调执行框架还应产出可追踪、适合后续模型训练的轨迹；当前论文主要验证框架与数据接口。**Macaron-V1** 的系统架构连接专长适配参数和运行配置，但其直接框架搜索实验证据来自冻结模型、多个配置覆盖失败题。把“支持共同更新”“完成了一轮训练”“多代互相推动”分开看，才能准确理解论文进展。（[原文 §5.1](https://arxiv.org/html/2608.13951#S5.SS1)） （[原文 §3.1](https://arxiv.org/html/2608.09819#S3.SS1.SSS2)；[原文 §4](https://arxiv.org/html/2608.09819#S4)）\n\n**联合进化的三个具体设计可以并读：**\n\n| 论文 | 框架与参数怎样配合 | 读结果时保留什么条件 |\n| --- | --- | --- |\n| [HarnessForge](?paper=2606.01779) | 先按故障修框架，每个保留框架再训练自己的模型适配参数，形成独立分支。 | 3,800道适配题与测试分开；TMDB/API-Bank只做迁移测试。框架筛选还看词元与耗时。（[原文附录B–D](https://arxiv.org/html/2606.01779#A2)） |\n| [Co-Harness](?paper=2607.22688) | 修复生成训练轨迹的系统，再把新框架下成功行为训练进模型，下一轮继续发现故障。 | 虽提出两组行为验收，但训练、验收与最终竞赛题的完整隔离未披露；不能直接把涨分解释成泛化。（[原文 §3.4–4.1](https://arxiv.org/html/2607.22688#S3.SS4)；[附录E](https://arxiv.org/html/2607.22688#A5)） |\n| [WHALE](?paper=2609.00196) | 固定模型搜框架、固定框架练模型，并专门研究何时切换；训练信号停滞可触发换阶段。 | 阶段内选择用训练信号，但论文主要比较各运行最好测试点；与事先选定版本后独立测一次不同。（[原文 §4](https://arxiv.org/html/2609.00196#S4)；[§6.2](https://arxiv.org/html/2609.00196#S6.SS2)） |\n\n这些工作使问题更具体：**新框架能否产生值得学的行为？模型学会后，什么框架才更适合它？两边每次应改多少？** 不能只看到“同时更新两部分”就视为同一方法。\n\n## 路线六：评测从有没有涨分，走向为什么涨分\n\n| 想区分什么能力 | 可以对照读的文章 | 评测中专门改变或检查了什么 |\n| --- | --- | --- |\n| 使用现成代理，与建设有效代理系统 | [HarnessDev](?paper=2609.01437)、[Evo-Bench](?paper=2608.09096) | 前者拆开从弱起点建设与继续改进；后者控制执行者及预算比较修改模型。（[原文 §3.2](https://arxiv.org/html/2609.01437#S3.SS2.SSS0.Px1)；[原文 附录E.2](https://arxiv.org/html/2609.01437#A5.SS2)） （[原文 §3](https://arxiv.org/html/2608.09096#S3)；[原文 附录E.1](https://arxiv.org/html/2608.09096#A5.SS1)） |\n| 连续变好，与中途达到峰值后退步 | [SEAGym](?paper=2606.17546)、[RSIBench-Data](?paper=2607.25886) | 前者同时跟踪泛化、遗忘和成本；后者观察数据研究找到的好方案能否最终保住。（[原文 附录A.1](https://arxiv.org/html/2606.17546#A1.SS1)） （[原文 §3.1](https://arxiv.org/html/2607.25886#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2607.25886#S4.SS2)） |\n| 会尝试、会判断，与能把经历用于后续提升 | [S³Gym](?paper=2608.31100)、[Aspire](?paper=2608.31111) | 前者拆测探索、自评与经验利用；后者让模型面对宽泛目标自行确定学习方向，最终检查是否练对了能力。（[原文 §4.4](https://arxiv.org/html/2608.31100#S4.SS4)；[原文 §5.2](https://arxiv.org/html/2608.31100#S5.SS2.SSS0.Px1)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） |\n| 存了技能，与技能确实带来额外收益 | [ContinualSkillBench](?paper=2608.03874)、[PAST-Bench](?paper=2608.04003) | 用保留历史上下文或关闭经验积累的对照，并检查经验实际有没有被调用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)） （[原文 §3.1](https://arxiv.org/html/2608.04003#S3.SS1)；[原文 附录A.3](https://arxiv.org/html/2608.04003#A1.SS3)） |\n| 工程调出高分，与发现可泛化的方法 | [PostTrainBench](?paper=2603.08640)、[MLS-Bench](?paper=2605.08678) | 前者看给定模型与算力后能否完成有效后训练；后者进一步要求方法跨设置、扩大规模后仍成立。（[原文 §1](https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2)；[原文 附录E](https://arxiv.org/html/2603.08640#A5)） （[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1)；[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1)） |\n\n**补充对照：[RSI-Exam](?paper=rsi-exam)** 让研究者从可运行弱方法出发，在可见材料上反复实验，再评价最终交付物。它把方法改进与固定模型的框架改进放进同一任务库，并保留版本轨迹；部分任务另训练学生模型或提交回答，信息边界要按任务解释。与 Aspire 的宽泛目标设置相比，它提供具体任务目标和评分规则，更集中地测“已知研究目标后，能否做出有效改进”。（[RSI-Exam 研究目标与任务构造](https://rsi-exam.ai/blog.html#benchmark)；[数学训练任务](https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html)；[法律任务](https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html)；[Aspire §4](https://arxiv.org/html/2608.31111#S4)）\n\n**从涨分到可信验收：** [Safe Harness Self-Evolution](?paper=2609.08175) 将候选确实改善、能否生成它、有限数据能否确认它，以及更新后还能否继续进步分别研究。其 DS-1000 与 WorkBuddy 诊断显示：审计点估计认为一些修改有益，验收阶段仍可能因为区间过宽而全部拒绝。因此，停止更新可能是评估预算问题；一次成功也不自动说明“产生下次改进的能力”增强。这里的理论保证依赖固定任务分布与抽样条件，“安全”主要指可靠改善并控制旧任务退化。（[原文 §4–6，p7–17](https://arxiv.org/pdf/2609.08175#page=7)）\n\n## 名字相近，但关键区别在哪里？\n\n| 对照论文 | 最值得记住的差别 | 展开实验表时继续看什么 |\n| --- | --- | --- |\n| [Evo-Harness](?paper=2608.15071) / [EvoHarness-RL](?paper=2608.05446) | 前者从轨迹写后续可读的文字技能；后者训练模型何时读写外部状态。（[原文 §4.5](https://arxiv.org/html/2608.15071#S4.SS5)；[原文 §3.1–3.4：说明的选取、注入与修改](https://arxiv.org/html/2608.15071#S3.SS1)） （[原文 附录C](https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5)；[原文 附录D.2](https://arxiv.org/html/2608.05446#A4.SS2)） | 改变的是文字内容、运行代码，还是模型参数？ |\n| [MetaSkill-Evolve](?paper=2607.05297) / [MetaEvolve](?paper=2607.21971) | 前者更新指导技能修订的外部说明；后者把提出改进的能力训练进模型参数。（[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)） | 改进机制哪些部分仍固定？训练与部署阶段分别改什么？ |\n| [Self-Harness](?paper=2606.09498) / [Harness-R1](?paper=2608.02276) | 前者由同一种模型为自己适配框架；后者训练独立编辑者帮助冻结的执行模型。（[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)） （[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） | 修改者能看到哪些失败信息？检查题是否也参与了接受修改？ |\n| [ASPIRE（机器人）](?paper=2607.00272) / [Aspire（宽泛目标评测）](?paper=2608.31111) | 前者从机器人失败中发现修复技能；后者测试模型能否自主确定合理学习方向。（[原文 §2](https://arxiv.org/html/2607.00272#S2)；[原文 附录E.4](https://arxiv.org/html/2607.00272#A5.SS4)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） | 任务领域、反馈接口与研究目标完全不同，要用标题和日期区分。 |\n| [Harness-of-Harness](?paper=2609.01481) / [Meta-Harness](?paper=2603.28052) | 前者组织长期开发，持续改进软件产物；后者搜索用于执行任务的框架程序。（[原文 附录A.2](https://arxiv.org/html/2609.01481#A1.SS2)；[原文 §4.2](https://arxiv.org/html/2609.01481#S4.SS2.SSS0.Px2)） （[原文 §3](https://arxiv.org/html/2603.28052#S3)） | 最终交付的是更好的项目，还是下一道任务会使用的更好系统？ |\n\n## 用哪些证据判断这个领域走到了哪里？\n\n根据上面几条路线，本站建议把证据拆成三个层面阅读：\n\n1. **局部改进是否成立。** 新版本在论文指定任务和预算下比起点更好；先确认提升来自什么改动，额外模型、重试和参考答案有没有变化。\n2. **可复用改进是否成立。** 冻结版本后，换题、换领域或换模型仍有效；分别看这些迁移设置，不能用一种替代另一种。\n3. **产生改进的能力是否也增强。** 改进机制本身发生可描述的变化，并能在后续问题上更有效地提出改进；最好有独立测量和固定改进者对照。\n\n这些是本文库的比较问题，而非所有论文共用的等级标准。看见一条上升曲线后，继续问：**哪些题参与了修改和选版本？做错的细节从哪里来？最终继承了什么？** 对齐这些条件，才能判断论文解决的是哪一块问题，以及仍留下什么。\n\n接着可以[回到全部论文](?view=library)，或筛选[运行框架进化](?category=methods&quick=harness)、[模型参数进化](?category=methods&quick=weights)、[联合进化](?category=methods&quick=joint)、[评测研究](?category=evaluation)。需要先理解名词时，查看[入门说明](?view=guide)。\n"
+  "researchMap": "# RSI 研究脉络：系统到底学会了什么？\n\n从本库论文看，可以沿三个问题建立整体认识：**改进留下了什么？产生改进的能力有没有变化？怎样证明下一次真的更好？** 下文是本站依据论文方法与实验作的对照整理；顺序表示阅读线索，直接继承关系仍需论文证据。\n\n## 先建立时间与问题的坐标\n\n| 阅读阶段 | 代表工作 | 问题如何展开 |\n| --- | --- | --- |\n| 理论起点 | [自修改的形式保证](?paper=cs-0309048) | 如果连寻找改进的方法都允许修改，依据什么相信切换后更好？理论保证要结合公理和可证明性理解。（[原文 §3 Formal Description](https://arxiv.org/abs/cs/0309048)） |\n| 2023：改答案、留经验、积技能 | [Self-Refine](?paper=2303.17651)、[Reflexion](?paper=2303.11366)、[Voyager](?paper=2305.16291) | 从当前答案的多轮修订，走到留下文字教训、积累可执行技能。开始需要问：哪部分能力能被下一次任务继承？ |\n| 2024–2025：系统设计成为可搜索对象 | [ADAS](?paper=2408.08435)、[AFlow](?paper=2410.10762)、[DGM](?paper=2505.22954) | 提示之外，模块组合、执行步骤和实际代理代码进入搜索空间；不同工作对谁修改、修改范围和候选保留方式作出不同设计。 |\n| 2026：拆开诊断、修改能力与学习证据 | [Self-Harness](?paper=2606.09498)、[Harness-R1](?paper=2608.02276)、[Hyperagents](?paper=2603.19461)、[Aspire](?paper=2608.31111) | 同模型适配、训练专门修改者、修改改进程序、宽泛目标下自主选择学习方向，是几个不同问题，需要分别看实证。 |\n\n这几类研究至今可以并行开展。可修改范围更大，带来的是更多设计自由，也增加了诊断、选择和验证的难度。下面按问题展开，并在各处链接到方法与实验来源。\n\n## 路线一：从改好这道题，到留下后续能用的经验\n\n**阅读顺序：** [Self-Refine](?paper=2303.17651) → [Reflexion](?paper=2303.11366) → [ExpeL](?paper=2308.10144) → [Voyager](?paper=2305.16291)。\n\n- **Self-Refine：改当前产物。** 模型写初稿、提批评、再修订；你应该关注这一题有没有变好。（[原文 §3](https://arxiv.org/html/2303.17651#S3)；[原文 §4](https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1)）\n- **Reflexion：让重试读到教训。** 失败反思成为下一次可读的文字记忆，主要围绕同题的后续尝试。（[原文 §3](https://arxiv.org/html/2303.11366#S3)；[原文 §4.3](https://arxiv.org/html/2303.11366#S4.SS3)）\n- **ExpeL：把旧题经验带到新题。** 训练任务的试错被整理为一般规则和成功示例，供新任务单次执行使用。（[原文 §4.4](https://arxiv.org/html/2308.10144#S4.SS4)；[原文 §5.1](https://arxiv.org/html/2308.10144#S5.SS1)）\n- **Voyager：把经验变成能执行的技能。** Minecraft 中的成功行为被写成代码并入库，后续可以检索、组合使用。（[原文 §2](https://arxiv.org/html/2305.16291#S2)；[原文 附录A.1](https://arxiv.org/html/2305.16291#A1.SS1)）\n\n**沿这条线看什么：** 经验服务同题重试，还是后续不同任务？保存的是原始记录、一般规则，还是可执行代码？这决定了“学习”的具体含义。\n\n## 路线二：从增加记忆内容，到改变怎样管理记忆\n\n**阅读顺序：** [ACE](?paper=2510.04618) → [Memento-Skills](?paper=2603.18743) → [MemEvolve](?paper=2512.18746) / [ALMA](?paper=2602.07755)。\n\n**ACE** 维护逐条可增改的经验手册，重点是长期内容如何避免在反复重写中丢失细节。**Memento-Skills** 将技能作为执行期间可修订的能力资源，失败后定位并修复技能，还要解决该选哪个技能的问题。（[原文 §2.1](https://arxiv.org/html/2510.04618#S2.SS1)；[原文 §4.1](https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1)） （[原文 §2.1](https://arxiv.org/html/2603.18743#S2.SS1)；[原文 §2.3](https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2)）\n\n**MemEvolve、ALMA** 把问题推进到记忆管理程序：怎样编码、存储、检索或使用经验也可以被搜索。这里应分别标注“记了什么”和“怎样记、怎样取”，因为前者增加条目，并不自动改变后者的机制。（[原文 §3.3](https://arxiv.org/html/2512.18746#S3.SS3)；[原文 §5.2](https://arxiv.org/html/2512.18746#S5.SS2)） （[原文 §3.2](https://arxiv.org/html/2602.07755#S3.SS2)；[原文 §3.3](https://arxiv.org/html/2602.07755#S3.SS3)）\n\n**关键对照：** [ContinualSkillBench](?paper=2608.03874) 直接比较显式技能学习和保留历史上下文。如果简单保留历史也能达到相近效果，就需要进一步证明提炼技能本身的额外作用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)）\n\n## 路线三：从设计执行流程，到修改真实运行框架\n\n**阅读顺序：** [ADAS](?paper=2408.08435) / [AFlow](?paper=2410.10762) → [SICA](?paper=2504.15228) / [DGM](?paper=2505.22954) → [Meta-Harness](?paper=2603.28052) / [Self-Harness](?paper=2606.09498)。\n\n**ADAS** 用代码表达代理设计，**AFlow** 搜索节点和连接组成的工作流程；读它们时要先确定预设了哪些模块、允许改变哪些组合。（[原文 §3](https://arxiv.org/html/2408.08435#S3)；[原文 附录B](https://arxiv.org/html/2408.08435#A2)） （[原文 §4](https://arxiv.org/html/2410.10762#S4)；[原文 附录A.6](https://arxiv.org/html/2410.10762#A1.SS6)）\n\n**SICA** 让编程代理改自身实际使用的工具和实现；**DGM** 还保留多个历史分支，允许从暂时不领先的版本继续生长。这里的问题从“这一次怎样解题”扩展为“以后用哪套执行程序解题”。（[原文 §3](https://arxiv.org/html/2504.15228#S3)） （[原文 §3](https://arxiv.org/html/2505.22954#S3)；[原文 附录C.3](https://arxiv.org/html/2505.22954#A3.SS3)）\n\n**Meta-Harness** 强調修改者可以检索完整历史代码、分数和轨迹，以重新诊断问题。**Self-Harness** 强调由执行任务的同一种模型识别自己的失败习惯，再改自己的框架；其检查分数参与接受修改，因此要进一步看哪些数据仍用于选版本。（[原文 §3](https://arxiv.org/html/2603.28052#S3)） （[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)）\n\n**这条线中的工程分工：** [AHE](?paper=2604.25850) 追踪组件改动及其相互影响；[HarnessFix](?paper=2606.06324) 把失败定位接到限定范围的修复；[HarnessLens](?paper=2608.27311) 研究怎样选择更相关的验证题、减少验收成本。它们分别处理改动的可解释性、修复范围和验证预算。（[原文 §3](https://arxiv.org/html/2604.25850#S3)；[原文 §3.3](https://arxiv.org/html/2604.25850#S3.SS3)） （[原文 §3](https://arxiv.org/html/2606.06324#S3)；[原文 §6](https://arxiv.org/html/2606.06324#S6)） （[原文 附录A.1](https://arxiv.org/html/2608.27311#A1.SS1)；[原文 §5.1](https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2)）\n\n**近期补充：修改范围和经验结构也值得单独研究。** [RobustSGPO](?paper=2609.09646) 先决定改哪些代理、做哪类操作，再生成补丁并保留不同类别的历史起点；它问的是“开放了修改权限后，怎样让有效结构修改真正发生”。[Procedural Graphs](?paper=2609.09153) 则把经验组织成带条件的步骤图，让模型每一步读取当前位置附近的指导。前者控制搜索过程，后者设计可学习、可使用的经验结构，两者不是同一种贡献。（[RobustSGPO §4–5](https://arxiv.org/html/2609.09646#S4)；[Procedural Graphs §3](https://arxiv.org/html/2609.09153#S3)）\n\n## 路线四：让系统更会提出改进\n\n**阅读顺序：** [Promptbreeder](?paper=2309.16797) → [MetaSkill-Evolve](?paper=2607.05297) / [Hyperagents](?paper=2603.19461)，再对照 [Harness-R1](?paper=2608.02276) / [MetaEvolve](?paper=2607.21971)。\n\n这里有两种需要分开理解的做法。\n\n**把改进规则也设为可变对象。** Promptbreeder 改指导提示变异的指令；MetaSkill-Evolve 改指导技能修订的文字说明；Hyperagents 把改进程序本身与任务代理放进可修改系统，并检查改进能力能否用于新领域。文字规则、程序和外层选择流程，要分别说明哪些真的变了。（[原文 §3.1](https://arxiv.org/html/2309.16797#S3.SS1)；[原文 附录F](https://arxiv.org/html/2309.16797#A6)） （[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §5.1](https://arxiv.org/html/2603.19461#S5.SS1)；[原文 §5.3](https://arxiv.org/html/2603.19461#S5.SS3)）\n\n**专门训练提出改进的模型。** Harness-R1 训练独立编辑模型，让它读失败记录、写框架补丁，再用补丁装上后的任务表现学习。MetaEvolve 训练利用反馈与历史提出更好改进的能力。这说明修改能力可以被训练；还要另查部署时它是否继续修改自身参数或改进规则。（[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)）\n\n**先排除一个混淆：** [Harness Updating Is Not Harness Benefit](?paper=2605.30621) 将执行者和修改者独立配对。在技能、提示和记忆的受限编辑实验中，强模型未必写出更有帮助的更新；弱执行者也可能因为不加载或不遵循技能而得不到收益。它解释的是“会修改”与“能受益”的分工，不是在证明小模型能同样胜任任意源码自修改。（[原文 §4.2–4.3](https://arxiv.org/html/2605.30621#S4.SS2)；[附录B.4：编辑范围](https://arxiv.org/html/2605.30621#A2.SS4)）\n\n**判断递归改进的核心问题：** 新版本只是更会做任务，还是也更会产生下一次改进？如果论文单独测了后者，证据来自什么新任务、什么对照？\n\n## 路线五：经验留在框架里，还是训练进模型？\n\n**阅读顺序：** [SEAL](?paper=2506.10943) → [SIA](?paper=2605.27276)，再对照 [HELIX](?paper=2608.13951) / [Macaron-V1](?paper=2608.09819)。\n\n**SEAL** 学习怎样把新输入整理成有效的参数更新材料。**SIA** 在同一流程中开放两种操作：改外围框架，或训练模型；关键是根据失败决定改哪里，以及两者有无互补收益。（[原文 §3](https://arxiv.org/html/2506.10943#S3)；[原文 §3.1](https://arxiv.org/html/2506.10943#S3.SS1)） （[原文 §4.3](https://arxiv.org/html/2605.27276#S4.SS3)；[原文 §6.2](https://arxiv.org/html/2605.27276#S6.SS2)）\n\n**HELIX** 强调执行框架还应产出可追踪、适合后续模型训练的轨迹；当前论文主要验证框架与数据接口。**Macaron-V1** 的系统架构连接专长适配参数和运行配置，但其直接框架搜索实验证据来自冻结模型、多个配置覆盖失败题。把“支持共同更新”“完成了一轮训练”“多代互相推动”分开看，才能准确理解论文进展。（[原文 §5.1](https://arxiv.org/html/2608.13951#S5.SS1)） （[原文 §3.1](https://arxiv.org/html/2608.09819#S3.SS1.SSS2)；[原文 §4](https://arxiv.org/html/2608.09819#S4)）\n\n**联合进化的三个具体设计可以并读：**\n\n| 论文 | 框架与参数怎样配合 | 读结果时保留什么条件 |\n| --- | --- | --- |\n| [HarnessForge](?paper=2606.01779) | 先按故障修框架，每个保留框架再训练自己的模型适配参数，形成独立分支。 | 3,800道适配题与测试分开；TMDB/API-Bank只做迁移测试。框架筛选还看词元与耗时。（[原文附录B–D](https://arxiv.org/html/2606.01779#A2)） |\n| [Co-Harness](?paper=2607.22688) | 修复生成训练轨迹的系统，再把新框架下成功行为训练进模型，下一轮继续发现故障。 | 虽提出两组行为验收，但训练、验收与最终竞赛题的完整隔离未披露；不能直接把涨分解释成泛化。（[原文 §3.4–4.1](https://arxiv.org/html/2607.22688#S3.SS4)；[附录E](https://arxiv.org/html/2607.22688#A5)） |\n| [WHALE](?paper=2609.00196) | 固定模型搜框架、固定框架练模型，并专门研究何时切换；训练信号停滞可触发换阶段。 | 阶段内选择用训练信号，但论文主要比较各运行最好测试点；与事先选定版本后独立测一次不同。（[原文 §4](https://arxiv.org/html/2609.00196#S4)；[§6.2](https://arxiv.org/html/2609.00196#S6.SS2)） |\n\n这些工作使问题更具体：**新框架能否产生值得学的行为？模型学会后，什么框架才更适合它？两边每次应改多少？** 不能只看到“同时更新两部分”就视为同一方法。\n\n## 路线六：评测从有没有涨分，走向为什么涨分\n\n| 想区分什么能力 | 可以对照读的文章 | 评测中专门改变或检查了什么 |\n| --- | --- | --- |\n| 使用现成代理，与建设有效代理系统 | [HarnessDev](?paper=2609.01437)、[Evo-Bench](?paper=2608.09096) | 前者拆开从弱起点建设与继续改进；后者控制执行者及预算比较修改模型。（[原文 §3.2](https://arxiv.org/html/2609.01437#S3.SS2.SSS0.Px1)；[原文 附录E.2](https://arxiv.org/html/2609.01437#A5.SS2)） （[原文 §3](https://arxiv.org/html/2608.09096#S3)；[原文 附录E.1](https://arxiv.org/html/2608.09096#A5.SS1)） |\n| 连续变好，与中途达到峰值后退步 | [SEAGym](?paper=2606.17546)、[RSIBench-Data](?paper=2607.25886) | 前者同时跟踪泛化、遗忘和成本；后者观察数据研究找到的好方案能否最终保住。（[原文 附录A.1](https://arxiv.org/html/2606.17546#A1.SS1)） （[原文 §3.1](https://arxiv.org/html/2607.25886#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2607.25886#S4.SS2)） |\n| 会尝试、会判断，与能把经历用于后续提升 | [S³Gym](?paper=2608.31100)、[Aspire](?paper=2608.31111) | 前者拆测探索、自评与经验利用；后者让模型面对宽泛目标自行确定学习方向，最终检查是否练对了能力。（[原文 §4.4](https://arxiv.org/html/2608.31100#S4.SS4)；[原文 §5.2](https://arxiv.org/html/2608.31100#S5.SS2.SSS0.Px1)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） |\n| 存了技能，与技能确实带来额外收益 | [ContinualSkillBench](?paper=2608.03874)、[PAST-Bench](?paper=2608.04003) | 用保留历史上下文或关闭经验积累的对照，并检查经验实际有没有被调用。（[原文 §3.5](https://arxiv.org/html/2608.03874#S3.SS5)；[原文 附录D](https://arxiv.org/html/2608.03874#A4)） （[原文 §3.1](https://arxiv.org/html/2608.04003#S3.SS1)；[原文 附录A.3](https://arxiv.org/html/2608.04003#A1.SS3)） |\n| 工程调出高分，与发现可泛化的方法 | [PostTrainBench](?paper=2603.08640)、[MLS-Bench](?paper=2605.08678) | 前者看给定模型与算力后能否完成有效后训练；后者进一步要求方法跨设置、扩大规模后仍成立。（[原文 §1](https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2)；[原文 附录E](https://arxiv.org/html/2603.08640#A5)） （[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1)；[原文 §3.2](https://arxiv.org/html/2605.08678#S3.SS2.SSS1.Px1)） |\n\n**补充对照：[RSI-Exam](?paper=rsi-exam)** 让研究者从可运行弱方法出发，在可见材料上反复实验，再评价最终交付物。它把方法改进与固定模型的框架改进放进同一任务库，并保留版本轨迹；部分任务另训练学生模型或提交回答，信息边界要按任务解释。与 Aspire 的宽泛目标设置相比，它提供具体任务目标和评分规则，更集中地测“已知研究目标后，能否做出有效改进”。（[RSI-Exam 研究目标与任务构造](https://rsi-exam.ai/blog.html#benchmark)；[数学训练任务](https://rsi-exam.ai/tasks/teacher_student_math_posttraining.html)；[法律任务](https://rsi-exam.ai/tasks/legal_matter_caseload_regulatory.html)；[Aspire §4](https://arxiv.org/html/2608.31111#S4)）\n\n**从涨分到可信验收：** [Safe Harness Self-Evolution](?paper=2609.08175) 将候选确实改善、能否生成它、有限数据能否确认它，以及更新后还能否继续进步分别研究。其 DS-1000 与 WorkBuddy 诊断显示：审计点估计认为一些修改有益，验收阶段仍可能因为区间过宽而全部拒绝。因此，停止更新可能是评估预算问题；一次成功也不自动说明“产生下次改进的能力”增强。这里的理论保证依赖固定任务分布与抽样条件，“安全”主要指可靠改善并控制旧任务退化。（[原文 §4–6，p7–17](https://arxiv.org/pdf/2609.08175#page=7)）\n\n## 名字相近，但关键区别在哪里？\n\n| 对照论文 | 最值得记住的差别 | 展开实验表时继续看什么 |\n| --- | --- | --- |\n| [Evo-Harness](?paper=2608.15071) / [EvoHarness-RL](?paper=2608.05446) | 前者从轨迹写后续可读的文字技能；后者训练模型何时读写外部状态。（[原文 §4.5](https://arxiv.org/html/2608.15071#S4.SS5)；[原文 §3.1–3.4：说明的选取、注入与修改](https://arxiv.org/html/2608.15071#S3.SS1)） （[原文 附录C](https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5)；[原文 附录D.2](https://arxiv.org/html/2608.05446#A4.SS2)） | 改变的是文字内容、运行代码，还是模型参数？ |\n| [MetaSkill-Evolve](?paper=2607.05297) / [MetaEvolve](?paper=2607.21971) | 前者更新指导技能修订的外部说明；后者把提出改进的能力训练进模型参数。（[原文 §3.4](https://arxiv.org/html/2607.05297#S3.SS4)；[原文 §3.5](https://arxiv.org/html/2607.05297#S3.SS5)） （[原文 §2.1](https://arxiv.org/html/2607.21971#S2.SS1)；[原文 附录A](https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1)） | 改进机制哪些部分仍固定？训练与部署阶段分别改什么？ |\n| [Self-Harness](?paper=2606.09498) / [Harness-R1](?paper=2608.02276) | 前者由同一种模型为自己适配框架；后者训练独立编辑者帮助冻结的执行模型。（[原文 §3.1](https://arxiv.org/html/2606.09498#S3.SS1)；[原文 §4.2](https://arxiv.org/html/2606.09498#S4.SS2)） （[原文 §3.1](https://arxiv.org/html/2608.02276#S3.SS1)；[原文 §4.1](https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4)） | 修改者能看到哪些失败信息？检查题是否也参与了接受修改？ |\n| [ASPIRE（机器人）](?paper=2607.00272) / [Aspire（宽泛目标评测）](?paper=2608.31111) | 前者从机器人失败中发现修复技能；后者测试模型能否自主确定合理学习方向。（[原文 §2](https://arxiv.org/html/2607.00272#S2)；[原文 附录E.4](https://arxiv.org/html/2607.00272#A5.SS4)） （[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2)；[原文 §4.3](https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px6)） | 任务领域、反馈接口与研究目标完全不同，要用标题和日期区分。 |\n| [Harness-of-Harness](?paper=2609.01481) / [Meta-Harness](?paper=2603.28052) | 前者组织长期开发，持续改进软件产物；后者搜索用于执行任务的框架程序。（[原文 附录A.2](https://arxiv.org/html/2609.01481#A1.SS2)；[原文 §4.2](https://arxiv.org/html/2609.01481#S4.SS2.SSS0.Px2)） （[原文 §3](https://arxiv.org/html/2603.28052#S3)） | 最终交付的是更好的项目，还是下一道任务会使用的更好系统？ |\n\n## 用哪些证据判断这个领域走到了哪里？\n\n根据上面几条路线，本站建议把证据拆成三个层面阅读：\n\n1. **局部改进是否成立。** 新版本在论文指定任务和预算下比起点更好；先确认提升来自什么改动，额外模型、重试和参考答案有没有变化。\n2. **可复用改进是否成立。** 冻结版本后，换题、换领域或换模型仍有效；分别看这些迁移设置，不能用一种替代另一种。\n3. **产生改进的能力是否也增强。** 改进机制本身发生可描述的变化，并能在后续问题上更有效地提出改进；最好有独立测量和固定改进者对照。\n\n这些是本文库的比较问题，而非所有论文共用的等级标准。看见一条上升曲线后，继续问：**哪些题参与了修改和选版本？做错的细节从哪里来？最终继承了什么？** 对齐这些条件，才能判断论文解决的是哪一块问题，以及仍留下什么。\n\n接着可以[回到全部论文](?view=library)，或筛选[运行框架进化](?category=methods&quick=harness)、[模型参数进化](?category=methods&quick=weights)、[联合进化](?category=methods&quick=joint)、[评测研究](?category=evaluation)。需要先理解名词时，查看[入门说明](?view=guide)。\n",
+  "attributionCatalog": {
+    "org:tencent-hunyuan": {
+      "label": "Tencent Hunyuan",
+      "kind": "institution"
+    },
+    "org:tencent": {
+      "label": "Tencent",
+      "kind": "institution"
+    },
+    "org:bytedance-seed": {
+      "label": "ByteDance Seed",
+      "kind": "institution"
+    },
+    "org:bytedance": {
+      "label": "ByteDance",
+      "kind": "institution"
+    },
+    "org:openai": {
+      "label": "OpenAI",
+      "kind": "institution"
+    },
+    "org:anthropic": {
+      "label": "Anthropic",
+      "kind": "institution"
+    },
+    "org:thinking-machines-lab": {
+      "label": "Thinking Machines Lab",
+      "kind": "institution"
+    },
+    "org:meta-superintelligence": {
+      "label": "Meta Superintelligence Labs",
+      "kind": "institution"
+    },
+    "org:safe-superintelligence": {
+      "label": "Safe Superintelligence",
+      "kind": "institution"
+    },
+    "org:meta-fair": {
+      "label": "Meta FAIR",
+      "kind": "institution"
+    },
+    "org:google-brain": {
+      "label": "Google Brain",
+      "kind": "institution"
+    },
+    "org:google-deepmind": {
+      "label": "Google DeepMind",
+      "kind": "institution"
+    },
+    "org:google-cloud-ai": {
+      "label": "Google Cloud AI",
+      "kind": "institution"
+    },
+    "org:google-research": {
+      "label": "Google Research",
+      "kind": "institution"
+    },
+    "org:google": {
+      "label": "Google",
+      "kind": "institution"
+    },
+    "org:washington": {
+      "label": "University of Washington",
+      "kind": "institution"
+    },
+    "org:princeton": {
+      "label": "Princeton University",
+      "kind": "institution"
+    },
+    "org:stanford": {
+      "label": "Stanford University",
+      "kind": "institution"
+    },
+    "org:mit": {
+      "label": "MIT",
+      "kind": "institution"
+    },
+    "org:cmu": {
+      "label": "Carnegie Mellon University",
+      "kind": "institution"
+    },
+    "org:berkeley": {
+      "label": "UC Berkeley",
+      "kind": "institution"
+    },
+    "org:ubc": {
+      "label": "University of British Columbia",
+      "kind": "institution"
+    },
+    "org:uiuc": {
+      "label": "UIUC",
+      "kind": "institution"
+    },
+    "org:tsinghua": {
+      "label": "Tsinghua University",
+      "kind": "institution"
+    },
+    "org:peking": {
+      "label": "Peking University",
+      "kind": "institution"
+    },
+    "org:sjtu": {
+      "label": "Shanghai Jiao Tong University",
+      "kind": "institution"
+    },
+    "org:nus": {
+      "label": "National University of Singapore",
+      "kind": "institution"
+    },
+    "org:ntu": {
+      "label": "Nanyang Technological University",
+      "kind": "institution"
+    },
+    "org:eth": {
+      "label": "ETH Zürich",
+      "kind": "institution"
+    },
+    "org:oxford": {
+      "label": "University of Oxford",
+      "kind": "institution"
+    },
+    "org:cambridge": {
+      "label": "University of Cambridge",
+      "kind": "institution"
+    },
+    "org:sakana": {
+      "label": "Sakana AI",
+      "kind": "institution"
+    },
+    "org:shanghai-ai-lab": {
+      "label": "Shanghai AI Laboratory",
+      "kind": "institution"
+    },
+    "org:allenai": {
+      "label": "Allen Institute for AI",
+      "kind": "institution"
+    },
+    "org:krafton": {
+      "label": "KRAFTON",
+      "kind": "institution"
+    },
+    "person:mengdi-wang": {
+      "label": "Mengdi Wang",
+      "kind": "scholar"
+    },
+    "person:diyi-yang": {
+      "label": "Diyi Yang",
+      "kind": "scholar"
+    },
+    "person:weijia-shi": {
+      "label": "Weijia Shi",
+      "kind": "scholar"
+    },
+    "person:jeff-clune": {
+      "label": "Jeff Clune",
+      "kind": "scholar"
+    },
+    "person:chelsea-finn": {
+      "label": "Chelsea Finn",
+      "kind": "scholar"
+    },
+    "person:sergey-levine": {
+      "label": "Sergey Levine",
+      "kind": "scholar"
+    },
+    "person:percy-liang": {
+      "label": "Percy Liang",
+      "kind": "scholar"
+    },
+    "person:pieter-abbeel": {
+      "label": "Pieter Abbeel",
+      "kind": "scholar"
+    },
+    "person:danqi-chen": {
+      "label": "Danqi Chen",
+      "kind": "scholar"
+    },
+    "person:yejin-choi": {
+      "label": "Yejin Choi",
+      "kind": "scholar"
+    },
+    "person:luke-zettlemoyer": {
+      "label": "Luke Zettlemoyer",
+      "kind": "scholar"
+    },
+    "person:graham-neubig": {
+      "label": "Graham Neubig",
+      "kind": "scholar"
+    },
+    "person:hannaneh-hajishirzi": {
+      "label": "Hannaneh Hajishirzi",
+      "kind": "scholar"
+    },
+    "person:shunyu-yao": {
+      "label": "Shunyu Yao",
+      "kind": "scholar"
+    },
+    "person:jun-wang": {
+      "label": "Jun Wang",
+      "kind": "scholar"
+    },
+    "person:omar-khattab": {
+      "label": "Omar Khattab",
+      "kind": "scholar"
+    },
+    "person:denny-zhou": {
+      "label": "Denny Zhou",
+      "kind": "scholar"
+    },
+    "person:quoc-le": {
+      "label": "Quoc V. Le",
+      "kind": "scholar"
+    },
+    "person:heng-ji": {
+      "label": "Heng Ji",
+      "kind": "scholar"
+    },
+    "person:qingyun-wu": {
+      "label": "Qingyun Wu",
+      "kind": "scholar"
+    }
+  },
+  "attributionPolicy": "机构按论文发表时的作者署名标注；学者标签表示作者署名，不表示主导。引用论文或使用模型不作为机构归属依据。"
 }

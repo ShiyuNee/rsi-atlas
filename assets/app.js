@@ -4,6 +4,8 @@ const CATEGORY={methods:'Methods · 方法',evaluation:'Evaluation · 评估',da
 const METHODS={harness:'Harness 进化',artifact:'产物进化',weights:'模型参数进化',joint:'Harness + 模型参数进化'};
 const GROUPS = [
  ['priority','阅读优先级',['C','K','R']],
+ ['institution','机构／团队',[]],
+ ['scholar','学者',[]],
  ['content','历史笔记深度',['完整专题解读','原记录详细笔记','结构化介绍']],
  ['verified','历史全文复核',['原文关键段落已复核','沿用原记录']],
  ['target','什么在变',['HarnessCode','Prompt','Context','MemoryContent','MemoryMechanism','Skill','Tool','Workflow','Subagent','Evaluator','Data','Weights','Improver']],
@@ -35,7 +37,7 @@ function markdown(s){
  const d=document.createElement('div');d.append(t.content);return d.innerHTML;
 }
 function field(p,...keys){for(const key of keys){if(p.fields[key])return p.fields[key];}return '';}
-function groupValues(p,id){if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
+function groupValues(p,id){if(['institution','scholar'].includes(id))return (p.attributions||[]).filter(a=>a.kind===id).map(a=>a.tag);if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
 function matches(p,s){
  if(s.category&&!p.categories.includes(s.category))return false;
  if(METHODS[s.quick]&&p.methodType!==s.quick)return false;
@@ -56,6 +58,8 @@ function readURL(){const u=new URLSearchParams(location.search);state.q=u.get('q
 function writeURL(){const u=new URLSearchParams();for(const k of ['q','category','year','paper'])if(state[k])u.set(k,state[k]);if(state.quick!=='all')u.set('quick',state.quick);if(state.sort!=='priority')u.set('sort',state.sort);if(state.page>1)u.set('page',state.page);if(!['library','paper'].includes(state.view))u.set('view',state.view);for(const [g,vs]of Object.entries(state.facets))vs.forEach(v=>u.append(g,v));state.tags.forEach(t=>u.append('tag',t));history.replaceState(null,'',location.pathname+(u.size?'?'+u:''));}
 function syncControls(){ $('.quick-filters').hidden=!!state.category&&state.category!=='methods'; $('#search').value=state.q;$('#year').value=state.year;$('#sort').value=state.sort;document.querySelectorAll('[data-quick]').forEach(b=>b.classList.toggle('selected',b.dataset.quick===state.quick));document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('selected',b.dataset.category===state.category));document.querySelectorAll('[data-group]').forEach(el=>el.checked=(state.facets[el.dataset.group]||[]).includes(el.value));}
 function buildFilters(){
+ for(const [tag,entry] of Object.entries(dataset.attributionCatalog||{}))LABELS[tag]=entry.label;
+ for(const kind of ['institution','scholar'])GROUPS.find(g=>g[0]===kind)[2]=[...new Set(papers.flatMap(p=>groupValues(p,kind)))].sort((a,b)=>LABELS[a].localeCompare(LABELS[b]));
  const icons={'':'▦',methods:'⚙',evaluation:'✓',dataset:'▤',theory:'∑'};
  $('#category-shortcuts').innerHTML=Object.entries({'':'全部论文',...CATEGORY}).map(([id,name])=>`<button data-category="${id}"><span aria-hidden="true">${icons[id]}</span> ${name} <small>${papers.filter(p=>!id||p.category===id).length}</small></button>`).join('');
  $('#categories').innerHTML=`<button class="category" data-category=""><span>全部论文</span><span class="count">${papers.length}</span></button>`+Object.entries(CATEGORY).map(([id,name])=>`<button class="category" data-category="${id}"><span>${name}</span><span class="count">${papers.filter(p=>p.categories.includes(id)).length}</span></button>`).join('');
@@ -104,6 +108,7 @@ function studyTable(p){
   if(key!=='verdict')return row;
   return row+`<tr><th scope="row">返回哪些反馈</th><td>${groupedSettings(p,p.profile.feedbackCases.map(c=>({label:c.label,value:c.visible,sources:c.sources})))}</td></tr>`;
  });
+ if(p.attributions?.length)rows.push(`<tr><th scope="row">机构与学者标签</th><td><p>${escapeHTML(dataset.attributionPolicy)}</p>${p.attributions.map(a=>`<p><b>${escapeHTML(a.label)}</b> · ${fieldSources(p,a)}</p>`).join('')}</td></tr>`);
  const refs=p.overview.tldr.map(f=>`<p><b>${{gap:'研究缺口',position:'本文定位',conclusion:'贡献与结论'}[f.key]}：</b>${fieldSources(p,f)}</p>`).join('');
  return `<div class="table-scroll"><table class="profile-table study-table dimension-table"><thead><tr><th>关注维度</th><th>各任务／数据集的设置与原文依据</th></tr></thead><tbody>${rows.join('')}<tr><th scope="row">TL;DR 依据</th><td>${refs}</td></tr></tbody></table></div>`;
 }
@@ -176,6 +181,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=priority-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=attributions-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

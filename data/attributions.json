@@ -1,0 +1,1918 @@
+{
+  "catalog": {
+    "org:tencent-hunyuan": {
+      "label": "Tencent Hunyuan",
+      "kind": "institution"
+    },
+    "org:tencent": {
+      "label": "Tencent",
+      "kind": "institution"
+    },
+    "org:bytedance-seed": {
+      "label": "ByteDance Seed",
+      "kind": "institution"
+    },
+    "org:bytedance": {
+      "label": "ByteDance",
+      "kind": "institution"
+    },
+    "org:openai": {
+      "label": "OpenAI",
+      "kind": "institution"
+    },
+    "org:anthropic": {
+      "label": "Anthropic",
+      "kind": "institution"
+    },
+    "org:thinking-machines-lab": {
+      "label": "Thinking Machines Lab",
+      "kind": "institution"
+    },
+    "org:meta-superintelligence": {
+      "label": "Meta Superintelligence Labs",
+      "kind": "institution"
+    },
+    "org:safe-superintelligence": {
+      "label": "Safe Superintelligence",
+      "kind": "institution"
+    },
+    "org:meta-fair": {
+      "label": "Meta FAIR",
+      "kind": "institution"
+    },
+    "org:google-brain": {
+      "label": "Google Brain",
+      "kind": "institution"
+    },
+    "org:google-deepmind": {
+      "label": "Google DeepMind",
+      "kind": "institution"
+    },
+    "org:google-cloud-ai": {
+      "label": "Google Cloud AI",
+      "kind": "institution"
+    },
+    "org:google-research": {
+      "label": "Google Research",
+      "kind": "institution"
+    },
+    "org:google": {
+      "label": "Google",
+      "kind": "institution"
+    },
+    "org:washington": {
+      "label": "University of Washington",
+      "kind": "institution"
+    },
+    "org:princeton": {
+      "label": "Princeton University",
+      "kind": "institution"
+    },
+    "org:stanford": {
+      "label": "Stanford University",
+      "kind": "institution"
+    },
+    "org:mit": {
+      "label": "MIT",
+      "kind": "institution"
+    },
+    "org:cmu": {
+      "label": "Carnegie Mellon University",
+      "kind": "institution"
+    },
+    "org:berkeley": {
+      "label": "UC Berkeley",
+      "kind": "institution"
+    },
+    "org:ubc": {
+      "label": "University of British Columbia",
+      "kind": "institution"
+    },
+    "org:uiuc": {
+      "label": "UIUC",
+      "kind": "institution"
+    },
+    "org:tsinghua": {
+      "label": "Tsinghua University",
+      "kind": "institution"
+    },
+    "org:peking": {
+      "label": "Peking University",
+      "kind": "institution"
+    },
+    "org:sjtu": {
+      "label": "Shanghai Jiao Tong University",
+      "kind": "institution"
+    },
+    "org:nus": {
+      "label": "National University of Singapore",
+      "kind": "institution"
+    },
+    "org:ntu": {
+      "label": "Nanyang Technological University",
+      "kind": "institution"
+    },
+    "org:eth": {
+      "label": "ETH Zürich",
+      "kind": "institution"
+    },
+    "org:oxford": {
+      "label": "University of Oxford",
+      "kind": "institution"
+    },
+    "org:cambridge": {
+      "label": "University of Cambridge",
+      "kind": "institution"
+    },
+    "org:sakana": {
+      "label": "Sakana AI",
+      "kind": "institution"
+    },
+    "org:shanghai-ai-lab": {
+      "label": "Shanghai AI Laboratory",
+      "kind": "institution"
+    },
+    "org:allenai": {
+      "label": "Allen Institute for AI",
+      "kind": "institution"
+    },
+    "org:krafton": {
+      "label": "KRAFTON",
+      "kind": "institution"
+    },
+    "person:mengdi-wang": {
+      "label": "Mengdi Wang",
+      "kind": "scholar"
+    },
+    "person:diyi-yang": {
+      "label": "Diyi Yang",
+      "kind": "scholar"
+    },
+    "person:weijia-shi": {
+      "label": "Weijia Shi",
+      "kind": "scholar"
+    },
+    "person:jeff-clune": {
+      "label": "Jeff Clune",
+      "kind": "scholar"
+    },
+    "person:chelsea-finn": {
+      "label": "Chelsea Finn",
+      "kind": "scholar"
+    },
+    "person:sergey-levine": {
+      "label": "Sergey Levine",
+      "kind": "scholar"
+    },
+    "person:percy-liang": {
+      "label": "Percy Liang",
+      "kind": "scholar"
+    },
+    "person:pieter-abbeel": {
+      "label": "Pieter Abbeel",
+      "kind": "scholar"
+    },
+    "person:danqi-chen": {
+      "label": "Danqi Chen",
+      "kind": "scholar"
+    },
+    "person:yejin-choi": {
+      "label": "Yejin Choi",
+      "kind": "scholar"
+    },
+    "person:luke-zettlemoyer": {
+      "label": "Luke Zettlemoyer",
+      "kind": "scholar"
+    },
+    "person:graham-neubig": {
+      "label": "Graham Neubig",
+      "kind": "scholar"
+    },
+    "person:hannaneh-hajishirzi": {
+      "label": "Hannaneh Hajishirzi",
+      "kind": "scholar"
+    },
+    "person:shunyu-yao": {
+      "label": "Shunyu Yao",
+      "kind": "scholar"
+    },
+    "person:jun-wang": {
+      "label": "Jun Wang",
+      "kind": "scholar"
+    },
+    "person:omar-khattab": {
+      "label": "Omar Khattab",
+      "kind": "scholar"
+    },
+    "person:denny-zhou": {
+      "label": "Denny Zhou",
+      "kind": "scholar"
+    },
+    "person:quoc-le": {
+      "label": "Quoc V. Le",
+      "kind": "scholar"
+    },
+    "person:heng-ji": {
+      "label": "Heng Ji",
+      "kind": "scholar"
+    },
+    "person:qingyun-wu": {
+      "label": "Qingyun Wu",
+      "kind": "scholar"
+    }
+  },
+  "papers": {
+    "cs-0309048": [],
+    "2303.11366": [
+      {
+        "tag": "org:princeton",
+        "label": "Princeton University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.11366"
+          }
+        ]
+      },
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.11366"
+          }
+        ]
+      },
+      {
+        "tag": "person:shunyu-yao",
+        "label": "Shunyu Yao",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2303.11366"
+          }
+        ]
+      }
+    ],
+    "2305.16291": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2305.16291"
+          }
+        ]
+      }
+    ],
+    "2505.22954": [
+      {
+        "tag": "org:ubc",
+        "label": "University of British Columbia",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2505.22954"
+          }
+        ]
+      },
+      {
+        "tag": "org:sakana",
+        "label": "Sakana AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2505.22954"
+          }
+        ]
+      },
+      {
+        "tag": "person:jeff-clune",
+        "label": "Jeff Clune",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2505.22954"
+          }
+        ]
+      }
+    ],
+    "2511.10395": [],
+    "2603.19461": [
+      {
+        "tag": "org:meta-superintelligence",
+        "label": "Meta Superintelligence Labs",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.19461"
+          }
+        ]
+      },
+      {
+        "tag": "org:meta-fair",
+        "label": "Meta FAIR",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.19461"
+          }
+        ]
+      },
+      {
+        "tag": "org:ubc",
+        "label": "University of British Columbia",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.19461"
+          }
+        ]
+      },
+      {
+        "tag": "person:jeff-clune",
+        "label": "Jeff Clune",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2603.19461"
+          }
+        ]
+      }
+    ],
+    "2603.28052": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.28052"
+          }
+        ]
+      },
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.28052"
+          }
+        ]
+      },
+      {
+        "tag": "org:krafton",
+        "label": "KRAFTON",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.28052"
+          }
+        ]
+      },
+      {
+        "tag": "person:chelsea-finn",
+        "label": "Chelsea Finn",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2603.28052"
+          }
+        ]
+      },
+      {
+        "tag": "person:omar-khattab",
+        "label": "Omar Khattab",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2603.28052"
+          }
+        ]
+      }
+    ],
+    "2604.25850": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.25850"
+          }
+        ]
+      }
+    ],
+    "2606.09498": [
+      {
+        "tag": "org:shanghai-ai-lab",
+        "label": "Shanghai AI Laboratory",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.09498"
+          }
+        ]
+      }
+    ],
+    "2606.17546": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.17546"
+          }
+        ]
+      }
+    ],
+    "2607.14777": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.14777"
+          }
+        ]
+      },
+      {
+        "tag": "org:ntu",
+        "label": "Nanyang Technological University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.14777"
+          }
+        ]
+      }
+    ],
+    "2607.15524": [
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.15524"
+          }
+        ]
+      },
+      {
+        "tag": "org:sakana",
+        "label": "Sakana AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.15524"
+          }
+        ]
+      }
+    ],
+    "2607.25886": [
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.25886"
+          }
+        ]
+      }
+    ],
+    "2607.28568": [],
+    "2608.02276": [
+      {
+        "tag": "org:sjtu",
+        "label": "Shanghai Jiao Tong University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.02276"
+          }
+        ]
+      }
+    ],
+    "2608.05144": [],
+    "2608.09819": [],
+    "endlessfrontier.tech-assets-paper.pdf": [],
+    "2607.05297": [],
+    "2608.15071": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.15071"
+          }
+        ]
+      }
+    ],
+    "2608.09096": [],
+    "2608.31111": [
+      {
+        "tag": "org:bytedance-seed",
+        "label": "ByteDance Seed",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.31111"
+          }
+        ]
+      }
+    ],
+    "2408.08435": [
+      {
+        "tag": "org:ubc",
+        "label": "University of British Columbia",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2408.08435"
+          }
+        ]
+      },
+      {
+        "tag": "person:jeff-clune",
+        "label": "Jeff Clune",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2408.08435"
+          }
+        ]
+      }
+    ],
+    "2609.01437": [
+      {
+        "tag": "org:bytedance-seed",
+        "label": "ByteDance Seed",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.01437"
+          }
+        ]
+      }
+    ],
+    "2608.03764": [],
+    "2602.22480": [],
+    "2410.04444": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2410.04444"
+          }
+        ]
+      }
+    ],
+    "2506.10943": [],
+    "2604.23472": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.23472"
+          }
+        ]
+      },
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.23472"
+          }
+        ]
+      }
+    ],
+    "2606.04465": [
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.04465"
+          }
+        ]
+      }
+    ],
+    "2606.26294": [],
+    "2608.07645": [],
+    "2403.03186": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2403.03186"
+          }
+        ]
+      },
+      {
+        "tag": "org:ntu",
+        "label": "Nanyang Technological University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2403.03186"
+          }
+        ]
+      }
+    ],
+    "2409.07429": [
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2409.07429"
+          }
+        ]
+      },
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2409.07429"
+          }
+        ]
+      },
+      {
+        "tag": "person:graham-neubig",
+        "label": "Graham Neubig",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2409.07429"
+          }
+        ]
+      }
+    ],
+    "2502.12110": [],
+    "2508.06433": [],
+    "2509.25140": [
+      {
+        "tag": "org:google-cloud-ai",
+        "label": "Google Cloud AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2509.25140"
+          }
+        ]
+      },
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2509.25140"
+          }
+        ]
+      }
+    ],
+    "2604.10923": [],
+    "2604.16839": [],
+    "2608.16114": [],
+    "2608.24876": [
+      {
+        "tag": "org:princeton",
+        "label": "Princeton University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.24876"
+          }
+        ]
+      },
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.24876"
+          }
+        ]
+      },
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.24876"
+          }
+        ]
+      },
+      {
+        "tag": "org:oxford",
+        "label": "University of Oxford",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.24876"
+          }
+        ]
+      },
+      {
+        "tag": "person:mengdi-wang",
+        "label": "Mengdi Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2608.24876"
+          }
+        ]
+      }
+    ],
+    "2606.01314": [
+      {
+        "tag": "org:sjtu",
+        "label": "Shanghai Jiao Tong University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.01314"
+          }
+        ]
+      }
+    ],
+    "2606.17220": [],
+    "2608.22793": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.22793"
+          }
+        ]
+      }
+    ],
+    "2608.23397": [],
+    "2608.23552": [
+      {
+        "tag": "org:princeton",
+        "label": "Princeton University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.23552"
+          }
+        ]
+      },
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.23552"
+          }
+        ]
+      }
+    ],
+    "2605.09998": [
+      {
+        "tag": "org:google-deepmind",
+        "label": "Google DeepMind",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.09998"
+          }
+        ]
+      },
+      {
+        "tag": "org:princeton",
+        "label": "Princeton University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.09998"
+          }
+        ]
+      }
+    ],
+    "2605.24539": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.24539"
+          }
+        ]
+      }
+    ],
+    "2606.06324": [],
+    "2606.14249": [],
+    "2607.13683": [],
+    "2603.21877": [],
+    "2606.04455": [],
+    "2608.06301": [],
+    "2505.11942": [],
+    "2507.05257": [],
+    "2508.19005": [],
+    "2510.17281": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2510.17281"
+          }
+        ]
+      }
+    ],
+    "2511.20857": [
+      {
+        "tag": "org:google-deepmind",
+        "label": "Google DeepMind",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2511.20857"
+          }
+        ]
+      },
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2511.20857"
+          }
+        ]
+      }
+    ],
+    "2604.17308": [],
+    "2604.20087": [
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.20087"
+          }
+        ]
+      }
+    ],
+    "2605.18421": [],
+    "2606.05661": [
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.05661"
+          }
+        ]
+      }
+    ],
+    "2607.05202": [],
+    "2608.00155": [],
+    "2608.01149": [],
+    "2608.03874": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.03874"
+          }
+        ]
+      }
+    ],
+    "2608.04003": [
+      {
+        "tag": "person:mengdi-wang",
+        "label": "Mengdi Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2608.04003"
+          }
+        ]
+      }
+    ],
+    "2608.06144": [],
+    "2603.08640": [],
+    "2604.10547": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.10547"
+          }
+        ]
+      }
+    ],
+    "2606.04261": [
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.04261"
+          }
+        ]
+      },
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.04261"
+          }
+        ]
+      }
+    ],
+    "2606.05080": [
+      {
+        "tag": "person:mengdi-wang",
+        "label": "Mengdi Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2606.05080"
+          }
+        ]
+      }
+    ],
+    "2607.05155": [
+      {
+        "tag": "org:bytedance-seed",
+        "label": "ByteDance Seed",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.05155"
+          }
+        ]
+      }
+    ],
+    "doi.org-10.1016-S0065-2458-08-60418-0": [],
+    "people.idsia.ch-juergen": [],
+    "cs-0207097": [],
+    "1805.06610": [
+      {
+        "tag": "org:ubc",
+        "label": "University of British Columbia",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/1805.06610"
+          }
+        ]
+      }
+    ],
+    "2203.11171": [
+      {
+        "tag": "org:google-brain",
+        "label": "Google Brain",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2203.11171"
+          }
+        ]
+      },
+      {
+        "tag": "person:denny-zhou",
+        "label": "Denny Zhou",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2203.11171"
+          }
+        ]
+      }
+    ],
+    "2303.17651": [
+      {
+        "tag": "org:google-brain",
+        "label": "Google Brain",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.17651"
+          }
+        ]
+      },
+      {
+        "tag": "org:washington",
+        "label": "University of Washington",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.17651"
+          }
+        ]
+      },
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.17651"
+          }
+        ]
+      },
+      {
+        "tag": "org:allenai",
+        "label": "Allen Institute for AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2303.17651"
+          }
+        ]
+      }
+    ],
+    "2305.11738": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2305.11738"
+          }
+        ]
+      }
+    ],
+    "2305.20050": [
+      {
+        "tag": "org:openai",
+        "label": "OpenAI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2305.20050"
+          }
+        ]
+      }
+    ],
+    "2309.11495": [
+      {
+        "tag": "org:eth",
+        "label": "ETH Zürich",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2309.11495"
+          }
+        ]
+      }
+    ],
+    "2310.01798": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2310.01798"
+          }
+        ]
+      },
+      {
+        "tag": "person:denny-zhou",
+        "label": "Denny Zhou",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2310.01798"
+          }
+        ]
+      }
+    ],
+    "2310.04406": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2310.04406"
+          }
+        ]
+      }
+    ],
+    "2309.03409": [
+      {
+        "tag": "org:google-deepmind",
+        "label": "Google DeepMind",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2309.03409"
+          }
+        ]
+      },
+      {
+        "tag": "person:denny-zhou",
+        "label": "Denny Zhou",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2309.03409"
+          }
+        ]
+      },
+      {
+        "tag": "person:quoc-le",
+        "label": "Quoc V. Le",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2309.03409"
+          }
+        ]
+      }
+    ],
+    "2309.16797": [
+      {
+        "tag": "org:google-deepmind",
+        "label": "Google DeepMind",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2309.16797"
+          }
+        ]
+      }
+    ],
+    "2310.03714": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2310.03714"
+          }
+        ]
+      },
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2310.03714"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2310.03714"
+          }
+        ]
+      },
+      {
+        "tag": "person:omar-khattab",
+        "label": "Omar Khattab",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2310.03714"
+          }
+        ]
+      }
+    ],
+    "2310.02304": [],
+    "2406.07496": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2406.07496"
+          }
+        ]
+      }
+    ],
+    "2410.10762": [],
+    "2507.03616": [],
+    "2509.19349": [
+      {
+        "tag": "org:sakana",
+        "label": "Sakana AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2509.19349"
+          }
+        ]
+      }
+    ],
+    "2305.10250": [],
+    "2308.10144": [],
+    "2409.00872": [],
+    "2510.04618": [
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2510.04618"
+          }
+        ]
+      }
+    ],
+    "2510.16079": [
+      {
+        "tag": "org:sjtu",
+        "label": "Shanghai Jiao Tong University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2510.16079"
+          }
+        ]
+      },
+      {
+        "tag": "org:shanghai-ai-lab",
+        "label": "Shanghai AI Laboratory",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2510.16079"
+          }
+        ]
+      }
+    ],
+    "2512.18746": [],
+    "2602.07755": [
+      {
+        "tag": "org:ubc",
+        "label": "University of British Columbia",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2602.07755"
+          }
+        ]
+      },
+      {
+        "tag": "person:jeff-clune",
+        "label": "Jeff Clune",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2602.07755"
+          }
+        ]
+      }
+    ],
+    "2603.18620": [],
+    "2402.17574": [],
+    "2510.23601": [
+      {
+        "tag": "person:mengdi-wang",
+        "label": "Mengdi Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2510.23601"
+          }
+        ]
+      }
+    ],
+    "2603.13131": [],
+    "2603.18000": [
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.18000"
+          }
+        ]
+      }
+    ],
+    "2603.18743": [
+      {
+        "tag": "person:jun-wang",
+        "label": "Jun Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2603.18743"
+          }
+        ]
+      }
+    ],
+    "2604.15097": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2604.15097"
+          }
+        ]
+      }
+    ],
+    "2604.20133": [],
+    "2605.23904": [],
+    "2607.00272": [
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.00272"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.00272"
+          }
+        ]
+      },
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.00272"
+          }
+        ]
+      }
+    ],
+    "2607.26784": [
+      {
+        "tag": "org:sjtu",
+        "label": "Shanghai Jiao Tong University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.26784"
+          }
+        ]
+      },
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.26784"
+          }
+        ]
+      }
+    ],
+    "2608.11350": [],
+    "2504.15228": [],
+    "2603.03329": [
+      {
+        "tag": "org:google-deepmind",
+        "label": "Google DeepMind",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2603.03329"
+          }
+        ]
+      }
+    ],
+    "2606.19980": [
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.19980"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2606.19980"
+          }
+        ]
+      }
+    ],
+    "2607.14159": [],
+    "2608.01918": [],
+    "2608.08466": [],
+    "2608.09380": [
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.09380"
+          }
+        ]
+      }
+    ],
+    "2608.12307": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.12307"
+          }
+        ]
+      },
+      {
+        "tag": "person:heng-ji",
+        "label": "Heng Ji",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2608.12307"
+          }
+        ]
+      }
+    ],
+    "2608.24735": [],
+    "2605.27276": [],
+    "2607.21971": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2607.21971"
+          }
+        ]
+      },
+      {
+        "tag": "person:heng-ji",
+        "label": "Heng Ji",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2607.21971"
+          }
+        ]
+      }
+    ],
+    "2608.05446": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.05446"
+          }
+        ]
+      }
+    ],
+    "2608.13951": [],
+    "2505.19955": [
+      {
+        "tag": "org:nus",
+        "label": "National University of Singapore",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2505.19955"
+          }
+        ]
+      }
+    ],
+    "2605.08678": [
+      {
+        "tag": "org:washington",
+        "label": "University of Washington",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      },
+      {
+        "tag": "org:princeton",
+        "label": "Princeton University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      },
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      },
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      },
+      {
+        "tag": "org:sjtu",
+        "label": "Shanghai Jiao Tong University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.08678"
+          }
+        ]
+      }
+    ],
+    "2608.17271": [
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.17271"
+          }
+        ]
+      },
+      {
+        "tag": "org:cmu",
+        "label": "Carnegie Mellon University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.17271"
+          }
+        ]
+      },
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.17271"
+          }
+        ]
+      },
+      {
+        "tag": "org:tsinghua",
+        "label": "Tsinghua University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.17271"
+          }
+        ]
+      }
+    ],
+    "2507.19457": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2507.19457"
+          }
+        ]
+      },
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2507.19457"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2507.19457"
+          }
+        ]
+      },
+      {
+        "tag": "person:omar-khattab",
+        "label": "Omar Khattab",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2507.19457"
+          }
+        ]
+      }
+    ],
+    "2609.00829": [],
+    "2608.27311": [],
+    "2608.10178": [],
+    "2608.31100": [
+      {
+        "tag": "org:bytedance-seed",
+        "label": "ByteDance Seed",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2608.31100"
+          }
+        ]
+      }
+    ],
+    "2609.01481": [
+      {
+        "tag": "org:shanghai-ai-lab",
+        "label": "Shanghai AI Laboratory",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.01481"
+          }
+        ]
+      }
+    ],
+    "rsi-exam": [],
+    "2609.00196": [
+      {
+        "tag": "org:stanford",
+        "label": "Stanford University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.00196"
+          }
+        ]
+      },
+      {
+        "tag": "org:krafton",
+        "label": "KRAFTON",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.00196"
+          }
+        ]
+      },
+      {
+        "tag": "person:chelsea-finn",
+        "label": "Chelsea Finn",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "arXiv 作者列表",
+            "url": "https://arxiv.org/abs/2609.00196"
+          }
+        ]
+      }
+    ],
+    "2609.09646": [],
+    "2609.09153": [
+      {
+        "tag": "org:google",
+        "label": "Google",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.09153"
+          }
+        ]
+      },
+      {
+        "tag": "org:peking",
+        "label": "Peking University",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2609.09153"
+          }
+        ]
+      }
+    ],
+    "2607.22688": [],
+    "2606.01779": [],
+    "2605.30621": [
+      {
+        "tag": "org:uiuc",
+        "label": "UIUC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "论文作者机构署名",
+            "url": "https://arxiv.org/html/2605.30621"
+          }
+        ]
+      }
+    ],
+    "2609.08175": []
+  },
+  "policy": "机构按论文发表时的作者署名标注；学者标签表示作者署名，不表示主导。引用论文或使用模型不作为机构归属依据。"
+}

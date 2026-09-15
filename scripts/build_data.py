@@ -125,6 +125,16 @@ def build():
         conclusions='## 4. '+source.split('## 4. ')[1],
         readingGuide=(ROOT/'data/reading-guide.md').read_text(),
         researchMap=(ROOT/'data/research-map.md').read_text())
+    attribution = json.loads((ROOT/'data/attributions.json').read_text())
+    output['attributionCatalog'] = attribution['catalog']
+    output['attributionPolicy'] = attribution['policy']
+    assert set(attribution['papers']) == {p['id'] for p in papers.values()}
+    for p in papers.values():
+        p['attributions'] = attribution['papers'][p['id']]
+        for entry in p['attributions']:
+            assert entry['tag'] in attribution['catalog'] and entry['sources']
+            if entry['tag'] not in p['tags']:
+                p['tags'].append(entry['tag'])
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(f"Built {len(papers)} papers ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output
