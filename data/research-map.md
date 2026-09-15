@@ -115,3 +115,12 @@
 这些是本文库的比较问题，而非所有论文共用的等级标准。看见一条上升曲线后，继续问：**哪些题参与了修改和选版本？做错的细节从哪里来？最终继承了什么？** 对齐这些条件，才能判断论文解决的是哪一块问题，以及仍留下什么。
 
 接着可以[回到全部论文](?view=library)，或筛选[运行框架进化](?category=methods&quick=harness)、[模型参数进化](?category=methods&quick=weights)、[联合进化](?category=methods&quick=joint)、[评测研究](?category=evaluation)。需要先理解名词时，查看[入门说明](?view=guide)。
+
+
+## 从近期工作连接几条路线
+
+- **即时纠偏与经验积累**：[PILOT](?paper=2608.26530) 将监督与执行分开，运行中写经验，运行后用 verifier 决定保留。它的重复同题实验要与跨题泛化区分。
+- **改进搜索方式本身**：[Dream-RSI](?paper=2609.14858) 用历史发现树试验新的探索策略；[MetaRSI-v1](?paper=metarsi-v1) 则组合数据、harness、参数三类操作。两者改进的对象和证据不同。
+- **反馈进入参数训练**：[DiagEvo](?paper=2609.00768) 从错误诊断生成课程；[NeoHorse-1](?paper=2609.08183) 利用路由交互组织训练；[iCoder](?paper=icoder-27b) 让研发 agent 调整工业模型的完整训练过程。
+- **先检查评测是否公平**：[Rethinking](?paper=2607.12227) 比较相同尝试预算，并用 45/10/34 划分检验 harness 泛化。成绩增加不自动意味着学到了可复用框架。
+- **理解全景与落地**：[自主程度路线图](?paper=2609.11873)、[数据中心综述](?paper=data-centric-rsi-survey)、[AI4AI 综述](?paper=ai4ai-survey) 提供不同分析视角；[Reef](?paper=reef) 提供工程组件，[OpenAI 内部观察](?paper=openai-research-acceleration) 提供产业侧材料。

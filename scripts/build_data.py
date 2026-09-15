@@ -135,8 +135,10 @@ def build():
             assert entry['tag'] in attribution['catalog'] and entry['sources']
             if entry['tag'] not in p['tags']:
                 p['tags'].append(entry['tag'])
+    from library_additions import attach_library_additions
+    attach_library_additions(output)
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
-    print(f"Built {len(papers)} papers ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
+    print(f"Built {len(output['papers'])} library entries ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output
 
 if __name__ == '__main__': build()

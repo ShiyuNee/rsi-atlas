@@ -1,8 +1,10 @@
 /* RSI Atlas: a static, source-preserving research catalog. */
 'use strict';
-const CATEGORY={methods:'Methods · 方法',evaluation:'Evaluation · 评估',dataset:'Dataset · 数据集',theory:'Theory · 理论'};
+const CATEGORY={methods:'Methods · 方法',evaluation:'Evaluation · 评估',dataset:'Dataset · 数据集',theory:'Theory · 理论',overview:'综述与观点',resources:'工具与基础设施'};
+const CONTENT_TYPES={paper:'论文',report:'技术报告',survey:'综述',repository:'仓库',blog:'博客'};
 const METHODS={harness:'Harness 进化',artifact:'产物进化',weights:'模型参数进化',joint:'Harness + 模型参数进化'};
 const GROUPS = [
+ ['type','内容类型',Object.keys(CONTENT_TYPES)],
  ['priority','阅读优先级',['C','K','R']],
  ['institution','机构／团队',[]],
  ['scholar','学者',[]],
@@ -16,6 +18,7 @@ const GROUPS = [
  ['reading','原始收录状态',['原记录 · 详细介绍','原记录 · 横向定位','新增 · 方法与实验设置核对','新增 · 摘要核对']]
 ];
 const LABELS={C:'Core · 代表作',K:'Key · 重点',R:'Related · 相关',EditorWeights:'修改者的参数',HarnessCode:'Harness code',MemoryContent:'Memory 内容',MemoryMechanism:'Memory 机制',SameModel:'同一模型',SeparateEvolver:'独立 Evolver',StrongerBuilder:'更强 Builder',LearnedUpdater:'训练过的 Updater',JointEvolution:'联合进化',ExecutableVerifier:'可执行 Verifier',EnvironmentReward:'环境 Reward',BenchmarkScore:'Benchmark 分数',GoldLabel:'Gold label / 答案',LLMJudge:'LLM judge',SelfFeedback:'模型自反馈',HumanDemo:'人类示范',PairwiseFeedback:'成对偏好',ProcessReward:'过程 Reward'};
+Object.assign(LABELS,CONTENT_TYPES,{Survey:'综述',RSIRoadmap:'RSI 发展路线',Infrastructure:'基础设施',IndustryReport:'产业观察',ResearchAutomation:'自动化研究'});
 Object.assign(LABELS,{"HarnessCode": "运行框架代码", "Prompt": "提示词", "Context": "上下文", "MemoryContent": "记忆内容", "MemoryMechanism": "记忆管理机制", "Skill": "技能说明", "Tool": "工具", "Workflow": "工作流程", "Subagent": "子代理", "Evaluator": "评估器", "Data": "学习数据", "Weights": "模型参数", "Improver": "修改机制", "SameModel": "同一模型修改", "SeparateEvolver": "独立修改者", "StrongerBuilder": "更强模型构建", "LearnedUpdater": "经过训练的修改者", "ExecutableVerifier": "程序检查任务结果", "EnvironmentReward": "环境给出的奖励", "BenchmarkScore": "基准评测分数", "GoldLabel": "标准标签或答案", "LLMJudge": "模型按要求评审", "ProcessReward": "中间步骤奖励", "OfflineSearch": "部署前搜索", "Online": "执行任务时更新", "Prequential": "先做当前任务，再用其反馈学习", "Archive": "保存历史版本", "Population": "同时维护多个候选", "Sequential": "逐轮更新", "CoEvolution": "共同进化", "Continual": "持续学习", "Streaming": "连续任务流"});
 Object.assign(LABELS,{"B-RSI":"递归改进评测","B-Reliability":"可靠性评测","CapabilityCeiling":"基础能力上限","CrossBenchmark":"跨评测任务迁移","CrossModel":"跨模型迁移","HeldOut":"使用留出数据","LongHorizon":"长程任务","RegressionGate":"接受修改前检查旧能力","RewardHacking":"评分规则被利用","SameSet":"同一题集参与改进与评价"});
 Object.assign(LABELS,{"M0":"M0 · 经验内容更新","M1":"M1 · 任务机制更新","M2":"M2 · 修改机制也更新","M3":"M3 · 完整自指的理论设想","Artifact / 非 harness":"当前产物的改进","Online / continual":"连续任务中学习","Prequential":"先做任务，再用该题反馈学习","Prequential + held-out":"先做后学，并另设留出评价","Same-set adaptive":"同一题集反复适应","Train → selection → test":"进化、选版本、测试分阶段","Within-instance":"同一任务内调整","有 held-out 报告":"报告了留出任务结果"});
@@ -37,7 +40,7 @@ function markdown(s){
  const d=document.createElement('div');d.append(t.content);return d.innerHTML;
 }
 function field(p,...keys){for(const key of keys){if(p.fields[key])return p.fields[key];}return '';}
-function groupValues(p,id){if(['institution','scholar'].includes(id))return (p.attributions||[]).filter(a=>a.kind===id).map(a=>a.tag);if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
+function groupValues(p,id){if(id==='type')return [p.contentType||'paper'];if(['institution','scholar'].includes(id))return (p.attributions||[]).filter(a=>a.kind===id).map(a=>a.tag);if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
 function matches(p,s){
  if(s.category&&!p.categories.includes(s.category))return false;
  if(METHODS[s.quick]&&p.methodType!==s.quick)return false;
@@ -60,9 +63,9 @@ function syncControls(){ $('.quick-filters').hidden=!!state.category&&state.cate
 function buildFilters(){
  for(const [tag,entry] of Object.entries(dataset.attributionCatalog||{}))LABELS[tag]=entry.label;
  for(const kind of ['institution','scholar'])GROUPS.find(g=>g[0]===kind)[2]=[...new Set(papers.flatMap(p=>groupValues(p,kind)))].sort((a,b)=>LABELS[a].localeCompare(LABELS[b]));
- const icons={'':'▦',methods:'⚙',evaluation:'✓',dataset:'▤',theory:'∑'};
- $('#category-shortcuts').innerHTML=Object.entries({'':'全部论文',...CATEGORY}).map(([id,name])=>`<button data-category="${id}"><span aria-hidden="true">${icons[id]}</span> ${name} <small>${papers.filter(p=>!id||p.category===id).length}</small></button>`).join('');
- $('#categories').innerHTML=`<button class="category" data-category=""><span>全部论文</span><span class="count">${papers.length}</span></button>`+Object.entries(CATEGORY).map(([id,name])=>`<button class="category" data-category="${id}"><span>${name}</span><span class="count">${papers.filter(p=>p.categories.includes(id)).length}</span></button>`).join('');
+ const icons={'':'▦',methods:'⚙',evaluation:'✓',dataset:'▤',theory:'∑',overview:'◎',resources:'⌘'};
+ $('#category-shortcuts').innerHTML=Object.entries({'':'全部内容',...CATEGORY}).map(([id,name])=>`<button data-category="${id}"><span aria-hidden="true">${icons[id]}</span> ${name} <small>${papers.filter(p=>!id||p.category===id).length}</small></button>`).join('');
+ $('#categories').innerHTML=`<button class="category" data-category=""><span>全部内容</span><span class="count">${papers.length}</span></button>`+Object.entries(CATEGORY).map(([id,name])=>`<button class="category" data-category="${id}"><span>${name}</span><span class="count">${papers.filter(p=>p.categories.includes(id)).length}</span></button>`).join('');
  GROUPS.find(g=>g[0]==='protocol')[2]=[...new Set(papers.map(p=>p.protocol))].sort();
  $('#facets').innerHTML=GROUPS.map(([id,title,values],i)=>`<details class="facet" ${i===0||id==='content'?'open':''}><summary>${title}</summary><div class="facet-options">${values.map(v=>`<label><input type="checkbox" data-group="${id}" value="${escapeHTML(v)}"><span>${escapeHTML(LABELS[v]||v)}</span><small>${papers.filter(p=>groupValues(p,id).includes(v)).length}</small></label>`).join('')}</div></details>`).join('');
  $('#year').innerHTML='<option value="">全部年份</option>'+[...new Set(papers.map(p=>p.year))].sort().reverse().map(y=>`<option>${escapeHTML(y)}</option>`).join('');
@@ -101,6 +104,13 @@ function detailedDimension(p,f){
  return markdown(f.value);
 }
 function studyTable(p){
+ if(p.curated){
+  const rows=p.profile.fields.map(f=>`<tr><th scope="row">${escapeHTML(f.label)}</th><td>${markdown(f.value)}<small class="setting-source">${fieldSources(p,f)}</small></td></tr>`);
+  rows.push(`<tr><th scope="row">TL;DR 依据</th><td>${p.overview.tldr.map(f=>`<p>${{gap:'研究缺口／背景',position:'定位',conclusion:'结论与边界'}[f.key]}：${fieldSources(p,f)}</p>`).join('')}</td></tr>`);
+  if(p.attributions?.length)rows.push(`<tr><th scope="row">机构与学者</th><td>${p.attributions.map(a=>`<p>${escapeHTML(a.label)} · ${fieldSources(p,a)}</p>`).join('')}<p>${escapeHTML(dataset.attributionPolicy)}</p></td></tr>`);
+  return `<div class="table-scroll"><table class="profile-table study-table dimension-table"><thead><tr><th>关注维度</th><th>说明与原文依据</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+ }
+
  const rows=Object.keys(DIMENSIONS).map(key=>{
   const f=p.profile.fields.find(f=>f.key===key);
   const inlineSources=['executor','modifier','seed','verdict','train','debug','test','isolation'].includes(key);
@@ -113,23 +123,26 @@ function studyTable(p){
  return `<div class="table-scroll"><table class="profile-table study-table dimension-table"><thead><tr><th>关注维度</th><th>各任务／数据集的设置与原文依据</th></tr></thead><tbody>${rows.join('')}<tr><th scope="row">TL;DR 依据</th><td>${refs}</td></tr></tbody></table></div>`;
 }
 function research(p){
+ if(p.curated)return `<dl class="key-dimensions">${p.visibleKeys.map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<div><dt>${escapeHTML(f.label)}</dt><dd>${markdown(p.overview.fields[key])}</dd></div>`;}).join('')}</dl><details class="mechanism"><summary>查看全部维度与原文依据</summary>${studyTable(p)}</details>`;
  const keys=['object','executor','modifier','verdict','seed'];
  return `<dl class="key-dimensions">${keys.map(key=>{const f=p.profile.fields.find(f=>f.key===key);return `<div><dt>${key==='verdict'?'反馈是什么':DIMENSIONS[key]}</dt><dd>${markdown(dimensionValue(p,f))}</dd></div>`;}).join('')}</dl><details class="mechanism"><summary>查看全部研究维度与原文依据</summary>${studyTable(p)}</details>`;
 }
 function tldr(p){
- const labels={gap:'研究缺口',position:'本文定位',conclusion:'关键做法与结论'};
+ const editorial=['survey','repository','blog'].includes(p.contentType);
+ const labels=editorial?{gap:'背景与问题',position:p.contentType==='repository'?'项目定位':'本文定位',conclusion:'贡献与边界'}:{gap:'研究缺口',position:'本文定位',conclusion:'关键做法与结论'};
  const method=p.profile.fields.find(f=>f.key==='novelty');
- return `<section class="paper-tldr" aria-label="论文 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${f.key==='conclusion'?`<p class="tldr-method"><b>关键做法：</b>${markdownInline(method.value)}</p><b>结果与边界：</b>`:''}${markdown(f.value)}</div></li>`).join('')}</ol></section>`;
+ return `<section class="paper-tldr" aria-label="内容 TL;DR"><h3>TL;DR</h3><ol>${p.overview.tldr.map(f=>`<li><strong>${labels[f.key]}</strong><div>${f.key==='conclusion'&&method&&!p.curated?`<p class="tldr-method"><b>关键做法：</b>${markdownInline(method.value)}</p><b>结果与边界：</b>`:''}${markdown(f.value)}</div></li>`).join('')}</ol></section>`;
 }
 function card(p){
- return `<article class="paper-card"><div class="card-main"><div class="card-meta"><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><span class="level level-${p.priority}" title="${escapeHTML(p.priorityBasis||'阅读优先级')}">${LEVEL[p.priority]}</span>${p.publicationType==='project-report'?'<span>官方项目报告</span>':''}<time class="date">${p.publicationType==='project-report'?'项目首发 ':''}${escapeHTML(p.date)}</time></div><h2><button class="paper-title" data-paper="${p.id}">${escapeHTML(p.title)}</button></h2>${tldr(p)}${research(p)}</div><div class="card-foot"><div class="tags">${p.tags.filter(t=>!/^M[0-3]$/.test(t)).map(t=>`<button class="tag" data-tag="${escapeHTML(t)}">#${escapeHTML(LABELS[t]||t)}</button>`).join('')}</div><div class="card-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">${p.publicationType==='project-report'?'官方报告':'论文'} ↗</a><button class="read-action" data-paper="${p.id}">查看研究表 →</button></div></div></article>`;
+ return `<article class="paper-card"><div class="card-main"><div class="card-meta"><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><span class="level level-${p.priority}" title="${escapeHTML(p.priorityBasis||'阅读优先级')}">${LEVEL[p.priority]}</span><span class="content-type">${CONTENT_TYPES[p.contentType]||'论文'}</span><time class="date">${p.dateLabel?escapeHTML(p.dateLabel)+' ':p.publicationType==='project-report'?'项目首发 ':''}${escapeHTML(p.date)}</time></div><h2><button class="paper-title" data-paper="${p.id}">${escapeHTML(p.title)}</button></h2>${tldr(p)}${research(p)}</div><div class="card-foot"><div class="tags">${p.tags.filter(t=>!/^M[0-3]$/.test(t)).map(t=>`<button class="tag" data-tag="${escapeHTML(t)}">#${escapeHTML(LABELS[t]||t)}</button>`).join('')}</div><div class="card-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">${CONTENT_TYPES[p.contentType]||'论文'} ↗</a>${resourceLinks(p)}<button class="read-action" data-paper="${p.id}">查看研究表 →</button></div></div></article>`;
 }
+function resourceLinks(p){return (p.curated?p.links||[]:[]).filter(l=>l.url!==p.url).map(l=>`<a href="${escapeHTML(safeURL(l.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(l.label)} ↗</a>`).join('');}
 function markdownInline(s){return markdown(s).replace(/^<p>/,'').replace(/<\/p>\n?$/,'');}
 function notesCaveats(n){return (n.caveats||[]).map(c=>`<p class="source-caveat"><b>原文口径补注：</b>${escapeHTML(c.text)} <a href="${escapeHTML(safeURL(c.url))}" target="_blank" rel="noopener noreferrer">核对来源 ↗</a></p>`).join('');}
 function render(){
  const items=filtered(),max=Math.max(1,Math.ceil(items.length/PAGE_SIZE));state.page=Math.min(state.page,max);syncControls();
- $('#result-count').innerHTML=`<strong>${items.length}</strong> 篇论文 <span style="color:var(--muted)">/ 共 ${papers.length} 篇</span>`;
- $('#results').innerHTML=items.length?items.slice((state.page-1)*PAGE_SIZE,state.page*PAGE_SIZE).map(card).join(''):'<div class="empty"><h3>没有匹配的论文</h3><p>试试更宽的关键词，或减少筛选条件。未标注标签不代表论文没有该机制。</p><button class="secondary" data-reset>清除全部筛选</button></div>';
+ $('#result-count').innerHTML=`<strong>${items.length}</strong> 条内容 <span style="color:var(--muted)">/ 共 ${papers.length} 条</span>`;
+ $('#results').innerHTML=items.length?items.slice((state.page-1)*PAGE_SIZE,state.page*PAGE_SIZE).map(card).join(''):'<div class="empty"><h3>没有匹配的内容</h3><p>试试更宽的关键词，或减少筛选条件。未标注标签不代表论文没有该机制。</p><button class="secondary" data-reset>清除全部筛选</button></div>';
  let chips=[];if(state.q)chips.push(['q',state.q]);if(state.category)chips.push(['category',CATEGORY[state.category]]);if(METHODS[state.quick])chips.push(['quick',METHODS[state.quick]]);if(state.year)chips.push(['year',state.year]);for(const [g,values]of Object.entries(state.facets))values.forEach(v=>chips.push([g,v]));state.tags.forEach(t=>chips.push(['tag',t]));
  $('#active-filters').innerHTML=chips.map(([g,v])=>`<button class="remove-filter" data-remove="${g}" data-value="${escapeHTML(v)}">${escapeHTML(LABELS[v]||v)} ×</button>`).join('');
  $('#pagination').innerHTML=max>1?`<button data-page="${state.page-1}" ${state.page===1?'disabled':''}>←</button>`+Array.from({length:max},(_,i)=>i+1).filter(n=>n===1||n===max||Math.abs(n-state.page)<2).map((n,i,ns)=>(i&&n>ns[i-1]+1?'<span>…</span>':'')+`<button data-page="${n}" ${n===state.page?'aria-current="page"':''}>${n}</button>`).join('')+`<button data-page="${state.page+1}" ${state.page===max?'disabled':''}>→</button>`:'';
@@ -148,12 +161,12 @@ function prepareDocument(){
  headings.forEach((h,i)=>{const b=document.createElement('button');b.className='secondary';b.dataset.section=h.id;b.textContent=h.textContent;nav.append(b);});
  content.querySelector('h1')?.after(nav);
 }
-function showView(){$('.page-heading').hidden=state.view==='paper';if(state.view==='library')state.paper='';if(state.view==='paper'){renderReading();return;}const library=state.view==='library';$('#library-view').hidden=!library;$('#document-view').hidden=library;document.querySelectorAll('.topbar [data-view]').forEach(b=>b.classList.toggle('nav-active',b.dataset.view===state.view));if(!library){if(['guide','notes'].includes(state.view)){$('#document-content').innerHTML=markdown(state.view==='guide'?dataset.readingGuide:dataset.researchMap);prepareDocument();return;}const extra=state.view==='framework'?`## 网站阅读口径\n\n原记录：${dataset.originalCount} 篇；本轮补充：${papers.length-dataset.originalCount} 篇。每篇维护一张原文定位表，拆开进化、调试和最终测试。历史笔记保留下载。\n\n- **代表性**沿用原记录的 C / K / R，不与证据强度合并。\n- **Train → selection → test**为已明确记录三阶段边界的条目；“有留出结果”不自动等于完全隔离的最终测试。混合协议必须看任务级描述。\n- **标签**来自原始显式标签与按同篇字段整理的标注；缺标签表示待补全，不表示机制不存在。\n- **新增文章**标注核对范围与原始来源。初步定位不自动升为 Core。\n- **日期**保留原记录精度；arXiv 文章使用首次提交时间，官方项目报告单独标注项目首发日期。\n\n`:'';$('#document-content').innerHTML=markdown(extra+(state.view==='framework'?'## 分类与标签\n\n一级：Methods、Evaluation、Dataset、Theory。\n\nMethods 按变化对象分为 Harness 进化、产物进化（不改 harness 和模型参数）、模型参数进化、Harness + 模型参数进化。联合进化架构不等于已验证多代联合闭环，需逐篇看证据。\n\nCore / Key 是阅读优先级；反馈、执行者、改进层级和数据隔离是独立筛选维度。Dataset 当前没有独立收录项，不把所有评测框架硬归为数据集。\n\n原始笔记保留供追溯；全部条目统一使用逐行来源表。原文缺项与协议冲突明确列出，推断不作为论文事实。':dataset.conclusions));}}
+function showView(){$('.page-heading').hidden=state.view==='paper';if(state.view==='library')state.paper='';if(state.view==='paper'){renderReading();return;}const library=state.view==='library';$('#library-view').hidden=!library;$('#document-view').hidden=library;document.querySelectorAll('.topbar [data-view]').forEach(b=>b.classList.toggle('nav-active',b.dataset.view===state.view));if(!library){if(['guide','notes'].includes(state.view)){$('#document-content').innerHTML=markdown(state.view==='guide'?dataset.readingGuide:dataset.researchMap);prepareDocument();return;}const extra=state.view==='framework'?`## 网站阅读口径\n\n原记录：${dataset.originalCount} 篇；本轮补充：${papers.length-dataset.originalCount} 篇。实证论文维护原文定位表，拆开进化、调试和最终测试；综述、仓库和博客说明各自的范围、机制和证据。历史笔记保留下载。\n\n- **代表性**沿用原记录的 C / K / R，不与证据强度合并。\n- **Train → selection → test**为已明确记录三阶段边界的条目；“有留出结果”不自动等于完全隔离的最终测试。混合协议必须看任务级描述。\n- **标签**来自原始显式标签与按同篇字段整理的标注；缺标签表示待补全，不表示机制不存在。\n- **新增文章**标注核对范围与原始来源。初步定位不自动升为 Core。\n- **日期**保留原记录精度；arXiv 文章使用首次提交时间，官方项目报告单独标注项目首发日期。缺少明确发布日期的仓库／报告显示收录日期，不能将其视为首发时间。\n\n`:'';$('#document-content').innerHTML=markdown(extra+(state.view==='framework'?'## 分类与标签\n\n研究分类：Methods、Evaluation、Dataset、Theory，以及综述与观点、工具与基础设施。内容类型（论文、技术报告、综述、仓库、博客）独立筛选，不与研究分类混用。\n\nMethods 按变化对象分为 Harness 进化、产物进化（不改 harness 和模型参数）、模型参数进化、Harness + 模型参数进化。联合进化架构不等于已验证多代联合闭环，需逐篇看证据。\n\nCore / Key 是阅读优先级；反馈、执行者、改进层级和数据隔离是独立筛选维度。Dataset 当前没有独立收录项，不把所有评测框架硬归为数据集。\n\n原始笔记保留供追溯；全部条目统一使用逐行来源表。原文缺项与协议冲突明确列出，推断不作为论文事实。':dataset.conclusions));}}
 function reset(){state={...state,q:'',category:'',quick:'all',year:'',page:1,facets:{},tags:[],paper:'',view:'library'};render();}
 function readingSections(p){return [{title:'全部研究维度',body:p.profile.fields.map(f=>f.label+'：'+f.value).join('\n\n')}];}
 function renderReading(){const p=papers.find(p=>p.id===state.paper);if(!p){state.view='library';state.paper='';showView();return;}
  $('#library-view').hidden=true;$('#document-view').hidden=false;document.querySelectorAll('.topbar [data-view]').forEach(b=>b.classList.remove('nav-active'));
- $('#document-content').innerHTML=`<div class="reader-top"><button class="secondary" data-view="library">← 返回论文列表</button><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><time>${escapeHTML(p.date)}</time></div><h1 class="reader-title">${escapeHTML(p.title)}</h1><div class="detail-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">${p.publicationType==='project-report'?'阅读官方报告':'阅读论文'} ↗</a><button id="copy-link" class="text-button">复制此篇链接</button><button class="text-button" data-view="guide">概念与实验分数说明</button></div>${tldr(p)}${research(p)}<footer class="reader-sources"><p>每行“原文位置”指向对应章节；不同实验的数据协议分别说明。原文没有明确交代或口径冲突的内容列在证据边界中。</p><a href="data/updated-research-notes.md" download>历史详细笔记（保留原始版本） ↓</a></footer>`;
+ $('#document-content').innerHTML=`<div class="reader-top"><button class="secondary" data-view="library">← 返回内容列表</button><span>${CATEGORY[p.category]}${p.methodType?' / '+METHODS[p.methodType]:''}</span><time>${p.dateLabel?escapeHTML(p.dateLabel)+' ':''}${escapeHTML(p.date)}</time></div><h1 class="reader-title">${escapeHTML(p.title)}</h1><div class="detail-links"><a href="${escapeHTML(safeURL(p.url))}" target="_blank" rel="noopener noreferrer">阅读${CONTENT_TYPES[p.contentType]||'论文'} ↗</a>${resourceLinks(p)}<button id="copy-link" class="text-button">复制此篇链接</button><button class="text-button" data-view="guide">概念与实验分数说明</button></div>${tldr(p)}${research(p)}<footer class="reader-sources"><p>每行“原文位置”指向对应章节；不同实验的数据协议分别说明。原文没有明确交代或口径冲突的内容列在证据边界中。</p><a href="data/updated-research-notes.md" download>历史详细笔记（保留原始版本） ↓</a></footer>`;
 }
 function openPaper(id){if(!papers.some(p=>p.id===id))return;state.paper=id;state.view='paper';render();$('#document-view').scrollIntoView({block:'start'});}
 function bind(){
@@ -181,6 +194,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=attributions-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='论文数据加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=library-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

@@ -5,7 +5,7 @@ const path = require('node:path');
 const root = path.resolve(__dirname,'..');
 const {matches,text}=require('../assets/app.js');
 const data=JSON.parse(fs.readFileSync(path.join(root,'data/papers.json'),'utf8'));
-const papers=data.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));
+const papers=data.papers.filter(p=>!p.curated).map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));
 const state=()=>({q:'',category:'',quick:'all',year:'',tags:[],facets:{}});
 const query=s=>papers.filter(p=>matches(p,{...state(),...s}));
 const additions=JSON.parse(fs.readFileSync(path.join(root,'data/additions.json'),'utf8'));
@@ -25,7 +25,7 @@ assert(query({tags:['ExecutableVerifier','RegressionGate']}).every(p=>p.tags.inc
 for(const p of papers){assert(p.title&&p.date&&p.categories.length&&p.depth.length&&p.review);assert(p.url.startsWith('https://'));assert(p.fields['本质定位'],p.title);}
 console.log(`Passed: ${papers.length} unique records; ${additions.length} additions; keyword, compound facets, date, evidence boundaries and source metadata.`);
 const get=id=>papers.find(p=>p.id===id);
-assert.deepEqual(Object.keys(data.taxonomy),['methods','evaluation','dataset','theory']);
+assert.deepEqual(Object.keys(data.taxonomy),['methods','evaluation','dataset','theory','overview','resources']);
 assert.deepEqual(Object.keys(data.methodTypes),['harness','artifact','weights','joint']);
 for(const p of papers){
  assert(Object.hasOwn(data.taxonomy,p.category),p.id);
@@ -194,3 +194,5 @@ for(const p of papers){
 }
 assert(query({facets:{institution:['org:bytedance-seed'],priority:['C']}}).every(p=>p.priority==='C'));
 console.log('Passed: sourced institution/scholar tags and combined filters.');
+
+require('./check_library.js');
