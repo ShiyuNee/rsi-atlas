@@ -147,7 +147,7 @@ assert(feedbackText('2608.09819').includes('Claude Opus 4.6'));
 assert(feedbackText('2608.09819').includes('GLM-5.2'));
 assert(feedbackText('2608.31111').includes('八项检查表'));
 assert(feedbackText('2608.31111').includes('不返回试题'));
-assert(feedbackText('2608.31100').includes('不返回代理'));
+assert(feedbackText('2608.31100').includes('不返回 agent'));
 assert(feedbackText('2608.11350').includes('只用于诊断'));
 assert(feedbackText('2603.18743').includes('参考答案'));
 assert(feedbackText('2608.13951').includes('不是')||feedbackText('2608.13951').includes('不能'));
