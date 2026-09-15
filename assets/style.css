@@ -57,3 +57,6 @@
 .dimension-table thead th:last-child{width:auto;font-size:14px}@media(max-width:760px){.dimension-table td:last-child:before{content:none}.dimension-table td:last-child{border-top:0;font-size:14px}}
 
 .paper-tldr .tldr-method{margin:0 0 10px;line-height:1.8}.paper-tldr .tldr-method>b{font-weight:600}.paper-tldr li>div>b{font-weight:600}
+
+/* Primary content navigation is separate from research facets. */
+.library-sections{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 28px}.library-section{display:flex;align-items:center;gap:12px;min-height:76px;padding:18px 20px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink,#122a34);font:inherit;font-size:20px;font-weight:650;text-align:left;cursor:pointer}.library-section small{margin-left:auto;font-size:13px;font-weight:400;opacity:.7}.library-section .section-icon{font-size:25px}.library-section.selected{background:#122a34;color:#fff;border-color:#122a34;box-shadow:inset 0 -4px #7be0bd}.library-section:hover{border-color:#23866d}.library-section:focus-visible{outline:3px solid #23866d;outline-offset:3px}[hidden]{display:none!important}@media(max-width:600px){.library-sections{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:20px}.library-section{min-height:64px;padding:12px;font-size:18px;gap:8px}}

@@ -3,6 +3,8 @@
 const CATEGORY={methods:'Methods · 方法',evaluation:'Evaluation · 评估',dataset:'Dataset · 数据集',theory:'Theory · 理论',overview:'综述与观点',resources:'工具与基础设施'};
 const CONTENT_TYPES={paper:'论文',report:'技术报告',survey:'综述',repository:'仓库',blog:'博客'};
 const METHODS={harness:'Harness 进化',artifact:'产物进化',weights:'模型参数进化',joint:'Harness + 模型参数进化'};
+const SECTIONS={all:{label:'全部',icon:'▦',types:[]},papers:{label:'论文',icon:'▤',types:['paper','report','survey']},repositories:{label:'仓库',icon:'⌘',types:['repository']},blogs:{label:'博客',icon:'✎',types:['blog']}};
+function selectedSection(){const types=state.facets.type||[];return Object.keys(SECTIONS).find(k=>(types.length===SECTIONS[k].types.length||k==='papers'&&types.length>0)&&types.every(t=>SECTIONS[k].types.includes(t)))||'all';}
 const GROUPS = [
  ['type','内容类型',Object.keys(CONTENT_TYPES)],
  ['priority','阅读优先级',['C','K','R']],
@@ -59,7 +61,16 @@ function filtered(){return papers.filter(p=>matches(p,state)).sort((a,b)=>{
 });}
 function readURL(){const u=new URLSearchParams(location.search);state.q=u.get('q')||'';state.category=CATEGORY[u.get('category')]?u.get('category'):'';state.quick=['all','harness','artifact','weights','joint','core','isolated','new'].includes(u.get('quick'))?u.get('quick'):'all';state.sort=['priority','newest','oldest','title'].includes(u.get('sort'))?u.get('sort'):'priority';state.year=u.get('year')||'';state.page=Math.max(1,parseInt(u.get('page'))||1);state.tags=u.getAll('tag');state.facets={};for(const [g]of GROUPS)state.facets[g]=u.getAll(g);if(METHODS[state.quick])state.category='methods';if(state.quick==='core'){state.facets.priority=['C'];state.quick='all';}if(state.quick==='isolated'){state.facets.protocol=['Train → selection → test'];state.quick='all';}state.paper=u.get('paper')||'';state.view=state.paper?'paper':(['framework','notes','guide'].includes(u.get('view'))?u.get('view'):'library');}
 function writeURL(){const u=new URLSearchParams();for(const k of ['q','category','year','paper'])if(state[k])u.set(k,state[k]);if(state.quick!=='all')u.set('quick',state.quick);if(state.sort!=='priority')u.set('sort',state.sort);if(state.page>1)u.set('page',state.page);if(!['library','paper'].includes(state.view))u.set('view',state.view);for(const [g,vs]of Object.entries(state.facets))vs.forEach(v=>u.append(g,v));state.tags.forEach(t=>u.append('tag',t));history.replaceState(null,'',location.pathname+(u.size?'?'+u:''));}
-function syncControls(){ $('.quick-filters').hidden=!!state.category&&state.category!=='methods'; $('#search').value=state.q;$('#year').value=state.year;$('#sort').value=state.sort;document.querySelectorAll('[data-quick]').forEach(b=>b.classList.toggle('selected',b.dataset.quick===state.quick));document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('selected',b.dataset.category===state.category));document.querySelectorAll('[data-group]').forEach(el=>el.checked=(state.facets[el.dataset.group]||[]).includes(el.value));}
+function syncControls(){
+ const section=selectedSection(),resource=section==='repositories'||section==='blogs';
+ $('#library-sections').innerHTML=Object.entries(SECTIONS).map(([id,c])=>`<button class="library-section ${section===id?'selected':''}" data-library-section="${id}" aria-pressed="${section===id}"><span class="section-icon" aria-hidden="true">${c.icon}</span><span>${c.label}</span><small>${papers.filter(p=>!c.types.length||c.types.includes(p.contentType)).length}</small></button>`).join('');
+ $('#category-shortcuts').hidden=resource;
+ const cohort=papers.filter(p=>!(state.facets.type||[]).length||state.facets.type.includes(p.contentType));
+ $('#category-shortcuts').querySelectorAll('[data-category]').forEach(b=>{b.querySelector('small').textContent=cohort.filter(p=>!b.dataset.category||p.category===b.dataset.category).length;});
+ $('.research-legend').hidden=resource;
+ $('.beginner-note').hidden=resource;
+ document.querySelectorAll('[data-facet]').forEach(el=>el.hidden=resource&&!['priority','institution','scholar'].includes(el.dataset.facet));
+ $('.quick-filters').hidden=resource||(!!state.category&&state.category!=='methods'); $('#search').value=state.q;$('#year').value=state.year;$('#sort').value=state.sort;document.querySelectorAll('[data-quick]').forEach(b=>b.classList.toggle('selected',b.dataset.quick===state.quick));document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('selected',b.dataset.category===state.category));document.querySelectorAll('[data-group]').forEach(el=>el.checked=(state.facets[el.dataset.group]||[]).includes(el.value));}
 function buildFilters(){
  for(const [tag,entry] of Object.entries(dataset.attributionCatalog||{}))LABELS[tag]=entry.label;
  for(const kind of ['institution','scholar'])GROUPS.find(g=>g[0]===kind)[2]=[...new Set(papers.flatMap(p=>groupValues(p,kind)))].sort((a,b)=>LABELS[a].localeCompare(LABELS[b]));
@@ -67,7 +78,7 @@ function buildFilters(){
  $('#category-shortcuts').innerHTML=Object.entries({'':'全部内容',...CATEGORY}).map(([id,name])=>`<button data-category="${id}"><span aria-hidden="true">${icons[id]}</span> ${name} <small>${papers.filter(p=>!id||p.category===id).length}</small></button>`).join('');
  $('#categories').innerHTML=`<button class="category" data-category=""><span>全部内容</span><span class="count">${papers.length}</span></button>`+Object.entries(CATEGORY).map(([id,name])=>`<button class="category" data-category="${id}"><span>${name}</span><span class="count">${papers.filter(p=>p.categories.includes(id)).length}</span></button>`).join('');
  GROUPS.find(g=>g[0]==='protocol')[2]=[...new Set(papers.map(p=>p.protocol))].sort();
- $('#facets').innerHTML=GROUPS.map(([id,title,values],i)=>`<details class="facet" ${i===0||id==='content'?'open':''}><summary>${title}</summary><div class="facet-options">${values.map(v=>`<label><input type="checkbox" data-group="${id}" value="${escapeHTML(v)}"><span>${escapeHTML(LABELS[v]||v)}</span><small>${papers.filter(p=>groupValues(p,id).includes(v)).length}</small></label>`).join('')}</div></details>`).join('');
+ $('#facets').innerHTML=GROUPS.filter(g=>g[0]!=='type').map(([id,title,values],i)=>`<details class="facet" data-facet="${id}" ${i===0||id==='content'?'open':''}><summary>${title}</summary><div class="facet-options">${values.map(v=>`<label><input type="checkbox" data-group="${id}" value="${escapeHTML(v)}"><span>${escapeHTML(LABELS[v]||v)}</span><small>${papers.filter(p=>groupValues(p,id).includes(v)).length}</small></label>`).join('')}</div></details>`).join('');
  $('#year').innerHTML='<option value="">全部年份</option>'+[...new Set(papers.map(p=>p.year))].sort().reverse().map(y=>`<option>${escapeHTML(y)}</option>`).join('');
  $('#total').textContent=papers.length;$('#updated').textContent=dataset.updated;
 }
@@ -143,7 +154,7 @@ function render(){
  const items=filtered(),max=Math.max(1,Math.ceil(items.length/PAGE_SIZE));state.page=Math.min(state.page,max);syncControls();
  $('#result-count').innerHTML=`<strong>${items.length}</strong> 条内容 <span style="color:var(--muted)">/ 共 ${papers.length} 条</span>`;
  $('#results').innerHTML=items.length?items.slice((state.page-1)*PAGE_SIZE,state.page*PAGE_SIZE).map(card).join(''):'<div class="empty"><h3>没有匹配的内容</h3><p>试试更宽的关键词，或减少筛选条件。未标注标签不代表论文没有该机制。</p><button class="secondary" data-reset>清除全部筛选</button></div>';
- let chips=[];if(state.q)chips.push(['q',state.q]);if(state.category)chips.push(['category',CATEGORY[state.category]]);if(METHODS[state.quick])chips.push(['quick',METHODS[state.quick]]);if(state.year)chips.push(['year',state.year]);for(const [g,values]of Object.entries(state.facets))values.forEach(v=>chips.push([g,v]));state.tags.forEach(t=>chips.push(['tag',t]));
+ let chips=[];if(state.q)chips.push(['q',state.q]);if(state.category)chips.push(['category',CATEGORY[state.category]]);if(METHODS[state.quick])chips.push(['quick',METHODS[state.quick]]);if(state.year)chips.push(['year',state.year]);for(const [g,values]of Object.entries(state.facets))if(g!=='type'||selectedSection()==='all')values.forEach(v=>chips.push([g,v]));state.tags.forEach(t=>chips.push(['tag',t]));
  $('#active-filters').innerHTML=chips.map(([g,v])=>`<button class="remove-filter" data-remove="${g}" data-value="${escapeHTML(v)}">${escapeHTML(LABELS[v]||v)} ×</button>`).join('');
  $('#pagination').innerHTML=max>1?`<button data-page="${state.page-1}" ${state.page===1?'disabled':''}>←</button>`+Array.from({length:max},(_,i)=>i+1).filter(n=>n===1||n===max||Math.abs(n-state.page)<2).map((n,i,ns)=>(i&&n>ns[i-1]+1?'<span>…</span>':'')+`<button data-page="${n}" ${n===state.page?'aria-current="page"':''}>${n}</button>`).join('')+`<button data-page="${state.page+1}" ${state.page===max?'disabled':''}>→</button>`:'';
  showView();writeURL();
@@ -162,7 +173,7 @@ function prepareDocument(){
  content.querySelector('h1')?.after(nav);
 }
 function showView(){$('.page-heading').hidden=state.view==='paper';if(state.view==='library')state.paper='';if(state.view==='paper'){renderReading();return;}const library=state.view==='library';$('#library-view').hidden=!library;$('#document-view').hidden=library;document.querySelectorAll('.topbar [data-view]').forEach(b=>b.classList.toggle('nav-active',b.dataset.view===state.view));if(!library){if(['guide','notes'].includes(state.view)){$('#document-content').innerHTML=markdown(state.view==='guide'?dataset.readingGuide:dataset.researchMap);prepareDocument();return;}const extra=state.view==='framework'?`## 网站阅读口径\n\n原记录：${dataset.originalCount} 篇；本轮补充：${papers.length-dataset.originalCount} 篇。实证论文维护原文定位表，拆开进化、调试和最终测试；综述、仓库和博客说明各自的范围、机制和证据。历史笔记保留下载。\n\n- **代表性**沿用原记录的 C / K / R，不与证据强度合并。\n- **Train → selection → test**为已明确记录三阶段边界的条目；“有留出结果”不自动等于完全隔离的最终测试。混合协议必须看任务级描述。\n- **标签**来自原始显式标签与按同篇字段整理的标注；缺标签表示待补全，不表示机制不存在。\n- **新增文章**标注核对范围与原始来源。初步定位不自动升为 Core。\n- **日期**保留原记录精度；arXiv 文章使用首次提交时间，官方项目报告单独标注项目首发日期。缺少明确发布日期的仓库／报告显示收录日期，不能将其视为首发时间。\n\n`:'';$('#document-content').innerHTML=markdown(extra+(state.view==='framework'?'## 分类与标签\n\n研究分类：Methods、Evaluation、Dataset、Theory，以及综述与观点、工具与基础设施。内容类型（论文、技术报告、综述、仓库、博客）独立筛选，不与研究分类混用。\n\nMethods 按变化对象分为 Harness 进化、产物进化（不改 harness 和模型参数）、模型参数进化、Harness + 模型参数进化。联合进化架构不等于已验证多代联合闭环，需逐篇看证据。\n\nCore / Key 是阅读优先级；反馈、执行者、改进层级和数据隔离是独立筛选维度。Dataset 当前没有独立收录项，不把所有评测框架硬归为数据集。\n\n原始笔记保留供追溯；全部条目统一使用逐行来源表。原文缺项与协议冲突明确列出，推断不作为论文事实。':dataset.conclusions));}}
-function reset(){state={...state,q:'',category:'',quick:'all',year:'',page:1,facets:{},tags:[],paper:'',view:'library'};render();}
+function reset(){state={...state,q:'',category:'',quick:'all',year:'',page:1,facets:{type:state.facets.type||[]},tags:[],paper:'',view:'library'};render();}
 function readingSections(p){return [{title:'全部研究维度',body:p.profile.fields.map(f=>f.label+'：'+f.value).join('\n\n')}];}
 function renderReading(){const p=papers.find(p=>p.id===state.paper);if(!p){state.view='library';state.paper='';showView();return;}
  $('#library-view').hidden=true;$('#document-view').hidden=false;document.querySelectorAll('.topbar [data-view]').forEach(b=>b.classList.remove('nav-active'));
@@ -178,6 +189,7 @@ function bind(){
  if(b.dataset.reading){state.facets.content=['完整专题解读'];state.paper='';state.view='library';state.page=1;render();return;}
  if(b.dataset.section){document.getElementById(b.dataset.section)?.scrollIntoView({block:'start',behavior:'smooth'});return;}
  if(b.dataset.view){state.paper='';state.view=b.dataset.view;render();$('#main').scrollIntoView({block:'start'});return;}
+ if(b.hasAttribute('data-library-section')){state={...state,q:'',category:'',quick:'all',year:'',page:1,tags:[],facets:{type:[...SECTIONS[b.dataset.librarySection].types]},paper:'',view:'library'};render();return;}
  if(b.hasAttribute('data-category')){state.category=b.dataset.category;state.quick='all';state.paper='';state.view='library';state.page=1;render();return;}
  if(b.dataset.quick){state.quick=b.dataset.quick;state.category='methods';state.page=1;render();return;}
  if(b.dataset.tag){if(!state.tags.includes(b.dataset.tag))state.tags.push(b.dataset.tag);state.page=1;render();return;}
@@ -194,6 +206,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=library-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=sections-20260915');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
