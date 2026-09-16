@@ -3,6 +3,9 @@
 const CATEGORY={methods:'Methods · 方法',evaluation:'Evaluation · 评估',dataset:'Dataset · 数据集',theory:'Theory · 理论',overview:'综述与观点',resources:'工具与基础设施'};
 const CONTENT_TYPES={paper:'论文',report:'技术报告',survey:'综述',repository:'仓库',blog:'博客'};
 const METHODS={harness:'Harness 进化',artifact:'产物进化',weights:'模型参数进化',joint:'Harness + 模型参数进化'};
+const HARNESS_PARTS={FullHarness:'全流程代码',Skill:'Skill · 技能说明',Memory:'Memory · 记忆',Prompt:'Prompt · 提示词',Workflow:'工作流与 agent 协作',Tool:'工具',Context:'上下文管理',HarnessCode:'运行代码',Evaluator:'评估器',Improver:'修改机制'};
+// Explicit complete-code scope in the maintained object dimension; not inferred from HarnessCode alone.
+const FULL_HARNESS_IDS=new Set(['2505.22954','2603.19461','2603.28052','2408.08435','2410.04444','2607.13683','2504.15228']);
 const SECTIONS={all:{label:'全部',icon:'▦',types:[]},papers:{label:'论文',icon:'▤',types:['paper','report','survey']},repositories:{label:'仓库',icon:'⌘',types:['repository']},blogs:{label:'博客',icon:'✎',types:['blog']}};
 function selectedSection(){const types=state.facets.type||[];return Object.keys(SECTIONS).find(k=>(types.length===SECTIONS[k].types.length||k==='papers'&&types.length>0)&&types.every(t=>SECTIONS[k].types.includes(t)))||'all';}
 const GROUPS = [
@@ -12,6 +15,7 @@ const GROUPS = [
  ['scholar','学者',[]],
  ['content','历史笔记深度',['完整专题解读','原记录详细笔记','结构化介绍']],
  ['verified','历史全文复核',['原文关键段落已复核','沿用原记录']],
+ ['harnessPart','Harness 修改范围',Object.keys(HARNESS_PARTS)],
  ['target','什么在变',['HarnessCode','Prompt','Context','MemoryContent','MemoryMechanism','Skill','Tool','Workflow','Subagent','Evaluator','Data','Weights','Improver']],
  ['modifier','谁来改',['SameModel','SeparateEvolver','StrongerBuilder','LearnedUpdater','JointEvolution']],
  ['feedback','反馈来源',['ExecutableVerifier','EnvironmentReward','BenchmarkScore','GoldLabel','LLMJudge','SelfFeedback','HumanDemo','PairwiseFeedback','ProcessReward']],
@@ -20,6 +24,7 @@ const GROUPS = [
  ['reading','原始收录状态',['原记录 · 详细介绍','原记录 · 横向定位','新增 · 方法与实验设置核对','新增 · 摘要核对']]
 ];
 const LABELS={C:'Core · 代表作',K:'Key · 重点',R:'Related · 相关',EditorWeights:'修改者的参数',HarnessCode:'Harness code',MemoryContent:'Memory 内容',MemoryMechanism:'Memory 机制',SameModel:'同一模型',SeparateEvolver:'独立 Evolver',StrongerBuilder:'更强 Builder',LearnedUpdater:'训练过的 Updater',JointEvolution:'联合进化',ExecutableVerifier:'可执行 Verifier',EnvironmentReward:'环境 Reward',BenchmarkScore:'Benchmark 分数',GoldLabel:'Gold label / 答案',LLMJudge:'LLM judge',SelfFeedback:'模型自反馈',HumanDemo:'人类示范',PairwiseFeedback:'成对偏好',ProcessReward:'过程 Reward'};
+Object.assign(LABELS,HARNESS_PARTS);
 Object.assign(LABELS,CONTENT_TYPES,{Survey:'综述',RSIRoadmap:'RSI 发展路线',Infrastructure:'基础设施',IndustryReport:'产业观察',ResearchAutomation:'自动化研究'});
 Object.assign(LABELS,{"HarnessCode": "运行框架代码", "Prompt": "提示词", "Context": "上下文", "MemoryContent": "记忆内容", "MemoryMechanism": "记忆管理机制", "Skill": "技能说明", "Tool": "工具", "Workflow": "工作流程", "Subagent": "子代理", "Evaluator": "评估器", "Data": "学习数据", "Weights": "模型参数", "Improver": "修改机制", "SameModel": "同一模型修改", "SeparateEvolver": "独立修改者", "StrongerBuilder": "更强模型构建", "LearnedUpdater": "经过训练的修改者", "ExecutableVerifier": "程序检查任务结果", "EnvironmentReward": "环境给出的奖励", "BenchmarkScore": "基准评测分数", "GoldLabel": "标准标签或答案", "LLMJudge": "模型按要求评审", "ProcessReward": "中间步骤奖励", "OfflineSearch": "部署前搜索", "Online": "执行任务时更新", "Prequential": "先做当前任务，再用其反馈学习", "Archive": "保存历史版本", "Population": "同时维护多个候选", "Sequential": "逐轮更新", "CoEvolution": "共同进化", "Continual": "持续学习", "Streaming": "连续任务流"});
 Object.assign(LABELS,{"B-RSI":"递归改进评测","B-Reliability":"可靠性评测","CapabilityCeiling":"基础能力上限","CrossBenchmark":"跨评测任务迁移","CrossModel":"跨模型迁移","HeldOut":"使用留出数据","LongHorizon":"长程任务","RegressionGate":"接受修改前检查旧能力","RewardHacking":"评分规则被利用","SameSet":"同一题集参与改进与评价"});
@@ -42,7 +47,7 @@ function markdown(s){
  const d=document.createElement('div');d.append(t.content);return d.innerHTML;
 }
 function field(p,...keys){for(const key of keys){if(p.fields[key])return p.fields[key];}return '';}
-function groupValues(p,id){if(id==='type')return [p.contentType||'paper'];if(['institution','scholar'].includes(id))return (p.attributions||[]).filter(a=>a.kind===id).map(a=>a.tag);if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
+function groupValues(p,id){if(id==='harnessPart'){if(!['harness','joint'].includes(p.methodType))return [];return [...p.tags,...(p.tags.some(t=>['MemoryContent','MemoryMechanism'].includes(t))?['Memory']:[]),...(p.tags.includes('Subagent')?['Workflow']:[]),...(FULL_HARNESS_IDS.has(p.id)?['FullHarness']:[])];}if(id==='type')return [p.contentType||'paper'];if(['institution','scholar'].includes(id))return (p.attributions||[]).filter(a=>a.kind===id).map(a=>a.tag);if(id==='gaps')return p.profile?.missing||[];if(id==='content')return [p.readingNote?'完整专题解读':p.details.length?'原记录详细笔记':'结构化介绍'];if(id==='priority')return [p.priority];if(id==='verified')return [p.reviewed?'原文关键段落已复核':'沿用原记录'];if(id==='protocol')return [p.protocol];if(id==='depth')return p.depth;if(id==='reading')return [p.review];return p.tags;}
 function matches(p,s){
  if(s.category&&!p.categories.includes(s.category))return false;
  if(METHODS[s.quick]&&p.methodType!==s.quick)return false;
@@ -70,7 +75,8 @@ function syncControls(){
  $('.research-legend').hidden=resource;
  $('.beginner-note').hidden=resource;
  document.querySelectorAll('[data-facet]').forEach(el=>el.hidden=resource&&!['priority','institution','scholar'].includes(el.dataset.facet));
- $('.quick-filters').hidden=resource||(!!state.category&&state.category!=='methods'); $('#search').value=state.q;$('#year').value=state.year;$('#sort').value=state.sort;document.querySelectorAll('[data-quick]').forEach(b=>b.classList.toggle('selected',b.dataset.quick===state.quick));document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('selected',b.dataset.category===state.category));document.querySelectorAll('[data-group]').forEach(el=>el.checked=(state.facets[el.dataset.group]||[]).includes(el.value));}
+ const parts=$('#harness-parts');parts.hidden=resource||(!!state.category&&state.category!=='methods')||['weights','artifact'].includes(state.quick);parts.innerHTML='<strong>Harness 修改范围</strong><p>可多选；同一篇可涉及多个组件。全流程指允许改任务执行的整体代码，不表示所有组件都实际改过。</p>'+Object.entries(HARNESS_PARTS).map(([id,label])=>`<label><input type="checkbox" data-group="harnessPart" value="${id}" ${state.facets.harnessPart?.includes(id)?'checked':''}>${label} <small>${cohort.filter(p=>(!METHODS[state.quick]||p.methodType===state.quick)&&groupValues(p,'harnessPart').includes(id)).length}</small></label>`).join('');
+ $('.quick-filters').hidden=resource||(!!state.category&&state.category!=='methods'); $('.target-heading').hidden=$('.quick-filters').hidden; $('#search').value=state.q;$('#year').value=state.year;$('#sort').value=state.sort;document.querySelectorAll('[data-quick]').forEach(b=>b.classList.toggle('selected',b.dataset.quick===state.quick));document.querySelectorAll('[data-category]').forEach(b=>b.classList.toggle('selected',b.dataset.category===state.category));document.querySelectorAll('[data-group]').forEach(el=>el.checked=(state.facets[el.dataset.group]||[]).includes(el.value));}
 function buildFilters(){
  for(const [tag,entry] of Object.entries(dataset.attributionCatalog||{}))LABELS[tag]=entry.label;
  for(const kind of ['institution','scholar'])GROUPS.find(g=>g[0]===kind)[2]=[...new Set(papers.flatMap(p=>groupValues(p,kind)))].sort((a,b)=>LABELS[a].localeCompare(LABELS[b]));
@@ -78,7 +84,7 @@ function buildFilters(){
  $('#category-shortcuts').innerHTML=Object.entries({'':'全部内容',...CATEGORY}).map(([id,name])=>`<button data-category="${id}"><span aria-hidden="true">${icons[id]}</span> ${name} <small>${papers.filter(p=>!id||p.category===id).length}</small></button>`).join('');
  $('#categories').innerHTML=`<button class="category" data-category=""><span>全部内容</span><span class="count">${papers.length}</span></button>`+Object.entries(CATEGORY).map(([id,name])=>`<button class="category" data-category="${id}"><span>${name}</span><span class="count">${papers.filter(p=>p.categories.includes(id)).length}</span></button>`).join('');
  GROUPS.find(g=>g[0]==='protocol')[2]=[...new Set(papers.map(p=>p.protocol))].sort();
- $('#facets').innerHTML=GROUPS.filter(g=>!['type','content','verified','depth','reading'].includes(g[0])).map(([id,title,values],i)=>`<details class="facet" data-facet="${id}" ${i===0||id==='content'?'open':''}><summary>${title}</summary><div class="facet-options">${values.map(v=>`<label><input type="checkbox" data-group="${id}" value="${escapeHTML(v)}"><span>${escapeHTML(LABELS[v]||v)}</span><small>${papers.filter(p=>groupValues(p,id).includes(v)).length}</small></label>`).join('')}</div></details>`).join('');
+ $('#facets').innerHTML=GROUPS.filter(g=>!['type','target','harnessPart','content','verified','depth','reading'].includes(g[0])).map(([id,title,values],i)=>`<details class="facet" data-facet="${id}" ${i===0||id==='content'?'open':''}><summary>${title}</summary><div class="facet-options">${values.map(v=>`<label><input type="checkbox" data-group="${id}" value="${escapeHTML(v)}"><span>${escapeHTML(LABELS[v]||v)}</span><small>${papers.filter(p=>groupValues(p,id).includes(v)).length}</small></label>`).join('')}</div></details>`).join('');
  $('#year').innerHTML='<option value="">全部年份</option>'+[...new Set(papers.map(p=>p.year))].sort().reverse().map(y=>`<option>${escapeHTML(y)}</option>`).join('');
  $('#total').textContent=papers.length;$('#updated').textContent=dataset.updated;
 }
@@ -192,13 +198,13 @@ function bind(){
  if(b.dataset.view){state.paper='';state.view=b.dataset.view;render();$('#main').scrollIntoView({block:'start'});return;}
  if(b.hasAttribute('data-library-section')){state={...state,q:'',category:'',quick:'all',year:'',page:1,tags:[],facets:{type:[...SECTIONS[b.dataset.librarySection].types]},paper:'',view:'library'};render();return;}
  if(b.hasAttribute('data-category')){state.category=b.dataset.category;state.quick='all';state.paper='';state.view='library';state.page=1;render();return;}
- if(b.dataset.quick){state.quick=b.dataset.quick;state.category='methods';state.page=1;render();return;}
+ if(b.dataset.quick){state.quick=b.dataset.quick;if(['weights','artifact'].includes(state.quick))state.facets.harnessPart=[];state.category='methods';state.page=1;render();return;}
  if(b.dataset.tag){if(!state.tags.includes(b.dataset.tag))state.tags.push(b.dataset.tag);state.paper='';state.view='library';state.page=1;render();return;}
  if(b.dataset.page){state.page=+b.dataset.page;render();$('#results').scrollIntoView({block:'start'});return;}
  if(b.dataset.remove){const g=b.dataset.remove,v=b.dataset.value;if(g==='quick')state.quick='all';else if(['q','category','year'].includes(g))state[g]='';else if(g==='tag')state.tags=state.tags.filter(t=>t!==v);else state.facets[g]=(state.facets[g]||[]).filter(t=>t!==v);state.page=1;render();return;}
  if(b.id==='clear-side'||b.hasAttribute('data-reset'))reset();
  });
- document.addEventListener('change',e=>{const t=e.target;if(t.dataset.group){const g=t.dataset.group;state.facets[g]=state.facets[g]||[];state.facets[g]=t.checked?[...state.facets[g],t.value]:state.facets[g].filter(v=>v!==t.value);state.page=1;state.view='library';render();}if(t.id==='year'||t.id==='sort'){state[t.id]=t.value;state.page=1;render();}});
+ document.addEventListener('change',e=>{const t=e.target;if(t.dataset.group){const g=t.dataset.group;if(g==='harnessPart')state.category='methods';state.facets[g]=state.facets[g]||[];state.facets[g]=t.checked?[...state.facets[g],t.value]:state.facets[g].filter(v=>v!==t.value);state.page=1;state.view='library';render();}if(t.id==='year'||t.id==='sort'){state[t.id]=t.value;state.page=1;render();}});
  $('#search').addEventListener('input',e=>{state.q=e.target.value;state.page=1;render();});
  $('#paper-dialog').addEventListener('close',()=>{state.paper='';writeURL();});
  $('#paper-dialog').addEventListener('click',e=>{if(e.target===$('#paper-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
@@ -207,6 +213,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=reading-20260916');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=targets-20260916');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();
