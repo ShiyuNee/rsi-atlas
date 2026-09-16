@@ -1,10 +1,10 @@
 {
   "coverage": {
-    "total": 154,
+    "total": 166,
     "tables": 142,
     "withMissingFields": 0,
     "systemDataAudited": 142,
-    "sourcedLibraryAdditions": 12
+    "sourcedLibraryAdditions": 24
   },
   "readingCount": 9,
   "taxonomy": {
@@ -39,7 +39,7 @@
     "weights": "模型参数进化",
     "joint": "Harness + 模型参数进化"
   },
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "originalCount": 128,
   "papers": [
     {
@@ -89381,6 +89381,1908 @@
           ]
         }
       ]
+    },
+    {
+      "id": "shiyu-rsi-what-evolves",
+      "title": "什么在进化？——Model、Harness 与 Artifact 的三层地图",
+      "date": "2026-08-10",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "系列另一篇",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "fields": {
+        "本质定位": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "不同工作都叫 self-evolving，却可能只改答案、改运行框架或训练模型；混在一起比较，容易把产物变好当成系统能力变强。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "把“修改对象”与“反馈是否改进下一轮的方法”分开，说明三层如何相互促进；核心分类和案例来源明确归于原作者。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者：Shiyu Ni；个人研究博客系列。",
+          "reading": "先读 §2 三层划分，再读 §4 harness 的设计与优化，最后用 §8 的反馈、评估和递归问题检查具体案例。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者：Shiyu Ni；个人研究博客系列。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "先读 §2 三层划分，再读 §4 harness 的设计与优化，最后用 §8 的反馈、评估和递归问题检查具体案例。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 §1–2、§4、§6、§8；写在前面：来源与致谢；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。",
+        "author": "作者：Shiyu Ni；个人研究博客系列。",
+        "scope": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。",
+        "reading": "先读 §2 三层划分，再读 §4 harness 的设计与优化，最后用 §8 的反馈、评估和递归问题检查具体案例。",
+        "evidence": "依据 §1–2、§4、§6、§8；写在前面：来源与致谢；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "shiyu-rsi-loop-closes",
+      "title": "递归如何闭环？——从可修改范围到 Agent as Service",
+      "date": "2026-08-10",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "系列另一篇",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ],
+      "fields": {
+        "本质定位": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "迭代次数多不等于递归；同时开放数据、训练、环境和框架，也容易让能力提升的来源无法区分。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "先隔离单个研究对象，再测试联合改进，最后检查改进后的系统是否更会改进下一代；服务化的意义是明确实验边界。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者：Shiyu Ni；个人研究博客系列。",
+          "reading": "接上篇阅读：重点看各类 scope 的区别，以及如何固定其他组件、隔离评测、记录版本来判断改进来自哪里。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者：Shiyu Ni；个人研究博客系列。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "接上篇阅读：重点看各类 scope 的区别，以及如何固定其他组件、隔离评测、记录版本来判断改进来自哪里。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。",
+        "author": "作者：Shiyu Ni；个人研究博客系列。",
+        "scope": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。",
+        "reading": "接上篇阅读：重点看各类 scope 的区别，以及如何固定其他组件、隔离评测、记录版本来判断改进来自哪里。",
+        "evidence": "依据 定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "liu-self-evolving-taxonomy",
+      "title": "A Taxonomy of Self-evolving Agents",
+      "date": "2026-07-08",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap",
+        "person:shilong-liu"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+          "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+        }
+      ],
+      "fields": {
+        "本质定位": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "相似的自进化名称涵盖不同修改对象，难以判断工作之间的关系。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "再将 harness 展开为 prompt／memory、tool／skill 和多 agent；强调三层可相互促进，最终价值要看实际产物。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Shilong Liu。",
+          "reading": "适合作为分类入口；对照本站“什么在变”，再读文末三层边界及现实应用的讨论。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Shilong Liu。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "适合作为分类入口；对照本站“什么在变”，再读文末三层边界及现实应用的讨论。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+                "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。",
+        "author": "作者／发布者：Shilong Liu。",
+        "scope": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。",
+        "reading": "适合作为分类入口；对照本站“什么在变”，再读文末三层边界及现实应用的讨论。",
+        "evidence": "依据 Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "person:shilong-liu",
+          "label": "Shilong Liu",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "weng-harness-engineering",
+      "title": "Harness Engineering for Self-Improvement",
+      "date": "2026-07-04",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://lilianweng.github.io/posts/2026-07-04-harness/",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "ResearchAutomation",
+        "person:lilian-weng"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+          "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+        }
+      ],
+      "fields": {
+        "本质定位": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "模型能力之外，执行循环、状态管理和评估也决定 agent 能否稳定完成长期任务。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "串起工作流、文件记忆、并行子 agent，以及从上下文到框架代码、修改机制和参数联合优化的路径。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Lilian Weng。",
+          "reading": "先读三种设计模式，再按 Harness Optimization 对照论文；近期 RSI 路线是作者判断，不是已实现的统一实验结论。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Lilian Weng。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "先读三种设计模式，再按 Harness Optimization 对照论文；近期 RSI 路线是作者判断，不是已实现的统一实验结论。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+                "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。",
+        "author": "作者／发布者：Lilian Weng。",
+        "scope": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。",
+        "reading": "先读三种设计模式，再按 Harness Optimization 对照论文；近期 RSI 路线是作者判断，不是已实现的统一实验结论。",
+        "evidence": "依据 Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "person:lilian-weng",
+          "label": "Lilian Weng",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zhihu-self-evolving-guide",
+      "title": "自进化（Self-evolving／RSI），一篇就够了",
+      "date": "2026-09-16",
+      "dateLabel": "收录日期（原文发布日期未确认）",
+      "year": "2026",
+      "url": "https://zhuanlan.zhihu.com/p/2065227313973825752",
+      "priority": "R",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "引用线索 · 依据二手转述",
+      "reviewed": false,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "fields": {
+        "本质定位": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "据 Shiyu 的转述，文章通过案例解释产物、harness 和模型如何参与自进化。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "转述涉及 AlphaEvolve、Hermes、AIDE² 和联合优化，并保留预算对等、独立评测等反面检查。未直接读取原文，不扩写实验结论。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：知乎原作者（当前来源未提供署名）。",
+          "reading": "可先读 Shiyu 上篇对应案例，再打开知乎原文；这是一条引用线索，不是本站已直接核对的原文摘要。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：知乎原作者（当前来源未提供署名）。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "可先读 Shiyu 上篇对应案例，再打开知乎原文；这是一条引用线索，不是本站已直接核对的原文摘要。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 上篇：来源与致谢、§3、§4.8、§6；原文当前无法直接读取，只按 Shiyu 博客中明确引用的内容建立阅读入口。",
+            "sources": [
+              {
+                "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。",
+        "author": "作者／发布者：知乎原作者（当前来源未提供署名）。",
+        "scope": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。",
+        "reading": "可先读 Shiyu 上篇对应案例，再打开知乎原文；这是一条引用线索，不是本站已直接核对的原文摘要。",
+        "evidence": "依据 上篇：来源与致谢、§3、§4.8、§6；原文当前无法直接读取，只按 Shiyu 博客中明确引用的内容建立阅读入口。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "melon-self-evolve-rsi",
+      "title": "万字深度：从 Self-Evolve 到 RSI",
+      "date": "2026-09-16",
+      "dateLabel": "收录日期（原文发布日期未确认）",
+      "year": "2026",
+      "url": "https://www.xiaohongshu.com/discovery/item/6a71f07700000000220146bf",
+      "priority": "R",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "引用线索 · 依据二手转述",
+      "reviewed": false,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ],
+      "fields": {
+        "本质定位": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "据 Shiyu 的转述，只扩大可修改范围不足以解释改进的来源，也不足以证明改进者本身变强。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "转述的主线是 Everything as Service 与 Scoped → Joint → Recursive；当前简介来自下篇的明确归因，不冒充原文直接核对。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Melon（署名据 Shiyu 的致谢）。",
+          "reading": "小红书原文可能需要登录；可结合 Shiyu 下篇阅读，注意区分原作者框架与学习笔记补充的论文说明。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Melon（署名据 Shiyu 的致谢）。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "小红书原文可能需要登录；可结合 Shiyu 下篇阅读，注意区分原作者框架与学习笔记补充的论文说明。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 下篇：来源与致谢、定义、Everything as Service；原文当前无法直接读取，只按 Shiyu 博客中明确引用的内容建立阅读入口。",
+            "sources": [
+              {
+                "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+                "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。",
+        "author": "作者／发布者：Melon（署名据 Shiyu 的致谢）。",
+        "scope": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。",
+        "reading": "小红书原文可能需要登录；可结合 Shiyu 下篇阅读，注意区分原作者框架与学习笔记补充的论文说明。",
+        "evidence": "依据 下篇：来源与致谢、定义、Everything as Service；原文当前无法直接读取，只按 Shiyu 博客中明确引用的内容建立阅读入口。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "yudkowsky-recursive-self-improvement",
+      "title": "Recursive Self-Improvement",
+      "date": "2008-12-01",
+      "dateLabel": "博客发布",
+      "year": "2008",
+      "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "RSIRoadmap"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "正文：optimization slope/resources/efficiency 与递归层次",
+          "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+        }
+      ],
+      "fields": {
+        "本质定位": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "讨论 AI 能力增长为什么可能不是匀速，以及快速增长需要哪些依赖关系。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "区分解决任务、获得知识、改进发现知识的方法与改进认知机制；属于理论论证，不是现代 agent 的实证报告。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Eliezer Yudkowsky。",
+          "reading": "适合理解“递归”为什么不等于重复尝试；不要把文中的增长预期当成今天系统已验证的能力。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Eliezer Yudkowsky。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "适合理解“递归”为什么不等于重复尝试；不要把文中的增长预期当成今天系统已验证的能力。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 正文：optimization slope/resources/efficiency 与递归层次；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "正文：optimization slope/resources/efficiency 与递归层次",
+                "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。",
+        "author": "作者／发布者：Eliezer Yudkowsky。",
+        "scope": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。",
+        "reading": "适合理解“递归”为什么不等于重复尝试；不要把文中的增长预期当成今天系统已验证的能力。",
+        "evidence": "依据 正文：optimization slope/resources/efficiency 与递归层次；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "weco-aide2-blog",
+      "title": "AIDE²: The First Evidence of Recursive Self-Improvement",
+      "date": "2026-07-14",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "ResearchAutomation",
+        "org:weco"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+          "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+        }
+      ],
+      "fields": {
+        "本质定位": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "作者希望区分仅自动运行研究，与在固定成本下持续提高研究效率。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "报告内层能力提升和外部任务迁移，但明确未达到改进后的内层也更擅长充当外层的条件；标题中的“首次”是作者主张。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Weco Team。",
+          "reading": "重点读 public/private 分数、成本约束与 ignition test，区分内层变强和修改者变强。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Weco Team。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "重点读 public/private 分数、成本约束与 ignition test，区分内层变强和修改者变强。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 §1、The inner-loop evaluation、§2.2、§3.1、§4；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+                "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。",
+        "author": "作者／发布者：Weco Team。",
+        "scope": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。",
+        "reading": "重点读 public/private 分数、成本约束与 ignition test，区分内层变强和修改者变强。",
+        "evidence": "依据 §1、The inner-loop evaluation、§2.2、§3.1、§4；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "org:weco",
+          "label": "Weco",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "deepmind-alphaevolve-blog",
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+      "date": "2025-05-14",
+      "dateLabel": "博客发布",
+      "year": "2025",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "ResearchAutomation",
+        "org:google-deepmind"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Designing better algorithms with large language models；导言与应用案例",
+          "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+        }
+      ],
+      "fields": {
+        "本质定位": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "复杂算法优化需要大量候选探索，同时需要可靠地验证候选是否正确、是否更快。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "展示数学、数据中心和 AI 训练相关算法改进；主要修改对象是算法产物，训练基础设施获益与搜索器自身改进应分开理解。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：AlphaEvolve team · Google DeepMind。",
+          "reading": "适合理解“产物进化如何反哺模型训练”；先看代码生成与验证循环，再看实际应用。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：AlphaEvolve team · Google DeepMind。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "适合理解“产物进化如何反哺模型训练”；先看代码生成与验证循环，再看实际应用。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 Designing better algorithms with large language models；导言与应用案例；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "Designing better algorithms with large language models；导言与应用案例",
+                "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。",
+        "author": "作者／发布者：AlphaEvolve team · Google DeepMind。",
+        "scope": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。",
+        "reading": "适合理解“产物进化如何反哺模型训练”；先看代码生成与验证循环，再看实际应用。",
+        "evidence": "依据 Designing better algorithms with large language models；导言与应用案例；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "org:google-deepmind",
+          "label": "Google DeepMind",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minimax-m27-blog",
+      "title": "MiniMax M2.7: Early Echoes of Self-Evolution",
+      "date": "2026-03-18",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://www.minimax.io/news/minimax-m27-en",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "ResearchAutomation",
+        "org:minimax"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Building an agent for model self-evolution",
+          "url": "https://www.minimax.io/news/minimax-m27-en"
+        }
+      ],
+      "fields": {
+        "本质定位": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "模型研发涉及数据、训练和工程协作，人工研究吞吐限制迭代速度。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "介绍实验监控、日志分析、代码修复与框架迭代；人类仍提供方向和关键决策，属于研发流程报告。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：MiniMax。",
+          "reading": "读研究 agent 的具体工作流，区分它参与自身研发和完全自主递归；产品 benchmark 分数不能单独归因于自进化。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：MiniMax。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "读研究 agent 的具体工作流，区分它参与自身研发和完全自主递归；产品 benchmark 分数不能单独归因于自进化。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 Building an agent for model self-evolution；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "Building an agent for model self-evolution",
+                "url": "https://www.minimax.io/news/minimax-m27-en"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。",
+        "author": "作者／发布者：MiniMax。",
+        "scope": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。",
+        "reading": "读研究 agent 的具体工作流，区分它参与自身研发和完全自主递归；产品 benchmark 分数不能单独归因于自进化。",
+        "evidence": "依据 Building an agent for model self-evolution；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "org:minimax",
+          "label": "MiniMax",
+          "kind": "institution",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://www.minimax.io/news/minimax-m27-en"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "apodex-10-blog",
+      "title": "Apodex-1.0",
+      "date": "2026-06-08",
+      "dateLabel": "博客发布",
+      "year": "2026",
+      "url": "https://www.apodex.com/blog/apodex-1.0",
+      "priority": "K",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "ResearchAutomation"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+          "url": "https://www.apodex.com/blog/apodex-1.0"
+        }
+      ],
+      "fields": {
+        "本质定位": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "长期研究任务需要检索、工具和验证，单条执行链与单个上下文难以承载全部工作。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "orchestrator 分配任务，子 agent 并行研究，global verifier 审核证据；这主要说明 harness 设计，不能单凭自检证明跨轮框架进化。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Apodex。",
+          "reading": "适合对照“验证答案”和“修改 harness”的区别；看团队协作结构与同系列模式比较。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Apodex。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "适合对照“验证答案”和“修改 harness”的区别；看团队协作结构与同系列模式比较。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 Scaling Reasoning with an Agent Team；Where Apodex Stands；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+                "url": "https://www.apodex.com/blog/apodex-1.0"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。",
+        "author": "作者／发布者：Apodex。",
+        "scope": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。",
+        "reading": "适合对照“验证答案”和“修改 harness”的区别；看团队协作结构与同系列模式比较。",
+        "evidence": "依据 Scaling Reasoning with an Agent Team；Where Apodex Stands；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": []
+    },
+    {
+      "id": "weng-prompt-engineering",
+      "title": "Prompt Engineering",
+      "date": "2023-03-15",
+      "dateLabel": "博客发布",
+      "year": "2023",
+      "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
+      "priority": "R",
+      "priorityBasis": "按主题相关性与阅读价值标注",
+      "category": "overview",
+      "categories": [
+        "overview"
+      ],
+      "methodType": "",
+      "contentType": "blog",
+      "curated": true,
+      "source": "addition",
+      "depth": [
+        "未明确"
+      ],
+      "tags": [
+        "Prompt",
+        "person:lilian-weng"
+      ],
+      "details": [],
+      "occurrences": [],
+      "review": "新增 · 原文定向核对",
+      "reviewed": true,
+      "links": [
+        {
+          "label": "Shiyu 的相关解读",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "sources": [
+        {
+          "label": "正文目录：提示、示例与推理方法",
+          "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+        }
+      ],
+      "fields": {
+        "本质定位": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。"
+      },
+      "protocol": "不适用：非统一实验",
+      "protocolBasis": "",
+      "visibleKeys": [
+        "author",
+        "reading"
+      ],
+      "overview": {
+        "tldr": [
+          {
+            "key": "gap",
+            "value": "模型输出对输入组织敏感，需要区分不同提示方法及它们的适用条件。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          },
+          {
+            "key": "position",
+            "value": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          },
+          {
+            "key": "conclusion",
+            "value": "梳理提示与推理方法；属于自进化研究的前置知识，不应把使用提示技巧直接称为 RSI。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          }
+        ],
+        "fields": {
+          "author": "作者／发布者：Lilian Weng。",
+          "reading": "作为 Weng harness 博客的背景链接阅读，帮助理解提示设计与让系统自动更新提示的区别。"
+        }
+      },
+      "profile": {
+        "fields": [
+          {
+            "key": "author",
+            "label": "作者／发布者",
+            "status": "recorded",
+            "value": "作者／发布者：Lilian Weng。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          },
+          {
+            "key": "scope",
+            "label": "关注范围",
+            "status": "recorded",
+            "value": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          },
+          {
+            "key": "reading",
+            "label": "怎么读",
+            "status": "recorded",
+            "value": "作为 Weng harness 博客的背景链接阅读，帮助理解提示设计与让系统自动更新提示的区别。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          },
+          {
+            "key": "evidence",
+            "label": "证据来源",
+            "status": "recorded",
+            "value": "依据 正文目录：提示、示例与推理方法；简介依据文章原文；文中研究判断与实验宣称归于作者。",
+            "sources": [
+              {
+                "label": "正文目录：提示、示例与推理方法",
+                "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+              }
+            ]
+          }
+        ],
+        "sourceDate": "2026-09-16",
+        "experiments": [],
+        "feedbackCases": [],
+        "missing": [],
+        "partial": []
+      },
+      "brief": {
+        "summary": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。",
+        "author": "作者／发布者：Lilian Weng。",
+        "scope": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。",
+        "reading": "作为 Weng harness 博客的背景链接阅读，帮助理解提示设计与让系统自动更新提示的区别。",
+        "evidence": "依据 正文目录：提示、示例与推理方法；简介依据文章原文；文中研究判断与实验宣称归于作者。"
+      },
+      "attributions": [
+        {
+          "tag": "person:lilian-weng",
+          "label": "Lilian Weng",
+          "kind": "scholar",
+          "sources": [
+            {
+              "label": "原文署名／发布机构",
+              "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+            }
+          ]
+        }
+      ]
     }
   ],
   "framework": "# RSI / Harness Self-Evolution 论文调研记录\n\n> **本文件为合并精简版。** 在原长期记录基础上合并系统补全文献；所有相关论文至少保留一行横向定位，只有 **Core / 经典代表作** 中最能定义主线的工作保留详细介绍。目标不是跟随论文自己的 “RSI / self-evolving” story，而是统一回答：**什么在变、谁来改、谁来执行、基础 harness、feedback 来源、evolution→eval 是否隔离、相对更早工作到底多开放了哪一层 editable space。**\n\n>\n> **主标签（代表性）**：**C = Core / 经典代表作**（领域绕不开、定义了范式、热度/影响力高，或直接改变后续论文如何做问题/评估）；**K = Key / 重要工作**（有清楚的新机制或关键证据）；**R = Related / 定位即可**（谱系相关，但通常表格一行即可）。\n>\n> **证据强度与“经典性”完全分开。** 一篇论文可以是 **Core 但证据有明显缺陷**（如 same-set adaptation / selection–eval leakage / attribution confounding），也可以是 **Key 但实验非常干净**。以后不再因为 protocol 不够干净就把领域代表作降级。\n>\n> **热度只作为辅助信号，不作为科学结论。** 对 2026 新论文，citation index 尚不稳定，因此综合看：后续工作是否频繁把它当 baseline/前驱、是否形成独立方法范式、官方开源/社区关注，以及我们原调研中是否已将其列为核心。\n\n## 0. 统一分析框架\n\n### 0.1 Meta-depth\n\n| 层级 | 定义 | 典型形态 |\n|---|---|---|\n| **M0：persistent state** | memory/skill/context 内容持续变化，但 updater 固定 | Reflexion、ExpeL、Voyager |\n| **M1：task-facing mechanism** | prompt/workflow/memory algorithm/tool/full harness 可编辑，但 modifier/search/selection 机制固定或外置 | ADAS、ALMA、SkillOpt、Meta-Harness、AHE |\n| **M2：improver also evolves** | 产生后续改进的 modifier/meta-skill/self-mod procedure 也被继承和修改；外层 evaluator/selection 常仍固定 | Promptbreeder、STOP、DGM、MetaSkill-Evolve |\n| **M3：full self-reference ideal** | 外层 improvement machinery 也处于同一可修改系统，并有准则决定何时重写 | Gödel Machine（理论） |\n\n### 0.2 Evaluation isolation\n\n| Protocol | 含义 | 我们如何解读 |\n|---|---|---|\n| **Held-out** | evolve/train/selection → freeze → unseen tasks | 最能支持可泛化 improvement |\n| **Prequential** | 每个 task 只做一次，feedback 只影响未来 task | 支持 online accumulation，但 stream 同时是 experience source |\n| **Same-set adaptive** | 同一 tasks 反复执行→修改→再评分 | 主要证明针对固定 tasks 可优化，不能直接当泛化 |\n| **Within-instance** | 只改当前 response/trajectory | feedback substrate，不是 persistent self-evolution |\n\n### 0.3 重新审计后的核心阅读层级\n\n> **这次以“领域代表性”为第一原则重新审核。** 我们原先已经重点记录的工作优先保留；新增论文只有在确实形成新范式/重要证据时才进入 Core，而不是因为更新、更干净就自动挤掉旧的代表作。\n\n#### Core-15：主干论文（优先完整读）\n\n| 时间 | 论文 | 为什么是主干 | 证据边界要记住 |\n|---|---|---|---|\n| 2003/2006 | **[Gödel Machines](https://arxiv.org/abs/cs/0309048)** | 严格 RSI 的理论原型：连 improver/proof-searcher 自身也可被重写。 | 理论构造，不是现代 agent 实证。 |\n| 2023-03 | **[Reflexion](https://arxiv.org/abs/2303.11366)** | `feedback→reflection→persistent experience→future behavior` 的经典 LLM 前史。 | updater 固定，更像 persistent memory 而非 harness mechanism evolution。 |\n| 2023-05 | **[Voyager](https://arxiv.org/abs/2305.16291)** | executable skill library 的经典起点。 | Minecraft/open-ended embodied setting；不是 full harness。 |\n| 2025-05 | **[Darwin Gödel Machine](https://arxiv.org/abs/2505.22954)** | self-modifying agent source + open-ended archive 的代表，是现代 RSI/harness program evolution 的直接前驱。 | outer archive / selection mechanism 仍固定。 |\n| 2025-11 | **[AgentEvolver](https://arxiv.org/abs/2511.10395)** | 2025–26 “self-evolving agent training loop” 的高影响代表：task generation、experience navigation、credit assignment 一体化。 | 主要更新 policy/data/credit loop，不是 deployment harness evolution。 |\n| 2026-03 | **[Hyperagents](https://arxiv.org/abs/2603.19461)** | 明确把 **modification procedure 本身**放入 editable program，是 improver-level RSI 的代表。 | evaluator/archive/outer selection 仍大体固定。 |\n| 2026-03 | **[Meta-Harness](https://arxiv.org/abs/2603.28052)** | full executable harness optimization 的主干 baseline：完整 source/history/raw trace 都进入 proposer context。 | TerminalBench headline 同集 search/eval；其他任务更干净。 |\n| 2026-04 | **[Agentic Harness Engineering (AHE)](https://arxiv.org/abs/2604.25850)** | full-harness evolution 工程化代表：observability、attribution、rollback、regression。 | TB2 主结果同集；cross-benchmark accuracy transfer 较小。 |\n| 2026-06 | **[Self-Harness](https://arxiv.org/abs/2606.09498)** | same-model self-harness 的最直接代表：target 根据自己的 failure 修改自己的 harness。 | held-out regression score 参与 acceptance，不是 untouched test。 |\n| 2026-06 | **[SEAGym](https://arxiv.org/abs/2606.17546)** | self-evolving harness 的 reliability/evaluation 代表：held-out ID/OOD、replay、snapshot、cost 分开评。 | 自己不提出新的 evolution 方法；价值在评测框架和负面证据。 |\n| 2026-07 | **[SEED](https://arxiv.org/abs/2607.14777)** | endogenous model self-improvement 代表：当前 policy 自己产生/分析 on-policy experience，再蒸馏回 weights。 | Stage-1 有外部 bootstrap；外层训练算法固定。 |\n| 2026-07 | **[Recursive Harness Self-Improvement (RHI)](https://arxiv.org/abs/2607.15524)** | harness revision-history / recursive revision 这条路线的代表。 | evaluator/optimizer role 分离，不是纯 same-model self-loop。 |\n| 2026-07 | **[RSIBench-Data](https://arxiv.org/abs/2607.25886)** | RSI benchmark/研究过程的经典代表；提出最重要的 **discovery–reliability gap** 证据之一。 | selection 与 final official eval 使用同一 task subset。 |\n| 2026-07 | **[Frontis-MA1](https://arxiv.org/abs/2607.28568)** | “训练一个专门的 meta-evolution / AI4AI improver” 的代表，且 OpenMLE 全栈开源。 | learned improver 变强，但 outer evolution system 仍固定。 |\n| 2026-08 | **[Harness-R1](https://arxiv.org/abs/2608.02276)** | 把 harness editing 从 prompt frontier LLM 变成 **可 post-train 的独立能力**；trained harness engineer 是清晰的新范式。 | target 与 editor 是分开的；cold start 依赖更强 teacher。 |\n\n#### Core-扩展：同样是领域代表作，按问题补读\n\n| 论文 | 为什么仍应视为 Core / 强代表 |\n|---|---|\n| **[Argus](https://arxiv.org/abs/2608.05144)** | persistent runtime / durable-state / verified objective pivot 的代表；强调 role separation 与 commit authority。 |\n| **[Macaron-V1](https://arxiv.org/abs/2608.09819)** | versioned **model–harness pair** / continual learning framing 的高热代表；系统设计很完整。 |\n| **[BigBang](https://endlessfrontier.tech/assets/paper.pdf)** | data-level RSI / self-evolving frontier-task synthesis 的系统级代表；不是 deployment harness，但 RSI 叙事里绕不开。 |\n| **[MetaSkill-Evolve](https://arxiv.org/abs/2607.05297)** | 明确 fast skill + slow meta-skill，两层 improvement procedure evolution；meta-depth 讨论的关键参照。 |\n| **[Evo-Harness](https://arxiv.org/abs/2608.15071)** | skill-level harness evolution + grounded feedback vs self-feedback 的直接证据，对我们当前问题非常相关。 |\n| **[Evo-Bench](https://arxiv.org/abs/2608.09096)** | 当前最接近“统一测试 harness-evolving capability”的 benchmark 骨架；Search 里含 BrowseComp/HLE。 |\n| **[Aspire](https://arxiv.org/abs/2608.31111)** | hidden downstream eval + vague goal，直接测试 self-evaluation/objective construction 是否可靠。 |\n| **[ADAS](https://arxiv.org/abs/2408.08435)** | executable agent program search 的重要前驱；related work 中解释 full-harness 从哪里来时必读。 |\n| **[HarnessDev](https://arxiv.org/abs/2609.01437)** | 2026-09-01 新出的直接 benchmark：把 **Creation 与 Evolution** 分开，hidden downstream eval 同时测 capability、efficiency 和 cross-runtime-model transfer；对我们当前实验设计极直接，但因过新暂不按“经典热度”评级。 |\n| **[GDPevo](https://arxiv.org/abs/2608.03764)** | evolution-native held-out business benchmark，并给 fully-informed **oracle ceiling**；对我们“是否接近/突破能力上限”问题非常直接。 |\n| **[VeRO](https://arxiv.org/abs/2602.22480)** | harness optimizer 的 outer instrumentation / audit substrate：versioning、budgeted rewards、structured observations，是 HarnessOpt-Bench 等统一评测路线的早期直接节点。 |\n\n> **一个关键修正**：Core 不再等于“实验最干净”。例如 RSIBench-Data / Self-Harness / Macaron-V1 的 protocol 都有清楚的限制，但它们依然是领域代表作；相反，某些很干净的新 benchmark 可以放在 Key，而不自动取代已有经典工作。\n\n### 0.4 热度 / 代表性辅助审计（2026-09-04）\n\n> 对 2026 新工作，引用次数仍严重滞后，所以这里**不把热度当排名**，只用公开社区信号检查“是不是把明显的热门代表作漏了”。\n\n| 论文 | 当前公开热度信号 | 我们怎么用这个信号 |\n|---|---|---|\n| **Macaron-V1** | Hugging Face Papers **342 upvotes，#2 Paper of the Day** | 明显属于当前 continual learning / model–harness RSI 的高热系统工作，必须保留 Core。 |\n| **SkillOpt** | Hugging Face Papers **265 upvotes，#1 Paper of the Day** | skill evolution 分支的高热代表；虽然不是 full harness，也值得保留详细介绍。 |\n| **Frontis-MA1** | Hugging Face Papers **186 upvotes** | AI4AI / learned meta-evolution 路线的显著代表；上一版漏掉是错误。 |\n| **SEED** | Hugging Face Papers **107 upvotes，#3 Paper of the Day** | model-level endogenous self-evolution 的高热代表，应该和 harness 路线并列保留作核心对照。 |\n| **Hyperagents** | Meta/Facebook Research 官方仓库约 **2.6k GitHub stars** | improver self-modification 并非边缘概念论文，而是目前很有传播度的 recursive/improver-level 代表。 |\n| **Meta-Harness** | Hugging Face Papers **23 upvotes**，Stanford/MIT/KRAFTON；已有多个 harness survey/data collection 引用其框架 | 热度不是最高，但在 full-harness 方法谱系中具有定义性，因此仍是 Core。 |\n| **Self-Harness** | Hugging Face Papers 当前仅 **3 upvotes** | 反例：社区 upvote 低不代表不重要；same-model self-harness setting 对我们的研究问题具有直接定义性，因此仍是 Core。 |\n\n**因此以后采用两个独立判断：**`代表性/热度` 决定要不要进入 Core 视野；`实验隔离/归因` 决定我们能相信它的 claim 到什么程度。两者不能再混成一个优先级。\n\n\n\n",
@@ -89615,6 +91517,22 @@
     "org:meituan-longcat": {
       "label": "Meituan LongCat",
       "kind": "institution"
+    },
+    "person:shilong-liu": {
+      "label": "Shilong Liu",
+      "kind": "scholar"
+    },
+    "person:lilian-weng": {
+      "label": "Lilian Weng",
+      "kind": "scholar"
+    },
+    "org:weco": {
+      "label": "Weco",
+      "kind": "institution"
+    },
+    "org:minimax": {
+      "label": "MiniMax",
+      "kind": "institution"
     }
   },
   "attributionPolicy": "机构按论文发表时的作者署名标注；学者标签表示作者署名，不表示主导。引用论文或使用模型不作为机构归属依据。",
@@ -89625,5 +91543,5 @@
     "repository": "仓库",
     "blog": "博客"
   },
-  "libraryAdditions": 12
+  "libraryAdditions": 24
 }
