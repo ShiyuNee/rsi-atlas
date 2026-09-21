@@ -2785,5 +2785,822 @@
         ]
       }
     ]
+  },
+  {
+    "id": "2609.20519",
+    "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
+    "date": "2026-09-17",
+    "dateLabel": "论文首发",
+    "category": "methods",
+    "methodType": "harness",
+    "contentType": "paper",
+    "priority": "C",
+    "url": "https://arxiv.org/abs/2609.20519",
+    "references": {
+      "main": {
+        "label": "§2.1–2.5、§3.1–3.3、§5.1",
+        "url": "https://arxiv.org/html/2609.20519v1"
+      },
+      "blog": {
+        "label": "作者博客：Humans set priors / Results / Recursive Efficient Improvement",
+        "url": "https://nvlabs.github.io/SoL-Pi/"
+      },
+      "heat": {
+        "label": "Hugging Face：2026-09-21 热度快照",
+        "url": "https://huggingface.co/papers/2609.20519"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "长任务反复传递上下文和工具输出，成本不断累积；局部省 token 也可能损害任务完成率。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "研究自动搜索能否找到跨任务、跨模型复用的 harness 效率改进，而非只提高搜索题得分。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "保留动作合并、上下文压缩、输出归档和证据摘要四种机制。完整组合保留约 94% 的 Pi 得分，API 成本约降三分之一；不是无损提效。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "修改 Pi 的执行、上下文和工具输出处理代码；模型参数与外层研究程序固定。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "主要对照 GPT-5.6 Sol 与 Opus 5；群体实验由 Sol 协调、20 个 Luna worker 执行。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "研究 agent 提案、实现并独立审查；论文未逐角色列型号。人类先筛方向，后审阅并整理成功机制代码。",
+        "refs": [
+          "main",
+          "blog"
+        ]
+      },
+      "verdict": {
+        "value": "开发用隐藏回归测试或自建可执行 verifier 判成功，再比较 token／成本并检查能力下限；不是模型自称完成。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Pi：已有模型调用、文件／命令工具和原生上下文压缩的 coding harness；四种机制作为扩展加入。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "152 个方向各自实现、测试、保留或淘汰；临时修改的研究调度代码不继承。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "无参数训练。搜索用 495 个 GitHub issue–PR 仓库环境及 40 个自建 verifier 环境，共 535 个。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "开发环境反馈驱动修改；冻结候选后用 EdgeBench 11 题单向验收，失败不再反馈给搜索。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "EdgeBench 另 40 题留作最终泛化，主表汇报全部 51 题；另测 Terminal-Bench 4 的 63 题、IMO 2026 六题（Lean 4 验证）及 kernel 优化。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "不能把主表全部 51 题都称为最终未参与选择的测试；Performance 配置还按各模型最高单机制得分挑选，与预先固定的完整组合有别。",
+        "refs": [
+          "main"
+        ]
+      },
+      "limits": {
+        "value": "Terminal-Bench 4 完成 15 题，Pi 为 18 题；更低成本不等于更高成功率。多代递归提效仍是后续设想。",
+        "refs": [
+          "main"
+        ]
+      },
+      "evidence": {
+        "value": "HF 页面 95 赞（2026-09-21）；关注度快照不代表独立复现或同行评审。",
+        "refs": [
+          "heat"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "tags": [
+      "HarnessCode",
+      "Context",
+      "Tool",
+      "SeparateEvolver",
+      "ExecutableVerifier",
+      "Update20260921"
+    ],
+    "links": [
+      {
+        "label": "作者博客",
+        "url": "https://nvlabs.github.io/SoL-Pi/"
+      }
+    ],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:nvidia",
+        "label": "NVIDIA",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "§2.1–2.5、§3.1–3.3、§5.1",
+            "url": "https://arxiv.org/html/2609.20519v1"
+          }
+        ]
+      },
+      {
+        "tag": "org:mit",
+        "label": "MIT",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "§2.1–2.5、§3.1–3.3、§5.1",
+            "url": "https://arxiv.org/html/2609.20519v1"
+          }
+        ]
+      },
+      {
+        "tag": "person:song-han",
+        "label": "Song Han",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "§2.1–2.5、§3.1–3.3、§5.1",
+            "url": "https://arxiv.org/html/2609.20519v1"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "2609.19656",
+    "title": "Self-Evolving Search Index",
+    "date": "2026-09-17",
+    "dateLabel": "论文首发",
+    "category": "methods",
+    "methodType": "harness",
+    "contentType": "paper",
+    "priority": "K",
+    "url": "https://arxiv.org/abs/2609.19656",
+    "references": {
+      "main": {
+        "label": "§3–4；附录 A.1–A.2、B.1–B.5",
+        "url": "https://arxiv.org/html/2609.19656v1"
+      },
+      "heat": {
+        "label": "Hugging Face：2026-09-21 热度快照",
+        "url": "https://huggingface.co/papers/2609.19656"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "固定索引无法适应不同检索需求，失败后通常还要人手动诊断和重写表示。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "让索引自动发现检索缺口、生成练习查询并修订索引键，检验对搜索和记忆读取的帮助。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "变化的是文档／记忆的检索表示，不是模型参数。逐次核验新键是否忠于原文、能检索回原文并减少混淆。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "改文档或记忆条目的索引键，即供检索匹配的文本表示；原始内容和下游 agent 固定。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "检索器为 BM25、BGE-Large、Qwen3-Embedding-8B；搜索用 GPT-OSS-120B、GPT-5.4-nano、Gemini-3.7-Flash、Kimi-K2.5；记忆用 Qwen3.5-9B。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "Qwen3.6-35B-A3B 同时承担索引修改、模拟查询和忠实性／可回答性评审。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "进化反馈：同一 Qwen 按原文给忠实性／可回答性打 0–3 分，至少 2 分通过；另用检索排名和键间相关度检查区分性。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "在已有检索器上加索引修改循环；搜索／记忆沿用官方运行系统，替换索引但仍向 reader 返回原文。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "诊断失败键→修订→模型与检索规则验收；每文档最多 10 键，含固定原文键。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "不训练参数。在各基准语料／历史记忆上模拟查询，20 轮共 2,560 条查询用于索引进化；不使用正式评测问题。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "按忠实性与检索规则接受局部修改；报告固定第 20 轮，不按测试最高分挑版本。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "BRIGHT、Spider 2.0、FIBEN、BEAVER 用标注相关性算 nDCG@10；BrowseComp-Plus 830 题由 Qwen3-32B 对参考答案判分；LongMemEval-V2 Small 451 题用规则与 GPT-5.2 medium 判分。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "隔离的是评测查询；索引允许访问将被检索的语料或历史记忆，并非语料也完全不可见。",
+        "refs": [
+          "main"
+        ]
+      },
+      "evidence": {
+        "value": "HF 页面 46 赞（2026-09-21）；属于检索与记忆组件自改进的相关路线。",
+        "refs": [
+          "heat"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "tags": [
+      "MemoryContent",
+      "MemoryMechanism",
+      "Context",
+      "SeparateEvolver",
+      "LLMJudge",
+      "GoldLabel",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "2609.17523",
+    "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
+    "date": "2026-09-15",
+    "dateLabel": "论文首发",
+    "category": "methods",
+    "methodType": "joint",
+    "contentType": "paper",
+    "priority": "K",
+    "url": "https://arxiv.org/abs/2609.17523",
+    "references": {
+      "main": {
+        "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+        "url": "https://arxiv.org/html/2609.17523v1"
+      },
+      "heat": {
+        "label": "Hugging Face：2026-09-21 热度快照",
+        "url": "https://huggingface.co/papers/2609.17523"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "科研对话产生了需求、纠错和执行证据，但如果不转成后续可用的任务与反馈，系统不会持续改进。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "研究科研协作能否同时推动工作方式和模型学习：内层改 harness，外层在选定 harness 下做强化学习。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "三轮联合实验报告单次答对率由 42.2% 到 73.3%。另做固定模型／固定 harness 对照；单独 harness 实验只改指令和 scoped skill。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "联合实验更新 harness 与 Qwen 参数；单独 harness 实验只改指令／技能文本，执行循环、工具和上下文处理固定。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "Qwen3.5-4B 执行科研任务；参数学习后使用对应更新的检查点。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "GPT-6 Astra 诊断并编辑 harness；Qwen3.8-27B 模拟受限用户反馈并解释反馈，训练程序执行 GRPO。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "harness：私有 verifier 给对错／提交状态，模拟用户只回复允许的确认或检查要求。参数：按固定 rubric 汇总可执行检查与固定 judge 分数，不用模拟用户的三值诊断分替代奖励。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Biomni 科研工具／数据基础上的单文件 harness；已有 Python REPL、数据读取与答案提交，初始没有新增指令／技能。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "联合实验每轮先搜索 harness 10 步，再 RL 更新 20 步，共三轮；单独 harness 为 288 次对话、24 次更新。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "LAB-Bench／Biomni-Eval1 的 LitQA2、DbQA、ProtocolQA、GWAS；任务库存 895 题不等于训练样本数。RL 使用当前模型新生成轨迹。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "联合实验用固定 validation 选 harness；单独 harness 用 adaptation 选版本，其 validation 仅供事后对照。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "四类科学任务上比较联合系统初末版本的单次正确率；固定 harness 的模型对照另用 pass@4。附录列库存，未逐项给出各实验 split 数量。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "论文声明开发、策略训练、最终测试分离；未完整披露逐任务判分代码及解释型 judge 型号，不能将整套判分笼统写成规则匹配。",
+        "refs": [
+          "main"
+        ]
+      },
+      "evidence": {
+        "value": "9 月 15 日首发，本期补录；HF 30 赞（2026-09-21），不算 9 月 16 日后新论文。",
+        "refs": [
+          "heat",
+          "main"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "tags": [
+      "Skill",
+      "Prompt",
+      "Weights",
+      "JointEvolution",
+      "SeparateEvolver",
+      "LLMJudge",
+      "ExecutableVerifier",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:phai-labs",
+        "label": "PhAI Labs",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+            "url": "https://arxiv.org/html/2609.17523v1"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "2609.19203",
+    "title": "Position: It is Time to Virtualize Foundation Models with a Self-evolving Operating System Layer",
+    "date": "2026-09-16",
+    "dateLabel": "论文首发",
+    "category": "overview",
+    "methodType": "",
+    "contentType": "paper",
+    "priority": "K",
+    "url": "https://arxiv.org/abs/2609.19203",
+    "references": {
+      "main": {
+        "label": "引言、§3–4、附录 A–C、作者机构",
+        "url": "https://arxiv.org/html/2609.19203v1"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "各 agent 框架重复实现记忆、预算与约束，行为难以迁移，跨系统治理也脆弱。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "提出 FMOS：像操作系统管理硬件一样，统一管理模型调用、记忆、资源分配和验证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "主张基于运行经验调整系统策略，让改进跨应用复用；是一篇架构立场论文，不是已跑通多代 RSI 的实证。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "scope": {
+        "value": "基础模型之上的可学习系统层：知识管理、模型选择、计算预算、验证与策略执行。",
+        "refs": [
+          "main"
+        ]
+      },
+      "reading": {
+        "value": "结合 harness 服务化阅读；区分作者希望实现的系统能力与已经展示的实验。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "用统一接口隔离应用与底层模型，联合调配知识、计算与验证资源。",
+        "refs": [
+          "main"
+        ]
+      },
+      "limits": {
+        "value": "不能从“self-evolving OS”的定位推断出统一的训练／测试数据集或成熟自主闭环。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "scope",
+      "reading"
+    ],
+    "tags": [
+      "RSIRoadmap",
+      "Infrastructure",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:hpe",
+        "label": "Hewlett Packard Enterprise",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "引言、§3–4、附录 A–C、作者机构",
+            "url": "https://arxiv.org/html/2609.19203v1"
+          }
+        ]
+      },
+      {
+        "tag": "org:uchicago",
+        "label": "University of Chicago",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "引言、§3–4、附录 A–C、作者机构",
+            "url": "https://arxiv.org/html/2609.19203v1"
+          }
+        ]
+      },
+      {
+        "tag": "person:ian-foster",
+        "label": "Ian Foster",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "引言、§3–4、附录 A–C、作者机构",
+            "url": "https://arxiv.org/html/2609.19203v1"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "anthropic-when-ai-builds-itself",
+    "title": "When AI builds itself",
+    "date": "2026-09-18",
+    "dateLabel": "博客更新",
+    "category": "overview",
+    "methodType": "",
+    "contentType": "blog",
+    "priority": "C",
+    "url": "https://www.anthropic.com/institute/recursive-self-improvement",
+    "references": {
+      "main": {
+        "label": "Evidence from within Anthropic；Update 9/18/2026；图注与脚注",
+        "url": "https://www.anthropic.com/institute/recursive-self-improvement"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "代码与实验量增长未必意味着模型已经能独立决定研究方向，需要看内部研发中实际承担了哪些工作。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "Anthropic 用研发记录、员工调查和会话评审介绍 AI 如何参与构建后续模型；本期收录 9 月 18 日更新。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "更新给出按任务难度分组的会话成功率；由 Claude judge 判断是否完成且无需纠正。文章明确尚未实现自主构建后继模型。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "scope": {
+        "value": "模型参与 AI 研发的产业证据；涵盖编码、实验执行与研究下一步选择。",
+        "refs": [
+          "main"
+        ]
+      },
+      "reading": {
+        "value": "先读内部证据与图注，再读限制：代码量不等于生产率，选择过的会话样本不能代表一般人机能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "feedback": {
+        "value": "会话成功由 Claude judge 判断；训练代码优化另有正确性检查和计时，不能把两种指标合成一个成功率。",
+        "refs": [
+          "main"
+        ]
+      },
+      "limits": {
+        "value": "本条日期是页面明确标注的 9 月 18 日更新日，不是首次发布日期；公司自报与观察性结果不等于独立因果验证。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "scope",
+      "reading"
+    ],
+    "tags": [
+      "IndustryReport",
+      "ResearchAutomation",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:anthropic",
+        "label": "Anthropic",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "Evidence from within Anthropic；Update 9/18/2026；图注与脚注",
+            "url": "https://www.anthropic.com/institute/recursive-self-improvement"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "ibm-rsi-serious-question",
+    "title": "Why recursive self-improvement suddenly became a serious question",
+    "date": "2026-09-16",
+    "dateLabel": "博客发布",
+    "category": "overview",
+    "methodType": "",
+    "contentType": "blog",
+    "priority": "K",
+    "url": "https://www.ibm.com/think/news/why-recursive-self-improvement-ai-serious-question",
+    "references": {
+      "main": {
+        "label": "What changed；Testing pieces of the idea；The safety gap；Still an open question",
+        "url": "https://www.ibm.com/think/news/why-recursive-self-improvement-ai-serious-question"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "“AI 帮忙研发”与“每代自主制造更强后继”常被混为一谈，容易误读当前进展。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "IBM Think 采访研究者，对照 coding agents、AIDE² 与前沿实验室的公开说法。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "强调已有局部改进循环，但完整自主递归仍缺验证；讨论错误奖励被放大、人类审核和计算成本的约束。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "scope": {
+        "value": "RSI 现状与证据边界的采访型入门文章，作者 Sascha Brodsky。",
+        "refs": [
+          "main"
+        ]
+      },
+      "reading": {
+        "value": "适合与 AIDE² 原始报告、Anthropic 内部证据对读，分清受访者判断和实验结果。",
+        "refs": [
+          "main"
+        ]
+      },
+      "evidence": {
+        "value": "IBM／Brown University／Weco 受访者的一手观点；论文与实验细节仍应回到各原始报告。",
+        "refs": [
+          "main"
+        ]
+      },
+      "limits": {
+        "value": "这是新闻采访和观点汇总，没有提出新的统一 benchmark 或自主训练方法。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "scope",
+      "reading"
+    ],
+    "tags": [
+      "IndustryReport",
+      "RSIRoadmap",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:ibm",
+        "label": "IBM",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "What changed；Testing pieces of the idea；The safety gap；Still an open question",
+            "url": "https://www.ibm.com/think/news/why-recursive-self-improvement-ai-serious-question"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "sol-pi-author-blog",
+    "title": "SoL-Pi: Scaling Auto-Research Loops for Efficient Agent Harnesses",
+    "date": "2026-09-21",
+    "dateLabel": "收录日期（配套博客未标首发）",
+    "category": "overview",
+    "methodType": "",
+    "contentType": "blog",
+    "priority": "K",
+    "url": "https://nvlabs.github.io/SoL-Pi/",
+    "references": {
+      "main": {
+        "label": "Method；Discoveries；Results；Humans set priors；Recursive Efficient Improvement",
+        "url": "https://nvlabs.github.io/SoL-Pi/"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "长时间运行的 agent 会反复付出上下文与工具输出成本，单看完成率看不出这种浪费。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "SoL-Pi 作者的图解与工程说明，解释四种机制如何省成本及研究中人类实际做了什么。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "人类提供早期方向、筛选搜索空间并整理成功代码；用更省钱的 harness 改进下一代仍是未来计划，而非已经验证的复利。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "scope": {
+        "value": "论文的配套解释，重点是机制设计、人工参与和成本／得分取舍。",
+        "refs": [
+          "main"
+        ]
+      },
+      "reading": {
+        "value": "先看四种机制图解，再读 Results 和 Humans set priors；严格的数据隔离以论文 §2.5 为准。",
+        "refs": [
+          "main"
+        ]
+      },
+      "limits": {
+        "value": "页面未明确给出首发日期，因此按 9 月 21 日收录日记录；与同名论文属于同一工作，不算第二项独立研究。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "visibleKeys": [
+      "scope",
+      "reading"
+    ],
+    "tags": [
+      "ResearchAutomation",
+      "Update20260921"
+    ],
+    "links": [],
+    "reviewedAt": "2026-09-21",
+    "attributions": [
+      {
+        "tag": "org:nvidia",
+        "label": "NVIDIA",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "Method；Discoveries；Results；Humans set priors；Recursive Efficient Improvement",
+            "url": "https://nvlabs.github.io/SoL-Pi/"
+          }
+        ]
+      }
+    ],
+    "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
   }
 ]

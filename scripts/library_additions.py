@@ -31,7 +31,7 @@ def attach_library_additions(output):
         p.setdefault('contentType','report' if p.get('publicationType')=='project-report' else 'paper')
     output['contentTypes']=TYPES
     output['taxonomy'].update(overview={'label':'综述与观点','description':'领域路线、概念梳理及产业观察。'},resources={'label':'工具与基础设施','description':'可复用仓库、服务和实验基础设施。'})
-    output['updated']='2026-09-16'
+    output['updated']='2026-09-21'
     output['libraryAdditions']=len(records)
     output['coverage']['total']=len(output['papers'])
     output['coverage']['sourcedLibraryAdditions']=len(records)
