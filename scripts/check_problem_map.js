@@ -25,3 +25,14 @@ for(const d of map.directions){assert(d.papers.every(id=>papers.has(id)));assert
 for(const item of [...map.eras,...map.readingPaths])assert(item.papers.every(id=>papers.has(id)));
 for(const p of papers.values()){const e=map.entries[p.id];assert.deepEqual(p.researchProblems,[e.primary,...e.related]);}
 console.log(`Passed: ${papers.size} problem assignments, sourced comparisons, cross-links, question filters and research suggestions.`);
+const {treeLeafIds}=require('../assets/research-tree.js');
+assert.deepEqual(treeLeafIds(map).sort(),[...papers.keys()].sort());
+const treeQuestions=map.tree.pillars.flatMap(p=>p.groups);
+assert.equal(new Set(treeQuestions).size,7);
+assert.deepEqual(treeQuestions.slice().sort(),map.groups.filter(g=>g.id!=='perspectives').map(g=>g.id).sort());
+for(const p of map.tree.pillars)assert(p.evidence.every(id=>papers.has(id)));
+for(const [id,n] of Object.entries(map.tree.nodes)){assert(groups.has(id));assert(n.papers.every(id=>papers.has(id)));assert(n.insight&&n.fork);}
+for(const b of map.tree.bridges){assert(groups.has(b.from)&&groups.has(b.to));assert(b.papers.every(id=>papers.has(id)));}
+assert.equal(map.tree.evidenceSteps.length,3);
+for(const e of map.tree.evidenceSteps)assert(e.papers.every(id=>papers.has(id)));
+console.log('Passed: connected tree covers all records, seven questions, cross-branch links and sourced evidence distinctions.');
