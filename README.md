@@ -164,3 +164,11 @@ Core 阅读优先级包含用户指定的团队／学者重点。2026-09-15：Se
 - 学者／机构标签仍只依据作者署名；研究结论用作者报告口径，缺失信息明确说明未公开。
 
 验证：`python3 scripts/build.py`，再运行 `node scripts/check.js`（包含新增资料测试）。
+
+## Problem-led field overview (2026-09-30)
+
+Open `?view=notes` for the interactive field overview; `problem=harness` selects a question and `?question=harness` filters the library by that question. The overview separates problem progression from publication chronology and distinguishes editorial research suggestions from paper claims. All 173 current records have a primary assignment, with explicit cross-links where useful; 64 representative comparisons link back to maintained primary-source evidence.
+
+Maintain `data/problem-map.json`: groups contain subproblems and representative IDs; entries record the primary problem, branch, related problems, paper objective and sources. Relations are editorial comparisons, not claims of direct intellectual inheritance. Proposed directions include a testable question, experiment, baselines and disconfirming outcomes. Keep the corpus update date separate from the overview revision date. New library records require an explicit problem assignment.
+
+`assets/problem-map.js` renders the overview. `scripts/build_data.py` embeds the map and attaches research-problem filters. Run `python3 scripts/build.py` and `node scripts/check.js`; the latter includes coverage, cross-link, source-presence and combined-filter checks. The older `data/research-map.md` remains available as supplementary reading.

@@ -196,3 +196,5 @@ assert(query({facets:{institution:['org:bytedance-seed'],priority:['C']}}).every
 console.log('Passed: sourced institution/scholar tags and combined filters.');
 
 require('./check_library.js');
+
+require('./check_problem_map.js');

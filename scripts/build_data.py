@@ -137,6 +137,12 @@ def build():
                 p['tags'].append(entry['tag'])
     from library_additions import attach_library_additions
     attach_library_additions(output)
+    problem_map = json.loads((ROOT/'data/problem-map.json').read_text())
+    assert set(problem_map['entries']) == {p['id'] for p in output['papers']}
+    output['problemMap'] = problem_map
+    for p in output['papers']:
+        e = problem_map['entries'][p['id']]
+        p['researchProblems'] = [e['primary'], *e['related']]
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(f"Built {len(output['papers'])} library entries ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output

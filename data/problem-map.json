@@ -1,0 +1,4021 @@
+{
+  "version": 1,
+  "updated": "2026-09-30",
+  "corpusUpdated": "2026-09-21",
+  "policy": "按论文要解决的问题人工归组；同一工作可跨路线。关系箭头是本站的分析，不代表作者声明的继承关系或历史先后。覆盖当前资料库，不声称穷尽整个领域。",
+  "groups": [
+    {
+      "id": "feedback",
+      "title": "怎样知道哪里错、该怎么改？",
+      "short": "获得有效反馈",
+      "problem": "只有“失败了”不足以指导修改；模型自己写的批评也可能是错的。反馈既要有判断依据，也要能定位需要改变的行为。",
+      "progress": "从同模型检查初稿，分出两条并行路线：借外部工具核验；把粗分数转成步骤、示范或诊断信息。",
+      "limit": "反馈更详细不保证更正确。要分别记录事实来源、判分方式、修改者可见内容，以及这些信息在部署时是否可得。",
+      "branches": [
+        {
+          "id": "self-check",
+          "title": "先修好当前答案",
+          "question": "同一个模型能否发现自己的错误？外部核验能增加什么信息？",
+          "papers": [
+            "2203.11171",
+            "2303.17651",
+            "2305.11738",
+            "2309.11495",
+            "2310.01798",
+            "2310.04406"
+          ],
+          "representatives": [
+            "2303.17651",
+            "2305.11738",
+            "2310.01798"
+          ]
+        },
+        {
+          "id": "diagnosis",
+          "title": "把成败变成可行动的诊断",
+          "question": "最终分数没有告诉系统哪一步该改，怎样补足中间信息？",
+          "papers": [
+            "2305.20050",
+            "2406.07496",
+            "2507.19457",
+            "2605.24539",
+            "2609.00829"
+          ],
+          "representatives": [
+            "2305.20050",
+            "2507.19457",
+            "2605.24539"
+          ]
+        },
+        {
+          "id": "judge",
+          "title": "评审者也会错，怎么办？",
+          "question": "任务没有完美 verifier 时，如何改进评审又避免迎合评分？",
+          "papers": [
+            "2606.26294"
+          ],
+          "representatives": [
+            "2606.26294"
+          ]
+        }
+      ],
+      "route": [
+        "2303.17651",
+        "2305.11738",
+        "2507.19457",
+        "2605.24539"
+      ]
+    },
+    {
+      "id": "experience",
+      "title": "怎样让这次经历帮助下一次任务？",
+      "short": "积累与复用经验",
+      "problem": "逐题重置会重复犯错；把整段历史都留下，又会混入题目细节、过期知识和无关内容。要保留可迁移的信息，并在需要时用上。",
+      "progress": "文字教训、可执行技能、关联记忆是并行的表示选择。继续向前的问题是：谁来维护它们，以及记忆机制本身是否也该改变。",
+      "limit": "存了内容、检索到了内容、正确使用了内容是三回事。跨题提升还必须与直接保留历史、同题重试和更长上下文区分。",
+      "branches": [
+        {
+          "id": "retain",
+          "title": "留下什么：教训、策略，还是可执行技能？",
+          "question": "经验怎样脱离旧题的细节，变成新任务能用的指导？",
+          "papers": [
+            "2303.11366",
+            "2305.16291",
+            "2308.10144",
+            "2409.07429",
+            "2508.06433",
+            "2509.25140",
+            "2402.17574",
+            "2510.23601",
+            "2603.13131",
+            "2603.18000",
+            "2603.18743",
+            "2604.15097",
+            "2604.20133",
+            "2605.23904",
+            "2607.00272",
+            "2608.15071"
+          ],
+          "representatives": [
+            "2303.11366",
+            "2305.16291",
+            "2308.10144"
+          ]
+        },
+        {
+          "id": "organize",
+          "title": "经验变多以后，怎样找准、组合、纠正？",
+          "question": "简单追加或反复总结会丢细节；怎样维护适用条件和经验之间的关系？",
+          "papers": [
+            "2305.10250",
+            "2409.00872",
+            "2502.12110",
+            "2510.04618",
+            "2604.16839",
+            "2608.16114",
+            "2608.24876",
+            "2606.17220",
+            "2608.23397",
+            "2609.09153",
+            "2609.19656"
+          ],
+          "representatives": [
+            "2510.04618",
+            "2609.09153",
+            "2609.19656"
+          ]
+        },
+        {
+          "id": "memory-system",
+          "title": "固定的记忆机制会不会成为瓶颈？",
+          "question": "不只更新条目，是否需要改变编码、检索、管理或能力扩展程序？",
+          "papers": [
+            "2512.18746",
+            "2602.07755",
+            "2604.10923"
+          ],
+          "representatives": [
+            "2512.18746",
+            "2602.07755"
+          ]
+        }
+      ],
+      "route": [
+        "2303.11366",
+        "2308.10144",
+        "2305.16291",
+        "2510.04618",
+        "2512.18746"
+      ]
+    },
+    {
+      "id": "harness",
+      "title": "失败来自执行方式时，怎样改系统？",
+      "short": "改进执行系统",
+      "problem": "换提示未必能修复工具接口、上下文丢失或控制流程错误。依赖人工逐个模型调系统，也跟不上任务与模型的变化。",
+      "progress": "从搜索提示和模块组合，扩展到修改实际执行代码；搜索空间变大后，诊断、候选多样性、局部回归和成本成为更具体的问题。",
+      "limit": "开放更多代码并不自动带来更好改进。必须区分任务答案的修改与后续任务会使用的系统修改，并看收益是否超出已有强 harness。",
+      "branches": [
+        {
+          "id": "design",
+          "title": "如何摆脱人工逐项设计？",
+          "question": "提示、流程和完整代码都可搜索；关键分歧是预先限定多少结构。",
+          "papers": [
+            "2309.03409",
+            "2310.03714",
+            "2408.08435",
+            "2410.10762",
+            "2507.03616",
+            "2504.15228",
+            "2505.22954",
+            "2410.04444",
+            "2603.03329",
+            "2608.12307"
+          ],
+          "representatives": [
+            "2408.08435",
+            "2410.10762",
+            "2505.22954"
+          ]
+        },
+        {
+          "id": "repair",
+          "title": "知道失败了，如何找到该改的系统部件？",
+          "question": "是模型不适配、某个部件有错，还是改动相互干扰？不同诊断决定不同补丁。",
+          "papers": [
+            "2603.28052",
+            "2604.25850",
+            "2606.09498",
+            "2606.06324",
+            "2606.01314",
+            "2607.14159",
+            "2608.01918",
+            "2607.15524"
+          ],
+          "representatives": [
+            "2603.28052",
+            "2606.09498",
+            "2606.06324"
+          ]
+        },
+        {
+          "id": "search",
+          "title": "如何用有限预算持续找到有效版本？",
+          "question": "只沿当前最优版本走可能停滞；保留什么历史、从哪里继续搜索？",
+          "papers": [
+            "2608.07645",
+            "2607.13683",
+            "2609.09646",
+            "2608.27311",
+            "2609.20519",
+            "sol-pi-author-blog"
+          ],
+          "representatives": [
+            "2607.13683",
+            "2608.27311",
+            "2609.20519"
+          ]
+        },
+        {
+          "id": "long-run",
+          "title": "任务不能重来，如何边执行边维护系统？",
+          "question": "长时间运行还要处理状态、恢复、协作与资源，离线改好再部署并不覆盖这些约束。",
+          "papers": [
+            "2403.03186",
+            "2608.22793",
+            "2608.23552",
+            "2608.11350",
+            "2608.09380",
+            "2608.26530",
+            "2609.01481",
+            "2606.19980",
+            "apodex-10-blog"
+          ],
+          "representatives": [
+            "2608.26530",
+            "2609.01481"
+          ]
+        }
+      ],
+      "route": [
+        "2408.08435",
+        "2505.22954",
+        "2606.09498",
+        "2606.06324",
+        "2609.20519"
+      ]
+    },
+    {
+      "id": "curriculum",
+      "title": "没有现成训练题时，下一步学什么？",
+      "short": "选择学习目标与数据",
+      "problem": "能够优化一个给定分数，不等于能发现能力缺口、找到合适练习或定义有效目标。练了很多题，也可能没有练到真正需要的能力。",
+      "progress": "一条路线从失败中选题、合成课程；另一条扩展可验证的新挑战。宽泛目标下的评测再检查系统能否自己确定学习方向。",
+      "limit": "生成得出、验得过、对目标能力有帮助，是不同条件。自建练习上的提高，需要在独立目标任务上验证。",
+      "branches": [
+        {
+          "id": "data",
+          "title": "怎样把失败变成值得训练的数据？",
+          "question": "要避免重复采样和无效轨迹，并判断材料是否补到了当前能力缺口。",
+          "papers": [
+            "2511.10395",
+            "2609.00768",
+            "2609.08183",
+            "2607.25886",
+            "2606.04261"
+          ],
+          "representatives": [
+            "2511.10395",
+            "2609.00768"
+          ]
+        },
+        {
+          "id": "frontier",
+          "title": "固定题库用完以后，如何持续产生挑战？",
+          "question": "新任务既要够难又要可验证；无可靠检查的难题无法稳定指导学习。",
+          "papers": [
+            "endlessfrontier.tech-assets-paper.pdf"
+          ],
+          "representatives": [
+            "endlessfrontier.tech-assets-paper.pdf"
+          ]
+        },
+        {
+          "id": "goal",
+          "title": "从“变得更强”到可执行的学习目标",
+          "question": "任务和指标不再由人给定时，目标解释、数据选择和自测是否仍然有效？",
+          "papers": [
+            "2608.31111",
+            "2608.05144"
+          ],
+          "representatives": [
+            "2608.31111",
+            "2608.05144"
+          ]
+        }
+      ],
+      "route": [
+        "2511.10395",
+        "2609.00768",
+        "endlessfrontier.tech-assets-paper.pdf",
+        "2608.31111"
+      ]
+    },
+    {
+      "id": "weights",
+      "title": "经验何时该写进模型，何时留在外部？",
+      "short": "训练与系统协同",
+      "problem": "外部经验能立刻指导行为，但模型不一定会用；训练能改变能力，也可能依赖当前 harness 产生的有限轨迹。只优化一侧，另一侧可能成为瓶颈。",
+      "progress": "先研究如何把经历变成参数学习信号，再研究新模型与新 harness 怎样交替适配；不是所有带联合架构的工作都已验证多代相互促进。",
+      "limit": "要分清被训练的是执行模型还是修改者。比较时匹配总训练／搜索预算，并避免用最好的测试点替代预先选定的最终版本。",
+      "branches": [
+        {
+          "id": "internalize",
+          "title": "如何从自己的经历获得有效训练信号？",
+          "question": "标准答案、教师示范、环境奖励和自建材料分别能教会什么？",
+          "papers": [
+            "2506.10943",
+            "2607.14777",
+            "2510.16079",
+            "2603.21877"
+          ],
+          "representatives": [
+            "2506.10943",
+            "2607.14777"
+          ]
+        },
+        {
+          "id": "state-policy",
+          "title": "模型能否学会何时维护和调用外部经验？",
+          "question": "只把记忆接到模型旁边不够，还要让读写和跨任务学习成为行为策略。",
+          "papers": [
+            "2608.05446",
+            "2607.26784"
+          ],
+          "representatives": [
+            "2608.05446",
+            "2607.26784"
+          ]
+        },
+        {
+          "id": "coupling",
+          "title": "两侧都会变时，如何安排更新？",
+          "question": "新的 harness 产生新的训练轨迹，新的模型又改变最合适的执行方式。",
+          "papers": [
+            "2605.27276",
+            "2605.09998",
+            "2606.14249",
+            "2608.13951",
+            "2608.09819",
+            "2606.01779",
+            "2607.22688",
+            "2609.00196",
+            "2609.17523"
+          ],
+          "representatives": [
+            "2605.27276",
+            "2609.00196",
+            "2609.17523"
+          ]
+        }
+      ],
+      "route": [
+        "2506.10943",
+        "2605.27276",
+        "2609.00196",
+        "2609.17523"
+      ]
+    },
+    {
+      "id": "improver",
+      "title": "系统能否越来越会提出改进？",
+      "short": "改进产生改进的能力",
+      "problem": "任务做得更好，不一定更会诊断、搜索和修改。固定的改进程序可能限制后续增长，需要把“怎样改”也当作研究对象。",
+      "progress": "学习修改规则、训练修改模型、开放修改程序，是三个不同切口。它们可组合，但都需要单独测下一轮产生改进的效率和迁移。",
+      "limit": "修改了改进程序，不等于已经证明改进加速。要把改进者移到新任务或新起点，在同预算下测它能否更快产生有效后代。",
+      "branches": [
+        {
+          "id": "rules",
+          "title": "改进规则能否随经验更新？",
+          "question": "若每轮都用同一套变异或诊断指令，会不会反复提出相似的无效修改？",
+          "papers": [
+            "2309.16797",
+            "2606.04465",
+            "2607.05297",
+            "2608.08466",
+            "2609.14858"
+          ],
+          "representatives": [
+            "2309.16797",
+            "2607.05297",
+            "2609.14858"
+          ]
+        },
+        {
+          "id": "learn-editor",
+          "title": "提出有效修改是否是一种可训练能力？",
+          "question": "选出好补丁与学会写出好补丁不同；后者需要把实际收益作为训练信号。",
+          "papers": [
+            "2608.02276",
+            "2607.21971",
+            "2607.28568",
+            "2603.18620"
+          ],
+          "representatives": [
+            "2608.02276",
+            "2607.21971"
+          ]
+        },
+        {
+          "id": "recursive-code",
+          "title": "如何让修改程序本身也能改变？",
+          "question": "把新的搜索机制保留下来，并检查它能否帮助后续领域和后续轮次。",
+          "papers": [
+            "2310.02304",
+            "2603.19461",
+            "2604.23472",
+            "2608.24735",
+            "metarsi-v1",
+            "weco-aide2-blog"
+          ],
+          "representatives": [
+            "2310.02304",
+            "2603.19461"
+          ]
+        },
+        {
+          "id": "foundations",
+          "title": "递归改进为何可能，有哪些形式限制？",
+          "question": "早期理论讨论收益、可证明性与搜索效率；其假设不自动适用于今天的 agent。",
+          "papers": [
+            "cs-0309048",
+            "people.idsia.ch-juergen",
+            "cs-0207097",
+            "1805.06610",
+            "doi.org-10.1016-S0065-2458-08-60418-0",
+            "yudkowsky-recursive-self-improvement"
+          ],
+          "representatives": [
+            "cs-0309048"
+          ]
+        }
+      ],
+      "route": [
+        "2309.16797",
+        "2310.02304",
+        "2603.19461",
+        "2608.02276",
+        "2609.14858"
+      ]
+    },
+    {
+      "id": "evaluation",
+      "title": "怎样证明系统确实学会了，而非多试几次？",
+      "short": "验证提升的来源与持续性",
+      "problem": "最终分数把执行者、改进者、搜索预算和数据接触混在一起。一次涨分也看不出迁移、遗忘和后续持续改进。",
+      "progress": "从静态任务成绩，转向受控的更新过程：分离角色，记录每轮成本，隔离选版本与测试，再跟踪连续任务。它是所有路线的验证层。",
+      "limit": "评测名字含 self-evolving，并不意味着测到了改进者自身变强。不同评测支持不同结论，不能拼成统一排名。",
+      "branches": [
+        {
+          "id": "attribution",
+          "title": "涨分究竟来自哪里？",
+          "question": "同预算重试、强起点、固定执行者以及更换修改者，分别排除不同解释。",
+          "papers": [
+            "2607.12227",
+            "2605.30621",
+            "2608.09096",
+            "2609.01437",
+            "2602.22480",
+            "2606.04455",
+            "2608.06301",
+            "2608.10178"
+          ],
+          "representatives": [
+            "2607.12227",
+            "2605.30621",
+            "2609.01437"
+          ]
+        },
+        {
+          "id": "transfer",
+          "title": "保留经验能否迁移，还是只记住了历史？",
+          "question": "控制任务顺序、上下文、检索与任务难度，检查是否形成了可用的新能力。",
+          "papers": [
+            "2505.11942",
+            "2507.05257",
+            "2508.19005",
+            "2510.17281",
+            "2511.20857",
+            "2604.17308",
+            "2604.20087",
+            "2605.18421",
+            "2606.05661",
+            "2607.05202",
+            "2608.00155",
+            "2608.01149",
+            "2608.03874",
+            "2608.04003",
+            "2608.06144",
+            "2608.03764"
+          ],
+          "representatives": [
+            "2608.03874",
+            "2608.04003"
+          ]
+        },
+        {
+          "id": "trajectory",
+          "title": "持续更新是否更好，旧能力是否保得住？",
+          "question": "不只测最好一次：跟踪整个曲线、验收误差、遗忘与成本。",
+          "papers": [
+            "2606.17546",
+            "2607.05155",
+            "2608.31100",
+            "2609.08175"
+          ],
+          "representatives": [
+            "2606.17546",
+            "2608.31100",
+            "2609.08175"
+          ]
+        },
+        {
+          "id": "research",
+          "title": "能否自主完成有效的 AI 研发？",
+          "question": "把工程过程跑通、把给定任务调好、发现可泛化新方法，需要不同验证。",
+          "papers": [
+            "2603.08640",
+            "2604.10547",
+            "2606.05080",
+            "2505.19955",
+            "2605.08678",
+            "2608.17271",
+            "rsi-exam",
+            "icoder-27b"
+          ],
+          "representatives": [
+            "2603.08640",
+            "2605.08678",
+            "rsi-exam"
+          ]
+        }
+      ],
+      "route": [
+        "2607.12227",
+        "2605.30621",
+        "2608.03874",
+        "2606.17546",
+        "rsi-exam"
+      ]
+    },
+    {
+      "id": "perspectives",
+      "title": "概念、产业观察与基础设施",
+      "short": "背景与工程入口",
+      "problem": "这些材料帮助界定 RSI、理解研发实践和搭实验平台；观点、产品观察和可复现实验的证据性质不同。",
+      "progress": "先用概念文章建立坐标，再用方法与评测论文检验具体主张。",
+      "limit": "综述或博客的方向判断不是实验结论；仓库提供接口也不等于已经证明持续提升。",
+      "branches": [
+        {
+          "id": "maps",
+          "title": "概念与领域综述",
+          "question": "用于建立整体阅读坐标。",
+          "papers": [
+            "2609.11873",
+            "data-centric-rsi-survey",
+            "ai4ai-survey",
+            "shiyu-rsi-what-evolves",
+            "shiyu-rsi-loop-closes",
+            "liu-self-evolving-taxonomy",
+            "weng-harness-engineering",
+            "zhihu-self-evolving-guide",
+            "melon-self-evolve-rsi",
+            "weng-prompt-engineering"
+          ],
+          "representatives": [
+            "ai4ai-survey",
+            "shiyu-rsi-what-evolves",
+            "shiyu-rsi-loop-closes"
+          ]
+        },
+        {
+          "id": "practice",
+          "title": "产业实践与架构观点",
+          "question": "用于了解现实约束与系统设计假设。",
+          "papers": [
+            "openai-research-acceleration",
+            "minimax-m27-blog",
+            "anthropic-when-ai-builds-itself",
+            "ibm-rsi-serious-question",
+            "2609.19203",
+            "reef"
+          ],
+          "representatives": [
+            "anthropic-when-ai-builds-itself",
+            "reef"
+          ]
+        },
+        {
+          "id": "programs",
+          "title": "程序搜索：改进任务产物的参照",
+          "question": "代码进化可以产生更好的算法或程序；需要另查改动是否进入 agent 或修改者本身。",
+          "papers": [
+            "2509.19349",
+            "deepmind-alphaevolve-blog"
+          ],
+          "representatives": [
+            "2509.19349",
+            "deepmind-alphaevolve-blog"
+          ]
+        }
+      ],
+      "route": [
+        "shiyu-rsi-what-evolves",
+        "shiyu-rsi-loop-closes",
+        "ai4ai-survey"
+      ]
+    }
+  ],
+  "entries": {
+    "2203.11171": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "研究同一模型对当前题目的多种推理能否相互补充，从而在不训练模型的情况下提高数学与常识推理可靠性。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2203.11171"
+        }
+      ]
+    },
+    "2303.17651": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "研究单个模型在没有额外训练或外部反馈时，能否通过自身批评持续改善当前输出的质量。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2303.17651"
+        }
+      ],
+      "name": "Self-Refine",
+      "contrast": "让同一模型先写批评再改初稿；重点是当前输出质量，不保留跨任务学习结果。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2303.17651"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2303.17651"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.17651#S3"
+        }
+      ]
+    },
+    "2305.11738": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "研究模型能否借助外部工具反馈识别并修正自身错误，改善单靠自我判断时不可靠的纠错能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.11738"
+        }
+      ],
+      "name": "CRITIC",
+      "contrast": "用搜索、代码执行等外部工具检查输出；与纯自评的差别是引入可核对的信息。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.11738"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2305.11738"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2305.11738#S3.SS1"
+        }
+      ]
+    },
+    "2309.11495": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "研究模型能否通过自我核验减少事实性幻觉，并避免验证过程被初稿中的错误带偏。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2309.11495"
+        }
+      ]
+    },
+    "2310.01798": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "检验语言模型在没有外部正确性反馈的条件下，是否真正具备修正自身推理错误的能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2310.01798"
+        }
+      ],
+      "name": "Cannot Self-Correct",
+      "contrast": "专门移除外部正确性反馈，检验所谓自纠错是否仍成立；提供适用边界。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2310.01798"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2310.01798"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2310.01798#S3.SS1"
+        }
+      ]
+    },
+    "2310.04406": {
+      "primary": "feedback",
+      "branch": "self-check",
+      "related": [],
+      "question": "面向需要探索、回退和长程规划的任务，研究语言 agent 能否通过比较行动路径作出更可靠的决策。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2310.04406"
+        }
+      ]
+    },
+    "2305.20050": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [],
+      "question": "研究训练数学推理评分模型时，监督中间步骤是否比只监督最终答案更有效，以及怎样提高人类标注的利用效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.20050"
+        }
+      ],
+      "name": "Let's Verify Step by Step",
+      "contrast": "比较步骤级人工监督与只标最终结果；重点是监督粒度如何影响推理评分。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.20050"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2305.20050"
+        },
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.20050#S2"
+        }
+      ]
+    },
+    "2406.07496": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [],
+      "question": "面向由多个模型和工具组成的系统，研究自然语言反馈能否充当通用优化信号，支持不同组件的联合改进。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2406.07496"
+        }
+      ]
+    },
+    "2507.19457": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [
+        "harness"
+      ],
+      "question": "研究可解释的语言反馈能否比稀疏分数更高效地支持任务适应，并使提示优化在较少试验下获得有竞争力的能力提升。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2507.19457"
+        }
+      ],
+      "name": "GEPA",
+      "contrast": "读执行轨迹中的语言反馈来改提示，并保留互补候选；区别于只依据总分猜新提示。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2507.19457"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2507.19457"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2507.19457#S3"
+        }
+      ]
+    },
+    "2605.24539": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [
+        "harness"
+      ],
+      "question": "研究在奖励稀疏、执行随机的长程任务中，人类成功示范能否弥补 agent 自主试错的信息不足，帮助其可靠改进运行框架。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.24539"
+        }
+      ],
+      "name": "DemoEvolve",
+      "contrast": "用成功示范弥补长任务稀疏奖励；研究多给哪类信息能帮助定位有效改动。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.24539"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.24539"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2605.24539#S4.SS1.SSS0.Px1"
+        }
+      ]
+    },
+    "2609.00829": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [
+        "harness"
+      ],
+      "question": "研究 agent 如何从失败中定位可复用的系统性改进，同时避免记住训练答案和损害已有能力，使框架进化更稳定地泛化。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.00829"
+        }
+      ]
+    },
+    "2606.26294": {
+      "primary": "feedback",
+      "branch": "judge",
+      "related": [
+        "improver",
+        "evaluation"
+      ],
+      "question": "研究在缺少完美固定评价器的任务中，解题者与评审者能否共同改进，同时保持评价可信和版本比较有意义。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.26294"
+        }
+      ],
+      "name": "Red Queen Gödel Machine",
+      "contrast": "让解题者与评审者共同改进；由固定判分转向共同适应，也增加了评审可信性的要求。",
+      "contrastSources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.26294"
+        },
+        {
+          "label": "Appendix C.5",
+          "url": "https://arxiv.org/abs/2606.26294"
+        }
+      ]
+    },
+    "2303.11366": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [
+        "feedback"
+      ],
+      "question": "研究冻结参数的语言 agent 能否从试错中学习，在决策、问答和编程任务中把失败经验转化为后续尝试的改进。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2303.11366"
+        }
+      ],
+      "name": "Reflexion",
+      "contrast": "把试错转成下一次尝试可读的文字教训；需要区分同题重试与跨题迁移。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2303.11366"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2303.11366"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.11366#S3"
+        }
+      ]
+    },
+    "2305.16291": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [
+        "curriculum"
+      ],
+      "question": "面向 Minecraft 开放世界，研究 agent 能否在无人持续指定任务的情况下自主探索、积累技能，并将能力迁移到新任务和新世界。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.16291"
+        }
+      ],
+      "name": "Voyager",
+      "contrast": "自动课程配合可执行技能库，成功代码可检索和组合；同时涉及探索方向与能力积累。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.16291"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2305.16291"
+        },
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.16291#S2"
+        }
+      ]
+    },
+    "2308.10144": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究无法访问或更新模型权重时，agent 能否从多项任务的成败经历中自主学习，并把经验用于新任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2308.10144"
+        }
+      ],
+      "name": "ExpeL",
+      "contrast": "从多项训练任务整理一般规则和成功示例，供未见任务使用；关注经验能否离开原题。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2308.10144"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2308.10144"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2308.10144#S4.SS4"
+        }
+      ]
+    },
+    "2409.07429": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究网页 agent 能否把既往操作经历转化为跨任务复用的工作流程，从而提高长操作链任务的可靠性与效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2409.07429"
+        }
+      ]
+    },
+    "2508.06433": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究 agent 能否在不更新模型参数的情况下积累、修正和复用操作经验，改善后续任务的规划与执行效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2508.06433"
+        }
+      ]
+    },
+    "2509.25140": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究 agent 能否从自行判断的成功与失败经历中提炼可迁移的推理经验，在缺少标准答案反馈时仍改善后续任务表现。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2509.25140"
+        }
+      ]
+    },
+    "2402.17574": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "面向动态博弈，研究 agent 能否从跨局经历中改进整体行为策略，而不只修正当前一步动作或依赖手工规则。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2402.17574"
+        }
+      ]
+    },
+    "2510.23601": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究通用 agent 能否通过任务经验形成可复用的领域执行能力，从而更高效地处理后续相关任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2510.23601"
+        }
+      ]
+    },
+    "2603.13131": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "面向 Minecraft 中前置依赖多、容易中断的长程任务，研究积累的执行知识能否帮助 agent 应对新失败并恢复任务推进。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.13131"
+        }
+      ]
+    },
+    "2603.18000": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究 agent 能否把解决复杂任务的经历转化为可再次执行的能力，并在后续相关任务中减少重复开发、提高可靠性。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.18000"
+        }
+      ]
+    },
+    "2603.18743": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究冻结的通用模型能否通过持续积累和修订技能，自主形成适合新任务的 agent 能力，并有效选择该使用的技能。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2603.18743"
+        }
+      ]
+    },
+    "2604.15097": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究经验采用什么表示才更有助于后续行为改进，检验完整的步骤文档是否一定优于紧凑、可修改的策略知识。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.15097"
+        }
+      ]
+    },
+    "2604.20133": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "面向实际助理的长期服务，解决持续技能学习与复杂任务委派如何协同，使积累的能力能够被合适地调用。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.20133"
+        }
+      ]
+    },
+    "2605.23904": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究外部文字技能能否成为稳定、可优化的学习对象，使冻结模型通过技能更新持续适应任务，并跨模型或工具框架复用收益。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.23904"
+        }
+      ]
+    },
+    "2607.00272": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "面向机器人操作，研究 agent 能否从多模态执行失败中自主学会可复用修复技能，并适应未见任务与环境变化。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.00272"
+        }
+      ]
+    },
+    "2608.15071": {
+      "primary": "experience",
+      "branch": "retain",
+      "related": [],
+      "question": "研究 agent 面对连续到来的新任务时，能否从已完成的经历中学到可复用经验、改善后续任务表现，并分清反馈来源、经验表示和修改者能力分别如何影响学习效果。",
+      "sources": [
+        {
+          "label": "§1 Introduction · 研究目标与分析范围",
+          "url": "https://arxiv.org/html/2608.15071#S1"
+        }
+      ]
+    },
+    "2305.10250": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向长期陪伴和个人助理，研究模型如何跨会话记住用户经历与特点，支持连贯且个性化的交互。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2305.10250"
+        }
+      ]
+    },
+    "2409.00872": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向动态决策和长文本任务，研究反馈利用与记忆管理如何帮助 agent 持续执行，缓解有限上下文带来的能力限制。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2409.00872"
+        }
+      ]
+    },
+    "2502.12110": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向持续对话中的记忆管理，研究 agent 能否随新信息自主组织和修订历史知识，而不仅是存下记录后按相似度检索。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2502.12110"
+        }
+      ]
+    },
+    "2510.04618": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "研究 agent 如何在持续适应任务时保留有用的领域经验，避免反复压缩和重写上下文造成知识流失。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2510.04618"
+        }
+      ],
+      "name": "ACE",
+      "contrast": "逐条维护经验手册，避免反复整体重写把细节抹掉；主要改内容的组织与更新方式。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2510.04618"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2510.04618"
+        },
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2510.04618#S2.SS1"
+        }
+      ]
+    },
+    "2604.16839": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向长对话记忆，研究经验在反复共同使用中形成的关联，能否改善知识组织、回答质量和上下文使用效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.16839"
+        }
+      ]
+    },
+    "2608.16114": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "研究如何保留子任务与技能之间的组合关系，使 agent 能够更准确地检索、组合和维护可复用的执行经验。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.16114"
+        }
+      ]
+    },
+    "2608.24876": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向长程任务，解决 agent 如何准确维护当前进度、及时调用相关经验，并把失败归因到需要修订的记忆部分。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.24876"
+        }
+      ]
+    },
+    "2606.17220": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向法律案例检索，研究 agent 能否自主积累有效的查询规则，在强词项匹配基线之上持续提高检索质量。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.17220"
+        }
+      ]
+    },
+    "2608.23397": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "面向临床任务，研究 agent 如何在证据来源、适用范围和权限约束下积累可复用经验，同时保持诊断与流程的可靠性。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.23397"
+        }
+      ]
+    },
+    "2609.09153": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [],
+      "question": "研究可更新的步骤图能否帮助冻结模型稳定执行长任务，以及它能否从经验中自行构建并纠正错误的人工先验。",
+      "sources": [
+        {
+          "label": "§1：程序知识与研究目标",
+          "url": "https://arxiv.org/html/2609.09153#S1"
+        },
+        {
+          "label": "附录D.2：五种图构造方案",
+          "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+        }
+      ],
+      "name": "Procedural Graphs",
+      "contrast": "把经验写成带条件的步骤图，按当前执行位置提供指导；强调经验的执行结构。",
+      "contrastSources": [
+        {
+          "label": "§1：程序知识与研究目标",
+          "url": "https://arxiv.org/html/2609.09153#S1"
+        },
+        {
+          "label": "附录D.2：五种图构造方案",
+          "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+        },
+        {
+          "label": "§5.1：跨基准结果",
+          "url": "https://arxiv.org/html/2609.09153#S5.SS1"
+        }
+      ]
+    },
+    "2609.19656": {
+      "primary": "experience",
+      "branch": "organize",
+      "related": [
+        "harness"
+      ],
+      "question": "让索引自动发现检索缺口、生成练习查询并修订索引键，检验对搜索和记忆读取的帮助。",
+      "sources": [
+        {
+          "label": "§3–4；附录 A.1–A.2、B.1–B.5",
+          "url": "https://arxiv.org/html/2609.19656v1"
+        }
+      ],
+      "name": "SELF-INDEX",
+      "contrast": "用自建练习查询暴露检索缺口，再改索引键；返回原文，模型参数不更新。",
+      "contrastSources": [
+        {
+          "label": "§3–4；附录 A.1–A.2、B.1–B.5",
+          "url": "https://arxiv.org/html/2609.19656v1"
+        }
+      ]
+    },
+    "2512.18746": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [
+        "harness",
+        "improver"
+      ],
+      "question": "研究 agent 能否不仅积累记忆内容，还自主改进记忆系统的组织和运行方式，以适应不同任务与基础模型。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2512.18746"
+        }
+      ],
+      "name": "MemEvolve",
+      "contrast": "连编码、存储、检索和管理记忆的程序一起搜索；区别于只向固定系统添加记忆。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2512.18746"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2512.18746"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2512.18746#S3.SS3"
+        }
+      ]
+    },
+    "2602.07755": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [
+        "improver"
+      ],
+      "question": "研究“怎样记忆才能更好地持续学习”能否由系统自动学出，减少顺序决策 agent 对固定人工记忆设计的依赖。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2602.07755"
+        }
+      ],
+      "name": "ALMA",
+      "contrast": "根据后续持续学习效果搜索记忆设计；将“怎样学经验”放到外层优化。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2602.07755"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2602.07755"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2602.07755#S3.SS2"
+        }
+      ]
+    },
+    "2604.10923": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [],
+      "question": "研究经验积累与工具、专家能力扩展能否相互促进，使 agent 突破只增加记忆或只增加工具的单一路径。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.10923"
+        }
+      ]
+    },
+    "2309.03409": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "研究语言模型能否在没有可用梯度的情况下充当优化器，根据目标与历史试验结果改进数值方案或任务提示。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2309.03409"
+        }
+      ]
+    },
+    "2310.03714": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "面向多步语言模型应用，解决程序设计如何与具体提示调优分离，使系统能够根据任务指标自动适配。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2310.03714"
+        }
+      ]
+    },
+    "2408.08435": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "研究 agent 系统的设计能否由模型自主完成，从人工预设的提示和模块组合扩展到更开放的系统结构，并获得跨任务、跨模型的适用性。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2408.08435"
+        }
+      ],
+      "name": "ADAS",
+      "contrast": "用代码表达和搜索 agent 设计，扩大人工预置模块之外的设计空间。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2408.08435"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2408.08435"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2408.08435#S3"
+        }
+      ]
+    },
+    "2410.10762": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "研究 task agent 的工作流能否自动设计，减少对人工初始流程的依赖，并改善执行效果与成本之间的权衡。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2410.10762"
+        }
+      ],
+      "name": "AFlow",
+      "contrast": "在工作流结构和操作节点上搜索；与开放代码修改相比，搜索空间更明确。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2410.10762"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2410.10762"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2410.10762#S4"
+        }
+      ]
+    },
+    "2507.03616": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "面向自动 agent 工作流研发，提供统一工程平台，解决不同生成、执行和优化算法难以组合复用的问题。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2507.03616"
+        }
+      ]
+    },
+    "2504.15228": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "研究具备基本编程工具的 agent 能否自主改进自身软件实现，并让更好的版本继续推动后续能力提升。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2504.15228"
+        }
+      ]
+    },
+    "2505.22954": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [
+        "improver"
+      ],
+      "question": "探索 coding agent 能否减少对人工系统设计的依赖，通过持续改进自身实现，逐步提升解题能力及进一步自改进的能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2505.22954"
+        }
+      ],
+      "name": "DGM",
+      "contrast": "用实际任务成绩筛选自修改版本，保留多样历史分支供继续探索；用实证替代形式证明。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2505.22954"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2505.22954"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2505.22954#S3"
+        }
+      ]
+    },
+    "2410.04444": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "探索 agent 能否自主改变解题流程及负责自修改的机制，减少人工固定设计对递归自改进空间的限制。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2410.04444"
+        }
+      ]
+    },
+    "2603.03329": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "面向有明确动作规则的交互环境，研究自动生成的运行代码能否弥补模型执行可靠性的不足，减少非法动作并改善决策。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.03329"
+        }
+      ]
+    },
+    "2608.12307": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [],
+      "question": "研究强模型能否在不训练弱模型参数的情况下，将部分能力转移给弱模型，扩大其在测试时能够完成的任务范围。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.12307"
+        }
+      ]
+    },
+    "2603.28052": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究自动运行框架设计能否充分利用历次试验的经验，找到优于人工设计、并能迁移到其他任务或模型的运行方式。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.28052"
+        }
+      ],
+      "name": "Meta-Harness",
+      "contrast": "让修改者检索历史代码、分数和轨迹，支持跨轮诊断；不只依赖当前候选的压缩摘要。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.28052"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2603.28052"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2603.28052#S3"
+        }
+      ]
+    },
+    "2604.25850": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "面向工具、记忆和控制流程共同作用的复杂 agent 系统，研究如何使自动框架改进可诊断、可验证，并产生可迁移的工程收益。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.25850"
+        }
+      ]
+    },
+    "2606.09498": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究冻结模型能否在没有人工工程师或更强外部模型指导时，识别自身特有的执行弱点，并改进适合自己的运行框架。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.09498"
+        }
+      ],
+      "name": "Self-Harness",
+      "contrast": "由同型号模型根据自己的失败适配 harness；重点是执行模型特有的弱点。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.09498"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.09498"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2606.09498#S3.SS1"
+        }
+      ]
+    },
+    "2606.06324": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [
+        "feedback"
+      ],
+      "question": "研究自动框架修复如何从“知道任务失败”推进到“知道哪个运行机制有问题”，以减少无针对性修改和连带退化。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.06324"
+        }
+      ],
+      "name": "HarnessFix",
+      "contrast": "先把失败定位到运行机制，再做限定范围的修复；重点是修改针对性和避免连带退化。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.06324"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.06324"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2606.06324#S3"
+        }
+      ]
+    },
+    "2606.01314": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究技能说明与可执行工具如何共同适应任务，尤其关注多技能相互依赖时，单独改一项无法修复的执行问题。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.01314"
+        }
+      ]
+    },
+    "2607.14159": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究运行框架能否从历史执行中学会适配不同任务，使 agent 面对无答案反馈的新题时仍能选用合适的运行方式。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.14159"
+        }
+      ]
+    },
+    "2608.01918": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究自动框架进化怎样获得可迁移的真实能力提升，减少记题式适配、诊断不足及组件修改相互干扰造成的退化。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.01918"
+        }
+      ]
+    },
+    "2607.15524": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [],
+      "question": "研究用户可配置的轻量运行框架能否以少量迭代提升科研任务的执行质量，并降低对高推理强度和人工持续维护的依赖。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.15524"
+        }
+      ]
+    },
+    "2608.07645": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [],
+      "question": "研究自改进代码 agent 如何利用不同任务和不同进化分支之间的经验，提高后续系统改进的质量与搜索效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.07645"
+        }
+      ]
+    },
+    "2607.13683": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [],
+      "question": "研究在评估有噪声、交互预算有限时，如何保持框架搜索的有效多样性，并找到可靠泛化的改进。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.13683"
+        }
+      ],
+      "name": "HarnessBank",
+      "contrast": "保存语义不同且通过质量检查的候选，避免只保留单一最高分版本造成搜索收缩。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.13683"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.13683"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS1"
+        }
+      ]
+    },
+    "2609.09646": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [],
+      "question": "研究如何控制修改范围、操作种类和搜索起点，使多 agent 框架在相同预算下产生更多有效改进。",
+      "sources": [
+        {
+          "label": "§1–2：定位与范围",
+          "url": "https://arxiv.org/html/2609.09646#S1"
+        },
+        {
+          "label": "§5：指定改动、检查与保留版本",
+          "url": "https://arxiv.org/html/2609.09646#S5"
+        }
+      ]
+    },
+    "2608.27311": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [],
+      "question": "研究有限交互预算下，怎样判断一项框架修改是否真正有效，使自动进化减少无关测试并识别被总分掩盖的行为退化。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.27311"
+        }
+      ],
+      "name": "HarnessLens",
+      "contrast": "根据改动选择更相关的验证任务；优化的是验收信息和预算利用。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.27311"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.27311"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2608.27311#A1.SS1"
+        }
+      ]
+    },
+    "2609.20519": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "evaluation"
+      ],
+      "question": "研究自动搜索能否找到跨任务、跨模型复用的 harness 效率改进，而非只提高搜索题得分。",
+      "sources": [
+        {
+          "label": "§2.1–2.5、§3.1–3.3、§5.1",
+          "url": "https://arxiv.org/html/2609.20519v1"
+        }
+      ],
+      "name": "SoL-Pi",
+      "contrast": "搜索动作、上下文与输出处理的效率改进；成本和得分一起看，不能把节省 token 等同能力增长。",
+      "contrastSources": [
+        {
+          "label": "§2.1–2.5、§3.1–3.3、§5.1",
+          "url": "https://arxiv.org/html/2609.20519v1"
+        }
+      ]
+    },
+    "sol-pi-author-blog": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [],
+      "question": "SoL-Pi 作者的图解与工程说明，解释四种机制如何省成本及研究中人类实际做了什么。",
+      "sources": [
+        {
+          "label": "Method；Discoveries；Results；Humans set priors；Recursive Efficient Improvement",
+          "url": "https://nvlabs.github.io/SoL-Pi/"
+        }
+      ]
+    },
+    "2403.03186": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向游戏和日常软件，探索 agent 能否像人一样依靠通用屏幕与操作接口完成长程任务，减少对逐环境专用接口的依赖。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2403.03186"
+        }
+      ]
+    },
+    "2608.22793": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向车载助手的模糊请求和行为约束，研究如何把偶尔成功转化为重复执行时的稳定可靠表现。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.22793"
+        }
+      ]
+    },
+    "2608.23552": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向超出单次上下文容量的复杂任务，解决 agent 如何持续管理信息、计算与协作，使长程执行能够恢复、验证并控制资源。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.23552"
+        }
+      ]
+    },
+    "2608.11350": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向动作接口固定的具身环境，研究冻结模型能否通过外部技能与运行支持的适应，改善感知、规划和任务执行能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.11350"
+        }
+      ]
+    },
+    "2608.09380": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向长程复杂业务，研究观察、规划、验证和恢复经验如何成为可持续积累的控制能力，并在更新时保持收益与风险可检验。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.09380"
+        }
+      ]
+    },
+    "2608.26530": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [
+        "experience"
+      ],
+      "question": "研究把任务执行与监督分开，能否在运行过程中纠偏，并把当场发现的经验变成以后可用的技能。",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2608.26530#S1"
+        }
+      ],
+      "name": "PILOT in the Loop",
+      "contrast": "把执行和监督分开，在任务运行中纠偏并留下后续可用的技能。",
+      "contrastSources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2608.26530#S1"
+        },
+        {
+          "label": "§3.1 实验协议",
+          "url": "https://arxiv.org/html/2608.26530#S3.SS1"
+        },
+        {
+          "label": "§3.2–3.3 结果",
+          "url": "https://arxiv.org/html/2608.26530#S3.SS2"
+        }
+      ]
+    },
+    "2609.01481": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "研究编码 agent 能否在无人持续指导的长时间开发中，把高层需求推进为完整可用的软件，并持续兼顾缺陷修复与功能增长。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01481"
+        }
+      ],
+      "name": "Harness-of-Harness",
+      "contrast": "研究多日软件开发中的持续修复与功能推进；工作发生在长期运行过程中。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01481"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2609.01481"
+        },
+        {
+          "label": "附录A.2",
+          "url": "https://arxiv.org/html/2609.01481#A1.SS2"
+        }
+      ]
+    },
+    "2606.19980": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "面向真实机器人，研究代码 agent 能否在减少人工复位、验收和算法干预的情况下，自主开展物理实验并持续改进操作策略。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.19980"
+        }
+      ]
+    },
+    "apodex-10-blog": {
+      "primary": "harness",
+      "branch": "long-run",
+      "related": [],
+      "question": "介绍并行研究 agent 团队与统一验证的运行设计，对比单 agent 与 heavy-duty 模式。",
+      "sources": [
+        {
+          "label": "Scaling Reasoning with an Agent Team；Where Apodex Stands",
+          "url": "https://www.apodex.com/blog/apodex-1.0"
+        }
+      ]
+    },
+    "2511.10395": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [],
+      "question": "面向工具交互任务，研究如何减少人工构造训练任务与低效探索的成本，使 agent 更高效地自主学习新环境中的能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2511.10395"
+        }
+      ],
+      "name": "AgentEvolver",
+      "contrast": "自主组织交互任务并利用经验探索，减少人工出题和重复低价值采样。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2511.10395"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2511.10395"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2511.10395#S3"
+        }
+      ]
+    },
+    "2609.00768": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [],
+      "question": "研究能否从模型自己的失败历史提取明确的错误原因，并据此生成下一轮训练课程，不使用外部任务材料。",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.00768#S1"
+        },
+        {
+          "label": "§3 自博弈、投票与诊断",
+          "url": "https://arxiv.org/html/2609.00768#S3"
+        }
+      ],
+      "name": "DiagEvo",
+      "contrast": "把自身失败按原因组织为错误记忆，再生成训练课程；改变下一轮练习的针对性。",
+      "contrastSources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.00768#S1"
+        },
+        {
+          "label": "§3 自博弈、投票与诊断",
+          "url": "https://arxiv.org/html/2609.00768#S3"
+        },
+        {
+          "label": "§4.2–4.4 结果与分析",
+          "url": "https://arxiv.org/html/2609.00768#S4.SS2"
+        }
+      ]
+    },
+    "2609.08183": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [],
+      "question": "探索路由 harness 能否把真实交互中的能力信号转成训练课程和数据配比，持续提升单个 agent 模型。",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.08183#S1"
+        },
+        {
+          "label": "§3.5 按能力调整数据",
+          "url": "https://arxiv.org/html/2609.08183#S3.SS5"
+        }
+      ]
+    },
+    "2607.25886": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [
+        "evaluation"
+      ],
+      "question": "评测 agent 在训练基础设施已提供的条件下，能否诊断模型能力缺口、提出有效的数据研究方案，并稳定保留后训练收益。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.25886"
+        }
+      ]
+    },
+    "2606.04261": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [
+        "evaluation"
+      ],
+      "question": "评测训练工程已经固定时，agent 能否开展有效的数据筛选研究，并提出超出局部调参的数据策略。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.04261"
+        }
+      ]
+    },
+    "endlessfrontier.tech-assets-paper.pdf": {
+      "primary": "curriculum",
+      "branch": "frontier",
+      "related": [],
+      "question": "研究前沿科学任务的供应能否摆脱对人工整理的持续依赖，并由系统自主扩展可验证的学习任务，推动模型能力继续增长。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf"
+        }
+      ],
+      "name": "BigBang",
+      "contrast": "持续合成并验证更难的科学任务，针对固定题库与人类出题能力的上限。",
+      "contrastSources": [
+        {
+          "label": "摘要",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf"
+        },
+        {
+          "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf"
+        }
+      ]
+    },
+    "2608.31111": {
+      "primary": "curriculum",
+      "branch": "goal",
+      "related": [
+        "evaluation"
+      ],
+      "question": "评测模型只获得宽泛能力目标时，能否把目标转成有效的学习方案。论文分别考察：模糊目标相对明确任务会怎样影响训练；模型能否自行选择数据并更新参数；参数固定时能否改进外围运行框架。",
+      "sources": [
+        {
+          "label": "§1、§4.1：研究问题与实验安排",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS1"
+        }
+      ],
+      "name": "Aspire",
+      "contrast": "不给现成训练目标和练习题，检查宽泛能力目标能否转成有效学习；它提供诊断，不是解决该问题的方法。",
+      "contrastSources": [
+        {
+          "label": "§1、§4.1：研究问题与实验安排",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS1"
+        },
+        {
+          "label": "§4.2：目标描述对照结果",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS2"
+        },
+        {
+          "label": "§4.3：参数更新结果",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS3"
+        }
+      ]
+    },
+    "2608.05144": {
+      "primary": "curriculum",
+      "branch": "goal",
+      "related": [],
+      "question": "面向目标可能变化、正确性信号不充分的开放科研，解决 agent 如何长期维持研究方向、积累可信证据并持续推进工作的问题。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.05144"
+        }
+      ],
+      "name": "Argus",
+      "contrast": "面对目标与判据会变化的开放科研，维护证据并在关键处引入专家；研究长期方向管理。",
+      "contrastSources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.05144"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2608.05144#S4.SS1"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2608.05144#S4.SS3"
+        }
+      ]
+    },
+    "2506.10943": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [],
+      "question": "研究模型能否面对新材料或少量示例，自主决定怎样把输入转成有效的参数更新，从而获得新的知识与任务能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2506.10943"
+        }
+      ],
+      "name": "SEAL",
+      "contrast": "学习把新输入改写成有效的参数更新材料；训练对象包含“怎样为自己组织学习材料”的策略。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2506.10943"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2506.10943"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2506.10943#S3"
+        }
+      ]
+    },
+    "2607.14777": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "feedback"
+      ],
+      "question": "研究交互 agent 能否从自己刚完成的经历中学到更具体的行动指导，弥补只看任务最终成败时缺少中间监督的问题。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.14777"
+        }
+      ],
+      "name": "SEED",
+      "contrast": "从近期执行轨迹提炼逐步监督，为只有最终成败的 agent 强化学习补充学习信号。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.14777"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.14777"
+        },
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2607.14777#A2.SS3"
+        }
+      ]
+    },
+    "2510.16079": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [],
+      "question": "面向搜索与多跳问答，研究 agent 能否从自身行动结果中持续改进策略，使外部经验积累与参数学习相互衔接。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2510.16079"
+        }
+      ]
+    },
+    "2603.21877": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [],
+      "question": "研究模型在难题上几乎所有尝试都失败时，能否重新获得有效学习信号，并把提示带来的能力增益转化为持久参数能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.21877"
+        }
+      ]
+    },
+    "2608.05446": {
+      "primary": "weights",
+      "branch": "state-policy",
+      "related": [],
+      "question": "面向长程交互，研究 agent 能否学会构建有用的外部状态，并自主判断何时读写它，兼顾任务效果与运行成本。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.05446"
+        }
+      ],
+      "name": "EvoHarness-RL",
+      "contrast": "训练何时创建、读写外部状态的行为；可变的不只是外部文本，模型策略也在学习。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.05446"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.05446"
+        },
+        {
+          "label": "附录C",
+          "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5"
+        }
+      ]
+    },
+    "2607.26784": {
+      "primary": "weights",
+      "branch": "state-policy",
+      "related": [
+        "experience",
+        "improver"
+      ],
+      "question": "研究 agent 能否学会为未来任务整理技能，并使跨任务经验积累带来的收益成为可训练的能力，而非只擅长同题重试。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.26784"
+        }
+      ],
+      "name": "SkillRise",
+      "contrast": "把为未来任务整理技能的收益纳入训练；目标超出当前题的单次成功。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.26784"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.26784"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2607.26784#S3"
+        }
+      ]
+    },
+    "2605.27276": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究自主改进系统能否根据任务失败，在改运行框架与更新模型参数之间作出有效选择，并获得两者互补的收益。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.27276"
+        }
+      ],
+      "name": "SIA",
+      "contrast": "把改 harness 与训练模型放进同一操作空间，研究如何根据失败选择改哪一侧。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.27276"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.27276"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2605.27276#S4.SS3"
+        }
+      ]
+    },
+    "2605.09998": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究 agent 在长程环境不中断、不重置的情况下，能否持续适应新经历，并进一步把运行系统的改善转化为模型学习收益。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.09998"
+        }
+      ]
+    },
+    "2606.14249": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "面向 agent 系统的整体改进，研究运行框架设计与模型训练如何共同受益于执行经验，减少两者分开优化的局限。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.14249"
+        }
+      ]
+    },
+    "2608.13951": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究运行框架能否同时服务于当前任务执行和下一轮模型学习，建立两者共同改进所需的可追溯数据基础；本文主要验证框架与轨迹产出。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.13951"
+        }
+      ]
+    },
+    "2608.09819": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "面向部署后的开放持续学习，探索 agent 如何把新经验转化为长期能力，并协调模型专长与运行框架的共同适应；直接搜索实证主要覆盖框架配置。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.09819"
+        }
+      ]
+    },
+    "2606.01779": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究在不同工具和检索任务中，让框架与专属模型分支共同进化，是否比只改一侧更有效。",
+      "sources": [
+        {
+          "label": "§1：框架—模型兼容性问题",
+          "url": "https://arxiv.org/html/2606.01779#S1"
+        },
+        {
+          "label": "§3.2：联合进化流程与起点",
+          "url": "https://arxiv.org/html/2606.01779#S3.SS2"
+        }
+      ]
+    },
+    "2607.22688": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究修复产生训练轨迹的框架、再用更好的轨迹训练模型，能否在多轮后训练中形成互相促进的改进。",
+      "sources": [
+        {
+          "label": "§1：联合后训练动机",
+          "url": "https://arxiv.org/html/2607.22688#S1"
+        },
+        {
+          "label": "§3.2–3.5：两个循环与验收",
+          "url": "https://arxiv.org/html/2607.22688#S3.SS2"
+        }
+      ]
+    },
+    "2609.00196": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [],
+      "question": "研究模型参数与可执行框架是否会互相限制，以及怎样安排交替更新才能更有效地释放两者能力。",
+      "sources": [
+        {
+          "label": "§1：问题与贡献",
+          "url": "https://arxiv.org/html/2609.00196#S1"
+        },
+        {
+          "label": "§6.2：交替节奏及自适应切换",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+        }
+      ],
+      "name": "WHALE",
+      "contrast": "固定一侧更新另一侧，并比较切换时机；重点是两侧相互成为瓶颈时如何安排预算。",
+      "contrastSources": [
+        {
+          "label": "§1：问题与贡献",
+          "url": "https://arxiv.org/html/2609.00196#S1"
+        },
+        {
+          "label": "§6.2：交替节奏及自适应切换",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+        },
+        {
+          "label": "§5.3、图2：最好测试成绩",
+          "url": "https://arxiv.org/html/2609.00196#S5.SS3"
+        }
+      ]
+    },
+    "2609.17523": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "feedback",
+        "curriculum"
+      ],
+      "question": "研究科研协作能否同时推动工作方式和模型学习：内层改 harness，外层在选定 harness 下做强化学习。",
+      "sources": [
+        {
+          "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+          "url": "https://arxiv.org/html/2609.17523v1"
+        }
+      ],
+      "name": "ScienceBuddy",
+      "contrast": "内层固定模型改 harness，外层在改后的 harness 下训练模型；科研交互提供任务和评价材料。",
+      "contrastSources": [
+        {
+          "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+          "url": "https://arxiv.org/html/2609.17523v1"
+        }
+      ]
+    },
+    "2309.16797": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [],
+      "question": "研究任务提示与提示改写策略能否共同改进，使自动提示搜索摆脱固定人工变异规则的限制。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2309.16797"
+        }
+      ],
+      "name": "Promptbreeder",
+      "contrast": "任务提示与产生变异的提示共同变化；可改的是文字层的搜索规则。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2309.16797"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2309.16797"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2309.16797#S3.SS1"
+        }
+      ]
+    },
+    "2606.04465": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [],
+      "question": "研究提示优化器能否学习并迁移“怎样改提示”的经验，突破固定人工优化指令对任务提示搜索的限制。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.04465"
+        }
+      ]
+    },
+    "2607.05297": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [],
+      "question": "研究 agent 能否在改善任务技能的同时，学会更有效地分析经验和改进技能，从而突破固定改进流程的限制。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.05297"
+        }
+      ],
+      "name": "MetaSkill-Evolve",
+      "contrast": "任务技能和指导技能修改的说明以不同节奏更新；区分改任务知识与改修改规则。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.05297"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.05297"
+        },
+        {
+          "label": "§3.4",
+          "url": "https://arxiv.org/html/2607.05297#S3.SS4"
+        }
+      ]
+    },
+    "2608.08466": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [],
+      "question": "研究冻结模型能否在稳定的外部边界内，既改进任务运行框架又改进自身的修改策略，并考察这种多层改进的能力上限。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.08466"
+        }
+      ]
+    },
+    "2609.14858": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [
+        "harness"
+      ],
+      "question": "研究能否利用已有发现过程，低成本改进“下一轮怎样探索”的策略，而不更换或训练底层 coding agent。",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.14858#S1"
+        },
+        {
+          "label": "§3 探索策略、回放与选版本",
+          "url": "https://arxiv.org/html/2609.14858#S3"
+        }
+      ],
+      "name": "Dream-RSI",
+      "contrast": "用历史发现树构建回放环境，低成本试验探索策略；底层 coding agent 保持不变。",
+      "contrastSources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.14858#S1"
+        },
+        {
+          "label": "§3 探索策略、回放与选版本",
+          "url": "https://arxiv.org/html/2609.14858#S3"
+        },
+        {
+          "label": "§4 Experiments",
+          "url": "https://arxiv.org/html/2609.14858#S4"
+        }
+      ]
+    },
+    "2608.02276": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [
+        "harness",
+        "weights"
+      ],
+      "question": "研究“根据失败记录修改运行框架”能否成为可专门学习的工程能力，使修改者可靠地提升另一个冻结 agent 的任务表现。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.02276"
+        }
+      ],
+      "name": "Harness-R1",
+      "contrast": "把补丁装入冻结执行者后的真实收益用于训练独立编辑模型；学习的是修改能力。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.02276"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.02276"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS1"
+        }
+      ]
+    },
+    "2607.21971": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [],
+      "question": "研究利用反馈、反思失败和比较历史方案这些自进化能力，能否被专门训练出来，并迁移到训练之外的优化问题。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.21971"
+        }
+      ],
+      "name": "MetaEvolve",
+      "contrast": "训练利用反馈、反思和历史方案提出改进的能力，并检查能否迁移到新优化问题。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.21971"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2607.21971"
+        },
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2607.21971#S2.SS1"
+        }
+      ]
+    },
+    "2607.28568": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [],
+      "question": "面向机器学习工程，研究能否训练出擅长改进 AI 系统的专门模型，并使其工程改进能力与搜索经验迁移到新任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.28568"
+        }
+      ]
+    },
+    "2603.18620": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [
+        "experience",
+        "weights"
+      ],
+      "question": "研究利用经验修改上下文的能力能否通过专门训练获得，使模型在部署后更有效地从已做任务适应新任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.18620"
+        }
+      ]
+    },
+    "2310.02304": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [],
+      "question": "研究冻结语言模型支持的代码优化程序，能否递归改进负责优化的程序本身，从而学出更有效的搜索策略。",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2310.02304"
+        }
+      ],
+      "name": "STOP",
+      "contrast": "让冻结模型支持的代码优化程序修改优化程序本身；区分更好的输出程序与更好的优化器。",
+      "contrastSources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2310.02304"
+        },
+        {
+          "label": "§5.1 Fixed Downstream Task",
+          "url": "https://arxiv.org/abs/2310.02304"
+        }
+      ]
+    },
+    "2603.19461": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [],
+      "question": "研究能否同时改进 task agent 的解题代码与 meta-agent 的修改程序，并将学到的修改方法迁移到编程之外的任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.19461"
+        }
+      ],
+      "name": "Hyperagents",
+      "contrast": "同时开放 task agent 与 meta-agent 程序；关注改进机制能否跨任务迁移和跨轮积累。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.19461"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2603.19461"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+        }
+      ]
+    },
+    "2604.23472": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [],
+      "question": "研究任务求解能力和优化器的改进能力能否共同增长，使优化策略随着被优化系统的水平变化而适应。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.23472"
+        }
+      ]
+    },
+    "2608.24735": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [],
+      "question": "研究递归改进能否突破固定一层改进者的限制，扩展到更深的辅助层次，以及增加深度在何时真正有益。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.24735"
+        }
+      ]
+    },
+    "metarsi-v1": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "weights",
+        "curriculum"
+      ],
+      "question": "研究能否由系统选择并改进数据生成、harness 修改和参数训练的组合顺序，使“怎样改进”本身也能根据经验调整。",
+      "sources": [
+        {
+          "label": "§1，PDF p2–4",
+          "url": "https://www.cosmosmind.ai/research/metarsi-v1.pdf#page=2"
+        },
+        {
+          "label": "§4 统一循环与三类操作，PDF p9–20",
+          "url": "https://www.cosmosmind.ai/research/metarsi-v1.pdf#page=9"
+        }
+      ]
+    },
+    "weco-aide2-blog": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [],
+      "question": "双层 autoresearch 案例：外层修改内层 agent 的代码，检验改进能否迁移到未用于优化的任务。",
+      "sources": [
+        {
+          "label": "§1、The inner-loop evaluation、§2.2、§3.1、§4",
+          "url": "https://www.weco.ai/blog/first-evidence-of-recursive-self-improvement"
+        }
+      ]
+    },
+    "cs-0309048": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "讨论自修改系统在什么条件下能够证明：改变自身程序的预期收益高于继续使用原程序，并由此获得最优性保证。",
+      "sources": [
+        {
+          "label": "§3 Formal Description",
+          "url": "https://arxiv.org/abs/cs/0309048"
+        }
+      ],
+      "name": "Gödel Machines",
+      "contrast": "只有证明自修改收益更高才切换程序；形式保证依赖其公理、证明与效用假设。",
+      "contrastSources": [
+        {
+          "label": "§3 Formal Description",
+          "url": "https://arxiv.org/abs/cs/0309048"
+        }
+      ]
+    },
+    "people.idsia.ch-juergen": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "讨论学习系统能否把自身的学习机制也作为学习对象，从而形成更高阶的递归适应。",
+      "sources": [
+        {
+          "label": "PSALM 实现与初步实验",
+          "url": "https://people.idsia.ch/~juergen/diploma.html"
+        }
+      ]
+    },
+    "cs-0207097": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "研究程序求解器能否复用过去的解法和搜索经验，高效解决后续问题，并为这种增量搜索给出理论保证。",
+      "sources": [
+        {
+          "label": "§6 Experiments",
+          "url": "https://arxiv.org/abs/cs/0207097"
+        }
+      ]
+    },
+    "1805.06610": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "研究递归自改进在明确受限的形式化条件下是否可能，以及这种系统可以具有什么计算效率。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/1805.06610"
+        }
+      ]
+    },
+    "doi.org-10.1016-S0065-2458-08-60418-0": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "讨论当机器的设计能力超过人类时，机器改进机器是否可能引发不断加速的智能增长。",
+      "sources": [
+        {
+          "label": "关于 ultraintelligent machine 与 intelligence explosion 的论述",
+          "url": "https://doi.org/10.1016/S0065-2458(08)60418-0"
+        }
+      ]
+    },
+    "yudkowsky-recursive-self-improvement": {
+      "primary": "improver",
+      "branch": "foundations",
+      "related": [],
+      "question": "RSI 的早期概念论述，分析优化机会、资源、效率以及改进认知机制的反馈关系。",
+      "sources": [
+        {
+          "label": "正文：optimization slope/resources/efficiency 与递归层次",
+          "url": "https://www.lesswrong.com/posts/JBadX7rwdcRFzGuju/recursive-self-improvement"
+        }
+      ]
+    },
+    "2607.12227": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "检验 harness 进化是否优于相同反馈与尝试预算下的直接重试，以及进化后的框架能否迁移到未参与搜索的任务。",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2607.12227#S1"
+        },
+        {
+          "label": "§3 四种方法及反馈权限",
+          "url": "https://arxiv.org/html/2607.12227#S3"
+        }
+      ],
+      "name": "Rethinking Evaluation",
+      "contrast": "用相近反馈和推理预算对照直接重试，并测未参与搜索的任务；区分系统收益与额外搜索收益。",
+      "contrastSources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2607.12227#S1"
+        },
+        {
+          "label": "§3 四种方法及反馈权限",
+          "url": "https://arxiv.org/html/2607.12227#S3"
+        },
+        {
+          "label": "§4.3 有测试反馈",
+          "url": "https://arxiv.org/html/2607.12227#S4.SS3"
+        }
+      ]
+    },
+    "2605.30621": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "improver"
+      ],
+      "question": "研究模型的基础做题能力，能否预测它提出有用框架更新的能力，以及利用更新后框架获得收益的能力。",
+      "sources": [
+        {
+          "label": "§1：两种能力的分离",
+          "url": "https://arxiv.org/html/2605.30621#S1"
+        },
+        {
+          "label": "§3.3：固定一侧的能力指标",
+          "url": "https://arxiv.org/html/2605.30621#S3.SS3"
+        }
+      ],
+      "name": "Updating ≠ Benefit",
+      "contrast": "把执行者与修改者分别配对，区分会做任务、会写更新、会利用更新三种能力。",
+      "contrastSources": [
+        {
+          "label": "§1：两种能力的分离",
+          "url": "https://arxiv.org/html/2605.30621#S1"
+        },
+        {
+          "label": "§3.3：固定一侧的能力指标",
+          "url": "https://arxiv.org/html/2605.30621#S3.SS3"
+        },
+        {
+          "label": "§4.2：修改者能力实验",
+          "url": "https://arxiv.org/html/2605.30621#S4.SS2"
+        }
+      ]
+    },
+    "2608.09096": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "评测语言模型作为运行框架修改者的能力：在执行模型与预算受控时，能否带来泛化到未见任务的提升，并在持续搜索中保住收益。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.09096"
+        }
+      ]
+    },
+    "2609.01437": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "评测模型能否自主建设并持续改进 agent 的运行基础设施，区分“会在现成系统中做任务”与“会设计有效系统”这两种能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01437"
+        }
+      ],
+      "name": "HarnessDev",
+      "contrast": "从弱系统起点建设和继续改进 harness，单独测模型的系统工程能力。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01437"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2609.01437"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2609.01437#S3.SS2.SSS0.Px1"
+        }
+      ]
+    },
+    "2602.22480": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "面向包含随机模型调用的 agent 软件，建立可比较的评测环境，考察代码 agent 能否诊断并有效改进另一个 agent 的运行框架。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2602.22480"
+        }
+      ]
+    },
+    "2606.04455": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "评测语言模型能否自主开发有竞争力的 agent 系统，考察系统设计能力、设计稳定性及对评测边界的遵守。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.04455"
+        }
+      ]
+    },
+    "2608.06301": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "评测模型在评估昂贵且有随机性的条件下，能否有效优化既有运行框架，并区分修改者、运行工具和起点对收益的影响。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.06301"
+        }
+      ]
+    },
+    "2608.10178": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [],
+      "question": "研究进化后的编程框架究竟学到了什么：通用执行策略、特定语言的工程知识，还是对某个模型弱点的补偿，以及哪些部分能够迁移。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.10178"
+        }
+      ]
+    },
+    "2505.11942": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 在连续、相互依赖的任务中，能否积累并迁移知识和技能，而非每次从零处理独立任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2505.11942"
+        }
+      ]
+    },
+    "2507.05257": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 逐步接收信息时的四种记忆能力：准确检索、从新信息学习、理解长期关联，以及选择性遗忘。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2507.05257"
+        }
+      ]
+    },
+    "2508.19005": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "面向动态生活环境中的长期成长，研究 agent 能否把持续经历转化为记忆、可迁移技能和内化后的模型能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2508.19005"
+        }
+      ]
+    },
+    "2510.17281": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测持续服务用户的系统能否真正从用户反馈中学习，改善后续回应，而不只是准确记住历史对话。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2510.17281"
+        }
+      ]
+    },
+    "2511.20857": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 在连续任务中主动整合、修订和复用经验的能力，关注记忆是否实际支持后续推理和行动。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2511.20857"
+        }
+      ]
+    },
+    "2604.17308": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 能否从零发现并持续维护有用的技能库，区分“会调用现成技能”与“能从经历中学出技能”。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.17308"
+        }
+      ]
+    },
+    "2604.20087": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测自动技能学习是否产生真实可用的能力，区分技能内容质量、执行过程质量与最终任务成功。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.20087"
+        }
+      ]
+    },
+    "2605.18421": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测不同内容和保留时长的记忆分别在哪些任务条件下有效，以及其收益能否超过直接使用长上下文。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.18421"
+        }
+      ]
+    },
+    "2606.05661": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 在具有共同规律的连续任务中，能否因经历而提升能力，并把这种学习收益与基础模型本来就强区分开。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.05661"
+        }
+      ]
+    },
+    "2607.05202": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测 agent 能否从既往任务学会搜索、调试等可复用操作方法，并将其迁移到需要这些能力的新任务。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.05202"
+        }
+      ]
+    },
+    "2608.00155": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测自进化 agent 在同域连续任务与跨域混合任务流中的可靠性，考察改进方法是否依赖特定模型或任务顺序。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.00155"
+        }
+      ]
+    },
+    "2608.01149": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测先前经验怎样帮助或干扰后续能力，关注经验顺序、迁移收益以及新经历导致的遗忘。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.01149"
+        }
+      ]
+    },
+    "2608.03874": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测持续任务中的能力提升是否来自可复用技能的形成，还是主要依赖近期上下文，并比较两种适应方式的适用条件。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.03874"
+        }
+      ],
+      "name": "ContinualSkillBench",
+      "contrast": "把显式技能学习与保留历史上下文对照，检查提炼技能本身的额外作用。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.03874"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.03874"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2608.03874#S3.SS5"
+        }
+      ]
+    },
+    "2608.04003": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测持久经验的保存、检索和更新是否真正导致后续能力提升，使观察到的涨分能对应到实际起作用的学习环节。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.04003"
+        }
+      ],
+      "name": "PAST-Bench",
+      "contrast": "控制经验保存与使用环节，检查后期提升能否归因于持久经验。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.04003"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.04003"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.04003#S3.SS1"
+        }
+      ]
+    },
+    "2608.06144": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "面向专业金融工作，评测 agent 能否跨案例迁移业务经验，并在开放产物与多维质量要求下持续改善表现。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.06144"
+        }
+      ]
+    },
+    "2608.03764": {
+      "primary": "evaluation",
+      "branch": "transfer",
+      "related": [],
+      "question": "评测企业工作流 agent 能否从既往案例学到隐含业务规则，并在新案例中组合运用这些规则，而非只复用旧题答案。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.03764"
+        }
+      ]
+    },
+    "2606.17546": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [],
+      "question": "评测 agent 框架的连续更新是否产生可复用的能力提升，同时区分新任务泛化、旧能力遗忘、执行成本与短期过拟合。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.17546"
+        }
+      ],
+      "name": "SEAGym",
+      "contrast": "跟踪更新过程中泛化、遗忘与成本；关注整个学习过程，不只看最好一次。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.17546"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.17546"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2606.17546#A1.SS1"
+        }
+      ]
+    },
+    "2607.05155": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [],
+      "question": "研究模型部署后从真实环境交互中学习的速度与规模规律，考察长时间试验怎样转化为能力增长。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.05155"
+        }
+      ]
+    },
+    "2608.31100": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [
+        "feedback",
+        "curriculum"
+      ],
+      "question": "评测 agent 在拿不到环境真实判分的探索阶段，能否自主试验、准确判断自身表现，并把经历转化为更严格测试中的能力提升。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.31100"
+        }
+      ],
+      "name": "S³Gym",
+      "contrast": "拆测自主探索、自我判断与经验利用；比较历史、总结记忆、参数训练如何转化为提升。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.31100"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2608.31100"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2608.31100#S4.SS4"
+        }
+      ]
+    },
+    "2609.08175": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [
+        "improver",
+        "harness"
+      ],
+      "question": "研究冻结模型的框架自进化在什么条件下能可靠改善总体表现、控制原有能力退化，以及生成、验收和后续进步各自受到什么限制。",
+      "sources": [
+        {
+          "label": "§1–2，p1–4：研究对象与假设",
+          "url": "https://arxiv.org/pdf/2609.08175#page=1"
+        },
+        {
+          "label": "§3，p4–7：改进目标与生成概率",
+          "url": "https://arxiv.org/pdf/2609.08175#page=4"
+        },
+        {
+          "label": "§4，p7–10：有限数据验收",
+          "url": "https://arxiv.org/pdf/2609.08175#page=7"
+        }
+      ],
+      "name": "Safe Harness Self-Evolution",
+      "contrast": "分开分析有益修改是否存在、能否生成、能否可靠验收，以及后续能否继续进步。",
+      "contrastSources": [
+        {
+          "label": "§1–2，p1–4：研究对象与假设",
+          "url": "https://arxiv.org/pdf/2609.08175#page=1"
+        },
+        {
+          "label": "§3，p4–7：改进目标与生成概率",
+          "url": "https://arxiv.org/pdf/2609.08175#page=4"
+        },
+        {
+          "label": "§4，p7–10：有限数据验收",
+          "url": "https://arxiv.org/pdf/2609.08175#page=7"
+        }
+      ]
+    },
+    "2603.08640": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测 agent 能否自主完成模型后训练，把编程与实验能力转化为另一个模型的实际能力提升。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.08640"
+        }
+      ],
+      "name": "PostTrainBench",
+      "contrast": "给定模型与算力后，检查 agent 能否完成有效后训练；直接测 AI 研发能力。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.08640"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2603.08640"
+        },
+        {
+          "label": "§1",
+          "url": "https://arxiv.org/html/2603.08640#S1.SS0.SSS0.Px2"
+        }
+      ]
+    },
+    "2604.10547": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测 agent 能否设计、调试并运行完整强化学习流程，尤其区分会做监督训练与能稳定完成在线交互学习。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2604.10547"
+        }
+      ]
+    },
+    "2606.05080": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测 agent 面对已有可用但次优的工程产物时，能否在长时间实验中持续取得可测量的改进，而非只生成一个初始方案。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.05080"
+        }
+      ]
+    },
+    "2505.19955": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测 agent 能否自主完成可信的开放机器学习研究，覆盖想法、方案、真实实验和论文，而不仅是生成看似合理的研究文本。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2505.19955"
+        }
+      ]
+    },
+    "2605.08678": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测 agent 能否发明跨设置可泛化、扩大规模后仍有效的机器学习方法，区分方法创新与应用已有技术或局部调参。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.08678"
+        }
+      ],
+      "name": "MLS-Bench",
+      "contrast": "进一步要求方法跨设置、扩大规模后仍有效，区分方法创新与局部调参。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.08678"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.08678"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2605.08678#S3.SS2.SSS1"
+        }
+      ]
+    },
+    "2608.17271": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "评测逐步减少人类方法与步骤指导时，agent 能否自主选择研究方法、完成科研项目并产出可验证的新结果。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.17271"
+        }
+      ]
+    },
+    "rsi-exam": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [
+        "harness",
+        "improver"
+      ],
+      "question": "评测研究 agent 在有限时间内，能否从可运行但较弱的起点出发，自主开展多轮实验，形成更有效、能泛化的方法或运行框架。",
+      "sources": [
+        {
+          "label": "官方报告 · 研究目标",
+          "url": "https://rsi-exam.ai/blog.html#introduction"
+        }
+      ],
+      "name": "RSI-Exam",
+      "contrast": "从可运行弱方法出发做多轮研究，再评交付物；把已知研究目标下的改进作为评测对象。",
+      "contrastSources": [
+        {
+          "label": "官方报告 · 研究目标",
+          "url": "https://rsi-exam.ai/blog.html#introduction"
+        },
+        {
+          "label": "官方报告 · 结果与泛化分析",
+          "url": "https://rsi-exam.ai/blog.html#results"
+        },
+        {
+          "label": "官方报告 · 被测模型与执行框架",
+          "url": "https://rsi-exam.ai/blog.html#models-harnesses"
+        }
+      ]
+    },
+    "icoder-27b": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [],
+      "question": "研究人类把研发经验预先写成 Research Skills 后，agent 能否自主选择和修订实验，开发有竞争力的 RTL／GPU kernel 模型。",
+      "sources": [
+        {
+          "label": "摘要与 §1，PDF p1–3",
+          "url": "https://huggingface.co/i-Coder/iCoder-27B/resolve/main/Coder_Tech_Report.pdf#page=1"
+        },
+        {
+          "label": "§3 Research Skills，PDF p5–6",
+          "url": "https://huggingface.co/i-Coder/iCoder-27B/resolve/main/Coder_Tech_Report.pdf#page=5"
+        }
+      ]
+    },
+    "2609.11873": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "为 RSI 建立按自主程度递进的发展路线，分析不同任务场景需要什么能力，以及现有系统距离更自主的改进还差什么。",
+      "sources": [
+        {
+          "label": "§2 RSI 定义与自主程度",
+          "url": "https://arxiv.org/html/2609.11873#S2"
+        }
+      ]
+    },
+    "data-centric-rsi-survey": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "以数据相关对象为中心，整理评价信号如何经过可信度判断和干预决策，形成可持续的模型改进。",
+      "sources": [
+        {
+          "label": "§1–2 引言、定义与分类",
+          "url": "https://www.preprints.org/manuscript/202609.0154"
+        }
+      ]
+    },
+    "ai4ai-survey": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "研究怎样界定和衡量 AI 将改进想法推进到可靠验证结果的能力，并区分一次自改进与改进机制本身的递归变化。",
+      "sources": [
+        {
+          "label": "官方项目页：2026 年 8 月综述",
+          "url": "https://simpleagentlab.com/ai4ai/"
+        },
+        {
+          "label": "论文 §2、Appendix A：定义与覆盖范围",
+          "url": "https://www.preprints.org/manuscript/202608.2108"
+        }
+      ],
+      "name": "AI4AI Survey",
+      "contrast": "把研究想法、执行和验证放在同一视野下，区分一次改进与递归改变。",
+      "contrastSources": [
+        {
+          "label": "官方项目页：2026 年 8 月综述",
+          "url": "https://simpleagentlab.com/ai4ai/"
+        },
+        {
+          "label": "论文 §2、Appendix A：定义与覆盖范围",
+          "url": "https://www.preprints.org/manuscript/202608.2108"
+        }
+      ]
+    },
+    "shiyu-rsi-what-evolves": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "中文入门与交叉阅读笔记：以 Model、Harness、Artifact 三层地图组织案例，对照 Shilong Liu、Lilian Weng 与知乎文章的不同视角。",
+      "sources": [
+        {
+          "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ],
+      "name": "Shiyu：什么在进化",
+      "contrast": "用 Model、Harness、Artifact 区分修改对象；可与这里的问题地图交叉阅读。",
+      "contrastSources": [
+        {
+          "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ]
+    },
+    "shiyu-rsi-loop-closes": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "基于 Melon 长文的中文学习笔记，梳理可修改范围，并讨论怎样设计能归因、能复用、能验证递归的研究系统。",
+      "sources": [
+        {
+          "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ],
+      "name": "Shiyu：递归如何闭环",
+      "contrast": "讨论可修改范围与可验证的递归实验；提供研究设计的阅读入口。",
+      "contrastSources": [
+        {
+          "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ]
+    },
+    "liu-self-evolving-taxonomy": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "按产物优化、harness 自改进、无标准答案的模型学习，给出领域分类地图。",
+      "sources": [
+        {
+          "label": "Models, Harness, and Artifacts；Agent Harness Self-improvement；A Blurred Boundary",
+          "url": "https://lsl.zone/blog/2026/a-taxonomy-of-self-evolving-agents/"
+        }
+      ]
+    },
+    "weng-harness-engineering": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "从工程设计和研究路线解释 harness 如何支持自改进，而不只是列举提示技巧。",
+      "sources": [
+        {
+          "label": "Harness Design Patterns；Harness Optimization；Harness Layer vs Core Intelligence?",
+          "url": "https://lilianweng.github.io/posts/2026-07-04-harness/"
+        }
+      ]
+    },
+    "zhihu-self-evolving-guide": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "作为中文案例综述的原始阅读入口收录；本站简介仅依据 Shiyu 的引用与转述。",
+      "sources": [
+        {
+          "label": "上篇：来源与致谢、§3、§4.8、§6（Shiyu 转述）",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ]
+    },
+    "melon-self-evolve-rsi": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "收录下篇学习笔记的思想来源：按可修改范围组织研究，并讨论服务化的实验架构。",
+      "sources": [
+        {
+          "label": "下篇：来源与致谢、定义、Everything as Service（Shiyu 转述）",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ]
+    },
+    "weng-prompt-engineering": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "提示工程背景读物，为理解 harness 中的 prompt 组件提供基础。",
+      "sources": [
+        {
+          "label": "正文目录：提示、示例与推理方法",
+          "url": "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/"
+        }
+      ]
+    },
+    "openai-research-acceleration": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "以内部使用记录说明 coding agent 如何参与 AI 研发，测量使用量、任务类型、完成情况及人类干预。",
+      "sources": [
+        {
+          "label": "官方博客：导言与 §1–5",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+        },
+        {
+          "label": "官方博客：Appendix / Our methods for this post",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+        }
+      ]
+    },
+    "minimax-m27-blog": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "官方研发案例：内部 M2.7 参与研究工作，并更新技能、记忆和研究 agent 的运行框架。",
+      "sources": [
+        {
+          "label": "Building an agent for model self-evolution",
+          "url": "https://www.minimax.io/news/minimax-m27-en"
+        }
+      ]
+    },
+    "anthropic-when-ai-builds-itself": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "Anthropic 用研发记录、员工调查和会话评审介绍 AI 如何参与构建后续模型；本期收录 9 月 18 日更新。",
+      "sources": [
+        {
+          "label": "Evidence from within Anthropic；Update 9/18/2026；图注与脚注",
+          "url": "https://www.anthropic.com/institute/recursive-self-improvement"
+        }
+      ],
+      "name": "Anthropic：When AI builds itself",
+      "contrast": "内部使用和会话评审说明 AI 参与研发的方式；观察性证据不等于自主研发能力证明。",
+      "contrastSources": [
+        {
+          "label": "Evidence from within Anthropic；Update 9/18/2026；图注与脚注",
+          "url": "https://www.anthropic.com/institute/recursive-self-improvement"
+        }
+      ]
+    },
+    "ibm-rsi-serious-question": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "IBM Think 采访研究者，对照 coding agents、AIDE² 与前沿实验室的公开说法。",
+      "sources": [
+        {
+          "label": "What changed；Testing pieces of the idea；The safety gap；Still an open question",
+          "url": "https://www.ibm.com/think/news/why-recursive-self-improvement-ai-serious-question"
+        }
+      ]
+    },
+    "2609.19203": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "提出 FMOS：像操作系统管理硬件一样，统一管理模型调用、记忆、资源分配和验证。",
+      "sources": [
+        {
+          "label": "引言、§3–4、附录 A–C、作者机构",
+          "url": "https://arxiv.org/html/2609.19203v1"
+        }
+      ]
+    },
+    "reef": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "提供可复用基础设施，让已有 agent 从交互记录学习，并将通过评价的参数或 harness 更新交付给后续请求。",
+      "sources": [
+        {
+          "label": "README：How it works / When to use Reef",
+          "url": "https://github.com/Human-Agent-Society/reef"
+        }
+      ],
+      "name": "Reef",
+      "contrast": "提供交互记录、训练和更新交付接口；适合研究工程复用，但仓库本身不是收益证据。",
+      "contrastSources": [
+        {
+          "label": "README：How it works / When to use Reef",
+          "url": "https://github.com/Human-Agent-Society/reef"
+        },
+        {
+          "label": "README：Recipes and examples",
+          "url": "https://github.com/Human-Agent-Society/reef#recipes-and-examples"
+        }
+      ]
+    },
+    "2509.19349": {
+      "primary": "perspectives",
+      "branch": "programs",
+      "related": [],
+      "question": "面向科学发现与算法优化，研究如何降低程序进化的试验成本，同时保留开放探索和发现高质量新解的能力。",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2509.19349"
+        }
+      ],
+      "name": "ShinkaEvolve",
+      "contrast": "通过程序进化寻找更好的任务解，强调样本效率与开放探索；需另查搜索器是否也在变化。",
+      "contrastSources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2509.19349"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2509.19349"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+        }
+      ]
+    },
+    "deepmind-alphaevolve-blog": {
+      "primary": "perspectives",
+      "branch": "programs",
+      "related": [],
+      "question": "官方案例介绍：Gemini 提出算法代码，自动评估器验证，进化搜索继续改进有潜力的候选。",
+      "sources": [
+        {
+          "label": "Designing better algorithms with large language models；导言与应用案例",
+          "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+        }
+      ],
+      "name": "AlphaEvolve 官方博客",
+      "contrast": "模型生成算法代码、可执行评估器筛选、继续进化；优化任务程序不自动等同自修改 agent。",
+      "contrastSources": [
+        {
+          "label": "Designing better algorithms with large language models；导言与应用案例",
+          "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+        }
+      ]
+    }
+  },
+  "relations": [
+    {
+      "kind": "递进问题",
+      "from_": "feedback",
+      "to": "experience",
+      "text": "这次改对了，下一次为何还犯同样的错？把本次反馈变成可保留、可复用的经验。",
+      "papers": [
+        "2303.17651",
+        "2303.11366",
+        "2308.10144"
+      ]
+    },
+    {
+      "kind": "递进问题",
+      "from_": "experience",
+      "to": "harness",
+      "text": "经验已经存下，但系统不会检索或执行时，继续加内容不够，需要修改使用经验的机制。",
+      "papers": [
+        "2510.04618",
+        "2512.18746",
+        "2602.07755"
+      ]
+    },
+    {
+      "kind": "并行选择",
+      "from_": "experience",
+      "to": "weights",
+      "text": "同一经历可以留在外部，也可以训练进参数；选择取决于迁移、使用成本与模型是否能学会。",
+      "papers": [
+        "2506.10943",
+        "2608.31100"
+      ]
+    },
+    {
+      "kind": "双向配合",
+      "from_": "harness",
+      "to": "weights",
+      "text": "框架影响训练轨迹，训练又改变适合模型的框架。两侧需要交替适配，未必各自单独最优就整体最优。",
+      "papers": [
+        "2609.00196",
+        "2609.17523"
+      ]
+    },
+    {
+      "kind": "递进问题",
+      "from_": "harness",
+      "to": "improver",
+      "text": "系统变好了，但下一轮修改仍低效：需要改进诊断、搜索或编辑能力，而非只增加候选数。",
+      "papers": [
+        "2603.19461",
+        "2608.02276"
+      ]
+    },
+    {
+      "kind": "共同前提",
+      "from_": "curriculum",
+      "to": "evaluation",
+      "text": "练习由系统自己选择时，自测更容易偏离真正目标。学习信号与最终能力评测需要分开设计。",
+      "papers": [
+        "2608.31111",
+        "2608.31100"
+      ]
+    }
+  ],
+  "eras": [
+    {
+      "period": "理论起点",
+      "text": "先问自修改是否可能、怎样定义收益与搜索效率。",
+      "papers": [
+        "cs-0309048",
+        "cs-0207097"
+      ]
+    },
+    {
+      "period": "2023",
+      "text": "当前答案的修订，与跨尝试、跨任务的经验积累并行出现。",
+      "papers": [
+        "2303.17651",
+        "2303.11366",
+        "2305.16291"
+      ]
+    },
+    {
+      "period": "2024–2025",
+      "text": "执行流程与系统代码成为搜索对象，记忆管理和自建训练材料进一步展开。",
+      "papers": [
+        "2408.08435",
+        "2505.22954",
+        "2506.10943"
+      ]
+    },
+    {
+      "period": "2026 · 本库观察",
+      "text": "问题细化到修改者学习、系统与参数协同、宽泛目标，以及公平和持续的评测。",
+      "papers": [
+        "2608.02276",
+        "2609.00196",
+        "2608.31111",
+        "2607.12227"
+      ]
+    }
+  ],
+  "directions": [
+    {
+      "id": "diagnosis",
+      "title": "先分清该改记忆、harness，还是参数",
+      "question": "同一种失败，怎样选择成本最低且能迁移的修复位置？",
+      "basis": "SIA 开放两类更新，HarnessFix 强调故障定位，WHALE 展示两侧可能互相限制。下一步可把“选择改哪里”单独检验。",
+      "papers": [
+        "2605.27276",
+        "2606.06324",
+        "2609.00196"
+      ],
+      "groups": [
+        "harness",
+        "weights",
+        "feedback"
+      ],
+      "experiment": "固定执行模型、反馈和总预算；对同一失败集比较补技能、修代码、训练参数以及选择策略。开发集选版本，独立任务测成功率、成本和旧能力退化。",
+      "baseline": "固定只改一侧；随机选位置；把全部预算给当前最强方案。",
+      "falsifier": "选择策略若不能超过同预算的固定最佳方案，就不能声称学会了更好的更新分配。"
+    },
+    {
+      "id": "feedback-value",
+      "title": "研究哪种反馈真正值得额外成本",
+      "question": "总分、错误定位、成功示范分别在什么失败上最有用？",
+      "basis": "GEPA、DemoEvolve 和 Harness-R1 分别突出轨迹反思、示范和补丁实际收益；这些信息来源与成本不同。",
+      "papers": [
+        "2507.19457",
+        "2605.24539",
+        "2608.02276"
+      ],
+      "groups": [
+        "feedback",
+        "harness",
+        "improver"
+      ],
+      "experiment": "固定修改者与任务，对照只给结果、给轨迹、给诊断、给示范。把生成或标注反馈的成本计入总预算，再测未见题上的有效补丁比例。",
+      "baseline": "同预算多次尝试；同样长度但无关的反馈；正确性已知的诊断上界。",
+      "falsifier": "额外反馈若只提高开发题分数，或收益被其成本抵消，就不构成更有效的进化。"
+    },
+    {
+      "id": "memory-transfer",
+      "title": "证明经验真的可复用，而不是换了一种长上下文",
+      "question": "何时值得把原始轨迹提炼成 skill？何时提炼反而丢信息？",
+      "basis": "ExpeL、ACE 研究经验表示，ContinualSkillBench 与 S³Gym 提供与保留历史相比较的评测视角。",
+      "papers": [
+        "2308.10144",
+        "2510.04618",
+        "2608.03874",
+        "2608.31100"
+      ],
+      "groups": [
+        "experience",
+        "evaluation"
+      ],
+      "experiment": "在共享能力、但实例和表面措辞不同的任务流上，比较原始历史、检索轨迹、文字技能和步骤图；匹配上下文与整理预算，记录实际调用和错误使用。",
+      "baseline": "不积累经验；直接保留历史；关闭检索或打乱经验关联。",
+      "falsifier": "去掉技能结构仍同样有效，说明收益可能来自额外信息，而不是所声称的表示设计。"
+    },
+    {
+      "id": "goal-gap",
+      "title": "让自建练习与真正目标对齐",
+      "question": "系统怎样发现“自测变好，但目标能力没变好”？",
+      "basis": "Aspire 暴露目标解释和数据失配，DiagEvo 从失败生成课程；两者提示可把课程与目标能力的关联单独研究。",
+      "papers": [
+        "2608.31111",
+        "2609.00768"
+      ],
+      "groups": [
+        "curriculum",
+        "evaluation"
+      ],
+      "experiment": "给定宽泛目标与可访问的数据池，比较固定课程、失败驱动课程与主动诊断课程。用独立开发任务调策略；另保留不同题型的最终测试，禁止据其成绩选课。",
+      "baseline": "随机同量数据；人工固定课程；只反复练失败题。",
+      "falsifier": "自建评分持续上升而独立目标测试不变时，应报告课程失配，不能只展示自测曲线。"
+    },
+    {
+      "id": "meta-transfer",
+      "title": "单独证明改进者更会改了",
+      "question": "新系统得分更高，是执行者变强，还是提出改进的能力变强？",
+      "basis": "Hyperagents、Harness-R1 与 Updating ≠ Benefit 分别提供可修改程序、学习编辑者和角色分离的切口。",
+      "papers": [
+        "2603.19461",
+        "2608.02276",
+        "2605.30621"
+      ],
+      "groups": [
+        "improver",
+        "evaluation"
+      ],
+      "experiment": "冻结同一批新起点和未见任务，把旧、新改进者分别接上去；给相同预算，比较发现有效更新的速度、比例和累计收益，并移除其保存的任务专用答案。",
+      "baseline": "固定强模型编辑者；随机或固定搜索策略；只增强执行者。",
+      "falsifier": "若优势只在原任务或搭配原执行者时存在，就不能直接推到可迁移的递归改进能力。"
+    },
+    {
+      "id": "long-run",
+      "title": "把多轮收益、遗忘和成本一起研究",
+      "question": "什么时候该接受修改、保留分支或停止搜索？",
+      "basis": "SEAGym 追踪持续变化，Safe Harness Self-Evolution 拆分生成与验收困难，SoL-Pi 将效率纳入目标。",
+      "papers": [
+        "2606.17546",
+        "2609.08175",
+        "2609.20519"
+      ],
+      "groups": [
+        "evaluation",
+        "harness"
+      ],
+      "experiment": "报告每轮独立审计结果与累计成本；审计结果不回传修改者。改变验收样本量与候选保留策略，记录误接受、误拒绝和旧任务退化。",
+      "baseline": "固定预算停止；只保留最高开发分；同预算直接重试。",
+      "falsifier": "只挑最好的测试点、忽略前期搜索成本，无法说明长期改进更有效。"
+    }
+  ],
+  "readingPaths": [
+    {
+      "title": "先读懂 harness 进化",
+      "why": "从自动设计到自身适配，再检查涨分是否经得起对照。",
+      "papers": [
+        "2408.08435",
+        "2505.22954",
+        "2606.09498",
+        "2607.12227"
+      ]
+    },
+    {
+      "title": "理解“从经历中学”",
+      "why": "从文字教训到经验迁移，再问提炼是否比直接留历史更有用。",
+      "papers": [
+        "2303.11366",
+        "2308.10144",
+        "2510.04618",
+        "2608.03874"
+      ]
+    },
+    {
+      "title": "理解递归究竟多了一层什么",
+      "why": "从修改规则、可修改程序到训练编辑者，最后拆开修改与受益能力。",
+      "papers": [
+        "2309.16797",
+        "2603.19461",
+        "2608.02276",
+        "2605.30621"
+      ]
+    },
+    {
+      "title": "寻找下一步研究问题",
+      "why": "分别检查目标自主性、更新位置、改进者迁移和可靠验收。",
+      "papers": [
+        "2608.31111",
+        "2609.00196",
+        "2603.19461",
+        "2609.08175"
+      ]
+    }
+  ]
+}
