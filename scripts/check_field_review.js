@@ -32,3 +32,34 @@ for(const reference of references.values()){
 }
 assert.equal(review.paperCount,new Set(review.references.map(r=>r.paper)).size);
 console.log(`Passed: ${review.chapters.length} review chapters, ${references.size} referenced works, paragraph citations, source locations and chapter-to-problem links.`);
+
+const tree=require('../data/review-tree.json');
+const {reviewTreePaperIds,reviewTreeNodeFromHash}=require('../assets/review-tree.js');
+assert.deepEqual(data.reviewTree,tree);
+const nodes=new Set(tree.nodes.map(n=>n.id));
+const assigned=tree.branches.flatMap(b=>b.nodes);
+assert.equal(nodes.size,tree.nodes.length);
+assert.deepEqual(assigned.slice().sort(),[...nodes].sort(),'Every question belongs to exactly one trunk.');
+assert(nodes.has(tree.defaultNode));
+const chapters=new Set(review.chapters.map(c=>c.id));
+const referencedPapers=new Set(review.references.map(r=>r.paper));
+for(const node of tree.nodes){
+ assert(chapters.has(node.chapter),`Broken chapter link: ${node.id}`);
+ assert.equal(reviewTreeNodeFromHash(tree,'#review-tree-'+node.id),node.id);
+ const nodePapers=node.routes.flatMap(r=>r.papers);
+ assert(node.preview.every(id=>nodePapers.includes(id)),`Preview must come from this question's methods: ${node.id}`);
+ for(const route of node.routes){
+  assert(route.papers.length&&route.approach);
+  for(const id of route.papers){
+   assert(referencedPapers.has(id),`Tree work not covered by the sourced review: ${id}`);
+   const p=papers.get(id),e=data.problemMap.entries[id];
+   const f=p.profile.fields.find(f=>f.key==='novelty')||p.overview.tldr.find(f=>f.key==='conclusion');
+   assert(e.contrast?e.contrastSources.length:f.value&&f.sources.length,`Missing sourced method comparison: ${id}`);
+  }
+ }
+}
+assert.equal(reviewTreeNodeFromHash(tree,'#review-tree-unknown'),null);
+assert.equal(reviewTreeNodeFromHash(tree,'#review-harness'),null);
+for(const c of tree.connections)assert(nodes.has(c.from_)&&nodes.has(c.to));
+assert.deepEqual(tree.branches.map(b=>b.id),data.problemMap.tree.pillars.map(p=>p.id),'Review and full index should share their top-level structure.');
+console.log(`Passed: interactive review tree, ${nodes.size} questions, ${reviewTreePaperIds(tree).length} works, source-backed comparisons, chapter links and shared trunk structure.`);

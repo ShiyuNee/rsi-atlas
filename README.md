@@ -33,6 +33,8 @@ Maintain the chapter prose and paragraph citations in `data/field-review.json`. 
 
 `assets/field-review.js` renders the continuous reading view, chapter navigation, source list and research-table links. `scripts/check_field_review.js` checks citation anchors, reference provenance and cross-links as part of the normal checks.
 
+The review starts with an interactive problem tree at `?view=review#review-tree`: four parallel trunks, eleven concrete questions, and 27 method routes covering 71 works. Selecting a question shows method differences, paper links, maintained source locations and the matching review chapter. `data/review-tree.json` maintains the structure and route descriptions; `assets/review-tree.js` renders it. Question links use stable hashes such as `#review-tree-harness`. The complete 173-entry index uses the same four trunks. Tree edges express a problem hierarchy, not direct historical inheritance.
+
 - `data/research-notes.md`: original source document; preserved as supplied.
 - `data/annotations.json`: curated category/tag corrections and protocol annotations for existing papers. Keys are stable paper IDs. Do not erase uncertainty in the original notes.
 - `data/additions.json`: new papers with `sources` and `review` fields. Deduplicate by canonical paper URL before adding.

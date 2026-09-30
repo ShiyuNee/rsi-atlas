@@ -194,6 +194,7 @@ function renderReading(){const p=papers.find(p=>p.id===state.paper);if(!p){state
 function openPaper(id){if(!papers.some(p=>p.id===id))return;state.paper=id;state.view='paper';render();$('#document-view').scrollIntoView({block:'start'});}
 function bind(){
  bindResearchTree();
+ bindReviewTree();
  document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;
  if(b.dataset.problem){state.problem=b.dataset.problem;state.view='notes';state.paper='';render();$('#problem-detail').focus({preventScroll:true});$('#problem-detail').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});return;}
  if(b.dataset.paper){openPaper(b.dataset.paper);return;}
@@ -220,6 +221,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=review-20260930');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=review-tree-20260930');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr};else init();

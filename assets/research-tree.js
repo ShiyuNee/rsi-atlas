@@ -41,7 +41,7 @@ function setResearchTreeDepth(depth){
   const open=depth!=='trunk'&&(kind==='question'&&d.dataset.treeId!=='perspectives'||depth==='papers'&&kind==='branch'&&!d.dataset.treeId.startsWith('perspectives/'));
   d.open=open;if(open)researchTreeState.open.add(d.dataset.treeId);else researchTreeState.open.delete(d.dataset.treeId);
  });
- root.querySelector('#tree-status').textContent=({trunk:'已收起：先看三个主干和七个问题',branches:'已展开子问题：点击分支查看具体论文',papers:'已展开代表论文：可聚焦单条路线阅读'})[depth];
+ root.querySelector('#tree-status').textContent=({trunk:'已收起：先看四个主干和七个问题',branches:'已展开子问题：点击分支查看具体论文',papers:'已展开代表论文：可聚焦单条路线阅读'})[depth];
 }
 function bindResearchTree(){
  document.addEventListener('toggle',e=>{const d=e.target;if(d.tagName==='DETAILS'&&d.dataset.treeId){if(d.open)researchTreeState.open.add(d.dataset.treeId);else researchTreeState.open.delete(d.dataset.treeId);}},true);
