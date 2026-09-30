@@ -140,6 +140,7 @@ def build():
     problem_map = json.loads((ROOT/'data/problem-map.json').read_text())
     assert set(problem_map['entries']) == {p['id'] for p in output['papers']}
     output['problemMap'] = problem_map
+    output['fieldReview'] = json.loads((ROOT/'data/field-review.json').read_text())
     for p in output['papers']:
         e = problem_map['entries'][p['id']]
         p['researchProblems'] = [e['primary'], *e['related']]

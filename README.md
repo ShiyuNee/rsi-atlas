@@ -25,6 +25,14 @@ Edit `data/research-tables.json` for general research dimensions and citations. 
 
 ## Maintain the catalog
 
+### Problem-led literature review (2026-09-30)
+
+Open `?view=review` for a nine-chapter narrative review connecting 77 representative works: feedback, transferable experience, harness design, curricula, parameter learning, learned improvers and evaluation. It explains motivations, differences between methods, evidence boundaries and possible research questions. The corpus cutoff is 2026-09-21; the synthesis revision date is separate.
+
+Maintain the chapter prose and paragraph citations in `data/field-review.json`. References link to existing paper records and their primary-source section locations. Distinguish editorial connections and proposed experiments from authors’ results; thematic progression does not imply direct historical inheritance. The tree remains at `?view=notes#research-tree`, with detailed comparisons at `?view=notes#problem-detail`. The three views link to each other.
+
+`assets/field-review.js` renders the continuous reading view, chapter navigation, source list and research-table links. `scripts/check_field_review.js` checks citation anchors, reference provenance and cross-links as part of the normal checks.
+
 - `data/research-notes.md`: original source document; preserved as supplied.
 - `data/annotations.json`: curated category/tag corrections and protocol annotations for existing papers. Keys are stable paper IDs. Do not erase uncertainty in the original notes.
 - `data/additions.json`: new papers with `sources` and `review` fields. Deduplicate by canonical paper URL before adding.

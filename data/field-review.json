@@ -1,0 +1,1412 @@
+{
+  "version": 1,
+  "updated": "2026-09-30",
+  "corpusUpdated": "2026-09-21",
+  "title": "RSI 研究综述：从反馈、经验与系统自改进，到改进者自身的学习",
+  "lead": "沿研究问题的变化串起方法：为什么需要它、不同论文怎样回应、已有证据支持到哪里。重点展开 harness 进化及其与记忆、参数学习和评测的关系。",
+  "scope": "叙述性综述，基于现有资料库选取代表工作；覆盖的文献更新至 2026-09-21。问题之间的联系与研究建议是本站综合分析，不声称穷尽文献或证明直接继承。部分关键论文在本轮重新核对原文，其余沿用单篇研究表的来源，具体实验缺项仍按原文披露范围说明。",
+  "chapters": [
+    {
+      "id": "scope",
+      "title": "从改好一个结果，到改进产生结果的系统",
+      "thesis": "领域的发展可以理解为：越来越多原本由人固定的环节，成为可研究、可修改的对象。",
+      "groups": [
+        "feedback",
+        "harness",
+        "improver"
+      ],
+      "body": "### 起点：同样叫 self-improvement，实际在改什么？\n\n先固定一个具体问题：一个 agent 这次失败了。我们可以让它重写答案，也可以留下失败教训、修改工具接口，或者训练模型。它们都可能使某个分数上升，但得到的东西不同：更好的当前产物、一套后续能复用的执行方法，或者改变后的模型能力。若再修改负责诊断和提出更新的程序，研究对象就进一步变成了“产生改进的方法”。\n\n因此，读这组文献需要同时追问两件事：**改善留在哪里？它会帮助哪一次后续工作？** 改当前程序或答案，收益可以只属于这道题；保存技能或修改 harness，目标通常是帮助后续任务；改进修改者，则希望相同预算下更容易产生下一轮有效更新。这是本文的分析坐标，不把所有论文强行纳入同一种严格 RSI 定义。\n\n这里的 **harness** 指围绕模型组织任务执行的系统，包括提供哪些工具、怎样处理工具输出、怎样维护上下文、何时重试与结束。模型给出下一步建议，harness 决定这些建议怎样被执行、检查和接回模型。于是，“模型不会做”与“模型被现有执行方式限制”成为两个需要分开的解释。\n\n### 从理论设想到可执行实验\n\n[Gödel Machines](?paper=cs-0309048)提出让系统在证明自修改有更高预期收益后切换程序。它把改进算法自身也开放为修改对象，但形式保证依赖公理、效用定义和证明条件。[DGM](?paper=2505.22954)则明确转向实证：冻结基础模型，修改 coding agent 的代码，用编程任务表现评价，并保留多样版本继续探索。这个转折改变了可操作性，也把可信评价、搜索预算和泛化问题带到了中心。[〔1〕](#review-ref-1)[〔2〕](#review-ref-2)\n\n| 本库中的时间线 | 研究对象怎样扩展 | 随之产生的下一步问题 |\n| --- | --- | --- |\n| 2023：Self-Refine、Reflexion、Voyager | 修订输出、保存教训、积累技能同时展开 | 同题成功能否变成跨题能力？ |\n| 2024：ADAS、AFlow | agent 结构和工作流进入自动搜索 | 预设模块是否限制可发现的系统？ |\n| 2025：SICA、DGM、SEAL、ACE | 实际系统代码、学习材料、长期上下文成为改进对象 | 怎样诊断、保留和评价更新？ |\n| 2026：本库收录的进一步分化 | 修改者学习、harness 与参数协同、自主选题和受控评测 | 增益来自哪里，能否持续、迁移并改善下一轮研发？ |\n\n表中是阅读线索。后文分别给出原文依据；时间相近不表示方法相同，问题递进也不表示后文一定直接继承前文。尤其是记忆、系统工程与参数训练，始终存在并行发展。\n\n### 一个重要分界：执行循环与改进循环\n\n执行循环围绕当前任务运行：读状态、调用工具、得到结果、决定下一步。改进循环围绕系统版本运行：收集多次执行的证据、提出修改、比较候选、保留更新。把执行过程拉长，或者多生成几个答案，并不自动改变改进循环。后面讨论“递归”时，还要进一步问：负责提出和选择更新的机制是否发生变化，以及这种变化有没有提高后续改进能力。"
+    },
+    {
+      "id": "feedback",
+      "title": "为什么“再检查一下”不够：反馈从自评走向外部证据与错误定位",
+      "thesis": "判断正确性、定位错误、给出可用的修改方向，是反馈中的三项不同作用。",
+      "groups": [
+        "feedback"
+      ],
+      "body": "### 当前输出能不能靠自我批评变好？\n\n[Self-Refine](?paper=2303.17651)针对初稿质量不足，使用同一模型生成反馈并反复修订，不另训练模型。它把问题落在当前产物的改善。[Large Language Models Cannot Self-Correct Reasoning Yet](?paper=2310.01798)则专门检查缺少外部正确性反馈的推理纠错：不能把获得标准答案等额外帮助后的改善，算成模型单独自纠错的能力。二者并读时，应比较任务和反馈条件，不能把一个任务上的正面或负面结论外推到所有自我检查。[〔3〕](#review-ref-3)[〔4〕](#review-ref-4)\n\n[CRITIC](?paper=2305.11738)采取另一条路线：用搜索、代码执行等工具检查输出，再依据工具信息修订。关键变化是判断能接触外部证据，而非只重新调用原模型。这里也要继续分辨工具到底验证了什么：代码能够运行、数值检查通过、事实有来源，是不同强度的结论。[〔5〕](#review-ref-5)\n\n### 为什么正确／错误这个标签仍然不够？\n\n长程任务可能经过几十步后才失败。最终成败能筛选候选，却不直接说明是规划错误、工具参数错误、上下文丢失，还是验收步骤缺失。**正确性标签回答“结果怎么样”，诊断信息才开始回答“下一步改哪里”。** 当我们把自纠错推广到系统更新时，这个区别尤其重要。\n\n[Let’s Verify Step by Step](?paper=2305.20050)比较步骤监督与结果监督，研究中间推理信息怎样支持评分模型。[TextGrad](?paper=2406.07496)把自然语言反馈传递到系统中可优化的变量，研究多个组件怎样接受有针对性的修改信号。[GEPA](?paper=2507.19457)读取执行轨迹、利用语言反思修改提示，并保留互补候选。三者都利用比单一总分更丰富的信息，但分别涉及监督粒度、反馈分配和提示搜索；训练数据与运行时反馈条件不能混用。[〔6〕](#review-ref-6)[〔7〕](#review-ref-7)[〔8〕](#review-ref-8)\n\n### 反馈太稀疏时，是多试，还是引入示范？\n\n[DemoEvolve](?paper=2605.24539)把这个问题放在具体游戏条件下：Liar’s Dice 更容易通过自主对局获得奖励；Balatro 的有效奖励更稀疏且随机，作者引入人类成功轨迹，提供可参照的行为过程。它与教程文字等对照的差别，是直接给出“成功执行如何发生”的信息。这里的收益包含额外示范的价值，比较成本时不能把示范视作免费且在任何场景都可取得。[〔9〕](#review-ref-9)\n\n| 反馈形式 | 能补什么信息 | 无法单独保证什么 |\n| --- | --- | --- |\n| benchmark 自带测试／环境奖励 | 输出或终态是否满足预设条件 | 哪个系统机制导致失败 |\n| 与标准答案比对 | 结果是否匹配参考；比对可用规则或模型 | 参考是否完备、推理和过程是否可靠 |\n| 模型按 rubric 评分 | 开放产物的多个质量维度；rubric 是明确的评分条目 | judge 没有偏差、不会被候选迎合 |\n| 执行轨迹、错误诊断、成功示范 | 修改所需的上下文与行为参照 | 诊断正确、能迁移、获取成本划算 |\n\n这张表是对反馈作用的分析，而非某篇论文的统一实验设置。具体任务需要分别填写“谁判分、依据什么、修改者看见哪些信息”。\n\n### 下一步瓶颈：谁来验证评审者？\n\n当任务没有可靠的固定检查器时，[Red Queen Gödel Machine](?paper=2606.26294)让解题者与评审者共同改进。这打开了一个新对象，也产生新的约束：评审标准变化后，不同版本的分数还是否可比较？本文的判断是，反馈丰富度与反馈可信度应当分开研究；更长的点评、更强的 judge，都不能直接替代独立的正确性检查。[〔10〕](#review-ref-10)\n\n这一节把问题推进到：系统不仅需要反馈，还要从反馈中获得可保留的改进。下一节考察这些经验怎样离开原题。"
+    },
+    {
+      "id": "experience",
+      "title": "从同题反思到跨题学习：经验应该保存成什么？",
+      "thesis": "经验的形成、检索、执行和维护是四个环节，任何一环失败都可能让“记住了”无法变成能力提升。",
+      "groups": [
+        "experience"
+      ],
+      "body": "### 第一处转折：从下一次重试，走向下一道新题\n\n[Reflexion](?paper=2303.11366)用文字反思保存试错所得，让后续尝试读取教训，避免立即重复同类错误。读它时要检查收益来自同一任务的重新尝试，还是迁移到了新任务。[ExpeL](?paper=2308.10144)把训练任务中的试错汇总为一般规则和成功示例：学习阶段允许积累经验，测试阶段的新题可检索这些经验。它把“过去的失败有没有帮助后来的新任务”变成更直接的研究问题。[〔11〕](#review-ref-11)[〔12〕](#review-ref-12)\n\n这里的难点不只是压缩长度。完整轨迹包含可复用策略，也包含当前题目的实体、路径和偶然错误。全部复制可能带入不相关细节，概括得太抽象又无法指导具体行动。因此，不同工作开始在经验表示上分流。\n\n### 并行分流：文字规则、工作流、可执行技能\n\n[Voyager](?paper=2305.16291)在 Minecraft 中结合自动课程与技能库，将成功行为保存为可检索、可组合的代码。[Agent Workflow Memory](?paper=2409.07429)从网页操作经验提炼可复用流程。[Memento-Skills](?paper=2603.18743)强调执行期间对技能的选择、修订和扩展。它们的共同目标是减少后续任务的重复探索，但表示的可执行程度、适用环境与维护方式不同；“skill”在这些论文里并非同一种文件或能力单位。[〔13〕](#review-ref-13)[〔14〕](#review-ref-14)[〔15〕](#review-ref-15)\n\n文字经验容易编辑和解释，但依赖模型理解并正确遵循；代码技能能固化操作，却要处理接口、前置条件和环境变化；工作流规定步骤，但未必能处理步骤之间的新分支。这里不存在脱离任务的最佳表示，应该比较它们在新实例、环境变化和组合任务上的实际表现。\n\n### 第二处转折：从增加内容，到维护长期可用的经验\n\n[ACE](?paper=2510.04618)指出反复重写或压缩上下文会丢失具体经验，因此使用可增改的经验手册，逐项生成、反思和整理。它回应的是“持续更新时怎样保住有用细节”。[Procedural Graphs](?paper=2609.09153)把指导组织为带条件的步骤图，让执行时读取当前位置相关的内容。两者分别突出增量维护与执行结构，不能只按“都在写外部文本”合并。[〔16〕](#review-ref-16)[〔17〕](#review-ref-17)\n\n[SELF-INDEX](?paper=2609.19656)又把范围收窄到检索表示：从目标语料构造练习查询，发现检索缺口并修订索引键，检索后仍返回原文。它研究的不是更多记忆内容，而是现有内容怎样更容易在合适查询下被找到。语料可见与正式测试查询不可见是两回事，论文的这类隔离条件必须与一般“训练集／测试集”说法区分。[〔18〕](#review-ref-18)\n\n### 第三处转折：记忆的管理程序本身是否应当学习？\n\n如果编码、存储、检索与清理的规则固定，再增加内容也未必解决机制不适配。[MemEvolve](?paper=2512.18746)将经验内容与记忆架构共同纳入进化；[ALMA](?paper=2602.07755)研究能否根据持续学习效果自动寻找更合适的记忆设计。由此，路线从“学到了什么”推进到“怎样学习和使用经验”。这不是宣称代码一定优于文本，而是把固定设计也变成待检验对象。[〔19〕](#review-ref-19)[〔20〕](#review-ref-20)\n\n| 子问题 | 可以并读的工作 | 核心对照 |\n| --- | --- | --- |\n| 如何让旧题经验服务新题 | Reflexion、ExpeL | 同题重试与跨题单次执行的收益分开 |\n| 经验应写成什么形式 | Voyager、AWM、Memento-Skills | 文字指导、步骤流程、可执行程序的适用条件 |\n| 经验多了以后怎样保持可用 | ACE、Procedural Graphs、SELF-INDEX | 内容维护、执行结构、检索表示分别解决哪一环 |\n| 固定管理机制是否限制学习 | MemEvolve、ALMA | 内容改善与管理程序改善的独立贡献 |\n\n### 这条路线还需要什么证据？\n\n[ContinualSkillBench](?paper=2608.03874)引入与保留历史上下文相比较的视角；[PAST-Bench](?paper=2608.04003)通过控制经验保存和使用环节检验持久经验的作用。它们促使方法研究回答：提炼成技能是否真的比直接保留相同预算的历史更有效？如果技能从未被调用，不能把后期涨分归因于技能学习；如果只有旧题得分提高，也不足以说明经验可迁移。[〔21〕](#review-ref-21)[〔22〕](#review-ref-22)\n\n本站的综合判断是，经验路线的关键问题已经从“存不存”细化到**存什么、何时取、如何用、何时改或删**。这些环节也自然连接到下一节的 harness 设计。"
+    },
+    {
+      "id": "harness",
+      "title": "从自动设计到实际自修改：harness 研究怎样细化？",
+      "thesis": "开放修改权限只是起点；后续工作分别处理设计空间、故障诊断、搜索多样性与验收成本。",
+      "groups": [
+        "harness"
+      ],
+      "body": "### 为什么提示优化会走向系统设计？\n\n提示能改变模型接收到的指导，却不能独自决定工具接口、状态保存和异常恢复。如果问题出在这些运行机制上，再改一句提示可能只是绕开症状。[DSPy](?paper=2310.03714)把语言模型调用组织成可组合、可优化的程序模块；[ADAS](?paper=2408.08435)用代码表达并搜索 agent 设计；[AFlow](?paper=2410.10762)搜索工作流的节点与连接。它们共同回应人工调系统的成本，但对结构预设的多少不同。[〔23〕](#review-ref-23)[〔24〕](#review-ref-24)[〔25〕](#review-ref-25)\n\n设计空间因此成为第一项研究选择：候选只能调整既有模块的参数和提示，还是能改变模块连接，乃至添加工具和执行逻辑？范围更开放，可能发现人工未预想的方案，也会扩大搜索和验证的难度。不能只依据“允许改全部代码”就推断方法更先进。\n\n### 从生成另一套系统，到修改自己实际使用的实现\n\n[SICA](?paper=2504.15228)让 coding agent 修改自身实现，再以更好的版本继续工作。[DGM](?paper=2505.22954)进一步保留历史 agent 档案，允许从不同版本继续产生新候选，避免只沿最近的最高分版本前进。DGM 的模型参数在这组实验中冻结；它把编程任务能力作为实证反馈，并依赖编程能力有助于后续自修改这一联系。这个联系在非编程领域是否成立，是后来讨论改进者能力时的重要问题。[〔26〕](#review-ref-26)[〔2〕](#review-ref-2)\n\n这里已经出现两种不同收益：新版本更会完成用户任务；新版本也可能更会编写下一轮修改代码。第一种能通过任务成绩观察，第二种还需要对改进过程作额外比较。把两者都称作“变强”会掩盖这一区别。\n\n### 同为改 harness，为什么 Self-Harness 的问题不同？\n\n[Self-Harness](?paper=2606.09498)强调各模型的失败模式不同，通用人工框架未必适配每个模型。它由同型号模型从执行记录中归纳弱点、提出小幅候选修改，再通过回归检查接受更新。实验涵盖 MiniMax M2.5、Qwen3.5-35B-A3B、GLM-5 与 Terminal-Bench 2.0、SWE-bench Verified、AppWorld。起点是 DeepAgent SDK 上的简化配置；论文的可修改配置面不等于任意改 SDK 全部源码。[〔27〕](#review-ref-27)\n\n这使对照问题变成：执行模型能否根据自己的弱点适配运行方式，是否仍需要更强的外部设计者？而 ADAS 的核心问题更偏向自动化系统设计空间，DGM 更突出自修改和多样版本探索。三者具有重叠实现，却不应以同一个泛化标签代替研究定位。\n\n### 瓶颈一：失败记录很多，但怎样找到真正该改的机制？\n\n[Meta-Harness](?paper=2603.28052)允许修改者回看历次代码、分数和详细轨迹，避免只根据压缩摘要丢失的线索猜修改。[AHE](?paper=2604.25850)把改动关联到组件和执行证据，并检查组件之间的相互影响。[HarnessFix](?paper=2606.06324)进一步将运行步骤与对应 harness 实现对齐，归纳故障记录，再生成限定范围的修补。它们分别改善“能读到什么历史”“能否理解组件影响”“能否定位并约束修复”。[〔28〕](#review-ref-28)[〔29〕](#review-ref-29)[〔30〕](#review-ref-30)\n\n因此，日志长度本身不是诊断质量。真正有价值的是能否追溯：哪一步行为由哪个系统机制塑造，修改它预期修复什么，又可能影响什么。局部修复有效也不意味着定位完全正确；隔离组件、移植补丁、重复运行等对照可以帮助检验归因。\n\n### 瓶颈二：为什么更多候选仍可能搜不动？\n\n候选数量增加，却一直围绕相似起点作相似修改，搜索仍可能收缩。[HarnessBank](?paper=2607.13683)保存语义上不同、质量合格的版本，再进行重组和筛选。[RobustSGPO](?paper=2609.09646)控制改哪些 agent、采用什么修改操作，以及从哪些历史类别继续搜索。前者强调候选库的多样性与门控筛选，后者强调修改范围和操作的控制。[〔31〕](#review-ref-31)[〔32〕](#review-ref-32)\n\n### 瓶颈三：验证昂贵，而且总分可能掩盖退化\n\n[HarnessLens](?paper=2608.27311)针对每个候选都在固定题集上重复验证的浪费，选择与改动行为相关的任务，并检查可归因的变化。[SoL-Pi](?paper=2609.20519)则直接把运行效率纳入研究，搜索动作执行、上下文压缩、工具输出处理和委派阅读等机制。一个改善搜索阶段的验收效率，一个降低生成系统的运行成本；两种“省成本”不应混成同一个指标。[〔33〕](#review-ref-33)[〔34〕](#review-ref-34)\n\nSoL-Pi 的完整效率方案有成本下降，也有一定任务分数损失。评价它需要同时看性能、成本及候选选择协议，而不是把减少 token 自动解释为能力提升。对其他 harness 工作同样如此：应计入提出候选、运行验证和部署执行的不同成本。[〔34〕](#review-ref-34)\n\n| 已知瓶颈 | 代表工作怎样回应 | 下一步应控制的变量 |\n| --- | --- | --- |\n| 人工设计限制搜索范围 | ADAS／AFlow：自动搜索代码设计或工作流 | 预设模块与可编辑权限 |\n| 模型与通用框架不适配 | Self-Harness：从自身失败模式提出修改 | 固定模型、起点、外部帮助 |\n| 失败无法对应到系统原因 | Meta-Harness／AHE／HarnessFix：历史证据、组件归因、限定修复 | 日志信息量与诊断正确性 |\n| 候选越来越相似 | HarnessBank／RobustSGPO：多样版本与搜索操作控制 | 同预算下的有效候选比例 |\n| 验证或部署成本过高 | HarnessLens／SoL-Pi：选择性验收与运行机制优化 | 搜索成本和部署成本分别计算 |\n\n### 离线改好再部署，能否覆盖长期在线运行？\n\n[PILOT in the Loop](?paper=2608.26530)把执行与监督分开，运行中纠偏并留下技能；[Continual Harness](?paper=2605.09998)关心长程环境不中断、不重置时的持续适应；[Harness-of-Harness](?paper=2609.01481)面对多日软件开发的修复与功能推进。这些设置增加了离线候选比较中较弱的约束：当前任务还在运行，修改必须处理状态延续、恢复和新旧行为的兼容。[〔35〕](#review-ref-35)[〔36〕](#review-ref-36)[〔37〕](#review-ref-37)\n\n因此，harness 路线的研究重点可以从“又生成了一套代码”，收窄为**如何发现系统性故障、怎样搜索结构、怎样验收，以及如何把更新安全接入后续执行**。这里的“安全”需具体说明是控制旧能力退化、运行错误还是其他风险，不能仅作笼统标签。"
+    },
+    {
+      "id": "curriculum",
+      "title": "当目标和练习不再由人给定：系统怎样决定学什么？",
+      "thesis": "能优化明确的任务目标，与能自主建立有效学习目标，是两种能力。",
+      "groups": [
+        "curriculum",
+        "feedback"
+      ],
+      "body": "### 固定题库为什么会成为限制？\n\n前面的大量设置默认已经有任务、数据和评分器，agent 主要寻找更好的执行方式。但如果任务本身仍由人不断提供，改进循环就依赖外部出题；如果训练题与真实目标失配，执行得更勤奋也可能沿错误方向前进。这里的研究对象从“怎么改模型或框架”，扩展为“用什么经历来驱动改进”。\n\n[AgentEvolver](?paper=2511.10395)针对新环境中人工任务构造和低效探索的成本，让系统组织交互任务并利用经验，提高轨迹利用率。[DiagEvo](?paper=2609.00768)从自身失败历史中归纳错误原因，再构造下一轮课程。前者偏向如何高效获取学习经历，后者偏向如何让练习针对暴露的能力缺口；二者都要进一步检验新数据是否真的改善了目标任务。[〔38〕](#review-ref-38)[〔39〕](#review-ref-39)\n\n### 从挑选已有任务，到创造仍然可验证的新挑战\n\n[BigBang](?paper=endlessfrontier.tech-assets-paper.pdf)回应的是另一个尺度的问题：当已有题目不再构成有效挑战时，系统能否持续合成更难且可验证的前沿任务。任务难度不能脱离正确性检查单独增长；若不能可靠判定结果，任务生成器与求解器可能共同迎合一个薄弱的评价机制。这里值得研究的是挑战性、可学习性与可验证性之间的配合。[〔40〕](#review-ref-40)\n\n数据研究本身也可以被单独评测。[RSIBench-Data](?paper=2607.25886)固定部分周边训练工程，考察 agent 能否诊断缺口、提出数据方案并保住后训练收益；[Curation-Bench](?paper=2606.04261)关注受控条件下的数据选择研究。这样才有机会区分：提升来自更好的数据决策，还是更大的模型、算力和训练工程改动。[〔41〕](#review-ref-41)[〔42〕](#review-ref-42)\n\n### 更强的要求：只有宽泛目标，能否建立正确的学习问题？\n\n[Aspire](?paper=2608.31111)把自主性进一步前移。系统只得到自然语言能力目标，需要选择数据、更新方式和自测方法。参数更新与 harness 更新是不同实验；后者正式评估使用题库中的 20 道写作题，不能把全部 520 道专家题都说成 harness 测试。部分参数设置允许查询目标题组的汇总分数，因此也不能把所有设置都描述为完全不可见的最终测试。[〔43〕](#review-ref-43)\n\n这个评测的意义在于把“改进循环跑通”与“朝正确能力方向进步”分开。作者观察到数据失配和狭窄自测等问题；这些现象提醒我们，自建课程不只是生成更多样本，还包含目标解释与诊断。结论应受论文模型、任务和预算约束，不能据此断言所有自主学习都无效。[〔43〕](#review-ref-43)\n\n| 自主程度增加在哪里 | 代表入口 | 需要额外验证的东西 |\n| --- | --- | --- |\n| 自己获取交互任务与训练轨迹 | AgentEvolver | 经历的覆盖、利用效率与真实学习价值 |\n| 从当前失败决定下一轮课程 | DiagEvo | 错误诊断是否正确，是否只反复强化局部题型 |\n| 持续创造新的挑战 | BigBang | 难度、可学习性、验证器可靠性 |\n| 自己把宽泛目标变成学习方案 | Aspire | 自测和真正目标能力是否对齐 |\n\n[S³Gym](?paper=2608.31100)提供另一个拆分视角：自主试验、判断经历与利用经历分别测，并比较保留历史、总结记忆和参数训练。即使能识别成功行为，也未必能把它转成可迁移策略。因此，选题、自评和学习不能用一个最终分数混为一谈。[〔44〕](#review-ref-44)\n\n本站据此提出的研究问题是：**系统如何发现自己的学习信号已经偏离目标？** 这是从已有诊断结果引出的建议，并非宣称文献已经给出通用解决方案。"
+    },
+    {
+      "id": "weights",
+      "title": "从外部经验到参数学习：为什么需要 model–harness 协同？",
+      "thesis": "训练模型与修改运行系统解决不同瓶颈，联合路线的关键在于更新内容、顺序与预算。",
+      "groups": [
+        "weights"
+      ],
+      "body": "### 为什么不能一直把经验留在 prompt、memory 或 skill 中？\n\n外部经验可以立即增改和检查，但每次使用都需要检索、读入和遵循。模型若没有执行相应策略的能力，增加说明未必有效。参数更新提供另一种保留经验的方式，却需要可学习的训练材料、奖励和算力，还可能带来遗忘。选择哪条路线，要根据实际瓶颈验证，不能把参数更新自动视为更深或更高级的进化。\n\n[SEAL](?paper=2506.10943)让模型根据新输入生成用于微调的数据及更新指令，执行参数更新，再用更新后模型的下游表现作为奖励，训练它生成更有效的学习材料。学习的不只是输入中的知识，还包括“怎样把输入改写成更容易学会的材料”。[SEED](?paper=2607.14777)从近期执行经历中提炼更具体的行动监督，补足长任务只给最终成败时的信息不足。前者强调如何为参数适应组织材料，后者强调交互训练中的逐步学习信号；两者都涉及数据到参数的转化，但训练对象和反馈链条不同。[〔45〕](#review-ref-45)[〔46〕](#review-ref-46)\n\n### 外部状态与模型行为可以一起成为学习对象\n\n[EvoHarness-RL](?paper=2608.05446)研究模型如何学习创建和读写外部状态，而非只依赖手写的固定读写时机。[SkillRise](?paper=2607.26784)让为未来任务整理技能的收益进入训练目标。它们提示了一种中间路线：经验仍以外部形式存在，但怎样产生和使用经验的策略可以被训练。把所有记忆工作归为“参数不变”会遗漏这种差别。[〔47〕](#review-ref-47)[〔48〕](#review-ref-48)\n\n### 从二选一，到研究两侧怎样互相限制\n\n[SIA](?paper=2605.27276)在一个改进流程中允许改运行框架或训练模型，关注怎样根据失败选择更新位置。[WHALE](?paper=2609.00196)则把交替更新的节奏作为具体问题：固定模型搜 harness，再固定 harness 训练模型，比较长阶段与小步交替等安排。新的模型可能适合不同框架，新框架又可能产生原来得不到的成功轨迹；因此两侧单独优化的结果未必能直接组合。[〔49〕](#review-ref-49)[〔50〕](#review-ref-50)\n\nWHALE 的任务反馈也不是单一 verifier：问答使用模型将回答与参考答案比对，数学用程序提取答案并匹配，棋题检查合法性及参考着法。三种环境的同一个“正确”标签来自不同实现。论文主要比较各运行的最佳测试点，这种结果与开发集选定版本后只测一次不同；评价交替机制时应保留这一条件。[〔50〕](#review-ref-50)\n\n### ScienceBuddy 为什么属于这一条路线？\n\n[ScienceBuddy](?paper=2609.17523)把科研请求、反馈和执行证据组织为持续学习材料：内层固定模型改 harness，外层在改进后的 harness 下训练模型。其单独 harness 实验主要改指令与技能文本，执行循环、工具及上下文处理固定，不能概括为重写完整框架。它的研究重点是交互、系统适配和模型学习如何衔接。[〔51〕](#review-ref-51)\n\n它也说明“有用户反馈”需要拆开写：harness 阶段由私有检查结果支持受限的模拟用户回复；参数学习按固定评分条目汇总可执行检查与 judge 分数。模拟用户的诊断、训练奖励和最终评价各有用途，不能相互替代。具体任务、数据划分与原文缺项在单篇实验表中保留。[〔51〕](#review-ref-51)\n\n| 论文切口 | 真正需要比较什么 |\n| --- | --- |\n| SEAL：自建有效适应材料 | 相同更新预算下，材料组织是否改善学习效果 |\n| EvoHarness-RL／SkillRise：学习外部经验的读写与整理策略 | 训练得到的策略是否改善后续任务，而非只帮助当前题 |\n| SIA：决定更新哪一侧 | 选择策略是否超过固定只改 harness 或只练模型 |\n| WHALE：决定何时切换 | 同总预算下，交替节奏是否带来额外收益 |\n| ScienceBuddy：将持续交互接入两层更新 | 交互材料、harness 改进和参数训练各自贡献多少 |\n\n[HELIX](?paper=2608.13951)强调可追踪、适合模型学习的执行轨迹，当前证据重点包括框架与数据接口；[Macaron-V1](?paper=2608.09819)的系统架构连接模型专长与运行配置，但直接框架搜索实验主要在冻结模型下进行。因此，“架构支持共同更新”“各侧分别有效”“多轮交替相互促进”应当分别记录。[〔52〕](#review-ref-52)[〔53〕](#review-ref-53)\n\n这一节的综合判断是：联合进化最有信息量的研究问题，通常不是“有没有同时改两样东西”，而是**什么失败该触发哪种更新、一次改多少、何时切换，以及改完后另一侧的最佳选择怎样变化**。"
+    },
+    {
+      "id": "improver",
+      "title": "从更强的 agent，到更有效的改进者：递归多了什么？",
+      "thesis": "改任务知识、改修改规则、训练编辑模型和修改优化程序，是不同层次的研究操作。",
+      "groups": [
+        "improver"
+      ],
+      "body": "### 为什么做题更强，未必更会改系统？\n\n一个模型可能擅长完成任务，却不能准确解释失败原因；也可能能写出合理补丁，却不会验证其副作用。DGM 借助编程能力与代码自修改之间的联系形成改进循环。[Hyperagents](?paper=2603.19461)明确指出这种联系不一定推广到编程之外，因此将 task agent 与修改它的 meta-agent 同时放进可编辑程序，并考察修改机制的跨领域迁移。问题由“任务程序变好了”推进到“产生新任务程序的机制是否也变好了”。[〔54〕](#review-ref-54)\n\n### 路线一：改变指导修改的规则\n\n[Promptbreeder](?paper=2309.16797)让任务提示与指导提示变异的提示共同变化。[MetaSkill-Evolve](?paper=2607.05297)区分任务技能与指导技能修订的说明，以不同节奏更新。相对于固定一句“请改进”，这些方法把变异、反思或诊断的文字规则也作为学习对象。变化仍可能受到固定候选生成、预算与接受机制的约束，不能从“元提示可变”推断整个改进过程都不再有人类预设。[〔55〕](#review-ref-55)[〔56〕](#review-ref-56)\n\n### 路线二：训练一个更会提出有效修改的模型\n\n[Harness-R1](?paper=2608.02276)把独立编辑模型作为训练对象。它读取目标 agent 的失败记录，在预留的执行环节生成辅助代码；补丁装上后，冻结目标模型在任务上重新执行，实际奖励变化用于训练编辑模型。这与固定编辑者反复采样、选出最好补丁不同：学习信号改变了未来提出修改的策略。用于训练奖励的同批重跑，也不等于独立测试泛化。[〔57〕](#review-ref-57)\n\n[MetaEvolve](?paper=2607.21971)则训练利用反馈、反思和历史方案开展改进的通用能力，考察训练外优化问题。读这类工作时要明确参数属于谁：训练修改者，和训练执行任务的模型，是不同的系统变化。即便修改者训练后更有效，也还要另问它在部署时是否继续修改自己的学习机制。[〔58〕](#review-ref-58)\n\n### 路线三：修改优化程序，而不只修改它输出的方案\n\n[STOP](?paper=2310.02304)研究支持代码改进的程序能否修改自身优化程序。Hyperagents 将这一问题扩展到任务程序与改进程序的共同可编辑结构，并通过迁移观察修改机制的作用。此时应检查每轮保留下来的究竟是更好的任务解，还是新的搜索、记忆、选择或诊断机制。[〔59〕](#review-ref-59)\n\n[Dream-RSI](?paper=2609.14858)提供了一个更具体的效率切口：利用累积发现树构建回放环境，在其中低成本试验探索策略，再放回线上继续搜索。底层 coding agent 不变，变化主要在探索编排层。它说明产生改进的能力可以通过更好的搜索策略改善，并不一定要训练一个更大的底层模型。回放对线上搜索的代表性与最终发现成本，因而成为重要评价条件。[〔60〕](#review-ref-60)\n\n| 想改变的东西 | 代表工作 | 应证明的新增能力 |\n| --- | --- | --- |\n| 指导修改的文字规则 | Promptbreeder、MetaSkill-Evolve | 新规则在相同预算下产生更有效的候选 |\n| 提出修改的模型策略 | Harness-R1、MetaEvolve | 学到的编辑／优化能力对新任务或新执行者仍有效 |\n| 修改与搜索程序 | STOP、Hyperagents、Dream-RSI | 新程序提高后续改进效率，而不只是保存了特定任务的好答案 |\n\n### 如何把“递归”变成可检验的主张？\n\n[Harness Updating Is Not Harness Benefit](?paper=2605.30621)通过执行者与修改者的独立配对，区分做题能力、提出更新的能力，以及从更新中受益的能力。其受限技能、提示和记忆编辑设置不能代表任意源码自修改，但这个角色分离的实验思想很关键：执行模型换强了，不能算作修改者更会改；补丁写得好，执行者不遵循也不一定受益。[〔61〕](#review-ref-61)\n\n本文据此建议一个更明确的检验：把旧、新修改者分别接到相同的新起点和未见任务上，匹配交互及验证预算，比较产生有效更新的速度、比例和累计收益。如果优势只存在于原任务，或依赖携带原任务答案，就应缩小“通用递归改进”的结论。此处是本站提出的实验设计，不是替相关论文追加它们尚未做的结果。"
+    },
+    {
+      "id": "evaluation",
+      "title": "从报告涨分，到解释为什么涨分：评测怎样推进了领域？",
+      "thesis": "方法的研究对象越开放，越需要把执行能力、改进能力、预算和数据接触分开。",
+      "groups": [
+        "evaluation"
+      ],
+      "body": "### 第一种混淆：是不是只是多做了几次题？\n\nharness 搜索需要反复执行任务。如果对照只能答一次，而新方法可以读测试反馈、修订并重试，最终差距可能包含更多推理和更强反馈的收益。[Rethinking the Evaluation of Harness Evolution](?paper=2607.12227)在相近反馈和推理预算下比较直接重试等方法，并检查留出任务。作者在所测 Terminal-Bench 设置下发现，harness 进化并不稳定优于这些简单对照，泛化也有限。该结论质疑的是特定协议下的收益来源，不能泛化成所有系统修改无效。[〔62〕](#review-ref-62)\n\n### 第二种混淆：是不是把开发题调熟了？\n\n数据边界至少应拆成三部分：用于产生更新的数据、用于挑选版本的数据、用于最终检验的数据。候选如果根据某组分数被接受，那组数据已经承担了选版本作用；名称写着 held-out，也不能自动当作从未参与决策的最终测试。持续任务流还要明确顺序：做完当前任务才利用其反馈，和预先看到后续任务答案，属于不同条件。\n\n[Evo-Bench](?paper=2608.09096)控制执行者与预算，研究修改者能否产生可泛化的 harness 改进；[HarnessDev](?paper=2609.01437)区分从弱起点建设系统与继续改进既有系统；[One Recipe, Many Harnesses](?paper=2608.10178)进一步研究进化内容是通用执行策略、语言特有知识，还是对某个模型弱点的补偿。它们分别处理能力分工、起点和迁移对象，不能合并成一个笼统的“跨任务有效”。[〔63〕](#review-ref-63)[〔64〕](#review-ref-64)[〔65〕](#review-ref-65)\n\n### 第三种混淆：后期分数更高，就说明持续学习更好？\n\n任务顺序可能改变难度，也可能影响经验适用性。[PATH-Bench](?paper=2608.01149)关注历史路径、迁移与干扰；[AgentStream](?paper=2608.00155)将同域与跨域混合任务流放在连续条件下观察；[SEAGym](?paper=2606.17546)跟踪泛化、遗忘和成本。研究对象因此从一个版本的成绩，转向整段更新过程。[〔66〕](#review-ref-66)[〔67〕](#review-ref-67)[〔68〕](#review-ref-68)\n\n理论工作 [Safe Harness Self-Evolution](?paper=2609.08175)把有益候选是否存在、能否生成、有限数据能否可靠验收，以及后续是否还能进步分开分析。它提醒我们，停止更新未必只因修改模型太弱，也可能因为验证样本不足，无法确认小幅收益。理论保证依赖其任务分布与抽样条件，不能直接成为任意开放环境的承诺。[〔69〕](#review-ref-69)\n\n### 第四种混淆：会做 AI 研发，是否等于能自主改进自己？\n\n[PostTrainBench](?paper=2603.08640)考察给定模型和算力后能否完成有效后训练。[RSI-Exam](?paper=rsi-exam)从可运行弱方法出发，让研究 agent 做多轮实验，再评价交付物。[MLS-Bench](?paper=2605.08678)更强调提出的方法跨设置、扩大规模后是否仍有效。它们都与 AI 改进 AI 有关，但改进目标是否由人给定、提交的是模型还是方法，以及是否回头增强研究者本身，需要分别说明。[〔70〕](#review-ref-70)[〔71〕](#review-ref-71)[〔72〕](#review-ref-72)\n\n| 想声称的能力 | 最低限度需要怎样的对照 |\n| --- | --- |\n| 当前结果更好 | 相近反馈与总推理预算下的直接重试／搜索 |\n| 学到了可复用经验或系统机制 | 固定最终版本，测未参与选版本的新任务；消融所保留内容 |\n| 能持续改进 | 完整曲线、旧任务保持、累计成本，而不只挑最佳点 |\n| 修改者更会产生改进 | 固定执行起点，将新旧修改者迁移到相同未见任务 |\n| 能自主定义学习方向 | 目标任务独立于自建练习与自测；检查两者一致性 |\n\n这张表是本文的实验设计归纳。它不是要求每篇论文同时解决全部问题，而是要求**结论的范围与其对照真正支持的范围一致**。"
+    },
+    {
+      "id": "synthesis",
+      "title": "怎样把这幅脉络变成研究选题？",
+      "thesis": "把尚未分清的机制变成受控比较，比重复搭一套大而全的循环更容易形成清楚的问题。",
+      "groups": [
+        "harness",
+        "improver",
+        "evaluation"
+      ],
+      "body": "### 对整个领域的一个综合判断\n\n从以上对照看，可以观察到三种研究对象的扩展。第一种把当前任务中的反馈转成后续任务可用的资源；第二种把人工固定的执行机制开放给搜索或学习；第三种把产生修改的规则、模型或程序也纳入改进。与此同时，选题和评价两端变得更重要：改得更多，不能补偿训练方向失配；搜索得更久，也不能替代独立验证。\n\n因此，领域的发展不宜写成“prompt → memory → harness → weights”的单向升级。它们往往在解决不同瓶颈，且可以共同作用。更加有用的脉络是：**一个环节被开放之后，哪个仍然固定的环节开始限制收益？新的论文是否识别并验证了这个限制？** 这是一种阅读和形成假设的方法，不是已经被证明适用于一切系统的统一规律。\n\n### 对 harness 进化，六个可以进一步收窄的问题\n\n| 研究问题 | 已有工作提供了什么 | 可以进一步做的受控比较 |\n| --- | --- | --- |\n| 错误究竟该在哪一层修？ | HarnessFix 提供故障定位；SIA 开放两侧更新；WHALE 研究交替 | 同一失败集、同预算比较补技能、修代码、练参数以及位置选择策略 |\n| 什么反馈最值得付出成本？ | GEPA 利用反思；DemoEvolve 引入示范；Harness-R1 用实际补丁收益训练 | 匹配轨迹和生成成本，比较总分、定位信息、示范带来的未见任务收益 |\n| 技能表示本身是否有效？ | ExpeL、ACE 提炼经验；ContinualSkillBench 提供历史上下文对照 | 同上下文与整理预算，比较原始轨迹、文字技能、步骤图，并记录调用情况 |\n| 自建练习怎样对准真正目标？ | DiagEvo 从失败生成课程；Aspire 暴露目标与自测的落差 | 固定数据池，比较课程策略；用不回传成绩的目标任务检验迁移 |\n| 改进者到底学到了什么？ | Hyperagents 开放修改程序；Harness-R1 训练编辑者 | 固定新起点，迁移新旧修改者；检查有效更新速度和跨域保持 |\n| 怎样决定接受、保留分支或停止？ | HarnessBank 保留多样候选；HarnessLens 优化验证；SEAGym 跟踪过程 | 改变验收样本量、分支策略和停止规则，计入误接受、误拒绝与累计成本 |\n\n以上方向是根据前文证据提出的研究建议，不声称尚无人研究。选择其中一个后，仍需针对其最新工作补查，进一步收窄任务、反馈条件和实验范围。\n\n### 一个更容易落地的起步顺序\n\n以 harness 为重点时，可以先选一类能明确执行与判分的任务，固定一个有代表性的基础 harness，保留逐步轨迹。第一步复现“原框架、同预算重试、固定编辑者改框架”三组对照，先确认系统修改确实有额外收益。第二步只改变一个机制，例如诊断信息或候选保留方式，观察收益是否还能在未见任务上保持。第三步再研究修改者训练或可修改优化程序，避免同时变更多个环节而无法归因。\n\n这一路线不是唯一选择。若问题在目标或课程，不应先投入完整 harness 搜索；若问题在执行模型根本不会使用技能，也不应只继续增加经验条目。树状图负责定位，本文负责解释各路线为什么存在，单篇研究表负责检查模型、反馈、harness 与数据设置是否支持相应比较。\n\n### 阅读入口与证据性质\n\n[Shiyu 的《什么在进化？》](?paper=shiyu-rsi-what-evolves)提供 Model、Harness、Artifact 的修改对象坐标；[《递归如何闭环？》](?paper=shiyu-rsi-loop-closes)讨论可修改范围与实验闭环。可以把这两篇与本文的问题脉络交叉阅读：一个定位改动发生在哪里，一个追问为什么改、怎样证明改对了。[〔73〕](#review-ref-73)[〔74〕](#review-ref-74)\n\n产业观察则回答另一类问题：现实研发中 AI 正承担哪些工作。[OpenAI 的 Research Acceleration](?paper=openai-research-acceleration)与[Anthropic 的 When AI builds itself](?paper=anthropic-when-ai-builds-itself)提供内部使用与评审视角；这些证据能说明研发参与方式，却不能直接替代“固定条件下可自主递归改进”的实验。[Reef](?paper=reef)这类仓库提供工程接口，也应与使用这些接口得到的学习结果分别记录。[〔75〕](#review-ref-75)[〔76〕](#review-ref-76)[〔77〕](#review-ref-77)"
+    }
+  ],
+  "references": [
+    {
+      "number": 1,
+      "paper": "cs-0309048",
+      "title": "Gödel Machines: Self-Referential Universal Problem Solvers Making Provably Optimal Self-Improvements",
+      "url": "https://arxiv.org/abs/cs/0309048",
+      "sources": [
+        {
+          "label": "§3 Formal Description",
+          "url": "https://arxiv.org/abs/cs/0309048"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "paper": "2505.22954",
+      "title": "Darwin Gödel Machine (DGM): Open-Ended Evolution of Self-Improving Agents",
+      "url": "https://arxiv.org/abs/2505.22954",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2505.22954#S1"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2505.22954#S3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2505.22954#S4.SS1"
+        },
+        {
+          "label": "附录C.3",
+          "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "paper": "2303.17651",
+      "title": "Self-Refine: Iterative Refinement with Self-Feedback",
+      "url": "https://arxiv.org/abs/2303.17651",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.17651#S3"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "paper": "2310.01798",
+      "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+      "url": "https://arxiv.org/abs/2310.01798",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2310.01798"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "paper": "2305.11738",
+      "title": "CRITIC: Large Language Models Can Self-Correct with Tool-Interactive Critiquing",
+      "url": "https://arxiv.org/abs/2305.11738",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2305.11738#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2305.11738#S4.SS1"
+        },
+        {
+          "label": "附录D.1",
+          "url": "https://arxiv.org/html/2305.11738#A4.SS1"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "paper": "2305.20050",
+      "title": "Let’s Verify Step by Step",
+      "url": "https://arxiv.org/abs/2305.20050",
+      "sources": [
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.20050#S2"
+        },
+        {
+          "label": "§2.4",
+          "url": "https://arxiv.org/html/2305.20050#S2.SS4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2305.20050#S4.SS2"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "paper": "2406.07496",
+      "title": "TextGrad: Automatic “Differentiation” via Text",
+      "url": "https://arxiv.org/abs/2406.07496",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS1"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS3"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS5.SSS0.Px1"
+        },
+        {
+          "label": "附录G.3",
+          "url": "https://arxiv.org/html/2406.07496#A7.SS3.SSS0.Px2"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "paper": "2507.19457",
+      "title": "GEPA: Reflective Prompt Evolution Can Outperform Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2507.19457",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2507.19457#S3"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "paper": "2605.24539",
+      "title": "DemoEvolve: Overcoming Sparse Feedback in Agentic Harness Evolution with Demonstrations",
+      "url": "https://arxiv.org/abs/2605.24539",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2605.24539#S4.SS1.SSS0.Px1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px3"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2605.24539#A1.SS0.SSS0.Px4"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "paper": "2606.26294",
+      "title": "Red Queen Gödel Machine",
+      "url": "https://arxiv.org/abs/2606.26294",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2606.26294"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "paper": "2303.11366",
+      "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+      "url": "https://arxiv.org/abs/2303.11366",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.11366#S3"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.11366#S3.SS0.SSS0.Px3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2303.11366#S4.SS1"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2303.11366#S4.SS3"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "paper": "2308.10144",
+      "title": "ExpeL: LLM Agents Are Experiential Learners",
+      "url": "https://arxiv.org/abs/2308.10144",
+      "sources": [
+        {
+          "label": "实验数据与交叉验证",
+          "url": "https://arxiv.org/abs/2308.10144"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2308.10144#S4.SS4"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2308.10144#S5.SS1"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "paper": "2305.16291",
+      "title": "Voyager: An Open-Ended Embodied Agent with Large Language Models",
+      "url": "https://arxiv.org/abs/2305.16291",
+      "sources": [
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.16291#S2"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2305.16291#A1.SS1"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "paper": "2409.07429",
+      "title": "Agent Workflow Memory (AWM)",
+      "url": "https://arxiv.org/abs/2409.07429",
+      "sources": [
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2409.07429#S2.SS3.SSS0.Px2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "paper": "2603.18743",
+      "title": "Memento-Skills: Let Agents Design Agents",
+      "url": "https://arxiv.org/abs/2603.18743",
+      "sources": [
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS1"
+        },
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px1"
+        },
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "paper": "2510.04618",
+      "title": "Agentic Context Engineering (ACE)",
+      "url": "https://arxiv.org/abs/2510.04618",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2510.04618#S1"
+        },
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2510.04618#S2.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2510.04618#S4.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "paper": "2609.09153",
+      "title": "Procedural Graphs: Self-Evolving Execution Structures for LLM Agents",
+      "url": "https://arxiv.org/abs/2609.09153",
+      "sources": [
+        {
+          "label": "§3：图表示、使用与更新",
+          "url": "https://arxiv.org/html/2609.09153#S3"
+        },
+        {
+          "label": "附录D.2：五种图构造方案",
+          "url": "https://arxiv.org/html/2609.09153#A4.SS2"
+        },
+        {
+          "label": "§5.3：骨架构图与错误先验修复",
+          "url": "https://arxiv.org/html/2609.09153#S5.SS3"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "paper": "2609.19656",
+      "title": "Self-Evolving Search Index",
+      "url": "https://arxiv.org/abs/2609.19656",
+      "sources": [
+        {
+          "label": "§3–4；附录 A.1–A.2、B.1–B.5",
+          "url": "https://arxiv.org/html/2609.19656v1"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "paper": "2512.18746",
+      "title": "MemEvolve: Meta-Evolution of Agent Memory Systems",
+      "url": "https://arxiv.org/abs/2512.18746",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2512.18746#S1"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2512.18746#S3.SS3"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2512.18746#S5.SS2"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "paper": "2602.07755",
+      "title": "ALMA: Learning to Continually Learn via Meta-learning Agentic Memory Designs",
+      "url": "https://arxiv.org/abs/2602.07755",
+      "sources": [
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2602.07755#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2602.07755#S3.SS3"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "paper": "2608.03874",
+      "title": "ContinualSkillBench: Can LLM Agents Truly Evolve Their Capabilities?",
+      "url": "https://arxiv.org/abs/2608.03874",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.03874"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "paper": "2608.04003",
+      "title": "PAST-Bench",
+      "url": "https://arxiv.org/abs/2608.04003",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.04003"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "paper": "2310.03714",
+      "title": "DSPy: Compiling Declarative Language Model Calls into Self-Improving Pipelines",
+      "url": "https://arxiv.org/abs/2310.03714",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2310.03714#S1"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "paper": "2408.08435",
+      "title": "Automated Design of Agentic Systems (ADAS)",
+      "url": "https://arxiv.org/abs/2408.08435",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2408.08435#S3"
+        },
+        {
+          "label": "附录B",
+          "url": "https://arxiv.org/html/2408.08435#A2"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "paper": "2410.10762",
+      "title": "AFlow: Automating Agentic Workflow Generation",
+      "url": "https://arxiv.org/abs/2410.10762",
+      "sources": [
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2410.10762#S4"
+        },
+        {
+          "label": "附录A.4",
+          "url": "https://arxiv.org/html/2410.10762#A1.SS4"
+        },
+        {
+          "label": "附录A.6",
+          "url": "https://arxiv.org/html/2410.10762#A1.SS6"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "paper": "2504.15228",
+      "title": "A Self-Improving Coding Agent (SICA)",
+      "url": "https://arxiv.org/abs/2504.15228",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2504.15228#S3"
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "paper": "2606.09498",
+      "title": "Self-Harness: Harnesses That Improve Themselves",
+      "url": "https://arxiv.org/abs/2606.09498",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2606.09498#S1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2606.09498#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2606.09498#S4.SS1.SSS0.Px4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2606.09498#S4.SS2"
+        },
+        {
+          "label": "实验任务子集与 promotion gate",
+          "url": "https://arxiv.org/abs/2606.09498"
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "paper": "2603.28052",
+      "title": "Meta-Harness: End-to-End Optimization of Model Harnesses",
+      "url": "https://arxiv.org/abs/2603.28052",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2603.28052#S3"
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "paper": "2604.25850",
+      "title": "Agentic Harness Engineering (AHE)",
+      "url": "https://arxiv.org/abs/2604.25850",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2604.25850#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS3"
+        }
+      ]
+    },
+    {
+      "number": 30,
+      "paper": "2606.06324",
+      "title": "HarnessFix",
+      "url": "https://arxiv.org/abs/2606.06324",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2606.06324#S3"
+        },
+        {
+          "label": "§6",
+          "url": "https://arxiv.org/html/2606.06324#S6"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "paper": "2607.13683",
+      "title": "HarnessBank / Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity",
+      "url": "https://arxiv.org/abs/2607.13683",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS1"
+        },
+        {
+          "label": "§4.5",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS5"
+        }
+      ]
+    },
+    {
+      "number": 32,
+      "paper": "2609.09646",
+      "title": "RobustSGPO: Search-Space Control for Agent Harness Evolution",
+      "url": "https://arxiv.org/abs/2609.09646",
+      "sources": [
+        {
+          "label": "§5：指定改动、检查与保留版本",
+          "url": "https://arxiv.org/html/2609.09646#S5"
+        },
+        {
+          "label": "§4：三级修改权限",
+          "url": "https://arxiv.org/html/2609.09646#S4"
+        },
+        {
+          "label": "§6.4：任务切换实验",
+          "url": "https://arxiv.org/html/2609.09646#S6.SS4"
+        }
+      ]
+    },
+    {
+      "number": 33,
+      "paper": "2608.27311",
+      "title": "HarnessLens: Verify Smarter, Evolve Further",
+      "url": "https://arxiv.org/abs/2608.27311",
+      "sources": [
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2608.27311#A1.SS1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2608.27311#A3.SS2.SSS2"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2"
+        }
+      ]
+    },
+    {
+      "number": 34,
+      "paper": "2609.20519",
+      "title": "SoL-Pi: Recursively Scaling Auto-Research Loops for Efficient Agent Harness",
+      "url": "https://arxiv.org/abs/2609.20519",
+      "sources": [
+        {
+          "label": "§2.1–2.5、§3.1–3.3、§5.1",
+          "url": "https://arxiv.org/html/2609.20519v1"
+        }
+      ]
+    },
+    {
+      "number": 35,
+      "paper": "2608.26530",
+      "title": "PILOT in the Loop: Live Self-Improvement for Long-Horizon Agents",
+      "url": "https://arxiv.org/abs/2608.26530",
+      "sources": [
+        {
+          "label": "§2 双向监督与 Pi 实现",
+          "url": "https://arxiv.org/html/2608.26530#S2"
+        }
+      ]
+    },
+    {
+      "number": 36,
+      "paper": "2605.09998",
+      "title": "Continual Harness: Online Adaptation for Self-Improving Foundation Agents",
+      "url": "https://arxiv.org/abs/2605.09998",
+      "sources": [
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2605.09998"
+        }
+      ]
+    },
+    {
+      "number": 37,
+      "paper": "2609.01481",
+      "title": "Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement",
+      "url": "https://arxiv.org/abs/2609.01481",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01481"
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "paper": "2511.10395",
+      "title": "AgentEvolver: Towards Efficient Self-Evolving Agent System",
+      "url": "https://arxiv.org/abs/2511.10395",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2511.10395#S1"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2511.10395#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2511.10395#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2511.10395#S4.SS1"
+        },
+        {
+          "label": "§5",
+          "url": "https://arxiv.org/html/2511.10395#S5"
+        }
+      ]
+    },
+    {
+      "number": 39,
+      "paper": "2609.00768",
+      "title": "DiagEvo: Diagnosis-Guided Self-Evolution via Hierarchical Error Memory",
+      "url": "https://arxiv.org/abs/2609.00768",
+      "sources": [
+        {
+          "label": "§3 自博弈、投票与诊断",
+          "url": "https://arxiv.org/html/2609.00768#S3"
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "paper": "endlessfrontier.tech-assets-paper.pdf",
+      "title": "BigBang: Pursuing Open-Ended Intelligence through Self-Evolving Synthesis of Verifiable Frontier Tasks",
+      "url": "https://endlessfrontier.tech/assets/paper.pdf",
+      "sources": [
+        {
+          "label": "§1 Introduction（第 1–3 页）",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf#page=1"
+        },
+        {
+          "label": "摘要",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf"
+        }
+      ]
+    },
+    {
+      "number": 41,
+      "paper": "2607.25886",
+      "title": "RSIBench-Data: Benchmarking Data-Centric Research for Recursive Self-Improvement",
+      "url": "https://arxiv.org/abs/2607.25886",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.25886"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "paper": "2606.04261",
+      "title": "Curation-Bench",
+      "url": "https://arxiv.org/abs/2606.04261",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.04261"
+        }
+      ]
+    },
+    {
+      "number": 43,
+      "paper": "2608.31111",
+      "title": "Aspire: Can Models Self-Evolve from Vague Goals?",
+      "url": "https://arxiv.org/abs/2608.31111",
+      "sources": [
+        {
+          "label": "§1、§4.1：研究问题与实验安排",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.31111#S3.SS2.SSS0.Px2"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px2"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS4.SSS0.Px2"
+        },
+        {
+          "label": "§4.2、附录 B：PostTrainBench 对照",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.31111#S3.SS2.SSS0.Px4"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px3"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS3.SSS0.Px5"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS4.SSS0.Px4"
+        },
+        {
+          "label": "附录 C.5：公开记录边界",
+          "url": "https://arxiv.org/html/2608.31111#A3.SS5"
+        },
+        {
+          "label": "§4.2：目标描述对照结果",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS2"
+        },
+        {
+          "label": "§4.3：参数更新结果",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS3"
+        },
+        {
+          "label": "§4.4：运行框架结果",
+          "url": "https://arxiv.org/html/2608.31111#S4.SS4"
+        }
+      ]
+    },
+    {
+      "number": 44,
+      "paper": "2608.31100",
+      "title": "S³Gym: Can LLMs Turn Self-Testing and Self-Judging into Self-Improvement?",
+      "url": "https://arxiv.org/abs/2608.31100",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.31100"
+        }
+      ]
+    },
+    {
+      "number": 45,
+      "paper": "2506.10943",
+      "title": "SEAL / Self-Adapting Language Models",
+      "url": "https://arxiv.org/abs/2506.10943",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2506.10943#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2506.10943#S3.SS1"
+        },
+        {
+          "label": "摘要",
+          "url": "https://arxiv.org/abs/2506.10943"
+        }
+      ]
+    },
+    {
+      "number": 46,
+      "paper": "2607.14777",
+      "title": "SEED: Self-Evolving On-Policy Distillation for Agentic RL",
+      "url": "https://arxiv.org/abs/2607.14777",
+      "sources": [
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2607.14777#A2.SS3"
+        }
+      ]
+    },
+    {
+      "number": 47,
+      "paper": "2608.05446",
+      "title": "EvoHarness-RL: Learning Self-Evolving Runtime Harness for Long-Horizon LLM Agents",
+      "url": "https://arxiv.org/abs/2608.05446",
+      "sources": [
+        {
+          "label": "附录C",
+          "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5"
+        },
+        {
+          "label": "附录D.2",
+          "url": "https://arxiv.org/html/2608.05446#A4.SS2"
+        }
+      ]
+    },
+    {
+      "number": 48,
+      "paper": "2607.26784",
+      "title": "SkillRise: Agentic Reinforcement Learning for Cross-Task Skill Evolution",
+      "url": "https://arxiv.org/abs/2607.26784",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2607.26784#S3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.26784#S4.SS1.SSS0.Px3"
+        }
+      ]
+    },
+    {
+      "number": 49,
+      "paper": "2605.27276",
+      "title": "SIA: Self Improving AI with Harness & Weight Updates",
+      "url": "https://arxiv.org/abs/2605.27276",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.27276"
+        }
+      ]
+    },
+    {
+      "number": 50,
+      "paper": "2609.00196",
+      "title": "WHALE: A Simple Recipe for Joint Harness-Weight Optimization",
+      "url": "https://arxiv.org/abs/2609.00196",
+      "sources": [
+        {
+          "label": "§6.2：交替节奏及自适应切换",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+        },
+        {
+          "label": "§6.1：不同领域的瓶颈",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS1"
+        },
+        {
+          "label": "附录B.3：三个固定判分器",
+          "url": "https://arxiv.org/html/2609.00196#A2.SS3"
+        },
+        {
+          "label": "§4：交替流程与返回规则",
+          "url": "https://arxiv.org/html/2609.00196#S4"
+        },
+        {
+          "label": "§5.1：三个领域的数据",
+          "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+        },
+        {
+          "label": "§5.3、图2：最好测试成绩",
+          "url": "https://arxiv.org/html/2609.00196#S5.SS3"
+        },
+        {
+          "label": "§6.1：轨迹成本口径",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS1"
+        }
+      ]
+    },
+    {
+      "number": 51,
+      "paper": "2609.17523",
+      "title": "ScienceBuddy: Recursive-in-Recursive Self-Improvement for Interactive Scientific Agents",
+      "url": "https://arxiv.org/abs/2609.17523",
+      "sources": [
+        {
+          "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+          "url": "https://arxiv.org/html/2609.17523v1"
+        }
+      ]
+    },
+    {
+      "number": 52,
+      "paper": "2608.13951",
+      "title": "HELIX: Model-Harness Co-evolution for Recursive Self-Improvement",
+      "url": "https://arxiv.org/abs/2608.13951",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.13951"
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "paper": "2608.09819",
+      "title": "Macaron-V1: Towards Open Continual Learning with Self-Improvement and Mixture-of-LoRA",
+      "url": "https://arxiv.org/abs/2608.09819",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.09819"
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "paper": "2603.19461",
+      "title": "Hyperagents",
+      "url": "https://arxiv.org/abs/2603.19461",
+      "sources": [
+        {
+          "label": "§1 Introduction · 问题背景与研究动机",
+          "url": "https://arxiv.org/html/2603.19461#S1"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+        },
+        {
+          "label": "§5.3",
+          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+        }
+      ]
+    },
+    {
+      "number": 55,
+      "paper": "2309.16797",
+      "title": "Promptbreeder: Self-Referential Self-Improvement Via Prompt Evolution",
+      "url": "https://arxiv.org/abs/2309.16797",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2309.16797#S3.SS1"
+        },
+        {
+          "label": "附录F",
+          "url": "https://arxiv.org/html/2309.16797#A6"
+        }
+      ]
+    },
+    {
+      "number": 56,
+      "paper": "2607.05297",
+      "title": "MetaSkill-Evolve: Recursive Self-Improvement of LLM Agents via Two-Timescale Meta-Skill Evolution",
+      "url": "https://arxiv.org/abs/2607.05297",
+      "sources": [
+        {
+          "label": "§3.4",
+          "url": "https://arxiv.org/html/2607.05297#S3.SS4"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2607.05297#S3.SS5"
+        }
+      ]
+    },
+    {
+      "number": 57,
+      "paper": "2608.02276",
+      "title": "Harness-R1: Learning to Edit Executable Runtime Harnesses from Agent Failure Trajectories",
+      "url": "https://arxiv.org/abs/2608.02276",
+      "sources": [
+        {
+          "label": "附录 D、Table D.1",
+          "url": "https://arxiv.org/abs/2608.02276"
+        },
+        {
+          "label": "§3.1：四处代码介入位置",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS2"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4"
+        },
+        {
+          "label": "附录D",
+          "url": "https://arxiv.org/html/2608.02276#A4"
+        },
+        {
+          "label": "附录F",
+          "url": "https://arxiv.org/html/2608.02276#A6"
+        }
+      ]
+    },
+    {
+      "number": 58,
+      "paper": "2607.21971",
+      "title": "Teaching LLMs to Self-Evolve: Cultivating Core Meta-Skills with Reinforcement Learning (MetaEvolve)",
+      "url": "https://arxiv.org/abs/2607.21971",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2607.21971"
+        }
+      ]
+    },
+    {
+      "number": 59,
+      "paper": "2310.02304",
+      "title": "STOP: Self-Taught Optimizer / Recursively Self-Improving Code Generation",
+      "url": "https://arxiv.org/abs/2310.02304",
+      "sources": [
+        {
+          "label": "§5.1 Fixed Downstream Task",
+          "url": "https://arxiv.org/abs/2310.02304"
+        }
+      ]
+    },
+    {
+      "number": 60,
+      "paper": "2609.14858",
+      "title": "Dream-RSI: Recursive Self-Improvement through Evolving Worlds",
+      "url": "https://arxiv.org/abs/2609.14858",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.14858#S1"
+        },
+        {
+          "label": "§3 探索策略、回放与选版本",
+          "url": "https://arxiv.org/html/2609.14858#S3"
+        }
+      ]
+    },
+    {
+      "number": 61,
+      "paper": "2605.30621",
+      "title": "Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
+      "url": "https://arxiv.org/abs/2605.30621",
+      "sources": [
+        {
+          "label": "§1：两种能力的分离",
+          "url": "https://arxiv.org/html/2605.30621#S1"
+        },
+        {
+          "label": "§3.3：固定一侧的能力指标",
+          "url": "https://arxiv.org/html/2605.30621#S3.SS3"
+        },
+        {
+          "label": "附录B.4：初始提示与可写范围",
+          "url": "https://arxiv.org/html/2605.30621#A2.SS4"
+        },
+        {
+          "label": "§4.1、附录B.2：模型配对",
+          "url": "https://arxiv.org/html/2605.30621#S4.SS1"
+        }
+      ]
+    },
+    {
+      "number": 62,
+      "paper": "2607.12227",
+      "title": "Rethinking the Evaluation of Harness Evolution for Agents",
+      "url": "https://arxiv.org/abs/2607.12227",
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2607.12227#S1"
+        },
+        {
+          "label": "§3 四种方法及反馈权限",
+          "url": "https://arxiv.org/html/2607.12227#S3"
+        },
+        {
+          "label": "§4.3 有测试反馈",
+          "url": "https://arxiv.org/html/2607.12227#S4.SS3"
+        },
+        {
+          "label": "§4.4 45/10/34 划分",
+          "url": "https://arxiv.org/html/2607.12227#S4.SS4"
+        },
+        {
+          "label": "§5.1–5.2 修改分析与限制",
+          "url": "https://arxiv.org/html/2607.12227#S5"
+        }
+      ]
+    },
+    {
+      "number": 63,
+      "paper": "2608.09096",
+      "title": "Evo-Bench: Can Language Models Improve Agent Harness?",
+      "url": "https://arxiv.org/abs/2608.09096",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.09096"
+        }
+      ]
+    },
+    {
+      "number": 64,
+      "paper": "2609.01437",
+      "title": "HarnessDev",
+      "url": "https://arxiv.org/abs/2609.01437",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2609.01437"
+        }
+      ]
+    },
+    {
+      "number": 65,
+      "paper": "2608.10178",
+      "title": "One Recipe, Many Harnesses: What Self-Evolution Encodes Across Languages and Models",
+      "url": "https://arxiv.org/abs/2608.10178",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.10178"
+        }
+      ]
+    },
+    {
+      "number": 66,
+      "paper": "2608.01149",
+      "title": "PATH-Bench",
+      "url": "https://arxiv.org/abs/2608.01149",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.01149"
+        }
+      ]
+    },
+    {
+      "number": 67,
+      "paper": "2608.00155",
+      "title": "AgentStream",
+      "url": "https://arxiv.org/abs/2608.00155",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2608.00155"
+        }
+      ]
+    },
+    {
+      "number": 68,
+      "paper": "2606.17546",
+      "title": "SEAGym: An Evaluation Environment for Self-Evolving LLM Agents",
+      "url": "https://arxiv.org/abs/2606.17546",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2606.17546"
+        }
+      ]
+    },
+    {
+      "number": 69,
+      "paper": "2609.08175",
+      "title": "Safe Harness Self-Evolution: A Theoretical Analysis of Feasibility and Limits",
+      "url": "https://arxiv.org/abs/2609.08175",
+      "sources": [
+        {
+          "label": "§1–2，p1–4：研究对象与假设",
+          "url": "https://arxiv.org/pdf/2609.08175#page=1"
+        },
+        {
+          "label": "§3，p4–7：改进目标与生成概率",
+          "url": "https://arxiv.org/pdf/2609.08175#page=4"
+        },
+        {
+          "label": "§4，p7–10：有限数据验收",
+          "url": "https://arxiv.org/pdf/2609.08175#page=7"
+        }
+      ]
+    },
+    {
+      "number": 70,
+      "paper": "2603.08640",
+      "title": "PostTrainBench",
+      "url": "https://arxiv.org/abs/2603.08640",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2603.08640"
+        }
+      ]
+    },
+    {
+      "number": 71,
+      "paper": "rsi-exam",
+      "title": "RSI-Exam: Benchmarking Recursive Self-Improvement through Executable Research",
+      "url": "https://rsi-exam.ai/blog.html",
+      "sources": [
+        {
+          "label": "官方报告 · 研究目标",
+          "url": "https://rsi-exam.ai/blog.html#introduction"
+        }
+      ]
+    },
+    {
+      "number": 72,
+      "paper": "2605.08678",
+      "title": "MLS-Bench: A Holistic and Rigorous Assessment of AI Systems on Building Better AI",
+      "url": "https://arxiv.org/abs/2605.08678",
+      "sources": [
+        {
+          "label": "摘要：研究目标",
+          "url": "https://arxiv.org/abs/2605.08678"
+        }
+      ]
+    },
+    {
+      "number": 73,
+      "paper": "shiyu-rsi-what-evolves",
+      "title": "什么在进化？——Model、Harness 与 Artifact 的三层地图",
+      "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/",
+      "sources": [
+        {
+          "label": "§1–2、§4、§6、§8；写在前面：来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+        }
+      ]
+    },
+    {
+      "number": 74,
+      "paper": "shiyu-rsi-loop-closes",
+      "title": "递归如何闭环？——从可修改范围到 Agent as Service",
+      "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/",
+      "sources": [
+        {
+          "label": "定义；Everything as Service；Scoped → Joint → Recursive；来源与致谢",
+          "url": "https://shiyunee.github.io/blogs/RSI-Where-the-Loop-Closes/"
+        }
+      ]
+    },
+    {
+      "number": 75,
+      "paper": "openai-research-acceleration",
+      "title": "Research Acceleration: The View Inside OpenAI",
+      "url": "https://openai.com/index/research-acceleration-view-inside-openai/",
+      "sources": [
+        {
+          "label": "官方博客：导言与 §1–5",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+        },
+        {
+          "label": "官方博客：Appendix / Our methods for this post",
+          "url": "https://openai.com/index/research-acceleration-view-inside-openai/"
+        }
+      ]
+    },
+    {
+      "number": 76,
+      "paper": "anthropic-when-ai-builds-itself",
+      "title": "When AI builds itself",
+      "url": "https://www.anthropic.com/institute/recursive-self-improvement",
+      "sources": [
+        {
+          "label": "Evidence from within Anthropic；Update 9/18/2026；图注与脚注",
+          "url": "https://www.anthropic.com/institute/recursive-self-improvement"
+        }
+      ]
+    },
+    {
+      "number": 77,
+      "paper": "reef",
+      "title": "Reef: Continual Learning Infrastructure for Self-Improving Agents",
+      "url": "https://github.com/Human-Agent-Society/reef",
+      "sources": [
+        {
+          "label": "README：How it works / When to use Reef",
+          "url": "https://github.com/Human-Agent-Society/reef"
+        }
+      ]
+    }
+  ],
+  "chineseCharacters": 10186,
+  "paperCount": 77
+}

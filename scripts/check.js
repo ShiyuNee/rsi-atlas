@@ -198,3 +198,4 @@ console.log('Passed: sourced institution/scholar tags and combined filters.');
 require('./check_library.js');
 
 require('./check_problem_map.js');
+require('./check_field_review.js');
