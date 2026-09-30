@@ -34,7 +34,7 @@ assert.equal(review.paperCount,new Set(review.references.map(r=>r.paper)).size);
 console.log(`Passed: ${review.chapters.length} review chapters, ${references.size} referenced works, paragraph citations, source locations and chapter-to-problem links.`);
 
 const tree=require('../data/review-tree.json');
-const {reviewTreePaperIds,reviewTreeNodeFromHash}=require('../assets/review-tree.js');
+const {reviewTreePaperIds,reviewTreeNodeFromHash,reviewTreeCoverage}=require('../assets/review-tree.js');
 assert.deepEqual(data.reviewTree,tree);
 const nodes=new Set(tree.nodes.map(n=>n.id));
 const assigned=tree.branches.flatMap(b=>b.nodes);
@@ -62,4 +62,18 @@ assert.equal(reviewTreeNodeFromHash(tree,'#review-tree-unknown'),null);
 assert.equal(reviewTreeNodeFromHash(tree,'#review-harness'),null);
 for(const c of tree.connections)assert(nodes.has(c.from_)&&nodes.has(c.to));
 assert.deepEqual(tree.branches.map(b=>b.id),data.problemMap.tree.pillars.map(p=>p.id),'Review and full index should share their top-level structure.');
+assert(chapters.has(tree.boundary.chapter));
+assert(tree.boundary.title&&tree.boundary.description);
+for(const id of tree.boundary.papers){
+ assert(referencedPapers.has(id),`Boundary example lacks a review source: ${id}`);
+ const p=papers.get(id),e=data.problemMap.entries[id];
+ const f=p.profile.fields.find(f=>f.key==='novelty')||p.overview.tldr.find(f=>f.key==='conclusion');
+ assert(e.contrast?e.contrastSources.length:f.value&&f.sources.length,`Boundary comparison lacks a source: ${id}`);
+}
+const coverage=reviewTreeCoverage(tree,data.papers,data.problemMap);
+const coverageIds=[...coverage.featured,...coverage.other.flatMap(g=>g.papers)];
+assert.equal(coverage.total,papers.size);
+assert.equal(coverageIds.length,new Set(coverageIds).size,'Featured and supplementary lists must not duplicate records.');
+assert.deepEqual(coverageIds.slice().sort(),[...papers.keys()].sort(),'Every catalog record must have a visible path from the overview.');
 console.log(`Passed: interactive review tree, ${nodes.size} questions, ${reviewTreePaperIds(tree).length} works, source-backed comparisons, chapter links and shared trunk structure.`);
+console.log(`Passed: artifact boundary and coverage disclosure account for all ${coverage.total} catalog records.`);
