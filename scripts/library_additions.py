@@ -26,12 +26,25 @@ def attach_library_additions(output):
             assert a['sources']
             output['attributionCatalog'][a['tag']]={'label':a['label'],'kind':a['kind']}
             p['tags'].append(a['tag'])
+        # Targeted reading and abstract checks are distinct evidence scopes.
+        p['reviewStatus'] = e.get('reviewStatus', 'fulltext-targeted')
+        p['reviewScope'] = e.get('reviewScope', '原文定向核对；不代表全部实验配置已独立核实。')
+        if e.get('reviewStatus') == 'abstract-checked':
+            p['review'] = '新增 · 摘要核对'
+            p['reviewed'] = False
+        elif e.get('reviewStatus') == 'fulltext-targeted':
+            p['review'] = '新增 · 方法与实验设置核对'
+        for key in ['methodTypes', 'modifierRoles', 'parameterTargets', 'skillKinds', 'depth', 'workId', 'relatedRecords', 'classificationSources']:
+            if key in e:
+                p[key] = e[key]
+        if e.get('protocol'):
+            p['protocol'] = e['protocol']
         output['papers'].append(p)
     for p in output['papers']:
         p.setdefault('contentType','report' if p.get('publicationType')=='project-report' else 'paper')
     output['contentTypes']=TYPES
     output['taxonomy'].update(overview={'label':'综述与观点','description':'领域路线、概念梳理及产业观察。'},resources={'label':'工具与基础设施','description':'可复用仓库、服务和实验基础设施。'})
-    output['updated']='2026-09-21'
+    output['updated']=max(['2026-09-21', *[e['reviewedAt'] for e in records]])
     output['libraryAdditions']=len(records)
     output['coverage']['total']=len(output['papers'])
     output['coverage']['sourcedLibraryAdditions']=len(records)

@@ -42,7 +42,11 @@
       "SeparateEvolver",
       "Skill"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "depth": [
+      "M1"
+    ],
+    "depthBasis": "沿用维护记录的 M1 主标签；优化器侧 meta guidance 的持续经验更新另行说明，原文见机制分类来源。"
   },
   "2607.05297": {
     "protocol": "Train → selection → test",
@@ -259,7 +263,11 @@
   },
   "2203.11171": {
     "protocol": "Within-instance",
-    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2303.17651": {
     "protocol": "Within-instance",
@@ -267,7 +275,11 @@
     "tags": [
       "SelfFeedback"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2305.11738": {
     "protocol": "Within-instance",
@@ -276,15 +288,27 @@
       "ExecutableVerifier",
       "Tool"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2305.20050": {
-    "protocol": "Within-instance",
-    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+    "protocol": "离线参数训练；单题候选选择",
+    "protocolBasis": "PRM 训练与最终 500 道 MATH 测试题分开；部署时使用 best-of-N 对当前题候选打分。不能用单题选择掩盖奖励模型的离线训练／测试边界。",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2309.11495": {
     "protocol": "Within-instance",
-    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2310.01798": {
     "protocol": "Within-instance",
@@ -292,11 +316,19 @@
     "tags": [
       "SelfFeedback"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "2310.04406": {
     "protocol": "Within-instance",
-    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。"
+    "protocolBasis": "只修改当前回答/轨迹或当前任务搜索；没有跨任务持续进化。",
+    "depth": [
+      "非持久／不适用"
+    ],
+    "depthBasis": "单题采样、纠错、搜索或评价；不按持久 self-evolution 标为 M0。"
   },
   "cs-0309048": {
     "protocol": "理论 / 不适用",
@@ -463,10 +495,9 @@
       "ExecutableVerifier",
       "HarnessCode",
       "M1",
-      "Population",
-      "Weights"
+      "Population"
     ],
-    "tagBasis": "原记录显式标签 + 依据同篇字段人工整理"
+    "tagBasis": "实证范围核查：执行模型冻结，参数更新数据导出不等于已训练下一代模型；详见 mechanism-classifications.json。"
   },
   "2607.13683": {
     "title": "HarnessBank / Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity",
@@ -526,5 +557,22 @@
         "url": "https://arxiv.org/abs/2510.23601"
       }
     ]
+  },
+  "2509.19349": {
+    "methodTypes": [
+      "artifact",
+      "harness"
+    ],
+    "tags": [
+      "Archive",
+      "CrossModel",
+      "HarnessCode",
+      "HeldOut",
+      "OfflineSearch",
+      "Population",
+      "Prompt",
+      "Workflow"
+    ],
+    "tagBasis": "原文 §4.2、附录 B.2 展示 AIME agent scaffold 搜索及跨年份／模型迁移；算法程序实验另属产物优化。"
   }
 }

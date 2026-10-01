@@ -60,11 +60,11 @@
       },
       {
         "key": "conclusion",
-        "value": "在决策、问答和编程任务上提升表现，说明不更新权重也能利用失败经验改进后续尝试。",
+        "value": "反思记忆改善后续尝试，但收益随任务和自建测试质量变化：HumanEval Python 为 91.0%，MBPP Python 则由 GPT-4 的 80.1% 降至 77.1%；同题重试结果不等于跨题持续学习。",
         "sources": [
           {
-            "label": "摘要",
-            "url": "https://arxiv.org/abs/2303.11366"
+            "label": "§4.3 · 编程结果与自建测试误判",
+            "url": "https://arxiv.org/html/2303.11366v4#S4.SS3"
           }
         ]
       }
@@ -149,7 +149,7 @@
       }
     ],
     "fields": {
-      "object": "coding agent 的代码与 harness，包括任务执行方式和工具使用逻辑。基础模型参数、外层父代选择和评测器固定。",
+      "object": "coding agent 的代码与 harness，包括任务执行方式和工具使用逻辑。基础模型参数、o1 诊断提示与诊断程序、外层父代选择和评测器固定。",
       "verdict": "在 SWE-bench 和 Polyglot 中运行代码测试，判断修复是否成功；诊断者结合测试结果和执行日志提出改进建议。"
     }
   },
@@ -215,18 +215,47 @@
       },
       {
         "key": "conclusion",
-        "value": "在编程、评审、奖励设计和数学评分中改进；修改机制本身积累的经验可以跨领域迁移。",
+        "value": "联合非编程实验和编程实验获得改进。固定迁移meta-agent后，IMO评分imp@50中位为0.630；另用200轮继续自修改检验累积效果，迁移与初始起点最终0.640对0.610的差异未达统计显著。",
         "sources": [
           {
-            "label": "摘要",
-            "url": "https://arxiv.org/abs/2603.19461"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+          },
+          {
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
           }
         ]
       }
     ],
     "fields": {
       "object": "两层代码：执行任务的 agent，以及负责修改它的 meta-agent。后者的改进程序也能被修改；外层父代选择和评测协议固定。",
-      "verdict": "反馈随领域变化：编程看执行测试，机器人看环境任务收益，论文评审和数学评分看评价结果。修改者读取相应成绩及执行日志，详细任务协议分行列在表格中。"
+      "verdict": "反馈随领域变化：编程看执行测试，机器人看环境任务收益，论文评审和数学评分看评价结果。修改者读取相应成绩及执行日志，详细任务协议分行列在表格中。",
+      "modifier": "Polyglot由Claude 3.5 Sonnet (New)实施修改，其他领域用Claude 4.5 Sonnet。联合优化和持续自修改时，两套agent代码均可变化；另设固定所选meta-agent的迁移实验，仅让它生成新的task-agent。"
     }
   },
   "2603.28052": {
@@ -1101,11 +1130,31 @@
       },
       {
         "key": "conclusion",
-        "value": "在知识吸收和少样本任务中验证自适应；学习的核心是怎样把新输入变成有效的参数更新。",
+        "value": "单段落同格式self-edit由39.7%提升到47.0%；ARC成功edit比例为72.5%。收益需按单段落、CPT和提示格式分别比较；连续self-edit仍会使旧任务表现下降，尚未解决灾难性遗忘。",
         "sources": [
           {
-            "label": "摘要",
-            "url": "https://arxiv.org/abs/2506.10943"
+            "label": "§4.2 / Table 2 · 单段落与CPT结果",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+          },
+          {
+            "label": "附录B.2–B.4 · self-edit训练与评估",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+          },
+          {
+            "label": "§4.1 / Table 1 · ARC self-edit成功率",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+          },
+          {
+            "label": "附录A.2–A.3 · ARC训练与测试",
+            "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
+          },
+          {
+            "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+            "url": "https://arxiv.org/html/2506.10943v2#S5"
+          },
+          {
+            "label": "附录B.6 · 保留实验误差",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
           }
         ]
       }
@@ -3349,7 +3398,7 @@
     ],
     "fields": {
       "executor": "PaLM 2-L 读取候选任务提示并解题，模型参数不随提示进化而更新。",
-      "object": "任务提示和指导其变异的提示；基础模型与适应度评分规则固定。"
+      "object": "任务提示和指导其变异的提示；few-shot 设置还进化示例上下文，算术实验还进化生成变异的 Redescriber 采样温度。基础模型参数、外层进化算法及任务评分规则固定。"
     }
   },
   "2310.03714": {
@@ -3567,17 +3616,39 @@
       },
       {
         "key": "conclusion",
-        "value": "在圆形装填、agent 结构和训练损失设计等任务中提高解质量与样本效率。",
+        "value": "除圆装填、竞赛程序和训练损失外，还搜索AIME答题harness：在AIME2024上进化后，另用2023/2025题目及不同执行模型检验迁移；原题集成绩与迁移结果分开解读。",
         "sources": [
           {
-            "label": "摘要",
-            "url": "https://arxiv.org/abs/2509.19349"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+          },
+          {
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+          },
+          {
+            "label": "§4.1 · 圆装填程序",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+          },
+          {
+            "label": "附录B.1 · 几何配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           }
         ]
       }
     ],
     "fields": {
-      "object": "候选程序、科研代码或特定任务的运行框架；进化引擎和外部评分规则固定。"
+      "object": "圆装填和ALE的算法程序、MoE训练损失函数，以及AIME答题harness的提示、集成和复核流程。进化引擎和外部评分规则固定；AIME执行模型参数冻结，MoE模型训练属于候选损失评价环节。",
+      "modifier": "固定ShinkaEvolve控制器组织模型改写程序。AIME的改写模型为Gemini-2.5-Pro、Claude-Sonnet-4、o4-mini，GPT-4.1负责元建议/新颖性检查；答题执行模型另为gpt-4.1-nano。",
+      "executor": "程序优化任务运行候选程序；AIME 运行框架实验由 GPT-4.1-nano 在候选结构下答题，迁移测试另用 GPT-4.1-mini、GPT-4.1 和 o4-mini。"
     }
   },
   "2305.10250": {

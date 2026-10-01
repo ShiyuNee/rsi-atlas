@@ -536,11 +536,11 @@
     "summary": "archive 中的 coding agent 修改自己的代码形成后代，后代经过 coding benchmark 评估后留在 archive，后续可再次作为修改者。",
     "novelty": "保留不立即最优的 stepping stones 与多样分支；不是普通固定外部 proposer 的单链 greedy search。",
     "executor": "archive descendants，使用冻结的 pretrained foundation model。",
-    "modifier": "从 archive 选出的 coding agent 本身生成后代。",
+    "modifier": "固定 o1 读取评估日志生成修改任务；archive 中选出的 coding agent 根据任务实施自身代码修改并产生后代。",
     "seed": "self-modifying coding-agent seed；可编辑自己的 Python codebase。",
-    "fixed": "本实验不训练 foundation model；outer parent selection / evaluator 仍固定。",
+    "fixed": "foundation model、o1 诊断机制、outer parent selection / evaluator 固定。",
     "verdict": "SWE-bench / Polyglot 的 executable coding outcomes。",
-    "diagnosis": "从自己的 benchmark failures 和 codebase 找可改进能力。",
+    "diagnosis": "独立 o1 生成 problem_description 和 implementation_suggestion；SWE-bench 诊断提示可见 private test patch。",
     "update": "修改 agent 实现，再让后代继续执行并参与后续 self-modification。",
     "acceptance": "评估后加入 archive，以分数和探索策略影响 parent selection。",
     "experiments": [
@@ -556,13 +556,13 @@
     "sources": [
       "https://arxiv.org/html/2505.22954v3"
     ],
-    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+    "reading": "2026-10-01 定向复核附录C.3的角色与反馈可见信息；原有方法/实验复核范围保留。"
   },
   "2603.19461": {
     "summary": "把 task agent 与可编辑 meta-agent 放入一个 program。meta-agent 不只改任务求解器，还能改产生后续 modifications 的程序。",
     "novelty": "显式把“改进能力”拆出来，并用新 domain 上生成更好 task agent 的能力测试 meta-level transfer。",
     "executor": "task agent 执行 domain tasks；meta-agent 执行改进程序。",
-    "modifier": "可继承、可修改的 meta-agent。",
+    "modifier": "可继承、可修改的meta-agent；§5.2迁移实验固定其程序，仅生成task-agent新版本，§5.3继续允许meta-agent自修改。",
     "seed": "DGM-H task + meta program。",
     "fixed": "外层 parent selection / evaluation protocols 仍固定。",
     "verdict": "不同 domain 的 execution / evaluator reward。",
@@ -571,26 +571,51 @@
     "acceptance": "以 train/validation 选择 best agent，再在相应测试协议评估。",
     "experiments": [
       {
-        "name": "Polyglot",
-        "evolve": "60 tasks：先 10 题门控，再测剩余 50",
-        "selection": "training score",
-        "test": "full Polyglot，包含大量未见题但非完全 disjoint",
-        "isolation": "混合协议",
+        "name": "Polyglot代码自修改",
+        "evolve": "60道搜索题：先10题门控，再评另外50题，运行80轮。",
+        "selection": "Polyglot无独立验证集，以训练成绩选择候选和父代。",
+        "test": "评完整Polyglot基准；原文称含165道搜索未见题。",
+        "isolation": "完整基准含搜索任务，不能将full成绩统一称为纯留出成绩。",
         "note": ""
       },
       {
-        "name": "Review / Robotics / IMO grading",
-        "evolve": "domain train tasks",
-        "selection": "validation；没有 validation 时用 train",
-        "test": "domain test；另做 meta-agent transfer / improvement@k",
-        "isolation": "独立测试",
-        "note": "固定 meta-agent 的 transfer 实验与继续 self-improve 是不同对照。"
+        "name": "联合非编程优化：论文接收预测 + 机器人奖励设计",
+        "evolve": "同一运行联合优化：100篇论文训练样本与Go2前进奖励设计，共100轮；某一领域未通过阶段门控时，其他未评任务也按零分处理。",
+        "selection": "论文接收预测使用100篇验证样本；机器人无验证目标，使用前进训练表现。",
+        "test": "论文另有100篇测试样本；机器人零样本生成抬高躯干的奖励函数，再训练并评价策略。",
+        "isolation": "论文三段划分，机器人跨目标测试；联合运行不是两次完全独立的进化。初始论文得零分源于原始输出缺少格式解析。",
+        "note": ""
+      },
+      {
+        "name": "固定meta-agent跨领域迁移：imp@50",
+        "evolve": "从论文/机器人联合运行选择迁移hyperagent，携带其task-agent与meta-agent进入IMO评分；固定meta-agent生成task-agent及后代50轮。",
+        "selection": "100道IMO训练题提供反馈，100道验证题选最佳task-agent；迁移起点依谱系折扣后的后代相对增益选择。",
+        "test": "独立100道IMO测试题；imp@50是最佳候选相对初始task-agent的测试增益，中位0.630。",
+        "isolation": "meta-agent在此阶段固定，仅任务agent进化；测试成绩不用于选候选。不能把imp@50叫作本阶段meta-agent学习速度。",
+        "note": ""
+      },
+      {
+        "name": "迁移后继续自修改与强grader起点",
+        "evolve": "IMO训练100题，继续DGM-H自修改200轮；比较初始agent、迁移hyperagent、ProofAutoGrader配迁移meta-agent起点。",
+        "selection": "100道IMO验证题选版本；task-agent和meta-agent均可继续修改。",
+        "test": "独立100题测试：迁移起点中位0.640，初始起点0.610，差异未显著；强grader起点0.670→0.700。",
+        "isolation": "与固定meta-agent的50轮imp@50实验分开；200轮两起点的数值差异不能写成已证实显著加速。",
+        "note": ""
+      },
+      {
+        "name": "冻结所选grader的全集附加评测",
+        "evolve": "本行不再进化；使用200轮运行已选定的grader。",
+        "selection": "已按100题验证集选定版本，本行不按全集成绩重新选版本。",
+        "test": "在整个IMO-GradingBench比较改进grader和ProofAutoGrader，另报accuracy与MAE。",
+        "isolation": "全集包含原来的训练/验证/测试划分，与100题独立测试成绩分别解读。",
+        "note": ""
       }
     ],
     "sources": [
       "https://arxiv.org/html/2603.19461v1"
     ],
-    "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
+    "reading": "2026-10-01 定向复核§5.1–5.3与领域协议，拆分联合优化、固定meta迁移和继续自修改。",
+    "result": "固定meta迁移的IMO imp@50中位0.630；继续自修改200轮中位0.640对初始起点0.610，差异未显著。"
   },
   "2608.09819": {
     "summary": "把部署单元定义为可版本化的 model–harness pair：LoRA specialists、路由，以及 HCP 携带的 prompts/skills/tools/hooks。MindForge 组织发现、扩张和更新。",
@@ -747,9 +772,76 @@
     "reading": "本轮核对原文的方法与实验关键段落；2026-09-08。"
   },
   "2509.19349": {
-    "classificationReason": "主要搜索 scientific / solution programs。被优化程序是产物；没有证据说所有实验都重写执行它的 harness 或 LLM 权重。"
+    "classificationReason": "研究程序进化，具体实验的修改对象不同：圆装填/ALE算法程序和MoE损失属于任务产物；AIME实验直接进化答题harness，不宜把整篇概括为仅产物优化。",
+    "result": "AIME2024 30题搜索75代，每候选全题集运行3次；所选harness另测AIME2023/2025与跨执行模型迁移。",
+    "resultSources": [
+      {
+        "label": "§4.2 · AIME搜索与迁移",
+        "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+      },
+      {
+        "label": "附录B.2 / Table 2 · AIME配置",
+        "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+      }
+    ],
+    "reading": "2026-10-01 定向补充§4.2与附录B.2的AIME协议和角色；保留其他任务已有来源。"
   },
   "2609.01481": {
     "classificationReason": "HoH 组织既有 coding agents 改进软件项目。软件产物变化，不等于执行 harness 自修改。"
+  },
+  "2303.11366": {
+    "result": "HumanEval Python：80.1%→91.0%；MBPP Python：80.1%→77.1%。反思收益依赖任务与自建测试质量。",
+    "resultSources": [
+      {
+        "label": "§4.3 · 编程结果与自建测试误判",
+        "url": "https://arxiv.org/html/2303.11366v4#S4.SS3"
+      }
+    ],
+    "reading": "2026-10-01 定向补充§4.3结果与负例；不代表全篇配置复核。"
+  },
+  "2305.16291": {
+    "result": "3.3× unique items、2.3× farther travel；按所需提示轮数计算，木制工具解锁效率是 AutoGPT 的 15.3 倍，石制和铁制工具分别为 8.5 倍和 6.4 倍（原文§3.3/Table 1口径）。",
+    "resultSources": [
+      {
+        "label": "§3.3 / Table 1 · 技术树提示轮数",
+        "url": "https://arxiv.org/html/2305.16291v2#S3.SS3"
+      }
+    ],
+    "reading": "2026-10-01 定向更正技术树效率的指标范围；不覆盖原始笔记。"
+  },
+  "2506.10943": {
+    "result": "单段落self-edit：39.7%→47.0%；ARC成功edit比例72.5%。CPT中GPT-4.1材料强于SEAL，连续self-edit存在遗忘；提示格式控制见Appendix B.11。",
+    "takeaway": "有效单次适应不等于持续更新时保留旧能力；同格式无RL与RL对照、单段落和CPT结果分别解释。",
+    "resultSources": [
+      {
+        "label": "§4.2 / Table 2 · 单段落与CPT结果",
+        "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+      },
+      {
+        "label": "附录B.2–B.4 · self-edit训练与评估",
+        "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+      },
+      {
+        "label": "§4.1 / Table 1 · ARC self-edit成功率",
+        "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+      },
+      {
+        "label": "附录A.2–A.3 · ARC训练与测试",
+        "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
+      },
+      {
+        "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+        "url": "https://arxiv.org/html/2506.10943v2#S5"
+      },
+      {
+        "label": "附录B.6 · 保留实验误差",
+        "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
+      },
+      {
+        "label": "附录B.11 / Table 10 · 提示格式对照",
+        "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+      }
+    ],
+    "reading": "2026-10-01 定向补充§4–5及附录B.11的结果、对照与遗忘；不代表全篇配置复核。"
   }
 }

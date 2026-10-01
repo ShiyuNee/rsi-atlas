@@ -878,9 +878,17 @@
       "label": "进化与同域评测：SWE-bench",
       "data": "先检查 10 题，再增加 50 题，强候选扩至共 200 题。",
       "scoring": "用仓库测试判断候选 agent 生成的补丁是否修复问题，计算解题比例。",
-      "visible": "父代 agent 读取自己的评测日志与得分，据失败提出功能改进；代码能运行且保留编辑能力才入库。",
+      "visible": "固定 o1 诊断器读取所选父代的评估日志与得分；SWE-bench 诊断提示还包含 private test patch（私有测试补丁）。诊断器提出问题描述和实现建议后，由父代 coding agent 修改自身源码；这与单题执行者获得哪些测试信息是不同边界。",
       "use": "分数用于选父代及评价子代；这些搜索子集成绩不是纯独立测试。",
       "sources": [
+        {
+          "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+          "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
+        },
+        {
+          "label": "§3 · 自修改与档案",
+          "url": "https://arxiv.org/html/2505.22954v3#S3"
+        },
         {
           "label": "§3",
           "url": "https://arxiv.org/html/2505.22954#S3"
@@ -916,9 +924,17 @@
       "label": "进化 / 迁移：Polyglot",
       "data": "搜索先 10 题门控，再另外 50 题；报告完整多语言基准及与 SWE-bench 之间的迁移。",
       "scoring": "按题目的代码测试判对错。作者采用 pass@1（单次尝试完成任务的比例）：任务执行 agent 不能看到正式测试结果后再修答案。",
-      "visible": "外层改进过程使用 agent 评测日志；与单题执行者能否访问正式测试须分开。",
+      "visible": "固定 o1 诊断器使用父代评估日志提出修改任务，再由父代 coding agent 实施；外层诊断信息与单题执行者能否访问正式测试须分开。",
       "use": "比较进化 agent 及跨语言/跨基准迁移；不能按 Aider 榜单的“看一次正式测试再重答”协议解释。",
       "sources": [
+        {
+          "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+          "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
+        },
+        {
+          "label": "§3 · 自修改与档案",
+          "url": "https://arxiv.org/html/2505.22954v3#S3"
+        },
         {
           "label": "§3",
           "url": "https://arxiv.org/html/2505.22954#S3"
@@ -1009,8 +1025,12 @@
       "data": "HumanEval（根据函数要求生成代码、用测试检查结果的编程基准）、MBPP（Python/Rust）、LeetcodeHardGym 40 题。",
       "scoring": "调试使用模型自己生成并通过语法检查的至多六个单元测试；正式代码成绩由基准的保密测试计算。",
       "visible": "调试可见自建测试的执行结果与错误，自建测试可能漏检或误判。",
-      "use": "先据自建测试修改代码，再交正式测试；不能把内部自测通过当作正式正确率。",
+      "use": "先据自建测试修改代码，再交正式测试；不能把内部自测通过当作正式正确率。 原文 Table 1 的 HumanEval Python 为 91.0%，但 MBPP Python 从 80.1% 降至 77.1%；不能将内部自测或反思概括为必然提升。",
       "sources": [
+        {
+          "label": "§4.3 · 编程结果与自建测试误判",
+          "url": "https://arxiv.org/html/2303.11366v4#S4.SS3"
+        },
         {
           "label": "§3",
           "url": "https://arxiv.org/html/2303.11366#S3"
@@ -1079,69 +1099,45 @@
   ],
   "2603.19461": [
     {
-      "label": "论文接收预测",
+      "label": "联合优化：论文接收预测",
       "data": "来自公开会议投稿与接收结果的数据，训练/验证/测试各 100 篇",
       "scoring": "把 agent 预测的接收/拒绝与真实会议接收结果比较；这是对人类决定的拟合，不是论文质量的客观真值。",
-      "visible": "任务执行结果与评测记录供上层 agent 分析并修改任务程序和改进程序。",
-      "use": "论文评审与 IMO 用单独验证成绩选版本；Polyglot、机器人用训练表现选版本。最终报告需按各自留出设置解释。",
+      "visible": "meta-agent 在同一运行中读取论文接收预测及机器人奖励设计的训练/验证成绩和执行日志，修改任务程序与改进程序；各领域最终测试仅用于报告。",
+      "use": "与机器人奖励设计联合运行100轮；论文预测训练/验证/测试各100篇。初始模型原始输出缺少格式解析而得0分，不能把全部涨幅解释为从成熟评审器起步的能力增益。",
       "sources": [
         {
-          "label": "§5.1",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+          "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
         },
         {
-          "label": "§5.3",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+          "label": "附录A.4 · 多领域优化",
+          "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
         },
         {
-          "label": "附录C.1",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS1"
-        },
-        {
-          "label": "附录C.2",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS2"
-        },
-        {
-          "label": "附录C.3",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS3"
-        },
-        {
-          "label": "附录C.4",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+          "label": "附录C.2–C.3 · 数据与反馈",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
         }
       ],
       "judgment": "规则比较预测接收／拒绝标签与会议真实结果"
     },
     {
-      "label": "IMO-GradingBench",
+      "label": "固定meta-agent迁移：IMO-GradingBench",
       "data": "问题、候选证明、参考解与评分指南；迁移后训练/验证/测试各 100 题",
       "scoring": "比较 agent 给出的离散分数与专家人类评分，按匹配准确率评价。",
-      "visible": "任务执行结果与评测记录供上层 agent 分析并修改任务程序和改进程序。",
-      "use": "论文评审与 IMO 用单独验证成绩选版本；Polyglot、机器人用训练表现选版本。最终报告需按各自留出设置解释。",
+      "visible": "来自论文/机器人联合优化运行的所选 meta-agent 在此阶段保持固定；它读取IMO训练/验证反馈生成新的task-agent，最终100题测试不用于候选选择。",
+      "use": "运行50轮，imp@50定义为验证选出的最佳task-agent相对初始task-agent的测试增益；迁移meta-agent中位imp@50为0.630，初始meta-agent对照接近0。该指标不是meta-agent在此阶段继续自修改的结果。",
       "sources": [
         {
-          "label": "§5.1",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+          "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
         },
         {
-          "label": "§5.3",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+          "label": "附录D.3–D.4 · 改进指标与迁移选择",
+          "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
         },
         {
-          "label": "附录C.1",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS1"
-        },
-        {
-          "label": "附录C.2",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS2"
-        },
-        {
-          "label": "附录C.3",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS3"
-        },
-        {
-          "label": "附录C.4",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+          "label": "附录C.4 · IMO评分数据",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
         }
       ],
       "judgment": "规则比较 agent 输出的分数与人类专家分数；agent 本身负责评证明"
@@ -1154,65 +1150,77 @@
       "use": "论文评审与 IMO 用单独验证成绩选版本；Polyglot、机器人用训练表现选版本。最终报告需按各自留出设置解释。",
       "sources": [
         {
-          "label": "§5.1",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+          "label": "§5.1 · Polyglot结果",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
         },
         {
-          "label": "§5.3",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
-        },
-        {
-          "label": "附录C.1",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS1"
-        },
-        {
-          "label": "附录C.2",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS2"
-        },
-        {
-          "label": "附录C.3",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS3"
-        },
-        {
-          "label": "附录C.4",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+          "label": "附录C.1 · Polyglot设置",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
         }
       ],
       "judgment": "Polyglot 的可执行代码测试"
     },
     {
-      "label": "Go2 机器人奖励设计",
+      "label": "联合优化：Go2机器人奖励设计",
       "data": "进化目标为前进；迁移目标为抬高躯干",
       "scoring": "执行 agent 写的奖励函数并训练机器人策略，再以环境任务表现评价这个奖励设计。",
-      "visible": "任务执行结果与评测记录供上层 agent 分析并修改任务程序和改进程序。",
-      "use": "论文评审与 IMO 用单独验证成绩选版本；Polyglot、机器人用训练表现选版本。最终报告需按各自留出设置解释。",
+      "visible": "meta-agent 同时读取机器人奖励设计及论文接收预测的成绩和执行日志；生成的奖励函数用于真实模拟训练，再评价所得策略行为。",
+      "use": "与论文接收预测联合运行100轮。训练目标为前进，以训练表现选版本；测试目标为抬高躯干，无独立验证目标。",
       "sources": [
         {
-          "label": "§5.1",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+          "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
         },
         {
-          "label": "§5.3",
-          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+          "label": "附录A.4 · 多领域优化",
+          "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
         },
         {
-          "label": "附录C.1",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS1"
+          "label": "附录C.2–C.3 · 数据与反馈",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
         },
         {
-          "label": "附录C.2",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS2"
-        },
-        {
-          "label": "附录C.3",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS3"
-        },
-        {
-          "label": "附录C.4",
-          "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+          "label": "附录C.3 · 机器人奖励训练与测试",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS3"
         }
       ],
       "judgment": "实际训练机器人策略，再由环境指标评价奖励函数"
+    },
+    {
+      "label": "继续自修改：IMO-GradingBench",
+      "data": "IMO训练/验证/测试各100题；以初始agent、迁移hyperagent或ProofAutoGrader任务agent配迁移meta-agent起步，各运行200轮。",
+      "judgment": "规则比较grader离散分数与人类专家分数，统计准确率",
+      "scoring": "按IMO评分准确率评价任务agent；验证成绩选版本，再在独立测试上报告。",
+      "visible": "在此阶段meta-agent也可修改自身，读取训练/验证成绩与历史记录，区别于固定meta-agent的50轮迁移测试。",
+      "use": "迁移起点与初始起点中位测试成绩为0.640和0.610，差异未达统计显著；ProofAutoGrader配迁移meta-agent的独立测试由0.670到0.700。",
+      "sources": [
+        {
+          "label": "§5.3 · 迁移后继续自修改",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+        },
+        {
+          "label": "附录C.4 · IMO评分数据",
+          "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+        }
+      ]
+    },
+    {
+      "label": "最终附加评测：IMO-GradingBench全集",
+      "data": "§5.3选中的ProofAutoGrader改进版本与原ProofAutoGrader评整个IMO-GradingBench。",
+      "judgment": "对照专家分数计算准确率与平均绝对误差",
+      "scoring": "计算全集accuracy和MAE；原文accuracy由0.561到0.601，MAE由0.178到0.175。",
+      "visible": "此行记录选定grader的最终全集评测，不把全集成绩描述为反馈给修改者的新训练信号。",
+      "use": "提高对选定grader表现的估计覆盖；全集包含原有划分，不能称全集全是未见独立测试。",
+      "sources": [
+        {
+          "label": "§5.3 · 全集附加评测",
+          "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+        },
+        {
+          "label": "附录E.4 · IMO grader全集结果",
+          "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
+        }
+      ]
     }
   ],
   "2607.14777": [
@@ -2723,23 +2731,15 @@
       "data": "训练使用 SQuAD 训练集 的文本及配套问答；最终为 200 个新文本段落、974 个问题。",
       "scoring": "模型根据文本生成训练材料，实际微调后再答配套问题；GPT-4.1 按参考答案判断回答。",
       "visible": "外层学习获得微调后问答成绩，而不是仅评价生成训练文本看起来是否正确。",
-      "use": "奖励能真正提高知识问答表现的自生成材料；新文本和新问题检验学习到的适应方法。",
+      "use": "奖励真正提高问答表现的自生成材料。Table 2单段落同格式对照：无RL的self-edit为39.7%，SEAL为47.0%；原始段落训练33.5%、GPT-4.1材料46.3%。这些数值只对应单段落LoRA协议。",
       "sources": [
         {
-          "label": "§3",
-          "url": "https://arxiv.org/html/2506.10943#S3"
+          "label": "§4.2 / Table 2 · 单段落与CPT结果",
+          "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
         },
         {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2506.10943#S3.SS1"
-        },
-        {
-          "label": "附录A.2",
-          "url": "https://arxiv.org/html/2506.10943#A1.SS2"
-        },
-        {
-          "label": "附录B.1",
-          "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+          "label": "附录B.2–B.4 · self-edit训练与评估",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
         }
       ],
       "judgment": "GPT-4.1 对照 SQuAD 参考答案作模型判分"
@@ -2749,26 +2749,84 @@
       "data": "11 个筛选后的训练任务；最终八个未见任务。",
       "scoring": "执行选择的数据增强和测试时训练方案后，比较模型预测网格与正确网格，给成功/失败。",
       "visible": "外层获得更新后任务表现；内层可用给定示例作适应。",
-      "use": "训练模型选择有效的适应方案，训练题答案可见，最终测试题答案不可见。",
+      "use": "训练模型选择有效的适应方案，训练题答案可见、最终测试答案不可见。八个未见任务各生成五个独立self-edits，72.5%是成功edit的比例；无RL适应20%，ICL 0%，人工Oracle TTT 100%，不是72.5%的任务被解决。",
       "sources": [
         {
-          "label": "§3",
-          "url": "https://arxiv.org/html/2506.10943#S3"
+          "label": "§4.1 / Table 1 · ARC self-edit成功率",
+          "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
         },
         {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2506.10943#S3.SS1"
-        },
-        {
-          "label": "附录A.2",
-          "url": "https://arxiv.org/html/2506.10943#A1.SS2"
-        },
-        {
-          "label": "附录B.1",
-          "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+          "label": "附录A.2–A.3 · ARC训练与测试",
+          "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
         }
       ],
       "judgment": "规则比较模型预测的 ARC 网格与标准网格"
+    },
+    {
+      "label": "知识适应：聚合段落CPT",
+      "data": "200或2067个SQuAD evaluation段落；每段落生成5份self-edit后合并为训练数据，做full finetuning。",
+      "judgment": "GPT-4.1对照参考答案评价无段落上下文的回答",
+      "scoring": "聚合训练后对相应问题合并评估；200/2067段落SEAL为58.2%/46.4%，GPT-4.1材料为59.4%/49.2%。",
+      "visible": "适应过程读输入段落及生成材料；此行的问答成绩用于最终方法比较，不是新一轮外层策略训练反馈。",
+      "use": "检验在单段落方式学习的材料生成策略能否用于多段落CPT；不能将单段落优于GPT-4.1材料的结论套到CPT。",
+      "sources": [
+        {
+          "label": "§4.2 / Table 2 · 单段落与CPT结果",
+          "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+        },
+        {
+          "label": "附录B.2–B.4 · self-edit训练与评估",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+        }
+      ]
+    },
+    {
+      "label": "连续self-edit：旧知识保留",
+      "data": "测试段落流依次触发新self-edit；每次更新后重新评价所有此前见过的段落任务。",
+      "judgment": "对更新前后旧任务回答作同一知识问答判分",
+      "scoring": "追踪此前任务成绩随连续编辑次数的变化；原文Fig.6显示旧任务表现逐渐下降。",
+      "visible": "旧题重评结果用于报告保留能力；本文外层目标没有显式奖励保留，也没有因旧题下降自动回滚的实验。",
+      "use": "揭示连续适应的灾难性遗忘，区别于互相独立的单次适应成功；不能把持续更新能力写成已解决旧知识保留。",
+      "sources": [
+        {
+          "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+          "url": "https://arxiv.org/html/2506.10943v2#S5"
+        },
+        {
+          "label": "附录B.6 · 保留实验误差",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
+        },
+        {
+          "label": "§4.2 / Table 2 · 单段落与CPT结果",
+          "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+        },
+        {
+          "label": "附录B.2–B.4 · self-edit训练与评估",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+        }
+      ]
+    },
+    {
+      "label": "知识适应：self-edit提示格式对照",
+      "data": "与单段落知识适应相同的SQuAD设置；比较implications、长implications、rewrite、self-QA等提示格式。",
+      "judgment": "适应后问答成绩，由GPT-4.1对照参考答案判分",
+      "scoring": "Table 10同一格式逐列比较无RL、外层训练第1轮、第2轮；无RL长implications/rewrite为49.3%/49.4%，对应训练后54.4%/55.6%。",
+      "visible": "按各格式运行原有生成、内层微调和外层训练流程；保留格式各自的无RL基线。",
+      "use": "提示格式本身有显著作用；强格式无RL结果可高于默认格式SEAL的47.0%，但不能据跨格式数值差异断言RL无效。",
+      "sources": [
+        {
+          "label": "附录B.11 / Table 10 · 提示格式对照",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+        },
+        {
+          "label": "§4.2 / Table 2 · 单段落与CPT结果",
+          "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+        },
+        {
+          "label": "附录B.2–B.4 · self-edit训练与评估",
+          "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+        }
+      ]
     }
   ],
   "2604.23472": [
@@ -6417,8 +6475,20 @@
       "data": "GSM8K（小学数学应用题基准）、SVAMP、MultiArith、AddSub、AQuA-RAT、SingleEQ 等；每次随机 100 道训练题。",
       "scoring": "把任务模型答案与参考答案比较，计算准确率作为候选适应度；变异提示可按产生更好任务提示的比例评价。",
       "visible": "训练批次成绩和成功示例供种群选择；100 是批量而非全部训练量。",
-      "use": "任务提示及指导如何改提示的文字共同进化，最终用预留测试划分。",
+      "use": "任务提示及指导如何改提示的文字共同进化；few-shot 配置还进化示例上下文，算术配置还调整生成变异的采样温度。最终按训练表现选择候选并测预留测试划分。",
       "sources": [
+        {
+          "label": "附录J.2 · 训练协议与变异生成温度",
+          "url": "https://arxiv.org/html/2309.16797v1#A10.SS2"
+        },
+        {
+          "label": "附录K · few-shot上下文进化",
+          "url": "https://arxiv.org/html/2309.16797v1#A11"
+        },
+        {
+          "label": "§3.1 · 任务与变异提示",
+          "url": "https://arxiv.org/html/2309.16797v1#S3.SS1"
+        },
         {
           "label": "§3.1",
           "url": "https://arxiv.org/html/2309.16797#S3.SS1"
@@ -6718,24 +6788,12 @@
       "use": "按公开得分搜索并挑最佳程序，之后提交私有测试；报告的私有成绩不用于这 50 代选择。",
       "sources": [
         {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+          "label": "§4.3 · ALE-Bench",
+          "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
         },
         {
-          "label": "§3.3",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS3"
-        },
-        {
-          "label": "§4.4",
-          "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录B.3",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
-        },
-        {
-          "label": "附录B.4",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+          "label": "附录B.3 · 公开搜索与私有提交",
+          "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
         }
       ],
       "judgment": "ALE-Bench 比赛测试程序计算目标分"
@@ -6748,24 +6806,12 @@
       "use": "小模型实验用于选择损失；大模型实验检验选中损失能否迁移，不是把 30B 词元 都用于初始搜索。",
       "sources": [
         {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+          "label": "§4.4 · MoE损失进化与迁移",
+          "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
         },
         {
-          "label": "§3.3",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS3"
-        },
-        {
-          "label": "§4.4",
-          "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录B.3",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
-        },
-        {
-          "label": "附录B.4",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+          "label": "附录B.4 · MoE配置",
+          "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
         }
       ],
       "judgment": "实际训练模型，计算验证损失／困惑度及下游指标"
@@ -6778,27 +6824,37 @@
       "use": "保留有效且目标更好的程序；同一几何实例上的最佳值属于直接优化结果。",
       "sources": [
         {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+          "label": "§4.1 · 圆装填程序",
+          "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
         },
         {
-          "label": "§3.3",
-          "url": "https://arxiv.org/html/2509.19349#S3.SS3"
-        },
-        {
-          "label": "§4.4",
-          "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录B.3",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
-        },
-        {
-          "label": "附录B.4",
-          "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+          "label": "附录B.1 · 几何配置",
+          "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
         }
       ],
       "judgment": "程序检查几何合法性，计算半径和等目标"
+    },
+    {
+      "label": "AIME答题harness搜索与迁移",
+      "data": "AIME2024全部30题用于75代搜索，每候选对全题集进行3次独立运行，每题最多10次目标模型调用；另测AIME2023/2025及跨模型迁移。",
+      "judgment": "AIME答题正确率与调用预算；所引实验段落未展开外部答案匹配器实现",
+      "scoring": "由候选harness组织gpt-4.1-nano答题，依据题集正确率评价搜索表现，并比较调用效率；不是用代码新颖性作为答题正确性的判据。",
+      "visible": "进化引擎获得AIME2024候选运行指标和程序执行反馈；新颖性检查独立筛除重复方案。AIME2023/2025结果作为后续迁移报告，不描述为搜索反馈。",
+      "use": "冻结选中的harness，在不同年份题集和GPT-4.1-mini、GPT-4.1、o4-mini上检验迁移；AIME2024分数属于同集搜索结果。",
+      "sources": [
+        {
+          "label": "§4.2 · AIME搜索与迁移",
+          "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+        },
+        {
+          "label": "附录B.2 / Table 2 · AIME配置",
+          "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+        },
+        {
+          "label": "§3.1–3.3 · 档案、变异、评分",
+          "url": "https://arxiv.org/html/2509.19349v1#S3"
+        }
+      ]
     }
   ],
   "2305.10250": [

@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-09-30",
-  "corpusUpdated": "2026-09-21",
+  "updated": "2026-10-01",
+  "corpusUpdated": "2026-10-01",
   "policy": "按论文要解决的问题人工归组；同一工作可跨路线。关系箭头是本站的分析，不代表作者声明的继承关系或历史先后。覆盖当前资料库，不声称穷尽整个领域。",
   "groups": [
     {
@@ -190,7 +190,9 @@
             "2606.01314",
             "2607.14159",
             "2608.01918",
-            "2607.15524"
+            "2607.15524",
+            "2609.14857",
+            "2609.37950"
           ],
           "representatives": [
             "2603.28052",
@@ -208,7 +210,9 @@
             "2609.09646",
             "2608.27311",
             "2609.20519",
-            "sol-pi-author-blog"
+            "sol-pi-author-blog",
+            "2609.24972",
+            "2609.37968"
           ],
           "representatives": [
             "2607.13683",
@@ -317,7 +321,11 @@
             "2506.10943",
             "2607.14777",
             "2510.16079",
-            "2603.21877"
+            "2603.21877",
+            "2203.14465",
+            "2401.10020",
+            "2409.12917",
+            "2407.18219"
           ],
           "representatives": [
             "2506.10943",
@@ -383,7 +391,8 @@
             "2606.04465",
             "2607.05297",
             "2608.08466",
-            "2609.14858"
+            "2609.14858",
+            "2609.37834"
           ],
           "representatives": [
             "2309.16797",
@@ -468,7 +477,8 @@
             "2602.22480",
             "2606.04455",
             "2608.06301",
-            "2608.10178"
+            "2608.10178",
+            "2609.33180"
           ],
           "representatives": [
             "2607.12227",
@@ -511,7 +521,8 @@
             "2606.17546",
             "2607.05155",
             "2608.31100",
-            "2609.08175"
+            "2609.08175",
+            "2609.31760"
           ],
           "representatives": [
             "2606.17546",
@@ -601,7 +612,9 @@
           "question": "代码进化可以产生更好的算法或程序；需要另查改动是否进入 agent 或修改者本身。",
           "papers": [
             "2509.19349",
-            "deepmind-alphaevolve-blog"
+            "deepmind-alphaevolve-blog",
+            "funsearch",
+            "2506.13131"
           ],
           "representatives": [
             "2509.19349",
@@ -3758,6 +3771,308 @@
         {
           "label": "Designing better algorithms with large language models；导言与应用案例",
           "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/"
+        }
+      ]
+    },
+    "2203.14465": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "curriculum",
+        "feedback"
+      ],
+      "question": "用模型自身生成的正确推理迭代训练参数，研究少量示例如何启动更强的推理能力。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2203.14465"
+        }
+      ],
+      "name": "STaR",
+      "contrast": "用模型自身生成的正确推理迭代训练参数，研究少量示例如何启动更强的推理能力。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2203.14465"
+        }
+      ]
+    },
+    "2401.10020": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "feedback"
+      ],
+      "question": "同一语言模型既回答问题又以 judge 提示给出奖励，迭代训练回答及评分能力。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2401.10020"
+        }
+      ],
+      "name": "Self-Rewarding LMs",
+      "contrast": "同一语言模型既回答问题又以 judge 提示给出奖励，迭代训练回答及评分能力。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2401.10020"
+        }
+      ]
+    },
+    "2409.12917": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "feedback"
+      ],
+      "question": "通过模型自身分布下的多轮在线RL训练可在推理时执行的纠错策略。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2409.12917"
+        }
+      ],
+      "name": "SCoRe",
+      "contrast": "通过模型自身分布下的多轮在线RL训练可在推理时执行的纠错策略。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2409.12917"
+        }
+      ]
+    },
+    "2407.18219": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "feedback"
+      ],
+      "question": "将问题建模为多轮MDP，用迭代微调训练模型在已有失败后修订答案的能力。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2407.18219"
+        }
+      ],
+      "name": "RISE",
+      "contrast": "将问题建模为多轮MDP，用迭代微调训练模型在已有失败后修订答案的能力。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2407.18219"
+        }
+      ]
+    },
+    "funsearch": {
+      "primary": "perspectives",
+      "branch": "programs",
+      "related": [
+        "feedback"
+      ],
+      "question": "以冻结语言模型提出程序变体，用执行评估和多样性程序数据库持续搜索算法。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://www.nature.com/articles/s41586-023-06924-6"
+        }
+      ],
+      "name": "FunSearch",
+      "contrast": "以冻结语言模型提出程序变体，用执行评估和多样性程序数据库持续搜索算法。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://www.nature.com/articles/s41586-023-06924-6"
+        }
+      ]
+    },
+    "2506.13131": {
+      "primary": "perspectives",
+      "branch": "programs",
+      "related": [
+        "harness"
+      ],
+      "question": "LLM直接修改算法代码，借助一个或多个评估器及进化搜索持续保留有潜力的版本。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2506.13131"
+        }
+      ],
+      "name": "AlphaEvolve",
+      "contrast": "LLM直接修改算法代码，借助一个或多个评估器及进化搜索持续保留有潜力的版本。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2506.13131"
+        }
+      ]
+    },
+    "2609.14857": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [
+        "evaluation"
+      ],
+      "question": "通过成败轨迹对照、跨题证据聚合与受限模块修改研究可泛化的harness进化。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.14857"
+        }
+      ],
+      "name": "ModularRSI",
+      "contrast": "把任务级成败转成跨题可重复的局部机制诊断，再独立进化模块和集成；还把建数据资源与实际使用的进化题明确分开。",
+      "contrastSources": [
+        {
+          "label": "§3 方法、模块起点、验证及冻结",
+          "url": "https://arxiv.org/html/2609.14857"
+        },
+        {
+          "label": "§4 进化数据构建",
+          "url": "https://arxiv.org/html/2609.14857"
+        },
+        {
+          "label": "§5.1–5.3、§6.1–6.3 实验设置与迁移",
+          "url": "https://arxiv.org/html/2609.14857"
+        }
+      ]
+    },
+    "2609.24972": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "evaluation"
+      ],
+      "question": "约束候选生成和选择，减少benchmark特化、无效修改与额外运行成本。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.24972"
+        }
+      ],
+      "name": "RRSI",
+      "contrast": "保留开放的harness编辑空间，同时约束单轮修改容量、跨轮探索与验收成本，研究开发集涨分与可迁移收益之间的差别。",
+      "contrastSources": [
+        {
+          "label": "§2–3 冻结策略、正则化与验收",
+          "url": "https://arxiv.org/html/2609.24972"
+        },
+        {
+          "label": "§4.1–4.3 模型、起点、数据和结果",
+          "url": "https://arxiv.org/html/2609.24972"
+        }
+      ]
+    },
+    "2609.33180": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "improver"
+      ],
+      "question": "REUSE限制回传给搜索器的评估信息，并控制整段升级历史的统计风险。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.33180"
+        }
+      ],
+      "name": "REUSE",
+      "contrast": "同时处理同轮选优、多轮重复检验与复用评估集造成的自适应依赖；把判分和对搜索器披露的信息分开，而非只对候选做普通多重比较。",
+      "contrastSources": [
+        {
+          "label": "§2.1–2.2 假设、反馈权限与验收保证",
+          "url": "https://arxiv.org/html/2609.33180"
+        }
+      ]
+    },
+    "2609.37968": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "experience",
+        "improver"
+      ],
+      "question": "复用过去自修改尝试的推理、工具操作和结果记录，在搜索中不给下游奖励。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.37968"
+        }
+      ],
+      "name": "SelfSearch",
+      "contrast": "把自修改操作过程当作下一轮经验，不用昂贵下游奖励选择候选；同时让继承后的agent实现继续做修改，而不是固定外置编辑者。",
+      "contrastSources": [
+        {
+          "label": "§2 自修改episode、双谱系及固定runtime",
+          "url": "https://arxiv.org/html/2609.37968"
+        }
+      ]
+    },
+    "2609.37834": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [
+        "harness",
+        "curriculum"
+      ],
+      "question": "让分支各自调整开发题子集和提案策略，再用router组合互补的harness。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.37834"
+        }
+      ],
+      "name": "Mixture of Self-Improving Branches",
+      "contrast": "让分支各自调整开发题子集和提案策略，再用router组合互补的harness。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.37834"
+        }
+      ]
+    },
+    "2609.37950": {
+      "primary": "harness",
+      "branch": "repair",
+      "related": [
+        "feedback"
+      ],
+      "question": "主动回看原训练视频增补观察，验证失败原因后改进视频证据获取与使用。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.37950"
+        }
+      ],
+      "name": "Video-RSI",
+      "contrast": "主动回看原训练视频增补观察，验证失败原因后改进视频证据获取与使用。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.37950"
+        }
+      ]
+    },
+    "2609.31760": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [
+        "harness",
+        "experience"
+      ],
+      "question": "用123轮技能发现与安装的持续实验诊断机器人自改进的外部瓶颈。",
+      "sources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.31760"
+        }
+      ],
+      "name": "What Stops RSI in Robotics?",
+      "contrast": "用123轮技能发现与安装的持续实验诊断机器人自改进的外部瓶颈。",
+      "contrastSources": [
+        {
+          "label": "原论文摘要与日期",
+          "url": "https://arxiv.org/abs/2609.31760"
         }
       ]
     }

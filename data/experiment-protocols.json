@@ -564,9 +564,9 @@
         0
       ],
       "evolution": "SQuAD 训练集文本与配套问答；先根据自生成材料微调，再用答题正确性奖励材料生成策略。",
-      "selection": "内部微调后的问答表现用于外层策略训练。",
+      "selection": "两轮ReSTEM，每轮50上下文；每份生成5个self-edits，各运行3个种子，按平均答题表现保留最好者。",
       "evaluation": "200 个新段落及其 974 个问题；测试时仍根据新段落生成材料并适应。",
-      "isolation": "外层训练与最终新段落分开，但测试包含对当前段落的参数适应，不是完全冻结参数答题。",
+      "isolation": "外层训练与最终新段落分开，但测试包含对当前段落的参数适应，不是完全冻结参数答题。 同格式无RL self-edit 39.7%→47.0%；该结果不能代替多段落CPT或连续保留实验。",
       "roles": {
         "executor": {
           "value": "Qwen2.5-7B，先用生成材料完成内部参数适应，再回答当前段落的问题。"
@@ -589,7 +589,7 @@
       ],
       "evolution": "11 个筛选后的 ARC 训练任务；实际执行适应方案后的正确性奖励方案生成策略。",
       "selection": "训练任务上的适应效果用于策略更新。",
-      "evaluation": "八个未见 ARC 任务；根据任务示例进行内部适应后答题。",
+      "evaluation": "八个未见ARC任务，每任务五个独立self-edits；报告正确适应的edit比例72.5%，不是题目通过率。",
       "isolation": "外层训练任务与最终任务分开；最终任务内部仍允许从所给示例学习。",
       "roles": {
         "executor": {
@@ -600,6 +600,198 @@
         },
         "seed": {
           "value": "提供数据增强和测试时训练工具；模型可选择增强开关、学习率、训练轮次，再真正更新参数。"
+        }
+      }
+    },
+    {
+      "label": "多段落知识适应：CPT",
+      "testCases": [
+        2
+      ],
+      "evolution": "本行不重新训练self-edit策略；使用单段落外层训练后的策略，聚合新段落材料进行内层full finetuning。",
+      "selection": "每段落生成五个self-edits，聚合全部生成材料；与无RL及GPT-4.1材料的同协议对照比较。",
+      "evaluation": "200或2067个新段落的相应问题，无段落上下文答题；分别报告两种语料规模。",
+      "isolation": "输入段落用于测试时参数适应，问题用于最终评价；CPT使用full finetuning，与单段落LoRA分开。",
+      "roles": {
+        "executor": {
+          "value": "Qwen2.5-7B，在聚合材料full finetuning后回答对应问题。",
+          "sources": [
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "已训练Qwen2.5-7B生成材料，固定训练程序执行CPT；本行不进行新的外层ReSTEM。",
+          "sources": [
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "seed": {
+          "value": "每段落五份生成材料聚合成数据；对照使用原始段落、无RL材料或GPT-4.1材料。",
+          "sources": [
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "连续自编辑与旧题保留",
+      "testCases": [
+        3
+      ],
+      "evolution": "测试段落逐次触发self-edit，参数更新沿时间连续保留；没有额外学习保留奖励。",
+      "selection": "本实验追踪保留曲线，不按旧题重评成绩进行候选接受或回滚。",
+      "evaluation": "每次新段落更新后重评所有旧任务，观测灾难性遗忘。",
+      "isolation": "同一模型连续接受多个编辑，区别于每段落独立适应；旧任务表现下降是限制而非训练信号。",
+      "roles": {
+        "executor": {
+          "value": "Qwen2.5-7B连续接受新段落参数更新，每轮再回答旧任务。",
+          "sources": [
+            {
+              "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+              "url": "https://arxiv.org/html/2506.10943v2#S5"
+            },
+            {
+              "label": "附录B.6 · 保留实验误差",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "已学会的Qwen2.5-7B策略生成下一次self-edit，固定内层训练程序更新参数；未显式优化旧知识保留。",
+          "sources": [
+            {
+              "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+              "url": "https://arxiv.org/html/2506.10943v2#S5"
+            },
+            {
+              "label": "附录B.6 · 保留实验误差",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "seed": {
+          "value": "从已训练self-edit策略和知识适应流程起步，逐次接收测试段落。",
+          "sources": [
+            {
+              "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+              "url": "https://arxiv.org/html/2506.10943v2#S5"
+            },
+            {
+              "label": "附录B.6 · 保留实验误差",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "提示格式与外层训练作用",
+      "learningCases": [
+        4
+      ],
+      "testCases": [
+        4
+      ],
+      "evolution": "分别在不同self-edit提示格式下执行外层ReSTEM；保持各格式的无RL基线。",
+      "selection": "沿用单段落知识适应的候选生成及适应后问答评分流程。",
+      "evaluation": "同协议比较无RL及第1/2轮结果；长implications 49.3%→54.4%，rewrite 49.4%→55.6%。",
+      "isolation": "比较RL作用应使用相同格式；默认格式47.0%与强格式无RL分数不能直接当作同一控制变量的对照。",
+      "roles": {
+        "executor": {
+          "value": "Qwen2.5-7B按各提示格式生成材料、微调后回答SQuAD问题。",
+          "sources": [
+            {
+              "label": "附录B.11 / Table 10 · 提示格式对照",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Qwen2.5-7B生成self-edit；固定外层ReSTEM分别训练各提示格式的生成策略。",
+          "sources": [
+            {
+              "label": "附录B.11 / Table 10 · 提示格式对照",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
+        },
+        "seed": {
+          "value": "知识适应流程固定，改变生成self-edit的提示格式，保留对应无RL与RL对照。",
+          "sources": [
+            {
+              "label": "附录B.11 / Table 10 · 提示格式对照",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+            },
+            {
+              "label": "§4.2 / Table 2 · 单段落与CPT结果",
+              "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
+            },
+            {
+              "label": "附录B.2–B.4 · self-edit训练与评估",
+              "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+            }
+          ]
         }
       }
     }
@@ -743,19 +935,357 @@
   ],
   "2603.19461": [
     {
-      "label": "实验数据与反馈对照",
-      "fieldRefs": {
-        "evolution": "train",
-        "selection": "debug",
-        "evaluation": "test",
-        "isolation": "isolation"
-      },
-      "feedbackCases": [
+      "label": "Polyglot代码自修改",
+      "learningCases": [
+        2
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "60道搜索题：先10题门控，再评另外50题，运行80轮。",
+      "selection": "Polyglot无独立验证集，以训练成绩选择候选和父代。",
+      "evaluation": "评完整Polyglot基准；原文称含165道搜索未见题。",
+      "isolation": "完整基准含搜索任务，不能将full成绩统一称为纯留出成绩。",
+      "roles": {
+        "executor": {
+          "value": "o3-mini在候选task-agent代码下完成编程题，模型权重固定。",
+          "sources": [
+            {
+              "label": "§5.1 · Polyglot结果",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录C.1 · Polyglot设置",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Claude 3.5 Sonnet (New)在候选meta-agent程序下修改task-agent和meta-agent。",
+          "sources": [
+            {
+              "label": "§5.1 · Polyglot结果",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录C.1 · Polyglot设置",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "seed": {
+          "value": "包含task-agent与meta-agent的单一可编辑hyperagent；外层档案、父代选择及评测固定。",
+          "sources": [
+            {
+              "label": "§5.1 · Polyglot结果",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录C.1 · Polyglot设置",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "联合非编程优化：论文接收预测 + 机器人奖励设计",
+      "learningCases": [
         0,
-        1,
-        2,
         3
-      ]
+      ],
+      "testCases": [
+        0,
+        3
+      ],
+      "evolution": "同一运行联合优化：100篇论文训练样本与Go2前进奖励设计，共100轮；某一领域未通过阶段门控时，其他未评任务也按零分处理。",
+      "selection": "论文接收预测使用100篇验证样本；机器人无验证目标，使用前进训练表现。",
+      "evaluation": "论文另有100篇测试样本；机器人零样本生成抬高躯干的奖励函数，再训练并评价策略。",
+      "isolation": "论文三段划分，机器人跨目标测试；联合运行不是两次完全独立的进化。初始论文得零分源于原始输出缺少格式解析。",
+      "roles": {
+        "executor": {
+          "value": "GPT-4o预测论文接收/拒绝；Claude 4.5 Sonnet生成机器人奖励函数，由Genesis模拟器与RL训练评价所得策略。",
+          "sources": [
+            {
+              "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录A.4 · 多领域优化",
+              "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+            },
+            {
+              "label": "附录C.2–C.3 · 数据与反馈",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Claude 4.5 Sonnet由可编辑meta-agent程序组织，对task-agent与meta-agent代码均可修改。",
+          "sources": [
+            {
+              "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录A.4 · 多领域优化",
+              "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+            },
+            {
+              "label": "附录C.2–C.3 · 数据与反馈",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "seed": {
+          "value": "共同初始hyperagent的task-agent直接返回一次模型调用结果，没有领域专用解析/后处理；初始论文测试0.0，机器人0.060。",
+          "sources": [
+            {
+              "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
+            },
+            {
+              "label": "附录A.4 · 多领域优化",
+              "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+            },
+            {
+              "label": "附录C.2–C.3 · 数据与反馈",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "固定meta-agent跨领域迁移：imp@50",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "从论文/机器人联合运行选择迁移hyperagent，携带其task-agent与meta-agent进入IMO评分；固定meta-agent生成task-agent及后代50轮。",
+      "selection": "100道IMO训练题提供反馈，100道验证题选最佳task-agent；迁移起点依谱系折扣后的后代相对增益选择。",
+      "evaluation": "独立100道IMO测试题；imp@50是最佳候选相对初始task-agent的测试增益，中位0.630。",
+      "isolation": "meta-agent在此阶段固定，仅任务agent进化；测试成绩不用于选候选。不能把imp@50叫作本阶段meta-agent学习速度。",
+      "roles": {
+        "executor": {
+          "value": "o4-mini由新task-agent组织，输出IMO候选证明的离散评分。",
+          "sources": [
+            {
+              "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+            },
+            {
+              "label": "附录D.3–D.4 · 改进指标与迁移选择",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Claude 4.5 Sonnet执行固定的迁移meta-agent程序，只生成task-agent新版本；对照使用固定初始meta-agent或DGM-custom迁移meta-agent。",
+          "sources": [
+            {
+              "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+            },
+            {
+              "label": "附录D.3–D.4 · 改进指标与迁移选择",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "seed": {
+          "value": "携带整个来源hyperagent进入新领域；迁移task-agent初始测试0.0，此阶段meta-agent不自修改。",
+          "sources": [
+            {
+              "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+            },
+            {
+              "label": "附录D.3–D.4 · 改进指标与迁移选择",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "迁移后继续自修改与强grader起点",
+      "learningCases": [
+        4
+      ],
+      "testCases": [
+        4
+      ],
+      "evolution": "IMO训练100题，继续DGM-H自修改200轮；比较初始agent、迁移hyperagent、ProofAutoGrader配迁移meta-agent起点。",
+      "selection": "100道IMO验证题选版本；task-agent和meta-agent均可继续修改。",
+      "evaluation": "独立100题测试：迁移起点中位0.640，初始起点0.610，差异未显著；强grader起点0.670→0.700。",
+      "isolation": "与固定meta-agent的50轮imp@50实验分开；200轮两起点的数值差异不能写成已证实显著加速。",
+      "roles": {
+        "executor": {
+          "value": "o4-mini由task-agent代码组织，评价候选证明并输出分数。",
+          "sources": [
+            {
+              "label": "§5.3 · 迁移后继续自修改",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Claude 4.5 Sonnet在可编辑meta-agent程序下修改task-agent与meta-agent。",
+          "sources": [
+            {
+              "label": "§5.3 · 迁移后继续自修改",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "seed": {
+          "value": "分别从初始hyperagent、来源领域迁移hyperagent、或ProofAutoGrader任务agent配迁移meta-agent起步。",
+          "sources": [
+            {
+              "label": "§5.3 · 迁移后继续自修改",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录C.4 · IMO评分数据",
+              "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "冻结所选grader的全集附加评测",
+      "testCases": [
+        5
+      ],
+      "evolution": "本行不再进化；使用200轮运行已选定的grader。",
+      "selection": "已按100题验证集选定版本，本行不按全集成绩重新选版本。",
+      "evaluation": "在整个IMO-GradingBench比较改进grader和ProofAutoGrader，另报accuracy与MAE。",
+      "isolation": "全集包含原来的训练/验证/测试划分，与100题独立测试成绩分别解读。",
+      "roles": {
+        "executor": {
+          "value": "o4-mini在已选定grader代码下评全部题，另与原ProofAutoGrader比较。",
+          "sources": [
+            {
+              "label": "§5.3 · 全集附加评测",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录E.4 · IMO grader全集结果",
+              "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "本阶段没有修改者工作；meta-agent在最终全集评测时不生成新版本。",
+          "sources": [
+            {
+              "label": "§5.3 · 全集附加评测",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录E.4 · IMO grader全集结果",
+              "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        },
+        "seed": {
+          "value": "冻结已选定的ProofAutoGrader改进版本及原ProofAutoGrader。",
+          "sources": [
+            {
+              "label": "§5.3 · 全集附加评测",
+              "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+            },
+            {
+              "label": "附录E.4 · IMO grader全集结果",
+              "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
+            },
+            {
+              "label": "附录D.1 · 领域执行与自修改模型",
+              "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
+            }
+          ]
+        }
+      }
     }
   ],
   "2607.14777": [
@@ -2074,18 +2604,316 @@
   ],
   "2509.19349": [
     {
-      "label": "实验数据与反馈对照",
-      "fieldRefs": {
-        "evolution": "train",
-        "selection": "debug",
-        "evaluation": "test",
-        "isolation": "isolation"
-      },
-      "feedbackCases": [
-        0,
-        1,
+      "label": "ALE-Bench LITE算法程序",
+      "learningCases": [
+        0
+      ],
+      "testCases": [
+        0
+      ],
+      "evolution": "10道AtCoder启发式比赛题，每题从ALE-Agent已有较好程序起步搜索50代。",
+      "selection": "按公开测试分数选择最佳程序。",
+      "evaluation": "把公开分数最佳程序提交私有测试；另报top-5候选在私有测试的最大值诊断。",
+      "isolation": "私有提交成绩与公开搜索分开；top-5最大值不同于一次候选提交，不能混成单次测试成绩。",
+      "roles": {
+        "executor": {
+          "value": "运行各候选竞赛程序，由ALE-Bench测试程序计算目标分。",
+          "sources": [
+            {
+              "label": "§4.3 · ALE-Bench",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+            },
+            {
+              "label": "附录B.3 · 公开搜索与私有提交",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "固定ShinkaEvolve引擎调用所配置模型改写候选程序；本行不把程序执行器误写成答题LLM。",
+          "sources": [
+            {
+              "label": "§4.3 · ALE-Bench",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+            },
+            {
+              "label": "附录B.3 · 公开搜索与私有提交",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "seed": {
+          "value": "每题以ALE-Agent已有程序为起点，公开测试评估器及进化控制器固定。",
+          "sources": [
+            {
+              "label": "§4.3 · ALE-Bench",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+            },
+            {
+              "label": "附录B.3 · 公开搜索与私有提交",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "MoE损失函数搜索与跨规模迁移",
+      "learningCases": [
+        1
+      ],
+      "testCases": [
+        1
+      ],
+      "evolution": "用556M模型、约2B FineWeb词元训练评价候选损失函数。",
+      "selection": "小模型训练及评价指标用于选择候选损失，模型训练是评价过程。",
+      "evaluation": "所选损失迁移至2.7B模型、约30B FineWeb词元，再测困惑度及下游任务。",
+      "isolation": "小规模搜索与大规模迁移分开，不能把30B词元当作初始搜索训练量。",
+      "roles": {
+        "executor": {
+          "value": "固定训练程序训练候选损失对应的556M模型；迁移阶段训练2.7B模型并评价。",
+          "sources": [
+            {
+              "label": "§4.4 · MoE损失进化与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+            },
+            {
+              "label": "附录B.4 · MoE配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "固定进化引擎从GPT-4.1、Gemini-2.5-Pro、Claude-Sonnet-4配置池调用模型改写损失函数代码。",
+          "sources": [
+            {
+              "label": "§4.4 · MoE损失进化与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+            },
+            {
+              "label": "附录B.4 · MoE配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "seed": {
+          "value": "初始MoE负载均衡损失及固定训练/评价管线；候选损失函数是被优化程序。",
+          "sources": [
+            {
+              "label": "§4.4 · MoE损失进化与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+            },
+            {
+              "label": "附录B.4 · MoE配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "圆装填几何程序",
+      "learningCases": [
         2
-      ]
+      ],
+      "testCases": [
+        2
+      ],
+      "evolution": "固定圆数量和边界的几何问题，搜索构造/优化程序。",
+      "selection": "按几何合法性与半径和目标选择候选。",
+      "evaluation": "报告同一几何实例发现的最佳可行解，并与原有解比较。",
+      "isolation": "同实例直接优化，不是自然语言任务的训练/留出测试协议。",
+      "roles": {
+        "executor": {
+          "value": "直接运行候选几何优化程序，检查可行性并计算半径和。",
+          "sources": [
+            {
+              "label": "§4.1 · 圆装填程序",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+            },
+            {
+              "label": "附录B.1 · 几何配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "固定ShinkaEvolve引擎调用配置模型提议可编辑区域的程序变化。",
+          "sources": [
+            {
+              "label": "§4.1 · 圆装填程序",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+            },
+            {
+              "label": "附录B.1 · 几何配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "seed": {
+          "value": "几何初始程序、可行性约束检查与目标函数固定，档案支持继续探索。",
+          "sources": [
+            {
+              "label": "§4.1 · 圆装填程序",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+            },
+            {
+              "label": "附录B.1 · 几何配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "AIME2024答题harness搜索",
+      "learningCases": [
+        3
+      ],
+      "evolution": "AIME2024全部30题，75代；每候选对完整题集进行3次独立运行，每题最多10次调用。",
+      "selection": "AIME2024正确率及调用预算用于搜索与效率比较，没有独立的AIME2024验证划分。",
+      "evaluation": "搜索期间报告AIME2024表现；不把它标为未见测试。",
+      "isolation": "AIME2024题目反复参与搜索，属于同集适应；跨年份和跨模型另列。",
+      "roles": {
+        "executor": {
+          "value": "gpt-4.1-nano由候选AIME harness组织答题，权重固定。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "Gemini-2.5-Pro、Claude-Sonnet-4、o4-mini提议harness代码变化；GPT-4.1提供元建议和新颖性检查。Table 2的动态模型选择关闭。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        },
+        "seed": {
+          "value": "提供目标模型查询接口与可编辑Agent代码区域，固定题集评估器、进化控制器及每题最多10次调用约束。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            },
+            {
+              "label": "§3.1–3.3 · 档案、变异、评分",
+              "url": "https://arxiv.org/html/2509.19349v1#S3"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "label": "冻结AIME harness的年份与模型迁移",
+      "testCases": [
+        3
+      ],
+      "evolution": "本阶段不再搜索，使用AIME2024进化阶段发现的harness。",
+      "selection": "使用此前选定的harness，不将迁移结果写成新候选选择反馈。",
+      "evaluation": "AIME2023及2025；另将执行模型替换为GPT-4.1-mini、GPT-4.1、o4-mini。",
+      "isolation": "年份迁移与模型迁移分别检验泛化。论文对2023可能训练污染的解释是推测，不是确认的污染审计。",
+      "roles": {
+        "executor": {
+          "value": "选定harness先按不同年份题目评价；跨模型设置用GPT-4.1-mini、GPT-4.1和o4-mini替换原gpt-4.1-nano。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            }
+          ]
+        },
+        "modifier": {
+          "value": "本迁移评价阶段没有harness修改者工作，只更换题集或执行模型。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            }
+          ]
+        },
+        "seed": {
+          "value": "冻结AIME2024搜索得到的harness代码与模型调用逻辑。",
+          "sources": [
+            {
+              "label": "§4.2 · AIME搜索与迁移",
+              "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+            },
+            {
+              "label": "附录B.2 / Table 2 · AIME配置",
+              "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+            }
+          ]
+        }
+      }
     }
   ],
   "2305.10250": [

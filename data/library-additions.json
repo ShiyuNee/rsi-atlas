@@ -2504,6 +2504,10 @@
       {
         "label": "Shiyu 的相关解读",
         "url": "https://shiyunee.github.io/blogs/RSI-What-Evolves/"
+      },
+      {
+        "label": "同一工作的论文记录",
+        "url": "?paper=2506.13131"
       }
     ],
     "visibleKeys": [
@@ -2524,6 +2528,10 @@
           }
         ]
       }
+    ],
+    "workId": "alphaevolve",
+    "relatedRecords": [
+      "2506.13131"
     ]
   },
   {
@@ -3602,5 +3610,1818 @@
       }
     ],
     "priorityBasis": "本期阅读推荐；依据主题相关性、作者来源和公开关注信号，不作为质量排名。"
+  },
+  {
+    "id": "2203.14465",
+    "title": "STaR: Bootstrapping Reasoning With Reasoning",
+    "date": "2022-03-28",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2203.14465",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2203.14465"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "大规模推理标注成本高，少量示例提示又可能损失准确率。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "用模型自身生成的正确推理迭代训练参数，研究少量示例如何启动更强的推理能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "在多个推理数据集改善表现；外层生成、筛选和微调规则固定，标准答案仍提供监督，不是无监督的优化程序自修改。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "模型参数；推理轨迹先作为训练材料生成，随后蒸馏进参数。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "生成推理及微调后的语言模型执行下游回答；摘要未确认具体基础型号。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "模型生成推理；人预设的筛选和微调程序执行更新。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "检查最终答案是否正确；错误时给定正确答案再生成推理。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "预训练语言模型、少量推理示例和有答案但无推理的大规模题集。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "生成推理→检查答案→为错误题用正确答案生成推理→微调正确轨迹→重复。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "少量推理示例与有答案的题集；具体模型、题量和划分尚未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "摘要报告多个推理数据集；具体独立测试和选版本协议尚未据全文确认。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "用模型自身生成的正确推理迭代训练参数，研究少量示例如何启动更强的推理能力。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "Weights",
+      "Data",
+      "GoldLabel",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2203.14465"
+      }
+    ]
+  },
+  {
+    "id": "2401.10020",
+    "title": "Self-Rewarding Language Models",
+    "date": "2024-01-18",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2401.10020",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2401.10020"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "人工偏好及冻结奖励模型可能限制反馈质量，也不能随被训练模型一起改进。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "同一语言模型既回答问题又以 judge 提示给出奖励，迭代训练回答及评分能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "摘要报告三轮迭代DPO后回答与奖励质量改善；不等同于训练算法或验收标准自动自修改。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "模型参数，包括回答行为与模型给出奖励的能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "Llama 2 70B既生成回答也按judge提示给奖励；这里的型号由摘要列明，具体配置尚未阅读全文。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "模型自身以LLM-as-a-Judge方式给候选回答打分；固定迭代DPO训练程序更新参数。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "模型按评审提示给回答评分，形成偏好训练信号；独立奖励质量检查与训练奖励应分开。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Llama 2 70B；训练种子与评审模板尚未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "模型生成回答并自评分→构造偏好→DPO更新→下一轮再生成和评价。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "迭代偏好训练；初始人类监督材料及数据划分尚未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "摘要列AlpacaEval 2.0与奖励质量评测，具体选版本与测试隔离尚未据全文确认。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "同一语言模型既回答问题又以 judge 提示给出奖励，迭代训练回答及评分能力。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "Weights",
+      "LLMJudge",
+      "Data",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2401.10020"
+      }
+    ]
+  },
+  {
+    "id": "2409.12917",
+    "title": "Training Language Models to Self-Correct via Reinforcement Learning (SCoRe)",
+    "date": "2024-09-19",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2409.12917",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2409.12917"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "仅在离线纠错轨迹上做SFT会遇到错误分布不匹配或纠错行为坍缩。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "通过模型自身分布下的多轮在线RL训练可在推理时执行的纠错策略。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "在MATH与HumanEval改善纠错表现；训练参数学会的行为仍是在部署时修订当前回答，不证明系统持续自修改。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "被训练模型参数；部署时当前答案会被修订。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "摘要列Gemini 1.0 Pro及1.5 Flash；训练后同模型执行多轮回答修订，具体设置未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "在线RL训练程序利用模型自身生成的多轮纠错轨迹更新参数，外层算法固定。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "多轮RL的任务奖励及鼓励有效纠错的奖励设计；摘要未确认具体正确性判分实现。自生成轨迹不等于没有正确性反馈。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Gemini 1.0 Pro与1.5 Flash；具体训练配置待全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "多轮RL形成较不易坍缩的初始化→加入纠错奖励训练→测试多轮纠错。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "模型自身生成的在线纠错轨迹；训练问题及奖励细节待全文核实。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "MATH、HumanEval；具体训练与测试题划分待全文核实。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "通过模型自身分布下的多轮在线RL训练可在推理时执行的纠错策略。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "Weights",
+      "Data",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2409.12917"
+      }
+    ]
+  },
+  {
+    "id": "2407.18219",
+    "title": "Recursive Introspection: Teaching Language Model Agents How to Self-Improve (RISE)",
+    "date": "2024-07-25",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2407.18219",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2407.18219"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "模型即使被告知回答错误，也不一定能够随着交互轮次改善答案。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "将问题建模为多轮MDP，用迭代微调训练模型在已有失败后修订答案的能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "摘要报告多个开源模型在数学推理上同推理预算优于若干单轮策略；Recursive指多轮修订，不等于修改优化算法自身。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "被微调模型参数；测试时修订当前回答。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "摘要列Llama2、Llama3及Mistral模型；具体尺寸和配置未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "固定多轮数据收集及训练程序；模型执行回答与修订。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "可选环境反馈与训练中的答案评价；摘要没有完整披露各实验反馈权限。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Llama2、Llama3、Mistral系列；具体型号和harness待全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "收集模型多轮尝试→训练如何改变失败回答→重复收集和训练→测试连续纠错。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "多轮数据收集及迭代微调；具体监督来源与划分待全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "数学推理任务；正文的同预算和跨域实验设置尚未据全文确认。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "将问题建模为多轮MDP，用迭代微调训练模型在已有失败后修订答案的能力。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "Weights",
+      "Data",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2407.18219"
+      }
+    ]
+  },
+  {
+    "id": "funsearch",
+    "title": "Mathematical discoveries from program search with large language models (FunSearch)",
+    "date": "2023-12-14",
+    "dateLabel": "正式出版",
+    "category": "methods",
+    "methodType": "artifact",
+    "methodTypes": [
+      "artifact"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://www.nature.com/articles/s41586-023-06924-6",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://www.nature.com/articles/s41586-023-06924-6"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "单独LLM生成容易出错，难以对开放数学及算法问题产生可验证的新发现。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "以冻结语言模型提出程序变体，用执行评估和多样性程序数据库持续搜索算法。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "在cap set与在线bin packing获得新构造或更好的启发式；变化留在算法程序，不表示生成模型或搜索程序学会自修改。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "用于求解数学或算法问题的程序；语言模型参数不更新。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "预训练语言模型生成程序；生成的程序由evaluate函数执行评价，模型参数不微调。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "预训练语言模型提出程序；固定进化程序管理候选。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "人提供的可执行evaluate函数检查与评分。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "问题规格、初始程序和可选程序骨架，配合冻结LLM与程序数据库。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "从数据库采样高分程序作提示→LLM生成变体→执行评价→保存候选→重复。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "不训练LLM参数；搜索围绕指定问题和评估器进行。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "cap set与在线bin packing；各实验留出条件尚未全文核实。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "以冻结语言模型提出程序变体，用执行评估和多样性程序数据库持续搜索算法。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "ExecutableVerifier",
+      "Archive",
+      "OfflineSearch",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": []
+  },
+  {
+    "id": "2506.13131",
+    "title": "AlphaEvolve: A coding agent for scientific and algorithmic discovery",
+    "date": "2025-06-16",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "artifact",
+    "methodTypes": [
+      "artifact"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2506.13131",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2506.13131"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "复杂科学与计算基础设施算法需要大量可执行试验和搜索，单次代码生成不足。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "LLM直接修改算法代码，借助一个或多个评估器及进化搜索持续保留有潜力的版本。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "白皮书报告科学算法及计算基础设施改进；产物用于AI训练基础设施不等于生成者自身经过持续递归训练。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "算法程序与计算基础设施代码；摘要没有声明基础LLM参数更新。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "LLM管线生成代码，计算环境执行候选算法；摘要未确认各角色型号。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "LLM管线提出代码修改，固定进化搜索调用评估器。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "一个或多个自动评估器提供正确性与性能反馈。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "初始算法代码、问题规格与评估器；详细系统设置尚未全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "提出代码修改→运行评估→保留和继续改有潜力的程序→重复。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "针对指定算法问题搜索；不将搜索数据当作模型参数训练数据。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "数学、计算机科学及基础设施应用；独立测试条件按具体实验核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "LLM直接修改算法代码，借助一个或多个评估器及进化搜索持续保留有潜力的版本。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "ExecutableVerifier",
+      "Archive",
+      "OfflineSearch",
+      "Update20261001"
+    ],
+    "links": [
+      {
+        "label": "同一工作的官方解读",
+        "url": "?paper=deepmind-alphaevolve-blog"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "workId": "alphaevolve",
+    "relatedIds": [
+      "deepmind-alphaevolve-blog"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "relatedRecords": [
+      "deepmind-alphaevolve-blog"
+    ]
+  },
+  {
+    "id": "2609.14857",
+    "title": "ModularRSI: Modular and Generalizable Recursive Harness Self-Improvement",
+    "date": "2026-09-14",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.14857",
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对§3.1–3.7、§4、§5.1–5.3及§6.1–6.3：角色、Terminus-2起点、验收、实际进化任务量、测试及跨模型实验；不代表全文所有实验与附录已复核。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.14857"
+      },
+      "method": {
+        "label": "§3 方法、模块起点、验证及冻结",
+        "url": "https://arxiv.org/html/2609.14857"
+      },
+      "data": {
+        "label": "§4 进化数据构建",
+        "url": "https://arxiv.org/html/2609.14857"
+      },
+      "exp": {
+        "label": "§5.1–5.3、§6.1–6.3 实验设置与迁移",
+        "url": "https://arxiv.org/html/2609.14857"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "同评测题进化、单条失败诊断和整体改harness容易混入题目特化并难以归因。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "通过成败轨迹对照、跨题证据聚合与受限模块修改研究可泛化的harness进化。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "冻结后的harness在所测同域、跨域及跨模型设置改善表现；模块独立进化后集成优于整体验化等对照。证据是机制与数据隔离下的迁移，不是训练参数或外层优化程序自修改。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "只开放任务执行相关的五类模块及其函数：执行循环、工具、观察处理、上下文管理和完成检测；沙箱初始化、并行基础设施及LLM通信不在该编辑范围，模型参数固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "主要进化模型为DeepSeek-V4-Flash-Preview和DeepSeek-V4-Flash-0731；表2测试用DeepSeek-V4-Flash-Preview。冻结所得harness后另接GLM-5.2及MiniMax-2.5检查跨模型迁移。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "被进化agent本身担任Code-Modify Agent，分析轨迹、修改函数并检查diff；是相同基础模型的修改角色，未训练编辑模型参数。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "任务自带评估器给出成功/失败；同题成败轨迹及跨题共性用于诊断。验收检查代码结构、diff是否写入题目特化及实际运行是否出错，不是用独立测试分数逐轮选版本。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "把Harbor的Terminus-2行为机制重新组织成五个模块，作为各模块独立进化的共同起点。",
+        "refs": [
+          "method"
+        ]
+      },
+      "cycle": {
+        "value": "同题多次执行并保存轨迹→跨题合并与排序缺陷→只改当前模块函数→静态检查、diff审查与运行验证，失败回滚→各模块独立进化后在进化数据上集成→冻结函数库；测试时仍可按任务选择库中函数。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "公开资源构建2000个Harbor格式任务，按TB/SWE高层领域标签检索并做运行、人工及语义重合检查；实际实验各从TB-related和SWE-related中选120题进化，每种进化过程3 epochs。不是2000题都参与本次进化。",
+        "refs": [
+          "data",
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "沿用进化批次的轨迹定位问题；每次修改随机抽当前批次2题检查可执行性。静态检查或diff/执行审查失败则回滚；跨模块集成也在进化集进行。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "冻结harness后测Terminal-Bench 2.0的89题和SWE-bench Verified的500题；两类进化数据分别测同域及跨域基准，另测更换基础模型。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "进化任务来源与下游benchmark实例分离，并做语义重合筛查；下游仅提供任务领域标签作为建数据线索。最终函数库在测试前冻结，但测试时任务相关函数选择仍运行。结果支持所测范围的任务和模型迁移，不证明修改者或外层验证程序自进化。",
+        "refs": [
+          "method",
+          "data",
+          "exp"
+        ]
+      },
+      "novelty": {
+        "value": "把任务级成败转成跨题可重复的局部机制诊断，再独立进化模块和集成；还把建数据资源与实际使用的进化题明确分开。",
+        "refs": [
+          "method",
+          "data",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "HarnessCode",
+      "SameModel",
+      "HeldOut",
+      "CrossModel",
+      "ExecutableVerifier",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "parameterTargets": [],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "classificationSources": [
+      {
+        "label": "§3 方法、模块起点、验证及冻结",
+        "url": "https://arxiv.org/html/2609.14857"
+      },
+      {
+        "label": "§5.1–5.3、§6.1–6.3 实验设置与迁移",
+        "url": "https://arxiv.org/html/2609.14857"
+      }
+    ]
+  },
+  {
+    "id": "2609.24972",
+    "title": "RRSI: Regularized Recursive Self-Improvement of Agent Harnesses",
+    "date": "2026-09-21",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.24972",
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对§2、§3.1–3.3及§4.1–4.3：可编辑对象、反馈与选版本、执行/修改型号、三域harness起点及迁移数据；附录超参数未全面复核。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.24972"
+      },
+      "method": {
+        "label": "§2–3 冻结策略、正则化与验收",
+        "url": "https://arxiv.org/html/2609.24972"
+      },
+      "exp": {
+        "label": "§4.1–4.3 模型、起点、数据和结果",
+        "url": "https://arxiv.org/html/2609.24972"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "进化harness可能记住开发题，导致域内增益难以保留到域外任务。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "约束候选生成和选择，减少benchmark特化、无效修改与额外运行成本。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "所测ID与OOD留出设置均保留改善；去掉提案或验收约束时，开发集分数可能升高而迁移降低。该对照支持约束搜索过程的价值，不能据此将开发集增益也当泛化。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "允许改提示、控制流、配置、上下文、工具、技能、记忆和subagent等harness组件；基础模型参数冻结。约束施加在每轮修改规模与候选验收上，而非先固定一套可改组件。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "三域均使用冻结的Claude Opus 4.8执行任务；实验对照共享同一策略、初始harness、进化数据及候选预算。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "提案者、跨轮失败分析者和泄漏critic均使用Claude Opus 4.8；同一型号承担不同角色。外层预算、选择和剪枝规则由RRSI规定，不是这些规则自己进化。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "编码用任务单测；工作区任务使用judge评分；工程设计用冻结仿真器。进化阶段同时记录分数和策略token成本，检查候选是否题目特化、收益可信及成本增长合理。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "seed": {
+        "value": "编码域从Terminus-2起步；工作区和工程域用ReAct循环、MCP工具网关、动态工具集合及ReSum式上下文管理。所有方法从同域相同H0起步。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "cycle": {
+        "value": "执行当前harness→利用跨轮证据选修改方向→按逐渐收紧的预算生成少量编辑→critic和成本/收益条件过滤→剪除持续无用组件→保留满足条件的版本；跨基准测试时保持harness不变。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "不更新模型参数。三个域分别在Terminal-Bench 2.1、Harvey LAB和EngDesign进化；Harvey LAB固定120题进化，另40题作ID留出。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "候选与当前版本在同一进化集上比较，进化分数持续参与选版本；成本容忍参数也在进化集确定，再固定用于迁移评估。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "ID留出为Harvey LAB的40题；OOD测试为SWE-bench Verified、JobBench、GDPval、APEX-Agents和Frontier-Eng。它们不用于本域harness搜索。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "进化集用于生成与选择，不能当独立测试；论文另报告ID及五个OOD基准上的固定harness结果。正则化是减少过拟合的机制及实证，不构成对任意任务分布的统计保证。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "novelty": {
+        "value": "保留开放的harness编辑空间，同时约束单轮修改容量、跨轮探索与验收成本，研究开发集涨分与可迁移收益之间的差别。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "HarnessCode",
+      "RegressionGate",
+      "CrossDomain",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "parameterTargets": [],
+    "dateNote": "arXiv v1首次提交为2026-09-21 17:54 UTC，即北京时间9月22日凌晨；当前全文为9月23日v2。",
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "classificationSources": [
+      {
+        "label": "§2–3 冻结策略、正则化与验收",
+        "url": "https://arxiv.org/html/2609.24972"
+      },
+      {
+        "label": "§4.1–4.3 模型、起点、数据和结果",
+        "url": "https://arxiv.org/html/2609.24972"
+      }
+    ]
+  },
+  {
+    "id": "2609.33180",
+    "title": "Which Self-Improvements Should We Trust? Reliable Self-Improvement When Agents Reuse Their Benchmarks",
+    "date": "2026-09-27",
+    "dateLabel": "首次提交",
+    "category": "theory",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.33180",
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对§2.1–2.2与§3.1–3.2：保证的独立抽样及仅升级反馈假设、具体分类搜索实验、训练/开发/复用评估/最终H分离；未复核附录证明。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.33180"
+      },
+      "method": {
+        "label": "§2.1–2.2 假设、反馈权限与验收保证",
+        "url": "https://arxiv.org/html/2609.33180"
+      },
+      "exp": {
+        "label": "§3.1–3.2 Covertype设置及独立H评估",
+        "url": "https://arxiv.org/html/2609.33180"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "反复用同一有限评估集指导搜索会产生自适应过拟合，普通多重比较校正未必控制这种依赖。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "REUSE限制回传给搜索器的评估信息，并控制整段升级历史的统计风险。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "在明确假设下保证整段升级的统计有效性；Covertype配置搜索中，REUSE没有出现由独立H估计的错误升级，并保留与强对照接近的最终收益。实证范围是受限分类配置搜索，不是任意harness源码演化。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "主要贡献是反复复用评估数据时的候选验收机制。实证搜索模型家族、特征、预处理和超参数，每次至多改两项；并非完整harness代码自修改。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "executor": {
+        "value": "实证由scikit-learn分类管线执行Covertype二分类，不是语言agent直接回答benchmark；理论对象允许更广的完整AI系统。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "Qwen2.5-7B-Instruct提出分类管线配置修改；固定REUSE验收器决定升级。它不训练或重写提案LLM本身。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "开发集反馈可给提案者；复用评估集S只回传升级决策，不回传分数或逐题结果。候选与当前版本配对比较，并为各轮及可能的升级历史分配风险预算。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "seed": {
+        "value": "实证从相同梯度提升分类配置起步；各方法共享提案者、候选空间与训练数据。理论另要求评估集独立于初始系统、开发数据与搜索随机性。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "cycle": {
+        "value": "LLM依据开发数据和已允许的决策历史提候选→从头拟合候选→在S上作配对检验→满足条件才升级→只回传升级决定→重复。未通过则保留当前版本。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "Covertype固定随机划分中5万样本拟合候选分类器，2万开发样本向提案者反馈；每轮最多8个配置候选，运行200轮。这里被拟合的是分类器，不是提案LLM。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "从6万样本评估池中抽2000或10000样本构成S，整段搜索复用；S参与升级决策，不是从未使用的最终测试。提案者只能看到来自S的升级历史。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "test": {
+        "value": "另有与训练、开发、S分离的5万样本H，任何方法均不能访问；用H估计每次升级的总体收益和最终改善，分别在两种S大小下运行30个seed。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "形式保证依赖独立i.i.d.评估集及decision-only反馈。实验的H仅用于最终审计，S可复用但信息回传受限；不能把有限H估计写成真实总体被完整观测，也不能把这些配置实验等同所有agent自改进。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "novelty": {
+        "value": "同时处理同轮选优、多轮重复检验与复用评估集造成的自适应依赖；把判分和对搜索器披露的信息分开，而非只对候选做普通多重比较。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "BenchmarkScore",
+      "RegressionGate",
+      "AdaptiveEvaluation",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "parameterTargets": [],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": []
+  },
+  {
+    "id": "2609.37968",
+    "title": "SelfSearch: Reward-Free Search for Self-Improving Agents",
+    "date": "2026-09-29",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.37968",
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对§2与§3.1–3.2：同一实现的角色、不同修改/执行模型、episode共享、固定runtime边界、最终checkpoint及下游测试；不覆盖全部消融和附录。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.37968"
+      },
+      "method": {
+        "label": "§2 自修改episode、双谱系及固定runtime",
+        "url": "https://arxiv.org/html/2609.37968"
+      },
+      "exp": {
+        "label": "§3.1–3.2 模型、最终checkpoint与测试",
+        "url": "https://arxiv.org/html/2609.37968"
+      },
+      "infra": {
+        "label": "§2 Search environment及§3.1 初始实现",
+        "url": "https://arxiv.org/html/2609.37968"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "每个候选都重跑下游评测成本高，并把搜索限定到被评测任务。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "复用过去自修改尝试的推理、工具操作和结果记录，在搜索中不给下游奖励。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "两个模型设置乘三个benchmark的谱系平均成功率均改善，但最佳谱系随设置变化；成本报告包含平均执行成本与共同成功题上的比较，搜索成本另计，不能把所有成本口径混成一个下降比例。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "agent仓库中的指令、工具与编排程序可改，后代实现也参与下一轮修改；底层权重固定。模型-工具交互循环、型号、推理配置和预算由仓库外固定runtime管理。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "GPT设置用gpt-5.6-luna执行下游任务；DeepSeek设置用deepseek-v4-flash-0731。基础与进化版本共享下游模型及执行限制，权重固定。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "GPT设置用gpt-5.6-sol，DeepSeek设置用deepseek-v4-pro-0813做自修改。任务与修改复用同一agent实现，但两阶段模型不同；每个继承后的实现执行下一轮自修改。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "搜索阶段读取既往自修改episode的推理、工具动作、结果与代码变更，也能接收当前工具交互和局部检查反馈；不给下游benchmark任务或成绩。reward-free仅指没有下游奖励指导搜索。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "来自DGM发布实现的B0，调整了策略路由和执行循环；先用能力和适应两个方向各跑一次，仅保留episode记录、丢弃修改实现，两条谱系仍从相同B0开始。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "cycle": {
+        "value": "能力和适应两条谱系各用上轮双方episode修改自身→后代继承实现并执行下一轮修改→记录共享、实现各自保留→10代后冻结最终两版本再测。归档所有候选，但主实验不按下游分数挑最好checkpoint。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "不训练参数。搜索只使用self-improvement episode和局部检查；无网络隔离容器中执行10代双谱系搜索，不接触下游题目和评测结果。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "episode内可检查修改并获取工具反馈；代码修改定义下一代，运行中的agent本轮不被即时改写。最终谱系版本由固定代数确定，未用下游成绩挑版本。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "test": {
+        "value": "冻结后测SWE-bench Verified的120题、SWE-bench Multilingual抽取60题及Terminal-Bench 2.1全部89题；报告两条谱系各自成绩和均值。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "下游任务与评估结果不进入搜索；主比较使用第10代最终版本。说明相同实现的工具/过程可影响后续修改，但基础模型不同且runtime固定，不能称所有改进机制完全开放。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "novelty": {
+        "value": "把自修改操作过程当作下一轮经验，不用昂贵下游奖励选择候选；同时让继承后的agent实现继续做修改，而不是固定外置编辑者。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "HarnessCode",
+      "Improver",
+      "StrongerBuilder",
+      "HeldOut",
+      "SelfFeedback",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "parameterTargets": [],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": [],
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem",
+      "OtherModifier",
+      "OtherEditor"
+    ],
+    "classificationSources": [
+      {
+        "label": "§2 自修改episode、双谱系及固定runtime",
+        "url": "https://arxiv.org/html/2609.37968"
+      },
+      {
+        "label": "§3.1–3.2 模型、最终checkpoint与测试",
+        "url": "https://arxiv.org/html/2609.37968"
+      }
+    ]
+  },
+  {
+    "id": "2609.37834",
+    "title": "Mixture of Self-Improving Branches For Agent Harness Optimization",
+    "date": "2026-09-29",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.37834",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.37834"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "固定开发集与固定proposal policy会让harness搜索沿单一路径陷入局部最优。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "让分支各自调整开发题子集和提案策略，再用router组合互补的harness。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "在数学与编码任务相对Meta-Harness报告改善；摘要说harness和router选择仅用开发数据，细节待阅读全文。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "各分支的harness、proposal policy与开发数据子集；底层模型参数设置尚未据全文确认。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "摘要未确认具体执行模型与运行配置；不将修改者自动当作执行者。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "各分支依据自身搜索历史修订提案规则；router对新输入选分支头。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "各分支领先harness在开发题上的解题表现及其相对其他分支的差异。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "Meta-Harness式代码生成与评价搜索起点，扩为多分支。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "分支提出修改并评估→调整子集和提案规则→形成互补分支→开发集选分支头和router→新输入路由执行。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "搜索中动态分配开发题；不把数据子集变化自动视为模型参数训练。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "Olympiad级数学、Terminal-Bench 2.0、SWE-bench Lite；摘要声称测试结果不用于harness/router选择。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "让分支各自调整开发题子集和提案策略，再用router组合互补的harness。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "HarnessCode",
+      "Improver",
+      "Population",
+      "HeldOut",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": []
+  },
+  {
+    "id": "2609.37950",
+    "title": "Video-RSI: Recursive Self-Improvement of Video Understanding Agents via Harness Evolution",
+    "date": "2026-09-29",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.37950",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "已核对原文摘要与日期；尚未定向核实全文实验设置。摘要未给出的型号、数据划分、验收规则明确保留为未确认。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.37950"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "旧执行轨迹只含现行harness已经看过的证据，难以区分不同失败解释。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "主动回看原训练视频增补观察，验证失败原因后改进视频证据获取与使用。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "报告准确率与处理帧数之间更好的权衡；具体训练、选版本与测试划分待阅读全文。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "视频理解agent的可执行harness，控制观察哪些内容及怎样使用观察。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "摘要未确认具体执行模型与运行配置；不将修改者自动当作执行者。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "视频agent使用自身语言模型提出harness修订。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "主动视频调查取得的额外证据，结合回答准确率与视觉成本评价修订。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "初始视频理解agent及可执行观察harness，具体模型待全文核对。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "分析失败→重访原训练视频验证解释→提出harness修改→按准确率及视觉成本保留修订。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "原训练视频及其执行经验；是否存在独立选版本集待全文核实。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "视频理解benchmark；具体数据划分与跨任务迁移尚未据全文确认。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "主动回看原训练视频增补观察，验证失败原因后改进视频证据获取与使用。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "HarnessCode",
+      "SameModel",
+      "CostAware",
+      "Multimodal",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": []
+  },
+  {
+    "id": "2609.31760",
+    "title": "What Stops Recursive Self-Improvement in Robotics? Lessons from 123 Rounds of Agentic Skill Discovery",
+    "date": "2026-09-23",
+    "dateLabel": "首次提交",
+    "category": "evaluation",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "contentType": "report",
+    "url": "https://arxiv.org/abs/2609.31760",
+    "reviewStatus": "abstract-checked",
+    "reviewScope": "核对论文摘要、首次提交日期及technical report声明；123轮结论仅按摘要记录，未审计全部轨迹和组件设置。",
+    "reviewedAt": "2026-10-01",
+    "references": {
+      "main": {
+        "label": "原论文摘要与日期",
+        "url": "https://arxiv.org/abs/2609.31760"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "多次局部改进通过测试，却未必积累成完整机器人任务能力。",
+        "refs": [
+          "main"
+        ]
+      },
+      "position": {
+        "value": "用123轮技能发现与安装的持续实验诊断机器人自改进的外部瓶颈。",
+        "refs": [
+          "main"
+        ]
+      },
+      "conclusion": {
+        "value": "目标冰箱操作任务没有成功；作者归纳感知关系缺口、技能链早期失败、弱测试与误导记忆等问题，不能外推所有机器人RSI无效。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "机器人的技能代码与安装的外部模型；底层agent参数是否变化待全文核实。",
+        "refs": [
+          "main"
+        ]
+      },
+      "executor": {
+        "value": "机器人执行家用操作及仿真测试；摘要未列具体agent或机器人型号。",
+        "refs": [
+          "main"
+        ]
+      },
+      "modifier": {
+        "value": "agent观察失败、判断能力缺口，编写技能或查找安装外部模型。",
+        "refs": [
+          "main"
+        ]
+      },
+      "verdict": {
+        "value": "仿真中的测试与目标任务执行结果；测试错误或覆盖不足会导致错误方向的改进。",
+        "refs": [
+          "main"
+        ]
+      },
+      "seed": {
+        "value": "家用操作机器人及其仿真、技能链、记忆和评估harness；具体组件待阅读全文。",
+        "refs": [
+          "main"
+        ]
+      },
+      "cycle": {
+        "value": "观看失败→诊断缺少能力→写技能或安装模型→仿真测试→重复。",
+        "refs": [
+          "main"
+        ]
+      },
+      "train": {
+        "value": "123轮家用操作改进历史；不将持续交互自动等同参数训练。",
+        "refs": [
+          "main"
+        ]
+      },
+      "debug": {
+        "value": "摘要未确认开发集、候选验收与版本选择的具体设置。",
+        "refs": [
+          "main"
+        ]
+      },
+      "test": {
+        "value": "将调味品放到冰箱上层搁架的目标任务及局部技能测试。",
+        "refs": [
+          "main"
+        ]
+      },
+      "isolation": {
+        "value": "当前仅核对摘要；训练、选版本与测试隔离尚未全文确认，不据摘要结论追加独立泛化保证。",
+        "refs": [
+          "main"
+        ]
+      },
+      "novelty": {
+        "value": "用123轮技能发现与安装的持续实验诊断机器人自改进的外部瓶颈。",
+        "refs": [
+          "main"
+        ]
+      }
+    },
+    "tags": [
+      "Skill",
+      "ExecutableVerifier",
+      "FailureAnalysis",
+      "Update20261001"
+    ],
+    "links": [],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
+    "attributions": []
   }
 ]
