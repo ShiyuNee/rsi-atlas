@@ -77,3 +77,28 @@ assert.equal(coverageIds.length,new Set(coverageIds).size,'Featured and suppleme
 assert.deepEqual(coverageIds.slice().sort(),[...papers.keys()].sort(),'Every catalog record must have a visible path from the overview.');
 console.log(`Passed: interactive review tree, ${nodes.size} questions, ${reviewTreePaperIds(tree).length} works, source-backed comparisons, chapter links and shared trunk structure.`);
 console.log(`Passed: artifact boundary and coverage disclosure account for all ${coverage.total} catalog records.`);
+
+// The reading guide and both trees must agree on the task/meta distinction.
+assert.deepEqual(tree.layers,data.problemMap.tree.layers);
+assert.deepEqual(tree.layers.map(l=>[l.id,l.branches]),[
+ ['task',['signal','retain']],['meta',['improve']],['evidence',['evaluate']]
+]);
+assert.deepEqual(tree.layers.flatMap(l=>l.branches).sort(),tree.branches.map(b=>b.id).sort());
+assert.deepEqual(review.guide.steps.map(s=>s.id),tree.branches.map(b=>b.id));
+assert.deepEqual(review.chapters.map(c=>c.id),[
+ 'scope',...review.guide.steps.flatMap(s=>s.chapters),'synthesis'
+],'The chapter order must follow the reading guide without omitting or repeating chapters.');
+for(const step of review.guide.steps){
+ assert(step.chapters.every(id=>chapters.has(id)),`Broken guide link: ${step.id}`);
+ assert(step.title&&step.text&&step.label);
+}
+for(const chapter of review.chapters)assert(chapter.mainline,`${chapter.id}: missing place in the main argument`);
+for(const branch of tree.branches)assert(branch.relationLabel&&branch.relation);
+for(const node of tree.nodes){
+ assert(node.relation?.label&&node.relation.text,`${node.id}: unexplained method relationships`);
+ for(const route of node.routes)assert(route.kind,`${node.id}: unlabeled method or evidence role`);
+}
+for(const connection of tree.connections){
+ assert(connection.kind&&['→','↔'].includes(connection.symbol),'Cross-branch links need a relationship type and direction.');
+}
+console.log('Passed: task/meta/evaluation grouping, mainline chapter order and links, explicit relationships within and across branches.');
