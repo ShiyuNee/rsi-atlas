@@ -145,6 +145,8 @@ def build():
     for p in output['papers']:
         e = problem_map['entries'][p['id']]
         p['researchProblems'] = [e['primary'], *e['related']]
+    from mechanism_classifications import attach_mechanism_classifications
+    attach_mechanism_classifications(output)
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(f"Built {len(output['papers'])} library entries ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output

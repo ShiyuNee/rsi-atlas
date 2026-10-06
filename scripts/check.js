@@ -47,7 +47,7 @@ assert(get('2604.25850').brief.seed.toLowerCase().includes('bash'));
 assert(get('2604.25850').brief.executor.includes('high'));
 for(const type of Object.keys(data.methodTypes)){
  const selected=query({category:'methods',quick:type});assert(selected.length>0);
- assert(selected.every(p=>p.methodType===type));
+ assert(selected.every(p=>(p.methodTypes||[p.methodType]).includes(type)));
 }
 assert(query({category:'evaluation',facets:{priority:['C']}}).length>0);
 assert.equal(query({category:'dataset'}).length,0);
@@ -199,3 +199,5 @@ require('./check_library.js');
 
 require('./check_problem_map.js');
 require('./check_field_review.js');
+require('./check_classifications.js');
+require('./check_update.js');

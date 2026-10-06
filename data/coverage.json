@@ -339,9 +339,7 @@
     "id": "2506.10943",
     "title": "SEAL / Self-Adapting Language Models",
     "url": "https://arxiv.org/abs/2506.10943",
-    "missing": [
-      "证据边界与局限"
-    ],
+    "missing": [],
     "partial": [],
     "scope": "原文定位初核：摘要、方法概述或选取的实验段落；不代表逐项配置均已核实。",
     "systemDataScope": "数据与基础系统定向核查；数值、来源和角色按原文对应段落记录，未确认的细节在正文标明。"

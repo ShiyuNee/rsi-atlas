@@ -8,7 +8,7 @@ const query=s=>all.filter(p=>matches(p,{q:'',category:'',quick:'all',year:'',tag
 assert.equal(all.length,142+records.length);
 assert.equal(new Set(all.map(p=>p.id)).size,all.length);
 assert.equal(new Set(all.map(p=>p.url)).size,all.length);
-assert.equal(records.length,31);
+assert.equal(records.length,data.libraryAdditions);
 for(const e of records){
  const p=all.find(p=>p.id===e.id);assert(p&&p.curated);
  assert(data.contentTypes[p.contentType]);assert(data.taxonomy[p.category]);
@@ -22,7 +22,10 @@ for(const e of records){
  }
  assert(p.visibleKeys.every(k=>p.profile.fields.some(f=>f.key===k)));
  if(['methods','evaluation'].includes(p.category))assert.deepEqual(p.visibleKeys,['object','executor','modifier','verdict','seed']);
- else assert(!p.profile.fields.some(f=>['train','debug','test'].includes(f.key)));
+ else if(p.profile.fields.some(f=>['train','debug','test'].includes(f.key))){
+  assert.equal(p.category,'theory',p.id+': empirical dimensions must belong to a research category');
+  for(const k of ['object','executor','modifier','verdict','seed','train','debug','test','isolation'])assert(p.profile.fields.some(f=>f.key===k),p.id+': incomplete experiment scope');
+ } else assert(!p.profile.fields.some(f=>['train','debug','test'].includes(f.key)));
  for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(a.sources.length);assert(p.tags.includes(a.tag));}
 }
 assert.equal(query({facets:{type:['repository']}}).length,1);
@@ -40,7 +43,7 @@ assert(f('2609.00768','verdict').includes('GPT-4o'));
 assert(f('2609.08183','isolation').includes('十项'));
 assert(f('icoder-27b','train').includes('28,952'));
 assert(f('metarsi-v1','test').includes('100'));
-console.log('Passed: 31 sourced library entries, content types, dimension scope, combined filters and data/feedback distinctions.');
+console.log(`Passed: ${records.length} sourced library entries, content types, dimension scope, combined filters and data/feedback distinctions.`);
 
 assert.equal(query({tags:['Update20260921']}).length,7);
 assert.equal(query({tags:['Update20260921'],facets:{type:['blog']}}).length,3);

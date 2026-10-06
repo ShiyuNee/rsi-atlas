@@ -606,19 +606,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "o1 读取评估日志提出改进问题，父版本 编程 task agent 用 Claude 3.5 Sonnet 实施源码修改。",
+        "value": "固定 o1 诊断器读取评估日志，提出问题描述和实现建议；被选中的父代 coding agent 用 Claude 3.5 Sonnet 实施自身源码修改。诊断器与实施修改的 agent 是不同角色。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2505.22954#S3"
+            "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+            "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2505.22954#S4.SS1"
-          },
-          {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+            "label": "§3 · 自修改与档案",
+            "url": "https://arxiv.org/html/2505.22954v3#S3"
           }
         ],
         "status": "recorded"
@@ -626,19 +622,15 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "coding agent 的代码与 harness，包括任务执行方式和工具使用逻辑。基础模型参数、外层父代选择和评测器固定。",
+        "value": "coding agent 的代码与 harness，包括任务执行方式和工具使用逻辑。基础模型参数、o1 诊断提示与诊断程序、外层父代选择和评测器固定。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2505.22954#S3"
+            "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+            "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2505.22954#S4.SS1"
-          },
-          {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+            "label": "§3 · 自修改与档案",
+            "url": "https://arxiv.org/html/2505.22954v3#S3"
           }
         ],
         "status": "recorded"
@@ -694,19 +686,15 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "独立的 o1 模型诊断评估日志并提出建议，修改者实现新 agent 版本，再运行编程任务。候选必须能编译并保留编辑仓库的能力才能入档；不要求每个后代立即超过父代，较弱版本也可成为后续改进的起点。",
+        "value": "独立的 o1 模型诊断评估日志并提出问题描述与实现建议，父代 coding agent 据此实现新版本，再运行编程任务。候选必须能编译并保留编辑仓库的能力才能入档；不要求每个后代立即超过父代，较弱版本也可成为后续改进的起点。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2505.22954#S3"
+            "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+            "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2505.22954#S4.SS1"
-          },
-          {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+            "label": "§3 · 自修改与档案",
+            "url": "https://arxiv.org/html/2505.22954v3#S3"
           }
         ],
         "status": "recorded"
@@ -738,23 +726,19 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "上述搜索子集的运行日志和成绩用于诊断、采样父代和筛选候选。",
+        "value": "搜索子集的运行日志和成绩用于诊断、采样父代和筛选候选。SWE-bench 的 o1 诊断提示还包含 private test patch（私有测试补丁）；不能把诊断器的可见信息等同于任务执行者的可见信息。",
         "sources": [
           {
-            "label": "§4.2",
-            "url": "https://arxiv.org/html/2505.22954#S4.SS2"
+            "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+            "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
           },
           {
-            "label": "§4.4",
-            "url": "https://arxiv.org/html/2505.22954#S4.SS4"
+            "label": "§3 · 自修改与档案",
+            "url": "https://arxiv.org/html/2505.22954v3#S3"
           },
           {
-            "label": "附录E.2",
-            "url": "https://arxiv.org/html/2505.22954#A5.SS2"
-          },
-          {
-            "label": "附录E.3",
-            "url": "https://arxiv.org/html/2505.22954#A5.SS3"
+            "label": "§4.2 · 分阶段评估",
+            "url": "https://arxiv.org/html/2505.22954v3#S4.SS2"
           }
         ],
         "status": "recorded"
@@ -786,8 +770,16 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "同域扩展集合含搜索题；跨评测基准实验才是该次进化从未接触的任务来源。",
+        "value": "同域扩展集合含搜索题；跨评测基准实验才是该次进化从未接触的任务来源。 SWE-bench 诊断阶段可见私有测试补丁；作者称人工检查未观察到针对测试硬编码，此信息边界本身不等于已证实作弊。",
         "sources": [
+          {
+            "label": "附录C.3 · 独立o1诊断及私有测试补丁",
+            "url": "https://arxiv.org/html/2505.22954v3#A3.SS3"
+          },
+          {
+            "label": "§3 · 自修改与档案",
+            "url": "https://arxiv.org/html/2505.22954v3#S3"
+          },
           {
             "label": "§4.2",
             "url": "https://arxiv.org/html/2505.22954#S4.SS2"
@@ -828,7 +820,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
+    "sourceDate": "2026-10-01",
     "roleAuditDate": "2026-09-09"
   },
   "2511.10395": {
@@ -1114,19 +1106,31 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "Polyglot 的自修改模型是 Claude 3.5 Sonnet (New)；其余三个领域均用 Claude 4.5 Sonnet 修改 task agent 和 meta-agent 代码。",
+        "value": "Polyglot 的自修改模型是 Claude 3.5 Sonnet (New)；其他领域使用 Claude 4.5 Sonnet。联合优化及§5.3允许修改 task-agent 和 meta-agent；§5.2迁移实验固定所选 meta-agent，仅让它生成新的 task-agent，以单独检验改进能力。",
         "sources": [
           {
-            "label": "§5.1",
-            "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+            "label": "附录D.1 · 领域执行与自修改模型",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS1"
           },
           {
-            "label": "§5.3",
-            "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
           },
           {
-            "label": "附录D.1",
-            "url": "https://arxiv.org/html/2603.19461#A4.SS1"
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -1194,15 +1198,39 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "上层修改者读取解题程序、改进程序以及历次成绩和日志，决定改哪一部分。两套程序都可编辑；用训练或验证成绩选版本，再按各领域的测试协议评价。",
+        "value": "meta-agent 读取程序、历次成绩与日志，产生可入档的新 agent。论文接收预测和机器人奖励设计在同一运行中联合优化；固定 meta-agent 的 IMO 迁移实验测 imp@50，另用200轮继续自修改实验检验累积效果，两者不混为同一协议。",
         "sources": [
           {
-            "label": "§5.1",
-            "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "§5.3",
-            "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -1210,23 +1238,47 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "论文评审：100 篇训练文章；Polyglot：60 道搜索题；机器人：Go2 前进任务；迁移后的 IMO 评分：100 道训练题。",
+        "value": "Polyglot：60 道搜索题。联合非编程主实验：100 篇训练文章与 Go2 前进奖励设计，同一运行共同优化。IMO：100 道训练题；§5.2固定meta-agent运行50轮，§5.3允许继续自修改运行200轮。",
         "sources": [
           {
-            "label": "附录C.1",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS1"
+            "label": "§5.1 · Polyglot结果",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.2",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS2"
+            "label": "附录C.1 · Polyglot设置",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
           },
           {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS3"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.4",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -1234,23 +1286,47 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "评审及 IMO 各另有 100 道 验证集；Polyglot 与机器人无单独 验证集，以训练成绩选版本。",
+        "value": "评审及 IMO 各另有 100 道验证集；Polyglot 与机器人无单独验证集，以训练成绩选版本。跨领域迁移的起点按后代相对改进及谱系深度折扣选择；IMO候选按验证成绩选择，再测独立测试。",
         "sources": [
           {
-            "label": "附录C.1",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS1"
+            "label": "§5.1 · Polyglot结果",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.2",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS2"
+            "label": "附录C.1 · Polyglot设置",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
           },
           {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS3"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.4",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
           }
         ],
         "status": "recorded"
@@ -1258,23 +1334,55 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "评审及 IMO 各 100 道 测试集；机器人改测抬高躯干；Polyglot 报 full 评测基准，原文同时称含 165 个未见任务。",
+        "value": "评审及 IMO 各 100 道测试集；机器人改测抬高躯干；Polyglot 报 full 评测基准，原文同时称含 165 个未见任务。另对从 ProofAutoGrader 改进出的grader评整个IMO-GradingBench，全集结果与100题独立测试分列。",
         "sources": [
           {
-            "label": "附录C.1",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS1"
+            "label": "§5.1 · Polyglot结果",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.2",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS2"
+            "label": "附录C.1 · Polyglot设置",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
           },
           {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS3"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.4",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 全集附加评测",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录E.4 · IMO grader全集结果",
+            "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
           }
         ],
         "status": "recorded"
@@ -1282,23 +1390,55 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "评审/IMO 三段划分；机器人跨目标。Polyglot 的 full 评测基准与未见部分口径需区分；IMO 全集附加结果也不等于独立测试子集。",
+        "value": "评审/IMO 三段划分；机器人跨目标。Polyglot 的 full 评测基准与未见部分口径需区分；IMO 全集附加结果也不等于独立测试子集。§5.2固定meta-agent的迁移与§5.3继续自修改分开：后者200轮中位测试0.640对0.610的差异未达统计显著。",
         "sources": [
           {
-            "label": "附录C.1",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS1"
+            "label": "§5.1 · Polyglot结果",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.2",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS2"
+            "label": "附录C.1 · Polyglot设置",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS1"
           },
           {
-            "label": "附录C.3",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS3"
+            "label": "§5.1 · 论文接收预测与机器人奖励联合优化",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS1"
           },
           {
-            "label": "附录C.4",
-            "url": "https://arxiv.org/html/2603.19461#A3.SS4"
+            "label": "附录A.4 · 多领域优化",
+            "url": "https://arxiv.org/html/2603.19461v1#A1.SS4"
+          },
+          {
+            "label": "附录C.2–C.3 · 数据与反馈",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS2"
+          },
+          {
+            "label": "§5.2 · 固定meta-agent迁移 / imp@50",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS2"
+          },
+          {
+            "label": "附录D.3–D.4 · 改进指标与迁移选择",
+            "url": "https://arxiv.org/html/2603.19461v1#A4.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 迁移后继续自修改",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录C.4 · IMO评分数据",
+            "url": "https://arxiv.org/html/2603.19461v1#A3.SS4"
+          },
+          {
+            "label": "§5.3 · 全集附加评测",
+            "url": "https://arxiv.org/html/2603.19461v1#S5.SS3"
+          },
+          {
+            "label": "附录E.4 · IMO grader全集结果",
+            "url": "https://arxiv.org/html/2603.19461v1#A5.SS4"
           }
         ],
         "status": "recorded"
@@ -1320,7 +1460,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
+    "sourceDate": "2026-10-01",
     "roleAuditDate": "2026-09-09"
   },
   "2603.28052": {
@@ -6022,15 +6162,23 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "知识任务用 SQuAD 训练集 学习生成 self-edit；ARC 用 11 个筛选后的训练任务学习数据增强/训练配置。",
+        "value": "知识任务用 SQuAD 训练集学习生成self-edit：两轮外层ReSTEM，每轮50份上下文、每份5个候选，候选各用3个随机种子评价后选平均效果最好者。ARC用11个筛选后的训练任务学习增强/训练配置。",
         "sources": [
           {
-            "label": "附录A.2",
-            "url": "https://arxiv.org/html/2506.10943#A1.SS2"
+            "label": "§4.2 / Table 2 · 单段落与CPT结果",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
           },
           {
-            "label": "附录B.1",
-            "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+            "label": "附录B.2–B.4 · self-edit训练与评估",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+          },
+          {
+            "label": "§4.1 / Table 1 · ARC self-edit成功率",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+          },
+          {
+            "label": "附录A.2–A.3 · ARC训练与测试",
+            "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -6038,15 +6186,35 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "内层实际微调后，以问题作答或 ARC 输出的正确率给 self-edit 外层 强化学习（根据奖励调整模型行为） 奖励。",
+        "value": "内层实际微调后的问答或ARC正确性用于外层训练，不把生成文本的表面质量当作主实验奖励。SQuAD提示格式对照分别比较无RL与相同格式的RL结果；连续更新另测旧题保留。",
         "sources": [
           {
-            "label": "附录A.2",
-            "url": "https://arxiv.org/html/2506.10943#A1.SS2"
+            "label": "§4.2 / Table 2 · 单段落与CPT结果",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
           },
           {
-            "label": "附录B.1",
-            "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+            "label": "附录B.2–B.4 · self-edit训练与评估",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+          },
+          {
+            "label": "§4.1 / Table 1 · ARC self-edit成功率",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+          },
+          {
+            "label": "附录A.2–A.3 · ARC训练与测试",
+            "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
+          },
+          {
+            "label": "附录B.11 / Table 10 · 提示格式对照",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS11"
+          },
+          {
+            "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+            "url": "https://arxiv.org/html/2506.10943v2#S5"
+          },
+          {
+            "label": "附录B.6 · 保留实验误差",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
           }
         ],
         "status": "recorded"
@@ -6054,15 +6222,23 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "知识任务：SQuAD evaluation 的 200 个新文本段落、974 个问题；ARC：8 个未见任务。",
+        "value": "知识任务单段落适应：SQuAD evaluation 的200个新段落、974个问题。CPT另聚合200或2067段落的self-edits后全量微调。ARC：8个未见任务，每任务5个独立self-edits，报告适应成功的edit比例。",
         "sources": [
           {
-            "label": "附录A.2",
-            "url": "https://arxiv.org/html/2506.10943#A1.SS2"
+            "label": "§4.2 / Table 2 · 单段落与CPT结果",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
           },
           {
-            "label": "附录B.1",
-            "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+            "label": "附录B.2–B.4 · self-edit训练与评估",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+          },
+          {
+            "label": "§4.1 / Table 1 · ARC self-edit成功率",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+          },
+          {
+            "label": "附录A.2–A.3 · ARC训练与测试",
+            "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
           }
         ],
         "status": "recorded"
@@ -6070,15 +6246,31 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "外层训练材料与最终任务分开；测试时仍对当前 passage/ARC 示例进行内层适应，因此不是全程冻结模型。",
+        "value": "外层训练材料与最终任务分开；测试时仍对当前passage/ARC示例进行内层适应，因此不是全程冻结模型。单段落LoRA、聚合段落CPT和连续self-edit保留实验是不同协议；连续更新会令旧题表现下降。",
         "sources": [
           {
-            "label": "附录A.2",
-            "url": "https://arxiv.org/html/2506.10943#A1.SS2"
+            "label": "§4.2 / Table 2 · 单段落与CPT结果",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS2"
           },
           {
-            "label": "附录B.1",
-            "url": "https://arxiv.org/html/2506.10943#A2.SS1"
+            "label": "附录B.2–B.4 · self-edit训练与评估",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS2"
+          },
+          {
+            "label": "§4.1 / Table 1 · ARC self-edit成功率",
+            "url": "https://arxiv.org/html/2506.10943v2#S4.SS1"
+          },
+          {
+            "label": "附录A.2–A.3 · ARC训练与测试",
+            "url": "https://arxiv.org/html/2506.10943v2#A1.SS2"
+          },
+          {
+            "label": "§5 / Fig.6 · 连续自编辑的灾难性遗忘",
+            "url": "https://arxiv.org/html/2506.10943v2#S5"
+          },
+          {
+            "label": "附录B.6 · 保留实验误差",
+            "url": "https://arxiv.org/html/2506.10943v2#A2.SS6"
           }
         ],
         "status": "recorded"
@@ -6100,7 +6292,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
+    "sourceDate": "2026-10-01",
     "roleAuditDate": "2026-09-09"
   },
   "2604.23472": {
@@ -18756,15 +18948,19 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "任务提示和指导其变异的提示；基础模型与适应度评分规则固定。",
+        "value": "任务提示和指导其变异的提示；few-shot 设置还进化示例上下文，算术实验还进化生成变异的 Redescriber 采样温度。基础模型参数、外层进化算法及任务评分规则固定。",
         "sources": [
           {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2309.16797#S3.SS1"
+            "label": "附录J.2 · 训练协议与变异生成温度",
+            "url": "https://arxiv.org/html/2309.16797v1#A10.SS2"
           },
           {
-            "label": "附录F",
-            "url": "https://arxiv.org/html/2309.16797#A6"
+            "label": "附录K · few-shot上下文进化",
+            "url": "https://arxiv.org/html/2309.16797v1#A11"
+          },
+          {
+            "label": "§3.1 · 任务与变异提示",
+            "url": "https://arxiv.org/html/2309.16797v1#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -18788,11 +18984,19 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "维护 50 个个体的提示种群，每个体包含任务提示和产生变异的提示；既修改做题说明，也修改下一代怎样改提示。执行工具和模型权重不变。",
+        "value": "维护 50 个个体的提示种群，个体包含任务提示和产生变异的提示；few-shot 配置还维护示例上下文。算术实验允许变异生成模型的采样温度随种群复制而变化，执行工具和模型权重不变。",
         "sources": [
           {
-            "label": "实验设置；附录 I.2",
-            "url": "https://arxiv.org/abs/2309.16797"
+            "label": "附录J.2 · 训练协议与变异生成温度",
+            "url": "https://arxiv.org/html/2309.16797v1#A10.SS2"
+          },
+          {
+            "label": "附录K · few-shot上下文进化",
+            "url": "https://arxiv.org/html/2309.16797v1#A11"
+          },
+          {
+            "label": "§3.1 · 任务与变异提示",
+            "url": "https://arxiv.org/html/2309.16797v1#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -18800,15 +19004,19 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "共同演化任务提示和生成变异的提示，含直接变异、超变异与从成功推理反推提示；按批量准确率竞争，平台期后选全程最好个体。",
+        "value": "共同演化任务提示和生成变异的提示，含直接变异、超变异与从成功推理反推提示；few-shot 配置还进化示例上下文，算术配置会变异 Redescriber 温度。按批量准确率竞争，训练表现进入平台期后选全程最好个体测预留测试集。",
         "sources": [
           {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2309.16797#S3.SS1"
+            "label": "附录J.2 · 训练协议与变异生成温度",
+            "url": "https://arxiv.org/html/2309.16797v1#A10.SS2"
           },
           {
-            "label": "附录F",
-            "url": "https://arxiv.org/html/2309.16797#A6"
+            "label": "附录K · few-shot上下文进化",
+            "url": "https://arxiv.org/html/2309.16797v1#A11"
+          },
+          {
+            "label": "§3.1 · 任务与变异提示",
+            "url": "https://arxiv.org/html/2309.16797v1#S3.SS1"
           }
         ],
         "status": "recorded"
@@ -18894,7 +19102,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
+    "sourceDate": "2026-10-01",
     "roleAuditDate": "2026-09-09"
   },
   "2310.03714": {
@@ -19976,27 +20184,27 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "固定进化控制器选择父代与模型，再让语言模型改写程序。模型池随实验设置变化：MoE 负载均衡实验明确使用 GPT-4.1、Gemini-2.5-Pro、Claude-Sonnet-4；不能将它们直接当作 AIME 的答题模型。",
+        "value": "固定进化控制器选父代并调用模型改写程序。AIME的改写模型池为Gemini-2.5-Pro、Claude-Sonnet-4、o4-mini；GPT-4.1用于元建议和新颖性检查。MoE实验使用另一配置，不能将改写模型池当作AIME答题模型。",
         "sources": [
           {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
           },
           {
-            "label": "§3.3",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           },
           {
-            "label": "§4.2",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px1"
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
           },
           {
-            "label": "§4.2",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px2"
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           },
           {
-            "label": "附录B.4",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+            "label": "§3.1–3.3 · 档案、变异、评分",
+            "url": "https://arxiv.org/html/2509.19349v1#S3"
           }
         ],
         "status": "recorded"
@@ -20004,15 +20212,27 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "候选程序、科研代码或特定任务的运行框架；进化引擎和外部评分规则固定。",
+        "value": "圆装填和ALE的算法程序、MoE训练损失函数，以及AIME答题harness的提示、集成和复核流程。进化引擎和外部评分规则固定；AIME执行模型参数冻结，MoE模型训练属于候选损失评价环节。",
         "sources": [
           {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+            "label": "§3.1–3.3 · 档案、变异、评分",
+            "url": "https://arxiv.org/html/2509.19349v1#S3"
           },
           {
-            "label": "§3.3",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+          },
+          {
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -20036,11 +20256,27 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "程序种群/档案加可执行评估器，语言模型 提议代码变化，系统管理采样和选择；每个应用给初始程序与目标函数。MoE 实验改的是训练用损失函数代码，训练模型只是评价候选损失的一部分。",
+        "value": "程序档案加任务评估器，模型提出代码变化，固定系统管理采样和选择。AIME提供调用目标模型的代码接口，每题最多10次调用；MoE起点是训练损失函数代码，训练模型只是评价候选损失的一部分。",
         "sources": [
           {
-            "label": "MoE 实验；附录 B.4、Table 4",
-            "url": "https://arxiv.org/abs/2509.19349"
+            "label": "§3.1–3.3 · 档案、变异、评分",
+            "url": "https://arxiv.org/html/2509.19349v1#S3"
+          },
+          {
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+          },
+          {
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -20048,15 +20284,19 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "岛屿档案保存优质程序，采样父代和灵感程序后让 语言模型 变异；执行真实目标评分，按相对增益调整模型采样概率。",
+        "value": "档案采样父代与灵感程序，模型在允许修改的代码区域变异，经有效性/新颖性筛选后按任务指标评价。引擎支持按反馈动态选择模型；AIME的Table 2关闭动态模型选择，候选在AIME2024全题集上各重复三次评价。",
         "sources": [
           {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+            "label": "§3.1–3.3 · 档案、变异、评分",
+            "url": "https://arxiv.org/html/2509.19349v1#S3"
           },
           {
-            "label": "§3.3",
-            "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
+          },
+          {
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           }
         ],
         "status": "recorded"
@@ -20064,19 +20304,39 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "MoE 损失搜索：556M 模型在 FineWeb 约 2B 词元 上训练评估候选；另有几何及 ALE-Bench 程序优化。",
+        "value": "AIME harness搜索：AIME2024全部30题，75代，每候选对完整题集进行3次独立运行，每题最多10次模型调用。MoE损失搜索：556M模型在FineWeb约2B词元上训练评价；另有圆装填及ALE-Bench程序优化。",
         "sources": [
           {
-            "label": "§4.4",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
           },
           {
-            "label": "附录B.3",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           },
           {
-            "label": "附录B.4",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
+          },
+          {
+            "label": "§4.3 · ALE-Bench",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+          },
+          {
+            "label": "附录B.3 · 公开搜索与私有提交",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+          },
+          {
+            "label": "§4.1 · 圆装填程序",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+          },
+          {
+            "label": "附录B.1 · 几何配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -20084,19 +20344,39 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "候选程序的执行有效性与目标值；ALE LITE 10 题以公开测试分数搜索。",
+        "value": "AIME2024三次运行的答题表现与调用预算用于搜索和比较候选，没有独立的AIME2024验证题集。ALE LITE 10题以公开测试分数搜索；几何与MoE按有效性和任务指标选择。",
         "sources": [
           {
-            "label": "§4.4",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
           },
           {
-            "label": "附录B.3",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           },
           {
-            "label": "附录B.4",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+            "label": "§4.3 · ALE-Bench",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+          },
+          {
+            "label": "附录B.3 · 公开搜索与私有提交",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+          },
+          {
+            "label": "§4.1 · 圆装填程序",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+          },
+          {
+            "label": "附录B.1 · 几何配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -20104,19 +20384,31 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "ALE 最佳公开候选提交私有测试；MoE 将损失迁移到 2.7B 模型、约 30B FineWeb 词元 再评困惑度及下游。",
+        "value": "AIME选定harness另测2023和2025题目，并迁移至GPT-4.1-mini、GPT-4.1、o4-mini。ALE最佳公开候选提交私有测试；MoE将损失迁移到2.7B模型、约30B FineWeb词元再评困惑度及下游。",
         "sources": [
           {
-            "label": "§4.4",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
           },
           {
-            "label": "附录B.3",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           },
           {
-            "label": "附录B.4",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+            "label": "§4.3 · ALE-Bench",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+          },
+          {
+            "label": "附录B.3 · 公开搜索与私有提交",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
           }
         ],
         "status": "recorded"
@@ -20124,19 +20416,39 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "ALE 另报告私有测试取 top-5 最大值的诊断结果，应与单次提交分开；MoE 是跨规模迁移。",
+        "value": "AIME2024成绩参与75代搜索，不能当作未见测试；2023/2025及跨模型实验分别检验任务和执行模型迁移，论文对2023增益较小的污染解释是推测。ALE另有私有测试top-5最大值诊断，应与单次提交分开；MoE是跨规模迁移，圆装填是同实例直接优化。",
         "sources": [
           {
-            "label": "§4.4",
-            "url": "https://arxiv.org/html/2509.19349#S4.SS4.SSS0.Px2"
+            "label": "§4.2 · AIME搜索与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS2"
           },
           {
-            "label": "附录B.3",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS3.SSS0.Px1"
+            "label": "附录B.2 / Table 2 · AIME配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS2"
           },
           {
-            "label": "附录B.4",
-            "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+            "label": "§4.3 · ALE-Bench",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS3"
+          },
+          {
+            "label": "附录B.3 · 公开搜索与私有提交",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS3"
+          },
+          {
+            "label": "§4.4 · MoE损失进化与迁移",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS4"
+          },
+          {
+            "label": "附录B.4 · MoE配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS4"
+          },
+          {
+            "label": "§4.1 · 圆装填程序",
+            "url": "https://arxiv.org/html/2509.19349v1#S4.SS1"
+          },
+          {
+            "label": "附录B.1 · 几何配置",
+            "url": "https://arxiv.org/html/2509.19349v1#A2.SS1"
           }
         ],
         "status": "recorded"
@@ -20158,7 +20470,7 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
+    "sourceDate": "2026-10-01",
     "roleAuditDate": "2026-09-09"
   },
   "2305.10250": {

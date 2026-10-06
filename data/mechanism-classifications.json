@@ -1,0 +1,2078 @@
+{
+  "version": 1,
+  "updated": "2026-10-01",
+  "policy": {
+    "methodTypes": "methodType 保留主类；methodTypes 记录原文已展示的全部修改对象。分类与计数可重叠，不据论文标题或未来架构设想认定已经更新参数。",
+    "modifierRoles": "按明确角色和具体配置标注，可跨训练、部署和迁移同时命中自己改与别人改；未知项显示未确认，不从旧标签、名称或关键词推断。SelfModifier 指执行端自身或同型号模型，OtherEditor 指明确独立的修改者，OtherTeacher 指外部示范或指导。",
+    "parameterTargets": "分别记录执行模型、编辑模型、技能路由器和评价模型的参数学习；冻结执行 LLM 不等于全部系统组件冻结。初始训练、后续更新和部署时变化仍以实验表说明。",
+    "skillKinds": "区分技能文字说明与可执行技能代码；单篇可兼有，未知项不补猜。",
+    "depth": "本站编辑口径：M0 为继承的内容状态；M1 为任务机制优化；M2 为修改机制自身被继承和更新；M3 为完整自指理论设想。单题采样、纠错和评价为非持久／不适用。层级是有依据的比较标签，不是原文自称 RSI 的转写，也不等于递归改进实证。"
+  },
+  "papers": {
+    "2305.16291": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "gpt-4-0314 生成并调试技能代码，也负责课程提议和任务成功检查；补充实验将主模型换为 gpt-4-0613。模型参数不更新。",
+      "sources": [
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.16291#S2"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2305.16291#A1.SS1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2305.16291#S3.SS1"
+        },
+        {
+          "label": "附录A.3",
+          "url": "https://arxiv.org/html/2305.16291#A1.SS3.SSS2"
+        },
+        {
+          "label": "附录A.4",
+          "url": "https://arxiv.org/html/2305.16291#A1.SS4.SSS1"
+        },
+        {
+          "label": "附录A.5",
+          "url": "https://arxiv.org/html/2305.16291#A1.SS5.SSS1"
+        },
+        {
+          "label": "附录B.4",
+          "url": "https://arxiv.org/html/2305.16291#A2.SS4.SSS5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "M0"
+      ],
+      "removeTags": [
+        "M1"
+      ],
+      "depthBasis": "本库按持续变化的技能／记忆／playbook 内容归 M0；固定的生成、检索和更新流程不因此归 M1。",
+      "skillKinds": [
+        "SkillCode"
+      ]
+    },
+    "2403.03186": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "同一 GPT-4o 驱动 Cradle 的反思、任务推断和技能整理模块，更新外部记忆与技能；固定框架组织这些调用。",
+      "sources": [
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2403.03186#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2403.03186#S3.SS3"
+        },
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2403.03186#A2.SS3"
+        },
+        {
+          "label": "附录D.3",
+          "url": "https://arxiv.org/html/2403.03186#A4.SS3"
+        },
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2403.03186#S3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2403.03186#S4.SS1"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2403.03186#A1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2409.07429": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "工作流归纳与动作生成使用对应实验的同一模型：WebArena为gpt-4-0613；Mind2Web为gpt-3.5-turbo或gpt-4。固定归纳提示把轨迹转成工作流。",
+      "sources": [
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2409.07429#S2.SS3.SSS0.Px2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS2.Px1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2409.07429#S3.SS2.SSS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2502.12110": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "对应实验的基础 语言模型 按固定提示生成记忆笔记、判断连接并修订旧记忆的上下文、关键词和标签；向量模型 all-MiniLM-L6-v2 只负责召回。这里的“进化”是记忆内容变化，不是另训练一个更新模型。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2502.12110#S3"
+        },
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2502.12110#A2.SS3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2502.12110#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2502.12110#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2502.12110#S3.SS3"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2502.12110#S4.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "M0"
+      ],
+      "removeTags": [
+        "M1"
+      ],
+      "depthBasis": "本库按持续变化的技能／记忆／playbook 内容归 M0；固定的生成、检索和更新流程不因此归 M1。"
+    },
+    "2509.25140": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "经验抽取与成败分类使用对应执行者的同一基础模型，如Gemini2.5 Flash；角色提示及外层追加/检索算法固定。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2509.25140#S3"
+        },
+        {
+          "label": "附录E",
+          "url": "https://arxiv.org/html/2509.25140#A5"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2509.25140#S4.SS1"
+        },
+        {
+          "label": "附录A.3",
+          "url": "https://arxiv.org/html/2509.25140#A1.SS3.SSS0.Px2"
+        },
+        {
+          "label": "附录B.1",
+          "url": "https://arxiv.org/html/2509.25140#A2.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2510.04618": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "Generator/Reflector/Curator维护操作指南；默认基础模型为DeepSeek-V3.1。独立反思角色消融比较GPT-OSS-120B、DeepSeek-V3.1-671B、GPT-5.1，不能认为三个角色永远同模型。",
+      "sources": [
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2510.04618#S2.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2510.04618#S4.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2510.04618#S4.SS1.SSS0.Px1"
+        },
+        {
+          "label": "§4.5",
+          "url": "https://arxiv.org/html/2510.04618#S4.SS5"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2510.04618#A1.SS1"
+        },
+        {
+          "label": "附录A.4",
+          "url": "https://arxiv.org/html/2510.04618#A1.SS4.SSS0.Px1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "M0"
+      ],
+      "removeTags": [
+        "M1"
+      ],
+      "depthBasis": "本库按持续变化的技能／记忆／playbook 内容归 M0；固定的生成、检索和更新流程不因此归 M1。"
+    },
+    "2309.16797": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "Promptbreeder 用语言模型生成任务提示及变异提示，再按任务正确率选择；实验底层模型为 PaLM 2-L，进化的是提示文本。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2309.16797#S3.SS1"
+        },
+        {
+          "label": "附录F",
+          "url": "https://arxiv.org/html/2309.16797#A6"
+        },
+        {
+          "label": "§1",
+          "url": "https://arxiv.org/html/2309.16797#S1"
+        },
+        {
+          "label": "§5",
+          "url": "https://arxiv.org/html/2309.16797#S5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2310.02304": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "GPT-4 在改进方案的模型或程序的提示和调用规则下生成代码改写；改进后的改进方案的模型或程序可以参与下一轮，GPT-4 参数保持不变。",
+      "sources": [
+        {
+          "label": "§5.1 Fixed Downstream Task",
+          "url": "https://arxiv.org/abs/2310.02304"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2402.17574": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "对应游戏 task agent 的语言模型执行策略级反思并改提示；固定DFS程序按牌局收益搜索，不另训练一个策略修改模型。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2402.17574#S3"
+        },
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2402.17574#A1.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2603.18000": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "Meta-Agent在相应Opus4.6/Sonnet4.6配置中调用create/run/modify，编辑并保存子 task agent；固定工具接口不参与自改。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2603.18000#S3"
+        },
+        {
+          "label": "§3.4",
+          "url": "https://arxiv.org/html/2603.18000#S3.SS4.SSS0.Px2"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2603.18000#S5.SS1.SSS0.Px4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "skillKinds": [
+        "SkillCode"
+      ]
+    },
+    "2603.18743": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "Gemini-3.1-Flash 通过反思调用改写、发现技能；另用离线强化学习更新 Qwen3-Embedding-0.6B 路由器。论文说明全部实验的底层 语言模型 为 Gemini-3.1-Flash。",
+      "sources": [
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS1"
+        },
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px1"
+        },
+        {
+          "label": "§2.3",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS3.SSS0.Px2"
+        },
+        {
+          "label": "§2.4",
+          "url": "https://arxiv.org/html/2603.18743#S2.SS4.SSS0.Px2"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2603.18743#S3.SS1.SSS0.Px4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "RouterWeights"
+      ],
+      "skillKinds": [
+        "SkillDocument",
+        "SkillCode"
+      ]
+    },
+    "2504.15228": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "自改进也在这套 agent 系统中完成：主要由 Claude Sonnet 3.5 v2 工作，o3-mini 提供专门推理。修改目标是 agent 系统的代码，而非这两个模型的参数。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2504.15228#S3"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2504.15228#S4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.01918": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "代码 task agent、轨迹分析器、反馈 task agent、meta-agent（负责设计或修改 task agent）均用GPT-5.4；职责分离但共享同一基础模型。",
+      "sources": [
+        {
+          "label": "HarnessCompass",
+          "url": "https://arxiv.org/html/2608.01918#Sx3"
+        },
+        {
+          "label": "Constrained Evolution",
+          "url": "https://arxiv.org/html/2608.01918#Sx3.SSx2"
+        },
+        {
+          "label": "Aggregation and use.",
+          "url": "https://arxiv.org/html/2608.01918#Sx3.SSx3.SSS0.Px3"
+        },
+        {
+          "label": "Running the tracks independently.",
+          "url": "https://arxiv.org/html/2608.01918#Sx3.SSx4.SSS0.Px1"
+        },
+        {
+          "label": "Models.",
+          "url": "https://arxiv.org/html/2608.01918#Sx4.SSx1.SSS0.Px3"
+        },
+        {
+          "label": "The advantage is more evident on held-out tasks.",
+          "url": "https://arxiv.org/html/2608.01918#Sx4.SSx2.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.08466": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "DeepSeek-V4-Flash-Preview 分别承担进化者和元进化者，在各自允许编辑的文件范围内修改代码。",
+      "sources": [
+        {
+          "label": "附录B.1",
+          "url": "https://arxiv.org/html/2608.08466#A2.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.09380": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "同一实验配置的DeepSeek-V4-Flash生成候选Loop Policy；固定Champion–Challenger程序负责配对比较、发布和回滚。",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2608.09380#S4.SS1"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2608.09380#S4.SS2"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2608.09380#S4.SS3"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2608.09380#S5.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.24735": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "与执行端对应的 Gemma 4 31B-IT 或 GPT-5.2 读取固定 Ω 模板，生成下一层优化提示；不更换或训练基础模型。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2608.24735#S3.SS0.SSS0.Px1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.24735#S3.SS1.SSS0.Px4"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.24735#S3.SS1.SSS0.Px6"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2606.09498": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "每个配置使用对应的 MiniMax M2.5、Qwen3.5-35B-A3B 或 GLM-5 担任提案者，读取评测器返回的失败证据并提出编辑；基础模型参数冻结。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2606.09498#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2606.09498#S4.SS1.SSS0.Px4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2606.09498#S4.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2607.05297": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "五个角色共用 Gemma-4 31B；快速循环改任务技能，慢速循环改指导这些角色的指导如何改进其他技能的说明文件，模型权重保持不变。",
+      "sources": [
+        {
+          "label": "§3.4",
+          "url": "https://arxiv.org/html/2607.05297#S3.SS4"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2607.05297#S3.SS5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "skillKinds": [
+        "SkillDocument"
+      ]
+    },
+    "2609.09153": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "与该组执行器同型号的冻结模型作为图修改者，对照高分/低分轨迹，增删步骤节点和连接、改边上的条件与提醒。另一次同型号模型调用将当前节点附近的图转成下一步指导。固定程序定位节点、检查结构并按验证分决定是否接受；没有训练模型参数。",
+      "sources": [
+        {
+          "label": "§3：图表示、使用与更新",
+          "url": "https://arxiv.org/html/2609.09153#S3"
+        },
+        {
+          "label": "§4：模型与共享执行框架",
+          "url": "https://arxiv.org/html/2609.09153#S4"
+        },
+        {
+          "label": "附录B.6：验证、拒绝记录与结构检查",
+          "url": "https://arxiv.org/html/2609.09153#A2.SS6"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2606.06324": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "默认GPT-5-mini运行HarnessFix诊断及修补流程；迁移时直接复用已选运行框架，不用新执行模型重新搜索。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2606.06324#S3"
+        },
+        {
+          "label": "§6",
+          "url": "https://arxiv.org/html/2606.06324#S6"
+        },
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2606.06324#S4.SS4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.27311": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "DeepSeek-V4-Flash-preview承担进化、诊断与任务执行等模型角色；控制器安排配对验证、确认和预算计数。",
+      "sources": [
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2608.27311#A1.SS1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2608.27311#A3.SS2.SSS2"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2608.27311#S5.SS1.SSS0.Px2"
+        },
+        {
+          "label": "附录B.2",
+          "url": "https://arxiv.org/html/2608.27311#A2.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2512.18746": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "主实验meta-evolution operator也使用GPT-5-mini，生成和选择记忆设计；模型与执行角色相同，但调用职责分开。",
+      "sources": [
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2512.18746#S3.SS3"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2512.18746#S5.SS2"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2512.18746#S5.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.07645": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "编码 task agent 依据档案与执行反馈改进后代；主实验使用Qwen3.6-35B-A3B，模型权重固定，变的是 task agent 代码。",
+      "sources": [
+        {
+          "label": "附录A.1",
+          "url": "https://arxiv.org/html/2608.07645#A1.SS1"
+        },
+        {
+          "label": "附录H.1",
+          "url": "https://arxiv.org/html/2608.07645#A8.SS1"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2608.07645#S5.SS2.SSS0.Px2"
+        },
+        {
+          "label": "附录C.1",
+          "url": "https://arxiv.org/html/2608.07645#A3.SS1"
+        },
+        {
+          "label": "附录F.2",
+          "url": "https://arxiv.org/html/2608.07645#A6.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.23552": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "对应实验的同一模型在Prime Agent持久运行环境中更新代码和经验；模型是Kimi K3/DeepSeek V4 Pro/GLM5.3等具体配置，不是另一个未命名优化器。",
+      "sources": [
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2608.23552#S3.SS3"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2608.23552#S3.SS5.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2506.10943": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "知识学习配置由 Qwen2.5-7B 生成 self-edit；ARC 配置由 Llama-3.2-1B-Instruct 生成。固定内层梯度更新和外层 强化学习（根据奖励调整模型行为）／ReSTEM 程序据此训练对应模型。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2506.10943#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2506.10943#S3.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2607.26784": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "modifierBasis": "同一Qwen3策略交替解题与整理技能，通过跨任务强化学习（根据奖励调整模型行为）训练；不是另一个外部语言模型负责写技能。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2607.26784#S3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.26784#S4.SS1.SSS0.Px3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2303.17651": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfArtifact"
+      ],
+      "modifierBasis": "同一基础模型分别执行生成、反馈与重写提示；如评论重写实验的critique和editor均为text-davinci-003，没有额外训练独立提供批评意见的模型。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2303.17651#S3"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2303.17651#S4.SS0.SSS0.Px1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2303.17651#S3.SS1.SSS0.Px1"
+        },
+        {
+          "label": "附录L.2",
+          "url": "https://arxiv.org/html/2303.17651#A12.SS2.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。"
+    },
+    "2305.11738": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfArtifact"
+      ],
+      "modifierBasis": "对应执行模型读取工具返回的证据，生成批评并修订自己的回答；这里没有另设一个经过训练的提供批评意见的模型模型。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2305.11738#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2305.11738#S4.SS1"
+        },
+        {
+          "label": "附录D.1",
+          "url": "https://arxiv.org/html/2305.11738#A4.SS1"
+        },
+        {
+          "label": "§1",
+          "url": "https://arxiv.org/html/2305.11738#S1"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2305.11738#S4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。"
+    },
+    "2309.11495": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfArtifact"
+      ],
+      "modifierBasis": "同一Llama65B按固定CoVe流程生成核验问题、独立回答并修订初答，不用另一个更强核验模型。",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS2"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2309.11495#S4.SS1.SSS4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2309.11495#S4.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。"
+    },
+    "2607.21971": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfArtifact"
+      ],
+      "modifierBasis": "固定强化学习（根据奖励调整模型行为）算法训练Qwen3-14B的诊断/修改能力；测试时由训练后的Qwen3-14B提出下一版程序。",
+      "sources": [
+        {
+          "label": "§2.1",
+          "url": "https://arxiv.org/html/2607.21971#S2.SS1"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2607.21971#A1.SS0.SSS0.Px1"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS2"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2607.21971#S3.SS1.SSS3.Px1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "EditorWeights"
+      ]
+    },
+    "2408.08435": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "独立 meta-agent（负责设计或修改 task agent）用gpt-4o-2024-05-13读取档案、验证结果并生成候选 task agent 代码。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2408.08435#S3"
+        },
+        {
+          "label": "附录B",
+          "url": "https://arxiv.org/html/2408.08435#A2"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2408.08435#A1"
+        },
+        {
+          "label": "附录E",
+          "url": "https://arxiv.org/html/2408.08435#A5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2406.07496": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "提示优化时由GPT-4o提供反向文本反馈并修改提示，执行者仍为gpt-3.5-turbo-0125；TextGrad负责传递和应用这些反馈。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS1"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS3"
+        },
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS5.SSS0.Px1"
+        },
+        {
+          "label": "附录G.3",
+          "url": "https://arxiv.org/html/2406.07496#A7.SS3.SSS0.Px2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2406.07496#S3.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2308.10144": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "经验规则抽取用gpt-4-0613；训练经验收集中的Reflexion用gpt-3.5-turbo-0613，超窗口时换16k-0613。因此规则提炼者比最终执行模型更强。",
+      "sources": [
+        {
+          "label": "§4.4",
+          "url": "https://arxiv.org/html/2308.10144#S4.SS4"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2308.10144#S5.SS1"
+        },
+        {
+          "label": "附录D.5",
+          "url": "https://arxiv.org/html/2308.10144#A4.SS5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2410.04444": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "gpt-4o-2024-05-13 驱动 Gödel Agent 读取反馈并改写策略。修改代码的模型与受限测试时答题的 GPT-3.5 不同。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2410.04444#S3"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2410.04444#S5.SS2"
+        },
+        {
+          "label": "§5.3",
+          "url": "https://arxiv.org/html/2410.04444#S5.SS3"
+        },
+        {
+          "label": "附录B",
+          "url": "https://arxiv.org/html/2410.04444#A2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2410.10762": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Claude3.5 Sonnet作为优化语言模型修改工作流；MCTS固定负责选择要扩展的节点，执行模型与优化模型分开。",
+      "sources": [
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2410.10762#S4"
+        },
+        {
+          "label": "附录A.4",
+          "url": "https://arxiv.org/html/2410.10762#A1.SS4"
+        },
+        {
+          "label": "附录A.6",
+          "url": "https://arxiv.org/html/2410.10762#A1.SS6"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2410.10762#S5.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2507.03616": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "框架统一调度TextGrad/AFlow/MIPRO；附录A.3示例由Claude3.5-Sonnet-20240620优化、GPT-4o-mini执行。这是示例配置，不能推广为所有实验。",
+      "sources": [
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2507.03616#S3.SS5"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2507.03616#S4"
+        },
+        {
+          "label": "附录A.3",
+          "url": "https://arxiv.org/html/2507.03616#A1.SS3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2606.04465": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "默认Gemini3.1 Pro Preview作负责生成提示词的 agent；另一配置用Claude Opus4.6。负责生成提示词的 agent 优化任务提示，也进化自己的优化提示。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2606.04465#S3.SS1.SSS0.Px2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2606.04465#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2606.04465#S3.SS3"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2606.04465#S3.SS3.SSS0.Px1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2606.04465#S4.SS1.SSS0.Px4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2606.04465#S4.SS2.SSS0.Px5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2605.24539": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "编程候选方案提出者根据轨迹/示范编辑运行框架；Balatro全部进化条件用Claude Opus4.7 Max，执行者GPT-5.4-low保持冻结。",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2605.24539#S4.SS1.SSS0.Px1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px1"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px3"
+        },
+        {
+          "label": "附录C.2",
+          "url": "https://arxiv.org/html/2605.24539#A3.SS2.SSS0.Px5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2607.13683": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Claude Opus4.8作为修改者，根据轨迹和评分提出运行框架改动；Qwen3.6-27B的权重不更新。",
+      "sources": [
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS1"
+        },
+        {
+          "label": "§4.5",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS5"
+        },
+        {
+          "label": "§4.6",
+          "url": "https://arxiv.org/html/2607.13683#S4.SS6"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.12307": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "跨目标对照的五种构建者为Opus4.7、GPT-5.5、Gemini3.1 Pro、Gemini3.5 Flash、Grok0.1，统一在Cursor构造运行框架；构造者与目标GPT-5.4-mini/Gemini3.5 Flash分开。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2608.12307#S3"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2608.12307#S4"
+        },
+        {
+          "label": "§5.6",
+          "url": "https://arxiv.org/html/2608.12307#S5.SS6"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2606.14249": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "默认Claude Opus4.6作为 meta-agent（负责设计或修改 task agent）驱动AEGIS进化；与上述任务执行者分开。共同训练阶段的参数更新仍由GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）程序执行。",
+      "sources": [
+        {
+          "label": "§5.4",
+          "url": "https://arxiv.org/html/2606.14249#S5.SS4.SSS0.Px3"
+        },
+        {
+          "label": "§12.5",
+          "url": "https://arxiv.org/html/2606.14249#S12.SS5.SSS0.Px1"
+        },
+        {
+          "label": "§6.1",
+          "url": "https://arxiv.org/html/2606.14249#S6.SS1.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2605.27276": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Claude Sonnet 4.6 分别担任上层设计者和反馈分析者，设计 task agent 并决定改运行框架还是训练参数；Modal 云计算平台上的训练程序实际更新 gpt-oss-120B 的参数。",
+      "sources": [
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2605.27276#S4.SS3"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2605.27276#S5.SS1"
+        },
+        {
+          "label": "§6.2",
+          "url": "https://arxiv.org/html/2605.27276#S6.SS2"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2605.27276#S5.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2603.18620": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "编辑策略同样从Qwen3-4B-Instruct开始，但经过LSE强化训练；主执行模型不随编辑策略一起训练。迁移时固定这份LSE编辑策略指导其他执行模型。",
+      "sources": [
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2603.18620#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2603.18620#S3.SS3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2603.18620#S4.SS1.SSS0.Px1"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2603.18620#S4.SS3.SSS0.Px3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "EditorWeights"
+      ]
+    },
+    "2609.00196": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Claude Opus 4.7 通过 Meta-Harness 搜索器读历史框架代码、逐题成败和轨迹，每轮提出 3 个候选框架。参数更新由训练程序完成：当前执行模型每题采样 8 条轨迹，仅留下判对的轨迹做监督微调。修改框架的 Claude 本身不在这个循环中训练。",
+      "sources": [
+        {
+          "label": "附录B、表1：修改模型和预算",
+          "url": "https://arxiv.org/html/2609.00196#A2"
+        },
+        {
+          "label": "§3–4：参数更新与框架搜索",
+          "url": "https://arxiv.org/html/2609.00196#S3"
+        },
+        {
+          "label": "§5.1：三个领域的数据",
+          "url": "https://arxiv.org/html/2609.00196#S5.SS1"
+        },
+        {
+          "label": "附录B.2：各领域初始框架",
+          "url": "https://arxiv.org/html/2609.00196#A2.SS2"
+        },
+        {
+          "label": "§4：交替流程与返回规则",
+          "url": "https://arxiv.org/html/2609.00196#S4"
+        },
+        {
+          "label": "§6.2：交替节奏及自适应切换",
+          "url": "https://arxiv.org/html/2609.00196#S6.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2606.01779": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "GPT-5.5 担任外部修改者，依次诊断失败、规划修补方向、生成框架代码、按初步运行检查修复；最多3次修复重试。训练程序再用对应框架收集的成功轨迹更新 Qwen 的 LoRA，GPT-5.5 不随此过程训练。",
+      "sources": [
+        {
+          "label": "附录C.2：模型与适配参数配置",
+          "url": "https://arxiv.org/html/2606.01779#A3.SS2"
+        },
+        {
+          "label": "附录C.4：诊断、编写和筛选",
+          "url": "https://arxiv.org/html/2606.01779#A3.SS4"
+        },
+        {
+          "label": "附录D：每条分支的模型适配",
+          "url": "https://arxiv.org/html/2606.01779#A4"
+        },
+        {
+          "label": "§3.2：联合进化流程与起点",
+          "url": "https://arxiv.org/html/2606.01779#S3.SS2"
+        },
+        {
+          "label": "附录C.3：代码表示与修改范围",
+          "url": "https://arxiv.org/html/2606.01779#A3.SS3"
+        },
+        {
+          "label": "附录C.4.5：两阶段筛选",
+          "url": "https://arxiv.org/html/2606.01779#A3.SS4.SSS5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2609.19656": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Qwen3.6-35B-A3B 同时承担索引修改、模拟查询和忠实性／可回答性评审。",
+      "sources": [
+        {
+          "label": "§3–4；附录 A.1–A.2、B.1–B.5",
+          "url": "https://arxiv.org/html/2609.19656v1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2609.17523": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "GPT-6 Astra 诊断并编辑 harness；Qwen3.8-27B 模拟受限用户反馈并解释反馈，训练程序执行 GRPO。",
+      "sources": [
+        {
+          "label": "§2.2–2.4、§4.2–4.4、附录 §7.1–7.3 / 表1–2",
+          "url": "https://arxiv.org/html/2609.17523v1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2603.28052": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Claude Code（可读写项目文件、运行命令和测试的 coding agent 工具） 中的 Claude Opus 4.6 作为候选方案提出者，读取历史运行框架、分数和执行轨迹，改写单文件 Python 运行框架；执行任务的基础模型按领域另设并保持冻结。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2603.28052#S3"
+        },
+        {
+          "label": "Claude Code 官方说明",
+          "url": "https://code.claude.com/docs/en/overview"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2605.23904": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "独立优化器 语言模型，也包含同模型配置；目标模型保持冻结。",
+      "sources": [
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2605.23904#S4.SS0.SSS0.Px2"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2605.23904#S4.SS0.SSS0.Px3"
+        },
+        {
+          "label": "附录C.1",
+          "url": "https://arxiv.org/html/2605.23904#A3.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "M1"
+      ],
+      "removeTags": [
+        "M2"
+      ],
+      "depthBasis": "沿用维护笔记的 M1 主标签：优化任务技能文档，固定外层优化与验证程序。另有优化器侧 meta guidance 持续更新；这项经验更新单独说明，不把该标签宣称为修改器代码或外层搜索机制的递归自改写。",
+      "skillKinds": [
+        "SkillDocument"
+      ]
+    },
+    "2508.06433": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "程序记忆更新流程调用基础 语言模型 总结和修订操作经验；主配置为 GPT-4o、Claude、Qwen2.5-72B-Instruct。跨模型实验明确由 GPT-4o 生成记忆，再供 Qwen2.5-14B 使用；论文 Backbones 段没有给出 Claude 的具体版本。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2508.06433#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2508.06433#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2508.06433#S4.SS1.SSS0.Px2"
+        },
+        {
+          "label": "§5",
+          "url": "https://arxiv.org/html/2508.06433#S5.SS0.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2507.19457": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Qwen3-8B 或 GPT-4.1-mini 在对应配置中读取执行轨迹和文字反馈，提出提示修改；固定 GEPA 算法选择候选并评测。跨模型实验将完全用 Qwen3-8B 优化的提示交给 GPT-4.1-mini 执行。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2507.19457#S3"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2507.19457#S4"
+        },
+        {
+          "label": "附录E.2",
+          "url": "https://arxiv.org/html/2507.19457#A5.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.22793": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Skill Bank由GPT-5.5收集的轨迹驱动进化；测试时原样交给GPT-5.5和GLM-5.2，不针对GLM重新进化。",
+      "sources": [
+        {
+          "label": "§2.2",
+          "url": "https://arxiv.org/html/2608.22793#S2.SS2"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.22793#S3.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2603.21877": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "P²O-Self-Ref用Qwen3-4B参考模型作提示修改者；Teacher-Ref用Kimi-K2。外层交替运行提示优化和策略参数训练。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2603.21877#S3.SS1"
+        },
+        {
+          "label": "§3.4",
+          "url": "https://arxiv.org/html/2603.21877#S3.SS4.SSS0.Px2"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2603.21877#A1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2603.21877#S4.SS1.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2604.25850": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "GPT-5.4 驱动 Evolve Agent 改代码，另一个 GPT-5.4 Agent Debugger 提供诊断。推理强度存在原文差异：正文 §4.1 称三个角色均为 high，附录 A 表 4 的 Evolve Agent 配置是 xhigh。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2604.25850#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS2"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2604.25850#S3.SS3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2604.25850#S4.SS1.SSS0.Px2"
+        },
+        {
+          "label": "附录A",
+          "url": "https://arxiv.org/html/2604.25850#A1.SS0.SSS0.Px3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2505.22954": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "o1 读取评估日志提出改进问题，父版本 编程 task agent 用 Claude 3.5 Sonnet 实施源码修改。",
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2505.22954#S3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2505.22954#S4.SS1"
+        },
+        {
+          "label": "附录C.3",
+          "url": "https://arxiv.org/html/2505.22954#A3.SS3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2603.19461": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "Polyglot 的自修改模型是 Claude 3.5 Sonnet (New)；其余三个领域均用 Claude 4.5 Sonnet 修改 task agent 和 meta-agent 代码。",
+      "sources": [
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2603.19461#S5.SS1"
+        },
+        {
+          "label": "§5.3",
+          "url": "https://arxiv.org/html/2603.19461#S5.SS3"
+        },
+        {
+          "label": "附录D.1",
+          "url": "https://arxiv.org/html/2603.19461#A4.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.02276": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "独立的 Qwen3.5-9B 框架工程师 生成和修改运行框架；先用 GPT-5.5 提供冷启动示例，再用在线 GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法） 训练工程师模型。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.02276#S3.SS2"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2608.02276#S4.SS1.SSS0.Px4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "EditorWeights"
+      ]
+    },
+    "2607.28568": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfArtifact",
+        "OtherModifier",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "部署时由训练后的Frontis-MA1执行草拟／调试／改进／交叉组合。监督微调（用示范数据训练模型）教师包括GLM-4.7与Qwen3-30B-A3B-Thinking-2507，随后固定强化学习（根据奖励调整模型行为）流程训练这些操作。",
+      "sources": [
+        {
+          "label": "§3.5",
+          "url": "https://arxiv.org/html/2607.28568#S3.SS5"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.28568#S4.SS1"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2607.28568#S4.SS2"
+        },
+        {
+          "label": "§4.3",
+          "url": "https://arxiv.org/html/2607.28568#S4.SS3"
+        },
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2607.28568#S5.SS1"
+        },
+        {
+          "label": "§5.2",
+          "url": "https://arxiv.org/html/2607.28568#S5.SS2"
+        },
+        {
+          "label": "§5.4",
+          "url": "https://arxiv.org/html/2607.28568#S5.SS4"
+        },
+        {
+          "label": "附录B.1",
+          "url": "https://arxiv.org/html/2607.28568#A2.SS1"
+        },
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2607.28568#A2.SS3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "EditorWeights"
+      ]
+    },
+    "2607.14777": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem",
+        "OtherModifier",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "Stage1由GLM-5.2从轨迹抽取事后技能以构造监督微调（用示范数据训练模型）；Stage2由当前策略checkpoint（某个时刻保存的模型或系统版本）兼任分析器，固定GRPO（比较同一任务多次尝试的奖励，用相对好坏更新模型参数的强化学习方法）与从当前模型实际执行的记录中进行蒸馏学习程序更新参数。",
+      "sources": [
+        {
+          "label": "附录B.3",
+          "url": "https://arxiv.org/html/2607.14777#A2.SS3"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2607.14777#S4.SS1.SSS0.Px4"
+        },
+        {
+          "label": "附录C.3",
+          "url": "https://arxiv.org/html/2607.14777#A3.SS3"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2605.09998": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "主实验Refiner由Gemini模型承担；共同学习阶段由frontier teacher指导Gemma4，并通过监督微调（用示范数据训练模型）/GRPO更新其权重。论文明确被测Gemma4不能同时胜任teacher与trainee。",
+      "sources": [
+        {
+          "label": "§4.5",
+          "url": "https://arxiv.org/html/2605.09998#S4.SS5"
+        },
+        {
+          "label": "附录C.1",
+          "url": "https://arxiv.org/html/2605.09998#A3.SS1.SSS2"
+        },
+        {
+          "label": "附录D.4",
+          "url": "https://arxiv.org/html/2605.09998#A4.SS4"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2605.09998#S4.SS1.SSS0.Px3"
+        },
+        {
+          "label": "§6",
+          "url": "https://arxiv.org/html/2605.09998#S6"
+        },
+        {
+          "label": "附录D",
+          "url": "https://arxiv.org/html/2605.09998#A4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2608.05446": {
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherTeacher"
+      ],
+      "modifierBasis": "监督微调（用示范数据训练模型）/GRPO训练Qwen3-8B；外部Claude Opus收集监督微调（用示范数据训练模型）轨迹并合并经验库，训练轮次边界才合并。附录C仅写“Claude Opus”，未标明该教师的具体版本，不能从对照方案的Opus4.5推定。",
+      "sources": [
+        {
+          "label": "附录C",
+          "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px5"
+        },
+        {
+          "label": "附录D.2",
+          "url": "https://arxiv.org/html/2608.05446#A4.SS2"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.05446#S3.SS1.SSS0.Px2"
+        },
+        {
+          "label": "附录C",
+          "url": "https://arxiv.org/html/2608.05446#A3.SS0.SSS0.Px1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "TaskModelWeights"
+      ]
+    },
+    "2203.11171": {
+      "modifierRoles": [
+        "NotApplicableModifier"
+      ],
+      "modifierBasis": "固定采样与投票程序，没有另一个模型修改当前模型或运行系统。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2203.11171#S3.SS1.SSS0.Px1"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2203.11171#S4.SS0.SSS0.Px3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2203.11171#S3.SS1.SSS0.Px2"
+        },
+        {
+          "label": "附录A.2",
+          "url": "https://arxiv.org/html/2203.11171#A1.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。"
+    },
+    "2608.13951": {
+      "methodType": "harness",
+      "methodTypes": [
+        "harness"
+      ],
+      "removeTags": [
+        "Weights",
+        "JointEvolution",
+        "CoEvolution"
+      ],
+      "classificationBasis": "实证冻结 MiniMax-M2.7，进化运行框架并导出未来训练数据；没有训练更新后的模型。",
+      "parameterTargets": [],
+      "sources": [
+        {
+          "label": "§5.1",
+          "url": "https://arxiv.org/html/2608.13951#S5.SS1"
+        },
+        {
+          "label": "§9.5 Data scale and model updating：未训练更新模型",
+          "url": "https://arxiv.org/html/2608.13951#S9.SS5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2509.19349": {
+      "methodType": "artifact",
+      "methodTypes": [
+        "artifact",
+        "harness"
+      ],
+      "addTags": [
+        "HarnessCode",
+        "Workflow",
+        "Prompt",
+        "HeldOut",
+        "CrossModel",
+        "Archive",
+        "Population",
+        "OfflineSearch"
+      ],
+      "classificationBasis": "圆形装填、ALE 和损失代码是程序产物；AIME 实验进化任务执行 scaffold，因此同时收录产物与 Harness。",
+      "modifierRoles": [
+        "OtherModifier",
+        "OtherEditor"
+      ],
+      "modifierBasis": "AIME 由 Gemini-2.5-Pro、Claude-Sonnet-4、o4-mini 提出 scaffold；GPT-4.1-nano 是 scaffold 内的答题模型。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2509.19349#S3.SS1"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2509.19349#S3.SS3"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px1"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2509.19349#S4.SS2.SSS0.Px2"
+        },
+        {
+          "label": "附录B.4",
+          "url": "https://arxiv.org/html/2509.19349#A2.SS4.SSS0.Px1"
+        },
+        {
+          "label": "§4.2 AIME：进化 agent scaffold，跨题年与模型迁移",
+          "url": "https://arxiv.org/html/2509.19349#S4.SS2"
+        },
+        {
+          "label": "附录 B.2：AIME 执行模型和进化模型配置",
+          "url": "https://arxiv.org/html/2509.19349#A2.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2305.20050": {
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。",
+      "sources": [
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2305.20050#S2"
+        },
+        {
+          "label": "§2.4",
+          "url": "https://arxiv.org/html/2305.20050#S2.SS4"
+        },
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2305.20050#S4.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。",
+      "parameterTargets": [
+        "EvaluatorWeights"
+      ],
+      "addTags": [
+        "GoldLabel",
+        "ProcessReward"
+      ]
+    },
+    "2310.01798": {
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。",
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2310.01798#S3.SS1"
+        },
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2310.01798#S3.SS3"
+        },
+        {
+          "label": "§5",
+          "url": "https://arxiv.org/html/2310.01798#S5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2310.04406": {
+      "depth": [
+        "非持久／不适用"
+      ],
+      "removeTags": [
+        "M0",
+        "M1",
+        "M2",
+        "M3"
+      ],
+      "depthBasis": "单题采样、纠错、搜索或评价；不将这次任务的更新继承为下一题的学习系统。PRM 的离线训练单独记录为参数学习，不据单题选答案赋予持久 self-evolution 层级。",
+      "sources": [
+        {
+          "label": "§4.2",
+          "url": "https://arxiv.org/html/2310.04406#S4.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2511.10395": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3",
+          "url": "https://arxiv.org/html/2511.10395#S3"
+        },
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2511.10395#S3.SS1"
+        },
+        {
+          "label": "§4.1",
+          "url": "https://arxiv.org/html/2511.10395#S4.SS1"
+        },
+        {
+          "label": "§5",
+          "url": "https://arxiv.org/html/2511.10395#S5"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2608.09819": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3.1",
+          "url": "https://arxiv.org/html/2608.09819#S3.SS1.SSS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.09819#S3.SS2"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.09819#S3.SS2.SSS1"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.09819#S3.SS2.SSS4"
+        },
+        {
+          "label": "§3.2",
+          "url": "https://arxiv.org/html/2608.09819#S3.SS2.SSS5"
+        },
+        {
+          "label": "§4",
+          "url": "https://arxiv.org/html/2608.09819#S4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "endlessfrontier.tech-assets-paper.pdf": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3.1–3.2 Experimental Setup / Quantitative Results",
+          "url": "https://endlessfrontier.tech/assets/paper.pdf"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2510.16079": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3.3",
+          "url": "https://arxiv.org/html/2510.16079#S3.SS3.SSS0.Px2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2607.22688": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3.3：归因和局部补丁",
+          "url": "https://arxiv.org/html/2607.22688#S3.SS3"
+        },
+        {
+          "label": "§3.4：成功轨迹微调",
+          "url": "https://arxiv.org/html/2607.22688#S3.SS4"
+        },
+        {
+          "label": "§3.2–3.5：两个循环与验收",
+          "url": "https://arxiv.org/html/2607.22688#S3.SS2"
+        },
+        {
+          "label": "附录E：两组验收任务",
+          "url": "https://arxiv.org/html/2607.22688#A5"
+        },
+        {
+          "label": "§4.1：模型、基准、轮次",
+          "url": "https://arxiv.org/html/2607.22688#S4.SS1"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2609.00768": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3 自博弈、投票与诊断",
+          "url": "https://arxiv.org/html/2609.00768#S3"
+        },
+        {
+          "label": "§3.2 伪标签和奖励",
+          "url": "https://arxiv.org/html/2609.00768#S3.SS2"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2609.08183": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§1 Introduction",
+          "url": "https://arxiv.org/html/2609.08183#S1"
+        },
+        {
+          "label": "§3.5 按能力调整数据",
+          "url": "https://arxiv.org/html/2609.08183#S3.SS5"
+        },
+        {
+          "label": "§4 SFT 与 on-policy distillation",
+          "url": "https://arxiv.org/html/2609.08183#S4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "icoder-27b": {
+      "parameterTargets": [
+        "TaskModelWeights"
+      ],
+      "sources": [
+        {
+          "label": "§3 Research Skills，PDF p5–6",
+          "url": "https://huggingface.co/i-Coder/iCoder-27B/resolve/main/Coder_Tech_Report.pdf#page=5"
+        },
+        {
+          "label": "§4.1–4.2，PDF p6–8",
+          "url": "https://huggingface.co/i-Coder/iCoder-27B/resolve/main/Coder_Tech_Report.pdf#page=6"
+        },
+        {
+          "label": "§4.3–4.4，PDF p9–17",
+          "url": "https://huggingface.co/i-Coder/iCoder-27B/resolve/main/Coder_Tech_Report.pdf#page=9"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    },
+    "2607.00272": {
+      "skillKinds": [
+        "SkillCode"
+      ],
+      "sources": [
+        {
+          "label": "§2",
+          "url": "https://arxiv.org/html/2607.00272#S2"
+        },
+        {
+          "label": "附录E.4",
+          "url": "https://arxiv.org/html/2607.00272#A5.SS4"
+        }
+      ],
+      "reviewScope": "按已维护研究表中的明确角色与对象补齐分类；不代表新增全文复核。"
+    }
+  }
+}
