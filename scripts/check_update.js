@@ -9,8 +9,8 @@ const expected = ['2203.14465','2401.10020','2407.18219','2409.12917','funsearch
 const get = id => data.papers.find(p=>p.id===id);
 const updated = data.papers.filter(p=>p.tags.includes('Update20261001'));
 assert.deepEqual(updated.map(p=>p.id).sort(),expected.sort());
-assert.equal(data.papers.length,186);
-assert.equal(data.updated,'2026-10-01');
+assert.equal(data.papers.length,209);
+assert.equal(data.updated,'2026-10-11');
 assert.equal(updated.filter(p=>p.reviewStatus==='fulltext-targeted').length,4);
 assert.equal(updated.filter(p=>p.reviewStatus==='abstract-checked').length,9);
 for(const p of updated){
@@ -41,7 +41,7 @@ assert.equal(q({tags:['Update20261001'],facets:{verified:['摘要或初步定位
 assert(q({category:'methods',quick:'harness'}).some(p=>p.id==='2509.19349'));
 assert(q({category:'methods',quick:'artifact'}).some(p=>p.id==='2509.19349'));
 assert(!q({category:'methods',quick:'joint'}).some(p=>p.id==='2608.13951'));
-assert.equal(records.length,44);
+assert.equal(records.length,67);
 const root=path.resolve(__dirname,'..');
 const assetVersion=fs.readFileSync(path.join(root,'index.html'),'utf8').match(/assets\/app\.js\?v=([\w-]+)/)?.[1];
 const dataVersion=fs.readFileSync(path.join(root,'assets/app.js'),'utf8').match(/data\/papers\.json\?v=([\w-]+)/)?.[1];
@@ -49,3 +49,39 @@ assert(assetVersion&&dataVersion,'Published code and data need cache versions.')
 assert.equal(assetVersion,dataVersion,'The page must load code and data from the same release.');
 assert(Number(assetVersion.match(/\d{8}/)?.[0])>=20261001,'Do not restore a cache key older than the October evidence update.');
 console.log('Passed: October update coverage, reading scope, paired work records, negative results and experiment boundaries.');
+
+// October 11: distinguish new work, paired resources and an existing-paper revision.
+const batch=data.papers.filter(p=>p.tags.includes('Update20261011'));
+const additions=batch.filter(p=>p.curated);
+assert.equal(batch.length,24);
+assert.equal(additions.length,23);
+assert.equal(additions.filter(p=>['paper','report','survey'].includes(p.contentType)).length,19);
+assert.equal(additions.filter(p=>p.contentType==='blog').length,3);
+assert.equal(additions.filter(p=>p.contentType==='repository').length,1);
+assert.equal(new Set(additions.map(p=>p.workId||p.id)).size,21);
+for(const p of batch)assert.equal(p.profile.sourceDate,'2026-10-11');
+for(const p of additions)assert.equal(p.reviewStatus,'fulltext-targeted');
+assert.equal(get('2610.09426').category,'dataset');
+assert.deepEqual(get('2610.09426').visibleKeys,['object','executor','modifier','verdict','seed']);
+assert(field('2610.09426','isolation').includes('22'));
+assert(field('2610.10310','debug').includes('没有统一隐藏'));
+assert(field('2610.10310','test').includes('同题集'));
+assert(field('2610.10310','modifier').includes('Codex 不等于目标'));
+assert(field('2610.11794','verdict').includes('逐格'));
+assert(field('2610.11794','isolation').includes('没有单列隐藏游戏测试'));
+assert(field('2609.35025','train').includes('没有参数训练'));
+assert(field('2609.40097','object').includes('不继承上一候选的参数'));
+assert(field('2610.12176','verdict').includes('不反馈给进化循环'));
+assert(get('2610.12176').overview.tldr[2].value.includes('下降'));
+assert(field('2609.38349','seed').includes('3 个专家设计'));
+assert(field('2610.00906','isolation').includes('随机题目隔离'));
+assert(get('2606.01314').modifierRoles.includes('SelfSystem'));
+assert(get('2606.01314').profile.feedbackCases[0].scoring.includes('0.1%'));
+assert(field('2610.03002','test').includes('Qwen3.6-35B-A3B'));
+for(const id of ['towards-ai-that-improves-itself','aibuildai-posttrain-agent','autodatabench-author-blog'])assert(get(id).dateLabel.includes('核对日期'));
+assert.equal(get('mass-author-blog').date,'2026-10');
+assert.equal(get('mullie-where-rsi-possible').date,'2026-10');
+assert.equal(q({tags:['Update20261011'],facets:{type:['blog']}}).length,3);
+assert.equal(q({tags:['Update20261011'],category:'dataset'}).length,1);
+assert.equal(q({tags:['Update20261011'],category:'evaluation'}).length,4);
+console.log('Passed: October 11 inventory, publication/date distinctions, dataset dimensions, model roles and source-specific feedback/test boundaries.');

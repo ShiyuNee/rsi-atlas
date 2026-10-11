@@ -30,7 +30,7 @@ Object.assign(LABELS,{SelfModifier:'自己改',OtherModifier:'别人改',SelfSys
 Object.assign(LABELS,{UnknownModifier:'角色尚未确认',NotApplicableModifier:'不涉及模型修改者',TaskModelWeights:'任务执行模型的参数',EditorWeights:'修改模型的参数',RouterWeights:'技能路由模型的参数',EvaluatorWeights:'评价模型的参数',SkillDocument:'技能文字说明',SkillCode:'可执行技能代码'});
 Object.assign(LABELS,HARNESS_PARTS);
 Object.assign(LABELS,{Update20260921:'9月21日更新'});
-Object.assign(LABELS,{Update20261001:'10月1日核查更新'});
+Object.assign(LABELS,{Update20261001:'10月1日核查更新',Update20261011:'10月11日文献更新'});
 Object.assign(LABELS,CONTENT_TYPES,{Survey:'综述',RSIRoadmap:'RSI 发展路线',Infrastructure:'基础设施',IndustryReport:'产业观察',ResearchAutomation:'自动化研究'});
 Object.assign(LABELS,{"HarnessCode": "运行框架代码", "Prompt": "提示词", "Context": "上下文", "MemoryContent": "记忆内容", "MemoryMechanism": "记忆管理机制", "Skill": "技能", "Tool": "工具", "Workflow": "工作流程", "Subagent": "子代理", "Evaluator": "评估器", "Data": "学习数据", "Weights": "模型参数", "Improver": "修改机制", "SameModel": "同一模型修改", "SeparateEvolver": "独立修改者", "StrongerBuilder": "更强模型构建", "LearnedUpdater": "经过训练的修改者", "ExecutableVerifier": "程序检查任务结果", "EnvironmentReward": "环境给出的奖励", "BenchmarkScore": "基准评测分数", "GoldLabel": "标准标签或答案", "LLMJudge": "模型按要求评审", "ProcessReward": "中间步骤奖励", "OfflineSearch": "部署前搜索", "Online": "执行任务时更新", "Prequential": "先做当前任务，再用其反馈学习", "Archive": "保存历史版本", "Population": "同时维护多个候选", "Sequential": "逐轮更新", "CoEvolution": "共同进化", "Continual": "持续学习", "Streaming": "连续任务流"});
 Object.assign(LABELS,{"B-RSI":"递归改进评测","B-Reliability":"可靠性评测","CapabilityCeiling":"基础能力上限","CrossBenchmark":"跨评测任务迁移","CrossModel":"跨模型迁移","HeldOut":"使用留出数据","LongHorizon":"长程任务","RegressionGate":"接受修改前检查旧能力","RewardHacking":"评分规则被利用","SameSet":"同一题集参与改进与评价"});
@@ -227,6 +227,6 @@ function bind(){
  $('#filter-panel').addEventListener('toggle',()=>$('#mobile-filter').setAttribute('aria-expanded',String($('#filter-panel').open)));
  const media=matchMedia('(max-width:760px)');$('#filter-panel').open=!media.matches;media.addEventListener('change',e=>$('#filter-panel').open=!e.matches);
 }
-async function init(){try{const r=await fetch('data/papers.json?v=mainline-20261006');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
+async function init(){try{const r=await fetch('data/papers.json?v=literature-20261011');if(!r.ok)throw new Error('data');dataset=await r.json();papers=dataset.papers.map(p=>({...p,searchText:text(JSON.stringify(p)).toLowerCase()}));readURL();buildFilters();bind();render();if(state.paper)openPaper(state.paper);}catch(e){$('#result-count').textContent='内容加载失败';$('#results').innerHTML='<div class="empty"><p>请刷新页面重试，或下载原始记录。</p><a href="data/research-notes.md">打开 Markdown 记录 →</a></div>';console.error(e);}}
 // Export pure query behavior for non-browser tests.
 if(typeof module!=='undefined'&&module.exports)module.exports={matches,text,readingSections,card,research,tldr,methodTypes,methodLabel,hasMethodType,modifierRoles,groupValues};else init();

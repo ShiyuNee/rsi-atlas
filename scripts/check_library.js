@@ -21,17 +21,17 @@ for(const e of records){
   for(const s of f.sources){assert(s.label&&s.url.startsWith('https://'));}
  }
  assert(p.visibleKeys.every(k=>p.profile.fields.some(f=>f.key===k)));
- if(['methods','evaluation'].includes(p.category))assert.deepEqual(p.visibleKeys,['object','executor','modifier','verdict','seed']);
+ if(['methods','evaluation','dataset'].includes(p.category))assert.deepEqual(p.visibleKeys,['object','executor','modifier','verdict','seed']);
  else if(p.profile.fields.some(f=>['train','debug','test'].includes(f.key))){
   assert.equal(p.category,'theory',p.id+': empirical dimensions must belong to a research category');
   for(const k of ['object','executor','modifier','verdict','seed','train','debug','test','isolation'])assert(p.profile.fields.some(f=>f.key===k),p.id+': incomplete experiment scope');
  } else assert(!p.profile.fields.some(f=>['train','debug','test'].includes(f.key)));
  for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(a.sources.length);assert(p.tags.includes(a.tag));}
 }
-assert.equal(query({facets:{type:['repository']}}).length,1);
-assert.equal(query({facets:{type:['blog']}}).length,16);
-assert.equal(query({facets:{type:['survey']}}).length,3);
-assert.equal(query({facets:{type:['repository','blog']}}).length,17);
+assert.equal(query({facets:{type:['repository']}}).length,2);
+assert.equal(query({facets:{type:['blog']}}).length,19);
+assert.equal(query({facets:{type:['survey']}}).length,4);
+assert.equal(query({facets:{type:['repository','blog']}}).length,21);
 assert.equal(query({facets:{type:['blog'],institution:['org:openai']}})[0].id,'openai-research-acceleration');
 assert.equal(query({category:'methods',facets:{type:['report']}}).filter(p=>p.curated).length,3);
 assert.equal(query({facets:{institution:['org:washington']}}).length,3);

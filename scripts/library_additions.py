@@ -18,7 +18,7 @@ def attach_library_additions(output):
         fieldmap={f['key']:f for f in fields}
         tldr=[dict(key=k,**sourced(e['tldr'][k])) for k in ['gap','position','conclusion']]
         assert all(k in fieldmap for k in e['visibleKeys'])
-        if e['category'] in ('methods','evaluation'):
+        if e['category'] in ('methods','evaluation','dataset'):
             assert all(k in fieldmap for k in ['object','executor','modifier','verdict','seed','train','debug','test','isolation'])
         kind=e['contentType']
         p=dict(id=e['id'],title=e['title'],date=e['date'],dateLabel=e['dateLabel'],year=e['date'][:4],url=e['url'],priority=e['priority'],priorityBasis=e.get('priorityBasis','按主题相关性与阅读价值标注'),category=e['category'],categories=[e['category']],methodType=e['methodType'],contentType=kind,curated=True,source='addition',depth=['未明确'],tags=e['tags'].copy(),details=[],occurrences=[],review='引用线索 · 依据二手转述' if e.get('reviewStatus')=='secondary-reference' else '新增 · 原文定向核对',reviewed=e.get('reviewStatus')!='secondary-reference',links=e['links'],sources=list(refs.values()),fields={'本质定位':e['tldr']['position']['value']},protocol='见数据隔离说明' if 'isolation' in fieldmap else '不适用：非统一实验',protocolBasis=fieldmap.get('isolation',fieldmap.get('limits',{})).get('value',''),visibleKeys=e['visibleKeys'],overview=dict(tldr=tldr,fields={k:fieldmap[k]['value'] for k in e['visibleKeys']}),profile=dict(fields=fields,sourceDate=e['reviewedAt'],experiments=[],feedbackCases=[],missing=[],partial=[]),brief=dict(summary=e['tldr']['position']['value'],**{f['key']:f['value'] for f in fields}),attributions=e.get('attributions',[]))

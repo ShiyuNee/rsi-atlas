@@ -9270,23 +9270,11 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "反思模块提出技能和工具的联合修改；Tool-Smith（负责实现工具修改的角色）只能包装、编辑、组合、拆分或停用工具。实验使用 Qwen3.5 系列；角色说明没有为 Tool-Smith 另列一款独立模型。",
+        "value": "各规模均由执行端同型号、冻结的 Qwen3.5 反思并提出技能与工具修改；Tool-Smith 负责实现工具的包装、编辑、组合、拆分或停用。SealQA 的固定 122B 评分模型另算评审者，不是统一修改者。",
         "sources": [
           {
-            "label": "附录A.1",
-            "url": "https://arxiv.org/html/2606.01314#A1.SS1"
-          },
-          {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
-          },
-          {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2606.01314#S3.SS1"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2606.01314#S4.SS1.SSS0.Px2"
+            "label": "v2 §4.1 同型号冻结模型承担执行与反思",
+            "url": "https://arxiv.org/html/2606.01314v2#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -9310,19 +9298,11 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "OfficeQA 和 WildClawBench 使用各自任务评测规则。SealQA 由独立、冻结的 Qwen3.5-122B 读取问题、标准答案和回答，判对或错；同一回答判三次，取多数票。",
+        "value": "OfficeQA：官方规则比对答案，五档容差结果的均值用于进化，主表用 0% 容差。SealQA：冻结 Qwen3.5-122B 对照标准答案判三次、多数票。WildClaw：3–5 个二元检查点，关键项失败则全题零分。",
         "sources": [
           {
-            "label": "附录A.1",
-            "url": "https://arxiv.org/html/2606.01314#A1.SS1"
-          },
-          {
-            "label": "§3.1",
-            "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
-          },
-          {
-            "label": "附录D.4",
-            "url": "https://arxiv.org/html/2606.01314#A4.SS4.SSS0.Px2"
+            "label": "v2 附录 D.4 三个基准的评分规则",
+            "url": "https://arxiv.org/html/2606.01314v2#A4.SS4"
           }
         ],
         "status": "recorded"
@@ -9436,8 +9416,8 @@
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
-    "roleAuditDate": "2026-09-09"
+    "sourceDate": "2026-10-11",
+    "roleAuditDate": "2026-10-11"
   },
   "2606.17220": {
     "fields": [

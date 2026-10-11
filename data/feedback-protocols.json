@@ -3763,29 +3763,13 @@
     {
       "label": "OfficeQA",
       "data": "24 道训练、17 道验证、205 道测试。",
-      "scoring": "官方五档容差模糊匹配：数值看相对误差，文字看归一化编辑距离，再映射为任务分数；低于阈值的样本进入失败池。 主文准确率除特别声明外使用 0% 容差的精确匹配；不能把较宽容差下的反馈分直接当成主表准确率。",
+      "scoring": "OfficeQA 官方 scorer 在 0%、0.1%、1%、5%、10% 五档数值容差下分别判通过与否；进化分取五项均值。未通过 0.1% 检查的样本进入失败池。文字答案用规范化匹配；主文准确率默认只用 0% 容差。",
       "visible": "除分数外还读取缺失文档、编译错误、约束违规等结构化诊断。",
       "use": "据失败改技能或工具，以独立验证筛选/回归检查，最终在 205 题报告效果。",
       "sources": [
         {
-          "label": "附录A.1",
-          "url": "https://arxiv.org/html/2606.01314#A1.SS1"
-        },
-        {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.4",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录D.1",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.6",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS6"
+          "label": "v2 附录 D.4 三个基准的评分规则",
+          "url": "https://arxiv.org/html/2606.01314v2#A4.SS4"
         }
       ],
       "judgment": "OfficeQA 规则比对数值误差／文字编辑距离；主表准确率采用 0% 容差"
@@ -3798,24 +3782,8 @@
       "use": "这是有标准答案的外部模型评审，不能写成执行模型自评。",
       "sources": [
         {
-          "label": "附录A.1",
-          "url": "https://arxiv.org/html/2606.01314#A1.SS1"
-        },
-        {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.4",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录D.1",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.6",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS6"
+          "label": "v2 附录 D.4 三个基准的评分规则",
+          "url": "https://arxiv.org/html/2606.01314v2#A4.SS4"
         }
       ],
       "judgment": "Qwen3.5-122B 对照问题、标准答案和回答判对错，三次多数票"
@@ -3823,29 +3791,13 @@
     {
       "label": "WildClawBench",
       "data": "六个昼夜的在线任务经历。",
-      "scoring": "每任务三到五个二元检查点，如收件人、附件、截止时间；得分为通过比例，但关键检查点失败则全题记零。",
+      "scoring": "每任务三到五个二元检查点，如收件人、附件、截止时间；得分为通过比例，但关键检查点失败则全题记零。 论文只说明检查点与汇总规则，未逐项披露程序／模型检查器实现。",
       "visible": "检查点结果及工具可靠性问题，工具另作单元/集成测试。",
       "use": "持续调整技能—工具组合；不是普通问答准确率。",
       "sources": [
         {
-          "label": "附录A.1",
-          "url": "https://arxiv.org/html/2606.01314#A1.SS1"
-        },
-        {
-          "label": "§3.1",
-          "url": "https://arxiv.org/html/2606.01314#S3.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.4",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS4.SSS0.Px2"
-        },
-        {
-          "label": "附录D.1",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS1.SSS0.Px1"
-        },
-        {
-          "label": "附录D.6",
-          "url": "https://arxiv.org/html/2606.01314#A4.SS6"
+          "label": "v2 附录 D.4 三个基准的评分规则",
+          "url": "https://arxiv.org/html/2606.01314v2#A4.SS4"
         }
       ],
       "judgment": "按每题二元检查点和关键项规则汇总；本文未逐项说明检查点由程序或模型判断"

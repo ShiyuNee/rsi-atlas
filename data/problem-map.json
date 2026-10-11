@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-10-06",
-  "corpusUpdated": "2026-10-01",
+  "updated": "2026-10-11",
+  "corpusUpdated": "2026-10-11",
   "policy": "按论文要解决的问题人工归组；同一工作可跨路线。关系箭头是本站的分析，不代表作者声明的继承关系或历史先后。覆盖当前资料库，不声称穷尽整个领域。",
   "groups": [
     {
@@ -132,7 +132,9 @@
           "papers": [
             "2512.18746",
             "2602.07755",
-            "2604.10923"
+            "2604.10923",
+            "2609.15364",
+            "2610.11794"
           ],
           "representatives": [
             "2512.18746",
@@ -212,7 +214,8 @@
             "2609.20519",
             "sol-pi-author-blog",
             "2609.24972",
-            "2609.37968"
+            "2609.37968",
+            "2609.38349"
           ],
           "representatives": [
             "2607.13683",
@@ -266,7 +269,8 @@
             "2609.00768",
             "2609.08183",
             "2607.25886",
-            "2606.04261"
+            "2606.04261",
+            "2610.03548"
           ],
           "representatives": [
             "2511.10395",
@@ -278,10 +282,12 @@
           "title": "固定题库用完以后，如何持续产生挑战？",
           "question": "新任务既要够难又要可验证；无可靠检查的难题无法稳定指导学习。",
           "papers": [
-            "endlessfrontier.tech-assets-paper.pdf"
+            "endlessfrontier.tech-assets-paper.pdf",
+            "2610.00906"
           ],
           "representatives": [
-            "endlessfrontier.tech-assets-paper.pdf"
+            "endlessfrontier.tech-assets-paper.pdf",
+            "2610.00906"
           ]
         },
         {
@@ -325,7 +331,9 @@
             "2203.14465",
             "2401.10020",
             "2409.12917",
-            "2407.18219"
+            "2407.18219",
+            "2610.02826",
+            "2609.30652"
           ],
           "representatives": [
             "2506.10943",
@@ -338,7 +346,8 @@
           "question": "只把记忆接到模型旁边不够，还要让读写和跨任务学习成为行为策略。",
           "papers": [
             "2608.05446",
-            "2607.26784"
+            "2607.26784",
+            "2610.06347"
           ],
           "representatives": [
             "2608.05446",
@@ -358,7 +367,8 @@
             "2606.01779",
             "2607.22688",
             "2609.00196",
-            "2609.17523"
+            "2609.17523",
+            "2610.03002"
           ],
           "representatives": [
             "2605.27276",
@@ -392,7 +402,8 @@
             "2607.05297",
             "2608.08466",
             "2609.14858",
-            "2609.37834"
+            "2609.37834",
+            "aibuildai-posttrain-agent"
           ],
           "representatives": [
             "2309.16797",
@@ -408,11 +419,14 @@
             "2608.02276",
             "2607.21971",
             "2607.28568",
-            "2603.18620"
+            "2603.18620",
+            "2610.12176",
+            "2609.35738"
           ],
           "representatives": [
             "2608.02276",
-            "2607.21971"
+            "2607.21971",
+            "2610.12176"
           ]
         },
         {
@@ -425,7 +439,8 @@
             "2604.23472",
             "2608.24735",
             "metarsi-v1",
-            "weco-aide2-blog"
+            "weco-aide2-blog",
+            "2609.38372"
           ],
           "representatives": [
             "2310.02304",
@@ -478,7 +493,8 @@
             "2606.04455",
             "2608.06301",
             "2608.10178",
-            "2609.33180"
+            "2609.33180",
+            "2609.40097"
           ],
           "representatives": [
             "2607.12227",
@@ -522,12 +538,14 @@
             "2607.05155",
             "2608.31100",
             "2609.08175",
-            "2609.31760"
+            "2609.31760",
+            "2609.04280"
           ],
           "representatives": [
             "2606.17546",
             "2608.31100",
-            "2609.08175"
+            "2609.08175",
+            "2609.04280"
           ]
         },
         {
@@ -542,7 +560,10 @@
             "2605.08678",
             "2608.17271",
             "rsi-exam",
-            "icoder-27b"
+            "icoder-27b",
+            "2609.35025",
+            "2610.09426",
+            "2610.10310"
           ],
           "representatives": [
             "2603.08640",
@@ -581,7 +602,9 @@
             "weng-harness-engineering",
             "zhihu-self-evolving-guide",
             "melon-self-evolve-rsi",
-            "weng-prompt-engineering"
+            "weng-prompt-engineering",
+            "towards-ai-that-improves-itself",
+            "mullie-where-rsi-possible"
           ],
           "representatives": [
             "ai4ai-survey",
@@ -599,7 +622,9 @@
             "anthropic-when-ai-builds-itself",
             "ibm-rsi-serious-question",
             "2609.19203",
-            "reef"
+            "reef",
+            "mass-author-blog",
+            "autodatabench-author-blog"
           ],
           "representatives": [
             "anthropic-when-ai-builds-itself",
@@ -614,7 +639,8 @@
             "2509.19349",
             "deepmind-alphaevolve-blog",
             "funsearch",
-            "2506.13131"
+            "2506.13131",
+            "2609.36054"
           ],
           "representatives": [
             "2509.19349",
@@ -4073,6 +4099,610 @@
         {
           "label": "原论文摘要与日期",
           "url": "https://arxiv.org/abs/2609.31760"
+        }
+      ]
+    },
+    "2610.12176": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [
+        "weights",
+        "harness",
+        "feedback"
+      ],
+      "question": "执行、自评和修改由同一模型承担时，如何获得可持续的学习信号？",
+      "sources": [
+        {
+          "label": "§3 MASS 双层循环",
+          "url": "https://arxiv.org/html/2610.12176#S3"
+        }
+      ],
+      "name": "MASS",
+      "contrast": "将自评选出的团队轨迹训练回共享权重；下一轮执行者、修改者和评审者一起更新。",
+      "contrastSources": [
+        {
+          "label": "§3 MASS 双层循环",
+          "url": "https://arxiv.org/html/2610.12176#S3"
+        },
+        {
+          "label": "§4.1–4.2 实验与结果",
+          "url": "https://arxiv.org/html/2610.12176#S4"
+        }
+      ]
+    },
+    "2610.00906": {
+      "primary": "curriculum",
+      "branch": "frontier",
+      "related": [
+        "harness",
+        "feedback"
+      ],
+      "question": "固定修改器下，下一轮应该针对哪种失败分配预算？",
+      "sources": [
+        {
+          "label": "§4 自适应选题与修改",
+          "url": "https://arxiv.org/html/2610.00906#S4"
+        }
+      ],
+      "name": "ActiveSaddler",
+      "contrast": "按失败模式动态选题，把已知弱点修复和新弱点探索分开决策。",
+      "contrastSources": [
+        {
+          "label": "§4 自适应选题与修改",
+          "url": "https://arxiv.org/html/2610.00906#S4"
+        },
+        {
+          "label": "§5.1–5.2 主实验",
+          "url": "https://arxiv.org/html/2610.00906#S5"
+        }
+      ]
+    },
+    "2609.35738": {
+      "primary": "improver",
+      "branch": "learn-editor",
+      "related": [
+        "harness",
+        "evaluation"
+      ],
+      "question": "能否训练一个可迁移的 harness 修改者？",
+      "sources": [
+        {
+          "label": "§4 训练 proposer",
+          "url": "https://arxiv.org/html/2609.35738#S4"
+        }
+      ],
+      "name": "Harness Learning",
+      "contrast": "直接优化小模型提出代码修改的能力；修改者参数更新与答题模型参数更新分开。",
+      "contrastSources": [
+        {
+          "label": "§4 训练 proposer",
+          "url": "https://arxiv.org/html/2609.35738#S4"
+        },
+        {
+          "label": "§5 迁移与多轮修改",
+          "url": "https://arxiv.org/html/2609.35738#S5"
+        }
+      ]
+    },
+    "2609.38349": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "improver",
+        "curriculum"
+      ],
+      "question": "搜索停滞时，应该继续改代码，还是换修改者与搜索路线？",
+      "sources": [
+        {
+          "label": "§4 谱系、修改器与调度",
+          "url": "https://arxiv.org/html/2609.38349#S4"
+        }
+      ],
+      "name": "MILO",
+      "contrast": "保留成功和失败谱系，停滞时由调度 agent 换修改器、重组分支或调整课程。",
+      "contrastSources": [
+        {
+          "label": "§4 谱系、修改器与调度",
+          "url": "https://arxiv.org/html/2609.38349#S4"
+        },
+        {
+          "label": "§5 实验及指标",
+          "url": "https://arxiv.org/html/2609.38349#S5"
+        }
+      ]
+    },
+    "2609.38372": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "evaluation"
+      ],
+      "question": "修改者也用当前被改的 harness，能否跨任务继承改进？",
+      "sources": [
+        {
+          "label": "§3.2–3.5 演化流程",
+          "url": "https://arxiv.org/html/2609.38372#S3"
+        }
+      ],
+      "name": "Same-agent Harness",
+      "contrast": "执行与修改共用不断演化的 49 行起点；依靠固定轮次和工程检查接续，而非开发集择优。",
+      "contrastSources": [
+        {
+          "label": "§3.2–3.5 演化流程",
+          "url": "https://arxiv.org/html/2609.38372#S3"
+        },
+        {
+          "label": "§4 实验与数据表",
+          "url": "https://arxiv.org/html/2609.38372#S4"
+        }
+      ]
+    },
+    "2609.15364": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [
+        "curriculum",
+        "evaluation"
+      ],
+      "question": "面对陌生环境，能否靠自主练习形成可复用经验？",
+      "sources": [
+        {
+          "label": "§3 探索与经验保留",
+          "url": "https://arxiv.org/html/2609.15364#S3"
+        }
+      ],
+      "name": "RSIAgent",
+      "contrast": "围绕目标任务组织广泛与深入练习，冻结 memory 后重跑目标；重点是环境经验，不是重写整个框架。",
+      "contrastSources": [
+        {
+          "label": "§3 探索与经验保留",
+          "url": "https://arxiv.org/html/2609.15364#S3"
+        },
+        {
+          "label": "§4 主实验与局限",
+          "url": "https://arxiv.org/html/2609.15364#S4"
+        }
+      ]
+    },
+    "2610.02826": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "harness",
+        "experience"
+      ],
+      "question": "专用 harness 找到的成功经验，怎样训练进通用模型？",
+      "sources": [
+        {
+          "label": "§2 发现、重写与过滤",
+          "url": "https://arxiv.org/html/2610.02826#S2"
+        }
+      ],
+      "name": "RSR",
+      "contrast": "把多 harness 的成功过程重新执行成统一接口的轨迹，减少直接模仿长轨迹带来的循环行为。",
+      "contrastSources": [
+        {
+          "label": "§2 发现、重写与过滤",
+          "url": "https://arxiv.org/html/2610.02826#S2"
+        },
+        {
+          "label": "§3.1–3.6 数据、harness 与结果",
+          "url": "https://arxiv.org/html/2610.02826#S3"
+        }
+      ]
+    },
+    "2609.30652": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "feedback",
+        "improver"
+      ],
+      "question": "学生变强后，提供监督的教师如何同步改善？",
+      "sources": [
+        {
+          "label": "§3 DCE 与 SRCL",
+          "url": "https://arxiv.org/html/2609.30652#S3"
+        }
+      ],
+      "name": "DCE / SRCL",
+      "contrast": "把最新学生刷新为看 gold solution 的教师；再用规则核验的短重写约束推理成本。",
+      "contrastSources": [
+        {
+          "label": "§3 DCE 与 SRCL",
+          "url": "https://arxiv.org/html/2609.30652#S3"
+        },
+        {
+          "label": "§4–5 数据与比较",
+          "url": "https://arxiv.org/html/2609.30652#S4"
+        }
+      ]
+    },
+    "2609.04280": {
+      "primary": "evaluation",
+      "branch": "trajectory",
+      "related": [
+        "experience",
+        "harness"
+      ],
+      "question": "工具和技能越来越多时，原来会的任务会不会退步？",
+      "sources": [
+        {
+          "label": "§3 构造及评测协议",
+          "url": "https://arxiv.org/html/2609.04280#S3"
+        }
+      ],
+      "name": "EvoHarnessBench",
+      "contrast": "固定外部能力扩张序列，分别测不保留经验的部署和持续适应，区分适应新任务与保留旧能力。",
+      "contrastSources": [
+        {
+          "label": "§3 构造及评测协议",
+          "url": "https://arxiv.org/html/2609.04280#S3"
+        },
+        {
+          "label": "§4 分轴结果",
+          "url": "https://arxiv.org/html/2609.04280#S4"
+        }
+      ]
+    },
+    "2609.35025": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [
+        "curriculum",
+        "feedback"
+      ],
+      "question": "不训练模型，怎样验收 agent 自主生成的训练任务？",
+      "sources": [
+        {
+          "label": "§2.2–2.3 三角色与评分",
+          "url": "https://arxiv.org/html/2609.35025#S2"
+        }
+      ],
+      "name": "AutoDataBench · 造题",
+      "contrast": "逐个检查任务有效性、实测难度和隐藏弱点覆盖；与同名“数据干预测试床”是两篇不同论文。",
+      "contrastSources": [
+        {
+          "label": "§2.2–2.3 三角色与评分",
+          "url": "https://arxiv.org/html/2609.35025#S2"
+        },
+        {
+          "label": "§3 实验及结果",
+          "url": "https://arxiv.org/html/2609.35025#S3"
+        }
+      ]
+    },
+    "2609.40097": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "curriculum",
+        "weights"
+      ],
+      "question": "自动科研的收益究竟是不是来自更好的数据？",
+      "sources": [
+        {
+          "label": "§3.2–3.4 流程与三类任务",
+          "url": "https://arxiv.org/html/2609.40097#S3"
+        }
+      ],
+      "name": "AutoDataBench · 数据干预",
+      "contrast": "固定下游训练程序，比较数据干预带来的同域收益与隐藏跨域迁移；区别于同名造题验收 benchmark。",
+      "contrastSources": [
+        {
+          "label": "§3.2–3.4 流程与三类任务",
+          "url": "https://arxiv.org/html/2609.40097#S3"
+        },
+        {
+          "label": "§4 实验与迭代轨迹",
+          "url": "https://arxiv.org/html/2609.40097#S4"
+        }
+      ]
+    },
+    "2610.03548": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [
+        "harness",
+        "feedback"
+      ],
+      "question": "出题策略怎样随模型能力持续升级，而不靠无效难题刷指标？",
+      "sources": [
+        {
+          "label": "§3 skill 与工作流更新",
+          "url": "https://arxiv.org/html/2610.03548#S3"
+        }
+      ],
+      "name": "Harness for Data Synthesis",
+      "contrast": "把出题技能和工作流一起优化，用有效性、难度与成本联合验收；另测新 seed 和下游训练。",
+      "contrastSources": [
+        {
+          "label": "§3 skill 与工作流更新",
+          "url": "https://arxiv.org/html/2610.03548#S3"
+        },
+        {
+          "label": "§4 结果",
+          "url": "https://arxiv.org/html/2610.03548#S4"
+        }
+      ]
+    },
+    "2610.06347": {
+      "primary": "weights",
+      "branch": "state-policy",
+      "related": [
+        "curriculum",
+        "evaluation"
+      ],
+      "question": "固定后训练流程能否把错误诊断有效转成模型参数收益？",
+      "sources": [
+        {
+          "label": "§3 错因、策略研究与训练",
+          "url": "https://arxiv.org/html/2610.06347#S3"
+        }
+      ],
+      "name": "ImproveAnyTask",
+      "contrast": "先选主要错误，再研究数据策略和试跑训练；改变的是任务模型，外层研究流程不自改。",
+      "contrastSources": [
+        {
+          "label": "§3 错因、策略研究与训练",
+          "url": "https://arxiv.org/html/2610.06347#S3"
+        },
+        {
+          "label": "§4 设置和结果",
+          "url": "https://arxiv.org/html/2610.06347#S4"
+        }
+      ]
+    },
+    "2610.03002": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "curriculum",
+        "feedback"
+      ],
+      "question": "模型的生成、理解与代码能力能否互相提供可信训练信号？",
+      "sources": [
+        {
+          "label": "§2 诊断、程序核验、递归训练",
+          "url": "https://arxiv.org/html/2610.03002#S2"
+        }
+      ],
+      "name": "Multimodal RSI",
+      "contrast": "让读图能力安排课程，用执行过的绘图程序核验监督目标，再回写多模态模型参数。",
+      "contrastSources": [
+        {
+          "label": "§2 诊断、程序核验、递归训练",
+          "url": "https://arxiv.org/html/2610.03002#S2"
+        },
+        {
+          "label": "§4 结果与局限",
+          "url": "https://arxiv.org/html/2610.03002#S4"
+        }
+      ]
+    },
+    "2609.36054": {
+      "primary": "perspectives",
+      "branch": "programs",
+      "related": [],
+      "question": "研发自动化在什么条件下可能转成加速反馈？",
+      "sources": [
+        {
+          "label": "原文 pp.2–5 反馈机制、阻力与证据",
+          "url": "https://arxiv.org/pdf/2609.36054#page=2"
+        }
+      ],
+      "name": "AI R&D Intelligence Explosion",
+      "contrast": "同时讨论正反馈与四类阻力，把局部任务改进和系统级加速区分开。",
+      "contrastSources": [
+        {
+          "label": "原文 pp.2–5 反馈机制、阻力与证据",
+          "url": "https://arxiv.org/pdf/2609.36054#page=2"
+        },
+        {
+          "label": "原文 pp.5–9 风险、政策建议与不确定性",
+          "url": "https://arxiv.org/pdf/2609.36054#page=5"
+        }
+      ]
+    },
+    "towards-ai-that-improves-itself": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "如何区分保留改进与改进者能力的递归提升？",
+      "sources": [
+        {
+          "label": "论文 §1–2 定义与统一循环",
+          "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf#page=1"
+        }
+      ],
+      "name": "Towards AI That Improves Itself",
+      "contrast": "用状态继承界定递归，再额外要求证据证明修改能力提高。",
+      "contrastSources": [
+        {
+          "label": "论文 §1–2 定义与统一循环",
+          "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf#page=1"
+        },
+        {
+          "label": "论文分类及七类未来方向",
+          "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf"
+        }
+      ]
+    },
+    "aibuildai-posttrain-agent": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [
+        "weights"
+      ],
+      "question": "后训练搜索流程能否由 agent 按任务自行生成？",
+      "sources": [
+        {
+          "label": "README：搜索程序、知识库和执行图",
+          "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#method"
+        }
+      ],
+      "name": "AIBuildAI PostTrain",
+      "contrast": "meta-agent 输出搜索程序，而非只改某个训练脚本；实现层可直接复用，但示例数据隔离需单独检查。",
+      "contrastSources": [
+        {
+          "label": "README：搜索程序、知识库和执行图",
+          "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#method"
+        },
+        {
+          "label": "README：GSM8K 使用示例",
+          "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#example-post-train-a-base-model-for-grade-school-math"
+        }
+      ]
+    },
+    "mass-author-blog": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "同一个模型怎样从团队协作中得到新的学习信号？",
+      "sources": [
+        {
+          "label": "How MASS works／Results",
+          "url": "https://pub.sakana.ai/mass/"
+        }
+      ],
+      "name": "MASS 作者博客",
+      "contrast": "以双层循环图解释 workflow 搜索和权重蒸馏，配合原论文阅读。",
+      "contrastSources": [
+        {
+          "label": "How MASS works／Results",
+          "url": "https://pub.sakana.ai/mass/"
+        },
+        {
+          "label": "Sakana AI 作者博客（2026 年 10 月）",
+          "url": "https://pub.sakana.ai/mass/"
+        }
+      ]
+    },
+    "autodatabench-author-blog": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [],
+      "question": "怎样把“合成训练数据质量”变成可验收的问题？",
+      "sources": [
+        {
+          "label": "A good task has to pass two tests／Results",
+          "url": "https://autodatabench.com/blog.html"
+        }
+      ],
+      "name": "AutoDataBench 作者博客",
+      "contrast": "用单个任务交付解释有效性、难度与覆盖三个标准；与论文关联避免重复计为研究成果。",
+      "contrastSources": [
+        {
+          "label": "A good task has to pass two tests／Results",
+          "url": "https://autodatabench.com/blog.html"
+        },
+        {
+          "label": "Haotian Luo 中英双语研究博客",
+          "url": "https://autodatabench.com/blog.html"
+        }
+      ]
+    },
+    "2610.11794": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [
+        "feedback",
+        "harness"
+      ],
+      "question": "如何把对环境的理解变成可验证、可修订的长期记忆？",
+      "sources": [
+        {
+          "label": "§2.2–2.4 规则修订、核验与规划",
+          "url": "https://arxiv.org/html/2610.11794#S2"
+        }
+      ],
+      "name": "Memento 3",
+      "contrast": "把自然语言规则编译成模拟器，用真实交互反例同时修订规则与代码；记忆开始支持预测和规划。",
+      "contrastSources": [
+        {
+          "label": "§2.2–2.4 规则修订、核验与规划",
+          "url": "https://arxiv.org/html/2610.11794#S2"
+        },
+        {
+          "label": "§4 游戏、模型与消融",
+          "url": "https://arxiv.org/html/2610.11794#S4"
+        }
+      ]
+    },
+    "2610.09426": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [
+        "curriculum"
+      ],
+      "question": "如何规模化构造有可信评分和复现基线的研究任务？",
+      "sources": [
+        {
+          "label": "§3 环境构建与评分",
+          "url": "https://arxiv.org/html/2610.09426#S3"
+        }
+      ],
+      "name": "RSI-Forge",
+      "contrast": "从论文造环境，再独立复现方法；比较持续修改、最终版本选择和真实研究新颖性三种不同证据。",
+      "contrastSources": [
+        {
+          "label": "§3 环境构建与评分",
+          "url": "https://arxiv.org/html/2610.09426#S3"
+        },
+        {
+          "label": "§5 多轮研究与结果",
+          "url": "https://arxiv.org/html/2610.09426#S5"
+        }
+      ]
+    },
+    "2610.10310": {
+      "primary": "evaluation",
+      "branch": "research",
+      "related": [
+        "harness",
+        "weights"
+      ],
+      "question": "统一基础设施后，agent 的改进决策能带来什么收益？",
+      "sources": [
+        {
+          "label": "§3 五种服务、权限与预算",
+          "url": "https://arxiv.org/html/2610.10310#S3"
+        }
+      ],
+      "name": "RSIGym",
+      "contrast": "用权限切换数据、harness 和联合研究；同题开发成绩、参数训练收益及隐藏泛化分开解释。",
+      "contrastSources": [
+        {
+          "label": "§3 五种服务、权限与预算",
+          "url": "https://arxiv.org/html/2610.10310#S3"
+        },
+        {
+          "label": "§4 模型、任务、协议与结果",
+          "url": "https://arxiv.org/html/2610.10310#S4"
+        }
+      ]
+    },
+    "mullie-where-rsi-possible": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "question": "什么任务结构能让旧能力持续降低后续学习成本？",
+      "sources": [
+        {
+          "label": "Advantage over a frozen mechanism；Measuring a change in learning efficiency",
+          "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+        }
+      ],
+      "name": "Where Is RSI Possible?",
+      "contrast": "把曲线涨分与学习效率变化拆开，给出冻结改进机制的对照建议。",
+      "contrastSources": [
+        {
+          "label": "Advantage over a frozen mechanism；Measuring a change in learning efficiency",
+          "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+        },
+        {
+          "label": "作者博客（2026 年 10 月）",
+          "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
         }
       ]
     }

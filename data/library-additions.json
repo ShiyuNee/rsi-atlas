@@ -5423,5 +5423,3615 @@
     ],
     "priorityBasis": "按机制相关性补录；不因收录或新近发表自动视为经典代表作。",
     "attributions": []
+  },
+  {
+    "id": "2610.12176",
+    "title": "MASS: Recursive Self-Improvement through Multi-Agent Self-Supervision",
+    "date": "2026-10-08",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "joint",
+    "methodTypes": [
+      "joint"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.12176",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.12176"
+      },
+      "intro": {
+        "label": "§1 监督瓶颈",
+        "url": "https://arxiv.org/html/2610.12176#S1"
+      },
+      "method": {
+        "label": "§3 MASS 双层循环",
+        "url": "https://arxiv.org/html/2610.12176#S3"
+      },
+      "exp": {
+        "label": "§4.1–4.2 实验与结果",
+        "url": "https://arxiv.org/html/2610.12176#S4"
+      },
+      "data": {
+        "label": "附录 B.1 训练与验证轨迹",
+        "url": "https://arxiv.org/html/2610.12176#A2.SS1"
+      },
+      "test": {
+        "label": "附录 C.5 各基准判分与样本量",
+        "url": "https://arxiv.org/html/2610.12176#A3.SS5"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "开放研究任务缺少可靠的自动正确答案；当执行模型也要自己评价、自己改进时，单个模型从哪里获得比原来更好的训练信号？",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "检验多 agent 协作产生的更好成果，能否经自评筛选后训练回同一个模型，并同时改善它的执行、工作流优化和评价能力。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "先搜索团队分工，再把团队轨迹蒸馏到共享权重，完成两轮循环。研究基准有收益，但 Terminal-Bench 和 SWE-bench 分数下降；效果不是全领域一致提升。",
+        "refs": [
+          "exp",
+          "test"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "内层修改团队分工、指令、交付要求和调用顺序；外层更新共享模型的 LoRA 权重。qwen-code 的工具执行代码固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "Qwen3.6-27B-FP8 起步；每轮更新后的同一模型同时担任主 agent、子 agent、工作流优化者和自评者。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "当前模型根据两个工作区的自评比较修改工作流；固定训练程序再用筛选出的执行轨迹更新共享模型。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "进化：当前 Qwen 模型对比两份代码、结果和报告，给出偏好及理由；它不是规则 verifier。对外报告：GPT-5.5 与 Opus 4.8 各判三次，评价结果不反馈给进化循环。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "seed": {
+        "value": "qwen-code 0.20.0：可执行代码、读写工作区并委派子 agent；可修改的工作流是描述协作方式的文本，不是重写整个 coding agent。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      },
+      "train": {
+        "value": "GPT-5.5 预先生成金融、机器人、药学共 12 个研究任务；9 个划为训练，其中 8 个找到有效工作流并提供数据。首轮最终用 119 条团队轨迹训练。",
+        "refs": [
+          "data"
+        ]
+      },
+      "debug": {
+        "value": "每个训练任务运行选中的工作流 18 次，自评排序后最多取 15 条训练、第 16 条验证；验证轨迹来自相同训练任务。",
+        "refs": [
+          "data"
+        ]
+      },
+      "test": {
+        "value": "合成研究：3 题不参与参数训练／选 checkpoint。公开测试：ScienceAgentBench 102 题，执行程序查输出；TB2 89、SWE Verified 500 题，跑官方测试；DSBench 74 题，对隐藏标签算指标；MLR-Bench 12 题，GPT-5.5＋Opus 4.8 按 rubric 评审；AstaBench-Hard 40 题，Sonnet 4.6 按检查表判分。",
+        "refs": [
+          "test",
+          "data"
+        ]
+      },
+      "isolation": {
+        "value": "3 个合成测试任务也用于工作流搜索，隔离只针对参数训练。TB2／SWE 数量为计划任务，每轮只比较三个模型均有评分的任务。MLR／Asta 汇总收益伴随交付完成率提高，不能直接解释为每篇报告质量都变好。",
+        "refs": [
+          "test",
+          "data"
+        ]
+      },
+      "novelty": {
+        "value": "团队成果提供训练目标，更新后的模型重新承担三种角色。工作流移植实验固定执行模型，但没有单独隔离优化者与自评者各自贡献。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "Workflow",
+      "Prompt",
+      "LLMJudge",
+      "SelfFeedback",
+      "PairwiseFeedback"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.12176"
+      },
+      {
+        "label": "作者博客",
+        "url": "?paper=mass-author-blog"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [
+      "TaskModelWeights",
+      "EditorWeights",
+      "EvaluatorWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§3 MASS 双层循环",
+        "url": "https://arxiv.org/html/2610.12176#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:sakana",
+        "label": "Sakana AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.12176"
+          }
+        ]
+      },
+      {
+        "tag": "org:berkeley",
+        "label": "UC Berkeley",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.12176"
+          }
+        ]
+      },
+      {
+        "tag": "person:matei-zaharia",
+        "label": "Matei Zaharia",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.12176"
+          }
+        ]
+      }
+    ],
+    "workId": "mass",
+    "relatedRecords": [
+      "mass-author-blog"
+    ]
+  },
+  {
+    "id": "2610.00906",
+    "title": "ActiveSaddler: Automated Curriculum Learning for Agent Harness Optimization",
+    "date": "2026-10-01",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.00906",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.00906"
+      },
+      "intro": {
+        "label": "§1 固定课程的问题",
+        "url": "https://arxiv.org/html/2610.00906#S1"
+      },
+      "method": {
+        "label": "§4 自适应选题与修改",
+        "url": "https://arxiv.org/html/2610.00906#S4"
+      },
+      "exp": {
+        "label": "§5.1–5.2 主实验",
+        "url": "https://arxiv.org/html/2610.00906#S5"
+      },
+      "data": {
+        "label": "附录 A，Table 3 数据划分",
+        "url": "https://arxiv.org/html/2610.00906#A1"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "固定顺序反复练题会把预算花在已解决的问题上；按题目或大类分组又不容易追踪跨题重复出现的同一种错误。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究如何随 harness 的变化，动态选择最值得修复的失败模式，以及何时转去探索新的失败。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "在同一个 AutoSaddler 修改器下，仅改变课程选择，GAIA2 与 TB2 测试 Pass@1 分别比固定随机顺序高 4.4、7.5 个百分点。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "修改任务 agent 的 harness；同时维护失败模式库与选题优先级。课程控制规则和模型权重固定，不是让课程控制器重写自己。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "两项基准均为 GPT-5.5，medium reasoning；GAIA2 操作模拟手机，TB2 在终端环境执行任务。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "GPT-5.5 以 xhigh reasoning 经 GitHub Copilot SDK 运行 AutoSaddler；失败模式提取、排序和探索控制由额外会话完成。",
+        "refs": [
+          "exp",
+          "data"
+        ]
+      },
+      "verdict": {
+        "value": "读取任务运行的成功／失败与完整轨迹，归纳失败模式并诊断补丁。GAIA2 和 TB2 的任务成功率用于验收；LLM 估计“是否值得修复”只用于选题，不替代任务成绩。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "GAIA2：benchmark 自带 ReAct agent，交替推理和调用手机工具。TB2：Terminus 2 终端 agent。ActiveSaddler 在 AutoSaddler 外增加选题层。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "GAIA2：Universe 29 的 75 题用于触发修改；TB2：随机划分的 30 题。这里训练指 harness 搜索，不训练模型权重。",
+        "refs": [
+          "data"
+        ]
+      },
+      "debug": {
+        "value": "GAIA2：Universe 30 的 65 题；TB2：19 题，用于比较修改后的开发集成功率。总 rollout 预算分别为 1,400、490。",
+        "refs": [
+          "data"
+        ]
+      },
+      "test": {
+        "value": "GAIA2：未参与优化的 Universe 21／22／27，共 300 题；TB2：另外 40 题。冻结选出的 harness 后各运行三次，报告平均 Pass@1。",
+        "refs": [
+          "exp",
+          "data"
+        ]
+      },
+      "isolation": {
+        "value": "GAIA2 按人物／环境分组隔离；TB2 只是随机题目隔离，不应把两者都称为跨分布测试。LLM 选题带来的额外调用成本也需计入。",
+        "refs": [
+          "data",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "FullHarness",
+      "Curriculum",
+      "BenchmarkScore",
+      "EnvironmentReward"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.00906"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§4 自适应选题与修改",
+        "url": "https://arxiv.org/html/2610.00906#S4"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:microsoft",
+        "label": "Microsoft",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.00906"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.35738",
+    "title": "Harness Learning Enables Generalizable Test-Time Adaptation",
+    "date": "2026-09-28",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.35738",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.35738"
+      },
+      "intro": {
+        "label": "§1 问题与定位",
+        "url": "https://arxiv.org/html/2609.35738#S1"
+      },
+      "method": {
+        "label": "§4 训练 proposer",
+        "url": "https://arxiv.org/html/2609.35738#S4"
+      },
+      "exp": {
+        "label": "§5 迁移与多轮修改",
+        "url": "https://arxiv.org/html/2609.35738#S5"
+      },
+      "rg": {
+        "label": "附录 B Reasoning Gym",
+        "url": "https://arxiv.org/html/2609.35738#A2"
+      },
+      "qa": {
+        "label": "附录 D 多跳问答设置",
+        "url": "https://arxiv.org/html/2609.35738#A4"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "靠通用模型临时写修改代码，容易生成无效或不适配的 harness；已有修改经验没有稳定转化成跨任务的修改能力。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "把“读执行反馈并修改 harness”本身当作可训练能力，检验小修改模型能否迁移到没训练过的任务。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "4B proposer 经训练后修改更可靠，能迁移到新推理任务和问答集；多轮训练并非在所有设置下都优于单轮训练，成绩也不能等同于学会复杂模块组合。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "训练 proposer 的参数；部署时由它改 Python harness，包括模型调用、工具使用、检索和答案处理。答题模型权重冻结。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "Reasoning Gym：Qwen3.5-4B；多跳 QA：Qwen3-8B。两者均固定，由候选 harness 调用。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "Reasoning Gym：Qwen3.5-4B proposer，先学 Qwen3.6-35B-A3B 的修改示范再 RL；QA：Qwen3-4B proposer 从基础模型直接 RL。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "verdict": {
+        "value": "Reasoning Gym 用各任务自带 grader，含部分分；QA 将答案与 gold／alias 做规则规范化精确匹配，并报告漏检索的支持文档。RL 另奖励代码可解析、能运行，不用 LLM 自评代替正确性。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "seed": {
+        "value": "推理任务起点只调用一次答题模型并抽答案；QA 起点为 BM25 检索与答题程序。proposer 获得源码、失败样例和调用轨迹，可生成可执行修改。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "train": {
+        "value": "Reasoning Gym：21 类 SFT 任务、5 类 RL 任务，432 条 SFT 修改示范。QA：HotpotQA train 中 2,000 题；每个 RL context 用 6 题反馈、另 64 题计算候选奖励。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "debug": {
+        "value": "Reasoning Gym 每类 25 道开发题；QA 三个数据集各设 500 道开发题。测试时仍可用新任务的开发集反馈适配，因此是有反馈的 test-time adaptation。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "test": {
+        "value": "Reasoning Gym 每类另 75 题，包含未参加 SFT／RL 的任务类。QA：HotpotQA 300、MuSiQue 299、2WikiMultihopQA 300 题；后两者未用于训练 proposer。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      },
+      "isolation": {
+        "value": "开发与测试题分开。论文另报按测试成绩选出的 best-of-N oracle，只能视为候选上限；实际可部署结果应看开发集选中的版本。",
+        "refs": [
+          "rg",
+          "qa"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "FullHarness",
+      "TrainedEditor",
+      "ExecutableVerifier",
+      "GoldLabel"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.35738"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem",
+      "OtherModifier",
+      "OtherEditor",
+      "OtherTeacher"
+    ],
+    "parameterTargets": [
+      "EditorWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§4 训练 proposer",
+        "url": "https://arxiv.org/html/2609.35738#S4"
+      },
+      {
+        "label": "附录 B Reasoning Gym",
+        "url": "https://arxiv.org/html/2609.35738#A2"
+      },
+      {
+        "label": "附录 D 多跳问答设置",
+        "url": "https://arxiv.org/html/2609.35738#A4"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "person:ruslan-salakhutdinov",
+        "label": "Ruslan Salakhutdinov",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.35738"
+          }
+        ]
+      },
+      {
+        "tag": "person:andrea-zanette",
+        "label": "Andrea Zanette",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.35738"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.38349",
+    "title": "MILO: Automated Harness Discovery via Orchestrated Multi-Agent Evolution",
+    "date": "2026-09-29",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.38349",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.38349"
+      },
+      "intro": {
+        "label": "§1 设计空间与搜索停滞",
+        "url": "https://arxiv.org/html/2609.38349#S1"
+      },
+      "method": {
+        "label": "§4 谱系、修改器与调度",
+        "url": "https://arxiv.org/html/2609.38349#S4"
+      },
+      "exp": {
+        "label": "§5 实验及指标",
+        "url": "https://arxiv.org/html/2609.38349#S5"
+      },
+      "setup": {
+        "label": "附录 A.1–A.2 模型、起点与基准",
+        "url": "https://arxiv.org/html/2609.38349#A1"
+      },
+      "seed": {
+        "label": "附录 B 初始 harness",
+        "url": "https://arxiv.org/html/2609.38349#A2"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "只保留少量高分候选会丢掉失败信息和互补设计；搜索停滞时，继续用相同修改器在同一谱系上尝试可能无效。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究如何利用完整修改历史，并在停滞时调整搜索分支、修改者和任务集，持续发现更好的可执行 harness。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "在终端、论文复现和软件工程任务上报告收益，并把 TB 上生成的 harness 迁移到 Frontier-Bench。特点是调整搜索过程；不能把同基准验证集改善直接当作完全未接触的测试收益。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "改 DeepAgents 上的 Python harness：提示、工具、memory、控制流、检查与子 agent 组织。调度者还能换修改器、合并谱系、分出新搜索岛及调整课程；模型参数不变。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "分别使用固定 Opus 4.8 与 gpt-oss-120b，配合候选 DeepAgents harness。",
+        "refs": [
+          "setup"
+        ]
+      },
+      "modifier": {
+        "value": "每个岛起始为 Claude Code＋Opus 4.8；可换 Codex＋GPT-5.5，或 DeepAgents＋Opus 4.8／GPT-5.5／gpt-oss-120b／Qwen3-Coder-480B。总调度为 Claude Code＋Opus 4.8。",
+        "refs": [
+          "setup"
+        ]
+      },
+      "verdict": {
+        "value": "TB2.1、Frontier-Bench、DeepSWE：隐藏测试的通过比例；PaperBench-CodeDev：GPT-5.5 按官方复现 rubric 判分。修改者读分数、成本和执行证据，失败候选也保存在谱系中。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "主搜索从 3 个专家设计的 DeepAgents harness 出发，已有工具、状态管理与不同组织方式；不是只有一条模型调用的极简起点。另有最小起点消融。",
+        "refs": [
+          "setup",
+          "seed"
+        ]
+      },
+      "train": {
+        "value": "在 TB2.1、PaperBench-CodeDev、DeepSWE 各自的 search 子集评估候选；每题 3 次。三岛搜索最多 72 小时；数学实例搜索是另一组实验。",
+        "refs": [
+          "setup",
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "候选通过后还会在 validation 子集重评；验证集的进步重置停滞计数，停滞触发调度调整。因此该集合参与搜索控制和最终选版本。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "报告 TB2.1 89 题、PaperBench-CodeDev 20 篇、DeepSWE 113 题的最终重评；另把 TB harness 直接转到 70 个无需 GPU 的 Frontier-Bench 任务，不在该集继续搜索。",
+        "refs": [
+          "setup",
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "search／validation 分开，但 validation 参与停滞判断。跨 benchmark 的 Frontier-Bench 迁移是更直接的独立泛化证据；模型和预算不同的排行榜只能作背景比较。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "FullHarness",
+      "Population",
+      "MetaSearch",
+      "ExecutableVerifier",
+      "LLMJudge"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.38349"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "OtherModifier",
+      "OtherEditor"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§4 谱系、修改器与调度",
+        "url": "https://arxiv.org/html/2609.38349#S4"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:aws",
+        "label": "AWS AI Labs",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.38349"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.38372",
+    "title": "Self-Evolving Harness on Multiple Tasks with the Agent as Its Own Optimizer",
+    "date": "2026-09-29",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.38372",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.38372"
+      },
+      "intro": {
+        "label": "§1 同一 agent 执行与修改",
+        "url": "https://arxiv.org/html/2609.38372#S1"
+      },
+      "method": {
+        "label": "§3.2–3.5 演化流程",
+        "url": "https://arxiv.org/html/2609.38372#S3"
+      },
+      "exp": {
+        "label": "§4 实验与数据表",
+        "url": "https://arxiv.org/html/2609.38372#S4"
+      },
+      "seed": {
+        "label": "附录 A 49 行起点",
+        "url": "https://arxiv.org/html/2609.38372#A1"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "独立修改器往往仍依赖人工设计的强 harness；单个 benchmark 上改好，也不能说明同一套系统能处理多类任务。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "检验能否让同一个 agent 同时做任务和修改自身，从极简起点在多种任务上学出通用运行机制。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "进化中出现输出截断、上下文压缩和独立复核，并在多种未参与首阶段的 benchmark 上测试。作者也记录退化；新版本通过工程检查就接续，不保证每轮任务分数单调上升。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "完整 Python harness 及随版本保留的演化笔记。新 harness 同时用于下一轮答题和下一轮修改，模型权重与外层调度接口固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "所有实验使用 GPT-5.6 Sol，high reasoning；答题与修改会话使用相同模型配置和当前 harness。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "同一 agent 在新会话中读取当前源码、上一批完整成功／失败轨迹、grader 输出和上一次修改记录，自行决定改什么。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "训练任务由各 benchmark 的 grader 返回成绩和输出；外层原样交给修改者。版本接续只查编辑范围、新增行数、是否实际改代码及 mock-model 能否跑通，不用隐藏测试分数选择版本。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "49 行 Python：简短 system prompt、bash 工具、模型—工具循环。没有输出截断、超时控制、上下文压缩或错误恢复；这些能力需由后续修改加入。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "首阶段各取 60 题：TB2.1、GAIA2、OfficeQA Pro、τ³-Bench banking、SWE-Bench Pro，共 300 题。第二阶段再用 Claw-Eval 80 题。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "没有独立开发集选最高分版本；按固定轮次报告第 5 版和第 7 版。工程检查失败时启动修复会话，不把 mock 检查当成能力评测。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "同域留出：TB 29、GAIA2 100、OfficeQA 73、τ³ 37、SWE-Pro 100 题。跨域：SWE Verified 100、DeepSWE 53、BrowseComp-Plus 100、APEX-Agents 100、Claw-Eval 100；评分沿用各官方协议。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "参考答案与评分测试在执行结束后放入环境，另审计轨迹是否获取答案。Claw-Eval 只在首阶段属于未训练领域；第二阶段适应它之后不能再称完全零样本迁移。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "FullHarness",
+      "SelfModification",
+      "BenchmarkScore"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.38372"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3.2–3.5 演化流程",
+        "url": "https://arxiv.org/html/2609.38372#S3"
+      }
+    ],
+    "attributions": []
+  },
+  {
+    "id": "2609.15364",
+    "title": "RSIAgent: Autonomous Exploration for Recursive Self-improvement in New Environments",
+    "date": "2026-09-14",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.15364",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.15364"
+      },
+      "intro": {
+        "label": "§1 新环境适应问题",
+        "url": "https://arxiv.org/html/2609.15364#S1"
+      },
+      "method": {
+        "label": "§3 探索与经验保留",
+        "url": "https://arxiv.org/html/2609.15364#S3"
+      },
+      "exp": {
+        "label": "§4 主实验与局限",
+        "url": "https://arxiv.org/html/2609.15364#S4"
+      },
+      "protocol": {
+        "label": "附录 §10.2–10.4 配置、评分和统计口径",
+        "url": "https://arxiv.org/html/2609.15364#S10"
+      },
+      "game": {
+        "label": "附录 §11 游戏实验",
+        "url": "https://arxiv.org/html/2609.15364#S11"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "新软件环境中的工具用法与操作经验不足，直接执行目标任务容易反复失败；增加一次推理不一定补上环境知识。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究冻结模型能否围绕目标任务自主组织练习，把实践经验写入 memory，再回到目标任务执行。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "把广泛练习与针对目标的深入练习串联，报告 OSWorld 和 ALE 成绩改善。总表包含保留的 baseline 与部分新增 RSI 结果，跨系统预算不一致，不能简单解读为全面超过 GPT-6。",
+        "refs": [
+          "protocol"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "持续更新可复用的 memory 与操作经验；课程 agent 选择后续练习。模型参数和 actor–verifier 执行框架保持固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "桌面任务默认 GLM-5.3；Kimi-K3 提供核验、课程设计与视觉观察，使用分离的上下文。游戏实验改为 GLM-5.3-Flash 开发、Qwen3.8-27B playtesting。",
+        "refs": [
+          "protocol",
+          "game"
+        ]
+      },
+      "modifier": {
+        "value": "actor 根据练习和核验结果整理 memory，课程 agent 决定再练什么。先并行探索相关任务，再串行练目标与关联项目；最终运行只读冻结 memory。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "练习：Kimi-K3 读取产物与环境证据，返回 PASS／FAIL／UNVERIFIED。桌面最终成绩来自官方 evaluator，需模型判分时使用 GPT-5.4；其分数和隐藏检查不返回学习 agent。游戏另用 Qwen3.8-27B 按 GameCraft-Bench 判分。",
+        "refs": [
+          "protocol",
+          "game"
+        ]
+      },
+      "seed": {
+        "value": "自建 code-as-policy actor–verifier：actor 写程序操作环境，独立上下文的 verifier 检查产物并要求补证据。baseline 也有此循环，但不保留跨练习 memory。",
+        "refs": [
+          "protocol"
+        ]
+      },
+      "train": {
+        "value": "围绕 OSWorld 2.0 offline／ALE Near-term 的目标指令生成练习；深入探索阶段会尝试目标本身。没有外部统一训练集，也不更新模型权重。",
+        "refs": [
+          "protocol"
+        ]
+      },
+      "debug": {
+        "value": "本地 verifier 的检查决定修正和经验保存，课程 agent 决定停止。部分任务按 baseline 未满分才追加探索；这是针对目标任务的适应。",
+        "refs": [
+          "protocol"
+        ]
+      },
+      "test": {
+        "value": "重置环境、冻结 memory 后测试 OSWorld 82 题、ALE 67 题；总表分别混合 41 个 RSI 结果与其余 baseline、19 个 RSI 结果与 48 个 baseline。游戏另抽 40 个 GameCraft-Bench 任务。",
+        "refs": [
+          "protocol",
+          "game"
+        ]
+      },
+      "isolation": {
+        "value": "目标指令已用于选练习，不是跨目标的 held-out 泛化。ALE 记录还含修正评分和公开标签转移等例外；论文 §10.4 明确说明不构成与排行榜的同协议比较。",
+        "refs": [
+          "protocol"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "MemoryContent",
+      "Curriculum",
+      "LLMJudge"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.15364"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem",
+      "OtherModifier",
+      "OtherEditor"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3 探索与经验保留",
+        "url": "https://arxiv.org/html/2609.15364#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:ucsd",
+        "label": "UC San Diego",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.15364"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2610.02826",
+    "title": "RSR: Scaling Trajectories for Complex Tasks through Recursive Self-Rewrite",
+    "date": "2026-10-02",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.02826",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.02826"
+      },
+      "intro": {
+        "label": "§1 轨迹迁移问题",
+        "url": "https://arxiv.org/html/2610.02826#S1"
+      },
+      "method": {
+        "label": "§2 发现、重写与过滤",
+        "url": "https://arxiv.org/html/2610.02826#S2"
+      },
+      "exp": {
+        "label": "§3.1–3.6 数据、harness 与结果",
+        "url": "https://arxiv.org/html/2610.02826#S3"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "专用 harness 能帮助模型解出难题，但直接训练这些成功轨迹可能学到冗长循环或依赖原框架的行为，换回通用 harness 就失效。",
+        "refs": [
+          "intro",
+          "exp"
+        ]
+      },
+      "position": {
+        "value": "研究如何把多种 harness 帮忙完成的任务，转成同一通用 harness 下可以重新执行和训练的经验。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "同一模型把成功过程整理成 runbook，检查是否泄露答案，再在新沙盒重新完成任务。重写轨迹训练优于直接 SFT；LHTB 仍没有完整解出的任务，提升仅为过程分。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "最终更新 Qwen-3.8-27B 参数；中间重写计划和训练轨迹。三种发现 harness 与最终 Terminus 2 是固定设计，不属于 harness 自进化。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "发现、planner、critic 和重执行均使用相同基础 Qwen-3.8-27B；测试使用训练后的对应模型。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "planner 从成功轨迹提炼操作计划；critic 结合规则检查排除直接答案与框架专属信息；executor 在新环境按计划重做。固定 SFT 程序更新模型。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "发现阶段由任务 verifier 检查最终产物；RSRT 失败只返回未通过，继续反思，不暴露测试细节。重写后还查任务通过与隐藏答案转移，只有通过的公开交互轨迹进入训练。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "seed": {
+        "value": "Terminus 2：通用终端模型—工具循环；StateM：持久状态与阶段检查；RSRT：在 Terminus 上按 verifier 失败继续运行。最终训练与推理统一回 Terminus 2。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "自建 SWR 约 2.5K 终端任务、覆盖 50 个领域，加 420 个过滤并提高难度的 RST 任务。重写数据之外还保留 766 条 Terminus 2 直接成功轨迹。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "critic 只看公开指令和候选 runbook，过滤直接答案、无根据工具引用；重执行使用新沙盒，私有计划和 critic 对话不写入 SFT 轨迹。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "TB2／TB3／TB4、TBH、SWR100：报告三次运行均值和 pass@3；LHTB 46 题报告过程分，三组模型均 0 个完整完成。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "训练池与评测 benchmark 分开列示；论文未给 SWR／RST 对所有终端测试集的完整去重审计。不要把 runbook 去答案检查等同于数据污染已被排除。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "Distillation",
+      "TrajectoryRewrite",
+      "ExecutableVerifier"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.02826"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§2 发现、重写与过滤",
+        "url": "https://arxiv.org/html/2610.02826#S2"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:tencent-hunyuan",
+        "label": "Tencent Hunyuan",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.02826"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.30652",
+    "title": "Recursive Self-Improvement via On-Policy Distillation for Reasoning",
+    "date": "2026-09-25",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.30652",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.30652"
+      },
+      "intro": {
+        "label": "§1 固定教师的局限",
+        "url": "https://arxiv.org/html/2609.30652#S1"
+      },
+      "method": {
+        "label": "§3 DCE 与 SRCL",
+        "url": "https://arxiv.org/html/2609.30652#S3"
+      },
+      "exp": {
+        "label": "§4 训练和测试设置",
+        "url": "https://arxiv.org/html/2609.30652#S4"
+      },
+      "result": {
+        "label": "§5 结果和预算对照",
+        "url": "https://arxiv.org/html/2609.30652#S5"
+      },
+      "verify": {
+        "label": "附录 M 答案与结构检查",
+        "url": "https://arxiv.org/html/2609.30652#A13"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "只给最终对错的信号较粗；给教师标准解能提供逐 token 指导，但教师若永远冻结在初始版本，会跟不上学生逐渐学会的反思行为。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "检验把每次更新后的学生同时作为下一轮教师，能否持续提高自蒸馏质量，并控制越来越长的推理成本。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "动态教师加上经核验的简短重写，在竞赛数学上优于冻结教师；论文提供相近输出预算对照。这里仍依赖训练题的标准解，不是无外部答案的自监督。",
+        "refs": [
+          "result",
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "更新学生参数；每轮把最新权重复制给看得到标准解的教师。另生成较短的推理重写作为监督目标；没有可执行 agent harness 搜索。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "主实验为 Qwen3-1.7B／4B／8B／14B，另测 Gemma-4-12B-IT；学生只看题目，教师看题目、gold solution 和学生已生成前缀。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "同一轮的教师分布给出逐 token 蒸馏目标；模型自行生成更短的改写，固定训练程序联合更新。教师不从该次指导反向传播，而在下一步刷新。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "蒸馏信号来自额外看到标准解的教师；简短重写用 math_verify 比 gold answer，解析失败再做去空格、不区分大小写的精确匹配，并拒绝错误 boxed 答案。",
+        "refs": [
+          "method",
+          "verify"
+        ]
+      },
+      "seed": {
+        "value": "模型后训练流水线：采样学生回答、教师逐 token 指导、简短重写、规则验收与 LoRA 更新。不是 Codex／Claude Code 这类工具执行框架。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "14,717 道 OpenThoughts 数学推理题，各模型与对照共用。Qwen 实验使用 rank-128 LoRA，每题生成一条 on-policy 回答。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "debug": {
+        "value": "训练中评测多个 checkpoint（10／20／30／50／100／150／200 步等）；论文未另列独立调参验证集，不把竞赛集结果描述为完全未用于研究选择。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "test": {
+        "value": "AIME 2024／2025／2026、HMMT February 2025 各 30 题；每题采样 12 次，主表为 32K 上限下的平均正确率 Average@12，不是 pass@12。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "标准解可进入训练教师上下文，但不能进入简短重写的生成上下文；是否有外部监督要看角色可见信息，不能仅凭教师与学生同型号判断。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "SelfDistillation",
+      "ExecutableVerifier",
+      "GoldLabel"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.30652"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§3 DCE 与 SRCL",
+        "url": "https://arxiv.org/html/2609.30652#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:meta",
+        "label": "Meta AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.30652"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.04280",
+    "title": "EvoHarnessBench: Can Your Agents Keep Pace with an Evolving Harness?",
+    "date": "2026-09-03",
+    "dateLabel": "首次提交",
+    "category": "evaluation",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.04280",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.04280"
+      },
+      "intro": {
+        "label": "§1 扩容与遗忘问题",
+        "url": "https://arxiv.org/html/2609.04280#S1"
+      },
+      "method": {
+        "label": "§3 构造及评测协议",
+        "url": "https://arxiv.org/html/2609.04280#S3"
+      },
+      "exp": {
+        "label": "§4 分轴结果",
+        "url": "https://arxiv.org/html/2609.04280#S4"
+      },
+      "setup": {
+        "label": "附录 G 系统设置",
+        "url": "https://arxiv.org/html/2609.04280#A7"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "实际 agent 会不断接入工具、skills 和子 agent；旧能力仍然可用，更多选项却可能干扰选择。只测新任务会掩盖原有任务的退化。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "评估外部 harness 持续扩张时，agent 能否用好新能力并保住旧任务表现，以及持续适应方法能否缓解这种冲突。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "构造 17 条工具／skill／agent 扩张序列。实验显示能力扩容可能让旧任务退步，已有 memory、prompt 和代码适应方法也不能稳定兼顾新旧任务。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "评测方逐阶段增加外部工具、skills 或 specialist agents；适应方法另外修改自己的 memory、prompt 或代码。两种变化分开控制，不训练模型参数。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "受控组使用 GPT-5 的 ReAct、Codex、AutoGen／DeLM 等；skill 分析另有 Codex＋GPT-5.5，补充实验有 Claude Code＋Sonnet 4.6，不混作同模型对照。",
+        "refs": [
+          "exp",
+          "setup"
+        ]
+      },
+      "modifier": {
+        "value": "外部能力序列由 benchmark 固定生成；适应组用 Raw Memory、ReasoningBank、MemToolAgent、G-Memory、LegoMem、GEPA 或 Meta-Harness 更新持久状态。",
+        "refs": [
+          "exp",
+          "setup"
+        ]
+      },
+      "verdict": {
+        "value": "任务成败和部分分直接使用来源基准 EOG／ALE 的 verifier 输出；适应轨迹携带这些反馈。另计算旧任务成绩变化和新任务适应效果，不以新增工具数量算能力提升。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "由 EnterpriseOps-Gym 企业工作流和 Agents’ Last Exam 软件任务构造；从较小能力集合逐步扩至完整集合。比较 task-specific 能力集合与累积集合，隔离无关选项的影响。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "适应组可在当前及以前阶段的 adaptation 任务集运行并更新状态；纯部署组每阶段重新初始化，不保留跨阶段经验。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "适应反馈仅来自 cumulative adaptation 集。工具、skill、agent 三个扩张轴分别研究，不能将所有实验理解为同一套 agent 同时扩容全部能力。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "802 个独立任务形成 1,510 个分轴评测样本，17 条序列、每条 3–6 阶段；每阶段重测累计 evaluation 集，同时观察新任务和旧任务。",
+        "refs": [
+          "method"
+        ]
+      },
+      "isolation": {
+        "value": "adaptation 与 evaluation 分开；多阶段重复测旧题是为了衡量能力保留，不是每阶段获得一批独立新测试样本。框架扩张由评测方控制，并非所有被测 agent 都能自行改框架。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "ContinualEvaluation",
+      "ExecutableVerifier",
+      "Continual"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.04280"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3 构造及评测协议",
+        "url": "https://arxiv.org/html/2609.04280#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:salesforce",
+        "label": "Salesforce Research",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.04280"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.35025",
+    "title": "AutoDataBench: Can Agents Write the Data That Feeds the Self-Improvement Loop?",
+    "date": "2026-09-28",
+    "dateLabel": "首次提交",
+    "category": "evaluation",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.35025",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.35025"
+      },
+      "intro": {
+        "label": "§1 训练任务的验收问题",
+        "url": "https://arxiv.org/html/2609.35025#S1"
+      },
+      "method": {
+        "label": "§2.2–2.3 三角色与评分",
+        "url": "https://arxiv.org/html/2609.35025#S2"
+      },
+      "exp": {
+        "label": "§3 实验及结果",
+        "url": "https://arxiv.org/html/2609.35025#S3"
+      },
+      "checks": {
+        "label": "附录 C–D 缺陷与机械检查",
+        "url": "https://arxiv.org/html/2609.35025#A3"
+      },
+      "access": {
+        "label": "附录 G author 权限",
+        "url": "https://arxiv.org/html/2609.35025#A7"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "只看用合成数据训练后的模型分数，难以知道单道任务是否有效，也混入了训练算法和预算的影响；数据生产首先需要可靠的逐条验收。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "评估 agent 能否针对目标模型的具体弱点，写出可执行、非照抄、难度合适的新训练任务。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "五个 author agent 在 24 个原题上造题，最高总分 0.184。覆盖弱点比校准难度容易；该结果评的是任务产物质量，没有实际训练模型来证明能力提升。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "author 产出新的任务目录：指令、环境、参考实现和 verifier。评测不更新目标模型权重，也不把造出的题立即拿去训练。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "被测新题统一由 DeepSeek-V4-Pro 执行，每题独立尝试 6 次；这与负责造题的 author agent 是不同角色。",
+        "refs": [
+          "method"
+        ]
+      },
+      "modifier": {
+        "value": "造题者分别为 Kimi-K3、GPT-5.6 Sol、Qwen3.8-Max、GLM-5.3、DeepSeek-V4-Pro；最后一种才是目标模型给自己造题。分析者和最终 judge 固定为 Claude Opus 5。",
+        "refs": [
+          "method",
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "难度由目标模型实际运行 6 次＋新题自己的 verifier 决定，1–4 次通过才落入目标区间。Opus 5 按隐藏弱点 rubric 检查轨迹覆盖；规则 diff 和 judge 排除复制、无效验证等缺陷。总分为有效性×难度×覆盖。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "统一容器式造题框架，提供原题目录、目标模型的 6 条原题轨迹及 verifier 结果。author 可编程和自测，只允许调用目标模型作为辅助模型。",
+        "refs": [
+          "method",
+          "access"
+        ]
+      },
+      "train": {
+        "value": "没有参数训练。Terminal-Bench 4.0、Terminal-Bench-Science、AutomationBench 各手选 8 个原题，共 24 个造题 episode 的来源。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "author 可调用 DeepSeek-V4-Pro 测试自己写的新题，默认 45 分钟；另测 180 分钟。最终隐藏 rubric 不可见。",
+        "refs": [
+          "exp",
+          "access"
+        ]
+      },
+      "test": {
+        "value": "author 交付一个任务后，目标模型正式执行 6 次，随后 judge 查交付物与新轨迹。每个原题在默认预算下造两次；最终评分不是对训练后 checkpoint 的测试。",
+        "refs": [
+          "method"
+        ]
+      },
+      "isolation": {
+        "value": "隐藏的是预先由 analyst 根据原题行为写出的 rubric；原题及其执行反馈本来就提供给 author。judge 与 analyst 同为 Opus 5，不能称为完全独立的人类验收。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "DataSynthesis",
+      "TaskVerifier",
+      "ExecutableVerifier",
+      "LLMJudge"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.35025"
+      },
+      {
+        "label": "作者博客",
+        "url": "?paper=autodatabench-author-blog"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§2.2–2.3 三角色与评分",
+        "url": "https://arxiv.org/html/2609.35025#S2"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:hkust",
+        "label": "HKUST",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.35025"
+          }
+        ]
+      },
+      {
+        "tag": "person:jiaya-jia",
+        "label": "Jiaya Jia",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2609.35025"
+          }
+        ]
+      }
+    ],
+    "workId": "autodatabench-task-authoring",
+    "relatedRecords": [
+      "autodatabench-author-blog"
+    ]
+  },
+  {
+    "id": "2609.40097",
+    "title": "AutoDataBench: A Data-centric Testbed for Accelerating Auto Research",
+    "date": "2026-09-30",
+    "dateLabel": "首次提交",
+    "category": "evaluation",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2609.40097",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2609.40097"
+      },
+      "intro": {
+        "label": "§1 数据贡献难以归因",
+        "url": "https://arxiv.org/html/2609.40097#S1"
+      },
+      "method": {
+        "label": "§3.2–3.4 流程与三类任务",
+        "url": "https://arxiv.org/html/2609.40097#S3"
+      },
+      "exp": {
+        "label": "§4 实验与迭代轨迹",
+        "url": "https://arxiv.org/html/2609.40097#S4"
+      },
+      "appendix": {
+        "label": "附录 A 运行与数据细节",
+        "url": "https://arxiv.org/html/2609.40097#A1"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "自动科研常同时改变数据、训练代码、超参数和算力，涨分后难以归因于 agent 是否真正改善了数据。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "固定训练程序和模型起点，只让 agent 改数据，测它能否通过诊断、组织和构造数据提高下游表现。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "工具调用、检索、知识注入三类任务多数运行都有同域收益，但不同任务的跨域迁移并不一致。每次重新从同一模型起点训练，因此更准确地说是数据策略迭代。",
+        "refs": [
+          "exp",
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "agent 修改数据过滤、修复、合成和配比策略；每次提交新数据后用固定 pipeline 重新训练下游模型，不继承上一候选的参数。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "工具调用：Qwen2-1.5B-Instruct；检索：6 层 MiniLM；知识注入：Talkie-13B-Instruct。它们是被训练、被评测的目标模型。",
+        "refs": [
+          "method"
+        ]
+      },
+      "modifier": {
+        "value": "七个外部 agent 分别实验：DeepSeek-V4-Flash、Qwen-3.7／3.8-Max、Claude-4.7、GPT-5.6-Sol、GLM-5.2、Kimi-3。辅助 Qwen3-4B 与 Qwen3-Embedding-0.6B 处理批量数据。",
+        "refs": [
+          "method",
+          "appendix"
+        ]
+      },
+      "verdict": {
+        "value": "工具调用：解析函数及参数，与标注作 AST 匹配；检索：按相关性标注算 nDCG@10；知识注入：比较候选答案平均 token 对数概率，选最高项对标准选项。各自同域成绩返回给数据 agent。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "自建统一数据研究框架：数据访问、代码执行、固定训练／评测接口和辅助模型；单 A800、24 小时、最多 20 次训练评测。agent 不能改训练超参数来刷分。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "工具调用：污染后的 xLAM 约 40K 题中处理出最多 16K；检索：RLHN／BGE 的 818K+ 正例池，挖负例、每次最多 600K；知识：基于 1930 年后 Wikipedia 事实构造 context–QA，固定蒸馏给 Talkie。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "工具调用：2,000 个同域例的 AST 成绩；检索：ArguAna、FEVERHardNegatives、FiQA2018、HotpotQAHardNegatives、SCIDOCS 的均值；知识：1,000 个 Novel 问题。反复查这些分数并选最高分 checkpoint。",
+        "refs": [
+          "method"
+        ]
+      },
+      "test": {
+        "value": "工具调用：隐藏 BFCL 十类；检索：ClimateFEVERHardNegatives、CQADupstack Gaming／Unix、Touche2020.v3、TRECCOVID；知识：隐藏 Retention 题检查 1930 年前知识保留。",
+        "refs": [
+          "method"
+        ]
+      },
+      "isolation": {
+        "value": "同域集参与策略和 checkpoint 选择，应视为开发反馈。隐藏的跨域／保留集才评估最终泛化；最高同域分不保证最佳跨域分。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "DataCuration",
+      "FixedTrainingPipeline",
+      "GoldLabel",
+      "ExecutableVerifier"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.40097"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3.2–3.4 流程与三类任务",
+        "url": "https://arxiv.org/html/2609.40097#S3"
+      }
+    ],
+    "attributions": []
+  },
+  {
+    "id": "2610.03548",
+    "title": "Recursive Harness Self-Improvement for Frontier Reasoning Data Synthesis",
+    "date": "2026-10-02",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.03548",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.03548"
+      },
+      "intro": {
+        "label": "§1 固定合成策略的瓶颈",
+        "url": "https://arxiv.org/html/2610.03548#S1"
+      },
+      "method": {
+        "label": "§3 skill 与工作流更新",
+        "url": "https://arxiv.org/html/2610.03548#S3"
+      },
+      "exp": {
+        "label": "§4 结果",
+        "url": "https://arxiv.org/html/2610.03548#S4"
+      },
+      "protocol": {
+        "label": "附录 B 去重、验收与成本",
+        "url": "https://arxiv.org/html/2610.03548#A2"
+      },
+      "transfer": {
+        "label": "附录 E 冻结 harness 迁移",
+        "url": "https://arxiv.org/html/2610.03548#A5"
+      },
+      "setup": {
+        "label": "附录 F.1 模型与基准",
+        "url": "https://arxiv.org/html/2610.03548#A6.SS1"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "反复增加题目难度，若一直用同一套出题流程和技巧，可能很快饱和；只压低 solver 正确率又可能得到错误题或成本失控。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究能否同时积累可复用出题 skills、调整出题工作流，在题目有效与成本受限的条件下持续生成更难的训练题。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "14 轮中题目难度提高，并测试冻结 harness 对新 seed 的迁移及生成数据的训练价值。它改的是出题系统；下游 SFT／GRPO 是独立效果检验。",
+        "refs": [
+          "exp",
+          "transfer"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "在线更新出题 skill 文档；批次之间改角色 prompt、工作流、何时验证和修题。模型权重、verifier 实现与有效性标准在 harness 进化阶段固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "Director、Extend、Revise 使用 DeepSeek-V4-Pro；固定 DeepSeek-V4-Pro 每题作答四次测难度。",
+        "refs": [
+          "setup"
+        ]
+      },
+      "modifier": {
+        "value": "meta-agent 使用 DeepSeek-V4-Pro 和 GPT-5.6 维护 skill／修改流程；Verify 角色使用 Qwen3.8-Max、DeepSeek-V4-Pro 和 GPT-5.6。",
+        "refs": [
+          "setup"
+        ]
+      },
+      "verdict": {
+        "value": "Verify 角色先核验题目有效性和参考答案，失败则修题；固定 DeepSeek-V4-Pro 每题作答四次，正确率越低表示越难。新 harness 必须让正确率下降、有效题比例不降，并满足成本上限。模型核验与下游 benchmark 评分是两层检查。",
+        "refs": [
+          "method",
+          "setup"
+        ]
+      },
+      "seed": {
+        "value": "自建多角色出题框架：任务扩展、修订、验证与调度，加从源材料提炼的出题技巧。更新可调整验证插入位置，但不能改验证标准。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "数学、代码、科学的筛选 seed 及数据集／论文／网页来源，用于提炼技巧和递归出题；正文未公开逐来源完整 seed 清单，不能把下游测试集当作进化数据。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "每次批次验收用当前保留任务中每领域 50 题，共 150 题；固定同一 cohort 比较旧版和至多三次候选。这是选版本数据。",
+        "refs": [
+          "protocol"
+        ]
+      },
+      "test": {
+        "value": "冻结初始与第 14 轮 harness，在未参与进化的 50 个数学 seed 上比较出题。下游学生：Qwen3.5-4B Thinking 做 GRPO，Qwen3.5-35B-A3B／Qwen3.8-27B 做 SFT；测 APEX／Shortlist、HMMT、LiveCodeBench v6（454 题）、SciBench（695 题）。",
+        "refs": [
+          "transfer",
+          "setup"
+        ]
+      },
+      "isolation": {
+        "value": "候选验收 cohort 不是 held-out test。作者描述了去重和 benchmark 隔离流程，但也明确：没有审计记录不能据此证明零污染。降低单次生成费用不等于计入全部搜索成本后更省。",
+        "refs": [
+          "protocol"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "Skill",
+      "Prompt",
+      "Workflow",
+      "DataSynthesis",
+      "LLMJudge",
+      "Data"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.03548"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem",
+      "OtherModifier",
+      "OtherEditor"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3 skill 与工作流更新",
+        "url": "https://arxiv.org/html/2610.03548#S3"
+      }
+    ],
+    "attributions": [],
+    "skillKinds": [
+      "SkillDocument"
+    ]
+  },
+  {
+    "id": "2610.06347",
+    "title": "ImproveAnyTask: An Autonomous Post-Training Harness for Iterative Model Self-Improvement",
+    "date": "2026-10-05",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.06347",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.06347"
+      },
+      "intro": {
+        "label": "§1 后训练流程的人力瓶颈",
+        "url": "https://arxiv.org/html/2610.06347#S1"
+      },
+      "method": {
+        "label": "§3 错因、策略研究与训练",
+        "url": "https://arxiv.org/html/2610.06347#S3"
+      },
+      "exp": {
+        "label": "§4 设置和结果",
+        "url": "https://arxiv.org/html/2610.06347#S4"
+      },
+      "split": {
+        "label": "附录 A.1 各任务验证／测试划分",
+        "url": "https://arxiv.org/html/2610.06347#A1.SS1"
+      },
+      "bfcl": {
+        "label": "附录 A.4 BFCL 聚合规则",
+        "url": "https://arxiv.org/html/2610.06347#A1.SS4"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "通用 coding agent 能启动训练，但仍可能选错要解决的问题、照搬不适用的方法，或在昂贵训练前未发现数据管线错误。",
+        "refs": [
+          "intro",
+          "method"
+        ]
+      },
+      "position": {
+        "value": "评估一个结构化后训练 harness，能否从任务错误中确定优化目标，自主研究方案、准备数据并训练出更好的任务模型。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "11 项任务上报告优于直接使用 coding agent 的后训练结果。比较共享预算与验证集；每项任务独立从基础 checkpoint 出发，不代表一个模型连续学会全部 11 项能力。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "更新目标模型参数，并保存成功的数据策略、脚本和实验记录。外层“诊断—研究—训练—验证”流程是人设计的固定 harness。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "目标模型分别为 Qwen3.5-4B-Base 与 4B-Instruct 的候选 checkpoint；它们执行各任务的最终答题／工具调用。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "Opus 4.8 研究方法、取数、写处理与训练代码；与 Claude Code＋Opus 4.8、Codex＋GPT-5.6 Sol 作系统比较。训练运行由工具执行。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "只把验证集的总指标、逐题预测和评分证据返回给 Opus。知识／数学看答案正确率，IFEval／IFBench 看指令检查，代码看测试，BFCL／TAU2 沿用官方任务判分；不让 agent 自报能力提升。",
+        "refs": [
+          "exp",
+          "split",
+          "bfcl"
+        ]
+      },
+      "seed": {
+        "value": "自建后训练流程，具备错误分析、文献／代码／数据查找、资源核验、小样本数据检查、短训练试跑、完整训练和版本保留；成功脚本可复用。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "agent 针对当前错误选择已发布数据，或处理、生成、蒸馏新数据；不是预设统一训练语料。论文没有提供 11 项任务所有运行的逐轮数据清单；因此不把相关工作中提到的数据集误写为实际训练集。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "各 benchmark 固定约 15% 用于诊断、策略与 checkpoint 选择，例如 MATH-500 75 题、AIME 5 题、TB2 14 题；每次 8×H20、24 小时或 3 轮，取期限内验证最高的已训练候选。",
+        "refs": [
+          "exp",
+          "split"
+        ]
+      },
+      "test": {
+        "value": "约 85% 隐藏测试：MMLU-Pro 10,227；SuperGPQA 22,549；GPQA 168；MATH 425；AIME 25；IFEval 459；IFBench 255；LCB 896；TB2 75；TAU2 Airline 42＋Telecom 96；BFCL 3,890（不含 Web Search）。",
+        "refs": [
+          "split"
+        ]
+      },
+      "isolation": {
+        "value": "测试集优化时不可访问，但外部取数仍可能污染；精确重合检查不排除语义近重复。分数对应作者自划子集，不是完整公共榜单；AIME 仅 25 题，单题影响较大。",
+        "refs": [
+          "exp",
+          "split"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "AutonomousPostTraining",
+      "BenchmarkScore"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.06347"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "OtherModifier",
+      "OtherTeacher"
+    ],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§3 错因、策略研究与训练",
+        "url": "https://arxiv.org/html/2610.06347#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:hkust",
+        "label": "HKUST",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.06347"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2610.03002",
+    "title": "Recursive Self-Improvement in Unified Multimodal Models",
+    "date": "2026-10-02",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "weights",
+    "methodTypes": [
+      "weights"
+    ],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.03002",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.03002"
+      },
+      "intro": {
+        "label": "§1 多模态自监督瓶颈",
+        "url": "https://arxiv.org/html/2610.03002#S1"
+      },
+      "method": {
+        "label": "§2 诊断、程序核验、递归训练",
+        "url": "https://arxiv.org/html/2610.03002#S2"
+      },
+      "exp": {
+        "label": "§4 结果与局限",
+        "url": "https://arxiv.org/html/2610.03002#S4"
+      },
+      "training": {
+        "label": "附录 A 训练配置",
+        "url": "https://arxiv.org/html/2610.03002#A1"
+      },
+      "data": {
+        "label": "附录 B 诊断与测试题",
+        "url": "https://arxiv.org/html/2610.03002#A2"
+      },
+      "judge": {
+        "label": "附录 C 外部评审核对",
+        "url": "https://arxiv.org/html/2610.03002#A3"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "统一多模态模型能自己画图、读图和写程序，但直接按自己的视觉评分训练，容易把自评错误一起强化；不同能力尚未形成可靠互教。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究能否让读图诊断决定下一轮学什么，再用程序执行独立核验训练图片，形成生成、理解与代码能力之间的递归学习。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "四轮后 BasicChartBench L0 从 45.7% 到 60.2%，继续训练原数据约 46.3%。主要证据在图表领域；读图器对真实生成错误仍有漏检，不能外推为通用图像自改进。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "更新 BAGEL 派生模型的视觉生成与理解参数；读图和写程序共享理解参数。采样课程随诊断变化，但课程规则与核验器固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "从 BAGEL-7B-MoT 构建初始模型：分别执行图表生成、读图问答与绘图程序生成；每轮继承上轮合并模型。",
+        "refs": [
+          "training"
+        ]
+      },
+      "modifier": {
+        "value": "当前读图器定位薄弱属性；固定规则增加相应训练规格。模型写程序，沙盒核验后保留渲染图片，再交替训练生成与理解参数。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "训练目标：执行绘图程序，把实际绘制的数值、文字、颜色、坐标轴等与规格逐项核对。当前读图器诊断生成图片的弱点，决定补哪些数据；OCR 识字结果另用于决定何时扩展词汇。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "自建图表循环，含生成器、读图器、程序作者和执行检查；初始能力来自 ChartNet 代码—图像和程序化图表课程，不是直接拿未经准备的 BAGEL 做自进化。",
+        "refs": [
+          "training"
+        ]
+      },
+      "train": {
+        "value": "每轮合成已核验的图表规格与渲染对；生成训练每轮 25,600 个例，混合当前目标、旧数据与通用图像；理解训练每轮 30,000 例，含问答、错误报告和代码。",
+        "refs": [
+          "training"
+        ]
+      },
+      "debug": {
+        "value": "固定 336 个诊断请求、9,636 项检查用于定位弱点、调整课程；每轮留出 10% 的图表修改样本组检查读图能力。诊断集不是最终测试集。",
+        "refs": [
+          "data",
+          "training"
+        ]
+      },
+      "test": {
+        "value": "BasicChartBench L0：336 个请求、10,140 项检查；L1：140 个请求、4,300 项检查。主表冻结初始 BAGEL 读图器；附录另用 Qwen3.6-35B-A3B 逐项答题，再按相同规则判分。",
+        "refs": [
+          "data",
+          "judge"
+        ]
+      },
+      "isolation": {
+        "value": "训练、诊断、测试内容指纹不重合；L0 用训练未见的措辞，L1 加罕见词及更复杂规格。冻结同家族读图器仍可能带偏差，因此同时查看外部评分和人工错误审计。",
+        "refs": [
+          "data",
+          "judge",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "Multimodal",
+      "ExecutableVerifier"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.03002"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [
+      "TaskModelWeights"
+    ],
+    "classificationSources": [
+      {
+        "label": "§2 诊断、程序核验、递归训练",
+        "url": "https://arxiv.org/html/2610.03002#S2"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:usc",
+        "label": "USC",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.03002"
+          }
+        ]
+      },
+      {
+        "tag": "org:ucsd",
+        "label": "UC San Diego",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.03002"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2609.36054",
+    "title": "What if automating AI R&D triggers an intelligence explosion?",
+    "date": "2026-09-28",
+    "dateLabel": "首次提交",
+    "category": "overview",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "report",
+    "url": "https://arxiv.org/abs/2609.36054",
+    "references": {
+      "main": {
+        "label": "作者、摘要与首发日期",
+        "url": "https://arxiv.org/abs/2609.36054"
+      },
+      "method": {
+        "label": "原文 pp.2–5 反馈机制、阻力与证据",
+        "url": "https://arxiv.org/pdf/2609.36054#page=2"
+      },
+      "exp": {
+        "label": "原文 pp.5–9 风险、政策建议与不确定性",
+        "url": "https://arxiv.org/pdf/2609.36054#page=5"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "AI 已承担更多 AI 研发，但“研发更快”是否足以触发持续加速，需要把反馈机制与现实瓶颈放在一起分析。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "这是一篇证据综述与政策分析：研究自动化 AI 研发可能在什么条件下形成软件驱动的智能爆发，而不是提出新的训练算法。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "作者认为现有初步证据值得严肃准备，同时强调不确定性；建议提高研发自动化的可见性、建立引导与限制手段，并提升社会适应能力。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "Alan Chan、Sören Mindermann 等 22 位作者；包括 Geoffrey Hinton、Yoshua Bengio、Andrew Barto、Jakub Pachocki、Jack Clark。作者意见不等于所属机构正式立场。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "更好的 AI 扩大有效研发劳动力 → 产生更好的 AI → 再投入研发。四项阻力是边际收益递减、算力／数据、难自动化任务及耗时实验。",
+        "refs": [
+          "method"
+        ]
+      },
+      "evidence": {
+        "value": "综合实验室自报的研发自动化数据、任务能力趋势与增长模型；并未展示一个已完成开放式智能爆发的实证系统。",
+        "refs": [
+          "method"
+        ]
+      },
+      "reading": {
+        "value": "适合连接方法研究与系统层面的发展判断。重点看反馈增益能否超过瓶颈；不要把条件推演的时间尺度读成确定预测。",
+        "refs": [
+          "method"
+        ]
+      },
+      "limits": {
+        "value": "文中模型与外推有明确条件，部分证据间接且混合；没有统一的训练／测试数据集，也不应用方法论文的 benchmark 涨分格式介绍。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2609.36054"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "evidence"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "原文 pp.2–5 反馈机制、阻力与证据",
+        "url": "https://arxiv.org/pdf/2609.36054#page=2"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "person:geoffrey-hinton",
+        "label": "Geoffrey Hinton",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "作者、摘要与首发日期",
+            "url": "https://arxiv.org/abs/2609.36054"
+          }
+        ]
+      },
+      {
+        "tag": "person:yoshua-bengio",
+        "label": "Yoshua Bengio",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "作者、摘要与首发日期",
+            "url": "https://arxiv.org/abs/2609.36054"
+          }
+        ]
+      },
+      {
+        "tag": "person:andrew-barto",
+        "label": "Andrew Barto",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "作者、摘要与首发日期",
+            "url": "https://arxiv.org/abs/2609.36054"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "towards-ai-that-improves-itself",
+    "title": "Towards AI That Improves Itself: A Survey of Recursive Self-Improvement",
+    "date": "2026-10-11",
+    "dateLabel": "核对日期（原页未标首发日）",
+    "category": "overview",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "survey",
+    "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/",
+    "references": {
+      "main": {
+        "label": "作者项目页：定义、分类与研究缺口",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/"
+      },
+      "method": {
+        "label": "论文 §1–2 定义与统一循环",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf#page=1"
+      },
+      "exp": {
+        "label": "论文分类及七类未来方向",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "不同论文把一次改答案、跨任务保留改进、修改优化过程都叫自改进，导致重复运行和真正递归进步难以比较。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "提出统一描述框架：明确什么被修改、反馈如何形成证据、哪些变更被保留到下一轮，再按变化对象整理方法。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "将“继承上一轮改进状态”与“继承后更会改进”分开：前者说明循环递归，后者还需要对修改过程的独立证据。分类是作者提出的分析框架，并非领域唯一标准。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "Hanjing Li、Qiguang Chen 等；哈尔滨工业大学（深圳）、香港大学、新加坡国立大学、上海创智学院。原 PDF 与项目页未标明明确首发日，本条按核对日期排列。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "统一为 Proposal → Feedback → Optimization：提出具体修改，运行并核验，再决定保留、修订、拒绝或回滚。分别研究行为、agent 系统、模型／数据、研究过程四类对象。",
+        "refs": [
+          "method"
+        ]
+      },
+      "reading": {
+        "value": "先读定义区分局部修改、持久改进与递归进步，再按问题找论文。特别关注一个新版本究竟更会完成任务，还是更会产生下一次改进。",
+        "refs": [
+          "method"
+        ]
+      },
+      "limits": {
+        "value": "综述不运行统一 benchmark；它提供跨论文比较框架，不证明列入同一类别的方法已有相同强度的递归证据。",
+        "refs": [
+          "method"
+        ]
+      },
+      "evidence": {
+        "value": "论文与项目页整理已有工作、边界定义和未来方向；用原论文核验具体实验，不能由综述标签反推实验设置。",
+        "refs": [
+          "main",
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/"
+      },
+      {
+        "label": "PDF",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "reading"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "论文 §1–2 定义与统一循环",
+        "url": "https://lee1003-lee.github.io/Awesome-RSI-Research/assets/rsi-survey.pdf#page=1"
+      }
+    ],
+    "attributions": []
+  },
+  {
+    "id": "aibuildai-posttrain-agent",
+    "title": "AIBuildAI LLM-Post-Train Agent",
+    "date": "2026-10-11",
+    "dateLabel": "仓库核对日期",
+    "category": "resources",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "repository",
+    "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent",
+    "references": {
+      "main": {
+        "label": "官方 README：Method／Usage／Current Results",
+        "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent"
+      },
+      "method": {
+        "label": "README：搜索程序、知识库和执行图",
+        "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#method"
+      },
+      "exp": {
+        "label": "README：GSM8K 使用示例",
+        "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#example-post-train-a-base-model-for-grade-school-math"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "后训练每个候选都要实际训练才能知好坏，有限预算只够少数试验；固定搜索顺序难以同时适配数据、算法与模型组合。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "提供可运行的自主后训练仓库：让 agent 查知识库、准备数据和训练模型，并为当前任务编写搜索程序。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "核心可复用设计是知识检索＋任务专属搜索拓扑＋可恢复执行记录。README 自报 PostTrainBench 46.6%；本条核对仓库设计与示例，不把榜单主张当作独立复现实验。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "AIBuildAI；仓库联系作者 Pengtao Xie。该条按本次核对日期排序，不假定仓库创建日等于技术报告首发日。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "基于 Claude Agent SDK 的执行与沙盒；meta-agent 写 Python 搜索程序，组合 Agent 会话、确定性 Program 和嵌套 Search。可按角色配置模型，没有唯一固定执行型号。",
+        "refs": [
+          "method"
+        ]
+      },
+      "use": {
+        "value": "适合搭建数据处理—训练—评测闭环；提供模型后训练知识库、版本候选搜索、运行日志、恢复和最终模型交付。研究者仍需给出任务与评分定义。",
+        "refs": [
+          "method"
+        ]
+      },
+      "feedback": {
+        "value": "Setup 固定任务说明与 score program；候选训练结束后由同一评分程序评估。程序得分选最终模型，知识库建议不替代实际评测。",
+        "refs": [
+          "method"
+        ]
+      },
+      "data": {
+        "value": "示例用 Qwen3-1.7B-Base 与 GSM8K：7,473 道 train、1,319 道 test；评分贪心生成后抽取最后一个 #### 的数值。该示例允许围绕 grader 优化，不能当作严格隐藏测试协议。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "limits": {
+        "value": "仓库可运行能力与 PostTrainBench 论文结果分开看；此处没有执行安装、训练或复现排行榜。要研究递归改进，还需检验生成的搜索机制是否被后续循环继承并带来收益。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "use"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "README：搜索程序、知识库和执行图",
+        "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent#method"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "person:pengtao-xie",
+        "label": "Pengtao Xie",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "官方 README：Method／Usage／Current Results",
+            "url": "https://github.com/aibuildai-inc/aibuildai-llm-posttrain-agent"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mass-author-blog",
+    "title": "MASS: Recursive Self-Improvement through Multi-Agent Self-Supervision — 作者解读",
+    "date": "2026-10",
+    "dateLabel": "作者博客月份",
+    "category": "overview",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "blog",
+    "url": "https://pub.sakana.ai/mass/",
+    "references": {
+      "main": {
+        "label": "Sakana AI 作者博客（2026 年 10 月）",
+        "url": "https://pub.sakana.ai/mass/"
+      },
+      "method": {
+        "label": "How MASS works／Results",
+        "url": "https://pub.sakana.ai/mass/"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "一旦任务缺少可自动检查的标准答案，系统自己评价、自己改进就可能陷入反复强化同一偏差。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "从多 agent 协作的角度解释 MASS：把同一模型组成的团队成果作为共享模型下一轮学习的材料。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "博客把工作流搜索与参数训练画成内外两层，并展示研究任务收益与软件工程迁移不足；适合作为论文入口，详细判分仍应回到附录。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "Sakana AI 与 UC Berkeley 作者团队；博客标注 October 2026，未给具体日。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "内层固定权重，比较工作区、改团队分工；外层自评选轨迹并做 LoRA，再把新模型投入执行、优化和评价三个角色。",
+        "refs": [
+          "method"
+        ]
+      },
+      "reading": {
+        "value": "先看协作工作流由角色、指令、交付要求、调用顺序四部分组成，再读自评与外部评分的隔离；可与原论文卡片对照。",
+        "refs": [
+          "method"
+        ]
+      },
+      "limits": {
+        "value": "“每 token 得分提高”不同于所有任务绝对分数都上涨；博客也给出 TB2 和 SWE-bench 迁移较弱的结果。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://pub.sakana.ai/mass/"
+      },
+      {
+        "label": "论文卡片",
+        "url": "?paper=2610.12176"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "reading"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "How MASS works／Results",
+        "url": "https://pub.sakana.ai/mass/"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:sakana",
+        "label": "Sakana AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "Sakana AI 作者博客（2026 年 10 月）",
+            "url": "https://pub.sakana.ai/mass/"
+          }
+        ]
+      }
+    ],
+    "workId": "mass",
+    "relatedRecords": [
+      "2610.12176"
+    ]
+  },
+  {
+    "id": "autodatabench-author-blog",
+    "title": "Can Agents Write the Data That Feeds the Self-Improvement Loop? — 作者博客",
+    "date": "2026-10-11",
+    "dateLabel": "核对日期（原页未标首发日）",
+    "category": "overview",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "K",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "blog",
+    "url": "https://autodatabench.com/blog.html",
+    "references": {
+      "main": {
+        "label": "Haotian Luo 中英双语研究博客",
+        "url": "https://autodatabench.com/blog.html"
+      },
+      "method": {
+        "label": "A good task has to pass two tests／Results",
+        "url": "https://autodatabench.com/blog.html"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "自动产出大量看起来合理的题，不等于能稳定提供训练所需的数据；正确 verifier、目标弱点和难度都需要验证。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "解释 AutoDataBench 为什么先测单道训练任务的验收，而不把训练模型后的一次涨分作为唯一标准。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "难点不只是知道要考什么，而是让目标模型确实在合适难度下遇到该弱点。文章提供中英双语说明，适合入门后再看论文的三项乘积评分。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "AutoDataBench 作者 Haotian Luo；原页没有明确发布日期，本条按核对日期排列。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "一道原题和目标模型的旧轨迹 → author 造一道新题 → 实际运行目标模型 → 验证有效性、难度和弱点覆盖。",
+        "refs": [
+          "method"
+        ]
+      },
+      "reading": {
+        "value": "重点读为何保留“同类问题”却拒绝只换名字和数值的抄题，以及为什么 judge 必须从实际轨迹中引用弱点发生的证据。",
+        "refs": [
+          "method"
+        ]
+      },
+      "limits": {
+        "value": "博客是对应论文的解释，不是另一组独立实验；关于行业数据成本的讨论与 benchmark 实测应分开，不能由低造题分推断所有自训练都无效。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://autodatabench.com/blog.html"
+      },
+      {
+        "label": "论文卡片",
+        "url": "?paper=2609.35025"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "reading"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "A good task has to pass two tests／Results",
+        "url": "https://autodatabench.com/blog.html"
+      }
+    ],
+    "attributions": [],
+    "workId": "autodatabench-task-authoring",
+    "relatedRecords": [
+      "2609.35025"
+    ]
+  },
+  {
+    "id": "2610.11794",
+    "title": "Memento 3: Model-Based Recursive Self-Improvement through Reflective Rulebooks",
+    "date": "2026-10-08",
+    "dateLabel": "首次提交",
+    "category": "methods",
+    "methodType": "harness",
+    "methodTypes": [
+      "harness"
+    ],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.11794",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.11794"
+      },
+      "intro": {
+        "label": "§1 预测一致不等于规则正确",
+        "url": "https://arxiv.org/html/2610.11794#S1"
+      },
+      "method": {
+        "label": "§2.2–2.4 规则修订、核验与规划",
+        "url": "https://arxiv.org/html/2610.11794#S2"
+      },
+      "real": {
+        "label": "§3 ARC-AGI-3 的执行实现",
+        "url": "https://arxiv.org/html/2610.11794#S3"
+      },
+      "exp": {
+        "label": "§4 游戏、模型与消融",
+        "url": "https://arxiv.org/html/2610.11794#S4"
+      },
+      "pong": {
+        "label": "§5 Pong 学习与控制器评价",
+        "url": "https://arxiv.org/html/2610.11794#S5"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "多个错误的环境假设也可能解释已有轨迹；只让代码回放旧经历，不能保证它在新状态中作出正确预测。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究冻结 LLM 能否通过持续修订环境规则和可执行模拟器，在陌生游戏中逐步改善预测、规划与探索。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "25 个公开 ARC-AGI-3 游戏全部通关，动作数为人类基线的 44%；Pong 的固定控制器在三个开局均 21:0。证据是环境内在线学习，不是未见游戏的离线泛化。",
+        "refs": [
+          "exp",
+          "pong"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "外部环境规则文档、Python 世界模型和交互记忆；“世界模型”指可运行的环境模拟程序，LLM 权重不变。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "Claude Code＋Claude Opus 5（extra-high）负责探索与规划；Pong 最终由生成的固定控制器行动，不再调用 LLM。",
+        "refs": [
+          "exp",
+          "pong"
+        ]
+      },
+      "modifier": {
+        "value": "同一个冻结 Opus 5 根据新观察修改规则，再改模拟代码；仅实现错误可直接修代码。",
+        "refs": [
+          "method"
+        ]
+      },
+      "verdict": {
+        "value": "ARC：LLM 检查代码是否符合规则文档，程序回放全部历史，逐格比对 64×64 下一帧。Pong 用轨迹误差和对局分数，未达到全帧精确回放。最终成绩来自游戏环境，不是 LLM 判胜负。",
+        "refs": [
+          "real",
+          "pong"
+        ]
+      },
+      "seed": {
+        "value": "基于 baseline1 代码搭建：规则 Markdown、Python 模拟器、规划／执行循环、历史回放 verifier 和 Git 版本记忆。",
+        "refs": [
+          "real",
+          "exp"
+        ]
+      },
+      "train": {
+        "value": "不训练参数；ARC 在每个游戏的尝试与关卡内积累观察和规则。Pong 用 9,504 个模拟器帧学习控制器。",
+        "refs": [
+          "real",
+          "pong"
+        ]
+      },
+      "debug": {
+        "value": "ARC 每次用已有轨迹检查新模拟器；Pong 用独立对局检查候选，达到 21:0 后停止学习。",
+        "refs": [
+          "real",
+          "pong"
+        ]
+      },
+      "test": {
+        "value": "ARC 的 25 个公开游戏，计入探索、失败和 reset 动作，报告通关与人类相对动作效率。Pong 固定控制器测三个不同开局。",
+        "refs": [
+          "exp",
+          "pong"
+        ]
+      },
+      "isolation": {
+        "value": "ARC 是边探索边评测，没有单列隐藏游戏测试；本地模拟和 LLM 运算不计入动作分。Pong 的三局结果不构成多游戏泛化证据。",
+        "refs": [
+          "real",
+          "exp",
+          "pong"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "MemoryContent",
+      "HarnessCode",
+      "ExecutableVerifier",
+      "LLMJudge",
+      "Online"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.11794"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [
+      "SelfModifier",
+      "SelfSystem"
+    ],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§2.2–2.4 规则修订、核验与规划",
+        "url": "https://arxiv.org/html/2610.11794#S2"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:ucl",
+        "label": "UCL",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.11794"
+          }
+        ]
+      },
+      {
+        "tag": "org:huawei-noah",
+        "label": "Huawei Noah’s Ark Lab",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.11794"
+          }
+        ]
+      },
+      {
+        "tag": "person:jun-wang",
+        "label": "Jun Wang",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.11794"
+          }
+        ]
+      }
+    ],
+    "protocol": "Online / continual"
+  },
+  {
+    "id": "2610.09426",
+    "title": "RSI-Forge: From Research Papers to Environments for Recursive Self-Improvement",
+    "date": "2026-10-07",
+    "dateLabel": "首次提交",
+    "category": "dataset",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.09426",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.09426"
+      },
+      "intro": {
+        "label": "§1 研究环境构建瓶颈",
+        "url": "https://arxiv.org/html/2610.09426#S1"
+      },
+      "method": {
+        "label": "§3 环境构建与评分",
+        "url": "https://arxiv.org/html/2610.09426#S3"
+      },
+      "corpus": {
+        "label": "§4 构建漏斗与质量",
+        "url": "https://arxiv.org/html/2610.09426#S4"
+      },
+      "exp": {
+        "label": "§5 多轮研究与结果",
+        "url": "https://arxiv.org/html/2610.09426#S5"
+      },
+      "audit": {
+        "label": "附录 C 协议和测试材料暴露审计",
+        "url": "https://arxiv.org/html/2610.09426#A3"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "研究环境需要清楚目标、可运行起点和可信评分，人工逐个构建限制了学科覆盖；只复现论文代码还不能形成可比较的改进任务。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "研究能否从论文自动构造可执行研究环境，并用独立复现基线衡量 agent 在连续研究中的改进。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "发布 18 个领域的 210 个环境；主评测 120 个环境中，有 68 个至少一次超过复现基线。它评估任务产物改进，不能据此认定研究 agent 自己获得了新能力。",
+        "refs": [
+          "corpus",
+          "exp"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "构建阶段生成任务、数据、评分程序与基线；研究阶段改任务解法和代码，继承笔记与候选版本。模型权重和 solver harness 固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "主评测分别为 Opus 5、GPT-5.6 Sol、DeepSeek-V4-Flash、Haiku 4.5，均使用同一个 Claude Code CLI harness。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "modifier": {
+        "value": "构建用 Opus 5 的 author／reviewer／reproducer 独立会话，另用 GPT-5.6 Sol 构建 30 个环境。解题时各 solver 自己改解法。",
+        "refs": [
+          "corpus",
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "候选由各环境的确定性程序按指标评分，并检查接口、正确性和资源；另有 model judge 审查提交是否违规，违规记零。构建期 reviewer 负责环境质量，与最终任务分不同。",
+        "refs": [
+          "method"
+        ]
+      },
+      "seed": {
+        "value": "每个环境提供任务目标、接口、算力上限、可运行的较弱解法、数据生成器及开发评分器；不给 solver 原论文、复现解法和测试数据。",
+        "refs": [
+          "method"
+        ]
+      },
+      "train": {
+        "value": "没有模型训练。筛查 10,800 篇 2026 论文；主构建尝试 213 篇、接收 180 个环境，再加另一模型构建的 30 个。",
+        "refs": [
+          "corpus"
+        ]
+      },
+      "debug": {
+        "value": "solver 在任务自己的开发集不限次数测试；每环境连续三轮，每轮最多 60 分钟。新轮上下文清空，继承提交、版本、日志和笔记。",
+        "refs": [
+          "exp",
+          "audit"
+        ]
+      },
+      "test": {
+        "value": "主评测随机抽 120 环境、覆盖全部 18 领域；每轮提交与已存中间版本都在环境留出测试集评分，成绩不返回 solver。另在新增 30 环境检查。",
+        "refs": [
+          "exp",
+          "audit"
+        ]
+      },
+      "isolation": {
+        "value": "480 条主评测链中，22 条被记录接触测试材料或其他运行的已评分记录；主表保留这些链。剔除后排序不变，各模型中位分变动不超过 0.006，不能称完全无泄漏。",
+        "refs": [
+          "exp",
+          "audit"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "ResearchAutomation",
+      "ExecutableVerifier",
+      "LLMJudge"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.09426"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3 环境构建与评分",
+        "url": "https://arxiv.org/html/2610.09426#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:scale-ai",
+        "label": "Scale AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.09426"
+          }
+        ]
+      },
+      {
+        "tag": "person:huaxiu-yao",
+        "label": "Huaxiu Yao",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.09426"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "2610.10310",
+    "title": "RSIGym: A Flexible Environment for Recursive Self-Improvement",
+    "date": "2026-10-07",
+    "dateLabel": "首次提交",
+    "category": "evaluation",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "C",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "paper",
+    "url": "https://arxiv.org/abs/2610.10310",
+    "references": {
+      "main": {
+        "label": "原文与发布日期",
+        "url": "https://arxiv.org/abs/2610.10310"
+      },
+      "intro": {
+        "label": "§1 基础设施与研究权限",
+        "url": "https://arxiv.org/html/2610.10310#S1"
+      },
+      "method": {
+        "label": "§3 五种服务、权限与预算",
+        "url": "https://arxiv.org/html/2610.10310#S3"
+      },
+      "exp": {
+        "label": "§4 模型、任务、协议与结果",
+        "url": "https://arxiv.org/html/2610.10310#S4"
+      },
+      "cases": {
+        "label": "§5.1–5.2 轨迹和案例",
+        "url": "https://arxiv.org/html/2610.10310#S5"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "自主改进实验常让 agent 重建训练部署设施，或只开放单个组件，难以比较数据、harness 和联合更新的研究决策。",
+        "refs": [
+          "intro"
+        ]
+      },
+      "position": {
+        "value": "提供统一服务与预算控制，评测研究 agent 如何选择数据、训练配置和 harness 修改，改进一个指定目标系统。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "Joint 主实验 30 个模型—任务配置中 29 个上涨，但测试题在开发时已见过；更大预算和更多训练都不保证更好。同模型自改进案例完成了流程，但最终分数略降。",
+        "refs": [
+          "exp",
+          "cases"
+        ]
+      }
+    },
+    "dimensions": {
+      "object": {
+        "value": "Data 赛道只改训练数据；Harness 只改执行代码；Joint 可改数据、训练设置和 harness。研究平台与六个主实验研究模型固定。",
+        "refs": [
+          "method"
+        ]
+      },
+      "executor": {
+        "value": "Joint／Data：Qwen3.5-35B-A3B-Base 及其候选；Harness：固定 Qwen3.6-35B-A3B-Instruct。另有 Qwen3.8-27B 同时当研究者和目标的案例。",
+        "refs": [
+          "exp",
+          "cases"
+        ]
+      },
+      "modifier": {
+        "value": "Opus 5／5.5、DeepSeek V4.1 Flash 用 Claude Code；GPT-6 Astra、GPT-6 Sol、GPT-6.1 Sol 用 Codex。它们改目标系统；Codex 不等于目标的基础 harness。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "verdict": {
+        "value": "SWE 用仓库测试，TB2 用任务 verifier，AIME 比最终整数，GPQA 比正确选项，SkillsBench 用原生奖励。开发评测返回总分、逐题 reward 和完整轨迹；最终每题三次取平均。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "seed": {
+        "value": "主实验为 DeepAgents 0.7.8 的短提示＋文件／shell 工具循环；平台另提供训练、推理、rollout、评测和沙盒服务。案例还测试成熟 DSH 框架与 pi harness。",
+        "refs": [
+          "exp",
+          "cases"
+        ]
+      },
+      "train": {
+        "value": "每次运行由研究 agent 生成训练数据，可调用获准的外部教师；平台用 Tinker 做 LoRA。禁止拿评测题或其派生数据训练，并做事后审计。",
+        "refs": [
+          "method"
+        ]
+      },
+      "debug": {
+        "value": "可自选公开 benchmark 任务做开发评测；例如 TB2 的 30 题子集或 SkillsBench 的 6 题探测。没有统一隐藏开发／测试划分。",
+        "refs": [
+          "exp",
+          "cases"
+        ]
+      },
+      "test": {
+        "value": "SWE Verified 100、TB2 89、AIME 2024/25 共 60、GPQA Diamond 100、SkillsBench 科学／办公／金融 37 题；这些任务可在开发时接触，最终报告同题集 avg@3。",
+        "refs": [
+          "exp"
+        ]
+      },
+      "isolation": {
+        "value": "每个配置只跑一次；$500 限额只统计平台服务，研究模型调用和最终评测另计。Harness 赛道起始模型不同，不能用它与 Joint 的分差分解联合收益。13-gram 审计不等于独立隐藏测试。",
+        "refs": [
+          "exp"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011",
+      "Infrastructure",
+      "BenchmarkScore",
+      "ResearchAutomation"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://arxiv.org/abs/2610.10310"
+      }
+    ],
+    "visibleKeys": [
+      "object",
+      "executor",
+      "modifier",
+      "verdict",
+      "seed"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "§3 五种服务、权限与预算",
+        "url": "https://arxiv.org/html/2610.10310#S3"
+      }
+    ],
+    "attributions": [
+      {
+        "tag": "org:evolvent",
+        "label": "Evolvent AI",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.10310"
+          }
+        ]
+      },
+      {
+        "tag": "org:nus",
+        "label": "NUS",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "原文与发布日期",
+            "url": "https://arxiv.org/abs/2610.10310"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mullie-where-rsi-possible",
+    "title": "Where Is Recursive Self-Improvement Possible?",
+    "date": "2026-10",
+    "dateLabel": "作者博客月份",
+    "category": "overview",
+    "methodType": "",
+    "methodTypes": [],
+    "priority": "R",
+    "priorityBasis": "按与 RSI 研究问题的关系、机制区分度及可复用实验价值选读；不以社媒热度代替证据。",
+    "contentType": "blog",
+    "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible",
+    "references": {
+      "main": {
+        "label": "作者博客（2026 年 10 月）",
+        "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+      },
+      "method": {
+        "label": "Advantage over a frozen mechanism；Measuring a change in learning efficiency",
+        "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+      }
+    },
+    "tldr": {
+      "gap": {
+        "value": "单条 benchmark 曲线会混合题目难度分布与学习效率变化，涨分快不能直接作为递归加速的证据。",
+        "refs": [
+          "method"
+        ]
+      },
+      "position": {
+        "value": "讨论什么任务结构可能支持持续 RSI：以前学会的知识是否会降低发现下一层知识的成本。",
+        "refs": [
+          "method"
+        ]
+      },
+      "conclusion": {
+        "value": "提出与保留相同已有收益、但冻结改进机制的对照比较，并跨领域测获得新能力所需的计算量。这是条件分析和实验建议，不是已验证的通用定律。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "dimensions": {
+      "author": {
+        "value": "Louis-Antoine Mullie，个人研究博客；页面只标注 2026 年 10 月。",
+        "refs": [
+          "main"
+        ]
+      },
+      "framework": {
+        "value": "区分当前能力提升与学习效率提升；同时考察任务变难的速度、经验复用的收益，以及外界新信息的需求。",
+        "refs": [
+          "method"
+        ]
+      },
+      "reading": {
+        "value": "适合设计研究问题时阅读：先问更新是否让后续学习更省，再问这种优势能否跨任务持续。",
+        "refs": [
+          "method"
+        ]
+      },
+      "limits": {
+        "value": "文中的无限改进结论依赖理想化假设；数学与代码只是候选领域，不代表已证明能无限自改进。",
+        "refs": [
+          "method"
+        ]
+      }
+    },
+    "tags": [
+      "Update20261011"
+    ],
+    "links": [
+      {
+        "label": "原文",
+        "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+      }
+    ],
+    "visibleKeys": [
+      "author",
+      "framework",
+      "reading"
+    ],
+    "reviewStatus": "fulltext-targeted",
+    "reviewScope": "定向核对引言、方法、实验设置及所引附录；每个字段链接到支持它的原文位置。",
+    "reviewedAt": "2026-10-11",
+    "modifierRoles": [],
+    "parameterTargets": [],
+    "classificationSources": [
+      {
+        "label": "Advantage over a frozen mechanism；Measuring a change in learning efficiency",
+        "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
+      }
+    ],
+    "attributions": []
   }
 ]
