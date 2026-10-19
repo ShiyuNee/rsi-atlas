@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-10-11",
-  "corpusUpdated": "2026-10-11",
+  "updated": "2026-10-19",
+  "corpusUpdated": "2026-10-19",
   "policy": "按论文要解决的问题人工归组；同一工作可跨路线。关系箭头是本站的分析，不代表作者声明的继承关系或历史先后。覆盖当前资料库，不声称穷尽整个领域。",
   "groups": [
     {
@@ -39,7 +39,8 @@
             "2406.07496",
             "2507.19457",
             "2605.24539",
-            "2609.00829"
+            "2609.00829",
+            "2610.20312"
           ],
           "representatives": [
             "2305.20050",
@@ -134,7 +135,8 @@
             "2602.07755",
             "2604.10923",
             "2609.15364",
-            "2610.11794"
+            "2610.11794",
+            "2610.19386"
           ],
           "representatives": [
             "2512.18746",
@@ -172,7 +174,9 @@
             "2505.22954",
             "2410.04444",
             "2603.03329",
-            "2608.12307"
+            "2608.12307",
+            "2610.19799",
+            "2610.16966"
           ],
           "representatives": [
             "2408.08435",
@@ -270,7 +274,8 @@
             "2609.08183",
             "2607.25886",
             "2606.04261",
-            "2610.03548"
+            "2610.03548",
+            "2610.04299"
           ],
           "representatives": [
             "2511.10395",
@@ -296,7 +301,8 @@
           "question": "任务和指标不再由人给定时，目标解释、数据选择和自测是否仍然有效？",
           "papers": [
             "2608.31111",
-            "2608.05144"
+            "2608.05144",
+            "2610.12235"
           ],
           "representatives": [
             "2608.31111",
@@ -333,7 +339,9 @@
             "2409.12917",
             "2407.18219",
             "2610.02826",
-            "2609.30652"
+            "2609.30652",
+            "2610.22192",
+            "2609.39306"
           ],
           "representatives": [
             "2506.10943",
@@ -368,7 +376,8 @@
             "2607.22688",
             "2609.00196",
             "2609.17523",
-            "2610.03002"
+            "2610.03002",
+            "2609.35561"
           ],
           "representatives": [
             "2605.27276",
@@ -403,7 +412,8 @@
             "2608.08466",
             "2609.14858",
             "2609.37834",
-            "aibuildai-posttrain-agent"
+            "aibuildai-posttrain-agent",
+            "2610.14224"
           ],
           "representatives": [
             "2309.16797",
@@ -440,7 +450,10 @@
             "2608.24735",
             "metarsi-v1",
             "weco-aide2-blog",
-            "2609.38372"
+            "2609.38372",
+            "2610.21887",
+            "2609.26457",
+            "2610.02616"
           ],
           "representatives": [
             "2310.02304",
@@ -494,7 +507,8 @@
             "2608.06301",
             "2608.10178",
             "2609.33180",
-            "2609.40097"
+            "2609.40097",
+            "2610.18813"
           ],
           "representatives": [
             "2607.12227",
@@ -604,7 +618,9 @@
             "melon-self-evolve-rsi",
             "weng-prompt-engineering",
             "towards-ai-that-improves-itself",
-            "mullie-where-rsi-possible"
+            "mullie-where-rsi-possible",
+            "2610.14625",
+            "prism-awesome-rsi"
           ],
           "representatives": [
             "ai4ai-survey",
@@ -624,7 +640,8 @@
             "2609.19203",
             "reef",
             "mass-author-blog",
-            "autodatabench-author-blog"
+            "autodatabench-author-blog",
+            "penguin-harness"
           ],
           "representatives": [
             "anthropic-when-ai-builds-itself",
@@ -4705,6 +4722,458 @@
           "url": "https://louismullie.com/blog/where-is-recursive-self-improvement-possible"
         }
       ]
+    },
+    "2610.14224": {
+      "primary": "improver",
+      "branch": "rules",
+      "related": [
+        "harness",
+        "experience",
+        "feedback"
+      ],
+      "name": "Harness²",
+      "question": "没有标准答案时，怎样改当前框架，并让下一题的修改更有效？",
+      "contrast": "先提出通用／领域两类改动，实际运行对照，再组合；任务结束后保存代码和修改经验。三个职业基准均有收益，但在线判断只比较行为，不能验证答案正确。",
+      "sources": [
+        {
+          "label": "§2 · 两层 harness 改进",
+          "url": "https://arxiv.org/html/2610.14224#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§2 · 两层 harness 改进",
+          "url": "https://arxiv.org/html/2610.14224#S2"
+        },
+        {
+          "label": "§3.1–3.2 · 模型与结果",
+          "url": "https://arxiv.org/html/2610.14224#S3"
+        }
+      ]
+    },
+    "2610.12235": {
+      "primary": "curriculum",
+      "branch": "goal",
+      "related": [
+        "evaluation",
+        "experience"
+      ],
+      "name": "Research World Models",
+      "question": "运行实验太贵时，能否用历史结果预判并选择最值得运行的改动？",
+      "contrast": "2653条实验记录覆盖九种环境；历史经验提高预测与选题效果，多轮研究的最佳收益也增加。这里学习发生在上下文中，没有训练一个新的预测模型。",
+      "sources": [
+        {
+          "label": "§2 · 用历史实验预测改动收益",
+          "url": "https://arxiv.org/html/2610.12235#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§2 · 用历史实验预测改动收益",
+          "url": "https://arxiv.org/html/2610.12235#S2"
+        },
+        {
+          "label": "§3 · 预测、选实验与多轮研究",
+          "url": "https://arxiv.org/html/2610.12235#S3"
+        }
+      ]
+    },
+    "2610.19386": {
+      "primary": "experience",
+      "branch": "memory-system",
+      "related": [
+        "feedback"
+      ],
+      "name": "STRATA",
+      "question": "跨任务记忆增多后，怎样避免误检索、重复积累和负迁移？",
+      "contrast": "把原子技能、工作流和一般策略连成图，给易混淆经验加对照边，并清理冗余节点。四个交互基准有收益；分数是边做任务边积累记忆的全程平均。",
+      "sources": [
+        {
+          "label": "Method · 三层记忆与维护规则",
+          "url": "https://arxiv.org/html/2610.19386#Sx3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "Method · 三层记忆与维护规则",
+          "url": "https://arxiv.org/html/2610.19386#Sx3"
+        },
+        {
+          "label": "Experimental Setup／Results",
+          "url": "https://arxiv.org/html/2610.19386#Sx4"
+        }
+      ]
+    },
+    "2610.19799": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [
+        "experience",
+        "evaluation"
+      ],
+      "name": "AGORA",
+      "question": "同样的模型和进化算法，成员强弱搭配与决策制度怎样改变团队收益？",
+      "contrast": "AGORA 在三类任务、三种进化机制上比较；合适的组织可让强成员获得决策权，其他成员减少干扰。收益依团队配置而变，不能概括成竞争或多 agent 一定更好。",
+      "sources": [
+        {
+          "label": "§3 · AGORA及三种进化机制",
+          "url": "https://arxiv.org/html/2610.19799#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · AGORA及三种进化机制",
+          "url": "https://arxiv.org/html/2610.19799#S3"
+        },
+        {
+          "label": "§4–6 · 设置与组织行为",
+          "url": "https://arxiv.org/html/2610.19799#S4"
+        }
+      ]
+    },
+    "2610.20312": {
+      "primary": "feedback",
+      "branch": "diagnosis",
+      "related": [
+        "experience",
+        "evaluation"
+      ],
+      "name": "HiMeco",
+      "question": "具身空间任务失败时，能否区分没看见、没探索够与规划错误并定向改进？",
+      "contrast": "HiMeco 固定模型，用规则诊断和候选对照维护经验与技能。主结果是208个相同场景的四轮适应；另有少量跨场景案例，不能把主表当完整跨场景泛化。",
+      "sources": [
+        {
+          "label": "§3 · 诊断、策略与可执行技能",
+          "url": "https://arxiv.org/html/2610.20312#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 诊断、策略与可执行技能",
+          "url": "https://arxiv.org/html/2610.20312#S3"
+        },
+        {
+          "label": "§4 · 模型与实验",
+          "url": "https://arxiv.org/html/2610.20312#S4"
+        }
+      ]
+    },
+    "2610.16966": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [
+        "feedback"
+      ],
+      "name": "HarnessSR",
+      "question": "怎样把公式搜索中的数值残差变成可复用的角色指令和工作流？",
+      "contrast": "先优化角色提示，再搜索提示与工作流组合，最后按残差等诊断改指令。LSR-Synth三个底座平均容差准确率61.33%；更新的是执行策略，底层公式搜索算法和模型权重固定。",
+      "sources": [
+        {
+          "label": "§3 · 三阶段提示与工作流优化",
+          "url": "https://arxiv.org/html/2610.16966#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 三阶段提示与工作流优化",
+          "url": "https://arxiv.org/html/2610.16966#S3"
+        },
+        {
+          "label": "§4 · 结果与比较",
+          "url": "https://arxiv.org/html/2610.16966#S4"
+        }
+      ]
+    },
+    "2610.21887": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "experience",
+        "evaluation"
+      ],
+      "name": "MetaShare",
+      "question": "怎样让不同进化分支共享失败修改的证据，避免重复搜索同一种无效策略？",
+      "contrast": "同时检索成功策略和失败警告，定期检查缺少哪些改动类别；多个meta-agent提案后只执行一个结构合格候选。最佳版本更早出现，但这不等于总token成本更低。",
+      "sources": [
+        {
+          "label": "§3 · 策略记忆、审计和候选门控",
+          "url": "https://arxiv.org/html/2610.21887#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 策略记忆、审计和候选门控",
+          "url": "https://arxiv.org/html/2610.21887#S3"
+        },
+        {
+          "label": "§4 · 数据与结果",
+          "url": "https://arxiv.org/html/2610.21887#S4"
+        }
+      ]
+    },
+    "2610.22192": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "curriculum",
+        "evaluation"
+      ],
+      "name": "Terminal-RSI",
+      "question": "怎样把终端任务的可验证轨迹和部分进度接入多轮训练，推进整题成功？",
+      "contrast": "Qwen3.8-27B经过两轮RSR＋RPR，actor与critic交接并调整奖励。报告六类终端评测提升；历史覆盖、部分评测次数及组件因果贡献仍受论文披露的记录边界限制。",
+      "sources": [
+        {
+          "label": "§2 · 轨迹重写与actor／critic交接",
+          "url": "https://arxiv.org/html/2610.22192#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§2 · 轨迹重写与actor／critic交接",
+          "url": "https://arxiv.org/html/2610.22192#S2"
+        },
+        {
+          "label": "§3 · 3000任务、执行harness与结果",
+          "url": "https://arxiv.org/html/2610.22192#S3"
+        }
+      ]
+    },
+    "2610.04299": {
+      "primary": "curriculum",
+      "branch": "data",
+      "related": [
+        "weights",
+        "evaluation"
+      ],
+      "name": "R-Quest",
+      "question": "自生成训练题多轮后无效和重复增多，怎样维持可学习的新问题？",
+      "contrast": "先教solver识别无效题，再用多数有效性判断筛题，用冻结基座比较题型重复；十轮实验保持收益。初始化含外部GPT标注，报告版本按各领域benchmark跨轮成绩选择。",
+      "sources": [
+        {
+          "label": "§3 · 有效性与新颖性反馈",
+          "url": "https://arxiv.org/html/2610.04299#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 有效性与新颖性反馈",
+          "url": "https://arxiv.org/html/2610.04299#S3"
+        },
+        {
+          "label": "§4 · 模型、各轮选版本与结果",
+          "url": "https://arxiv.org/html/2610.04299#S4"
+        }
+      ]
+    },
+    "2609.39306": {
+      "primary": "weights",
+      "branch": "internalize",
+      "related": [
+        "improver",
+        "evaluation"
+      ],
+      "name": "ReSAIL",
+      "question": "学生继续当教师时，怎样避免自蒸馏逐轮损失产生监督的能力？",
+      "contrast": "优先蒸馏“额外经验最能改变预测”的步骤，平衡各轨迹损失，再约束学生保留教师读经验后的分布。ALFWorld／TextCraft三轮持续改善；不是训练出一个独立外部教师。",
+      "sources": [
+        {
+          "label": "§3 · 敏感步骤选择与特权视角保持",
+          "url": "https://arxiv.org/html/2609.39306#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 敏感步骤选择与特权视角保持",
+          "url": "https://arxiv.org/html/2609.39306#S3"
+        },
+        {
+          "label": "§4 · 三轮部署结果",
+          "url": "https://arxiv.org/html/2609.39306#S4"
+        }
+      ]
+    },
+    "2609.26457": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "evaluation",
+        "harness"
+      ],
+      "name": "AIDE²",
+      "question": "自动发现的研究agent能否在固定预算下更有效地研发，并进一步当好自改进者？",
+      "contrast": "八天99份提案中接受七次改进，四个外部基准有收益；但把新agent提升为外层修改者的对照实验仍不确定，尚未证明下一轮自改进会更快。",
+      "sources": [
+        {
+          "label": "§2 · 内外两层优化及固定模型",
+          "url": "https://arxiv.org/html/2609.26457#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§2 · 内外两层优化及固定模型",
+          "url": "https://arxiv.org/html/2609.26457#S2"
+        },
+        {
+          "label": "§3 · 进化、外部测试与ignition test",
+          "url": "https://arxiv.org/html/2609.26457#S3"
+        }
+      ]
+    },
+    "2610.02616": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "feedback",
+        "evaluation"
+      ],
+      "name": "VERSE",
+      "question": "优化者能否先验证自己的诊断，再学习更可靠地提出和测试harness修改？",
+      "contrast": "VERSE把重放、移除疑似步骤、重复验证修复接入四种harness优化器；留出编程任务有收益。但验证与自身更新增加计算，跨模型直接搬运harness的收益也很有限。",
+      "sources": [
+        {
+          "label": "§3 · 诊断、验证与自身harness更新",
+          "url": "https://arxiv.org/html/2610.02616#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 诊断、验证与自身harness更新",
+          "url": "https://arxiv.org/html/2610.02616#S3"
+        },
+        {
+          "label": "§4 · 主实验",
+          "url": "https://arxiv.org/html/2610.02616#S4"
+        }
+      ]
+    },
+    "2609.35561": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "curriculum",
+        "evaluation"
+      ],
+      "name": "RSI-Master",
+      "question": "怎样在有限预算内组织自主后训练，同时减少违规捷径与方向锁定？",
+      "contrast": "ExpOS记录数据、配置和checkpoint谱系，Main／Worker／Reviewer动态组织实验；Qwen3-4B的PostTrainBench平均54.49。更大模型部分任务超过Instruct，另一些仍落后。",
+      "sources": [
+        {
+          "label": "§2 · ExpOS和Reviewer研究图",
+          "url": "https://arxiv.org/html/2609.35561#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§2 · ExpOS和Reviewer研究图",
+          "url": "https://arxiv.org/html/2609.35561#S2"
+        },
+        {
+          "label": "§3 · 模型与主结果",
+          "url": "https://arxiv.org/html/2609.35561#S3"
+        }
+      ]
+    },
+    "2610.14625": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "name": "RSI Two Perspectives",
+      "question": "如何从现有RSI方法的设计差异和学习机制中提出更具体的新研究问题？",
+      "contrast": "组织四组九个维度，并讨论优化、蒸馏、正则、持续学习等机制如何用于RSI；另按在线、离线、离线转在线比较评测。它是分析综述，没有提出经实验统一验证的最优方案。",
+      "sources": [
+        {
+          "label": "§3 · 四组九维设计空间",
+          "url": "https://arxiv.org/html/2610.14625#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§3 · 四组九维设计空间",
+          "url": "https://arxiv.org/html/2610.14625#S3"
+        },
+        {
+          "label": "§5／附录A · 评测协议与文献目录",
+          "url": "https://arxiv.org/html/2610.14625#S5"
+        }
+      ]
+    },
+    "2610.18813": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "perspectives",
+        "harness"
+      ],
+      "name": "Harness Self-Evolution Survey",
+      "question": "怎样区分选中了新版本、更新真正生效、收益可归因和未见任务上仍有效？",
+      "contrast": "区分固定组件解释的文字／记忆，与可执行工具和运行代码；再用进化搜索与持续PAC分析验收条件，提出选择、激活、归因、改进四项证据检查。",
+      "sources": [
+        {
+          "label": "arXiv §3 · 更新对象及执行机制",
+          "url": "https://arxiv.org/html/2610.18813#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "arXiv §3 · 更新对象及执行机制",
+          "url": "https://arxiv.org/html/2610.18813#S3"
+        },
+        {
+          "label": "项目页10月17日快照 · Theory／Evaluation",
+          "url": "https://zgcagi.github.io/Harness-RSI/"
+        }
+      ]
+    },
+    "penguin-harness": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "harness",
+        "evaluation"
+      ],
+      "name": "PenguinHarness",
+      "question": "如何在统一执行、计分和版本记录条件下混配RSI算法与不同benchmark？",
+      "contrast": "当前内置5种算法插件和7个benchmark入口，统一记录轨迹、分数和快照，提供桌面／Web／CLI／SDK。当前README明确冻结模型权重，不把路线图100+集成当已实现。",
+      "sources": [
+        {
+          "label": "README · Self-evolution／Built-in plugins",
+          "url": "https://github.com/Prism-Shadow/penguin-harness#self-evolution"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "README · Self-evolution／Built-in plugins",
+          "url": "https://github.com/Prism-Shadow/penguin-harness#self-evolution"
+        },
+        {
+          "label": "README · Benchmarks与Results口径",
+          "url": "https://github.com/Prism-Shadow/penguin-harness#results"
+        }
+      ]
+    },
+    "prism-awesome-rsi": {
+      "primary": "perspectives",
+      "branch": "maps",
+      "related": [],
+      "name": "Awesome RSI / PrismShadow",
+      "question": "怎样用可比较的设计维度浏览RSI方法、评测和工程实现？",
+      "contrast": "与两视角综述互为入口，团队发布时称整理140篇工作；它持续变化，数量不是固定benchmark规模，也不是所有收录方法均有效的背书。",
+      "sources": [
+        {
+          "label": "README与在线索引 · 方法、评测与维度",
+          "url": "https://prism-shadow.github.io/awesome-rsi/"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "README与在线索引 · 方法、评测与维度",
+          "url": "https://prism-shadow.github.io/awesome-rsi/"
+        },
+        {
+          "label": "配套综述 §3–5 · 分类与评测范围",
+          "url": "https://arxiv.org/html/2610.14625#S3"
+        }
+      ]
     }
   },
   "relations": [
@@ -5043,7 +5512,8 @@
         "papers": [
           "2305.11738",
           "2507.19457",
-          "2605.24539"
+          "2605.24539",
+          "2610.20312"
         ]
       },
       "curriculum": {
@@ -5052,7 +5522,9 @@
         "insight": "在自建题上变好，仍可能没有练到目标能力。选题收益必须在独立目标任务上检验。",
         "papers": [
           "2609.00768",
-          "2608.31111"
+          "2608.31111",
+          "2610.12235",
+          "2610.04299"
         ]
       },
       "experience": {
@@ -5062,7 +5534,8 @@
         "papers": [
           "2308.10144",
           "2512.18746",
-          "2608.03874"
+          "2608.03874",
+          "2610.19386"
         ]
       },
       "harness": {
@@ -5073,7 +5546,9 @@
           "2408.08435",
           "2606.06324",
           "2607.13683",
-          "2608.27311"
+          "2608.27311",
+          "2610.19799",
+          "2610.16966"
         ]
       },
       "weights": {
@@ -5083,7 +5558,10 @@
         "papers": [
           "2506.10943",
           "2609.00196",
-          "2609.17523"
+          "2609.17523",
+          "2610.22192",
+          "2609.39306",
+          "2609.35561"
         ]
       },
       "improver": {
@@ -5093,7 +5571,11 @@
         "papers": [
           "2603.19461",
           "2608.02276",
-          "2605.30621"
+          "2605.30621",
+          "2610.14224",
+          "2610.21887",
+          "2609.26457",
+          "2610.02616"
         ]
       },
       "evaluation": {
@@ -5103,7 +5585,8 @@
         "papers": [
           "2607.12227",
           "2608.04003",
-          "2606.17546"
+          "2606.17546",
+          "2610.18813"
         ]
       },
       "perspectives": {
@@ -5112,7 +5595,10 @@
         "insight": "用于形成问题和搭建实验；材料的观点与接口能力不替代实验验证。",
         "papers": [
           "ai4ai-survey",
-          "reef"
+          "reef",
+          "2610.14625",
+          "penguin-harness",
+          "prism-awesome-rsi"
         ]
       }
     },

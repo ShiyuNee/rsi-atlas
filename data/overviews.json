@@ -1018,18 +1018,25 @@
       },
       {
         "key": "conclusion",
-        "value": "形成可自动扩展的企业工作流基准；进化有收益，但仍明显低于预先知道全部规则的对照。",
+        "value": "24组240题中各120题用于学习和测试，按重组业务规则测迁移；四种主配置均有收益，最佳提升16.44个百分点，仍低于已知全部规则的91.6%对照。",
         "sources": [
           {
-            "label": "摘要",
-            "url": "https://arxiv.org/abs/2608.03764"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
+          },
+          {
+            "label": "附录C · 四种模型—harness配置及计费",
+            "url": "https://arxiv.org/html/2608.03764#A3"
           }
         ]
       }
     ],
     "fields": {
-      "object": "各任务组的 SKILL.md 文件：业务规则、操作步骤、输出格式和失败经验。修改的是技能内容。",
-      "verdict": "三种设置给的信息不同：自主探索只见环境；示例监督额外给标准答案；反思监督给程序判分并允许三轮反思。测试考察学到的业务规则能否用于新案例。"
+      "object": "每任务组的SKILL.md：内部业务规则、环境操作、输出约定和失败经验；模型权重、评分器和主执行harness固定。",
+      "executor": "四种主配置：Codex＋GPT-5.5(xhigh)；Claude Code＋Opus-4.8(xhigh)、GLM-5.2(max)或DeepSeek-V4-Pro-Preview(max)。Codex只配GPT-5.5，其余三种模型均配Claude Code。",
+      "modifier": "各对应agent在每组5道训练题形成SKILL.md；正式测试用新会话加载技能。另固定Codex与执行模型，比较Naive／Claude Code／Codex／OpenCode／deepagents五种技能创建器；不是五个新执行模型。",
+      "verdict": "self只看训练题和环境；fewshot额外给5题gold answers；reflect-3给三轮训练程序评分。评分项先由LLM转成代码测试，运行时按确定性二元检查与权重算分，不用LLM临场判对错。",
+      "seed": "Codex／Claude Code负责读写文件、运行命令和加载技能；GDPevo提供企业业务数据库、任务和程序判分。每次运行使用独立Docker工作区。"
     }
   },
   "2602.22480": {

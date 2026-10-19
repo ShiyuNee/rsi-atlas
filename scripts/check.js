@@ -190,7 +190,7 @@ assert.equal(query({facets:{scholar:['person:mengdi-wang']}}).length,4);
 assert.equal(query({facets:{institution:['org:washington']}}).length,2);
 for(const p of papers){
  assert.equal(new Set(p.attributions.map(a=>a.tag)).size,p.attributions.length);
- for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(p.tags.includes(a.tag));assert(a.sources.every(s=>s.url.startsWith('https://arxiv.org/')));}
+ for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(p.tags.includes(a.tag));assert(a.sources.every(s=>s.url.startsWith('https://arxiv.org/')||(a.tag==='org:llamafactory-team'&&s.url==='https://x.com/code_hiyouga/status/2111016204785922481')));}
 }
 assert(query({facets:{institution:['org:bytedance-seed'],priority:['C']}}).every(p=>p.priority==='C'));
 console.log('Passed: sourced institution/scholar tags and combined filters.');

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-10-11",
+  "updated": "2026-10-19",
   "policy": {
     "methodTypes": "methodType 保留主类；methodTypes 记录原文已展示的全部修改对象。分类与计数可重叠，不据论文标题或未来架构设想认定已经更新参数。",
     "modifierRoles": "按明确角色和具体配置标注，可跨训练、部署和迁移同时命中自己改与别人改；未知项显示未确认，不从旧标签、名称或关键词推断。SelfModifier 指执行端自身或同型号模型，OtherEditor 指明确独立的修改者，OtherTeacher 指外部示范或指导。",
@@ -2091,6 +2091,22 @@
         {
           "label": "v2 附录 D.4 三个基准的评分规则",
           "url": "https://arxiv.org/html/2606.01314v2#A4.SS4"
+        }
+      ]
+    },
+    "2608.03764": {
+      "modifierRoles": [
+        "SelfModifier",
+        "SelfSystem"
+      ],
+      "addTags": [
+        "Update20261019",
+        "SkillDocument"
+      ],
+      "sources": [
+        {
+          "label": "§4.1 · 240题、监督权限与独立容器",
+          "url": "https://arxiv.org/html/2608.03764#S4.SS1"
         }
       ]
     }

@@ -9,8 +9,8 @@ const expected = ['2203.14465','2401.10020','2407.18219','2409.12917','funsearch
 const get = id => data.papers.find(p=>p.id===id);
 const updated = data.papers.filter(p=>p.tags.includes('Update20261001'));
 assert.deepEqual(updated.map(p=>p.id).sort(),expected.sort());
-assert.equal(data.papers.length,209);
-assert.equal(data.updated,'2026-10-11');
+assert.equal(data.papers.length,226);
+assert.equal(data.updated,'2026-10-19');
 assert.equal(updated.filter(p=>p.reviewStatus==='fulltext-targeted').length,4);
 assert.equal(updated.filter(p=>p.reviewStatus==='abstract-checked').length,9);
 for(const p of updated){
@@ -41,7 +41,7 @@ assert.equal(q({tags:['Update20261001'],facets:{verified:['摘要或初步定位
 assert(q({category:'methods',quick:'harness'}).some(p=>p.id==='2509.19349'));
 assert(q({category:'methods',quick:'artifact'}).some(p=>p.id==='2509.19349'));
 assert(!q({category:'methods',quick:'joint'}).some(p=>p.id==='2608.13951'));
-assert.equal(records.length,67);
+assert.equal(records.length,84);
 const root=path.resolve(__dirname,'..');
 const assetVersion=fs.readFileSync(path.join(root,'index.html'),'utf8').match(/assets\/app\.js\?v=([\w-]+)/)?.[1];
 const dataVersion=fs.readFileSync(path.join(root,'assets/app.js'),'utf8').match(/data\/papers\.json\?v=([\w-]+)/)?.[1];
@@ -85,3 +85,35 @@ assert.equal(q({tags:['Update20261011'],facets:{type:['blog']}}).length,3);
 assert.equal(q({tags:['Update20261011'],category:'dataset'}).length,1);
 assert.equal(q({tags:['Update20261011'],category:'evaluation'}).length,4);
 console.log('Passed: October 11 inventory, publication/date distinctions, dataset dimensions, model roles and source-specific feedback/test boundaries.');
+
+// October 19: new publications and bookmarked earlier work retain distinct dates.
+const batch19=data.papers.filter(p=>p.tags.includes('Update20261019'));
+const ids19=['2610.14224','2610.12235','2610.19386','2610.19799','2610.20312','2610.16966','2610.21887','2610.22192','2610.04299','2609.39306','2609.26457','2610.02616','2609.35561','2610.14625','2610.18813','penguin-harness','prism-awesome-rsi'];
+assert.equal(batch19.length,19);
+assert.deepEqual(batch19.filter(p=>ids19.includes(p.id)).map(p=>p.id).sort(),ids19.sort());
+assert.equal(batch19.filter(p=>p.contentType==='paper').length,14); // 13 new + GDPevo revision
+assert.equal(batch19.filter(p=>p.contentType==='survey').length,2);
+assert.equal(batch19.filter(p=>p.contentType==='repository').length,2);
+assert.equal(batch19.filter(p=>p.contentType==='blog').length,1); // AIDE2 paired-resource revision
+for(const p of batch19)assert.equal(p.profile.sourceDate,'2026-10-19');
+assert.equal(get('2609.26457').workId,get('weco-aide2-blog').workId);
+assert.equal(get('2610.14625').workId,get('prism-awesome-rsi').workId);
+assert.equal(get('2608.03764').date,'2026-08-04');
+assert(field('2608.03764','test').includes('120道'));
+assert(!field('2608.03764','test').includes('180'));
+assert(field('2608.03764','isolation').includes('4个完整'));
+assert.equal(q({tags:['Update20261019'],facets:{institution:['org:llamafactory-team']}}).length,4);
+assert.equal(get('2610.12235').category,'evaluation');
+assert.equal(get('2610.02616').methodType,'harness');
+assert.equal(get('2609.35561').methodType,'weights');
+assert(get('2609.26457').overview.tldr[2].value.includes('不确定'));
+assert(field('2610.04299','debug').includes('参与了版本选择'));
+assert(field('2610.20312','isolation').includes('相同题'));
+assert(field('2610.19386','isolation').includes('在线记忆'));
+assert(field('2610.21887','test').includes('含那60道开发题'));
+assert(field('2610.02616','test').includes('108')&&field('2610.02616','test').includes('107'));
+assert(field('2610.02616','isolation').includes('未匹配总执行'));
+assert(field('2610.16966','train').includes('160')&&field('2610.16966','test').includes('129'));
+assert(field('2610.14224','verdict').includes('不接收 benchmark 成绩'));
+assert(field('2610.22192','test').includes('非pass@3'));
+console.log('Passed: October 19 inventory, duplicate/first-publication dates, team attribution, train-test counts, feedback visibility and explicit evidence limits.');

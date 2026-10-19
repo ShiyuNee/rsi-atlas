@@ -219,6 +219,18 @@
     "person:qingyun-wu": {
       "label": "Qingyun Wu",
       "kind": "scholar"
+    },
+    "org:prismshadow": {
+      "label": "PrismShadow",
+      "kind": "institution"
+    },
+    "org:llamafactory-team": {
+      "label": "LlamaFactory team",
+      "kind": "institution"
+    },
+    "person:yaowei-zheng": {
+      "label": "Yaowei Zheng",
+      "kind": "scholar"
     }
   },
   "papers": {
@@ -592,7 +604,41 @@
         ]
       }
     ],
-    "2608.03764": [],
+    "2608.03764": [
+      {
+        "tag": "org:prismshadow",
+        "label": "PrismShadow",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
+          }
+        ]
+      },
+      {
+        "tag": "org:llamafactory-team",
+        "label": "LlamaFactory team",
+        "kind": "institution",
+        "sources": [
+          {
+            "label": "Yaowei Zheng · 10月16日团队介绍",
+            "url": "https://x.com/code_hiyouga/status/2111016204785922481"
+          }
+        ]
+      },
+      {
+        "tag": "person:yaowei-zheng",
+        "label": "Yaowei Zheng",
+        "kind": "scholar",
+        "sources": [
+          {
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
+          }
+        ]
+      }
+    ],
     "2602.22480": [],
     "2410.04444": [
       {

@@ -5504,23 +5504,15 @@
       {
         "key": "executor",
         "label": "谁执行",
-        "value": "Codex或Claude Code（可读写项目文件、运行命令和测试的 coding agent 工具）加载所学技能，候选模型为GPT-5.5、Opus4.8、GLM5.2、DeepSeek-V4-Pro-Preview。",
+        "value": "四种主配置：Codex＋GPT-5.5(xhigh)；Claude Code＋Opus-4.8(xhigh)、GLM-5.2(max)或DeepSeek-V4-Pro-Preview(max)。Codex只配GPT-5.5，其余三种模型均配Claude Code。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px3"
-          },
-          {
-            "label": "Claude Code 官方说明",
-            "url": "https://code.claude.com/docs/en/overview"
+            "label": "附录C · 四种模型—harness配置及计费",
+            "url": "https://arxiv.org/html/2608.03764#A3"
           }
         ],
         "status": "recorded"
@@ -5528,19 +5520,15 @@
       {
         "key": "modifier",
         "label": "谁来改",
-        "value": "对应模型–运行框架配置从5道训练任务构建技能；评估另启动新 task agent 加载该技能，避免沿用训练会话。",
+        "value": "各对应agent在每组5道训练题形成SKILL.md；正式测试用新会话加载技能。另固定Codex与执行模型，比较Naive／Claude Code／Codex／OpenCode／deepagents五种技能创建器；不是五个新执行模型。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px3"
+            "label": "附录C · 四种模型—harness配置及计费",
+            "url": "https://arxiv.org/html/2608.03764#A3"
           }
         ],
         "status": "recorded"
@@ -5548,15 +5536,11 @@
       {
         "key": "object",
         "label": "什么在进化 / 哪些部分不变",
-        "value": "各任务组的 SKILL.md 文件：业务规则、操作步骤、输出格式和失败经验。修改的是技能内容。",
+        "value": "每任务组的SKILL.md：内部业务规则、环境操作、输出约定和失败经验；模型权重、评分器和主执行harness固定。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5564,15 +5548,11 @@
       {
         "key": "verdict",
         "label": "反馈是什么 / 怎样判对错",
-        "value": "三种设置给的信息不同：自主探索只见环境；示例监督额外给标准答案；反思监督给程序判分并允许三轮反思。测试考察学到的业务规则能否用于新案例。",
+        "value": "self只看训练题和环境；fewshot额外给5题gold answers；reflect-3给三轮训练程序评分。评分项先由LLM转成代码测试，运行时按确定性二元检查与权重算分，不用LLM临场判对错。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5580,11 +5560,11 @@
       {
         "key": "seed",
         "label": "基础 harness / 初始系统",
-        "value": "作者自建的企业任务环境，提供可查询的业务数据和按规则判分的程序。被测 task agent 从训练任务提炼可复用技能，测试时携带技能库；评测基准本身不限定只能改技能，也不训练一个统一的任务模型。",
+        "value": "Codex／Claude Code负责读写文件、运行命令和加载技能；GDPevo提供企业业务数据库、任务和程序判分。每次运行使用独立Docker工作区。",
         "sources": [
           {
-            "label": "数据构造与实验设置",
-            "url": "https://arxiv.org/abs/2608.03764"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5592,15 +5572,11 @@
       {
         "key": "cycle",
         "label": "怎样定位问题、修改与保留版本",
-        "value": "在同组训练环境尝试任务，把允许看到的答案或程序反馈总结为技能；随后由新 task agent 加载该文件执行测试，三种监督强度分别比较。",
+        "value": "每组在5道训练题探索／学习／反思并归纳技能，再由新agent测另外5题。base不学习；三种进化监督与技能创建方法是两个独立比较维度。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
-          },
-          {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5608,15 +5584,15 @@
       {
         "key": "train",
         "label": "训练 / 进化数据",
-        "value": "V1 12 组、V2 24 组，每组 5 道训练题；环境包括 CRM、ERP、财务、医疗等业务流程。",
+        "value": "当前主实验用24组共240题：120训练＋120测试；每组5＋5。早期V1仅12组120题，论文§4.1与官方当前榜均用完整24组，不是叠加成36组。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§3.3 · 规则分散与重组",
+            "url": "https://arxiv.org/html/2608.03764#S3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5624,15 +5600,15 @@
       {
         "key": "debug",
         "label": "调试 / 选版本数据",
-        "value": "训练组的题目与环境；额外反馈依 self/fewshot/reflect 设置提供。",
+        "value": "训练5题及允许的答案／三轮评分用于归纳技能；未另设共同独立验证集。技能创建器比较固定执行harness与模型，fewshot提供相同训练资料。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "附录C · 四种模型—harness配置及计费",
+            "url": "https://arxiv.org/html/2608.03764#A3"
           }
         ],
         "status": "recorded"
@@ -5640,15 +5616,15 @@
       {
         "key": "test",
         "label": "最终测试数据",
-        "value": "每组另有 5 道题，合计 180 道，重新组合训练阶段涉及的业务规则。",
+        "value": "24组各5道留出题，共120道，每题三次取平均。业务原子规则在训练中分散、测试中重组；每个rubric点由代码判通过/不通过后加权，六类企业场景按任务组汇总。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§3.3 · 规则分散与重组",
+            "url": "https://arxiv.org/html/2608.03764#S3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
@@ -5656,15 +5632,15 @@
       {
         "key": "isolation",
         "label": "数据隔离与证据边界",
-        "value": "同业务环境、不同任务；训练完才交给新 task agent 测试，比较有/无技能的增益。",
+        "value": "训练／测试分别新容器与harness home，只挂载允许文件，不开放答案、评测器源码或其他尝试日志。当前论文及仓库列4个完整模型—harness主配置；发布帖“6个agent”不直接替换主实验口径。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "附录C · 四种模型—harness配置及计费",
+            "url": "https://arxiv.org/html/2608.03764#A3"
           }
         ],
         "status": "recorded"
@@ -5672,22 +5648,22 @@
       {
         "key": "novelty",
         "label": "关键设计 / 与相近研究的区别",
-        "value": "把企业业务规则分散在学习案例中，再在测试案例里重新组合；另设提前拿到全部规则的对照，帮助判断瓶颈是缺少经验还是不会运用规则。",
+        "value": "不是仅随机分题：训练分别展示企业内部规则，测试重新组合，检验能否从案例归纳并迁移。另比较全部规则已知的oracle，区分缺经验和不会使用规则。",
         "sources": [
           {
-            "label": "§3",
-            "url": "https://arxiv.org/html/2608.03764#S3"
+            "label": "§3.3 · 规则分散与重组",
+            "url": "https://arxiv.org/html/2608.03764#S3.SS3"
           },
           {
-            "label": "§4.1",
-            "url": "https://arxiv.org/html/2608.03764#S4.SS1.SSS0.Px5"
+            "label": "§4.1 · 240题、监督权限与独立容器",
+            "url": "https://arxiv.org/html/2608.03764#S4.SS1"
           }
         ],
         "status": "recorded"
       }
     ],
-    "sourceDate": "2026-09-09",
-    "roleAuditDate": "2026-09-09"
+    "sourceDate": "2026-10-19",
+    "roleAuditDate": "2026-10-19"
   },
   "2602.22480": {
     "fields": [
