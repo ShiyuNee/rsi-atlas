@@ -1,0 +1,155 @@
+{
+  "updated": "2026-10-28",
+  "policy": "明确采用：报告写明在训练或系统中使用；对照评测：只在实验中比较；引用：仅讨论或提供背景。三者都不自动证明方法优于其他工作，也不证明已实现递归自我改进。",
+  "reports": [
+    {
+      "id": "glm5",
+      "title": "GLM-5",
+      "url": "https://arxiv.org/html/2602.15763",
+      "scope": "完整技术报告；GLM-5.3与5.3-Flash发布博客另行核对，不冒称为此报告的版本。"
+    },
+    {
+      "id": "deepseek-v41",
+      "title": "DeepSeek-V4.1-Flash",
+      "url": "https://arxiv.org/html/2609.19969",
+      "scope": "完整技术报告；训练、评测、展望分开判断。"
+    }
+  ],
+  "links": [
+    {
+      "paper": "tml-on-policy-distillation",
+      "report": "glm5",
+      "kind": "adopted",
+      "label": "GLM-5 · 方法采用",
+      "value": "§3.5明确采用on-policy跨阶段蒸馏：先前SFT/RL阶段的模型检查点作教师，用对应RL训练集提示恢复旧能力。报告引用Thinking Machines博客及更早的蒸馏工作，并非只使用该博客独有的方法。",
+      "sources": [
+        {
+          "label": "GLM-5 §3.5 · 跨阶段蒸馏",
+          "url": "https://arxiv.org/html/2602.15763#S3.SS5"
+        }
+      ]
+    },
+    {
+      "paper": "tml-on-policy-distillation",
+      "report": "deepseek-v41",
+      "kind": "adopted",
+      "label": "DeepSeek-V4.1 · 方法采用",
+      "value": "§5.1明确将OPD列为后训练阶段并引用该博客和MiniLLM；§5.2.4使用40多个教师做全词表蒸馏，教师可以来自不同训练阶段和架构。属于训练机制采用，不是对博客全部实验结论的复现。",
+      "sources": [
+        {
+          "label": "DeepSeek-V4.1 §5.1 · 明确采用与引用",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS1"
+        },
+        {
+          "label": "§5.2.4 · 多教师实现",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS2.SSS4"
+        }
+      ]
+    },
+    {
+      "paper": "deepseek-harness",
+      "report": "deepseek-v41",
+      "kind": "adopted",
+      "label": "DeepSeek-V4.1 · 训练采用",
+      "value": "§5.1.2图7在DSH Minimal中训练，图8跨OpenCode、Pi及DSH Standard/PTC训练。模型参数在这些harness中接受RL更新，不表示DSH自动改写自身代码。",
+      "sources": [
+        {
+          "label": "DeepSeek-V4.1 §5.1.2 · 图7/8",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS1.SSS2"
+        }
+      ]
+    },
+    {
+      "paper": "deepseek-harness",
+      "report": "deepseek-v41",
+      "kind": "compared",
+      "label": "DeepSeek-V4.1 · 对照评测",
+      "value": "§5.3.4固定模型检查点、解码配置与任务，比较6类harness的8种配置。附录B.1给出DSH的工具和定制版本；当前开源仓库不能直接视为实验时的同一版本。",
+      "sources": [
+        {
+          "label": "DeepSeek-V4.1 §5.3.4 · 表4",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS3.SSS4"
+        },
+        {
+          "label": "附录B.1 · harness版本与工具",
+          "url": "https://arxiv.org/html/2609.19969#A2.SS1"
+        }
+      ]
+    }
+  ],
+  "context": [
+    {
+      "name": "MiniLLM",
+      "relation": "两份报告在OPD方法处引用的早期蒸馏工作；作为方法来源，不把这次引用误写为新RSI实验。",
+      "sources": [
+        {
+          "label": "GLM-5 §3.5",
+          "url": "https://arxiv.org/html/2602.15763#S3.SS5"
+        },
+        {
+          "label": "DeepSeek-V4.1 §5.1",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS1"
+        }
+      ]
+    },
+    {
+      "name": "DAPO",
+      "relation": "GLM-5幻灯片RL采用token级策略梯度损失；不是报告声称采用了一个递归改进算法。",
+      "sources": [
+        {
+          "label": "GLM-5 §4.2.5",
+          "url": "https://arxiv.org/html/2602.15763#S4.SS2.SSS5"
+        }
+      ]
+    },
+    {
+      "name": "Harbor",
+      "relation": "GLM-5终端训练任务按Harbor格式构造并自动验证：任务说明、Docker环境、测试脚本配套生成。",
+      "sources": [
+        {
+          "label": "GLM-5 §4.2.2",
+          "url": "https://arxiv.org/html/2602.15763#S4.SS2.SSS2"
+        }
+      ]
+    },
+    {
+      "name": "OpenCode / Pi / Claude Code",
+      "relation": "DeepSeek图8的跨harness训练；同名框架也参与§5.3.4对照评测，训练采用与比较使用分开记录。",
+      "sources": [
+        {
+          "label": "DeepSeek-V4.1 §5.1.2 · 图8",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS1.SSS2"
+        },
+        {
+          "label": "§5.3.4",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS3.SSS4"
+        }
+      ]
+    },
+    {
+      "name": "Codex / mini-SWE",
+      "relation": "DeepSeek §5.3.4的对照评测框架；此处证据不足以说它们被用于该报告的跨框架RL训练。",
+      "sources": [
+        {
+          "label": "DeepSeek-V4.1 §5.3.4",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS3.SSS4"
+        }
+      ]
+    },
+    {
+      "name": "SWE-smith",
+      "relation": "GLM-5在介绍和SWE评测段落引用，不能据此说训练数据合成直接采用SWE-smith。",
+      "sources": [
+        {
+          "label": "GLM-5 §6.1.2",
+          "url": "https://arxiv.org/html/2602.15763#S6.SS1.SSS2"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "这两份报告的相关训练段落没有为DGM、GEPA或Self-Harness提供明确采用证据；不为它们添加报告采用标签。",
+    "GLM-5 §4.2.1提到RepoLaunch，但当前HTML未解析出对应参考文献条目，不据此猜测同名仓库。",
+    "GLM官方InfraAgent博客是工程实践材料；其人工目标设定、关键修改审核与数值检查不能省略。"
+  ]
+}

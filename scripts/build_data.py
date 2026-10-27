@@ -147,6 +147,8 @@ def build():
         p['researchProblems'] = [e['primary'], *e['related']]
     from mechanism_classifications import attach_mechanism_classifications
     attach_mechanism_classifications(output)
+    from report_citations import attach_report_citations
+    attach_report_citations(output)
     (ROOT/'data/papers.json').write_text(json.dumps(output,ensure_ascii=False,indent=2)+'\n')
     print(f"Built {len(output['papers'])} library entries ({output['originalCount']} original); {sum(bool(p['details']) for p in papers.values())} detailed records.")
     return output

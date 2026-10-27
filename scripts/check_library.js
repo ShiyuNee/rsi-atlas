@@ -28,10 +28,10 @@ for(const e of records){
  } else assert(!p.profile.fields.some(f=>['train','debug','test'].includes(f.key)));
  for(const a of p.attributions){assert(data.attributionCatalog[a.tag]);assert(a.sources.length);assert(p.tags.includes(a.tag));}
 }
-assert.equal(query({facets:{type:['repository']}}).length,4);
-assert.equal(query({facets:{type:['blog']}}).length,19);
-assert.equal(query({facets:{type:['survey']}}).length,6);
-assert.equal(query({facets:{type:['repository','blog']}}).length,23);
+assert.equal(query({facets:{type:['repository']}}).length,5);
+assert.equal(query({facets:{type:['blog']}}).length,21);
+assert.equal(query({facets:{type:['survey']}}).length,7);
+assert.equal(query({facets:{type:['repository','blog']}}).length,26);
 assert.equal(query({facets:{type:['blog'],institution:['org:openai']}})[0].id,'openai-research-acceleration');
 assert.equal(query({category:'methods',facets:{type:['report']}}).filter(p=>p.curated).length,3);
 assert.equal(query({facets:{institution:['org:washington']}}).length,3);

@@ -9,8 +9,8 @@ const expected = ['2203.14465','2401.10020','2407.18219','2409.12917','funsearch
 const get = id => data.papers.find(p=>p.id===id);
 const updated = data.papers.filter(p=>p.tags.includes('Update20261001'));
 assert.deepEqual(updated.map(p=>p.id).sort(),expected.sort());
-assert.equal(data.papers.length,226);
-assert.equal(data.updated,'2026-10-19');
+assert.equal(data.papers.length,243);
+assert.equal(data.updated,'2026-10-28');
 assert.equal(updated.filter(p=>p.reviewStatus==='fulltext-targeted').length,4);
 assert.equal(updated.filter(p=>p.reviewStatus==='abstract-checked').length,9);
 for(const p of updated){
@@ -41,7 +41,7 @@ assert.equal(q({tags:['Update20261001'],facets:{verified:['摘要或初步定位
 assert(q({category:'methods',quick:'harness'}).some(p=>p.id==='2509.19349'));
 assert(q({category:'methods',quick:'artifact'}).some(p=>p.id==='2509.19349'));
 assert(!q({category:'methods',quick:'joint'}).some(p=>p.id==='2608.13951'));
-assert.equal(records.length,84);
+assert.equal(records.length,101);
 const root=path.resolve(__dirname,'..');
 const assetVersion=fs.readFileSync(path.join(root,'index.html'),'utf8').match(/assets\/app\.js\?v=([\w-]+)/)?.[1];
 const dataVersion=fs.readFileSync(path.join(root,'assets/app.js'),'utf8').match(/data\/papers\.json\?v=([\w-]+)/)?.[1];

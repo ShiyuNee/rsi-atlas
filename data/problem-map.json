@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-10-19",
-  "corpusUpdated": "2026-10-19",
+  "updated": "2026-10-28",
+  "corpusUpdated": "2026-10-28",
   "policy": "按论文要解决的问题人工归组；同一工作可跨路线。关系箭头是本站的分析，不代表作者声明的继承关系或历史先后。覆盖当前资料库，不声称穷尽整个领域。",
   "groups": [
     {
@@ -53,7 +53,8 @@
           "title": "评审者也会错，怎么办？",
           "question": "任务没有完美 verifier 时，如何改进评审又避免迎合评分？",
           "papers": [
-            "2606.26294"
+            "2606.26294",
+            "2610.29005"
           ],
           "representatives": [
             "2606.26294"
@@ -176,7 +177,9 @@
             "2603.03329",
             "2608.12307",
             "2610.19799",
-            "2610.16966"
+            "2610.16966",
+            "2610.28201",
+            "2609.32423"
           ],
           "representatives": [
             "2408.08435",
@@ -219,7 +222,9 @@
             "sol-pi-author-blog",
             "2609.24972",
             "2609.37968",
-            "2609.38349"
+            "2609.38349",
+            "2610.26770",
+            "2610.32813"
           ],
           "representatives": [
             "2607.13683",
@@ -288,7 +293,8 @@
           "question": "新任务既要够难又要可验证；无可靠检查的难题无法稳定指导学习。",
           "papers": [
             "endlessfrontier.tech-assets-paper.pdf",
-            "2610.00906"
+            "2610.00906",
+            "2610.29784"
           ],
           "representatives": [
             "endlessfrontier.tech-assets-paper.pdf",
@@ -377,7 +383,10 @@
             "2609.00196",
             "2609.17523",
             "2610.03002",
-            "2609.35561"
+            "2609.35561",
+            "2610.22791",
+            "2610.20474",
+            "2610.13912"
           ],
           "representatives": [
             "2605.27276",
@@ -453,7 +462,8 @@
             "2609.38372",
             "2610.21887",
             "2609.26457",
-            "2610.02616"
+            "2610.02616",
+            "2610.32026"
           ],
           "representatives": [
             "2310.02304",
@@ -508,7 +518,9 @@
             "2608.10178",
             "2609.33180",
             "2609.40097",
-            "2610.18813"
+            "2610.18813",
+            "2610.27610",
+            "2610.35193"
           ],
           "representatives": [
             "2607.12227",
@@ -641,7 +653,12 @@
             "reef",
             "mass-author-blog",
             "autodatabench-author-blog",
-            "penguin-harness"
+            "penguin-harness",
+            "2609.19969",
+            "2602.15763",
+            "tml-on-policy-distillation",
+            "glm-infra-agent",
+            "deepseek-harness"
           ],
           "representatives": [
             "anthropic-when-ai-builds-itself",
@@ -5172,6 +5189,456 @@
         {
           "label": "配套综述 §3–5 · 分类与评测范围",
           "url": "https://arxiv.org/html/2610.14625#S3"
+        }
+      ]
+    },
+    "2610.26770": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "feedback",
+        "evaluation"
+      ],
+      "name": "HarnessPro",
+      "question": "研究在看不到标准答案和官方测试时，怎样选出既有效又少花钱的 harness。",
+      "contrast": "用模型生成并冻结的测试代替直接自评分，保留省钱、均衡、重性能三类版本。GPT-5.5组相对RHO平均多2.0个百分点、每题成本少26.1%；不是进化总成本下降26.1%。",
+      "sources": [
+        {
+          "label": "§4 · 生成测试与成本选择",
+          "url": "https://arxiv.org/html/2610.26770#S4"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.26770#S1"
+        },
+        {
+          "label": "§4 · 生成测试与成本选择",
+          "url": "https://arxiv.org/html/2610.26770#S4"
+        }
+      ]
+    },
+    "2610.22791": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "harness",
+        "improver"
+      ],
+      "name": "Self-HPO",
+      "question": "研究交替修改运行框架与训练执行模型，能否比单改其中一项更有效，并由当前模型自己提出框架修改。",
+      "contrast": "当前Qwen模型提案、测试选harness，再固定harness做RL；两轮后跨三个SWE基准的平均resolve rate由57.8%到64.8%。另有Opus外部提案组，应分开比较。",
+      "sources": [
+        {
+          "label": "§2 · 交替优化与角色",
+          "url": "https://arxiv.org/html/2610.22791#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.22791#S1"
+        },
+        {
+          "label": "§2 · 交替优化与角色",
+          "url": "https://arxiv.org/html/2610.22791#S2"
+        }
+      ]
+    },
+    "2610.28201": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [
+        "evaluation"
+      ],
+      "name": "MaD-RSI",
+      "question": "研究直接用多个模型在相同题上的成败差异，能否训练出跨模型共用的harness。",
+      "contrast": "先保留共同成功／失败的锚点，再选模型分歧大且有代表性的题，联合诊断轨迹。报告覆盖率与全模型共同成功率；作者明确工作仍在进行，设置披露较少。",
+      "sources": [
+        {
+          "label": "§3 · 跨模型证据与诊断",
+          "url": "https://arxiv.org/html/2610.28201#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.28201#S1"
+        },
+        {
+          "label": "§3 · 跨模型证据与诊断",
+          "url": "https://arxiv.org/html/2610.28201#S3"
+        }
+      ]
+    },
+    "2610.29005": {
+      "primary": "feedback",
+      "branch": "judge",
+      "related": [
+        "evaluation",
+        "harness"
+      ],
+      "name": "VeriEvolve",
+      "question": "研究先合成可执行评测器，再用它改工作流，并从新失败中补齐评测器。",
+      "contrast": "MCPMark Filesystem上生成30个评测器；对额外122个执行终态有113个与外部判分一致。弱GLM系统外部验证成功由6/30到18/30；实验仍依赖外部verifier作入组和失败筛选。",
+      "sources": [
+        {
+          "label": "§4 · 评测器与工作流循环",
+          "url": "https://arxiv.org/html/2610.29005#S4"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.29005#S1"
+        },
+        {
+          "label": "§4 · 评测器与工作流循环",
+          "url": "https://arxiv.org/html/2610.29005#S4"
+        }
+      ]
+    },
+    "2610.29784": {
+      "primary": "curriculum",
+      "branch": "frontier",
+      "related": [
+        "weights",
+        "experience"
+      ],
+      "name": "EvoForesight",
+      "question": "研究真实世界不断发生的事件能否提供持续、可验证的任务，让预测模型、技能与出题机制共同更新。",
+      "contrast": "搜索证据先缓存，只训练负责预测的团队；技能从轨迹按角色rubric提炼，出题则针对历史弱点。FutureX曾连续三周领先，属于作者报告的历史快照，不代表当前榜首。",
+      "sources": [
+        {
+          "label": "§4 · 出题、预测与更新",
+          "url": "https://arxiv.org/html/2610.29784#S4"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.29784#S1"
+        },
+        {
+          "label": "§4 · 出题、预测与更新",
+          "url": "https://arxiv.org/html/2610.29784#S4"
+        }
+      ]
+    },
+    "2610.20474": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "feedback",
+        "harness"
+      ],
+      "name": "AdaRSI",
+      "question": "研究先改harness，再只训练仍不可靠的动作子步骤，能否更有效地适应新具身任务。",
+      "contrast": "Codex中的agent用模拟器快照重试定位问题，自采示范训练小范围动作策略；在RoboCasa365的50个任务、独立场景测试。全部实验是仿真，真实机器人仍属后续工作。",
+      "sources": [
+        {
+          "label": "§4 · 诊断、示范与按需训练",
+          "url": "https://arxiv.org/html/2610.20474#S4"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.20474#S1"
+        },
+        {
+          "label": "§4 · 诊断、示范与按需训练",
+          "url": "https://arxiv.org/html/2610.20474#S4"
+        }
+      ]
+    },
+    "2610.32026": {
+      "primary": "improver",
+      "branch": "recursive-code",
+      "related": [
+        "harness",
+        "evaluation"
+      ],
+      "name": "RSI-Opt",
+      "question": "研究跨运行积累的提示、优化器代码和操作经验，能否提高训练优化agent的表现与迁移能力。",
+      "contrast": "Opus meta-agent在三种训练任务上进化策略，再冻结给其他模型和新任务用。部分迁移明显、部分退步；没有匹配预算的“每次从初始策略重提案”对照，尚不能隔离递归继承本身的收益。",
+      "sources": [
+        {
+          "label": "§3 · 两层程序与策略档案",
+          "url": "https://arxiv.org/html/2610.32026#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.32026#S1"
+        },
+        {
+          "label": "§3 · 两层程序与策略档案",
+          "url": "https://arxiv.org/html/2610.32026#S3"
+        }
+      ]
+    },
+    "2609.32423": {
+      "primary": "harness",
+      "branch": "design",
+      "related": [
+        "experience",
+        "improver"
+      ],
+      "name": "PluginRSI",
+      "question": "研究把harness拆成可执行插件，能否通过局部改插件、全局重组工作流提高迁移与后续搜索效率。",
+      "contrast": "YAML定义接口、Python实现机制；插件局部获益后入共享库，再重组工作流。跨模型终测有收益；另一个“复用库加速搜索”实验继续在原留出题上优化，应与冻结终测分开看。",
+      "sources": [
+        {
+          "label": "§3 · 插件变异与重组",
+          "url": "https://arxiv.org/html/2609.32423#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2609.32423#S1"
+        },
+        {
+          "label": "§3 · 插件变异与重组",
+          "url": "https://arxiv.org/html/2609.32423#S3"
+        }
+      ]
+    },
+    "2610.32813": {
+      "primary": "harness",
+      "branch": "search",
+      "related": [
+        "evaluation"
+      ],
+      "name": "HarnessMM",
+      "question": "研究让已确定动作在满足公开条件时直接执行，能否减少重复推理，同时保持完整任务成功率。",
+      "contrast": "用动作图保存精确参数及依赖，条件满足就跳过对应模型回调；不确定则退回模型。HumanEval的Codex组成功率不变、token少29.54%；其他任务有负结果，节省不全能归因于动作图。",
+      "sources": [
+        {
+          "label": "§4 · 动作图、公开条件与回退",
+          "url": "https://arxiv.org/html/2610.32813#S4"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.32813#S1"
+        },
+        {
+          "label": "§4 · 动作图、公开条件与回退",
+          "url": "https://arxiv.org/html/2610.32813#S4"
+        }
+      ]
+    },
+    "2610.13912": {
+      "primary": "weights",
+      "branch": "coupling",
+      "related": [
+        "curriculum",
+        "feedback"
+      ],
+      "name": "RSI-Anything",
+      "question": "研究怎样把结果预测、真实反馈和版本验收接起来，使经验改善后续选择。",
+      "contrast": "代码实验固定coder，先用预测器选补丁，再适配预测器，隐藏测试成功率从26.3%到29.2%再到31.2%。GUI、实验规划、化学各测不同环节，尚未统一证明单任务长期双向互促。",
+      "sources": [
+        {
+          "label": "§2 · 预测、反馈与更新接受",
+          "url": "https://arxiv.org/html/2610.13912#S2"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.13912#S1"
+        },
+        {
+          "label": "§2 · 预测、反馈与更新接受",
+          "url": "https://arxiv.org/html/2610.13912#S2"
+        }
+      ]
+    },
+    "2610.27610": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "improver"
+      ],
+      "name": "Auditing Product vs Recursion",
+      "question": "量化RSI论文实际报告了哪些评测证据，并检查这些证据是否对应各自声明。",
+      "contrast": "审阅114项研究，90项自称RSI；60%报告未用于选择的任务，22%审计至少两次完整循环。26项宣称修改机制更好，只有4项做同起点、匹配预算的新旧修改者比较。",
+      "sources": [
+        {
+          "label": "§3 · 声明—证据编码框架",
+          "url": "https://arxiv.org/html/2610.27610#S3"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 研究动机",
+          "url": "https://arxiv.org/html/2610.27610#S1"
+        },
+        {
+          "label": "§3 · 声明—证据编码框架",
+          "url": "https://arxiv.org/html/2610.27610#S3"
+        }
+      ]
+    },
+    "2609.19969": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "curriculum",
+        "weights"
+      ],
+      "name": "DeepSeek-V4.1-Flash",
+      "question": "报告V4.1-Flash的架构与训练；本站重点阅读合成任务、多harness RL、OPD与评测，而非把整份报告当严格RSI演示。",
+      "contrast": "沿用SFT→RL→OPD流程，将投入放在任务、环境与质量复查；跨harness训练与多教师蒸馏已有工程实现，模型—harness共同进化仍列于展望。",
+      "sources": [
+        {
+          "label": "作者与报告",
+          "url": "https://arxiv.org/html/2609.19969"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "作者与报告",
+          "url": "https://arxiv.org/html/2609.19969"
+        },
+        {
+          "label": "§5.1 · 合成任务与多harness RL",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS1"
+        }
+      ]
+    },
+    "2602.15763": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "curriculum",
+        "weights"
+      ],
+      "name": "GLM-5",
+      "question": "介绍GLM-5从预训练到agentic工程的训练体系；重点看环境扩展、跨阶段蒸馏和具体评测设置。",
+      "contrast": "跨阶段OPD把前面阶段checkpoint的能力汇入最后模型；SWE环境用可执行测试，幻灯片训练把多层规则奖励用于筛选再训练。不是无人干预地递归训练下一代的证明。",
+      "sources": [
+        {
+          "label": "作者与原始报告",
+          "url": "https://arxiv.org/html/2602.15763"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "作者与原始报告",
+          "url": "https://arxiv.org/html/2602.15763"
+        },
+        {
+          "label": "§3.5 · 跨阶段OPD及引用",
+          "url": "https://arxiv.org/html/2602.15763#S3.SS5"
+        }
+      ]
+    },
+    "tml-on-policy-distillation": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "weights",
+        "feedback"
+      ],
+      "name": "On-Policy Distillation",
+      "question": "解释并实现学生自己生成轨迹、教师在这些轨迹上提供逐token概率监督的训练机制。",
+      "contrast": "用学生访问到的前缀计算教师和学生分布差距，兼顾on-policy相关性与密集监督。GLM-5和DeepSeek-V4.1报告明确采用这一机制；固定教师蒸馏本身不是严格RSI。",
+      "sources": [
+        {
+          "label": "作者博客 · 原理、实现与实验",
+          "url": "https://thinkingmachines.ai/blog/on-policy-distillation/"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "作者博客 · 原理、实现与实验",
+          "url": "https://thinkingmachines.ai/blog/on-policy-distillation/"
+        },
+        {
+          "label": "GLM-5 §3.5 · 明确采用",
+          "url": "https://arxiv.org/html/2602.15763#S3.SS5"
+        }
+      ]
+    },
+    "glm-infra-agent": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "feedback",
+        "harness"
+      ],
+      "name": "GLM Infra Agent",
+      "question": "记录GLM-5.3 Infra Agent如何在工程师定义的目标与边界下，用局部可验证反馈优化服务GLM-5.3-Flash的推理系统。",
+      "contrast": "把数值检查、轨迹、微基准与端到端压测连成工作流，经验存成带适用条件的优化模板；作者报告两周内吞吐约3倍，没有独立对照隔离agent的因果贡献。",
+      "sources": [
+        {
+          "label": "官方博客 · Dense feedback与三个案例",
+          "url": "https://z.ai/blog/glm-built-its-inference-infrastructure"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "官方博客 · Dense feedback与三个案例",
+          "url": "https://z.ai/blog/glm-built-its-inference-infrastructure"
+        }
+      ]
+    },
+    "deepseek-harness": {
+      "primary": "perspectives",
+      "branch": "practice",
+      "related": [
+        "harness"
+      ],
+      "name": "DeepSeek Harness",
+      "question": "提供基于Cordis的一切皆插件agent运行框架，可作为harness研究的实际底座。",
+      "contrast": "DeepSeek-V4.1报告用DSH参与训练和对照评测，给出Minimal、Standard、PTC三个配置。开源运行框架本身不意味着默认会自主进化。",
+      "sources": [
+        {
+          "label": "官方README · 架构与Developer preview",
+          "url": "https://github.com/deepseek-ai/deepseek-harness"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "官方README · 架构与Developer preview",
+          "url": "https://github.com/deepseek-ai/deepseek-harness"
+        },
+        {
+          "label": "DeepSeek-V4.1 §5.3.4／附录B.1 · 对照配置",
+          "url": "https://arxiv.org/html/2609.19969#S5.SS3.SSS4"
+        }
+      ]
+    },
+    "2610.35193": {
+      "primary": "evaluation",
+      "branch": "attribution",
+      "related": [
+        "improver"
+      ],
+      "name": "Trustworthy RSI",
+      "question": "按改进是否真实、约束是否保留、监督是否有效，梳理更新、继承版本和改进机制本身的证据需求。",
+      "contrast": "检索到10月26日、引用301项工作；强调直接RSI实验、相关系统风险证据、未来建议三者分开。它提供审视框架，不是统一运行301个系统的安全评测。",
+      "sources": [
+        {
+          "label": "§1 · 范围与问题",
+          "url": "https://arxiv.org/html/2610.35193#S1"
+        }
+      ],
+      "contrastSources": [
+        {
+          "label": "§1 · 范围与问题",
+          "url": "https://arxiv.org/html/2610.35193#S1"
+        },
+        {
+          "label": "§2 · 定义与可信框架",
+          "url": "https://arxiv.org/html/2610.35193#S2"
         }
       ]
     }

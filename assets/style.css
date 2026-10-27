@@ -148,3 +148,7 @@
  .review-tree .review-tree-layers .review-tree-branches{display:block}.review-tree .review-tree-layers .review-tree-branch{margin:0 0 8px}.review-tree .review-tree-layers .review-tree-branch:last-child{margin-bottom:0}.review-branch-relation{font-size:9px;line-height:1.5}.review-tree-compact .review-tree-branch>header{padding:6px}.review-tree-compact .review-tree-branch>header h3>span{display:inline;margin:0 4px 0 0}.review-tree-compact .review-tree-branch>header h3{font-size:13px}.review-tree-compact .review-question{padding:5px 8px}.review-tree-compact .review-tree-branch>ol>li{margin-bottom:4px}.review-tree-compact .review-tree-root h3{font-size:14px}.review-tree-compact .review-tree-root{padding:7px 9px}
  .review-route-relation{padding:10px}.research-tree .tree-layer-grid .tree-pillars{display:block}.research-tree .tree-layer-grid .tree-pillar{margin-bottom:14px}.review-tree-expanded .review-tree-branch{display:block}
 }
+
+/* Report usage is evidence about a specific pipeline, separate from authorship. */
+.report-evidence-badge{border:1px solid #9abcb5;background:#edf6f2;color:#235f54;border-radius:5px;padding:3px 7px;font:inherit;font-size:11px;font-weight:600;cursor:pointer;line-height:1.5;text-align:left}
+.report-evidence-badge:hover,.report-evidence-badge:focus-visible{background:#d9eee6;border-color:#235f54}

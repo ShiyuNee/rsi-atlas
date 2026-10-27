@@ -201,3 +201,5 @@ require('./check_problem_map.js');
 require('./check_field_review.js');
 require('./check_classifications.js');
 require('./check_update.js');
+
+require('./check_report_citations.js');
